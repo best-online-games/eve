@@ -8,8 +8,30 @@ $ds_themer_page_themer $mol_book2_catalog
 	Spread* $mol_page
 		body /
 			<= Spread_content* $mol_view
+	color_back? \oklch(20% .01 240deg)
+	color_card? \oklch(30% .05 240deg / .25)
+	color_field? \oklch(15% 0 240deg / .25)
+	color_hover? \oklch(70% 0 240deg / .1)
+	color_text? \oklch(80% 0 240deg)
+	color_shade? \oklch(60% 0 240deg)
+	color_line? \oklch(60% 0 240deg / .25)
+	color_focus? \oklch(80% .2 60deg)
+	color_control? \oklch(70% .1 240deg)
+	color_current? \oklch(70% .2 150deg)
+	color_special? \oklch(70% .2 330deg)
 
 $ds_themer_page_themer_colors $mol_row
+	color_back? \oklch(20% .01 240deg)
+	color_card? \oklch(30% .05 240deg / .25)
+	color_field? \oklch(15% 0 240deg / .25)
+	color_hover? \oklch(70% 0 240deg / .1)
+	color_text? \oklch(80% 0 240deg)
+	color_shade? \oklch(60% 0 240deg)
+	color_line? \oklch(60% 0 240deg / .25)
+	color_focus? \oklch(80% .2 60deg)
+	color_control? \oklch(70% .1 240deg)
+	color_current? \oklch(70% .2 150deg)
+	color_special? \oklch(70% .2 330deg)
 	sub /
 		<= Controls $mol_scroll
 			sub /
