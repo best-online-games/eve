@@ -15,10 +15,12 @@ namespace $.$$ {
 				basis: rem(25),
 				shrink: 0,
 			},
-			borderRight: {
-				width: px(1),
-				style: 'solid',
-				color: $mol_theme.line,
+			border: {
+				right: {
+					width: px(1),
+					style: 'solid',
+					color: $mol_theme.line,
+				},
 			},
 		},
 
