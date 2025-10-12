@@ -1,0 +1,4 @@
+$ds_surface $mol_view
+	colors? \primary
+	interactive? false
+	size? \md

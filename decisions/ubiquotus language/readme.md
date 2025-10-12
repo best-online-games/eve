@@ -3,7 +3,7 @@
 ## Композиция поведений:
 
 **Взаимоисключающие** (mutually exclusive) - аспекты, которые не могут быть активны одновременно:
-- `still` `hover` `pressed` `disabled` состояния
+- `enabled` `hover` `pressed` `disabled` `loading` состояния взаимосключающие
 
 **Независимые** (independent/orthogonal) - аспекты, которые могут сосуществовать:
 - `copy` поведение + `hover` состояния
