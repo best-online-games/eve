@@ -75,9 +75,6 @@ $mol_button_typed $mol_button
 
 $mol_button_minor $mol_button_typed
 
-$mol_button_major $mol_button_minor
-	theme \$mol_theme_base
-
 $mol_check $mol_button_minor
 	attr *
 		^
@@ -129,6 +126,65 @@ $mol_lights_toggle $mol_check_icon
 	hint @ \Toggle lights
 	checked? <=> lights? false
 
+$mol_link $mol_view
+	uri \
+	dom_name \a
+	uri_off \
+	uri_native null
+	external false
+	attr *
+		^
+		href <= uri_toggle \
+		title <= hint_safe <= hint \
+		target <= target \_self
+		download <= file_name \
+		mol_link_current <= current false
+		rel <= relation \
+	sub /$mol_view_content
+		<= title
+	arg *
+	event *
+		^
+		click?event <=> click?event <=> event_click?event null
+
+$mol_pop $mol_view
+	showed? false
+	align_vert \
+	align_hor \
+	prefer \vert
+	sub /
+		<= Anchor null
+	sub_visible /
+		<= Anchor
+		<= Bubble $mol_pop_bubble
+			align <= align \bottom_center
+			content <= bubble_content /$mol_view_content
+			height_max <= height_max 9999
+
+$mol_pop_bubble $mol_view
+	sub <= content /$mol_view_content
+	style *
+		^
+		maxHeight <= height_max 9999
+	attr *
+		^
+		mol_pop_align <= align \
+		tabindex 0
+
+$mol_pick $mol_pop
+	event *
+		^
+		keydown?event <=> keydown?event null
+	Anchor <= Trigger $mol_check
+		minimal_width 40
+		minimal_height 40
+		enabled <= trigger_enabled true
+		checked? <=> showed?
+		clicks? <=> clicks? null
+		sub <= trigger_content /$mol_view_content
+			<= title
+		hint <= hint \
+
 $mol_paragraph $mol_view
 	line_height 24
 	letter_width 7
@@ -146,6 +202,40 @@ $mol_dimmer $mol_paragraph
 	High* $mol_paragraph
 		sub /
 			<= string* \
+
+$mol_nav $mol_plugin
+	cycle? false
+	-
+	mod_ctrl false
+	mod_shift false
+	mod_alt false
+	-
+	keys_x? /
+	keys_y? /
+	-
+	current_x? null
+	current_y? null
+	-
+	event_up?event null
+	event_down?event null
+	event_left?event null
+	event_right?event null
+	event *
+		^
+		keydown?event <=> event_key?event null
+
+$mol_list $mol_view
+	render_visible_only true
+	render_over 0
+	sub <= rows /$mol_view
+	Empty $mol_view
+	Gap_before $mol_view style * paddingTop <= gap_before 0
+	Gap_after $mol_view style * paddingTop <= gap_after 0
+	item_height_min* 1
+	item_width_min* 1
+	view_window /
+		0
+		0
 
 $mol_hotkey $mol_plugin
 	event *
@@ -190,6 +280,118 @@ $mol_string $mol_view
 			mod_ctrl <= submit_with_ctrl false
 			key * enter?event <=> submit?event null
 
+$mol_icon_close $mol_icon path \M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z
+
+$mol_search $mol_pop
+	query? \
+	suggests /string
+	plugins /$mol_plugin
+		^
+		<= Hotkey $mol_hotkey
+			key * escape? <=> clear? null
+		<= Nav $mol_nav
+			keys_y <= nav_components /$mol_view
+			current_y?component <=> nav_focused?component null
+	showed? <=> suggests_showed? false
+	align_hor \right
+	Anchor $mol_view
+		sub <= anchor_content /
+			<= Query $mol_string
+				value? <=> query? \
+				hint <= hint @ \Search...
+				submit?event <=> submit?event null
+				enabled <= enabled true
+				keyboard <= keyboard \search
+				enter <= enter \search
+				bring => bring
+			<= Clear $mol_button_minor
+				hint @ \Clear
+				enabled <= enabled true
+				click?event <=> clear?event null
+				sub /
+					<= Clear_icon $mol_icon_close
+	bubble_content /$mol_view_content
+		<= Bubble_pane $mol_scroll
+			sub /
+				<= Menu $mol_list
+					rows <= menu_items /$mol_view
+	Suggest* $mol_button_minor
+		click?event <=> suggest_select*?event null
+		sub <= suggest_content* /$mol_view_content
+			<= Suggest_label* $mol_dimmer
+				haystack <= suggest_label* \
+				needle <= query? \
+
+$mol_icon_dots_vertical $mol_icon path \M12,16A2,2 0 0,1 14,18A2,2 0 0,1 12,20A2,2 0 0,1 10,18A2,2 0 0,1 12,16M12,10A2,2 0 0,1 14,12A2,2 0 0,1 12,14A2,2 0 0,1 10,12A2,2 0 0,1 12,10M12,4A2,2 0 0,1 14,6A2,2 0 0,1 12,8A2,2 0 0,1 10,6A2,2 0 0,1 12,4Z
+
+$mol_select $mol_pick
+	dictionary? *
+	options /string
+	value? \
+	option_label_default \
+	Option_row* $mol_button_minor
+		enabled <= enabled true
+		event_click?event <=> event_select*?event null
+		sub <= option_content* /
+			<= Option_label* $mol_dimmer
+				haystack <= option_label* \
+				needle <= filter_pattern? \
+	No_options $mol_view
+		sub /
+			<= no_options_message @ \No options
+	plugins /
+		^
+		<= Nav $mol_nav
+			keys_y <= nav_components /$mol_view
+			current_y?component <=> option_focused?component null
+			cycle? <=> nav_cycle? true
+	hint @ \Pick..
+	bubble_content /
+		<= Filter
+		<= Bubble_pane $mol_scroll
+			sub /
+				<= Menu $mol_list
+					rows <= menu_content /$mol_view
+	Filter $mol_search
+		query? <=> filter_pattern? \
+		hint <= filter_hint @ \Filter..
+		submit?event <=> submit?event null
+		enabled <= enabled true
+	Trigger_icon $mol_icon_dots_vertical
+
+$mol_icon_telegram $mol_icon path \M9.78,18.65L10.06,14.42L17.74,7.5C18.08,7.19 17.67,7.04 17.22,7.31L7.74,13.3L3.64,12C2.76,11.75 2.75,11.14 3.84,10.7L19.81,4.54C20.54,4.21 21.24,4.72 20.96,5.84L18.24,18.65C18.05,19.56 17.5,19.78 16.74,19.36L12.6,16.3L10.61,18.23C10.38,18.46 10.19,18.65 9.78,18.65Z
+
+$mol_image $mol_view
+	dom_name \img
+	attr *any
+		^
+		src <= uri \
+		title <= hint
+		alt <= title
+		loading <= loading \lazy
+		decoding <= decoding \async
+		crossOrigin <= cors null
+		width <= natural_width 0
+		height <= natural_height 0
+	event *any
+		load? <=> load? null
+	minimal_width 16
+	minimal_height 16
+
+$mol_link_iconed $mol_link
+	sub /
+		<= Icon $mol_image
+			uri <= icon \
+			title \
+	content /
+		<= title <= uri
+	host \
+
+$mol_icon_github $mol_icon path \M12,2A10,10 0 0,0 2,12C2,16.42 4.87,20.17 8.84,21.5C9.34,21.58 9.5,21.27 9.5,21C9.5,20.77 9.5,20.14 9.5,19.31C6.73,19.91 6.14,17.97 6.14,17.97C5.68,16.81 5.03,16.5 5.03,16.5C4.12,15.88 5.1,15.9 5.1,15.9C6.1,15.97 6.63,16.93 6.63,16.93C7.5,18.45 8.97,18 9.54,17.76C9.63,17.11 9.89,16.67 10.17,16.42C7.95,16.17 5.62,15.31 5.62,11.5C5.62,10.39 6,9.5 6.65,8.79C6.55,8.54 6.2,7.5 6.75,6.15C6.75,6.15 7.59,5.88 9.5,7.17C10.29,6.95 11.15,6.84 12,6.84C12.85,6.84 13.71,6.95 14.5,7.17C16.41,5.88 17.25,6.15 17.25,6.15C17.8,7.5 17.45,8.54 17.35,8.79C18,9.5 18.38,10.39 18.38,11.5C18.38,15.32 16.04,16.16 13.81,16.41C14.17,16.72 14.5,17.33 14.5,18.26C14.5,19.6 14.5,20.68 14.5,21C14.5,21.27 14.66,21.59 15.17,21.5C19.14,20.16 22,16.42 22,12A10,10 0 0,0 12,2Z
+
+$mol_button_major $mol_button_minor
+	theme \$mol_theme_base
+
 $ds_themer_color $mol_view
 	value? \
 	attr *
@@ -206,19 +408,6 @@ $ds_themer_color $mol_view
 					dom_name \input
 					event *
 						input? <=> picker_input? null
-
-$mol_list $mol_view
-	render_visible_only true
-	render_over 0
-	sub <= rows /$mol_view
-	Empty $mol_view
-	Gap_before $mol_view style * paddingTop <= gap_before 0
-	Gap_after $mol_view style * paddingTop <= gap_after 0
-	item_height_min* 1
-	item_width_min* 1
-	view_window /
-		0
-		0
 
 $mol_labeler $mol_list
 	rows /
@@ -237,8 +426,6 @@ $mol_form_field $mol_labeler
 		<= Bid $mol_view
 			sub / <= bid \
 	content / <= control null
-
-$mol_row $mol_view
 
 $mol_stack $mol_view
 
@@ -385,53 +572,6 @@ $mol_grid_cell $mol_view
 	minimal_height 40
 
 $mol_grid_number $mol_grid_cell
-
-$mol_link $mol_view
-	uri \
-	dom_name \a
-	uri_off \
-	uri_native null
-	external false
-	attr *
-		^
-		href <= uri_toggle \
-		title <= hint_safe <= hint \
-		target <= target \_self
-		download <= file_name \
-		mol_link_current <= current false
-		rel <= relation \
-	sub /$mol_view_content
-		<= title
-	arg *
-	event *
-		^
-		click?event <=> click?event <=> event_click?event null
-
-$mol_image $mol_view
-	dom_name \img
-	attr *any
-		^
-		src <= uri \
-		title <= hint
-		alt <= title
-		loading <= loading \lazy
-		decoding <= decoding \async
-		crossOrigin <= cors null
-		width <= natural_width 0
-		height <= natural_height 0
-	event *any
-		load? <=> load? null
-	minimal_width 16
-	minimal_height 16
-
-$mol_link_iconed $mol_link
-	sub /
-		<= Icon $mol_image
-			uri <= icon \
-			title \
-	content /
-		<= title <= uri
-	host \
 
 $mol_embed_native $mol_scroll
 	dom_name \iframe
@@ -612,6 +752,8 @@ $mol_text_span $mol_paragraph
 		^
 		mol_text_type <= type \
 
+$mol_row $mol_view
+
 $mol_textarea $mol_stack
 	attr *
 		^
@@ -692,35 +834,6 @@ $mol_icon_tick $mol_icon path \M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z
 $mol_check_box $mol_check
 	Icon $mol_icon_tick
 
-$mol_status $mol_view
-	status <= title
-	minimal_height 24
-	minimal_width 0
-	sub /
-		<= message \
-
-$mol_form $mol_list
-	submit_allowed true
-	submit_blocked false
-	event *
-		^
-		keydown?event <=> keydown?event null
-	save?event null
-	message_done @ \Saved
-	message_invalid @ \Form is not valid
-	rows /
-		<= Body $mol_list
-			sub <= body <= form_fields /$mol_form_field
-		<= Foot $mol_row
-			sub <= foot <= buttons /$mol_view
-				<= Submit $mol_button_major
-					title <= submit_title @ \Save
-					hint <= submit_hint \
-					activate? => submit_activate?
-					click? <=> submit? null
-				<= Result $mol_status
-					message <= result? null
-
 $mol_text_list $mol_text
 	auto_scroll null
 	attr *
@@ -734,107 +847,6 @@ $mol_text_list_item $mol_paragraph
 	attr *
 		^
 		mol_text_list_item_index <= index 0
-
-$ds_themer $mol_page
-	title \Theme Editor
-	plugins /
-		<= Theme $mol_theme_auto
-	tools /
-		<= Export $mol_button_major
-			title \Export CSS
-			click? <=> export? null
-		<= Copy $mol_button_minor
-			title \Copy Theme
-			click? <=> copy? null
-		<= Reset $mol_button_minor
-			title \Reset
-			click? <=> reset? null
-		<= Toggle $mol_lights_toggle
-	body /
-		<= Content $mol_row sub /
-			<= Controls $mol_scroll
-				sub /
-					<= Controls_inner $mol_list
-						rows /
-							<= Controls_title $mol_view
-								sub / <= Controls_title_text $mol_dimmer
-									haystack \Theme Settings
-							<= Backgrounds_section $mol_list
-								rows /
-									<= Backgrounds_title $mol_view
-										sub / <= Backgrounds_title_text $mol_dimmer
-											haystack \Backgrounds
-									<= Back_field $mol_form_field
-										name \Background
-										Content <= Back_color $ds_themer_color
-											value? <=> color_back? \oklch(20% .01 240deg)
-									<= Card_field $mol_form_field
-										name \Card
-										Content <= Card_color $ds_themer_color
-											value? <=> color_card? \oklch(30% .05 240deg / .25)
-									<= Field_field $mol_form_field
-										name \Field
-										Content <= Field_color $ds_themer_color
-											value? <=> color_field? \oklch(15% 0 240deg / .25)
-									<= Hover_field $mol_form_field
-										name \Hover
-										Content <= Hover_color $ds_themer_color
-											value? <=> color_hover? \oklch(70% 0 240deg / .1)
-							<= Text_section $mol_list
-								rows /
-									<= Text_title $mol_view
-										sub / <= Text_title_text $mol_dimmer
-											haystack \Text Colors
-									<= Text_field $mol_form_field
-										name \Text
-										Content <= Text_color $ds_themer_color
-											value? <=> color_text? \oklch(80% 0 240deg)
-									<= Shade_field $mol_form_field
-										name \Shade
-										Content <= Shade_color $ds_themer_color
-											value? <=> color_shade? \oklch(60% 0 240deg)
-									<= Line_field $mol_form_field
-										name \Line
-										Content <= Line_color $ds_themer_color
-											value? <=> color_line? \oklch(60% 0 240deg / .25)
-									<= Focus_field $mol_form_field
-										name \Focus
-										Content <= Focus_color $ds_themer_color
-											value? <=> color_focus? \oklch(80% .2 60deg)
-							<= Controls_section $mol_list
-								rows /
-									<= Controls_section_title $mol_view
-										sub / <= Controls_section_title_text $mol_dimmer
-											haystack \Control Colors
-									<= Control_field $mol_form_field
-										name \Control
-										Content <= Control_color $ds_themer_color
-											value? <=> color_control? \oklch(70% .1 240deg)
-									<= Current_field $mol_form_field
-										name \Current
-										Content <= Current_color $ds_themer_color
-											value? <=> color_current? \oklch(70% .2 150deg)
-									<= Special_field $mol_form_field
-										name \Special
-										Content <= Special_color $ds_themer_color
-											value? <=> color_special? \oklch(70% .2 330deg)
-			<= Preview $mol_scroll
-				sub /
-					<= Preview_inner $mol_view
-						style *
-							--mol_theme_back <= color_back
-							--mol_theme_card <= color_card
-							--mol_theme_field <= color_field
-							--mol_theme_hover <= color_hover
-							--mol_theme_text <= color_text
-							--mol_theme_shade <= color_shade
-							--mol_theme_line <= color_line
-							--mol_theme_focus <= color_focus
-							--mol_theme_control <= color_control
-							--mol_theme_current <= color_current
-							--mol_theme_special <= color_special
-						sub /
-							<= Demo_site $ds_themer_demo
 
 $ds_themer_demo $mol_page
 	title \Demo Website
@@ -947,3 +959,164 @@ $ds_themer_demo $mol_page
 										<= Row3_col1 $mol_view sub / <= Row3_col1_text $mol_text text \Item 3
 										<= Row3_col2 $mol_view sub / <= Row3_col2_text $mol_text text \Complete
 										<= Row3_col3 $mol_view sub / <= Row3_col3_text $mol_text text \500
+
+$mol_status $mol_view
+	status <= title
+	minimal_height 24
+	minimal_width 0
+	sub /
+		<= message \
+
+$mol_form $mol_list
+	submit_allowed true
+	submit_blocked false
+	event *
+		^
+		keydown?event <=> keydown?event null
+	save?event null
+	message_done @ \Saved
+	message_invalid @ \Form is not valid
+	rows /
+		<= Body $mol_list
+			sub <= body <= form_fields /$mol_form_field
+		<= Foot $mol_row
+			sub <= foot <= buttons /$mol_view
+				<= Submit $mol_button_major
+					title <= submit_title @ \Save
+					hint <= submit_hint \
+					activate? => submit_activate?
+					click? <=> submit? null
+				<= Result $mol_status
+					message <= result? null
+
+$ds_themer $mol_page
+	title \DS Themer
+	plugins /
+		<= Theme $mol_theme_auto
+	tools /
+		<= Lights $mol_lights_toggle
+		<= Libraries_link $mol_link
+			arg * page \libraries
+			sub / <= Libraries_title \Libraries
+		<= Components_link $mol_link
+			arg * page \components
+			sub / <= Components_title \Components
+		<= Design_link $mol_link
+			arg * page \design
+			sub / <= Design_title \Design
+		<= Icons_link $mol_link
+			arg * page \icons
+			sub / <= Icons_title \Icons
+		<= Themer_link $mol_link
+			arg * page \themer
+			sub / <= Themer_title \Themer
+		<= Media_link $mol_link
+			arg * page \media
+			sub / <= Media_title \Media
+		<= Lang_select $mol_select
+			value? <=> lang? \en
+			options <= lang_options /
+				\en
+				\ru
+		<= Telegram_link $mol_link_iconed
+			hint \Telegram
+			uri \https://t.me/your_channel
+			sub / <= Telegram_icon $mol_icon_telegram
+		<= Github_link $mol_link_iconed
+			hint \GitHub
+			uri \https://github.com/best-online-games/ds
+			sub / <= Github_icon $mol_icon_github
+		<= Export $mol_button_major
+			title \Export CSS
+			click? <=> export? null
+		<= Copy $mol_button_minor
+			title \Copy Theme
+			click? <=> copy? null
+		<= Reset $mol_button_minor
+			title \Reset
+			click? <=> reset? null
+	body /
+		<= Content $mol_row sub /
+			<= Controls $mol_scroll
+				sub /
+					<= Controls_inner $mol_list
+						rows /
+							<= Controls_title $mol_view
+								sub / <= Controls_title_text $mol_dimmer
+									haystack \Theme Settings
+							<= Backgrounds_section $mol_list
+								rows /
+									<= Backgrounds_title $mol_view
+										sub / <= Backgrounds_title_text $mol_dimmer
+											haystack \Backgrounds
+									<= Back_field $mol_form_field
+										name \Background
+										Content <= Back_color $ds_themer_color
+											value? <=> color_back? \oklch(20% .01 240deg)
+									<= Card_field $mol_form_field
+										name \Card
+										Content <= Card_color $ds_themer_color
+											value? <=> color_card? \oklch(30% .05 240deg / .25)
+									<= Field_field $mol_form_field
+										name \Field
+										Content <= Field_color $ds_themer_color
+											value? <=> color_field? \oklch(15% 0 240deg / .25)
+									<= Hover_field $mol_form_field
+										name \Hover
+										Content <= Hover_color $ds_themer_color
+											value? <=> color_hover? \oklch(70% 0 240deg / .1)
+							<= Text_section $mol_list
+								rows /
+									<= Text_title $mol_view
+										sub / <= Text_title_text $mol_dimmer
+											haystack \Text Colors
+									<= Text_field $mol_form_field
+										name \Text
+										Content <= Text_color $ds_themer_color
+											value? <=> color_text? \oklch(80% 0 240deg)
+									<= Shade_field $mol_form_field
+										name \Shade
+										Content <= Shade_color $ds_themer_color
+											value? <=> color_shade? \oklch(60% 0 240deg)
+									<= Line_field $mol_form_field
+										name \Line
+										Content <= Line_color $ds_themer_color
+											value? <=> color_line? \oklch(60% 0 240deg / .25)
+									<= Focus_field $mol_form_field
+										name \Focus
+										Content <= Focus_color $ds_themer_color
+											value? <=> color_focus? \oklch(80% .2 60deg)
+							<= Controls_section $mol_list
+								rows /
+									<= Controls_section_title $mol_view
+										sub / <= Controls_section_title_text $mol_dimmer
+											haystack \Control Colors
+									<= Control_field $mol_form_field
+										name \Control
+										Content <= Control_color $ds_themer_color
+											value? <=> color_control? \oklch(70% .1 240deg)
+									<= Current_field $mol_form_field
+										name \Current
+										Content <= Current_color $ds_themer_color
+											value? <=> color_current? \oklch(70% .2 150deg)
+									<= Special_field $mol_form_field
+										name \Special
+										Content <= Special_color $ds_themer_color
+											value? <=> color_special? \oklch(70% .2 330deg)
+			<= Preview $mol_scroll
+				sub /
+					<= Preview_inner $mol_view
+						style *
+							--mol_theme_back <= color_back
+							--mol_theme_card <= color_card
+							--mol_theme_field <= color_field
+							--mol_theme_hover <= color_hover
+							--mol_theme_text <= color_text
+							--mol_theme_shade <= color_shade
+							--mol_theme_line <= color_line
+							--mol_theme_focus <= color_focus
+							--mol_theme_control <= color_control
+							--mol_theme_current <= color_current
+							--mol_theme_special <= color_special
+						sub /
+							<= Demo_site $ds_themer_demo
