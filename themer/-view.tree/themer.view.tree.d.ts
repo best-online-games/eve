@@ -142,267 +142,10 @@ declare namespace $ {
 		,
 		ReturnType< $mol_button_minor['click'] >
 	>
-	type $mol_dimmer__haystack_ds_themer_27 = $mol_type_enforce<
-		string
-		,
-		ReturnType< $mol_dimmer['haystack'] >
-	>
-	type $mol_view__sub_ds_themer_28 = $mol_type_enforce<
-		readonly(any)[]
+	type $mol_view__sub_ds_themer_27 = $mol_type_enforce<
+		ReturnType< $ds_themer['page_body'] >
 		,
 		ReturnType< $mol_view['sub'] >
-	>
-	type $mol_dimmer__haystack_ds_themer_29 = $mol_type_enforce<
-		string
-		,
-		ReturnType< $mol_dimmer['haystack'] >
-	>
-	type $mol_view__sub_ds_themer_30 = $mol_type_enforce<
-		readonly(any)[]
-		,
-		ReturnType< $mol_view['sub'] >
-	>
-	type $ds_themer_color__value_ds_themer_31 = $mol_type_enforce<
-		ReturnType< $ds_themer['color_back'] >
-		,
-		ReturnType< $ds_themer_color['value'] >
-	>
-	type $mol_form_field__name_ds_themer_32 = $mol_type_enforce<
-		string
-		,
-		ReturnType< $mol_form_field['name'] >
-	>
-	type $mol_form_field__Content_ds_themer_33 = $mol_type_enforce<
-		ReturnType< $ds_themer['Back_color'] >
-		,
-		ReturnType< $mol_form_field['Content'] >
-	>
-	type $ds_themer_color__value_ds_themer_34 = $mol_type_enforce<
-		ReturnType< $ds_themer['color_card'] >
-		,
-		ReturnType< $ds_themer_color['value'] >
-	>
-	type $mol_form_field__name_ds_themer_35 = $mol_type_enforce<
-		string
-		,
-		ReturnType< $mol_form_field['name'] >
-	>
-	type $mol_form_field__Content_ds_themer_36 = $mol_type_enforce<
-		ReturnType< $ds_themer['Card_color'] >
-		,
-		ReturnType< $mol_form_field['Content'] >
-	>
-	type $ds_themer_color__value_ds_themer_37 = $mol_type_enforce<
-		ReturnType< $ds_themer['color_field'] >
-		,
-		ReturnType< $ds_themer_color['value'] >
-	>
-	type $mol_form_field__name_ds_themer_38 = $mol_type_enforce<
-		string
-		,
-		ReturnType< $mol_form_field['name'] >
-	>
-	type $mol_form_field__Content_ds_themer_39 = $mol_type_enforce<
-		ReturnType< $ds_themer['Field_color'] >
-		,
-		ReturnType< $mol_form_field['Content'] >
-	>
-	type $ds_themer_color__value_ds_themer_40 = $mol_type_enforce<
-		ReturnType< $ds_themer['color_hover'] >
-		,
-		ReturnType< $ds_themer_color['value'] >
-	>
-	type $mol_form_field__name_ds_themer_41 = $mol_type_enforce<
-		string
-		,
-		ReturnType< $mol_form_field['name'] >
-	>
-	type $mol_form_field__Content_ds_themer_42 = $mol_type_enforce<
-		ReturnType< $ds_themer['Hover_color'] >
-		,
-		ReturnType< $mol_form_field['Content'] >
-	>
-	type $mol_list__rows_ds_themer_43 = $mol_type_enforce<
-		readonly(any)[]
-		,
-		ReturnType< $mol_list['rows'] >
-	>
-	type $mol_dimmer__haystack_ds_themer_44 = $mol_type_enforce<
-		string
-		,
-		ReturnType< $mol_dimmer['haystack'] >
-	>
-	type $mol_view__sub_ds_themer_45 = $mol_type_enforce<
-		readonly(any)[]
-		,
-		ReturnType< $mol_view['sub'] >
-	>
-	type $ds_themer_color__value_ds_themer_46 = $mol_type_enforce<
-		ReturnType< $ds_themer['color_text'] >
-		,
-		ReturnType< $ds_themer_color['value'] >
-	>
-	type $mol_form_field__name_ds_themer_47 = $mol_type_enforce<
-		string
-		,
-		ReturnType< $mol_form_field['name'] >
-	>
-	type $mol_form_field__Content_ds_themer_48 = $mol_type_enforce<
-		ReturnType< $ds_themer['Text_color'] >
-		,
-		ReturnType< $mol_form_field['Content'] >
-	>
-	type $ds_themer_color__value_ds_themer_49 = $mol_type_enforce<
-		ReturnType< $ds_themer['color_shade'] >
-		,
-		ReturnType< $ds_themer_color['value'] >
-	>
-	type $mol_form_field__name_ds_themer_50 = $mol_type_enforce<
-		string
-		,
-		ReturnType< $mol_form_field['name'] >
-	>
-	type $mol_form_field__Content_ds_themer_51 = $mol_type_enforce<
-		ReturnType< $ds_themer['Shade_color'] >
-		,
-		ReturnType< $mol_form_field['Content'] >
-	>
-	type $ds_themer_color__value_ds_themer_52 = $mol_type_enforce<
-		ReturnType< $ds_themer['color_line'] >
-		,
-		ReturnType< $ds_themer_color['value'] >
-	>
-	type $mol_form_field__name_ds_themer_53 = $mol_type_enforce<
-		string
-		,
-		ReturnType< $mol_form_field['name'] >
-	>
-	type $mol_form_field__Content_ds_themer_54 = $mol_type_enforce<
-		ReturnType< $ds_themer['Line_color'] >
-		,
-		ReturnType< $mol_form_field['Content'] >
-	>
-	type $ds_themer_color__value_ds_themer_55 = $mol_type_enforce<
-		ReturnType< $ds_themer['color_focus'] >
-		,
-		ReturnType< $ds_themer_color['value'] >
-	>
-	type $mol_form_field__name_ds_themer_56 = $mol_type_enforce<
-		string
-		,
-		ReturnType< $mol_form_field['name'] >
-	>
-	type $mol_form_field__Content_ds_themer_57 = $mol_type_enforce<
-		ReturnType< $ds_themer['Focus_color'] >
-		,
-		ReturnType< $mol_form_field['Content'] >
-	>
-	type $mol_list__rows_ds_themer_58 = $mol_type_enforce<
-		readonly(any)[]
-		,
-		ReturnType< $mol_list['rows'] >
-	>
-	type $mol_dimmer__haystack_ds_themer_59 = $mol_type_enforce<
-		string
-		,
-		ReturnType< $mol_dimmer['haystack'] >
-	>
-	type $mol_view__sub_ds_themer_60 = $mol_type_enforce<
-		readonly(any)[]
-		,
-		ReturnType< $mol_view['sub'] >
-	>
-	type $ds_themer_color__value_ds_themer_61 = $mol_type_enforce<
-		ReturnType< $ds_themer['color_control'] >
-		,
-		ReturnType< $ds_themer_color['value'] >
-	>
-	type $mol_form_field__name_ds_themer_62 = $mol_type_enforce<
-		string
-		,
-		ReturnType< $mol_form_field['name'] >
-	>
-	type $mol_form_field__Content_ds_themer_63 = $mol_type_enforce<
-		ReturnType< $ds_themer['Control_color'] >
-		,
-		ReturnType< $mol_form_field['Content'] >
-	>
-	type $ds_themer_color__value_ds_themer_64 = $mol_type_enforce<
-		ReturnType< $ds_themer['color_current'] >
-		,
-		ReturnType< $ds_themer_color['value'] >
-	>
-	type $mol_form_field__name_ds_themer_65 = $mol_type_enforce<
-		string
-		,
-		ReturnType< $mol_form_field['name'] >
-	>
-	type $mol_form_field__Content_ds_themer_66 = $mol_type_enforce<
-		ReturnType< $ds_themer['Current_color'] >
-		,
-		ReturnType< $mol_form_field['Content'] >
-	>
-	type $ds_themer_color__value_ds_themer_67 = $mol_type_enforce<
-		ReturnType< $ds_themer['color_special'] >
-		,
-		ReturnType< $ds_themer_color['value'] >
-	>
-	type $mol_form_field__name_ds_themer_68 = $mol_type_enforce<
-		string
-		,
-		ReturnType< $mol_form_field['name'] >
-	>
-	type $mol_form_field__Content_ds_themer_69 = $mol_type_enforce<
-		ReturnType< $ds_themer['Special_color'] >
-		,
-		ReturnType< $mol_form_field['Content'] >
-	>
-	type $mol_list__rows_ds_themer_70 = $mol_type_enforce<
-		readonly(any)[]
-		,
-		ReturnType< $mol_list['rows'] >
-	>
-	type $mol_list__rows_ds_themer_71 = $mol_type_enforce<
-		readonly(any)[]
-		,
-		ReturnType< $mol_list['rows'] >
-	>
-	type $mol_scroll__sub_ds_themer_72 = $mol_type_enforce<
-		readonly(any)[]
-		,
-		ReturnType< $mol_scroll['sub'] >
-	>
-	type $mol_view__style_ds_themer_73 = $mol_type_enforce<
-		({ 
-			'--mol_theme_back': ReturnType< $ds_themer['color_back'] >,
-			'--mol_theme_card': ReturnType< $ds_themer['color_card'] >,
-			'--mol_theme_field': ReturnType< $ds_themer['color_field'] >,
-			'--mol_theme_hover': ReturnType< $ds_themer['color_hover'] >,
-			'--mol_theme_text': ReturnType< $ds_themer['color_text'] >,
-			'--mol_theme_shade': ReturnType< $ds_themer['color_shade'] >,
-			'--mol_theme_line': ReturnType< $ds_themer['color_line'] >,
-			'--mol_theme_focus': ReturnType< $ds_themer['color_focus'] >,
-			'--mol_theme_control': ReturnType< $ds_themer['color_control'] >,
-			'--mol_theme_current': ReturnType< $ds_themer['color_current'] >,
-			'--mol_theme_special': ReturnType< $ds_themer['color_special'] >,
-		}) 
-		,
-		ReturnType< $mol_view['style'] >
-	>
-	type $mol_view__sub_ds_themer_74 = $mol_type_enforce<
-		readonly(any)[]
-		,
-		ReturnType< $mol_view['sub'] >
-	>
-	type $mol_scroll__sub_ds_themer_75 = $mol_type_enforce<
-		readonly(any)[]
-		,
-		ReturnType< $mol_scroll['sub'] >
-	>
-	type $mol_row__sub_ds_themer_76 = $mol_type_enforce<
-		readonly(any)[]
-		,
-		ReturnType< $mol_row['sub'] >
 	>
 	export class $ds_themer extends $mol_page {
 		Theme( ): $mol_theme_auto
@@ -432,6 +175,272 @@ declare namespace $ {
 		Copy( ): $mol_button_minor
 		reset( next?: any ): any
 		Reset( ): $mol_button_minor
+		page_body( ): readonly(any)[]
+		Page_content( ): $mol_view
+		title( ): string
+		plugins( ): readonly(any)[]
+		tools( ): readonly(any)[]
+		body( ): readonly(any)[]
+	}
+	
+	type $mol_dimmer__haystack_ds_themer_page_themer_1 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_dimmer['haystack'] >
+	>
+	type $mol_view__sub_ds_themer_page_themer_2 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_view['sub'] >
+	>
+	type $mol_dimmer__haystack_ds_themer_page_themer_3 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_dimmer['haystack'] >
+	>
+	type $mol_view__sub_ds_themer_page_themer_4 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_view['sub'] >
+	>
+	type $ds_themer_color__value_ds_themer_page_themer_5 = $mol_type_enforce<
+		ReturnType< $ds_themer_page_themer['color_back'] >
+		,
+		ReturnType< $ds_themer_color['value'] >
+	>
+	type $mol_form_field__name_ds_themer_page_themer_6 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_form_field['name'] >
+	>
+	type $mol_form_field__Content_ds_themer_page_themer_7 = $mol_type_enforce<
+		ReturnType< $ds_themer_page_themer['Back_color'] >
+		,
+		ReturnType< $mol_form_field['Content'] >
+	>
+	type $ds_themer_color__value_ds_themer_page_themer_8 = $mol_type_enforce<
+		ReturnType< $ds_themer_page_themer['color_card'] >
+		,
+		ReturnType< $ds_themer_color['value'] >
+	>
+	type $mol_form_field__name_ds_themer_page_themer_9 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_form_field['name'] >
+	>
+	type $mol_form_field__Content_ds_themer_page_themer_10 = $mol_type_enforce<
+		ReturnType< $ds_themer_page_themer['Card_color'] >
+		,
+		ReturnType< $mol_form_field['Content'] >
+	>
+	type $ds_themer_color__value_ds_themer_page_themer_11 = $mol_type_enforce<
+		ReturnType< $ds_themer_page_themer['color_field'] >
+		,
+		ReturnType< $ds_themer_color['value'] >
+	>
+	type $mol_form_field__name_ds_themer_page_themer_12 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_form_field['name'] >
+	>
+	type $mol_form_field__Content_ds_themer_page_themer_13 = $mol_type_enforce<
+		ReturnType< $ds_themer_page_themer['Field_color'] >
+		,
+		ReturnType< $mol_form_field['Content'] >
+	>
+	type $ds_themer_color__value_ds_themer_page_themer_14 = $mol_type_enforce<
+		ReturnType< $ds_themer_page_themer['color_hover'] >
+		,
+		ReturnType< $ds_themer_color['value'] >
+	>
+	type $mol_form_field__name_ds_themer_page_themer_15 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_form_field['name'] >
+	>
+	type $mol_form_field__Content_ds_themer_page_themer_16 = $mol_type_enforce<
+		ReturnType< $ds_themer_page_themer['Hover_color'] >
+		,
+		ReturnType< $mol_form_field['Content'] >
+	>
+	type $mol_list__rows_ds_themer_page_themer_17 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_list['rows'] >
+	>
+	type $mol_dimmer__haystack_ds_themer_page_themer_18 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_dimmer['haystack'] >
+	>
+	type $mol_view__sub_ds_themer_page_themer_19 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_view['sub'] >
+	>
+	type $ds_themer_color__value_ds_themer_page_themer_20 = $mol_type_enforce<
+		ReturnType< $ds_themer_page_themer['color_text'] >
+		,
+		ReturnType< $ds_themer_color['value'] >
+	>
+	type $mol_form_field__name_ds_themer_page_themer_21 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_form_field['name'] >
+	>
+	type $mol_form_field__Content_ds_themer_page_themer_22 = $mol_type_enforce<
+		ReturnType< $ds_themer_page_themer['Text_color'] >
+		,
+		ReturnType< $mol_form_field['Content'] >
+	>
+	type $ds_themer_color__value_ds_themer_page_themer_23 = $mol_type_enforce<
+		ReturnType< $ds_themer_page_themer['color_shade'] >
+		,
+		ReturnType< $ds_themer_color['value'] >
+	>
+	type $mol_form_field__name_ds_themer_page_themer_24 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_form_field['name'] >
+	>
+	type $mol_form_field__Content_ds_themer_page_themer_25 = $mol_type_enforce<
+		ReturnType< $ds_themer_page_themer['Shade_color'] >
+		,
+		ReturnType< $mol_form_field['Content'] >
+	>
+	type $ds_themer_color__value_ds_themer_page_themer_26 = $mol_type_enforce<
+		ReturnType< $ds_themer_page_themer['color_line'] >
+		,
+		ReturnType< $ds_themer_color['value'] >
+	>
+	type $mol_form_field__name_ds_themer_page_themer_27 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_form_field['name'] >
+	>
+	type $mol_form_field__Content_ds_themer_page_themer_28 = $mol_type_enforce<
+		ReturnType< $ds_themer_page_themer['Line_color'] >
+		,
+		ReturnType< $mol_form_field['Content'] >
+	>
+	type $ds_themer_color__value_ds_themer_page_themer_29 = $mol_type_enforce<
+		ReturnType< $ds_themer_page_themer['color_focus'] >
+		,
+		ReturnType< $ds_themer_color['value'] >
+	>
+	type $mol_form_field__name_ds_themer_page_themer_30 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_form_field['name'] >
+	>
+	type $mol_form_field__Content_ds_themer_page_themer_31 = $mol_type_enforce<
+		ReturnType< $ds_themer_page_themer['Focus_color'] >
+		,
+		ReturnType< $mol_form_field['Content'] >
+	>
+	type $mol_list__rows_ds_themer_page_themer_32 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_list['rows'] >
+	>
+	type $mol_dimmer__haystack_ds_themer_page_themer_33 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_dimmer['haystack'] >
+	>
+	type $mol_view__sub_ds_themer_page_themer_34 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_view['sub'] >
+	>
+	type $ds_themer_color__value_ds_themer_page_themer_35 = $mol_type_enforce<
+		ReturnType< $ds_themer_page_themer['color_control'] >
+		,
+		ReturnType< $ds_themer_color['value'] >
+	>
+	type $mol_form_field__name_ds_themer_page_themer_36 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_form_field['name'] >
+	>
+	type $mol_form_field__Content_ds_themer_page_themer_37 = $mol_type_enforce<
+		ReturnType< $ds_themer_page_themer['Control_color'] >
+		,
+		ReturnType< $mol_form_field['Content'] >
+	>
+	type $ds_themer_color__value_ds_themer_page_themer_38 = $mol_type_enforce<
+		ReturnType< $ds_themer_page_themer['color_current'] >
+		,
+		ReturnType< $ds_themer_color['value'] >
+	>
+	type $mol_form_field__name_ds_themer_page_themer_39 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_form_field['name'] >
+	>
+	type $mol_form_field__Content_ds_themer_page_themer_40 = $mol_type_enforce<
+		ReturnType< $ds_themer_page_themer['Current_color'] >
+		,
+		ReturnType< $mol_form_field['Content'] >
+	>
+	type $ds_themer_color__value_ds_themer_page_themer_41 = $mol_type_enforce<
+		ReturnType< $ds_themer_page_themer['color_special'] >
+		,
+		ReturnType< $ds_themer_color['value'] >
+	>
+	type $mol_form_field__name_ds_themer_page_themer_42 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_form_field['name'] >
+	>
+	type $mol_form_field__Content_ds_themer_page_themer_43 = $mol_type_enforce<
+		ReturnType< $ds_themer_page_themer['Special_color'] >
+		,
+		ReturnType< $mol_form_field['Content'] >
+	>
+	type $mol_list__rows_ds_themer_page_themer_44 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_list['rows'] >
+	>
+	type $mol_list__rows_ds_themer_page_themer_45 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_list['rows'] >
+	>
+	type $mol_scroll__sub_ds_themer_page_themer_46 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_scroll['sub'] >
+	>
+	type $mol_view__style_ds_themer_page_themer_47 = $mol_type_enforce<
+		({ 
+			'--mol_theme_back': ReturnType< $ds_themer_page_themer['color_back'] >,
+			'--mol_theme_card': ReturnType< $ds_themer_page_themer['color_card'] >,
+			'--mol_theme_field': ReturnType< $ds_themer_page_themer['color_field'] >,
+			'--mol_theme_hover': ReturnType< $ds_themer_page_themer['color_hover'] >,
+			'--mol_theme_text': ReturnType< $ds_themer_page_themer['color_text'] >,
+			'--mol_theme_shade': ReturnType< $ds_themer_page_themer['color_shade'] >,
+			'--mol_theme_line': ReturnType< $ds_themer_page_themer['color_line'] >,
+			'--mol_theme_focus': ReturnType< $ds_themer_page_themer['color_focus'] >,
+			'--mol_theme_control': ReturnType< $ds_themer_page_themer['color_control'] >,
+			'--mol_theme_current': ReturnType< $ds_themer_page_themer['color_current'] >,
+			'--mol_theme_special': ReturnType< $ds_themer_page_themer['color_special'] >,
+		}) 
+		,
+		ReturnType< $mol_view['style'] >
+	>
+	type $mol_view__sub_ds_themer_page_themer_48 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_view['sub'] >
+	>
+	type $mol_scroll__sub_ds_themer_page_themer_49 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_scroll['sub'] >
+	>
+	export class $ds_themer_page_themer extends $mol_row {
 		Controls_title_text( ): $mol_dimmer
 		Controls_title( ): $mol_view
 		Backgrounds_title_text( ): $mol_dimmer
@@ -481,10 +490,18 @@ declare namespace $ {
 		Demo_site( ): $ds_themer_demo
 		Preview_inner( ): $mol_view
 		Preview( ): $mol_scroll
-		Content( ): $mol_row
-		title( ): string
-		plugins( ): readonly(any)[]
-		tools( ): readonly(any)[]
+		sub( ): readonly(any)[]
+	}
+	
+	type $mol_text__text_ds_themer_page_placeholder_1 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_text['text'] >
+	>
+	export class $ds_themer_page_placeholder extends $mol_page {
+		page_title( ): string
+		Placeholder_text( ): $mol_text
+		title( ): ReturnType< $ds_themer_page_placeholder['page_title'] >
 		body( ): readonly(any)[]
 	}
 	

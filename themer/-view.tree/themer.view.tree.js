@@ -126,6 +126,63 @@
 			(obj.click) = (next) => ((this.reset(next)));
 			return obj;
 		}
+		page_body(){
+			return [];
+		}
+		Page_content(){
+			const obj = new this.$.$mol_view();
+			(obj.sub) = () => ((this.page_body()));
+			return obj;
+		}
+		title(){
+			return "DS Themer";
+		}
+		plugins(){
+			return [(this.Theme())];
+		}
+		tools(){
+			return [
+				(this.Lights()), 
+				(this.Libraries_link()), 
+				(this.Components_link()), 
+				(this.Design_link()), 
+				(this.Icons_link()), 
+				(this.Themer_link()), 
+				(this.Media_link()), 
+				(this.Lang_select()), 
+				(this.Telegram_link()), 
+				(this.Github_link()), 
+				(this.Export()), 
+				(this.Copy()), 
+				(this.Reset())
+			];
+		}
+		body(){
+			return [(this.Page_content())];
+		}
+	};
+	($mol_mem(($.$ds_themer.prototype), "Theme"));
+	($mol_mem(($.$ds_themer.prototype), "Lights"));
+	($mol_mem(($.$ds_themer.prototype), "Libraries_link"));
+	($mol_mem(($.$ds_themer.prototype), "Components_link"));
+	($mol_mem(($.$ds_themer.prototype), "Design_link"));
+	($mol_mem(($.$ds_themer.prototype), "Icons_link"));
+	($mol_mem(($.$ds_themer.prototype), "Themer_link"));
+	($mol_mem(($.$ds_themer.prototype), "Media_link"));
+	($mol_mem(($.$ds_themer.prototype), "lang"));
+	($mol_mem(($.$ds_themer.prototype), "Lang_select"));
+	($mol_mem(($.$ds_themer.prototype), "Telegram_icon"));
+	($mol_mem(($.$ds_themer.prototype), "Telegram_link"));
+	($mol_mem(($.$ds_themer.prototype), "Github_icon"));
+	($mol_mem(($.$ds_themer.prototype), "Github_link"));
+	($mol_mem(($.$ds_themer.prototype), "export"));
+	($mol_mem(($.$ds_themer.prototype), "Export"));
+	($mol_mem(($.$ds_themer.prototype), "copy"));
+	($mol_mem(($.$ds_themer.prototype), "Copy"));
+	($mol_mem(($.$ds_themer.prototype), "reset"));
+	($mol_mem(($.$ds_themer.prototype), "Reset"));
+	($mol_mem(($.$ds_themer.prototype), "Page_content"));
+	($.$ds_themer_page_themer) = class $ds_themer_page_themer extends ($.$mol_row) {
 		Controls_title_text(){
 			const obj = new this.$.$mol_dimmer();
 			(obj.haystack) = () => ("Theme Settings");
@@ -405,107 +462,75 @@
 			(obj.sub) = () => ([(this.Preview_inner())]);
 			return obj;
 		}
-		Content(){
-			const obj = new this.$.$mol_row();
-			(obj.sub) = () => ([(this.Controls()), (this.Preview())]);
+		sub(){
+			return [(this.Controls()), (this.Preview())];
+		}
+	};
+	($mol_mem(($.$ds_themer_page_themer.prototype), "Controls_title_text"));
+	($mol_mem(($.$ds_themer_page_themer.prototype), "Controls_title"));
+	($mol_mem(($.$ds_themer_page_themer.prototype), "Backgrounds_title_text"));
+	($mol_mem(($.$ds_themer_page_themer.prototype), "Backgrounds_title"));
+	($mol_mem(($.$ds_themer_page_themer.prototype), "color_back"));
+	($mol_mem(($.$ds_themer_page_themer.prototype), "Back_color"));
+	($mol_mem(($.$ds_themer_page_themer.prototype), "Back_field"));
+	($mol_mem(($.$ds_themer_page_themer.prototype), "color_card"));
+	($mol_mem(($.$ds_themer_page_themer.prototype), "Card_color"));
+	($mol_mem(($.$ds_themer_page_themer.prototype), "Card_field"));
+	($mol_mem(($.$ds_themer_page_themer.prototype), "color_field"));
+	($mol_mem(($.$ds_themer_page_themer.prototype), "Field_color"));
+	($mol_mem(($.$ds_themer_page_themer.prototype), "Field_field"));
+	($mol_mem(($.$ds_themer_page_themer.prototype), "color_hover"));
+	($mol_mem(($.$ds_themer_page_themer.prototype), "Hover_color"));
+	($mol_mem(($.$ds_themer_page_themer.prototype), "Hover_field"));
+	($mol_mem(($.$ds_themer_page_themer.prototype), "Backgrounds_section"));
+	($mol_mem(($.$ds_themer_page_themer.prototype), "Text_title_text"));
+	($mol_mem(($.$ds_themer_page_themer.prototype), "Text_title"));
+	($mol_mem(($.$ds_themer_page_themer.prototype), "color_text"));
+	($mol_mem(($.$ds_themer_page_themer.prototype), "Text_color"));
+	($mol_mem(($.$ds_themer_page_themer.prototype), "Text_field"));
+	($mol_mem(($.$ds_themer_page_themer.prototype), "color_shade"));
+	($mol_mem(($.$ds_themer_page_themer.prototype), "Shade_color"));
+	($mol_mem(($.$ds_themer_page_themer.prototype), "Shade_field"));
+	($mol_mem(($.$ds_themer_page_themer.prototype), "color_line"));
+	($mol_mem(($.$ds_themer_page_themer.prototype), "Line_color"));
+	($mol_mem(($.$ds_themer_page_themer.prototype), "Line_field"));
+	($mol_mem(($.$ds_themer_page_themer.prototype), "color_focus"));
+	($mol_mem(($.$ds_themer_page_themer.prototype), "Focus_color"));
+	($mol_mem(($.$ds_themer_page_themer.prototype), "Focus_field"));
+	($mol_mem(($.$ds_themer_page_themer.prototype), "Text_section"));
+	($mol_mem(($.$ds_themer_page_themer.prototype), "Controls_section_title_text"));
+	($mol_mem(($.$ds_themer_page_themer.prototype), "Controls_section_title"));
+	($mol_mem(($.$ds_themer_page_themer.prototype), "color_control"));
+	($mol_mem(($.$ds_themer_page_themer.prototype), "Control_color"));
+	($mol_mem(($.$ds_themer_page_themer.prototype), "Control_field"));
+	($mol_mem(($.$ds_themer_page_themer.prototype), "color_current"));
+	($mol_mem(($.$ds_themer_page_themer.prototype), "Current_color"));
+	($mol_mem(($.$ds_themer_page_themer.prototype), "Current_field"));
+	($mol_mem(($.$ds_themer_page_themer.prototype), "color_special"));
+	($mol_mem(($.$ds_themer_page_themer.prototype), "Special_color"));
+	($mol_mem(($.$ds_themer_page_themer.prototype), "Special_field"));
+	($mol_mem(($.$ds_themer_page_themer.prototype), "Controls_section"));
+	($mol_mem(($.$ds_themer_page_themer.prototype), "Controls_inner"));
+	($mol_mem(($.$ds_themer_page_themer.prototype), "Controls"));
+	($mol_mem(($.$ds_themer_page_themer.prototype), "Demo_site"));
+	($mol_mem(($.$ds_themer_page_themer.prototype), "Preview_inner"));
+	($mol_mem(($.$ds_themer_page_themer.prototype), "Preview"));
+	($.$ds_themer_page_placeholder) = class $ds_themer_page_placeholder extends ($.$mol_page) {
+		page_title(){
+			return "";
+		}
+		Placeholder_text(){
+			const obj = new this.$.$mol_text();
+			(obj.text) = () => ("Coming soon...");
 			return obj;
 		}
 		title(){
-			return "DS Themer";
-		}
-		plugins(){
-			return [(this.Theme())];
-		}
-		tools(){
-			return [
-				(this.Lights()), 
-				(this.Libraries_link()), 
-				(this.Components_link()), 
-				(this.Design_link()), 
-				(this.Icons_link()), 
-				(this.Themer_link()), 
-				(this.Media_link()), 
-				(this.Lang_select()), 
-				(this.Telegram_link()), 
-				(this.Github_link()), 
-				(this.Export()), 
-				(this.Copy()), 
-				(this.Reset())
-			];
+			return (this.page_title());
 		}
 		body(){
-			return [(this.Content())];
+			return [(this.Placeholder_text())];
 		}
 	};
-	($mol_mem(($.$ds_themer.prototype), "Theme"));
-	($mol_mem(($.$ds_themer.prototype), "Lights"));
-	($mol_mem(($.$ds_themer.prototype), "Libraries_link"));
-	($mol_mem(($.$ds_themer.prototype), "Components_link"));
-	($mol_mem(($.$ds_themer.prototype), "Design_link"));
-	($mol_mem(($.$ds_themer.prototype), "Icons_link"));
-	($mol_mem(($.$ds_themer.prototype), "Themer_link"));
-	($mol_mem(($.$ds_themer.prototype), "Media_link"));
-	($mol_mem(($.$ds_themer.prototype), "lang"));
-	($mol_mem(($.$ds_themer.prototype), "Lang_select"));
-	($mol_mem(($.$ds_themer.prototype), "Telegram_icon"));
-	($mol_mem(($.$ds_themer.prototype), "Telegram_link"));
-	($mol_mem(($.$ds_themer.prototype), "Github_icon"));
-	($mol_mem(($.$ds_themer.prototype), "Github_link"));
-	($mol_mem(($.$ds_themer.prototype), "export"));
-	($mol_mem(($.$ds_themer.prototype), "Export"));
-	($mol_mem(($.$ds_themer.prototype), "copy"));
-	($mol_mem(($.$ds_themer.prototype), "Copy"));
-	($mol_mem(($.$ds_themer.prototype), "reset"));
-	($mol_mem(($.$ds_themer.prototype), "Reset"));
-	($mol_mem(($.$ds_themer.prototype), "Controls_title_text"));
-	($mol_mem(($.$ds_themer.prototype), "Controls_title"));
-	($mol_mem(($.$ds_themer.prototype), "Backgrounds_title_text"));
-	($mol_mem(($.$ds_themer.prototype), "Backgrounds_title"));
-	($mol_mem(($.$ds_themer.prototype), "color_back"));
-	($mol_mem(($.$ds_themer.prototype), "Back_color"));
-	($mol_mem(($.$ds_themer.prototype), "Back_field"));
-	($mol_mem(($.$ds_themer.prototype), "color_card"));
-	($mol_mem(($.$ds_themer.prototype), "Card_color"));
-	($mol_mem(($.$ds_themer.prototype), "Card_field"));
-	($mol_mem(($.$ds_themer.prototype), "color_field"));
-	($mol_mem(($.$ds_themer.prototype), "Field_color"));
-	($mol_mem(($.$ds_themer.prototype), "Field_field"));
-	($mol_mem(($.$ds_themer.prototype), "color_hover"));
-	($mol_mem(($.$ds_themer.prototype), "Hover_color"));
-	($mol_mem(($.$ds_themer.prototype), "Hover_field"));
-	($mol_mem(($.$ds_themer.prototype), "Backgrounds_section"));
-	($mol_mem(($.$ds_themer.prototype), "Text_title_text"));
-	($mol_mem(($.$ds_themer.prototype), "Text_title"));
-	($mol_mem(($.$ds_themer.prototype), "color_text"));
-	($mol_mem(($.$ds_themer.prototype), "Text_color"));
-	($mol_mem(($.$ds_themer.prototype), "Text_field"));
-	($mol_mem(($.$ds_themer.prototype), "color_shade"));
-	($mol_mem(($.$ds_themer.prototype), "Shade_color"));
-	($mol_mem(($.$ds_themer.prototype), "Shade_field"));
-	($mol_mem(($.$ds_themer.prototype), "color_line"));
-	($mol_mem(($.$ds_themer.prototype), "Line_color"));
-	($mol_mem(($.$ds_themer.prototype), "Line_field"));
-	($mol_mem(($.$ds_themer.prototype), "color_focus"));
-	($mol_mem(($.$ds_themer.prototype), "Focus_color"));
-	($mol_mem(($.$ds_themer.prototype), "Focus_field"));
-	($mol_mem(($.$ds_themer.prototype), "Text_section"));
-	($mol_mem(($.$ds_themer.prototype), "Controls_section_title_text"));
-	($mol_mem(($.$ds_themer.prototype), "Controls_section_title"));
-	($mol_mem(($.$ds_themer.prototype), "color_control"));
-	($mol_mem(($.$ds_themer.prototype), "Control_color"));
-	($mol_mem(($.$ds_themer.prototype), "Control_field"));
-	($mol_mem(($.$ds_themer.prototype), "color_current"));
-	($mol_mem(($.$ds_themer.prototype), "Current_color"));
-	($mol_mem(($.$ds_themer.prototype), "Current_field"));
-	($mol_mem(($.$ds_themer.prototype), "color_special"));
-	($mol_mem(($.$ds_themer.prototype), "Special_color"));
-	($mol_mem(($.$ds_themer.prototype), "Special_field"));
-	($mol_mem(($.$ds_themer.prototype), "Controls_section"));
-	($mol_mem(($.$ds_themer.prototype), "Controls_inner"));
-	($mol_mem(($.$ds_themer.prototype), "Controls"));
-	($mol_mem(($.$ds_themer.prototype), "Demo_site"));
-	($mol_mem(($.$ds_themer.prototype), "Preview_inner"));
-	($mol_mem(($.$ds_themer.prototype), "Preview"));
-	($mol_mem(($.$ds_themer.prototype), "Content"));
+	($mol_mem(($.$ds_themer_page_placeholder.prototype), "Placeholder_text"));
 
 //# sourceMappingURL=themer.view.tree.js.map

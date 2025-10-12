@@ -1,5 +1,56 @@
 namespace $.$$ {
 	export class $ds_themer extends $.$ds_themer {
+		// Page routing
+		@$mol_mem
+		page() {
+			return this.$.$mol_state_arg.value('page') || 'themer'
+		}
+
+		@$mol_mem
+		page_body() {
+			const page = this.page()
+
+			switch (page) {
+				case 'themer':
+					return [this.Page_themer()]
+				case 'libraries':
+				case 'components':
+				case 'design':
+				case 'icons':
+				case 'media':
+					const placeholder = this.Page_placeholder(page)
+					placeholder.page_title = () => page.charAt(0).toUpperCase() + page.slice(1)
+					return [placeholder]
+				default:
+					return [this.Page_themer()]
+			}
+		}
+
+		@$mol_mem_key
+		Page_themer() {
+			const page = new this.$.$ds_themer_page_themer()
+
+			// Bind color properties
+			page.color_back = (next?: string) => this.color_back(next)
+			page.color_card = (next?: string) => this.color_card(next)
+			page.color_field = (next?: string) => this.color_field(next)
+			page.color_hover = (next?: string) => this.color_hover(next)
+			page.color_text = (next?: string) => this.color_text(next)
+			page.color_shade = (next?: string) => this.color_shade(next)
+			page.color_line = (next?: string) => this.color_line(next)
+			page.color_focus = (next?: string) => this.color_focus(next)
+			page.color_control = (next?: string) => this.color_control(next)
+			page.color_current = (next?: string) => this.color_current(next)
+			page.color_special = (next?: string) => this.color_special(next)
+
+			return page
+		}
+
+		@$mol_mem_key
+		Page_placeholder(id: string) {
+			return new this.$.$ds_themer_page_placeholder()
+		}
+
 		// Storage helper
 		stored(key: string, next?: string): string {
 			const storage_key = `ds_themer_${key}`
