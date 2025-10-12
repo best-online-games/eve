@@ -26,7 +26,6 @@ namespace $.$$ {
 			}
 		}
 
-		@$mol_mem_key
 		Page_themer() {
 			const page = new this.$.$ds_themer_page_themer()
 
