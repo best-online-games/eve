@@ -2,76 +2,221 @@ $ds_themer $mol_page
 	title \Theme Editor
 	plugins /
 		<= Theme $mol_theme_auto
-	style *
-		--mol_theme_hue <= hue_deg \
-		--mol_theme_hue_spread <= hue_spread_deg \
+	tools /
+		<= Export $mol_button_major
+			title \Export CSS
+			click? <=> export? null
+		<= Copy $mol_button_minor
+			title \Copy Theme
+			click? <=> copy? null
+		<= Reset $mol_button_minor
+			title \Reset
+			click? <=> reset? null
 	body /
 		<= Content $mol_row sub /
-			<= Controls $mol_list
-				rows /
-					<= Hue_field $mol_form_field
-						name \Hue
-						Content <= Hue $mol_number
-							value? <=> hue? 240
-							precision_change 15
-					<= Hue_spread_field $mol_form_field
-						name \Hue spread
-						Content <= Hue_spread $mol_number
-							value? <=> hue_spread? 90
-							precision_change 15
-					<= Lights_field $mol_form_field
-						name \Lights
-						Content <= Lights $mol_lights_toggle
-			<= Preview $mol_list
-				rows /
-					<= Preview_title $mol_view
-						sub / <= Preview_title_text $mol_dimmer
-							haystack \Theme Preview
-					<= Colors_demo $mol_list
+			<= Controls $mol_scroll
+				sub /
+					<= Controls_inner $mol_list
 						rows /
-							<= Base_demo $ds_themer_case
-								title \$mol_theme_base
-							<= Current_demo $ds_themer_case
-								title \$mol_theme_current
-							<= Special_demo $ds_themer_case
-								title \$mol_theme_special
-							<= Accent_demo $ds_themer_case
-								title \$mol_theme_accent
-					<= Components_demo $mol_list
-						rows /
-							<= Button_demo $mol_button_major
-								title \Major Button
-							<= Button_minor_demo $mol_button_minor
-								title \Minor Button
-							<= Input_demo $mol_string
-								hint \Text input
-								value? <=> demo_input? \Sample text
-							<= Check_demo $mol_check_box
-								title \Checkbox
-								checked? <=> demo_check? false
+							<= Controls_title $mol_view
+								sub / <= Controls_title_text $mol_dimmer
+									haystack \Theme Settings
+							<= Backgrounds_section $mol_list
+								rows /
+									<= Backgrounds_title $mol_view
+										sub / <= Backgrounds_title_text $mol_dimmer
+											haystack \Backgrounds
+									<= Back_field $mol_form_field
+										name \Background
+										Content <= Back_color $mol_string
+											hint \oklch(20% .01 240deg)
+											value? <=> color_back? \oklch(20% .01 240deg)
+									<= Card_field $mol_form_field
+										name \Card
+										Content <= Card_color $mol_string
+											hint \oklch(30% .05 240deg / .25)
+											value? <=> color_card? \oklch(30% .05 240deg / .25)
+									<= Field_field $mol_form_field
+										name \Field
+										Content <= Field_color $mol_string
+											hint \oklch(15% 0 240deg / .25)
+											value? <=> color_field? \oklch(15% 0 240deg / .25)
+									<= Hover_field $mol_form_field
+										name \Hover
+										Content <= Hover_color $mol_string
+											hint \oklch(70% 0 240deg / .1)
+											value? <=> color_hover? \oklch(70% 0 240deg / .1)
+							<= Text_section $mol_list
+								rows /
+									<= Text_title $mol_view
+										sub / <= Text_title_text $mol_dimmer
+											haystack \Text Colors
+									<= Text_field $mol_form_field
+										name \Text
+										Content <= Text_color $mol_string
+											hint \oklch(80% 0 240deg)
+											value? <=> color_text? \oklch(80% 0 240deg)
+									<= Shade_field $mol_form_field
+										name \Shade
+										Content <= Shade_color $mol_string
+											hint \oklch(60% 0 240deg)
+											value? <=> color_shade? \oklch(60% 0 240deg)
+									<= Line_field $mol_form_field
+										name \Line
+										Content <= Line_color $mol_string
+											hint \oklch(60% 0 240deg / .25)
+											value? <=> color_line? \oklch(60% 0 240deg / .25)
+									<= Focus_field $mol_form_field
+										name \Focus
+										Content <= Focus_color $mol_string
+											hint \oklch(80% .2 60deg)
+											value? <=> color_focus? \oklch(80% .2 60deg)
+							<= Controls_section $mol_list
+								rows /
+									<= Controls_section_title $mol_view
+										sub / <= Controls_section_title_text $mol_dimmer
+											haystack \Control Colors
+									<= Control_field $mol_form_field
+										name \Control
+										Content <= Control_color $mol_string
+											hint \oklch(70% .1 240deg)
+											value? <=> color_control? \oklch(70% .1 240deg)
+									<= Current_field $mol_form_field
+										name \Current
+										Content <= Current_color $mol_string
+											hint \oklch(70% .2 150deg)
+											value? <=> color_current? \oklch(70% .2 150deg)
+									<= Special_field $mol_form_field
+										name \Special
+										Content <= Special_color $mol_string
+											hint \oklch(70% .2 330deg)
+											value? <=> color_special? \oklch(70% .2 330deg)
+			<= Preview $mol_scroll
+				sub /
+					<= Preview_inner $mol_view
+						style *
+							--mol_theme_back <= color_back
+							--mol_theme_card <= color_card
+							--mol_theme_field <= color_field
+							--mol_theme_hover <= color_hover
+							--mol_theme_text <= color_text
+							--mol_theme_shade <= color_shade
+							--mol_theme_line <= color_line
+							--mol_theme_focus <= color_focus
+							--mol_theme_control <= color_control
+							--mol_theme_current <= color_current
+							--mol_theme_special <= color_special
+						sub /
+							<= Demo_site $ds_themer_demo
 
-$ds_themer_case $mol_view
-	title \
-	sub /
-		<= Card $mol_list
+$ds_themer_demo $mol_page
+	title \Demo Website
+	tools /
+		<= Settings $mol_button_minor
+			title \Settings
+		<= Profile $mol_button_minor
+			title \Profile
+	body /
+		<= Demo_content $mol_list
 			rows /
-				<= Card_inner $mol_row
+				<= Welcome_section $mol_view
 					sub /
-						<= Title $mol_button_copy
-							title <= title
-				<= Back $mol_button_copy
-					title \$mol_theme.back
-				<= Line $mol_button_copy
-					title \$mol_theme.line
-				<= Text $mol_button_copy
-					title \$mol_theme.text
-				<= Field $mol_button_copy
-					title \$mol_theme.field
-				<= Shade $mol_button_copy
-					title \$mol_theme.shade
-				<= Focus $mol_button_copy
-					title \$mol_theme.focus
-				<= Control $mol_button_copy
-					title \$mol_theme.control
-				<= Hover $mol_button_copy
-					title \$mol_theme.hover
+						<= Welcome_title $mol_view
+							sub / <= Welcome_title_text $mol_dimmer
+								haystack \Welcome to Theme Editor
+						<= Welcome_text $mol_text
+							text \
+								\This is a complete preview of your theme. 
+								\All components are rendered with your custom colors.
+								\Try changing the colors in the editor to see live updates!
+				<= Cards_section $mol_list
+					rows /
+						<= Cards_title $mol_view
+							sub / <= Cards_title_text $mol_dimmer
+								haystack \Cards Preview
+						<= Cards_row $mol_row
+							sub /
+								<= Card1 $mol_view
+									sub /
+										<= Card1_title $mol_dimmer
+											haystack \Card 1
+										<= Card1_text $mol_text
+											text \This is a sample card with some text content.
+								<= Card2 $mol_view
+									sub /
+										<= Card2_title $mol_dimmer
+											haystack \Card 2
+										<= Card2_text $mol_text
+											text \Another card to show how themes apply.
+								<= Card3 $mol_view
+									sub /
+										<= Card3_title $mol_dimmer
+											haystack \Card 3
+										<= Card3_text $mol_text
+											text \Cards can have different content and styles.
+				<= Forms_section $mol_list
+					rows /
+						<= Forms_title $mol_view
+							sub / <= Forms_title_text $mol_dimmer
+								haystack \Forms & Inputs
+						<= Form_demo $mol_list
+							rows /
+								<= Name_field $mol_form_field
+									name \Name
+									Content <= Name_input $mol_string
+										hint \Enter your name
+										value? <=> demo_name? \
+								<= Email_field $mol_form_field
+									name \Email
+									Content <= Email_input $mol_string
+										hint \your@email.com
+										value? <=> demo_email? \
+								<= Message_field $mol_form_field
+									name \Message
+									Content <= Message_input $mol_textarea
+										hint \Your message...
+										value? <=> demo_message? \
+								<= Options_row $mol_row
+									sub /
+										<= Check1 $mol_check_box
+											title \Option 1
+											checked? <=> demo_check1? false
+										<= Check2 $mol_check_box
+											title \Option 2
+											checked? <=> demo_check2? false
+										<= Check3 $mol_check_box
+											title \Option 3
+											checked? <=> demo_check3? false
+								<= Buttons_row $mol_row
+									sub /
+										<= Submit_button $mol_button_major
+											title \Submit
+										<= Cancel_button $mol_button_minor
+											title \Cancel
+				<= Table_section $mol_list
+					rows /
+						<= Table_title $mol_view
+							sub / <= Table_title_text $mol_dimmer
+								haystack \Table Example
+						<= Table_demo $mol_list
+							rows /
+								<= Table_header $mol_row
+									sub /
+										<= Header1 $mol_dimmer haystack \Name
+										<= Header2 $mol_dimmer haystack \Status
+										<= Header3 $mol_dimmer haystack \Value
+								<= Table_row1 $mol_row
+									sub /
+										<= Row1_col1 $mol_view sub / <= Row1_col1_text $mol_text text \Item 1
+										<= Row1_col2 $mol_view sub / <= Row1_col2_text $mol_text text \Active
+										<= Row1_col3 $mol_view sub / <= Row1_col3_text $mol_text text \100
+								<= Table_row2 $mol_row
+									sub /
+										<= Row2_col1 $mol_view sub / <= Row2_col1_text $mol_text text \Item 2
+										<= Row2_col2 $mol_view sub / <= Row2_col2_text $mol_text text \Pending
+										<= Row2_col3 $mol_view sub / <= Row2_col3_text $mol_text text \250
+								<= Table_row3 $mol_row
+									sub /
+										<= Row3_col1 $mol_view sub / <= Row3_col1_text $mol_text text \Item 3
+										<= Row3_col2 $mol_view sub / <= Row3_col2_text $mol_text text \Complete
+										<= Row3_col3 $mol_view sub / <= Row3_col3_text $mol_text text \500
