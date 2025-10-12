@@ -5124,6 +5124,197 @@ var $;
 })($ || ($ = {}));
 
 ;
+	($.$ds_themer_color) = class $ds_themer_color extends ($.$mol_view) {
+		Input(){
+			const obj = new this.$.$mol_string();
+			(obj.value) = (next) => ((this.value(next)));
+			return obj;
+		}
+		picker_input(next){
+			if(next !== undefined) return next;
+			return null;
+		}
+		Picker(){
+			const obj = new this.$.$mol_view();
+			(obj.attr) = () => ({"type": "color"});
+			(obj.dom_name) = () => ("input");
+			(obj.event) = () => ({"input": (next) => (this.picker_input(next))});
+			return obj;
+		}
+		Picker_wrapper(){
+			const obj = new this.$.$mol_view();
+			(obj.sub) = () => ([(this.Picker())]);
+			return obj;
+		}
+		value(next){
+			if(next !== undefined) return next;
+			return "";
+		}
+		attr(){
+			return {...(super.attr()), "ds_themer_color": ""};
+		}
+		sub(){
+			return [(this.Input()), (this.Picker_wrapper())];
+		}
+	};
+	($mol_mem(($.$ds_themer_color.prototype), "Input"));
+	($mol_mem(($.$ds_themer_color.prototype), "picker_input"));
+	($mol_mem(($.$ds_themer_color.prototype), "Picker"));
+	($mol_mem(($.$ds_themer_color.prototype), "Picker_wrapper"));
+	($mol_mem(($.$ds_themer_color.prototype), "value"));
+
+
+;
+"use strict";
+
+;
+"use strict";
+var $;
+(function ($) {
+    var $$;
+    (function ($$) {
+        class $ds_themer_color extends $.$ds_themer_color {
+            hex_value() {
+                const val = this.value();
+                if (!val)
+                    return '#3b82f6';
+                if (val.startsWith('#'))
+                    return val;
+                return this.color_to_hex(val) || '#3b82f6';
+            }
+            color_to_hex(color) {
+                try {
+                    const ctx = document.createElement('canvas').getContext('2d');
+                    if (!ctx)
+                        return null;
+                    ctx.fillStyle = color;
+                    return ctx.fillStyle;
+                }
+                catch (e) {
+                    return null;
+                }
+            }
+            hex_to_oklch(hex) {
+                hex = hex.replace('#', '');
+                const r = parseInt(hex.slice(0, 2), 16) / 255;
+                const g = parseInt(hex.slice(2, 4), 16) / 255;
+                const b = parseInt(hex.slice(4, 6), 16) / 255;
+                const max = Math.max(r, g, b);
+                const min = Math.min(r, g, b);
+                const l = (max + min) / 2;
+                let h = 0;
+                let c = 0;
+                if (max !== min) {
+                    c = max - min;
+                    if (max === r) {
+                        h = ((g - b) / c + (g < b ? 6 : 0)) * 60;
+                    }
+                    else if (max === g) {
+                        h = ((b - r) / c + 2) * 60;
+                    }
+                    else {
+                        h = ((r - g) / c + 4) * 60;
+                    }
+                }
+                const lightness = Math.round(l * 100);
+                const chroma = (c * 0.2).toFixed(2);
+                const hue = Math.round(h);
+                return `oklch(${lightness}% ${chroma} ${hue}deg)`;
+            }
+            picker_input() {
+                const input = this.Picker().dom_node();
+                const hex = input.value;
+                const current = this.value();
+                if (current.startsWith('oklch')) {
+                    this.value(this.hex_to_oklch(hex));
+                }
+                else if (current.startsWith('rgb')) {
+                    const r = parseInt(hex.slice(1, 3), 16);
+                    const g = parseInt(hex.slice(3, 5), 16);
+                    const b = parseInt(hex.slice(5, 7), 16);
+                    this.value(`rgb(${r}, ${g}, ${b})`);
+                }
+                else {
+                    this.value(hex);
+                }
+            }
+            Picker() {
+                const picker = new this.$.$mol_view();
+                picker.dom_name = () => 'input';
+                picker.attr = () => ({
+                    type: 'color',
+                    value: this.hex_value(),
+                });
+                picker.event = () => ({
+                    input: (e) => {
+                        const target = e.target;
+                        const hex = target.value;
+                        const current = this.value();
+                        if (current.startsWith('oklch')) {
+                            this.value(this.hex_to_oklch(hex));
+                        }
+                        else if (current.startsWith('rgb')) {
+                            const r = parseInt(hex.slice(1, 3), 16);
+                            const g = parseInt(hex.slice(3, 5), 16);
+                            const b = parseInt(hex.slice(5, 7), 16);
+                            this.value(`rgb(${r}, ${g}, ${b})`);
+                        }
+                        else {
+                            this.value(hex);
+                        }
+                    }
+                });
+                return picker;
+            }
+        }
+        __decorate([
+            $mol_mem
+        ], $ds_themer_color.prototype, "hex_value", null);
+        __decorate([
+            $mol_mem
+        ], $ds_themer_color.prototype, "Picker", null);
+        $$.$ds_themer_color = $ds_themer_color;
+    })($$ = $.$$ || ($.$$ = {}));
+})($ || ($ = {}));
+
+;
+"use strict";
+var $;
+(function ($) {
+    var $$;
+    (function ($$) {
+        const { rem, px } = $mol_style_unit;
+        $mol_style_define($ds_themer_color, {
+            display: 'flex',
+            flex: {
+                direction: 'row',
+                wrap: 'nowrap',
+            },
+            gap: $mol_gap.text,
+            alignItems: 'center',
+            Input: {
+                flex: {
+                    grow: 1,
+                },
+            },
+            Picker_wrapper: {
+                flex: {
+                    shrink: 0,
+                },
+            },
+            Picker: {
+                width: px(40),
+                height: px(40),
+                border: 'none',
+                borderRadius: px(4),
+                cursor: 'pointer',
+                padding: 0,
+            },
+        });
+    })($$ = $.$$ || ($.$$ = {}));
+})($ || ($ = {}));
+
+;
 	($.$mol_list) = class $mol_list extends ($.$mol_view) {
 		rows(){
 			return [];
@@ -9974,8 +10165,7 @@ var $;
 			return "oklch(20% .01 240deg)";
 		}
 		Back_color(){
-			const obj = new this.$.$mol_string();
-			(obj.hint) = () => ("oklch(20% .01 240deg)");
+			const obj = new this.$.$ds_themer_color();
 			(obj.value) = (next) => ((this.color_back(next)));
 			return obj;
 		}
@@ -9990,8 +10180,7 @@ var $;
 			return "oklch(30% .05 240deg / .25)";
 		}
 		Card_color(){
-			const obj = new this.$.$mol_string();
-			(obj.hint) = () => ("oklch(30% .05 240deg / .25)");
+			const obj = new this.$.$ds_themer_color();
 			(obj.value) = (next) => ((this.color_card(next)));
 			return obj;
 		}
@@ -10006,8 +10195,7 @@ var $;
 			return "oklch(15% 0 240deg / .25)";
 		}
 		Field_color(){
-			const obj = new this.$.$mol_string();
-			(obj.hint) = () => ("oklch(15% 0 240deg / .25)");
+			const obj = new this.$.$ds_themer_color();
 			(obj.value) = (next) => ((this.color_field(next)));
 			return obj;
 		}
@@ -10022,8 +10210,7 @@ var $;
 			return "oklch(70% 0 240deg / .1)";
 		}
 		Hover_color(){
-			const obj = new this.$.$mol_string();
-			(obj.hint) = () => ("oklch(70% 0 240deg / .1)");
+			const obj = new this.$.$ds_themer_color();
 			(obj.value) = (next) => ((this.color_hover(next)));
 			return obj;
 		}
@@ -10059,8 +10246,7 @@ var $;
 			return "oklch(80% 0 240deg)";
 		}
 		Text_color(){
-			const obj = new this.$.$mol_string();
-			(obj.hint) = () => ("oklch(80% 0 240deg)");
+			const obj = new this.$.$ds_themer_color();
 			(obj.value) = (next) => ((this.color_text(next)));
 			return obj;
 		}
@@ -10075,8 +10261,7 @@ var $;
 			return "oklch(60% 0 240deg)";
 		}
 		Shade_color(){
-			const obj = new this.$.$mol_string();
-			(obj.hint) = () => ("oklch(60% 0 240deg)");
+			const obj = new this.$.$ds_themer_color();
 			(obj.value) = (next) => ((this.color_shade(next)));
 			return obj;
 		}
@@ -10091,8 +10276,7 @@ var $;
 			return "oklch(60% 0 240deg / .25)";
 		}
 		Line_color(){
-			const obj = new this.$.$mol_string();
-			(obj.hint) = () => ("oklch(60% 0 240deg / .25)");
+			const obj = new this.$.$ds_themer_color();
 			(obj.value) = (next) => ((this.color_line(next)));
 			return obj;
 		}
@@ -10107,8 +10291,7 @@ var $;
 			return "oklch(80% .2 60deg)";
 		}
 		Focus_color(){
-			const obj = new this.$.$mol_string();
-			(obj.hint) = () => ("oklch(80% .2 60deg)");
+			const obj = new this.$.$ds_themer_color();
 			(obj.value) = (next) => ((this.color_focus(next)));
 			return obj;
 		}
@@ -10144,8 +10327,7 @@ var $;
 			return "oklch(70% .1 240deg)";
 		}
 		Control_color(){
-			const obj = new this.$.$mol_string();
-			(obj.hint) = () => ("oklch(70% .1 240deg)");
+			const obj = new this.$.$ds_themer_color();
 			(obj.value) = (next) => ((this.color_control(next)));
 			return obj;
 		}
@@ -10160,8 +10342,7 @@ var $;
 			return "oklch(70% .2 150deg)";
 		}
 		Current_color(){
-			const obj = new this.$.$mol_string();
-			(obj.hint) = () => ("oklch(70% .2 150deg)");
+			const obj = new this.$.$ds_themer_color();
 			(obj.value) = (next) => ((this.color_current(next)));
 			return obj;
 		}
@@ -10176,8 +10357,7 @@ var $;
 			return "oklch(70% .2 330deg)";
 		}
 		Special_color(){
-			const obj = new this.$.$mol_string();
-			(obj.hint) = () => ("oklch(70% .2 330deg)");
+			const obj = new this.$.$ds_themer_color();
 			(obj.value) = (next) => ((this.color_special(next)));
 			return obj;
 		}
@@ -10822,62 +11002,62 @@ var $;
                     localStorage.setItem(storage_key, next);
                     return next;
                 }
-                return localStorage.getItem(storage_key);
+                return localStorage.getItem(storage_key) || '';
             }
             color_back(next) {
                 if (next !== undefined)
                     return this.stored('color_back', next);
-                return this.stored('color_back') ?? '';
+                return this.stored('color_back');
             }
             color_card(next) {
                 if (next !== undefined)
                     return this.stored('color_card', next);
-                return this.stored('color_card') ?? '';
+                return this.stored('color_card');
             }
             color_field(next) {
                 if (next !== undefined)
                     return this.stored('color_field', next);
-                return this.stored('color_field') ?? '';
+                return this.stored('color_field');
             }
             color_hover(next) {
                 if (next !== undefined)
                     return this.stored('color_hover', next);
-                return this.stored('color_hover') ?? '';
+                return this.stored('color_hover');
             }
             color_text(next) {
                 if (next !== undefined)
                     return this.stored('color_text', next);
-                return this.stored('color_text') ?? '';
+                return this.stored('color_text');
             }
             color_shade(next) {
                 if (next !== undefined)
                     return this.stored('color_shade', next);
-                return this.stored('color_shade') ?? '';
+                return this.stored('color_shade');
             }
             color_line(next) {
                 if (next !== undefined)
                     return this.stored('color_line', next);
-                return this.stored('color_line') ?? '';
+                return this.stored('color_line');
             }
             color_focus(next) {
                 if (next !== undefined)
                     return this.stored('color_focus', next);
-                return this.stored('color_focus') ?? '';
+                return this.stored('color_focus');
             }
             color_control(next) {
                 if (next !== undefined)
                     return this.stored('color_control', next);
-                return this.stored('color_control') ?? '';
+                return this.stored('color_control');
             }
             color_current(next) {
                 if (next !== undefined)
                     return this.stored('color_current', next);
-                return this.stored('color_current') ?? '';
+                return this.stored('color_current');
             }
             color_special(next) {
                 if (next !== undefined)
                     return this.stored('color_special', next);
-                return this.stored('color_special') ?? '';
+                return this.stored('color_special');
             }
             export() {
                 const css = this.generate_css();
@@ -10906,32 +11086,10 @@ var $;
                     'color_control',
                     'color_current',
                     'color_special',
-                    'color_back',
-                    'color_card',
-                    'color_field',
-                    'color_hover',
-                    'color_text',
-                    'color_shade',
-                    'color_line',
-                    'color_focus',
-                    'color_control',
-                    'color_current',
-                    'color_special',
                 ];
                 keys.forEach(key => {
                     localStorage.removeItem(`ds_themer_${key}`);
                 });
-                this.color_back.$ = undefined;
-                this.color_card.$ = undefined;
-                this.color_field.$ = undefined;
-                this.color_hover.$ = undefined;
-                this.color_text.$ = undefined;
-                this.color_shade.$ = undefined;
-                this.color_line.$ = undefined;
-                this.color_focus.$ = undefined;
-                this.color_control.$ = undefined;
-                this.color_current.$ = undefined;
-                this.color_special.$ = undefined;
                 this.color_back('oklch(20% .01 240deg)');
                 this.color_card('oklch(30% .05 240deg / .25)');
                 this.color_field('oklch(15% 0 240deg / .25)');
@@ -11032,7 +11190,11 @@ var $;
                     basis: rem(25),
                     shrink: 0,
                 },
-                borderRight: $mol_theme.line,
+                borderRight: {
+                    width: px(1),
+                    style: 'solid',
+                    color: $mol_theme.line,
+                },
             },
             Controls_inner: {
                 padding: $mol_gap.block,
@@ -11120,7 +11282,11 @@ var $;
                     color: $mol_theme.card,
                 },
                 borderRadius: px(8),
-                border: $mol_theme.line,
+                border: {
+                    width: px(1),
+                    style: 'solid',
+                    color: $mol_theme.line,
+                },
             },
             Card2: {
                 flex: {
@@ -11132,7 +11298,11 @@ var $;
                     color: $mol_theme.card,
                 },
                 borderRadius: px(8),
-                border: $mol_theme.line,
+                border: {
+                    width: px(1),
+                    style: 'solid',
+                    color: $mol_theme.line,
+                },
             },
             Card3: {
                 flex: {
@@ -11144,7 +11314,11 @@ var $;
                     color: $mol_theme.card,
                 },
                 borderRadius: px(8),
-                border: $mol_theme.line,
+                border: {
+                    width: px(1),
+                    style: 'solid',
+                    color: $mol_theme.line,
+                },
             },
             Card1_title: {
                 fontSize: rem(1.1),
@@ -11199,7 +11373,11 @@ var $;
                 background: {
                     color: $mol_theme.line,
                 },
-                border: $mol_theme.line,
+                border: {
+                    width: px(1),
+                    style: 'solid',
+                    color: $mol_theme.line,
+                },
                 borderRadius: px(8),
                 overflow: 'hidden',
             },

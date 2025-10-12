@@ -28,23 +28,19 @@ $ds_themer $mol_page
 											haystack \Backgrounds
 									<= Back_field $mol_form_field
 										name \Background
-										Content <= Back_color $mol_string
-											hint \oklch(20% .01 240deg)
+										Content <= Back_color $ds_themer_color
 											value? <=> color_back? \oklch(20% .01 240deg)
 									<= Card_field $mol_form_field
 										name \Card
-										Content <= Card_color $mol_string
-											hint \oklch(30% .05 240deg / .25)
+										Content <= Card_color $ds_themer_color
 											value? <=> color_card? \oklch(30% .05 240deg / .25)
 									<= Field_field $mol_form_field
 										name \Field
-										Content <= Field_color $mol_string
-											hint \oklch(15% 0 240deg / .25)
+										Content <= Field_color $ds_themer_color
 											value? <=> color_field? \oklch(15% 0 240deg / .25)
 									<= Hover_field $mol_form_field
 										name \Hover
-										Content <= Hover_color $mol_string
-											hint \oklch(70% 0 240deg / .1)
+										Content <= Hover_color $ds_themer_color
 											value? <=> color_hover? \oklch(70% 0 240deg / .1)
 							<= Text_section $mol_list
 								rows /
@@ -53,23 +49,19 @@ $ds_themer $mol_page
 											haystack \Text Colors
 									<= Text_field $mol_form_field
 										name \Text
-										Content <= Text_color $mol_string
-											hint \oklch(80% 0 240deg)
+										Content <= Text_color $ds_themer_color
 											value? <=> color_text? \oklch(80% 0 240deg)
 									<= Shade_field $mol_form_field
 										name \Shade
-										Content <= Shade_color $mol_string
-											hint \oklch(60% 0 240deg)
+										Content <= Shade_color $ds_themer_color
 											value? <=> color_shade? \oklch(60% 0 240deg)
 									<= Line_field $mol_form_field
 										name \Line
-										Content <= Line_color $mol_string
-											hint \oklch(60% 0 240deg / .25)
+										Content <= Line_color $ds_themer_color
 											value? <=> color_line? \oklch(60% 0 240deg / .25)
 									<= Focus_field $mol_form_field
 										name \Focus
-										Content <= Focus_color $mol_string
-											hint \oklch(80% .2 60deg)
+										Content <= Focus_color $ds_themer_color
 											value? <=> color_focus? \oklch(80% .2 60deg)
 							<= Controls_section $mol_list
 								rows /
@@ -78,18 +70,15 @@ $ds_themer $mol_page
 											haystack \Control Colors
 									<= Control_field $mol_form_field
 										name \Control
-										Content <= Control_color $mol_string
-											hint \oklch(70% .1 240deg)
+										Content <= Control_color $ds_themer_color
 											value? <=> color_control? \oklch(70% .1 240deg)
 									<= Current_field $mol_form_field
 										name \Current
-										Content <= Current_color $mol_string
-											hint \oklch(70% .2 150deg)
+										Content <= Current_color $ds_themer_color
 											value? <=> color_current? \oklch(70% .2 150deg)
 									<= Special_field $mol_form_field
 										name \Special
-										Content <= Special_color $mol_string
-											hint \oklch(70% .2 330deg)
+										Content <= Special_color $ds_themer_color
 											value? <=> color_special? \oklch(70% .2 330deg)
 			<= Preview $mol_scroll
 				sub /

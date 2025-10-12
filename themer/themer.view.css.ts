@@ -16,7 +16,11 @@ namespace $.$$ {
 				basis: rem(25),
 				shrink: 0,
 			},
-			borderRight: $mol_theme.line,
+			borderRight: {
+				width: px(1),
+				style: 'solid',
+				color: $mol_theme.line,
+			},
 		},
 
 		Controls_inner: {
@@ -121,7 +125,11 @@ namespace $.$$ {
 				color: $mol_theme.card,
 			},
 			borderRadius: px(8),
-			border: $mol_theme.line,
+			border: {
+				width: px(1),
+				style: 'solid',
+				color: $mol_theme.line,
+			},
 		},
 
 		Card2: {
@@ -134,7 +142,11 @@ namespace $.$$ {
 				color: $mol_theme.card,
 			},
 			borderRadius: px(8),
-			border: $mol_theme.line,
+			border: {
+				width: px(1),
+				style: 'solid',
+				color: $mol_theme.line,
+			},
 		},
 
 		Card3: {
@@ -147,7 +159,11 @@ namespace $.$$ {
 				color: $mol_theme.card,
 			},
 			borderRadius: px(8),
-			border: $mol_theme.line,
+			border: {
+				width: px(1),
+				style: 'solid',
+				color: $mol_theme.line,
+			},
 		},
 
 		Card1_title: {
@@ -213,7 +229,11 @@ namespace $.$$ {
 			background: {
 				color: $mol_theme.line,
 			},
-			border: $mol_theme.line,
+			border: {
+				width: px(1),
+				style: 'solid',
+				color: $mol_theme.line,
+			},
 			borderRadius: px(8),
 			overflow: 'hidden',
 		},

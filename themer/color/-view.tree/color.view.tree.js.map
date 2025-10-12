@@ -1,0 +1,10 @@
+{
+	"version": 3,
+	"sources": [
+		"ds/themer/color/color.view.tree"
+	],
+	"sourcesContent": [
+		"$ds_themer_color $mol_view\n\tvalue? \\\n\tattr *\n\t\t^\n\t\tds_themer_color \\\n\tsub /\n\t\t<= Input $mol_string\n\t\t\tvalue? <=> value?\n\t\t<= Picker_wrapper $mol_view\n\t\t\tsub /\n\t\t\t\t<= Picker $mol_view\n\t\t\t\t\tattr *\n\t\t\t\t\t\ttype \\color\n\t\t\t\t\tdom_name \\input\n\t\t\t\t\tevent *\n\t\t\t\t\t\tinput? <=> picker_input? null\n"
+	],
+	"mappings": "AAAA,AAAA,+CAAiB,sBAAjB;AAAA,AAMK;AAAA,AAAM,uCAAN;AACF,4BAAO,KAAI,YAAJ,CAAP,CADE;AAAA,UAAM,GAAN;AAAA;AASY;AAAA,AAAA;AAAA,UAAc,IAAd;AAAA;AALV;AAAA,AAAO,qCAAP;AACF,uBAAK,CACJ,QAAM,OADF,CAAL,CADE;AAGF,2BAAU,OAAV,CAHE;AAIF,wBAAM,CACL,mBAAO,KAAI,mBAAJ,CADF,CAAN,CAJE;AAAA,UAAO,GAAP;AAAA;AAFF;AAAA,AAAe,qCAAf;AACF,sBAAI,CACH,KAAG,SAAH,CADG,CAAJ,CADE;AAAA,UAAe,GAAf;AAAA;AAPJ;AAAA,AAAA;AAAA,UAAQ,EAAR;AAAA;AACA;AAAA,AAAA,UAAK,CACJ,iBADI,EAEJ,mBAAiB,EAFb,CAAL;AAAA;AAGA;AAAA,AAAA,UAAI,CACH,KAAG,QAAH,CADG,EAGH,KAAG,iBAAH,CAHG,CAAJ;AAAA;AALD,CAAA;AAMK,YANL,CAMK,uCANL;AAeiB,YAfjB,CAeiB,8CAfjB;AAUO,YAVP,CAUO,wCAVP;AAQK,YARL,CAQK,gDARL;AACC,YADD,CACC,uCADD;"
+}

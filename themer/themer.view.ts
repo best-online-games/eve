@@ -1,7 +1,7 @@
 namespace $.$$ {
 	export class $ds_themer extends $.$ds_themer {
 		// Storage helper
-		stored(key: string, next?: string) {
+		stored(key: string, next?: string): string {
 			const storage_key = `ds_themer_${key}`
 
 			if (next !== undefined) {
@@ -9,74 +9,74 @@ namespace $.$$ {
 				return next
 			}
 
-			return localStorage.getItem(storage_key)
+			return localStorage.getItem(storage_key) || ''
 		}
 
 		// Color getters/setters with localStorage
 		@$mol_mem
-		color_back(next?: string) {
+		color_back(next?: string): string {
 			if (next !== undefined) return this.stored('color_back', next)
-			return this.stored('color_back') ?? ''
+			return this.stored('color_back')
 		}
 
 		@$mol_mem
-		color_card(next?: string) {
+		color_card(next?: string): string {
 			if (next !== undefined) return this.stored('color_card', next)
-			return this.stored('color_card') ?? ''
+			return this.stored('color_card')
 		}
 
 		@$mol_mem
-		color_field(next?: string) {
+		color_field(next?: string): string {
 			if (next !== undefined) return this.stored('color_field', next)
-			return this.stored('color_field') ?? ''
+			return this.stored('color_field')
 		}
 
 		@$mol_mem
-		color_hover(next?: string) {
+		color_hover(next?: string): string {
 			if (next !== undefined) return this.stored('color_hover', next)
-			return this.stored('color_hover') ?? ''
+			return this.stored('color_hover')
 		}
 
 		@$mol_mem
-		color_text(next?: string) {
+		color_text(next?: string): string {
 			if (next !== undefined) return this.stored('color_text', next)
-			return this.stored('color_text') ?? ''
+			return this.stored('color_text')
 		}
 
 		@$mol_mem
-		color_shade(next?: string) {
+		color_shade(next?: string): string {
 			if (next !== undefined) return this.stored('color_shade', next)
-			return this.stored('color_shade') ?? ''
+			return this.stored('color_shade')
 		}
 
 		@$mol_mem
-		color_line(next?: string) {
+		color_line(next?: string): string {
 			if (next !== undefined) return this.stored('color_line', next)
-			return this.stored('color_line') ?? ''
+			return this.stored('color_line')
 		}
 
 		@$mol_mem
-		color_focus(next?: string) {
+		color_focus(next?: string): string {
 			if (next !== undefined) return this.stored('color_focus', next)
-			return this.stored('color_focus') ?? ''
+			return this.stored('color_focus')
 		}
 
 		@$mol_mem
-		color_control(next?: string) {
+		color_control(next?: string): string {
 			if (next !== undefined) return this.stored('color_control', next)
-			return this.stored('color_control') ?? ''
+			return this.stored('color_control')
 		}
 
 		@$mol_mem
-		color_current(next?: string) {
+		color_current(next?: string): string {
 			if (next !== undefined) return this.stored('color_current', next)
-			return this.stored('color_current') ?? ''
+			return this.stored('color_current')
 		}
 
 		@$mol_mem
-		color_special(next?: string) {
+		color_special(next?: string): string {
 			if (next !== undefined) return this.stored('color_special', next)
-			return this.stored('color_special') ?? ''
+			return this.stored('color_special')
 		}
 
 		// Export theme to CSS
@@ -114,35 +114,11 @@ namespace $.$$ {
 				'color_control',
 				'color_current',
 				'color_special',
-				'color_back',
-				'color_card',
-				'color_field',
-				'color_hover',
-				'color_text',
-				'color_shade',
-				'color_line',
-				'color_focus',
-				'color_control',
-				'color_current',
-				'color_special',
 			]
 
 			keys.forEach(key => {
 				localStorage.removeItem(`ds_themer_${key}`)
 			})
-
-			// Force re-render by clearing cache
-			;(this.color_back as any).$ = undefined
-			;(this.color_card as any).$ = undefined
-			;(this.color_field as any).$ = undefined
-			;(this.color_hover as any).$ = undefined
-			;(this.color_text as any).$ = undefined
-			;(this.color_shade as any).$ = undefined
-			;(this.color_line as any).$ = undefined
-			;(this.color_focus as any).$ = undefined
-			;(this.color_control as any).$ = undefined
-			;(this.color_current as any).$ = undefined
-			;(this.color_special as any).$ = undefined
 
 			// Reset to view.tree defaults
 			this.color_back('oklch(20% .01 240deg)')

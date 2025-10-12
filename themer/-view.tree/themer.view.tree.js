@@ -58,8 +58,7 @@
 			return "oklch(20% .01 240deg)";
 		}
 		Back_color(){
-			const obj = new this.$.$mol_string();
-			(obj.hint) = () => ("oklch(20% .01 240deg)");
+			const obj = new this.$.$ds_themer_color();
 			(obj.value) = (next) => ((this.color_back(next)));
 			return obj;
 		}
@@ -74,8 +73,7 @@
 			return "oklch(30% .05 240deg / .25)";
 		}
 		Card_color(){
-			const obj = new this.$.$mol_string();
-			(obj.hint) = () => ("oklch(30% .05 240deg / .25)");
+			const obj = new this.$.$ds_themer_color();
 			(obj.value) = (next) => ((this.color_card(next)));
 			return obj;
 		}
@@ -90,8 +88,7 @@
 			return "oklch(15% 0 240deg / .25)";
 		}
 		Field_color(){
-			const obj = new this.$.$mol_string();
-			(obj.hint) = () => ("oklch(15% 0 240deg / .25)");
+			const obj = new this.$.$ds_themer_color();
 			(obj.value) = (next) => ((this.color_field(next)));
 			return obj;
 		}
@@ -106,8 +103,7 @@
 			return "oklch(70% 0 240deg / .1)";
 		}
 		Hover_color(){
-			const obj = new this.$.$mol_string();
-			(obj.hint) = () => ("oklch(70% 0 240deg / .1)");
+			const obj = new this.$.$ds_themer_color();
 			(obj.value) = (next) => ((this.color_hover(next)));
 			return obj;
 		}
@@ -143,8 +139,7 @@
 			return "oklch(80% 0 240deg)";
 		}
 		Text_color(){
-			const obj = new this.$.$mol_string();
-			(obj.hint) = () => ("oklch(80% 0 240deg)");
+			const obj = new this.$.$ds_themer_color();
 			(obj.value) = (next) => ((this.color_text(next)));
 			return obj;
 		}
@@ -159,8 +154,7 @@
 			return "oklch(60% 0 240deg)";
 		}
 		Shade_color(){
-			const obj = new this.$.$mol_string();
-			(obj.hint) = () => ("oklch(60% 0 240deg)");
+			const obj = new this.$.$ds_themer_color();
 			(obj.value) = (next) => ((this.color_shade(next)));
 			return obj;
 		}
@@ -175,8 +169,7 @@
 			return "oklch(60% 0 240deg / .25)";
 		}
 		Line_color(){
-			const obj = new this.$.$mol_string();
-			(obj.hint) = () => ("oklch(60% 0 240deg / .25)");
+			const obj = new this.$.$ds_themer_color();
 			(obj.value) = (next) => ((this.color_line(next)));
 			return obj;
 		}
@@ -191,8 +184,7 @@
 			return "oklch(80% .2 60deg)";
 		}
 		Focus_color(){
-			const obj = new this.$.$mol_string();
-			(obj.hint) = () => ("oklch(80% .2 60deg)");
+			const obj = new this.$.$ds_themer_color();
 			(obj.value) = (next) => ((this.color_focus(next)));
 			return obj;
 		}
@@ -228,8 +220,7 @@
 			return "oklch(70% .1 240deg)";
 		}
 		Control_color(){
-			const obj = new this.$.$mol_string();
-			(obj.hint) = () => ("oklch(70% .1 240deg)");
+			const obj = new this.$.$ds_themer_color();
 			(obj.value) = (next) => ((this.color_control(next)));
 			return obj;
 		}
@@ -244,8 +235,7 @@
 			return "oklch(70% .2 150deg)";
 		}
 		Current_color(){
-			const obj = new this.$.$mol_string();
-			(obj.hint) = () => ("oklch(70% .2 150deg)");
+			const obj = new this.$.$ds_themer_color();
 			(obj.value) = (next) => ((this.color_current(next)));
 			return obj;
 		}
@@ -260,8 +250,7 @@
 			return "oklch(70% .2 330deg)";
 		}
 		Special_color(){
-			const obj = new this.$.$mol_string();
-			(obj.hint) = () => ("oklch(70% .2 330deg)");
+			const obj = new this.$.$ds_themer_color();
 			(obj.value) = (next) => ((this.color_special(next)));
 			return obj;
 		}
