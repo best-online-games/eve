@@ -33,6 +33,10 @@
 			(obj.click) = (next) => ((this.reset(next)));
 			return obj;
 		}
+		Toggle(){
+			const obj = new this.$.$mol_lights_toggle();
+			return obj;
+		}
 		Controls_title_text(){
 			const obj = new this.$.$mol_dimmer();
 			(obj.haystack) = () => ("Theme Settings");
@@ -327,7 +331,8 @@
 			return [
 				(this.Export()), 
 				(this.Copy()), 
-				(this.Reset())
+				(this.Reset()), 
+				(this.Toggle())
 			];
 		}
 		body(){
@@ -341,6 +346,7 @@
 	($mol_mem(($.$ds_themer.prototype), "Copy"));
 	($mol_mem(($.$ds_themer.prototype), "reset"));
 	($mol_mem(($.$ds_themer.prototype), "Reset"));
+	($mol_mem(($.$ds_themer.prototype), "Toggle"));
 	($mol_mem(($.$ds_themer.prototype), "Controls_title_text"));
 	($mol_mem(($.$ds_themer.prototype), "Controls_title"));
 	($mol_mem(($.$ds_themer.prototype), "Backgrounds_title_text"));

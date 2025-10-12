@@ -12,6 +12,7 @@ $ds_themer $mol_page
 		<= Reset $mol_button_minor
 			title \Reset
 			click? <=> reset? null
+		<= Toggle $mol_lights_toggle
 	body /
 		<= Content $mol_row sub /
 			<= Controls $mol_scroll

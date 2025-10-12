@@ -300,6 +300,7 @@ declare namespace $ {
 		Copy( ): $mol_button_minor
 		reset( next?: any ): any
 		Reset( ): $mol_button_minor
+		Toggle( ): $mol_lights_toggle
 		Controls_title_text( ): $mol_dimmer
 		Controls_title( ): $mol_view
 		Backgrounds_title_text( ): $mol_dimmer
