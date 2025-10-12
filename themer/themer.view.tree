@@ -1,0 +1,77 @@
+$ds_themer $mol_page
+	title \Theme Editor
+	plugins /
+		<= Theme $mol_theme_auto
+	style *
+		--mol_theme_hue <= hue_deg \
+		--mol_theme_hue_spread <= hue_spread_deg \
+	body /
+		<= Content $mol_row sub /
+			<= Controls $mol_list
+				rows /
+					<= Hue_field $mol_form_field
+						name \Hue
+						Content <= Hue $mol_number
+							value? <=> hue? 240
+							precision_change 15
+					<= Hue_spread_field $mol_form_field
+						name \Hue spread
+						Content <= Hue_spread $mol_number
+							value? <=> hue_spread? 90
+							precision_change 15
+					<= Lights_field $mol_form_field
+						name \Lights
+						Content <= Lights $mol_lights_toggle
+			<= Preview $mol_list
+				rows /
+					<= Preview_title $mol_view
+						sub / <= Preview_title_text $mol_dimmer
+							haystack \Theme Preview
+					<= Colors_demo $mol_list
+						rows /
+							<= Base_demo $ds_themer_case
+								title \$mol_theme_base
+							<= Current_demo $ds_themer_case
+								title \$mol_theme_current
+							<= Special_demo $ds_themer_case
+								title \$mol_theme_special
+							<= Accent_demo $ds_themer_case
+								title \$mol_theme_accent
+					<= Components_demo $mol_list
+						rows /
+							<= Button_demo $mol_button_major
+								title \Major Button
+							<= Button_minor_demo $mol_button_minor
+								title \Minor Button
+							<= Input_demo $mol_string
+								hint \Text input
+								value? <=> demo_input? \Sample text
+							<= Check_demo $mol_check_box
+								title \Checkbox
+								checked? <=> demo_check? false
+
+$ds_themer_case $mol_view
+	title \
+	sub /
+		<= Card $mol_list
+			rows /
+				<= Card_inner $mol_row
+					sub /
+						<= Title $mol_button_copy
+							title <= title
+				<= Back $mol_button_copy
+					title \$mol_theme.back
+				<= Line $mol_button_copy
+					title \$mol_theme.line
+				<= Text $mol_button_copy
+					title \$mol_theme.text
+				<= Field $mol_button_copy
+					title \$mol_theme.field
+				<= Shade $mol_button_copy
+					title \$mol_theme.shade
+				<= Focus $mol_button_copy
+					title \$mol_theme.focus
+				<= Control $mol_button_copy
+					title \$mol_theme.control
+				<= Hover $mol_button_copy
+					title \$mol_theme.hover
