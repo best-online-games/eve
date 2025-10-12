@@ -3,10 +3,6 @@
 			const obj = new this.$.$mol_theme_auto();
 			return obj;
 		}
-		Lights(){
-			const obj = new this.$.$mol_lights_toggle();
-			return obj;
-		}
 		Libraries_title(){
 			return "Libraries";
 		}
@@ -96,36 +92,6 @@
 			(obj.sub) = () => ([(this.Github_icon())]);
 			return obj;
 		}
-		export(next){
-			if(next !== undefined) return next;
-			return null;
-		}
-		Export(){
-			const obj = new this.$.$mol_button_major();
-			(obj.title) = () => ("Export CSS");
-			(obj.click) = (next) => ((this.export(next)));
-			return obj;
-		}
-		copy(next){
-			if(next !== undefined) return next;
-			return null;
-		}
-		Copy(){
-			const obj = new this.$.$mol_button_minor();
-			(obj.title) = () => ("Copy Theme");
-			(obj.click) = (next) => ((this.copy(next)));
-			return obj;
-		}
-		reset(next){
-			if(next !== undefined) return next;
-			return null;
-		}
-		Reset(){
-			const obj = new this.$.$mol_button_minor();
-			(obj.title) = () => ("Reset");
-			(obj.click) = (next) => ((this.reset(next)));
-			return obj;
-		}
 		page_body(){
 			return [];
 		}
@@ -142,7 +108,6 @@
 		}
 		tools(){
 			return [
-				(this.Lights()), 
 				(this.Libraries_link()), 
 				(this.Components_link()), 
 				(this.Design_link()), 
@@ -151,10 +116,7 @@
 				(this.Media_link()), 
 				(this.Lang_select()), 
 				(this.Telegram_link()), 
-				(this.Github_link()), 
-				(this.Export()), 
-				(this.Copy()), 
-				(this.Reset())
+				(this.Github_link())
 			];
 		}
 		body(){
@@ -162,7 +124,6 @@
 		}
 	};
 	($mol_mem(($.$ds_themer.prototype), "Theme"));
-	($mol_mem(($.$ds_themer.prototype), "Lights"));
 	($mol_mem(($.$ds_themer.prototype), "Libraries_link"));
 	($mol_mem(($.$ds_themer.prototype), "Components_link"));
 	($mol_mem(($.$ds_themer.prototype), "Design_link"));
@@ -175,12 +136,6 @@
 	($mol_mem(($.$ds_themer.prototype), "Telegram_link"));
 	($mol_mem(($.$ds_themer.prototype), "Github_icon"));
 	($mol_mem(($.$ds_themer.prototype), "Github_link"));
-	($mol_mem(($.$ds_themer.prototype), "export"));
-	($mol_mem(($.$ds_themer.prototype), "Export"));
-	($mol_mem(($.$ds_themer.prototype), "copy"));
-	($mol_mem(($.$ds_themer.prototype), "Copy"));
-	($mol_mem(($.$ds_themer.prototype), "reset"));
-	($mol_mem(($.$ds_themer.prototype), "Reset"));
 	($mol_mem(($.$ds_themer.prototype), "Page_content"));
 	($.$ds_themer_page_themer) = class $ds_themer_page_themer extends ($.$mol_row) {
 		Controls_title_text(){

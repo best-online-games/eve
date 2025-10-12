@@ -3,7 +3,6 @@ $ds_themer $mol_page
 	plugins /
 		<= Theme $mol_theme_auto
 	tools /
-		<= Lights $mol_lights_toggle
 		<= Libraries_link $mol_link
 			arg * page \libraries
 			sub / <= Libraries_title \Libraries
@@ -35,15 +34,6 @@ $ds_themer $mol_page
 			hint \GitHub
 			uri \https://github.com/best-online-games/ds
 			sub / <= Github_icon $mol_icon_github
-		<= Export $mol_button_major
-			title \Export CSS
-			click? <=> export? null
-		<= Copy $mol_button_minor
-			title \Copy Theme
-			click? <=> copy? null
-		<= Reset $mol_button_minor
-			title \Reset
-			click? <=> reset? null
 	body /
 		<= Page_content $mol_view
 			sub <= page_body /

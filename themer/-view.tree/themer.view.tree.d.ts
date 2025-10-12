@@ -112,44 +112,13 @@ declare namespace $ {
 		,
 		ReturnType< $mol_link_iconed['sub'] >
 	>
-	type $mol_button_major__title_ds_themer_21 = $mol_type_enforce<
-		string
-		,
-		ReturnType< $mol_button_major['title'] >
-	>
-	type $mol_button_major__click_ds_themer_22 = $mol_type_enforce<
-		ReturnType< $ds_themer['export'] >
-		,
-		ReturnType< $mol_button_major['click'] >
-	>
-	type $mol_button_minor__title_ds_themer_23 = $mol_type_enforce<
-		string
-		,
-		ReturnType< $mol_button_minor['title'] >
-	>
-	type $mol_button_minor__click_ds_themer_24 = $mol_type_enforce<
-		ReturnType< $ds_themer['copy'] >
-		,
-		ReturnType< $mol_button_minor['click'] >
-	>
-	type $mol_button_minor__title_ds_themer_25 = $mol_type_enforce<
-		string
-		,
-		ReturnType< $mol_button_minor['title'] >
-	>
-	type $mol_button_minor__click_ds_themer_26 = $mol_type_enforce<
-		ReturnType< $ds_themer['reset'] >
-		,
-		ReturnType< $mol_button_minor['click'] >
-	>
-	type $mol_view__sub_ds_themer_27 = $mol_type_enforce<
+	type $mol_view__sub_ds_themer_21 = $mol_type_enforce<
 		ReturnType< $ds_themer['page_body'] >
 		,
 		ReturnType< $mol_view['sub'] >
 	>
 	export class $ds_themer extends $mol_page {
 		Theme( ): $mol_theme_auto
-		Lights( ): $mol_lights_toggle
 		Libraries_title( ): string
 		Libraries_link( ): $mol_link
 		Components_title( ): string
@@ -169,12 +138,6 @@ declare namespace $ {
 		Telegram_link( ): $mol_link_iconed
 		Github_icon( ): $mol_icon_github
 		Github_link( ): $mol_link_iconed
-		export( next?: any ): any
-		Export( ): $mol_button_major
-		copy( next?: any ): any
-		Copy( ): $mol_button_minor
-		reset( next?: any ): any
-		Reset( ): $mol_button_minor
 		page_body( ): readonly(any)[]
 		Page_content( ): $mol_view
 		title( ): string
