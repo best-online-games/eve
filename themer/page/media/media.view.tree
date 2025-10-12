@@ -1,0 +1,11 @@
+$ds_themer_page_media $mol_book2_catalog
+	param \section
+	spread_ids /
+		\images
+		\videos
+		\assets
+	spread_title* \
+	Spread* $mol_page
+		body /
+			<= Spread_content* $mol_text
+				text \Coming soon...

@@ -1,6 +1,5 @@
 namespace $.$$ {
 	export class $ds_themer extends $.$ds_themer {
-		// Page routing
 		@$mol_mem
 		page() {
 			return this.$.$mol_state_arg.value('page') || 'themer'
@@ -9,23 +8,25 @@ namespace $.$$ {
 		@$mol_mem
 		page_body() {
 			const page = this.page()
-
 			switch (page) {
 				case 'themer':
 					return [this.Page_themer()]
 				case 'libraries':
+					return [this.Page_libraries()]
 				case 'components':
+					return [this.Page_components()]
 				case 'design':
+					return [this.Page_design()]
 				case 'icons':
+					return [this.Page_icons()]
 				case 'media':
-					const placeholder = this.Page_placeholder(page)
-					placeholder.page_title = () => page.charAt(0).toUpperCase() + page.slice(1)
-					return [placeholder]
+					return [this.Page_media()]
 				default:
 					return [this.Page_themer()]
 			}
 		}
 
+		@$mol_mem
 		Page_themer() {
 			const page = new this.$.$ds_themer_page_themer()
 
@@ -45,9 +46,29 @@ namespace $.$$ {
 			return page
 		}
 
-		@$mol_mem_key
-		Page_placeholder(id: string) {
-			return new this.$.$ds_themer_page_placeholder()
+		@$mol_mem
+		Page_libraries() {
+			return new this.$.$ds_themer_page_libraries()
+		}
+
+		@$mol_mem
+		Page_components() {
+			return new this.$.$ds_themer_page_components()
+		}
+
+		@$mol_mem
+		Page_design() {
+			return new this.$.$ds_themer_page_design()
+		}
+
+		@$mol_mem
+		Page_icons() {
+			return new this.$.$ds_themer_page_icons()
+		}
+
+		@$mol_mem
+		Page_media() {
+			return new this.$.$ds_themer_page_media()
 		}
 
 		// Storage helper

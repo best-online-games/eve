@@ -1,0 +1,12 @@
+$ds_themer_page_components $mol_book2_catalog
+	param \section
+	spread_ids /
+		\buttons
+		\inputs
+		\cards
+		\tables
+	spread_title* \
+	Spread* $mol_page
+		body /
+			<= Spread_content* $mol_text
+				text \Coming soon...
