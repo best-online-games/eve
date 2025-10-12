@@ -94,7 +94,9 @@ namespace $.$$ {
 		Welcome_title: {
 			fontSize: rem(1.5),
 			fontWeight: 'bold',
-			marginBottom: $mol_gap.block,
+			margin: {
+				bottom: $mol_gap.block,
+			},
 		},
 
 		Cards_section: {
@@ -168,19 +170,25 @@ namespace $.$$ {
 		Card1_title: {
 			fontSize: rem(1.1),
 			fontWeight: '600',
-			marginBottom: $mol_gap.text,
+			margin: {
+				bottom: $mol_gap.text,
+			},
 		},
 
 		Card2_title: {
 			fontSize: rem(1.1),
 			fontWeight: '600',
-			marginBottom: $mol_gap.text,
+			margin: {
+				bottom: $mol_gap.text,
+			},
 		},
 
 		Card3_title: {
 			fontSize: rem(1.1),
 			fontWeight: '600',
-			marginBottom: $mol_gap.text,
+			margin: {
+				bottom: $mol_gap.text,
+			},
 		},
 
 		Forms_section: {
