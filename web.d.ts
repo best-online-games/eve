@@ -5558,8 +5558,7 @@ declare namespace $.$$ {
     }
 }
 
-declare namespace $.$$ {
-}
+declare namespace $.$$ { }
 
 declare namespace $ {
 
@@ -5886,8 +5885,7 @@ declare namespace $.$$ {
     }
 }
 
-declare namespace $.$$ {
-}
+declare namespace $.$$ { }
 
 export = $;
 //# sourceMappingURL=web.d.ts.map
