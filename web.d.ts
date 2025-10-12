@@ -2093,17 +2093,18 @@ declare namespace $ {
 		ReturnType< $mol_view['style'] >
 	>
 	export class $mol_list extends $mol_view {
-		rows( ): readonly($mol_view)[]
 		gap_before( ): number
+		Gap_before( ): $mol_view
+		Empty( ): $mol_view
 		gap_after( ): number
+		Gap_after( ): $mol_view
+		rows( ): readonly($mol_view)[]
 		render_visible_only( ): boolean
 		render_over( ): number
 		sub( ): ReturnType< $mol_list['rows'] >
-		Empty( ): $mol_view
-		Gap_before( ): $mol_view
-		Gap_after( ): $mol_view
 		item_height_min( id: any): number
 		item_width_min( id: any): number
+		view_window_shift( next?: number ): number
 		view_window( ): readonly(any)[]
 	}
 	
@@ -5591,22 +5592,41 @@ declare namespace $.$$ {
 
 declare namespace $ {
 
-	type $mol_text__text_ds_themer_page_components_1 = $mol_type_enforce<
-		string
-		,
-		ReturnType< $mol_text['text'] >
-	>
-	type $mol_page__body_ds_themer_page_components_2 = $mol_type_enforce<
-		readonly(any)[]
-		,
-		ReturnType< $mol_page['body'] >
-	>
+	export class $ds_surface extends $mol_view {
+		colors( next?: string ): string
+		interactive( next?: boolean ): boolean
+		size( next?: string ): string
+	}
+	
+}
+
+//# sourceMappingURL=surface.view.tree.d.ts.map
+declare namespace $.$$ {
+    type $ds_surface_colors = typeof $ds_surface.COLORS[number];
+    type $ds_surface_sizes = typeof $ds_surface.SIZES[number];
+    type $ds_surface_state_modifiers = typeof $ds_surface.STATE_MODIFIERS[number];
+    class $ds_surface extends $.$ds_surface {
+        static readonly STATE_MODIFIERS: readonly ["enabled", "hover", "pressed", "disabled", "loading"];
+        static readonly COLORS: readonly ["primary", "secondary", "tertiary", "danger", "warning", "success", "info", "lowest", "low", "medium", "high", "highest"];
+        static readonly SIZES: readonly ["xs", "sm", "md", "lg", "xl"];
+        attr(): {
+            ds_surface_color: "primary" | "secondary" | "tertiary" | "danger" | "warning" | "success" | "info" | "lowest" | "low" | "medium" | "high" | "highest";
+            ds_surface_interactive: boolean;
+            ds_surface_size: "xs" | "sm" | "md" | "lg" | "xl";
+        };
+        colors(next?: $ds_surface_colors): $ds_surface_colors;
+        interactive(next?: boolean): boolean;
+        size(next?: $ds_surface_sizes): $ds_surface_sizes;
+    }
+}
+
+declare namespace $.$$ {
+}
+
+declare namespace $ {
+
 	export class $ds_themer_page_components extends $mol_book2_catalog {
-		Spread_content( id: any): $mol_text
 		param( ): string
-		spread_ids( ): readonly(any)[]
-		spread_title( id: any): string
-		Spread( id: any): $mol_page
 	}
 	
 }
@@ -5615,7 +5635,15 @@ declare namespace $ {
 declare namespace $.$$ {
     class $ds_themer_page_components extends $.$ds_themer_page_components {
         spread_title(id: string): string;
+        size_rows(): any[];
+        size_surfaces(size: string): any[];
+        surface_color(id: string): string;
+        surface_interactive(id: string): string;
+        surface_label_text(id: string): string;
     }
+}
+
+declare namespace $.$$ {
 }
 
 declare namespace $ {
@@ -5859,7 +5887,7 @@ declare namespace $ {
 declare namespace $.$$ {
     class $ds_themer extends $.$ds_themer {
         page(): string;
-        page_body(): $ds_themer_page_themer[] | $ds_themer_page_libraries[];
+        page_body(): $ds_themer_page_themer[] | $ds_themer_page_libraries[] | $ds_themer_page_components[];
         Page_themer(): $ds_themer_page_themer;
         Page_libraries(): $ds_themer_page_libraries;
         Page_components(): $ds_themer_page_components;

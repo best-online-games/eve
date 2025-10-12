@@ -235,6 +235,7 @@
     "$mol_icon_tick",
     "$ds_themer_page_libraries",
     "$ds_themer_page_components",
+    "$ds_surface",
     "$ds_themer_page_design",
     "$ds_themer_page_icons",
     "$ds_themer_page_media"

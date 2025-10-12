@@ -188,13 +188,14 @@ $mol_nav $mol_plugin
 
 $mol_list $mol_view
 	render_visible_only true
-	render_over 0
+	render_over 0.1
 	sub <= rows /$mol_view
-	Empty $mol_view
-	Gap_before $mol_view style * paddingTop <= gap_before 0
-	Gap_after $mol_view style * paddingTop <= gap_after 0
+		<= Gap_before $mol_view style * paddingTop <= gap_before 0
+		<= Empty $mol_view
+		<= Gap_after $mol_view style * paddingTop <= gap_after 0
 	item_height_min* 1
 	item_width_min* 1
+	view_window_shift? 0
 	view_window /
 		0
 		0
@@ -1207,16 +1208,27 @@ $ds_themer_page_libraries $mol_book2_catalog
 
 $ds_themer_page_components $mol_book2_catalog
 	param \section
-	spread_ids /
+	- spread_ids /
 		\buttons
 		\inputs
 		\cards
 		\tables
-	spread_title* \
-	Spread* $mol_page
+		\surfaces
+	- spread_title* \
+	- Spread* $mol_page
 		body /
 			<= Spread_content* $mol_text
 				text \Coming soon...
+	- spreads *
+		surfaces <= Spread_surfaces $mol_page
+			title \Surfaces Demo
+			body /
+				<= Surfaces_grid
+
+$ds_surface $mol_view
+	colors? \primary
+	interactive? false
+	size? \md
 
 $ds_themer_page_design $mol_book2_catalog
 	param \section
