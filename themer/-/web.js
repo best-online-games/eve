@@ -5305,7 +5305,9 @@ var $;
             Picker: {
                 width: px(40),
                 height: px(40),
-                border: 'none',
+                border: {
+                    width: 0,
+                },
                 borderRadius: px(4),
                 cursor: 'pointer',
                 padding: 0,
@@ -11183,7 +11185,6 @@ var $;
                     wrap: 'nowrap',
                 },
                 alignItems: 'stretch',
-                overflow: 'hidden',
             },
             Controls: {
                 flex: {
@@ -11379,7 +11380,6 @@ var $;
                     color: $mol_theme.line,
                 },
                 borderRadius: px(8),
-                overflow: 'hidden',
             },
             Table_header: {
                 background: {

@@ -8,7 +8,6 @@ namespace $.$$ {
 				wrap: 'nowrap',
 			},
 			alignItems: 'stretch',
-			overflow: 'hidden',
 		},
 
 		Controls: {
@@ -235,7 +234,6 @@ namespace $.$$ {
 				color: $mol_theme.line,
 			},
 			borderRadius: px(8),
-			overflow: 'hidden',
 		},
 
 		Table_header: {
