@@ -22,6 +22,13 @@
   Здесь сходу объясняется про hsl
 * [Статья: методы создания гибких цветовых палитр для вашей дизайн системы](https://deadsign.ru/design/designing_systematic_colors/)
 
+Темеры:
+* https://gravity-ui.com/themer  // простой
+* https://v3.daisyui.com/docs/themes/  // оч удобно выглядят пресеты
+* https://daisyui.com/theme-generator/ // надо привыкнуть
+* https://ant.design/theme-editor
+
+
 Ресурсы
 * [Web Accessibility Initiative](https://www.w3.org/WAI/ARIA/apg/patterns/)  
 * [React Spectrum - Adobe](https://react-spectrum.adobe.com/react-aria/index.html)  
