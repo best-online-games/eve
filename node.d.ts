@@ -1757,6 +1757,178 @@ declare namespace $ {
 
 //# sourceMappingURL=major.view.tree.d.ts.map
 declare namespace $ {
+}
+
+declare namespace $ {
+
+	type $mol_view__sub_mol_check_1 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_view['sub'] >
+	>
+	export class $mol_check extends $mol_button_minor {
+		checked( next?: boolean ): boolean
+		aria_checked( ): string
+		aria_role( ): string
+		Icon( ): any
+		title( ): string
+		Title( ): $mol_view
+		label( ): readonly(any)[]
+		attr( ): ({ 
+			'mol_check_checked': ReturnType< $mol_check['checked'] >,
+			'aria-checked': ReturnType< $mol_check['aria_checked'] >,
+			'role': ReturnType< $mol_check['aria_role'] >,
+		})  & ReturnType< $mol_button_minor['attr'] >
+		sub( ): readonly($mol_view_content)[]
+	}
+	
+}
+
+//# sourceMappingURL=check.view.tree.d.ts.map
+declare namespace $.$$ {
+    class $mol_check extends $.$mol_check {
+        click(next?: Event): void;
+        sub(): readonly $mol_view_content[];
+        label(): readonly any[];
+        aria_checked(): string;
+    }
+}
+
+declare namespace $ {
+}
+
+declare namespace $ {
+
+	export class $mol_check_icon extends $mol_check {
+	}
+	
+}
+
+//# sourceMappingURL=icon.view.tree.d.ts.map
+declare namespace $ {
+    class $mol_state_time extends $mol_object {
+        static task(precision: number, reset?: null): $mol_after_timeout | $mol_after_frame;
+        static now(precision: number): number;
+    }
+}
+
+declare namespace $ {
+
+	export class $mol_svg extends $mol_view {
+		dom_name( ): string
+		dom_name_space( ): string
+		font_size( ): number
+		font_family( ): string
+		style_size( ): Record<string, any>
+	}
+	
+}
+
+//# sourceMappingURL=svg.view.tree.d.ts.map
+declare namespace $.$$ {
+    class $mol_svg extends $.$mol_svg {
+        computed_style(): Record<string, any>;
+        font_size(): number;
+        font_family(): any;
+    }
+}
+
+declare namespace $ {
+}
+
+declare namespace $ {
+
+	export class $mol_svg_root extends $mol_svg {
+		view_box( ): string
+		aspect( ): string
+		dom_name( ): string
+		attr( ): ({ 
+			'viewBox': ReturnType< $mol_svg_root['view_box'] >,
+			'preserveAspectRatio': ReturnType< $mol_svg_root['aspect'] >,
+		})  & ReturnType< $mol_svg['attr'] >
+	}
+	
+}
+
+//# sourceMappingURL=root.view.tree.d.ts.map
+declare namespace $ {
+
+	export class $mol_svg_path extends $mol_svg {
+		geometry( ): string
+		dom_name( ): string
+		attr( ): ({ 
+			'd': ReturnType< $mol_svg_path['geometry'] >,
+		})  & ReturnType< $mol_svg['attr'] >
+	}
+	
+}
+
+//# sourceMappingURL=path.view.tree.d.ts.map
+declare namespace $ {
+}
+
+declare namespace $ {
+
+	type $mol_svg_path__geometry_mol_icon_1 = $mol_type_enforce<
+		ReturnType< $mol_icon['path'] >
+		,
+		ReturnType< $mol_svg_path['geometry'] >
+	>
+	export class $mol_icon extends $mol_svg_root {
+		path( ): string
+		Path( ): $mol_svg_path
+		view_box( ): string
+		minimal_width( ): number
+		minimal_height( ): number
+		sub( ): readonly(any)[]
+	}
+	
+}
+
+//# sourceMappingURL=icon.view.tree.d.ts.map
+declare namespace $ {
+
+	export class $mol_icon_brightness_4 extends $mol_icon {
+		path( ): string
+	}
+	
+}
+
+//# sourceMappingURL=4.view.tree.d.ts.map
+declare namespace $ {
+    interface $mol_locale_dict {
+        [key: string]: string;
+    }
+    class $mol_locale extends $mol_object {
+        static lang_default(): string;
+        static lang(next?: string): string;
+        static source(lang: string): any;
+        static texts(lang: string, next?: $mol_locale_dict): $mol_locale_dict;
+        static text(key: string): string;
+        static warn(key: string): null;
+    }
+}
+
+declare namespace $ {
+
+	export class $mol_lights_toggle extends $mol_check_icon {
+		Lights_icon( ): $mol_icon_brightness_4
+		lights( next?: boolean ): boolean
+		Icon( ): ReturnType< $mol_lights_toggle['Lights_icon'] >
+		hint( ): string
+		checked( next?: ReturnType< $mol_lights_toggle['lights'] > ): ReturnType< $mol_lights_toggle['lights'] >
+	}
+	
+}
+
+//# sourceMappingURL=toggle.view.tree.d.ts.map
+declare namespace $.$$ {
+    class $mol_lights_toggle extends $.$mol_lights_toggle {
+        lights(next?: boolean): boolean;
+    }
+}
+
+declare namespace $ {
 
 	export class $mol_paragraph extends $mol_view {
 		line_height( ): number
@@ -2430,87 +2602,6 @@ declare namespace $ {
 }
 
 declare namespace $ {
-    class $mol_state_time extends $mol_object {
-        static task(precision: number, reset?: null): $mol_after_timeout | $mol_after_frame;
-        static now(precision: number): number;
-    }
-}
-
-declare namespace $ {
-
-	export class $mol_svg extends $mol_view {
-		dom_name( ): string
-		dom_name_space( ): string
-		font_size( ): number
-		font_family( ): string
-		style_size( ): Record<string, any>
-	}
-	
-}
-
-//# sourceMappingURL=svg.view.tree.d.ts.map
-declare namespace $.$$ {
-    class $mol_svg extends $.$mol_svg {
-        computed_style(): Record<string, any>;
-        font_size(): number;
-        font_family(): any;
-    }
-}
-
-declare namespace $ {
-}
-
-declare namespace $ {
-
-	export class $mol_svg_root extends $mol_svg {
-		view_box( ): string
-		aspect( ): string
-		dom_name( ): string
-		attr( ): ({ 
-			'viewBox': ReturnType< $mol_svg_root['view_box'] >,
-			'preserveAspectRatio': ReturnType< $mol_svg_root['aspect'] >,
-		})  & ReturnType< $mol_svg['attr'] >
-	}
-	
-}
-
-//# sourceMappingURL=root.view.tree.d.ts.map
-declare namespace $ {
-
-	export class $mol_svg_path extends $mol_svg {
-		geometry( ): string
-		dom_name( ): string
-		attr( ): ({ 
-			'd': ReturnType< $mol_svg_path['geometry'] >,
-		})  & ReturnType< $mol_svg['attr'] >
-	}
-	
-}
-
-//# sourceMappingURL=path.view.tree.d.ts.map
-declare namespace $ {
-}
-
-declare namespace $ {
-
-	type $mol_svg_path__geometry_mol_icon_1 = $mol_type_enforce<
-		ReturnType< $mol_icon['path'] >
-		,
-		ReturnType< $mol_svg_path['geometry'] >
-	>
-	export class $mol_icon extends $mol_svg_root {
-		path( ): string
-		Path( ): $mol_svg_path
-		view_box( ): string
-		minimal_width( ): number
-		minimal_height( ): number
-		sub( ): readonly(any)[]
-	}
-	
-}
-
-//# sourceMappingURL=icon.view.tree.d.ts.map
-declare namespace $ {
 
 	export class $mol_icon_clipboard extends $mol_icon {
 		path( ): string
@@ -2571,20 +2662,6 @@ declare namespace $.$$ {
         html(): string;
         attachments(): ClipboardItem[];
         click(event?: Event): void;
-    }
-}
-
-declare namespace $ {
-    interface $mol_locale_dict {
-        [key: string]: string;
-    }
-    class $mol_locale extends $mol_object {
-        static lang_default(): string;
-        static lang(next?: string): string;
-        static source(lang: string): any;
-        static texts(lang: string, next?: $mol_locale_dict): $mol_locale_dict;
-        static text(key: string): string;
-        static warn(key: string): null;
     }
 }
 
@@ -2724,44 +2801,6 @@ declare namespace $ {
 }
 
 //# sourceMappingURL=float.view.tree.d.ts.map
-declare namespace $ {
-}
-
-declare namespace $ {
-
-	type $mol_view__sub_mol_check_1 = $mol_type_enforce<
-		readonly(any)[]
-		,
-		ReturnType< $mol_view['sub'] >
-	>
-	export class $mol_check extends $mol_button_minor {
-		checked( next?: boolean ): boolean
-		aria_checked( ): string
-		aria_role( ): string
-		Icon( ): any
-		title( ): string
-		Title( ): $mol_view
-		label( ): readonly(any)[]
-		attr( ): ({ 
-			'mol_check_checked': ReturnType< $mol_check['checked'] >,
-			'aria-checked': ReturnType< $mol_check['aria_checked'] >,
-			'role': ReturnType< $mol_check['aria_role'] >,
-		})  & ReturnType< $mol_button_minor['attr'] >
-		sub( ): readonly($mol_view_content)[]
-	}
-	
-}
-
-//# sourceMappingURL=check.view.tree.d.ts.map
-declare namespace $.$$ {
-    class $mol_check extends $.$mol_check {
-        click(next?: Event): void;
-        sub(): readonly $mol_view_content[];
-        label(): readonly any[];
-        aria_checked(): string;
-    }
-}
-
 declare namespace $ {
 
 	export class $mol_icon_chevron extends $mol_icon {
@@ -4459,6 +4498,7 @@ declare namespace $ {
 		Copy( ): $mol_button_minor
 		reset( next?: any ): any
 		Reset( ): $mol_button_minor
+		Toggle( ): $mol_lights_toggle
 		Controls_title_text( ): $mol_dimmer
 		Controls_title( ): $mol_view
 		Backgrounds_title_text( ): $mol_dimmer

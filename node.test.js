@@ -5644,6 +5644,390 @@ var $;
 "use strict";
 
 ;
+	($.$mol_check) = class $mol_check extends ($.$mol_button_minor) {
+		checked(next){
+			if(next !== undefined) return next;
+			return false;
+		}
+		aria_checked(){
+			return "false";
+		}
+		aria_role(){
+			return "checkbox";
+		}
+		Icon(){
+			return null;
+		}
+		title(){
+			return "";
+		}
+		Title(){
+			const obj = new this.$.$mol_view();
+			(obj.sub) = () => ([(this.title())]);
+			return obj;
+		}
+		label(){
+			return [(this.Title())];
+		}
+		attr(){
+			return {
+				...(super.attr()), 
+				"mol_check_checked": (this.checked()), 
+				"aria-checked": (this.aria_checked()), 
+				"role": (this.aria_role())
+			};
+		}
+		sub(){
+			return [(this.Icon()), (this.label())];
+		}
+	};
+	($mol_mem(($.$mol_check.prototype), "checked"));
+	($mol_mem(($.$mol_check.prototype), "Title"));
+
+
+;
+"use strict";
+var $;
+(function ($) {
+    $mol_style_attach("mol/check/check.css", "[mol_check] {\n\tflex: 0 0 auto;\n\tjustify-content: flex-start;\n\talign-content: center;\n\t/* align-items: flex-start; */\n\tborder: none;\n\tfont-weight: inherit;\n\tbox-shadow: none;\n\ttext-align: left;\n\tdisplay: inline-flex;\n\tflex-wrap: nowrap;\n}\n\n[mol_check_title] {\n\tflex-shrink: 1;\n}\n");
+})($ || ($ = {}));
+
+;
+"use strict";
+
+;
+"use strict";
+var $;
+(function ($) {
+    var $$;
+    (function ($$) {
+        class $mol_check extends $.$mol_check {
+            click(next) {
+                if (next?.defaultPrevented)
+                    return;
+                this.checked(!this.checked());
+                if (next)
+                    next.preventDefault();
+            }
+            sub() {
+                return [
+                    ...$mol_maybe(this.Icon()),
+                    ...this.label(),
+                ];
+            }
+            label() {
+                return this.title() ? super.label() : [];
+            }
+            aria_checked() {
+                return String(this.checked());
+            }
+        }
+        $$.$mol_check = $mol_check;
+    })($$ = $.$$ || ($.$$ = {}));
+})($ || ($ = {}));
+
+;
+	($.$mol_check_icon) = class $mol_check_icon extends ($.$mol_check) {};
+
+
+;
+"use strict";
+var $;
+(function ($) {
+    $mol_style_attach("mol/check/icon/icon.view.css", "[mol_check_icon]:where([mol_check_checked]) {\n\tcolor: var(--mol_theme_current);\n}\n");
+})($ || ($ = {}));
+
+;
+"use strict";
+
+;
+	($.$mol_svg) = class $mol_svg extends ($.$mol_view) {
+		dom_name(){
+			return "svg";
+		}
+		dom_name_space(){
+			return "http://www.w3.org/2000/svg";
+		}
+		font_size(){
+			return 16;
+		}
+		font_family(){
+			return "";
+		}
+		style_size(){
+			return {};
+		}
+	};
+
+
+;
+"use strict";
+var $;
+(function ($) {
+    class $mol_state_time extends $mol_object {
+        static task(precision, reset) {
+            if (precision) {
+                return new $mol_after_timeout(precision, () => this.task(precision, null));
+            }
+            else {
+                return new $mol_after_frame(() => this.task(precision, null));
+            }
+        }
+        static now(precision) {
+            this.task(precision);
+            return Date.now();
+        }
+    }
+    __decorate([
+        $mol_mem_key
+    ], $mol_state_time, "task", null);
+    __decorate([
+        $mol_mem_key
+    ], $mol_state_time, "now", null);
+    $.$mol_state_time = $mol_state_time;
+})($ || ($ = {}));
+
+;
+"use strict";
+
+;
+"use strict";
+var $;
+(function ($) {
+    var $$;
+    (function ($$) {
+        class $mol_svg extends $.$mol_svg {
+            computed_style() {
+                const win = this.$.$mol_dom_context;
+                const style = win.getComputedStyle(this.dom_node());
+                if (!style['font-size'])
+                    $mol_state_time.now(0);
+                return style;
+            }
+            font_size() {
+                return parseInt(this.computed_style()['font-size']) || 16;
+            }
+            font_family() {
+                return this.computed_style()['font-family'];
+            }
+        }
+        __decorate([
+            $mol_mem
+        ], $mol_svg.prototype, "computed_style", null);
+        __decorate([
+            $mol_mem
+        ], $mol_svg.prototype, "font_size", null);
+        __decorate([
+            $mol_mem
+        ], $mol_svg.prototype, "font_family", null);
+        $$.$mol_svg = $mol_svg;
+    })($$ = $.$$ || ($.$$ = {}));
+})($ || ($ = {}));
+
+;
+	($.$mol_svg_root) = class $mol_svg_root extends ($.$mol_svg) {
+		view_box(){
+			return "0 0 100 100";
+		}
+		aspect(){
+			return "xMidYMid";
+		}
+		dom_name(){
+			return "svg";
+		}
+		attr(){
+			return {
+				...(super.attr()), 
+				"viewBox": (this.view_box()), 
+				"preserveAspectRatio": (this.aspect())
+			};
+		}
+	};
+
+
+;
+"use strict";
+var $;
+(function ($) {
+    $mol_style_attach("mol/svg/root/root.view.css", "[mol_svg_root] {\n\toverflow: hidden;\n}\n");
+})($ || ($ = {}));
+
+;
+"use strict";
+
+;
+	($.$mol_svg_path) = class $mol_svg_path extends ($.$mol_svg) {
+		geometry(){
+			return "";
+		}
+		dom_name(){
+			return "path";
+		}
+		attr(){
+			return {...(super.attr()), "d": (this.geometry())};
+		}
+	};
+
+
+;
+"use strict";
+
+;
+	($.$mol_icon) = class $mol_icon extends ($.$mol_svg_root) {
+		path(){
+			return "";
+		}
+		Path(){
+			const obj = new this.$.$mol_svg_path();
+			(obj.geometry) = () => ((this.path()));
+			return obj;
+		}
+		view_box(){
+			return "0 0 24 24";
+		}
+		minimal_width(){
+			return 16;
+		}
+		minimal_height(){
+			return 16;
+		}
+		sub(){
+			return [(this.Path())];
+		}
+	};
+	($mol_mem(($.$mol_icon.prototype), "Path"));
+
+
+;
+"use strict";
+var $;
+(function ($) {
+    $mol_style_attach("mol/icon/icon.view.css", "[mol_icon] {\n\tfill: currentColor;\n\tstroke: none;\n\twidth: 1em;\n\theight: 1.5em;\n\tflex: 0 0 auto;\n\tvertical-align: top;\n\tdisplay: inline-block;\n\tfilter: drop-shadow(0px 1px 1px var(--mol_theme_back));\n\ttransform-origin: center;\n}\n\n[mol_icon_path] {\n\ttransform-origin: center;\n}\n");
+})($ || ($ = {}));
+
+;
+"use strict";
+
+;
+	($.$mol_icon_brightness_4) = class $mol_icon_brightness_4 extends ($.$mol_icon) {
+		path(){
+			return "M12,18C11.11,18 10.26,17.8 9.5,17.45C11.56,16.5 13,14.42 13,12C13,9.58 11.56,7.5 9.5,6.55C10.26,6.2 11.11,6 12,6A6,6 0 0,1 18,12A6,6 0 0,1 12,18M20,8.69V4H15.31L12,0.69L8.69,4H4V8.69L0.69,12L4,15.31V20H8.69L12,23.31L15.31,20H20V15.31L23.31,12L20,8.69Z";
+		}
+	};
+
+
+;
+"use strict";
+
+;
+"use strict";
+var $;
+(function ($) {
+    class $mol_locale extends $mol_object {
+        static lang_default() {
+            return 'en';
+        }
+        static lang(next) {
+            return this.$.$mol_state_local.value('locale', next) || $mol_dom_context.navigator.language.replace(/-.*/, '') || this.lang_default();
+        }
+        static source(lang) {
+            return JSON.parse(this.$.$mol_file.relative(`web.locale=${lang}.json`).text().toString());
+        }
+        static texts(lang, next) {
+            if (next)
+                return next;
+            try {
+                return this.source(lang).valueOf();
+            }
+            catch (error) {
+                if ($mol_fail_catch(error)) {
+                    const def = this.lang_default();
+                    if (lang === def)
+                        throw error;
+                }
+            }
+            return {};
+        }
+        static text(key) {
+            const lang = this.lang();
+            const target = this.texts(lang)[key];
+            if (target)
+                return target;
+            this.warn(key);
+            const en = this.texts('en')[key];
+            if (!en)
+                return key;
+            return en;
+        }
+        static warn(key) {
+            console.warn(`Not translated to "${this.lang()}": ${key}`);
+            return null;
+        }
+    }
+    __decorate([
+        $mol_mem
+    ], $mol_locale, "lang_default", null);
+    __decorate([
+        $mol_mem
+    ], $mol_locale, "lang", null);
+    __decorate([
+        $mol_mem_key
+    ], $mol_locale, "source", null);
+    __decorate([
+        $mol_mem_key
+    ], $mol_locale, "texts", null);
+    __decorate([
+        $mol_mem_key
+    ], $mol_locale, "text", null);
+    __decorate([
+        $mol_mem_key
+    ], $mol_locale, "warn", null);
+    $.$mol_locale = $mol_locale;
+})($ || ($ = {}));
+
+;
+	($.$mol_lights_toggle) = class $mol_lights_toggle extends ($.$mol_check_icon) {
+		Lights_icon(){
+			const obj = new this.$.$mol_icon_brightness_4();
+			return obj;
+		}
+		lights(next){
+			if(next !== undefined) return next;
+			return false;
+		}
+		Icon(){
+			return (this.Lights_icon());
+		}
+		hint(){
+			return (this.$.$mol_locale.text("$mol_lights_toggle_hint"));
+		}
+		checked(next){
+			return (this.lights(next));
+		}
+	};
+	($mol_mem(($.$mol_lights_toggle.prototype), "Lights_icon"));
+	($mol_mem(($.$mol_lights_toggle.prototype), "lights"));
+
+
+;
+"use strict";
+
+;
+"use strict";
+var $;
+(function ($) {
+    var $$;
+    (function ($$) {
+        class $mol_lights_toggle extends $.$mol_lights_toggle {
+            lights(next) {
+                return this.$.$mol_lights(next);
+            }
+        }
+        $$.$mol_lights_toggle = $mol_lights_toggle;
+    })($$ = $.$$ || ($.$$ = {}));
+})($ || ($ = {}));
+
+;
 	($.$mol_paragraph) = class $mol_paragraph extends ($.$mol_view) {
 		line_height(){
 			return 24;
@@ -7337,174 +7721,6 @@ var $;
 })($ || ($ = {}));
 
 ;
-	($.$mol_svg) = class $mol_svg extends ($.$mol_view) {
-		dom_name(){
-			return "svg";
-		}
-		dom_name_space(){
-			return "http://www.w3.org/2000/svg";
-		}
-		font_size(){
-			return 16;
-		}
-		font_family(){
-			return "";
-		}
-		style_size(){
-			return {};
-		}
-	};
-
-
-;
-"use strict";
-var $;
-(function ($) {
-    class $mol_state_time extends $mol_object {
-        static task(precision, reset) {
-            if (precision) {
-                return new $mol_after_timeout(precision, () => this.task(precision, null));
-            }
-            else {
-                return new $mol_after_frame(() => this.task(precision, null));
-            }
-        }
-        static now(precision) {
-            this.task(precision);
-            return Date.now();
-        }
-    }
-    __decorate([
-        $mol_mem_key
-    ], $mol_state_time, "task", null);
-    __decorate([
-        $mol_mem_key
-    ], $mol_state_time, "now", null);
-    $.$mol_state_time = $mol_state_time;
-})($ || ($ = {}));
-
-;
-"use strict";
-
-;
-"use strict";
-var $;
-(function ($) {
-    var $$;
-    (function ($$) {
-        class $mol_svg extends $.$mol_svg {
-            computed_style() {
-                const win = this.$.$mol_dom_context;
-                const style = win.getComputedStyle(this.dom_node());
-                if (!style['font-size'])
-                    $mol_state_time.now(0);
-                return style;
-            }
-            font_size() {
-                return parseInt(this.computed_style()['font-size']) || 16;
-            }
-            font_family() {
-                return this.computed_style()['font-family'];
-            }
-        }
-        __decorate([
-            $mol_mem
-        ], $mol_svg.prototype, "computed_style", null);
-        __decorate([
-            $mol_mem
-        ], $mol_svg.prototype, "font_size", null);
-        __decorate([
-            $mol_mem
-        ], $mol_svg.prototype, "font_family", null);
-        $$.$mol_svg = $mol_svg;
-    })($$ = $.$$ || ($.$$ = {}));
-})($ || ($ = {}));
-
-;
-	($.$mol_svg_root) = class $mol_svg_root extends ($.$mol_svg) {
-		view_box(){
-			return "0 0 100 100";
-		}
-		aspect(){
-			return "xMidYMid";
-		}
-		dom_name(){
-			return "svg";
-		}
-		attr(){
-			return {
-				...(super.attr()), 
-				"viewBox": (this.view_box()), 
-				"preserveAspectRatio": (this.aspect())
-			};
-		}
-	};
-
-
-;
-"use strict";
-var $;
-(function ($) {
-    $mol_style_attach("mol/svg/root/root.view.css", "[mol_svg_root] {\n\toverflow: hidden;\n}\n");
-})($ || ($ = {}));
-
-;
-"use strict";
-
-;
-	($.$mol_svg_path) = class $mol_svg_path extends ($.$mol_svg) {
-		geometry(){
-			return "";
-		}
-		dom_name(){
-			return "path";
-		}
-		attr(){
-			return {...(super.attr()), "d": (this.geometry())};
-		}
-	};
-
-
-;
-"use strict";
-
-;
-	($.$mol_icon) = class $mol_icon extends ($.$mol_svg_root) {
-		path(){
-			return "";
-		}
-		Path(){
-			const obj = new this.$.$mol_svg_path();
-			(obj.geometry) = () => ((this.path()));
-			return obj;
-		}
-		view_box(){
-			return "0 0 24 24";
-		}
-		minimal_width(){
-			return 16;
-		}
-		minimal_height(){
-			return 16;
-		}
-		sub(){
-			return [(this.Path())];
-		}
-	};
-	($mol_mem(($.$mol_icon.prototype), "Path"));
-
-
-;
-"use strict";
-var $;
-(function ($) {
-    $mol_style_attach("mol/icon/icon.view.css", "[mol_icon] {\n\tfill: currentColor;\n\tstroke: none;\n\twidth: 1em;\n\theight: 1.5em;\n\tflex: 0 0 auto;\n\tvertical-align: top;\n\tdisplay: inline-block;\n\tfilter: drop-shadow(0px 1px 1px var(--mol_theme_back));\n\ttransform-origin: center;\n}\n\n[mol_icon_path] {\n\ttransform-origin: center;\n}\n");
-})($ || ($ = {}));
-
-;
-"use strict";
-
-;
 	($.$mol_icon_clipboard) = class $mol_icon_clipboard extends ($.$mol_icon) {
 		path(){
 			return "M19,3H14.82C14.4,1.84 13.3,1 12,1C10.7,1 9.6,1.84 9.18,3H5A2,2 0 0,0 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5A2,2 0 0,0 19,3M12,3A1,1 0 0,1 13,4A1,1 0 0,1 12,5A1,1 0 0,1 11,4A1,1 0 0,1 12,3";
@@ -7618,72 +7834,6 @@ var $;
         ], $mol_button_copy.prototype, "attachments", null);
         $$.$mol_button_copy = $mol_button_copy;
     })($$ = $.$$ || ($.$$ = {}));
-})($ || ($ = {}));
-
-;
-"use strict";
-var $;
-(function ($) {
-    class $mol_locale extends $mol_object {
-        static lang_default() {
-            return 'en';
-        }
-        static lang(next) {
-            return this.$.$mol_state_local.value('locale', next) || $mol_dom_context.navigator.language.replace(/-.*/, '') || this.lang_default();
-        }
-        static source(lang) {
-            return JSON.parse(this.$.$mol_file.relative(`web.locale=${lang}.json`).text().toString());
-        }
-        static texts(lang, next) {
-            if (next)
-                return next;
-            try {
-                return this.source(lang).valueOf();
-            }
-            catch (error) {
-                if ($mol_fail_catch(error)) {
-                    const def = this.lang_default();
-                    if (lang === def)
-                        throw error;
-                }
-            }
-            return {};
-        }
-        static text(key) {
-            const lang = this.lang();
-            const target = this.texts(lang)[key];
-            if (target)
-                return target;
-            this.warn(key);
-            const en = this.texts('en')[key];
-            if (!en)
-                return key;
-            return en;
-        }
-        static warn(key) {
-            console.warn(`Not translated to "${this.lang()}": ${key}`);
-            return null;
-        }
-    }
-    __decorate([
-        $mol_mem
-    ], $mol_locale, "lang_default", null);
-    __decorate([
-        $mol_mem
-    ], $mol_locale, "lang", null);
-    __decorate([
-        $mol_mem_key
-    ], $mol_locale, "source", null);
-    __decorate([
-        $mol_mem_key
-    ], $mol_locale, "texts", null);
-    __decorate([
-        $mol_mem_key
-    ], $mol_locale, "text", null);
-    __decorate([
-        $mol_mem_key
-    ], $mol_locale, "warn", null);
-    $.$mol_locale = $mol_locale;
 })($ || ($ = {}));
 
 ;
@@ -7914,89 +8064,6 @@ var $;
 
 ;
 "use strict";
-
-;
-	($.$mol_check) = class $mol_check extends ($.$mol_button_minor) {
-		checked(next){
-			if(next !== undefined) return next;
-			return false;
-		}
-		aria_checked(){
-			return "false";
-		}
-		aria_role(){
-			return "checkbox";
-		}
-		Icon(){
-			return null;
-		}
-		title(){
-			return "";
-		}
-		Title(){
-			const obj = new this.$.$mol_view();
-			(obj.sub) = () => ([(this.title())]);
-			return obj;
-		}
-		label(){
-			return [(this.Title())];
-		}
-		attr(){
-			return {
-				...(super.attr()), 
-				"mol_check_checked": (this.checked()), 
-				"aria-checked": (this.aria_checked()), 
-				"role": (this.aria_role())
-			};
-		}
-		sub(){
-			return [(this.Icon()), (this.label())];
-		}
-	};
-	($mol_mem(($.$mol_check.prototype), "checked"));
-	($mol_mem(($.$mol_check.prototype), "Title"));
-
-
-;
-"use strict";
-var $;
-(function ($) {
-    $mol_style_attach("mol/check/check.css", "[mol_check] {\n\tflex: 0 0 auto;\n\tjustify-content: flex-start;\n\talign-content: center;\n\t/* align-items: flex-start; */\n\tborder: none;\n\tfont-weight: inherit;\n\tbox-shadow: none;\n\ttext-align: left;\n\tdisplay: inline-flex;\n\tflex-wrap: nowrap;\n}\n\n[mol_check_title] {\n\tflex-shrink: 1;\n}\n");
-})($ || ($ = {}));
-
-;
-"use strict";
-
-;
-"use strict";
-var $;
-(function ($) {
-    var $$;
-    (function ($$) {
-        class $mol_check extends $.$mol_check {
-            click(next) {
-                if (next?.defaultPrevented)
-                    return;
-                this.checked(!this.checked());
-                if (next)
-                    next.preventDefault();
-            }
-            sub() {
-                return [
-                    ...$mol_maybe(this.Icon()),
-                    ...this.label(),
-                ];
-            }
-            label() {
-                return this.title() ? super.label() : [];
-            }
-            aria_checked() {
-                return String(this.checked());
-            }
-        }
-        $$.$mol_check = $mol_check;
-    })($$ = $.$$ || ($.$$ = {}));
-})($ || ($ = {}));
 
 ;
 	($.$mol_icon_chevron) = class $mol_icon_chevron extends ($.$mol_icon) {
@@ -10599,6 +10666,10 @@ var $;
 			(obj.click) = (next) => ((this.reset(next)));
 			return obj;
 		}
+		Toggle(){
+			const obj = new this.$.$mol_lights_toggle();
+			return obj;
+		}
 		Controls_title_text(){
 			const obj = new this.$.$mol_dimmer();
 			(obj.haystack) = () => ("Theme Settings");
@@ -10893,7 +10964,8 @@ var $;
 			return [
 				(this.Export()), 
 				(this.Copy()), 
-				(this.Reset())
+				(this.Reset()), 
+				(this.Toggle())
 			];
 		}
 		body(){
@@ -10907,6 +10979,7 @@ var $;
 	($mol_mem(($.$ds_themer.prototype), "Copy"));
 	($mol_mem(($.$ds_themer.prototype), "reset"));
 	($mol_mem(($.$ds_themer.prototype), "Reset"));
+	($mol_mem(($.$ds_themer.prototype), "Toggle"));
 	($mol_mem(($.$ds_themer.prototype), "Controls_title_text"));
 	($mol_mem(($.$ds_themer.prototype), "Controls_title"));
 	($mol_mem(($.$ds_themer.prototype), "Backgrounds_title_text"));
@@ -14941,6 +15014,27 @@ var $;
 
 ;
 "use strict";
+var $;
+(function ($_1) {
+    $mol_test_mocks.push($ => {
+        class $mol_locale_mock extends $mol_locale {
+            lang(next = 'en') { return next; }
+            static source(lang) {
+                return {};
+            }
+        }
+        __decorate([
+            $mol_mem
+        ], $mol_locale_mock.prototype, "lang", null);
+        __decorate([
+            $mol_mem_key
+        ], $mol_locale_mock, "source", null);
+        $.$mol_locale = $mol_locale_mock;
+    });
+})($ || ($ = {}));
+
+;
+"use strict";
 
 ;
 "use strict";
@@ -15309,27 +15403,6 @@ var $;
                 ['table', '| Cell11 | Cell12\n| Cell21 | Cell22\n', ['| Cell11 | Cell12\n| Cell21 | Cell22\n', ''], 68],
             ]);
         },
-    });
-})($ || ($ = {}));
-
-;
-"use strict";
-var $;
-(function ($_1) {
-    $mol_test_mocks.push($ => {
-        class $mol_locale_mock extends $mol_locale {
-            lang(next = 'en') { return next; }
-            static source(lang) {
-                return {};
-            }
-        }
-        __decorate([
-            $mol_mem
-        ], $mol_locale_mock.prototype, "lang", null);
-        __decorate([
-            $mol_mem_key
-        ], $mol_locale_mock, "source", null);
-        $.$mol_locale = $mol_locale_mock;
     });
 })($ || ($ = {}));
 
