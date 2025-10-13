@@ -7,6 +7,6 @@ $ds_app $ds_app_navbar
 			spread_id \sdfsdf
 		components <= Components_page $ds_app_page_components
 		design <= Design_page $ds_app_page_design
-		icons <= Icons_page $ds_app_page_icons
+		- icons <= Icons_page $ds_app_page_icons
 		themer <= Themer_page $ds_app_page_themer
 		icons <= Icons $mol_icon_demo

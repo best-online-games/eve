@@ -52,20 +52,20 @@ namespace $.$$ {
 
 		// ===============================
 
-
-
 		// Возможно в выгрузке тогда и мапки с дефолтами надо будет делать
 	override attr() {
+		const fqnPrefix = 'ds_surface_';
+
 		const attrs: Record<string, any> = {
 			...super.attr(),
-			'ds_surface_color': this.colors(),
-			'ds_surface_interactive': this.interactive(),
-			'ds_surface_size': this.size(),
+			[`${fqnPrefix}color`]: this.colors(),
+			[`${fqnPrefix}interactive`]: this.interactive(),
+			[`${fqnPrefix}size`]: this.size(),
 		}
 		
 		// Опционально: добавляем state если он установлен
 		const state = (this as any)._state
-		if (state) attrs['ds_surface_state'] = state
+		if (state) attrs[`${fqnPrefix}state`] = state
 		
 		return attrs
 	}
