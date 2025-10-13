@@ -1,5 +1,5 @@
 $ds_themer $mol_page
-	title \DS Themer
+	title \$MOL UI
 	plugins /
 		<= Theme $mol_theme_auto
 	tools /
