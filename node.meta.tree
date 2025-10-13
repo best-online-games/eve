@@ -15,10 +15,3 @@
 	pack rise git \https://github.com/stan-donarise/mam_rise.git
 	pack yuf git \https://github.com/zerkalica/yuf.git
 	pack apxu git \https://github.com/ApxuTechTop/apxu
-\/mol
-	pack icon git \https://github.com/nin-jin/mol_icon.git
-\/mol/view
-	include \/mol/view/tree/test
-\/ds/themer
-	include \/mol/offline/install
-	deploy \/ds/assets/*
