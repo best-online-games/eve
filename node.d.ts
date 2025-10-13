@@ -1674,15 +1674,8 @@ declare namespace $ {
 declare namespace $ {
 
 	export class $mol_speck extends $mol_view {
-		theme( ): string
 		value( ): any
-		minimal_width( ): number
-		attr( ): ({ 
-			'mol_theme': ReturnType< $mol_speck['theme'] >,
-		})  & ReturnType< $mol_view['attr'] >
-		style( ): ({ 
-			'minHeight': string,
-		})  & ReturnType< $mol_view['style'] >
+		theme( ): string
 		sub( ): readonly(any)[]
 	}
 	
@@ -5846,6 +5839,13 @@ declare namespace $.$$ {
     class $ds_themer_page_media extends $.$ds_themer_page_media {
         spread_title(id: string): string;
     }
+}
+
+declare namespace $ {
+    function $mol_offline(): void;
+}
+
+declare namespace $ {
 }
 
 declare namespace $ {
