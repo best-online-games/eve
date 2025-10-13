@@ -30,5 +30,10 @@ namespace $.$$ {
 			const spreads = this.spreads() as Record<string, $mol_view>
 			return spreads[id] ?? null
 		}
+
+		@$mol_mem_key
+		Menu_link_title(id: string) {
+			return id
+		}
 	}
 }
