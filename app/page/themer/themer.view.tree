@@ -1,0 +1,4 @@
+$ds_themer_page_themer $mol_book2_catalog
+	pages /
+		<= Menu $mol_page
+			body <= menu_body /$ds_surface

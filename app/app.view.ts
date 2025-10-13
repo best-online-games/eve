@@ -1,5 +1,5 @@
 namespace $.$$ {
-	export class $ds_themer extends $.$ds_themer {
+	export class $ds_app extends $.$ds_app {
 		@$mol_mem
 		page() {
 			return this.$.$mol_state_arg.value('page') || 'themer'

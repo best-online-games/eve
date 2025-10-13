@@ -1,4 +1,4 @@
-$ds_themer $mol_page
+$ds_app $mol_page
 	title \$MOL UI
 	plugins /
 		<= Theme $mol_theme_auto
