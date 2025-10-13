@@ -30,19 +30,6 @@ namespace $.$$ {
 		Page_themer() {
 			const page = new this.$.$ds_themer_page_themer()
 
-			// Bind color properties
-			page.color_back = (next?: string) => this.color_back(next)
-			page.color_card = (next?: string) => this.color_card(next)
-			page.color_field = (next?: string) => this.color_field(next)
-			page.color_hover = (next?: string) => this.color_hover(next)
-			page.color_text = (next?: string) => this.color_text(next)
-			page.color_shade = (next?: string) => this.color_shade(next)
-			page.color_line = (next?: string) => this.color_line(next)
-			page.color_focus = (next?: string) => this.color_focus(next)
-			page.color_control = (next?: string) => this.color_control(next)
-			page.color_current = (next?: string) => this.color_current(next)
-			page.color_special = (next?: string) => this.color_special(next)
-
 			return page
 		}
 

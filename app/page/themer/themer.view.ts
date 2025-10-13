@@ -1,5 +1,5 @@
 namespace $.$$ {
-	export class $ds_themer_page_themer extends $.$ds_themer_page_themer {
+	export class $ds_app_page_themer extends $.$ds_app_page_themer {
 		@$mol_mem_key
 		spread_title(id: string) {
 			const titles: Record<string, string> = {

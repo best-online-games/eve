@@ -1,14 +1,13 @@
 namespace $.$$ {
-	
-	export class $ds_themer_page_components extends $.$ds_themer_page_components {
+	export class $ds_app_page_components extends $.$ds_app_page_components {
 		@$mol_mem_key
 		spread_title(id: string) {
 			const titles: Record<string, string> = {
-				'buttons': 'Buttons',
-				'inputs': 'Inputs',
-				'cards': 'Cards',
-				'tables': 'Tables',
-				'surfaces': 'Surfaces'
+				buttons: 'Buttons',
+				inputs: 'Inputs',
+				cards: 'Cards',
+				tables: 'Tables',
+				surfaces: 'Surfaces',
 			}
 			return titles[id] || id
 		}
@@ -22,17 +21,14 @@ namespace $.$$ {
 		// Колонки в строке - все цвета для данного размера
 		@$mol_mem_key
 		size_surfaces(size: string) {
-			return $ds_surface.COLORS.map(color => 
-				(this as any).Surface_cell(`${color}__${size}`)
-			)
+			return $ds_surface.COLORS.map(color => (this as any).Surface_cell(`${color}__${size}`))
 		}
 
 		@$mol_mem_key
 		surface_color(id: string) {
-			
 			return id.split('__')[0]
 		}
-		
+
 		@$mol_mem_key
 		surface_interactive(id: string) {
 			return id.split('__')[1]

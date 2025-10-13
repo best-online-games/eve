@@ -1,4 +1,4 @@
-$ds_themer_page_placeholder $mol_page
+$ds_app_page_placeholder $mol_page
 	title <= page_title \
 	body /
 		<= Placeholder_text $mol_text

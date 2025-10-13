@@ -1,7 +1,7 @@
 namespace $.$$ {
 	const { rem, px } = $mol_style_unit
 
-	$mol_style_define($ds_themer_color, {
+	$mol_style_define($ds_app_color, {
 		display: 'flex',
 		flex: {
 			direction: 'row',

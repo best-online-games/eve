@@ -1,4 +1,4 @@
-$ds_themer_color $mol_view
+$ds_app_color $mol_view
 	value? \
 	attr *
 		^
