@@ -1,13 +1,10 @@
-$ds_app $mol_book2_catalog
+$ds_app $ds_app_switcher
 	plugins /
 		<= Theme $mol_theme_auto
+	title \$MOL UI
 	spreads *
 		libraries <= Libraries_page $ds_app_page_libraries
 		components <= Components_page $ds_app_page_components
 		design <= Design_page $ds_app_page_design
 		icons <= Icons_page $ds_app_page_icons
 		themer <= Themer_page $ds_app_page_themer
-	Navbar $mol_page
-		title \$MOL UI
-		tools /
-			^ menu_links

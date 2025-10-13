@@ -1,0 +1,12 @@
+$ds_app_switcher $mol_page
+	param \page
+	spread \
+	spreads *
+	tools /
+		<= Menu_link* $mol_link
+			arg <= menu_link_arg* *
+				page <= spread_id* \
+			sub /
+				<= Menu_link_title* \
+	body /
+		<= Page_current $mol_view
