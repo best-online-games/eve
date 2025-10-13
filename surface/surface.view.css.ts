@@ -3,6 +3,7 @@ namespace $.$$ {
 	const { rem, px } = $mol_style_unit
 
 
+	// потом поправим, автоматизируем
 	const colors = {
 		primary: {
 			enabled: 'oklch(70% 0.15 145deg)' as any,
