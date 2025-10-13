@@ -4,18 +4,16 @@ $ds_app_page_components $mol_page
 	body /
 		<= Nav_menu $mol_book2_catalog
 			spreads *
-				surfaces <= Surfaces $mol_page
+				surfaces <= Surfaces $ds_app_page_components_sb_page
 					title \Surfaces
 					body /
 						<= Surfaces_content $mol_text
 							text \Surfaces page - Coming soon...
-				flex <= Flex $mol_page
-					title \Flex
-					body /
-						<= Flex_content $mol_text
-							text \Flex page - Coming soon...
-				buttons <= Buttons $mol_page
+				flex <= Flex $ds_app_page_components_flex
+				buttons <= Buttons $ds_app_page_components_sb_page
 					title \Buttons
 					body /
 						<= Buttons_content $mol_text
 							text \Buttons page - Coming soon...
+			- без понятия опять же, что это за компонент Placeholder и зачем он там нужен - 0 шансов и желания разбираться
+			Placeholder null

@@ -21,7 +21,7 @@ namespace $.$$ {
 
 		@$mol_mem_key
 		menu_link_arg(id: string) {
-			return { [this.param()]: id }
+			return { page: id }
 		}
 
 		@$mol_mem
