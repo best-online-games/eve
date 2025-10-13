@@ -1,6 +1,0 @@
-$ds_app_page_icons $mol_page
-	title \Icons
-	Head null
-	body /
-		<= Content $mol_text
-			text \Icons page - Coming soon...
