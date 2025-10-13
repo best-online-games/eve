@@ -5717,11 +5717,8 @@ declare namespace $.$$ {
         static readonly STATE_MODIFIERS: readonly ["enabled", "hover", "pressed", "disabled", "loading"];
         static readonly COLORS: readonly ["primary", "secondary", "tertiary", "danger", "warning", "success", "info", "lowest", "low", "medium", "high", "highest"];
         static readonly SIZES: readonly ["xs", "sm", "md", "lg", "xl"];
-        attr(): {
-            ds_surface_color: "primary" | "secondary" | "tertiary" | "danger" | "warning" | "success" | "info" | "lowest" | "low" | "medium" | "high" | "highest";
-            ds_surface_interactive: boolean;
-            ds_surface_size: "xs" | "sm" | "md" | "lg" | "xl";
-        };
+        attr(): Record<string, any>;
+        state(value?: $ds_surface_state_modifiers): any;
         colors(next?: $ds_surface_colors): $ds_surface_colors;
         interactive(next?: boolean): boolean;
         size(next?: $ds_surface_sizes): $ds_surface_sizes;
@@ -5733,8 +5730,45 @@ declare namespace $.$$ {
 
 declare namespace $ {
 
+	type $mol_view__sub_ds_themer_page_components_1 = $mol_type_enforce<
+		ReturnType< $ds_themer_page_components['grid_cells'] >
+		,
+		ReturnType< $mol_view['sub'] >
+	>
+	type $mol_page__title_ds_themer_page_components_2 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_page['title'] >
+	>
+	type $mol_page__body_ds_themer_page_components_3 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_page['body'] >
+	>
+	type $mol_paragraph__title_ds_themer_page_components_4 = $mol_type_enforce<
+		ReturnType< $ds_themer_page_components['grid_header_text'] >
+		,
+		ReturnType< $mol_paragraph['title'] >
+	>
+	type $mol_paragraph__title_ds_themer_page_components_5 = $mol_type_enforce<
+		ReturnType< $ds_themer_page_components['grid_row_text'] >
+		,
+		ReturnType< $mol_paragraph['title'] >
+	>
 	export class $ds_themer_page_components extends $mol_book2_catalog {
+		grid_cells( ): readonly(any)[]
+		Showcase_grid( ): $mol_view
+		Spread_surfaces( ): $mol_page
+		grid_header_text( id: any): string
+		grid_row_text( id: any): string
 		param( ): string
+		spreads( ): ({ 
+			'surfaces': ReturnType< $ds_themer_page_components['Spread_surfaces'] >,
+		}) 
+		Grid_empty( ): $mol_view
+		Grid_header( id: any): $mol_paragraph
+		Grid_row_label( id: any): $mol_paragraph
+		Grid_cell( id: any): $ds_surface
 	}
 	
 }
@@ -5743,11 +5777,10 @@ declare namespace $ {
 declare namespace $.$$ {
     class $ds_themer_page_components extends $.$ds_themer_page_components {
         spread_title(id: string): string;
-        size_rows(): any[];
-        size_surfaces(size: string): any[];
-        surface_color(id: string): string;
-        surface_interactive(id: string): string;
-        surface_label_text(id: string): string;
+        grid_cells(): any[];
+        grid_header_text(state: string): string;
+        grid_row_text(color: string): string;
+        Grid_cell(id: string): $ds_surface;
     }
 }
 

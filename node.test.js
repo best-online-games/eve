@@ -13316,14 +13316,6 @@ var $;
 })($ || ($ = {}));
 
 ;
-	($.$ds_themer_page_components) = class $ds_themer_page_components extends ($.$mol_book2_catalog) {
-		param(){
-			return "section";
-		}
-	};
-
-
-;
 	($.$ds_surface) = class $ds_surface extends ($.$mol_view) {
 		colors(next){
 			if(next !== undefined) return next;
@@ -13382,12 +13374,21 @@ var $;
                 'xl'
             ];
             attr() {
-                return {
+                const attrs = {
                     ...super.attr(),
                     'ds_surface_color': this.colors(),
                     'ds_surface_interactive': this.interactive(),
                     'ds_surface_size': this.size(),
                 };
+                const state = this._state;
+                if (state)
+                    attrs['ds_surface_state'] = state;
+                return attrs;
+            }
+            state(value) {
+                if (value !== undefined)
+                    this._state = value;
+                return this._state ?? 'enabled';
             }
             colors(next) {
                 return next ?? 'primary';
@@ -13419,92 +13420,49 @@ var $;
     var $$;
     (function ($$) {
         const { rem, px } = $mol_style_unit;
-        const colors = {
-            primary: {
-                enabled: 'oklch(70% 0.15 145deg)',
-                hover: 'oklch(80% 0.15 85deg)',
-                pressed: 'oklch(60% 0.2 20deg)',
-                disabled: 'oklch(10% 0.015 var(--mol_theme_hue) / 0.5)',
-                loading: 'oklch(25% 0.03 var(--mol_theme_hue) / 0.7)',
-            },
-            secondary: {
-                enabled: 'oklch(70% 0.15 145deg)',
-                hover: 'oklch(80% 0.15 85deg)',
-                pressed: 'oklch(60% 0.2 20deg)',
-                disabled: 'oklch(10% 0.015 var(--mol_theme_hue) / 0.5)',
-                loading: 'oklch(25% 0.03 var(--mol_theme_hue) / 0.7)',
-            },
-            tertiary: {
-                enabled: 'oklch(70% 0.15 145deg)',
-                hover: 'oklch(80% 0.15 85deg)',
-                pressed: 'oklch(60% 0.2 20deg)',
-                disabled: 'oklch(10% 0.015 var(--mol_theme_hue) / 0.5)',
-                loading: 'oklch(25% 0.03 var(--mol_theme_hue) / 0.7)',
-            },
-            danger: {
-                enabled: 'oklch(60% 0.2 20deg)',
-                hover: 'oklch(70% 0.2 330deg)',
-                pressed: 'oklch(80% 0.2 60deg)',
-                disabled: 'oklch(10% 0.015 var(--mol_theme_hue) / 0.5)',
-                loading: 'oklch(25% 0.03 var(--mol_theme_hue) / 0.7)',
-            },
-            warning: {
-                enabled: 'oklch(80% 0.15 85deg)',
-                hover: 'oklch(90% 0.15 85deg)',
-                pressed: 'oklch(100% 0.15 85deg)',
-                disabled: 'oklch(10% 0.015 var(--mol_theme_hue) / 0.5)',
-                loading: 'oklch(25% 0.03 var(--mol_theme_hue) / 0.7)',
-            },
-            success: {
-                enabled: 'oklch(70% 0.15 145deg)',
-                hover: 'oklch(80% 0.15 145deg)',
-                pressed: 'oklch(90% 0.15 145deg)',
-                disabled: 'oklch(10% 0.015 var(--mol_theme_hue) / 0.5)',
-                loading: 'oklch(25% 0.03 var(--mol_theme_hue) / 0.7)',
-            },
-            info: {
-                enabled: 'oklch(70% 0.15 145deg)',
-                hover: 'oklch(80% 0.15 145deg)',
-                pressed: 'oklch(90% 0.15 145deg)',
-                disabled: 'oklch(10% 0.015 var(--mol_theme_hue) / 0.5)',
-                loading: 'oklch(25% 0.03 var(--mol_theme_hue) / 0.7)',
-            },
-            lowest: {
-                enabled: 'oklch(10% 0.015 var(--mol_theme_hue) / 0.5)',
-                hover: 'oklch(15% 0.02 var(--mol_theme_hue) / 0.6)',
-                pressed: 'oklch(25% 0.03 var(--mol_theme_hue) / 0.7)',
-                disabled: 'oklch(10% 0.015 var(--mol_theme_hue) / 0.5)',
-                loading: 'oklch(25% 0.03 var(--mol_theme_hue) / 0.7)',
-            },
-            low: {
-                enabled: 'oklch(15% 0.02 var(--mol_theme_hue) / 0.6)',
-                hover: 'oklch(25% 0.03 var(--mol_theme_hue) / 0.7)',
-                pressed: 'oklch(30% 0.035 var(--mol_theme_hue) / 0.8)',
-                disabled: 'oklch(10% 0.015 var(--mol_theme_hue) / 0.5)',
-                loading: 'oklch(25% 0.03 var(--mol_theme_hue) / 0.7)',
-            },
-            medium: {
-                enabled: 'oklch(25% 0.03 var(--mol_theme_hue) / 0.7)',
-                hover: 'oklch(30% 0.035 var(--mol_theme_hue) / 0.8)',
-                pressed: 'oklch(35% 0.04 var(--mol_theme_hue) / 0.9)',
-                disabled: 'oklch(10% 0.015 var(--mol_theme_hue) / 0.5)',
-                loading: 'oklch(25% 0.03 var(--mol_theme_hue) / 0.7)',
-            },
-            high: {
-                enabled: 'oklch(30% 0.035 var(--mol_theme_hue) / 0.8)',
-                hover: 'oklch(35% 0.04 var(--mol_theme_hue) / 0.9)',
-                pressed: 'oklch(40% 0.045 var(--mol_theme_hue) / 1)',
-                disabled: 'oklch(10% 0.015 var(--mol_theme_hue) / 0.5)',
-                loading: 'oklch(25% 0.03 var(--mol_theme_hue) / 0.7)',
-            },
-            highest: {
-                enabled: 'oklch(35% 0.04 var(--mol_theme_hue) / 0.9)',
-                hover: 'oklch(40% 0.045 var(--mol_theme_hue) / 1)',
-                pressed: 'oklch(45% 0.05 var(--mol_theme_hue) / 1.1)',
-                disabled: 'oklch(10% 0.015 var(--mol_theme_hue) / 0.5)',
-                loading: 'oklch(25% 0.03 var(--mol_theme_hue) / 0.7)',
-            },
+        const colorBase = {
+            primary: '99 102 241',
+            secondary: '139 92 246',
+            tertiary: '236 72 153',
+            danger: '239 68 68',
+            warning: '251 146 60',
+            success: '34 197 94',
+            info: '59 130 246',
+            lowest: '23 23 23',
+            low: '38 38 38',
+            medium: '64 64 64',
+            high: '115 115 115',
+            highest: '163 163 163',
         };
+        const colors = Object.fromEntries(Object.entries(colorBase).map(([name, rgb]) => [
+            name,
+            {
+                enabled: `rgb(${rgb})`,
+                hover: `rgb(${rgb} / 0.8)`,
+                pressed: `rgb(${rgb} / 0.6)`,
+                disabled: `rgb(${rgb} / 0.3)`,
+                loading: `rgb(${rgb} / 0.5)`,
+            }
+        ]));
+        function generateColorStateStyles() {
+            const styles = {};
+            for (const [colorName, colorStates] of Object.entries(colors)) {
+                const stateStyles = {};
+                for (const [stateName, stateColor] of Object.entries(colorStates)) {
+                    stateStyles[stateName] = {
+                        background: { color: stateColor },
+                    };
+                }
+                styles[colorName] = {
+                    background: { color: colorStates.enabled },
+                    color: $mol_theme.text,
+                    '@': {
+                        ds_surface_state: stateStyles,
+                    }
+                };
+            }
+            return styles;
+        }
         $mol_style_define($ds_surface, {
             '@': {
                 ds_surface_interactive: {
@@ -13513,75 +13471,98 @@ var $;
                         userSelect: 'none',
                     },
                 },
-                ds_surface_color: {
-                    ...(Object.fromEntries(Object.keys(colors).map(color => {
-                        return [
-                            color, {
-                                background: {
-                                    color: colors[color].enabled,
-                                },
-                                color: $mol_theme.text,
-                                '@': {
-                                    ds_surface_interactive: {
-                                        true: {
-                                            ':hover': {
-                                                background: {
-                                                    color: colors[color].hover,
-                                                },
-                                            },
-                                            ':active': {
-                                                background: {
-                                                    color: colors[color].pressed,
-                                                },
-                                            },
-                                            ':disabled': {
-                                                background: {
-                                                    color: colors[color].disabled,
-                                                },
-                                            },
-                                            ds_surface_loading: {
-                                                background: {
-                                                    color: colors[color].loading,
-                                                },
-                                            }
-                                        },
-                                    },
-                                }
-                            },
-                        ];
-                    }))),
-                },
+                ds_surface_color: generateColorStateStyles(),
                 ds_surface_size: {
                     xs: {
                         minHeight: rem(1.25),
                         minWidth: rem(1.25),
                         borderRadius: rem(0.25),
+                        padding: $mol_gap.text,
                     },
                     sm: {
                         minHeight: rem(1.5),
                         minWidth: rem(1.5),
-                        borderRadius: rem(0.25),
+                        borderRadius: rem(0.375),
+                        padding: $mol_gap.space,
                     },
                     md: {
                         minHeight: rem(2),
                         minWidth: rem(2),
-                        borderRadius: rem(0.25),
+                        borderRadius: $mol_gap.round,
+                        padding: $mol_gap.block,
                     },
                     lg: {
                         minHeight: rem(2.5),
                         minWidth: rem(2.5),
-                        borderRadius: rem(0.25),
+                        borderRadius: rem(0.75),
+                        padding: rem(1),
                     },
                     xl: {
                         minHeight: rem(3),
                         minWidth: rem(3),
-                        borderRadius: rem(0.25),
+                        borderRadius: rem(1),
+                        padding: rem(1.5),
                     },
                 },
             },
         });
     })($$ = $.$$ || ($.$$ = {}));
 })($ || ($ = {}));
+
+;
+	($.$ds_themer_page_components) = class $ds_themer_page_components extends ($.$mol_book2_catalog) {
+		grid_cells(){
+			return [];
+		}
+		Showcase_grid(){
+			const obj = new this.$.$mol_view();
+			(obj.sub) = () => ((this.grid_cells()));
+			return obj;
+		}
+		Spread_surfaces(){
+			const obj = new this.$.$mol_page();
+			(obj.title) = () => ("Surfaces Demo");
+			(obj.body) = () => ([(this.Showcase_grid())]);
+			return obj;
+		}
+		grid_header_text(id){
+			return "";
+		}
+		grid_row_text(id){
+			return "";
+		}
+		param(){
+			return "section";
+		}
+		spreads(){
+			return {"surfaces": (this.Spread_surfaces())};
+		}
+		Grid_empty(){
+			const obj = new this.$.$mol_view();
+			return obj;
+		}
+		Grid_header(id){
+			const obj = new this.$.$mol_paragraph();
+			(obj.title) = () => ((this.grid_header_text(id)));
+			return obj;
+		}
+		Grid_row_label(id){
+			const obj = new this.$.$mol_paragraph();
+			(obj.title) = () => ((this.grid_row_text(id)));
+			return obj;
+		}
+		Grid_cell(id){
+			const obj = new this.$.$ds_surface();
+			return obj;
+		}
+	};
+	($mol_mem(($.$ds_themer_page_components.prototype), "Showcase_grid"));
+	($mol_mem(($.$ds_themer_page_components.prototype), "Spread_surfaces"));
+	($mol_mem(($.$ds_themer_page_components.prototype), "Grid_empty"));
+	($mol_mem_key(($.$ds_themer_page_components.prototype), "Grid_header"));
+	($mol_mem_key(($.$ds_themer_page_components.prototype), "Grid_row_label"));
+	($mol_mem_key(($.$ds_themer_page_components.prototype), "Grid_cell"));
+
 
 ;
 "use strict";
@@ -13603,21 +13584,32 @@ var $;
                 };
                 return titles[id] || id;
             }
-            size_rows() {
-                return $ds_surface.SIZES.map(size => this.Size_row(size));
+            grid_cells() {
+                const cells = [];
+                cells.push(this.Grid_empty());
+                $ds_surface.STATE_MODIFIERS.forEach(state => {
+                    cells.push(this.Grid_header(state));
+                });
+                $ds_surface.COLORS.forEach(color => {
+                    cells.push(this.Grid_row_label(color));
+                    $ds_surface.STATE_MODIFIERS.forEach(state => {
+                        cells.push(this.Grid_cell(`${color}__${state}`));
+                    });
+                });
+                return cells;
             }
-            size_surfaces(size) {
-                return $ds_surface.COLORS.map(color => this.Surface_cell(`${color}__${size}`));
+            grid_header_text(state) {
+                return state.toUpperCase();
             }
-            surface_color(id) {
-                return id.split('__')[0];
+            grid_row_text(color) {
+                return color.toUpperCase();
             }
-            surface_interactive(id) {
-                return id.split('__')[1];
-            }
-            surface_label_text(id) {
-                const [color, size] = id.split('__');
-                return `${color}\n${size}`;
+            Grid_cell(id) {
+                const [color, state] = id.split('__');
+                const surface = new this.$.$ds_surface();
+                surface.colors(color);
+                surface.state(state);
+                return surface;
             }
         }
         __decorate([
@@ -13625,19 +13617,16 @@ var $;
         ], $ds_themer_page_components.prototype, "spread_title", null);
         __decorate([
             $mol_mem
-        ], $ds_themer_page_components.prototype, "size_rows", null);
+        ], $ds_themer_page_components.prototype, "grid_cells", null);
         __decorate([
             $mol_mem_key
-        ], $ds_themer_page_components.prototype, "size_surfaces", null);
+        ], $ds_themer_page_components.prototype, "grid_header_text", null);
         __decorate([
             $mol_mem_key
-        ], $ds_themer_page_components.prototype, "surface_color", null);
+        ], $ds_themer_page_components.prototype, "grid_row_text", null);
         __decorate([
             $mol_mem_key
-        ], $ds_themer_page_components.prototype, "surface_interactive", null);
-        __decorate([
-            $mol_mem_key
-        ], $ds_themer_page_components.prototype, "surface_label_text", null);
+        ], $ds_themer_page_components.prototype, "Grid_cell", null);
         $$.$ds_themer_page_components = $ds_themer_page_components;
     })($$ = $.$$ || ($.$$ = {}));
 })($ || ($ = {}));
@@ -13649,6 +13638,37 @@ var $;
     var $$;
     (function ($$) {
         const { rem, px } = $mol_style_unit;
+        $mol_style_define($ds_themer_page_components, {
+            Showcase_grid: {
+                display: 'grid',
+                gridTemplateColumns: `120px repeat(${$ds_surface.STATE_MODIFIERS.length}, 1fr)`,
+                gap: px(1),
+                background: { color: $mol_theme.line },
+                padding: px(1),
+            },
+            Grid_empty: {
+                background: { color: $mol_theme.card },
+            },
+            Grid_header: {
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                background: { color: $mol_theme.card },
+                font: { weight: 600 },
+                padding: $mol_gap.block,
+            },
+            Grid_row_label: {
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                background: { color: $mol_theme.card },
+                font: { weight: 600 },
+                padding: $mol_gap.block,
+            },
+            Grid_cell: {
+                minHeight: rem(8),
+            },
+        });
     })($$ = $.$$ || ($.$$ = {}));
 })($ || ($ = {}));
 
