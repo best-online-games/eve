@@ -17,7 +17,6 @@ $ds_app_page_themer_colors $mol_row
 					rows /
 						<= Controls_title $mol_view
 							sub / <= Controls_title_text $mol_dimmer
-								haystack \Theme Settings
 						<= Backgrounds_section $mol_list
 							rows /
 								<= Backgrounds_title $mol_view

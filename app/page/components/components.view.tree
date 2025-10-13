@@ -1,5 +1,6 @@
 $ds_app_page_components $mol_page
 	title \Components
+	Head null
 	body /
 		<= Content $mol_text
 			text \Components page - Coming soon...
