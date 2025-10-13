@@ -1,9 +1,9 @@
 namespace $.$$ {
 	/**
-	 * Компонент для переключения страниц по параметру URL
-	 * Показывает навбар с ссылками и одну активную страницу в body
+	 * Страница с навбаром, которая переключает контент по параметру URL
+	 * Показывает навбар с ссылками сверху и активную страницу в body
 	 */
-	export class $ds_app_switcher extends $.$ds_app_switcher {
+	export class $ds_app_navbar extends $.$ds_app_navbar {
 		@$mol_mem
 		spread() {
 			return this.$.$mol_state_arg.value(this.param(), undefined) ?? ''
@@ -21,7 +21,7 @@ namespace $.$$ {
 
 		@$mol_mem_key
 		menu_link_arg(id: string) {
-			return { page: id }
+			return { [this.param()]: id }
 		}
 
 		@$mol_mem

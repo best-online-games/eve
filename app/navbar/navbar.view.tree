@@ -1,4 +1,4 @@
-$ds_app_switcher $mol_page
+$ds_app_navbar $mol_page
 	param \page
 	spread \
 	spreads *
@@ -10,4 +10,3 @@ $ds_app_switcher $mol_page
 				<= Menu_link_title* \
 	body /
 		<= Page_current $mol_view
-			head null

@@ -1,4 +1,4 @@
-$ds_app $ds_app_switcher
+$ds_app $ds_app_navbar
 	plugins /
 		<= Theme $mol_theme_auto
 	title \$MOL UI
