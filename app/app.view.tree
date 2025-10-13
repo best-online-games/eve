@@ -1,46 +1,13 @@
-$ds_app $mol_page
-	title \$MOL UI
-	plugins /
-		<= Theme $mol_theme_auto
-	tools /
-		<= Libraries_link $mol_link
-			arg * page \libraries
-			sub / <= Libraries_title \Libraries
-		<= Components_link $mol_link
-			arg * page \components
-			sub / <= Components_title \Components
-		<= Design_link $mol_link
-			arg * page \design
-			sub / <= Design_title \Design
-		<= Icons_link $mol_link
-			arg * page \icons
-			sub / <= Icons_title \Icons
-		<= Themer_link $mol_link
-			arg * page \themer
-			sub / <= Themer_title \Themer
-		<= Media_link $mol_link
-			arg * page \media
-			sub / <= Media_title \Media
-		<= Lang_select $mol_select
-			value? <=> lang? \en
-			options <= lang_options /
-				\en
-				\ru
-		<= Telegram_link $mol_link_iconed
-			hint \Telegram
-			uri \https://t.me/your_channel
-			sub / <= Telegram_icon $mol_icon_telegram
-		<= Github_link $mol_link_iconed
-			hint \GitHub
-			uri \https://github.com/best-online-games/ds
-			sub / <= Github_icon $mol_icon_github
-	body /
-		<= Catalog $mol_book2_catalog
-			param \page
-			Spread_default <= Libraries_page
-			spreads *
-				libraries <= Libraries_page $ds_app_page_libraries
-				components <= Components_page $ds_app_page_components
-				design <= Design_page $ds_app_page_design
-				icons <= Icons_page $ds_app_page_icons
-				themer <= Themer_page $ds_app_page_themer
+$ds_app $mol_book2_catalog
+	param \page
+	spread \libraries
+	spreads *
+		libraries <= Libraries_page $ds_app_page_libraries
+		components <= Components_Page $ds_app_page_components
+		design <= Design_Page $ds_app_page_design
+		icons <= Icons_Page $ds_app_page_icons
+		themer <= Themer_Page $ds_app_page_themer
+	Navbar $mol_page
+		title \$MOL UI
+		tools /
+			^ menu_links

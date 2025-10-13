@@ -1,4 +1,4 @@
-$ds_themer_page_themer_colors $mol_row
+$ds_app_page_themer_colors $mol_row
 	color_back? \oklch(20% .01 240deg)
 	color_card? \oklch(30% .05 240deg / .25)
 	color_field? \oklch(15% 0 240deg / .25)

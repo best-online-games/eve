@@ -1,4 +1,4 @@
-$ds_app_page_themer $mol_book2_catalog
-	pages /
-		<= Menu $mol_page
-			body <= menu_body /$ds_surface
+$ds_app_page_themer $mol_page
+	title \Themer
+	body /
+		<= Colors $ds_app_page_themer_colors

@@ -1,11 +1,5 @@
-$ds_app_page_icons $mol_book2_catalog
-	param \section
-	spread_ids /
-		\library
-		\usage
-		\custom
-	spread_title* \
-	Spread* $mol_page
-		body /
-			<= Spread_content* $mol_text
-				text \Coming soon...
+$ds_app_page_icons $mol_page
+	title \Icons
+	body /
+		<= Content $mol_text
+			text \Icons page - Coming soon...
