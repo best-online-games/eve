@@ -1,4 +1,6 @@
 $ds_app $mol_book2_catalog
+	plugins /
+		<= Theme $mol_theme_auto
 	spreads *
 		libraries <= Libraries_page $ds_app_page_libraries
 		components <= Components_page $ds_app_page_components
