@@ -2,99 +2,73 @@ namespace $.$$ {
 
 	const { rem, px } = $mol_style_unit
 
-
-	// потом поправим, автоматизируем
-	const colors = {
-		primary: {
-			enabled: 'oklch(70% 0.15 145deg)' as any,
-			hover: 'oklch(80% 0.15 85deg)' as any,
-			pressed: 'oklch(60% 0.2 20deg)' as any,
-			disabled: 'oklch(10% 0.015 var(--mol_theme_hue) / 0.5)' as any,
-			loading: 'oklch(25% 0.03 var(--mol_theme_hue) / 0.7)' as any,
-		},
-		secondary: {
-			enabled: 'oklch(70% 0.15 145deg)' as any,
-			hover: 'oklch(80% 0.15 85deg)' as any,
-			pressed: 'oklch(60% 0.2 20deg)' as any,
-			disabled: 'oklch(10% 0.015 var(--mol_theme_hue) / 0.5)' as any,
-			loading: 'oklch(25% 0.03 var(--mol_theme_hue) / 0.7)' as any,
-		},
-		tertiary: {
-			enabled: 'oklch(70% 0.15 145deg)' as any,
-			hover: 'oklch(80% 0.15 85deg)' as any,
-			pressed: 'oklch(60% 0.2 20deg)' as any,
-			disabled: 'oklch(10% 0.015 var(--mol_theme_hue) / 0.5)' as any,
-			loading: 'oklch(25% 0.03 var(--mol_theme_hue) / 0.7)' as any,
-		},
-		danger: {
-			enabled: 'oklch(60% 0.2 20deg)' as any,
-			hover: 'oklch(70% 0.2 330deg)' as any,
-			pressed: 'oklch(80% 0.2 60deg)' as any,
-			disabled: 'oklch(10% 0.015 var(--mol_theme_hue) / 0.5)' as any,
-			loading: 'oklch(25% 0.03 var(--mol_theme_hue) / 0.7)' as any,
-		},
-		warning: {
-			enabled: 'oklch(80% 0.15 85deg)' as any,
-			hover: 'oklch(90% 0.15 85deg)' as any,
-			pressed: 'oklch(100% 0.15 85deg)' as any,
-			disabled: 'oklch(10% 0.015 var(--mol_theme_hue) / 0.5)' as any,
-			loading: 'oklch(25% 0.03 var(--mol_theme_hue) / 0.7)' as any,
-		},
-		success: {
-			enabled: 'oklch(70% 0.15 145deg)' as any,
-			hover: 'oklch(80% 0.15 145deg)' as any,
-			pressed: 'oklch(90% 0.15 145deg)' as any,
-			disabled: 'oklch(10% 0.015 var(--mol_theme_hue) / 0.5)' as any,
-			loading: 'oklch(25% 0.03 var(--mol_theme_hue) / 0.7)' as any,
-		},
-		info: {
-			enabled: 'oklch(70% 0.15 145deg)' as any,
-			hover: 'oklch(80% 0.15 145deg)' as any,
-			pressed: 'oklch(90% 0.15 145deg)' as any,
-			disabled: 'oklch(10% 0.015 var(--mol_theme_hue) / 0.5)' as any,
-			loading: 'oklch(25% 0.03 var(--mol_theme_hue) / 0.7)' as any,
-		},
-		lowest: {
-			enabled: 'oklch(10% 0.015 var(--mol_theme_hue) / 0.5)' as any,
-			hover: 'oklch(15% 0.02 var(--mol_theme_hue) / 0.6)' as any,
-			pressed: 'oklch(25% 0.03 var(--mol_theme_hue) / 0.7)' as any,
-			disabled: 'oklch(10% 0.015 var(--mol_theme_hue) / 0.5)' as any,
-			loading: 'oklch(25% 0.03 var(--mol_theme_hue) / 0.7)' as any,
-		},
-		low: {
-			enabled: 'oklch(15% 0.02 var(--mol_theme_hue) / 0.6)' as any,
-			hover: 'oklch(25% 0.03 var(--mol_theme_hue) / 0.7)' as any,
-			pressed: 'oklch(30% 0.035 var(--mol_theme_hue) / 0.8)' as any,
-			disabled: 'oklch(10% 0.015 var(--mol_theme_hue) / 0.5)' as any,
-			loading: 'oklch(25% 0.03 var(--mol_theme_hue) / 0.7)' as any,
-		},
-		medium: {
-			enabled: 'oklch(25% 0.03 var(--mol_theme_hue) / 0.7)' as any,
-			hover: 'oklch(30% 0.035 var(--mol_theme_hue) / 0.8)' as any,
-			pressed: 'oklch(35% 0.04 var(--mol_theme_hue) / 0.9)' as any,
-			disabled: 'oklch(10% 0.015 var(--mol_theme_hue) / 0.5)' as any,
-			loading: 'oklch(25% 0.03 var(--mol_theme_hue) / 0.7)' as any,
-		},
-		high: {
-			enabled: 'oklch(30% 0.035 var(--mol_theme_hue) / 0.8)' as any,
-			hover: 'oklch(35% 0.04 var(--mol_theme_hue) / 0.9)' as any,
-			pressed: 'oklch(40% 0.045 var(--mol_theme_hue) / 1)' as any,
-			disabled: 'oklch(10% 0.015 var(--mol_theme_hue) / 0.5)' as any,
-			loading: 'oklch(25% 0.03 var(--mol_theme_hue) / 0.7)' as any,
-		},
-		highest: {
-			enabled: 'oklch(35% 0.04 var(--mol_theme_hue) / 0.9)' as any,
-			hover: 'oklch(40% 0.045 var(--mol_theme_hue) / 1)' as any,
-			pressed: 'oklch(45% 0.05 var(--mol_theme_hue) / 1.1)' as any,
-			disabled: 'oklch(10% 0.015 var(--mol_theme_hue) / 0.5)' as any,
-			loading: 'oklch(25% 0.03 var(--mol_theme_hue) / 0.7)' as any,
-		},
+	// Базовые цвета RGB для каждой семантической роли
+	// Пока так пусть, потом автоматизируем и поправим на математические формулы
+	const colorBase = {
+		primary: '99 102 241',      // Indigo
+		secondary: '139 92 246',    // Purple  
+		tertiary: '236 72 153',     // Pink
+		danger: '239 68 68',        // Red
+		warning: '251 146 60',      // Orange
+		success: '34 197 94',       // Green
+		info: '59 130 246',         // Blue
+		// Нейтральные уровни
+		lowest: '23 23 23',         // Very dark
+		low: '38 38 38',
+		medium: '64 64 64',
+		high: '115 115 115',
+		highest: '163 163 163',
 	} as const
 
+	// Генератор цветов по состояниям
+	const colors = Object.fromEntries(
+		Object.entries(colorBase).map(([name, rgb]) => [
+			name,
+			{
+				enabled: `rgb(${rgb})` as any,
+				hover: `rgb(${rgb} / 0.8)` as any,
+				pressed: `rgb(${rgb} / 0.6)` as any,
+				disabled: `rgb(${rgb} / 0.3)` as any,
+				loading: `rgb(${rgb} / 0.5)` as any,
+			}
+		])
+	) as Record<keyof typeof colorBase, {
+		enabled: any
+		hover: any
+		pressed: any
+		disabled: any
+		loading: any
+	}>
+
+
+	// Генератор стилей для комбинаций цвет × состояние
+	function generateColorStateStyles() {
+		const styles: any = {}
+		
+		for (const [colorName, colorStates] of Object.entries(colors)) {
+			const stateStyles: any = {}
+			
+			for (const [stateName, stateColor] of Object.entries(colorStates)) {
+				stateStyles[stateName] = {
+					background: { color: stateColor },
+				}
+			}
+			
+			styles[colorName] = {
+				background: { color: colorStates.enabled },
+				color: $mol_theme.text,
+				
+				'@': {
+					ds_surface_state: stateStyles,
+				}
+			}
+		}
+		
+		return styles
+	}
 
 	$mol_style_define( $ds_surface, {
 
-		// Colors - Primary (default)
 		'@': {
 			ds_surface_interactive: {
 				true: {
@@ -103,47 +77,7 @@ namespace $.$$ {
 				},
 			},
 
-			ds_surface_color: {
-				// Semantic colors
-				...( Object.fromEntries(
-					Object.keys( colors ).map( color => {
-						return [
-							color, {
-								background: {
-									color: colors[ color as keyof typeof colors ].enabled,
-								},
-								color: $mol_theme.text,
-								'@': {
-									ds_surface_interactive: {
-										true: {
-											':hover': {
-												background: {
-													color: colors[ color as keyof typeof colors ].hover,
-												},
-											},
-											':active': {
-												background: {
-													color: colors[ color as keyof typeof colors ].pressed,
-												},
-											},
-											':disabled': {
-												background: {
-													color: colors[ color as keyof typeof colors ].disabled,
-												},
-											},
-											ds_surface_loading: {
-												background: {
-													color: colors[ color as keyof typeof colors ].loading,
-												},
-											}
-										},
-									},
-								}
-							},
-						]
-					} ) ) ) as any,
-			},
-
+			ds_surface_color: generateColorStateStyles(),
 
 			// Sizes
 			ds_surface_size: {
@@ -151,30 +85,35 @@ namespace $.$$ {
 					minHeight: rem( 1.25 ),
 					minWidth: rem( 1.25 ),
 					borderRadius: rem( 0.25 ),
+					padding: $mol_gap.text,
 				},
 
 				sm: {
 					minHeight: rem( 1.5 ),
 					minWidth: rem( 1.5 ),
-					borderRadius: rem( 0.25 ),
+					borderRadius: rem( 0.375 ),
+					padding: $mol_gap.space,
 				},
 
 				md: {
 					minHeight: rem( 2 ),
 					minWidth: rem( 2 ),
-					borderRadius: rem( 0.25 ),
+					borderRadius: $mol_gap.round,
+					padding: $mol_gap.block,
 				},
 
 				lg: {
 					minHeight: rem( 2.5 ),
 					minWidth: rem( 2.5 ),
-					borderRadius: rem( 0.25 ),
+					borderRadius: rem( 0.75 ),
+					padding: rem( 1 ),
 				},
 
 				xl: {
 					minHeight: rem( 3 ),
 					minWidth: rem( 3 ),
-					borderRadius: rem( 0.25 ),
+					borderRadius: rem( 1 ),
+					padding: rem( 1.5 ),
 				},
 			},
 		},

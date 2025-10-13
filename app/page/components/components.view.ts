@@ -34,11 +34,28 @@ namespace $.$$ {
 			return id.split('__')[1]
 		}
 
-		// Текст лейбла
+		// Текст заголовка состояния
 		@$mol_mem_key
-		surface_label_text(id: string) {
-			const [color, size] = id.split('__')
-			return `${color}\n${size}`
+		grid_header_text(state: string) {
+			return state.toUpperCase()
+		}
+
+		// Текст лейбла цвета
+		@$mol_mem_key
+		grid_row_text(color: string) {
+			return color.toUpperCase()
+		}
+
+		// Создаём Surface по ID (color__state)
+		@$mol_mem_key
+		Grid_cell(id: string) {
+			const [color, state] = id.split('__')
+
+			const surface = new this.$.$ds_surface()
+			surface.colors(color as any)
+			surface.state(state as any)
+
+			return surface
 		}
 	}
 }
