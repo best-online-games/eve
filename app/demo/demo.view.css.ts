@@ -1,9 +1,7 @@
 namespace $.$$ {
-
 	const { rem, px } = $mol_style_unit
 
-	$mol_style_define($ds_themer_demo, {
-		
+	$mol_style_define($ds_app_demo, {
 		Demo_content: {
 			gap: $mol_gap.block,
 			padding: $mol_gap.block,
@@ -223,7 +221,5 @@ namespace $.$$ {
 				basis: 0,
 			},
 		},
-		
 	})
-
 }
