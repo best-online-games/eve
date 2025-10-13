@@ -35,5 +35,12 @@ $ds_app $mol_page
 			uri \https://github.com/best-online-games/ds
 			sub / <= Github_icon $mol_icon_github
 	body /
-		<= Page_content $mol_view
-			sub <= page_body /
+		<= Catalog $mol_book2_catalog
+			param \page
+			Spread_default <= Libraries_page
+			spreads *
+				libraries <= Libraries_page $ds_app_page_libraries
+				components <= Components_page $ds_app_page_components
+				design <= Design_page $ds_app_page_design
+				icons <= Icons_page $ds_app_page_icons
+				themer <= Themer_page $ds_app_page_themer

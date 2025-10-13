@@ -1,3 +1,4 @@
 include \/mol/offline/install
+include \/ds/app/page/icons
 
 deploy \/ds/assets/*

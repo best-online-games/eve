@@ -1,4 +1,4 @@
-$ds_themer_page_icons $mol_book2_catalog
+$ds_app_page_icons $mol_book2_catalog
 	param \section
 	spread_ids /
 		\library
