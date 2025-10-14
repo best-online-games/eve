@@ -6,5 +6,15 @@ $ds_app_page_components_flex $ds_app_page_components_sb_page
 			justify_content \center
 			colors \medium
 			sub /
-				<= Card_content $mol_text
-					text \Flex page - Coming soon...
+				<= Showcase_cells_flex $ds_flex
+					- Я хочу сделать плейграунд и залочить всё, что написано выше
+					justify_content \center
+					align_items \center
+					- И Залочить всё, что написано ниже, пускай редачит здесь пару свойств, чтобы побаловался с Flex компонентом
+					wrap \wrap
+					sub /
+						^ showcase_cells
+						<= Showcase_item_to_align $ds_surface
+							colors \secondary
+	Showcase_cell* $ds_surface
+		colors \high
