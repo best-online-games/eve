@@ -3,9 +3,10 @@ namespace $.$$ {
 	// То есть ему просто не нравятся такие названия
 	// Ему не хватает допустим quaternary или quinary и тд. цветов внезапно в палитре
 	// То он просто добавляет новую строчку в конфигураторе и всё выводится
-	export type $ds_surface_colors = typeof $ds_surface.COLORS[ number ]
-	export type $ds_surface_sizes = typeof $ds_surface.SIZES[ number ]
+	export type $ds_surface_color = typeof $ds_surface.COLORS[ number ]
+	export type $ds_surface_size = typeof $ds_surface.SIZES[ number ]
 	export type $ds_surface_state_modifiers = typeof $ds_surface.STATE_MODIFIERS[ number ]
+	export type $ds_surface_variant = typeof $ds_surface.VARIANTS[ number ]
 
 	export class $ds_surface extends $.$ds_surface {
 
@@ -50,6 +51,16 @@ namespace $.$$ {
 			'xl'
 		] as const
 
+		/**
+		 * Foundations: appearances palette
+		 */
+		static readonly VARIANTS = [
+			'solid',
+			'soft', // в antd filled... ну вообще ни о чём, soft - понятно
+			'outline',
+			'ghost'
+		] as const
+
 		// ===============================
 
 		// Возможно в выгрузке тогда и мапки с дефолтами надо будет делать
@@ -61,6 +72,7 @@ namespace $.$$ {
 				[ `${ fqnPrefix }color` ]: this.colors(),
 				[ `${ fqnPrefix }interactive` ]: this.interactive(),
 				[ `${ fqnPrefix }size` ]: this.size(),
+				[ `${ fqnPrefix }variant` ]: this.variant(),
 			}
 
 			// Опционально: добавляем state если он установлен
@@ -76,8 +88,13 @@ namespace $.$$ {
 		}
 
 		@$mol_mem
-		colors( next?: $ds_surface_colors ): $ds_surface_colors {
+		colors( next?: $ds_surface_color ): $ds_surface_color {
 			return next ?? 'primary'
+		}
+
+		@$mol_mem
+		variant( next?: $ds_surface_variant ): $ds_surface_variant {
+			return next ?? 'solid'
 		}
 
 		@$mol_mem
@@ -88,7 +105,7 @@ namespace $.$$ {
 		// Возможно это будет лучше вынести в какой-нибудь компонент Controls,
 		// но пока не видно нужды в его выделении. 
 		@$mol_mem
-		size( next?: $ds_surface_sizes ): $ds_surface_sizes {
+		size( next?: $ds_surface_size ): $ds_surface_size {
 			return next ?? 'md'
 		}
 	}
