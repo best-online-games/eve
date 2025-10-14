@@ -4,11 +4,7 @@ $ds_app_page_components $mol_page
 	body /
 		<= Nav_menu $mol_book2_catalog
 			spreads *
-				surfaces <= Surfaces $ds_app_page_components_sb_page
-					title \Surfaces
-					body /
-						<= Surfaces_content $mol_text
-							text \Surfaces page - Coming soon...
+				surfaces <= Surfaces $ds_app_page_components_surface
 				flex <= Flex $ds_app_page_components_flex
 				buttons <= Buttons $ds_app_page_components_sb_page
 					title \Buttons
