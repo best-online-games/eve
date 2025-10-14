@@ -1,12 +1,18 @@
-$ds_app $ds_app_navbar
+$ds_app $mol_page
 	plugins /
 		<= Theme $mol_theme_auto
 	title \$MOL UI
-	spreads *
-		Libraries <= Libraries $ds_app_page_libraries
-			spread_id \sdfsdf
-		components <= Components_page $ds_app_page_components
-		design <= Design_page $ds_app_page_design
-		icons <= Icons_page $ds_app_page_icons
-		themer <= Themer_page $ds_app_page_themer
-		icons <= Icons $mol_icon_demo
+	head /
+		<= Title
+		<= Switch
+		<= Tools
+	body /
+		<= Content
+	Deck $mol_deck
+		Switch => Switch
+		Content => Content
+		items /
+			<= Libraries $ds_app_page_libraries
+			<= Components_page $ds_app_page_components
+			<= Design_page $ds_app_page_design
+			<= Themer_page $ds_app_page_themer
