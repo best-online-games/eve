@@ -1,0 +1,8 @@
+$ds_flex $ds_surface
+	direction \row
+	justify_content \flex-start
+	align_items \stretch
+	wrap \nowrap
+	- потом подумать про спейсинги отдельно, 
+	- чтобы можно было прокинуть переменную типа или var(--SPx4) или shortcut типа SPx4
+	gap \0
