@@ -88,8 +88,8 @@ namespace $.$$ {
 		}
 
 		@$mol_mem
-		colors( next?: $ds_surface_color ): $ds_surface_color {
-			return next ?? 'primary'
+		colors( next?: $ds_surface_color ): $ds_surface_color | undefined {
+			return next
 		}
 
 		@$mol_mem
@@ -98,15 +98,15 @@ namespace $.$$ {
 		}
 
 		@$mol_mem
-		interactive( next?: boolean ): boolean {
-			return next ?? false
+		interactive( next?: boolean ): boolean | undefined {
+			return next
 		}
 
 		// Возможно это будет лучше вынести в какой-нибудь компонент Controls,
 		// но пока не видно нужды в его выделении. 
 		@$mol_mem
-		size( next?: $ds_surface_size ): $ds_surface_size {
-			return next ?? 'md'
+		size( next?: $ds_surface_size ): $ds_surface_size | undefined {
+			return next
 		}
 	}
 }

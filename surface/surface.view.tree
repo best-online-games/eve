@@ -1,5 +1,5 @@
 $ds_surface $mol_view
-	colors? \primary
+	colors? null
 	variant? \solid
-	interactive? false
-	size? \md
+	interactive? null
+	size? null
