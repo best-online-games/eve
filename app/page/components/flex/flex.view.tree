@@ -1,20 +1,30 @@
 $ds_app_page_components_flex $ds_app_page_components_sb_page
 	title \Flex
 	body /
-		<= Card $ds_app_page_components_sb_card
+		<= Preview_card $ds_app_page_components_sb_card
 			align_items \center
 			justify_content \center
 			colors \medium
 			sub /
+				<= showcase_cells_flex /
 				<= Showcase_cells_flex $ds_flex
-					- Я хочу сделать плейграунд и залочить всё, что написано выше
 					justify_content \center
 					align_items \center
-					- И Залочить всё, что написано ниже, пускай редачит здесь пару свойств, чтобы побаловался с Flex компонентом
 					wrap \wrap
 					sub /
 						^ showcase_cells
 						<= Showcase_item_to_align $ds_surface
 							colors \secondary
+		<= Editor_card $ds_app_page_components_sb_card
+			colors \low
+			sub /
+				<= Editor_body $mol_view
+					sub <= editor_body /
+						<= Source_tree $hyoo_tree_edit
+							value? <=> source_tree? $mol_tree2
+						<= Source_text $mol_textarea
+							value?val <=> source?val \
+							hint \view.tree code
+							sidebar_showed true
 	Showcase_cell* $ds_surface
 		colors \high
