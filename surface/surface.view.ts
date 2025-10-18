@@ -56,9 +56,9 @@ namespace $.$$ {
 		 */
 		static readonly VARIANTS = [
 			'solid',
-			'soft', // в antd filled... ну вообще ни о чём, soft - понятно
 			'outline',
-			'ghost'
+			'soft', // antd 'filled' аналог. soft - куда более понятно. Мягкий background, немного прозрачная поверхность
+			'ghost' // transparent enabled, но при hover и pressed что-то вроде soft
 		] as const
 
 		// ===============================
@@ -73,18 +73,15 @@ namespace $.$$ {
 				[ `${ fqnPrefix }interactive` ]: this.interactive(),
 				[ `${ fqnPrefix }size` ]: this.size(),
 				[ `${ fqnPrefix }variant` ]: this.variant(),
+				[ `${ fqnPrefix }state` ]: this.state(),
 			}
-
-			// Опционально: добавляем state если он установлен
-			const state = ( this as any )._state
-			if( state ) attrs[ `${ fqnPrefix }state` ] = state
 
 			return attrs
 		}
 
-		state( value?: $ds_surface_state_modifiers ) {
-			if( value !== undefined ) ( this as any )._state = value
-			return ( this as any )._state ?? 'enabled'
+		@$mol_mem
+		state( next?: $ds_surface_state_modifiers ): $ds_surface_state_modifiers {
+			return next ?? 'enabled'
 		}
 
 		@$mol_mem

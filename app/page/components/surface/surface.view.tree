@@ -1,6 +1,13 @@
 $ds_app_page_components_surface $ds_app_page_components_sb_page
 	title \Surface
 	body /
+		<= Variant_select $mol_select
+			dictionary <= variants *
+				soft \Soft
+				solid \Solid
+				outline \Outline
+				ghost \Ghost
+			value? <=> Variant_select_value? \solid
 		<= Card $ds_app_page_components_sb_card
 			align_items \center
 			justify_content \center
@@ -14,3 +21,6 @@ $ds_app_page_components_surface $ds_app_page_components_sb_page
 	Grid_row_label* $mol_paragraph
 		title <= grid_row_text* \
 	Grid_cell* $ds_surface
+		variant <= Variant_select_value
+		colors <= grid_cell_color* \
+		state <= grid_cell_state* \

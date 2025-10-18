@@ -3,3 +3,4 @@ $ds_surface $mol_view
 	variant? \solid
 	interactive? null
 	size? null
+	state? null
