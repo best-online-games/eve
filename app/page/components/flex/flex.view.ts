@@ -25,16 +25,19 @@ namespace $.$$ {
 		// Исходный код (локально, без URL)
 		@$mol_mem
 		source( next?: string ) {
-			const defaultCode = `Showcase_cells_flex $ds_flex
+			const defaultCode = `Live_flex $ds_flex
+	- Edit values of Flex component
 	justify_content \\center
 	align_items \\center
 	wrap \\wrap
 	sub /
-		<= Item $ds_surface
-			colors \\high
-
+		<= Demo_item $ds_surface
+			colors \\medium
+			style *
+				width \\10vh
+				height \\10vh
+				position \\absolute
 `
-
 			return next ?? defaultCode
 		}
 
@@ -44,70 +47,56 @@ namespace $.$$ {
 			return this.$.$mol_tree2_from_string( this.source( next?.toString() ) )
 		}
 
-		// Парсинг view.tree и применение к Showcase_cells_flex
+		// Компиляция view.tree → JS (по примеру studio.hyoo.ru)
 		@$mol_mem
-		parsed_props() {
+		live_flex_code() {
+			const tree = this.source_tree()
 
-			try {
-				const tree = this.source_tree().kids[ 0 ]
+			// Компилируем view.tree → JS (как в studio.hyoo.ru/studio.view.ts:197-207)
+			const js_code = this.$.$mol_tree2_text_to_string_mapped_js(
+				this.$.$mol_tree2_js_to_text(
+					this.$.$mol_view_tree2_to_js( tree )
+				)
+			)
 
-				const props: Record<string, string> = {}
-
-				// console.log( 'tree', tree, props )
-				// Ищем свойства в tree
-				for( const kid of tree.kids[ 0 ].kids ) {
-					const name = kid.type
-					const value = kid.value || kid.kids[ 0 ]?.value || ''
-
-					if( name === 'justify_content' ) props.justify_content = value
-					if( name === 'align_items' ) props.align_items = value
-					if( name === 'wrap' ) props.wrap = value
-					if( name === 'direction' ) props.direction = value
-				}
-
-				// console.log( 'parsed_props', tree, props )
-				return props
-			} catch {
-				return {}
-			}
+			return js_code
 		}
 
-		// Применяем свойства к компоненту
+		// Динамическая компиляция компонента через eval
 		@$mol_mem
-		showcase_cells_flex() {
+		override Live_flex() {
 			try {
-				const viewTree = this.source()
-				console.log( viewTree )
+				// Выполняем скомпилированный код в контексте this.$
+				const $ = this.$
+				eval( this.live_flex_code() )
 
-				// Компилируем view.tree → JS
-				const tree = this.$.$mol_tree2_from_string( viewTree, '.view.tree' )
-				console.log( 'tree', tree )
-				const js_tree = this.$.$mol_view_tree2_to_js( tree )
-				console.log( 'js_tree', js_tree )
-				const js_text = this.$.$mol_tree2_js_to_text( js_tree )
-				console.log( 'js_text', js_text )
-				const js_code = this.$.$mol_tree2_text_to_string_mapped_js( js_text )
-				console.log( 'js_code', js_code )
-				// Выполняем в РЕАЛЬНОМ контексте this.$
-				// eval здесь имеет доступ ко всем $ds_flex, $ds_surface и т.д.
-				const q = eval( js_code )
-				console.log( 'q', q )
-				// Теперь this.$.Showcase_cells_flex должен существовать
-				const DynamicClass = ( this.$ as any ).Showcase_cells_flex
-				console.log( 'DynamicClass', DynamicClass )
-				// if( !DynamicClass ) {
-				// 	console.error( 'Failed to create dynamic component' )
-				// 	return super.Showcase_cells_flex()
-				// }
+				// Получаем динамически созданный класс
+				const DynamicClass = ( this.$ as any ).Live_flex
 
-				// Создаём экземпляр
-				const qq = new DynamicClass()
-				console.log( 'qq', qq )
-				return qq
+				if( !DynamicClass ) {
+					this.$.$mol_fail_hidden( new Error( 'Failed to create dynamic component from view.tree' ) )
+					return super.Live_flex()
+				}
 
-			} catch( e ) {
-				console.error( 'Compilation error:', e )
-				// return super.Showcase_cells_flex()
+				// Создаём экземпляр с правильным ambient контекстом
+				const instance = new DynamicClass()
+				instance[ $mol_ambient_ref ] = this.$
+
+				// Расширяем sub: добавляем showcase_cells реактивно
+				// НЕ вызываем original_sub заранее, только при каждом рендере!
+				const original_sub = instance.sub.bind( instance )
+				instance.sub = () => {
+					const original = original_sub()
+					const cells = this.showcase_cells()
+					return [ ...original, ...cells ]
+				}
+
+				return instance
+
+			} catch( error: any ) {
+				// Обработка ошибок компиляции/выполнения
+				this.$.$mol_fail_log( error )
+				return super.Live_flex()
 			}
 		}
 	}

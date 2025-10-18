@@ -6,15 +6,7 @@ $ds_app_page_components_flex $ds_app_page_components_sb_page
 			justify_content \center
 			colors \medium
 			sub /
-				<= showcase_cells_flex /
-				<= Showcase_cells_flex $ds_flex
-					justify_content \center
-					align_items \center
-					wrap \wrap
-					sub /
-						^ showcase_cells
-						<= Showcase_item_to_align $ds_surface
-							colors \secondary
+				<= Live_flex $ds_flex
 		<= Editor_card $ds_app_page_components_sb_card
 			colors \low
 			sub /
