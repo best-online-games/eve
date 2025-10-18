@@ -23,6 +23,8 @@ namespace $.$$ {
 		}
 
 		// Исходный код (локально, без URL)
+		// TODO: вынести абстракцию Playground для редактора
+		// чтобы потом переиспользовать для других компонентов
 		@$mol_mem
 		source( next?: string ) {
 			const defaultCode = `Live_flex $ds_flex
