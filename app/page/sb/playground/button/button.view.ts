@@ -12,8 +12,10 @@ namespace $.$$ {
 	colors \\primary
 	variant \\solid
 	size \\m
+	label \\Click Me!
 	sub /
-		\\Click Me!
+		<= Icon $mol_icon_karate
+		^
 `
 		}
 

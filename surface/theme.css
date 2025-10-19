@@ -1,3 +1,9 @@
+/* TODO: обсудить ресеты этих значений */
+[mol_icon] {
+	/* mol/icon/icon.view.css */
+	filter: none;
+}
+
 :root {
 	/* Inherit base hue configuration from mol_theme */
 	/* --mol_theme_hue and --mol_theme_hue_spread are defined in mol/theme/theme.css */

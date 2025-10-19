@@ -1,9 +1,17 @@
 $eve_button $eve_flex
 	interactive true
-	click?event null
-	event_click?event null
+	colors? \primary
+	variant? \solid
+	size? \m
+	
 	justify_content \center
 	align_items \center
+	sub /
+		<= Label $mol_text
+			text <= label \
+	- взял с кнопки mol_button
+	click?event null
+	event_click?event null
 	event *
 		^
 		click?event <=> activate?event <=> event_activate?event null

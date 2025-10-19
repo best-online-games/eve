@@ -58,9 +58,10 @@ namespace $.$$ {
 
 		override style() {
 			const superStyles = super.style()
+			const gap = this.gap()
 			return {
 				...superStyles,
-				gap: this.gap(),
+				...( gap ? { gap } : {} ),
 			}
 		}
 
@@ -85,8 +86,8 @@ namespace $.$$ {
 		}
 
 		@$mol_mem
-		gap( next?: string ): string {
-			return next ?? '0'
+		gap( next?: string ): string | undefined {
+			return next ?? undefined
 		}
 
 	}
