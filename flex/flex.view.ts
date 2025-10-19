@@ -46,7 +46,6 @@ namespace $.$$ {
 		override attr() {
 			const fqnPrefix = 'ds_flex_'
 			const superAttrs = super.attr()
-			console.log( superAttrs )
 
 			return {
 				...superAttrs,

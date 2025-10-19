@@ -12,8 +12,10 @@ namespace $.$$ {
 				background: {
 					color: $ds_surface_get_token_surface_level_var( 'low' ) as any,
 				},
+				// TODO: так и не понял, как сбить в tree Head
+				display: 'none',
 			}
-		}
+		},
 
 	} )
 }

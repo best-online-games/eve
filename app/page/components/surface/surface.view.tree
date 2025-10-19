@@ -1,6 +1,8 @@
 $ds_app_page_components_surface $ds_app_page_sb_page
 	title \Surface
 	body /
+		<= Hint $mol_text
+			text \TODO: сделать по-другому селект этот, а то он путает...
 		<= Variant_select $mol_select
 			dictionary <= variants *
 				soft \Soft
