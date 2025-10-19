@@ -1,5 +1,5 @@
-$ds_app_page_themer $ds_page
+$eve_app_page_themer $eve_page
 	title \Themer
 	Head null
 	body /
-		<= Colors $ds_app_page_themer_colors
+		<= Colors $eve_app_page_themer_colors

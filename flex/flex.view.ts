@@ -1,15 +1,15 @@
 namespace $.$$ {
 
 
-	export type $ds_flex_direction = typeof $ds_flex.DIRECTIONS[ number ]
-	export type $ds_flex_wrap = 'wrap' | 'nowrap' | 'wrap-reverse'
-	export type $ds_flex_justify_content = typeof $ds_flex.JUSTIFY_CONTENTS[ number ]
-	export type $ds_flex_align_items = typeof $ds_flex.ALIGN_ITEMS[ number ]
+	export type $eve_flex_direction = typeof $eve_flex.DIRECTIONS[ number ]
+	export type $eve_flex_wrap = 'wrap' | 'nowrap' | 'wrap-reverse'
+	export type $eve_flex_justify_content = typeof $eve_flex.JUSTIFY_CONTENTS[ number ]
+	export type $eve_flex_align_items = typeof $eve_flex.ALIGN_ITEMS[ number ]
 
 	/**
 	 * Well-known basic flex component.
 	 */
-	export class $ds_flex extends $.$ds_flex {
+	export class $eve_flex extends $.$eve_flex {
 
 		static readonly DIRECTIONS = [
 			'row',
@@ -44,7 +44,7 @@ namespace $.$$ {
 		] as const;
 
 		override attr() {
-			const fqnPrefix = 'ds_flex_'
+			const fqnPrefix = 'eve_flex_'
 			const superAttrs = super.attr()
 
 			return {
@@ -65,22 +65,22 @@ namespace $.$$ {
 		}
 
 		@$mol_mem
-		direction( next?: $ds_flex_direction ): $ds_flex_direction {
+		direction( next?: $eve_flex_direction ): $eve_flex_direction {
 			return next ?? 'row'
 		}
 
 		@$mol_mem
-		justify_content( next?: $ds_flex_justify_content ): $ds_flex_justify_content {
+		justify_content( next?: $eve_flex_justify_content ): $eve_flex_justify_content {
 			return next ?? 'flex-start'
 		}
 
 		@$mol_mem
-		align_items( next?: $ds_flex_align_items ): $ds_flex_align_items {
+		align_items( next?: $eve_flex_align_items ): $eve_flex_align_items {
 			return next ?? 'stretch'
 		}
 
 		@$mol_mem
-		wrap( next?: $ds_flex_wrap ): $ds_flex_wrap {
+		wrap( next?: $eve_flex_wrap ): $eve_flex_wrap {
 			return next ?? 'nowrap'
 		}
 

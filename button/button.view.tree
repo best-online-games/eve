@@ -1,4 +1,4 @@
-$ds_button $ds_flex
+$eve_button $eve_flex
 	interactive true
 	click?event null
 	event_click?event null

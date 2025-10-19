@@ -1,6 +1,6 @@
 namespace $.$$ {
 
-	$mol_style_define( $ds_button, {
+	$mol_style_define( $eve_button, {
 		// Button-specific styles
 		fontFamily: 'inherit',
 		fontWeight: '500',

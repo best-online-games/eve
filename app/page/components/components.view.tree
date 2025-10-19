@@ -1,11 +1,11 @@
-$ds_app_page_components $ds_page
+$eve_app_page_components $eve_page
 	title \Components
 	Head null
 	body /
-		<= Nav_menu $ds_app_page_sb_catalog
+		<= Nav_menu $eve_app_page_sb_catalog
 			param \component
 			menu_filter_enabled true
 			spreads *
-				surfaces <= Surfaces $ds_app_page_components_surface
-				flex <= Flex $ds_app_page_components_flex
-				buttons <= Buttons $ds_app_page_components_button
+				surfaces <= Surfaces $eve_app_page_components_surface
+				flex <= Flex $eve_app_page_components_flex
+				buttons <= Buttons $eve_app_page_components_button

@@ -1,7 +1,7 @@
 namespace $.$$ {
 	const { rem, px } = $mol_style_unit
 
-	$mol_style_define($ds_app_demo, {
+	$mol_style_define( $eve_app_demo, {
 		Demo_content: {
 			gap: $mol_gap.block,
 			padding: $mol_gap.block,
@@ -12,28 +12,28 @@ namespace $.$$ {
 			background: {
 				color: $mol_theme.card,
 			},
-			borderRadius: px(8),
+			borderRadius: px( 8 ),
 		},
 
 		Welcome_title: {
-			fontSize: rem(1.5),
+			fontSize: rem( 1.5 ),
 			fontWeight: 'bold',
 			margin: {
 				bottom: $mol_gap.block,
 			},
 		},
 
-		Cards_section: {
+		Careve_section: {
 			gap: $mol_gap.block,
 		},
 
-		Cards_title: {
-			fontSize: rem(1.25),
+		Careve_title: {
+			fontSize: rem( 1.25 ),
 			fontWeight: 'bold',
 			padding: $mol_gap.block,
 		},
 
-		Cards_row: {
+		Careve_row: {
 			gap: $mol_gap.block,
 			flex: {
 				wrap: 'wrap',
@@ -42,16 +42,16 @@ namespace $.$$ {
 
 		Card1: {
 			flex: {
-				basis: rem(15),
+				basis: rem( 15 ),
 				grow: 1,
 			},
 			padding: $mol_gap.block,
 			background: {
 				color: $mol_theme.card,
 			},
-			borderRadius: px(8),
+			borderRadius: px( 8 ),
 			border: {
-				width: px(1),
+				width: px( 1 ),
 				style: 'solid',
 				color: $mol_theme.line,
 			},
@@ -59,16 +59,16 @@ namespace $.$$ {
 
 		Card2: {
 			flex: {
-				basis: rem(15),
+				basis: rem( 15 ),
 				grow: 1,
 			},
 			padding: $mol_gap.block,
 			background: {
 				color: $mol_theme.card,
 			},
-			borderRadius: px(8),
+			borderRadius: px( 8 ),
 			border: {
-				width: px(1),
+				width: px( 1 ),
 				style: 'solid',
 				color: $mol_theme.line,
 			},
@@ -76,23 +76,23 @@ namespace $.$$ {
 
 		Card3: {
 			flex: {
-				basis: rem(15),
+				basis: rem( 15 ),
 				grow: 1,
 			},
 			padding: $mol_gap.block,
 			background: {
 				color: $mol_theme.card,
 			},
-			borderRadius: px(8),
+			borderRadius: px( 8 ),
 			border: {
-				width: px(1),
+				width: px( 1 ),
 				style: 'solid',
 				color: $mol_theme.line,
 			},
 		},
 
 		Card1_title: {
-			fontSize: rem(1.1),
+			fontSize: rem( 1.1 ),
 			fontWeight: '600',
 			margin: {
 				bottom: $mol_gap.text,
@@ -100,7 +100,7 @@ namespace $.$$ {
 		},
 
 		Card2_title: {
-			fontSize: rem(1.1),
+			fontSize: rem( 1.1 ),
 			fontWeight: '600',
 			margin: {
 				bottom: $mol_gap.text,
@@ -108,7 +108,7 @@ namespace $.$$ {
 		},
 
 		Card3_title: {
-			fontSize: rem(1.1),
+			fontSize: rem( 1.1 ),
 			fontWeight: '600',
 			margin: {
 				bottom: $mol_gap.text,
@@ -120,7 +120,7 @@ namespace $.$$ {
 		},
 
 		Forms_title: {
-			fontSize: rem(1.25),
+			fontSize: rem( 1.25 ),
 			fontWeight: 'bold',
 			padding: $mol_gap.block,
 		},
@@ -131,7 +131,7 @@ namespace $.$$ {
 			background: {
 				color: $mol_theme.card,
 			},
-			borderRadius: px(8),
+			borderRadius: px( 8 ),
 		},
 
 		Options_row: {
@@ -150,22 +150,22 @@ namespace $.$$ {
 		},
 
 		Table_title: {
-			fontSize: rem(1.25),
+			fontSize: rem( 1.25 ),
 			fontWeight: 'bold',
 			padding: $mol_gap.block,
 		},
 
 		Table_demo: {
-			gap: px(1),
+			gap: px( 1 ),
 			background: {
 				color: $mol_theme.line,
 			},
 			border: {
-				width: px(1),
+				width: px( 1 ),
 				style: 'solid',
 				color: $mol_theme.line,
 			},
-			borderRadius: px(8),
+			borderRadius: px( 8 ),
 		},
 
 		Table_header: {
@@ -174,7 +174,7 @@ namespace $.$$ {
 			},
 			fontWeight: 'bold',
 			padding: $mol_gap.block,
-			gap: px(1),
+			gap: px( 1 ),
 		},
 
 		Table_row1: {
@@ -182,7 +182,7 @@ namespace $.$$ {
 				color: $mol_theme.back,
 			},
 			padding: $mol_gap.block,
-			gap: px(1),
+			gap: px( 1 ),
 		},
 
 		Table_row2: {
@@ -190,7 +190,7 @@ namespace $.$$ {
 				color: $mol_theme.back,
 			},
 			padding: $mol_gap.block,
-			gap: px(1),
+			gap: px( 1 ),
 		},
 
 		Table_row3: {
@@ -198,7 +198,7 @@ namespace $.$$ {
 				color: $mol_theme.back,
 			},
 			padding: $mol_gap.block,
-			gap: px(1),
+			gap: px( 1 ),
 		},
 
 		Header1: {
@@ -221,5 +221,5 @@ namespace $.$$ {
 				basis: 0,
 			},
 		},
-	})
+	} )
 }

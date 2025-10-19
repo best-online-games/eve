@@ -1,14 +1,14 @@
-$ds_app_page_sb_playground $ds_flex
+$eve_app_page_sb_playground $eve_flex
 	justify_content \center
 	align_items \center
 	gap \32px
 	wrap \wrap
 	sub /
-		<= Live_component_container $ds_surface
+		<= Live_component_container $eve_surface
 			colors \lowest
 			sub /
-				<= Live_component $ds_surface
-		<= Editor_body $ds_surface
+				<= Live_component $eve_surface
+		<= Editor_body $eve_surface
 			colors \lowest
 			sub <= editor_body /
 				<= Source_tree $hyoo_tree_edit

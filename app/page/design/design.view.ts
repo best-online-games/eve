@@ -1,3 +1,3 @@
 namespace $.$$ {
-	export class $ds_app_page_design extends $.$ds_app_page_design {}
+	export class $eve_app_page_design extends $.$eve_app_page_design {}
 }

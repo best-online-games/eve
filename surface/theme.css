@@ -2,19 +2,19 @@
 	/* Inherit base hue configuration from mol_theme */
 	/* --mol_theme_hue and --mol_theme_hue_spread are defined in mol/theme/theme.css */
 
-	--ds_theme_hue: 210deg;
+	--eve_theme_hue: 210deg;
 
 	/* Surface semantic color hues */
-	--ds_surface_primary_hue: var(--ds_theme_hue);
-	--ds_surface_secondary_hue: calc(var(--ds_theme_hue) + 30deg);
-	--ds_surface_tertiary_hue: calc(var(--ds_theme_hue) + 60deg);
-	--ds_surface_accent_hue: calc(var(--ds_theme_hue) + 180deg);
+	--eve_surface_primary_hue: var(--eve_theme_hue);
+	--eve_surface_secondary_hue: calc(var(--eve_theme_hue) + 30deg);
+	--eve_surface_tertiary_hue: calc(var(--eve_theme_hue) + 60deg);
+	--eve_surface_accent_hue: calc(var(--eve_theme_hue) + 180deg);
 
 	/* Semantic status colors (fixed hues for consistency) */
-	--ds_surface_danger_hue: 0deg; /* Red */
-	--ds_surface_warning_hue: 45deg; /* Orange/Yellow */
-	--ds_surface_success_hue: 145deg; /* Green */
-	--ds_surface_info_hue: 200deg; /* Blue */
+	--eve_surface_danger_hue: 0deg; /* Red */
+	--eve_surface_warning_hue: 45deg; /* Orange/Yellow */
+	--eve_surface_success_hue: 145deg; /* Green */
+	--eve_surface_info_hue: 200deg; /* Blue */
 }
 
 /* =============================================================================
@@ -29,35 +29,35 @@
 	   ========================================================================= */
 
 	/* Solid variant: filled background, high contrast text */
-	--ds_surface_primary_solid_bg_enabled: hsl(var(--ds_surface_primary_hue), 60%, 50%);
-	--ds_surface_primary_solid_bg_hovered: hsl(var(--ds_surface_primary_hue), 60%, 55%);
-	--ds_surface_primary_solid_bg_pressed: hsl(var(--ds_surface_primary_hue), 60%, 45%);
-	--ds_surface_primary_solid_bg_disabled: hsl(var(--ds_surface_primary_hue), 20%, 30%);
-	--ds_surface_primary_solid_text_enabled: hsl(var(--ds_surface_primary_hue), 0%, 100%);
-	--ds_surface_primary_solid_text_disabled: hsl(var(--ds_surface_primary_hue), 0%, 60%);
+	--eve_surface_primary_solid_bg_enabled: hsl(var(--eve_surface_primary_hue), 60%, 50%);
+	--eve_surface_primary_solid_bg_hovered: hsl(var(--eve_surface_primary_hue), 60%, 55%);
+	--eve_surface_primary_solid_bg_pressed: hsl(var(--eve_surface_primary_hue), 60%, 45%);
+	--eve_surface_primary_solid_bg_disabled: hsl(var(--eve_surface_primary_hue), 20%, 30%);
+	--eve_surface_primary_solid_text_enabled: hsl(var(--eve_surface_primary_hue), 0%, 100%);
+	--eve_surface_primary_solid_text_disabled: hsl(var(--eve_surface_primary_hue), 0%, 60%);
 
 	/* Soft variant: tinted background, colored text */
-	--ds_surface_primary_soft_bg_enabled: hsl(var(--ds_surface_primary_hue), 60%, 50%);
-	--ds_surface_primary_soft_bg_hovered: hsl(var(--ds_surface_primary_hue), 60%, 50%);
-	--ds_surface_primary_soft_bg_pressed: hsl(var(--ds_surface_primary_hue), 60%, 50%);
-	--ds_surface_primary_soft_bg_disabled: hsl(var(--ds_surface_primary_hue), 20%, 50%);
-	--ds_surface_primary_soft_text_enabled: hsl(var(--ds_surface_primary_hue), 70%, 70%);
-	--ds_surface_primary_soft_text_disabled: hsl(var(--ds_surface_primary_hue), 0%, 50%);
+	--eve_surface_primary_soft_bg_enabled: hsl(var(--eve_surface_primary_hue), 60%, 50%);
+	--eve_surface_primary_soft_bg_hovered: hsl(var(--eve_surface_primary_hue), 60%, 50%);
+	--eve_surface_primary_soft_bg_pressed: hsl(var(--eve_surface_primary_hue), 60%, 50%);
+	--eve_surface_primary_soft_bg_disabled: hsl(var(--eve_surface_primary_hue), 20%, 50%);
+	--eve_surface_primary_soft_text_enabled: hsl(var(--eve_surface_primary_hue), 70%, 70%);
+	--eve_surface_primary_soft_text_disabled: hsl(var(--eve_surface_primary_hue), 0%, 50%);
 
 	/* Outline variant: transparent bg, colored border and text */
-	--ds_surface_primary_outline_bg_enabled: transparent;
-	--ds_surface_primary_outline_bg_hovered: hsl(var(--ds_surface_primary_hue), 60%, 50%, 0.1);
-	--ds_surface_primary_outline_bg_pressed: hsl(var(--ds_surface_primary_hue), 60%, 50%, 0.2);
-	--ds_surface_primary_outline_disabled_border: hsl(var(--ds_surface_primary_hue), 0%, 50%, 0.3);
-	--ds_surface_primary_outline_text_enabled: hsl(var(--ds_surface_primary_hue), 70%, 70%);
-	--ds_surface_primary_outline_text_disabled: hsl(var(--ds_surface_primary_hue), 0%, 50%);
+	--eve_surface_primary_outline_bg_enabled: transparent;
+	--eve_surface_primary_outline_bg_hovered: hsl(var(--eve_surface_primary_hue), 60%, 50%, 0.1);
+	--eve_surface_primary_outline_bg_pressed: hsl(var(--eve_surface_primary_hue), 60%, 50%, 0.2);
+	--eve_surface_primary_outline_disabled_border: hsl(var(--eve_surface_primary_hue), 0%, 50%, 0.3);
+	--eve_surface_primary_outline_text_enabled: hsl(var(--eve_surface_primary_hue), 70%, 70%);
+	--eve_surface_primary_outline_text_disabled: hsl(var(--eve_surface_primary_hue), 0%, 50%);
 
 	/* Ghost variant: fully transparent, minimal visual weight */
-	--ds_surface_primary_ghost_bg_enabled: transparent;
-	--ds_surface_primary_ghost_bg_hovered: hsl(var(--ds_surface_primary_hue), 60%, 50%, 0.1);
-	--ds_surface_primary_ghost_bg_pressed: hsl(var(--ds_surface_primary_hue), 60%, 50%, 0.2);
-	--ds_surface_primary_ghost_text_enabled: hsl(var(--ds_surface_primary_hue), 70%, 70%);
-	--ds_surface_primary_ghost_text_disabled: hsl(var(--ds_surface_primary_hue), 0%, 50%);
+	--eve_surface_primary_ghost_bg_enabled: transparent;
+	--eve_surface_primary_ghost_bg_hovered: hsl(var(--eve_surface_primary_hue), 60%, 50%, 0.1);
+	--eve_surface_primary_ghost_bg_pressed: hsl(var(--eve_surface_primary_hue), 60%, 50%, 0.2);
+	--eve_surface_primary_ghost_text_enabled: hsl(var(--eve_surface_primary_hue), 70%, 70%);
+	--eve_surface_primary_ghost_text_disabled: hsl(var(--eve_surface_primary_hue), 0%, 50%);
 }
 @supports (color: oklch(0% 0 0deg)) {
 	:root,
@@ -65,242 +65,242 @@
 	:where([mol_theme="$mol_theme_dark"]) [mol_theme] {
 		/* PRIMARY - OKLCH */
 
-		--ds_surface_primary_solid_bg_enabled: oklch(55% 0.15 var(--ds_surface_primary_hue));
-		--ds_surface_primary_solid_bg_hovered: oklch(60% 0.15 var(--ds_surface_primary_hue));
-		--ds_surface_primary_solid_bg_pressed: oklch(50% 0.15 var(--ds_surface_primary_hue));
-		--ds_surface_primary_solid_bg_disabled: oklch(35% 0.05 var(--ds_surface_primary_hue));
-		--ds_surface_primary_solid_text_enabled: oklch(100% 0 var(--ds_surface_primary_hue));
-		--ds_surface_primary_solid_text_disabled: oklch(60% 0 var(--ds_surface_primary_hue));
+		--eve_surface_primary_solid_bg_enabled: oklch(55% 0.15 var(--eve_surface_primary_hue));
+		--eve_surface_primary_solid_bg_hovered: oklch(60% 0.15 var(--eve_surface_primary_hue));
+		--eve_surface_primary_solid_bg_pressed: oklch(50% 0.15 var(--eve_surface_primary_hue));
+		--eve_surface_primary_solid_bg_disabled: oklch(35% 0.05 var(--eve_surface_primary_hue));
+		--eve_surface_primary_solid_text_enabled: oklch(100% 0 var(--eve_surface_primary_hue));
+		--eve_surface_primary_solid_text_disabled: oklch(60% 0 var(--eve_surface_primary_hue));
 
-		--ds_surface_primary_soft_bg_enabled: oklch(55% 0.15 var(--ds_surface_primary_hue));
-		--ds_surface_primary_soft_text_enabled: oklch(75% 0.12 var(--ds_surface_primary_hue));
-		--ds_surface_primary_soft_bg_hovered: oklch(55% 0.15 var(--ds_surface_primary_hue));
-		--ds_surface_primary_soft_bg_pressed: oklch(55% 0.15 var(--ds_surface_primary_hue));
-		--ds_surface_primary_soft_bg_disabled: oklch(50% 0.05 var(--ds_surface_primary_hue));
-		--ds_surface_primary_soft_text_disabled: oklch(55% 0 var(--ds_surface_primary_hue));
+		--eve_surface_primary_soft_bg_enabled: oklch(55% 0.15 var(--eve_surface_primary_hue));
+		--eve_surface_primary_soft_text_enabled: oklch(75% 0.12 var(--eve_surface_primary_hue));
+		--eve_surface_primary_soft_bg_hovered: oklch(55% 0.15 var(--eve_surface_primary_hue));
+		--eve_surface_primary_soft_bg_pressed: oklch(55% 0.15 var(--eve_surface_primary_hue));
+		--eve_surface_primary_soft_bg_disabled: oklch(50% 0.05 var(--eve_surface_primary_hue));
+		--eve_surface_primary_soft_text_disabled: oklch(55% 0 var(--eve_surface_primary_hue));
 
-		--ds_surface_primary_outline_bg_enabled: transparent;
-		--ds_surface_primary_outline_bg_hovered: transparent;
-		--ds_surface_primary_outline_bg_pressed: transparent;
-		--ds_surface_primary_outline_disabled_border: oklch(50% 0 var(--ds_surface_primary_hue) / 0.3);
-		--ds_surface_primary_outline_text_enabled: oklch(75% 0.12 var(--ds_surface_primary_hue));
-		--ds_surface_primary_outline_text_disabled: oklch(55% 0 var(--ds_surface_primary_hue));
+		--eve_surface_primary_outline_bg_enabled: transparent;
+		--eve_surface_primary_outline_bg_hovered: transparent;
+		--eve_surface_primary_outline_bg_pressed: transparent;
+		--eve_surface_primary_outline_disabled_border: oklch(50% 0 var(--eve_surface_primary_hue) / 0.3);
+		--eve_surface_primary_outline_text_enabled: oklch(75% 0.12 var(--eve_surface_primary_hue));
+		--eve_surface_primary_outline_text_disabled: oklch(55% 0 var(--eve_surface_primary_hue));
 
-		--ds_surface_primary_ghost_bg_enabled: transparent;
-		--ds_surface_primary_ghost_bg_hovered: oklch(55% 0.15 var(--ds_surface_primary_hue) / 0.1);
-		--ds_surface_primary_ghost_bg_pressed: oklch(55% 0.15 var(--ds_surface_primary_hue) / 0.2);
-		--ds_surface_primary_ghost_text_enabled: oklch(75% 0.12 var(--ds_surface_primary_hue));
-		--ds_surface_primary_ghost_text_disabled: oklch(55% 0 var(--ds_surface_primary_hue));
+		--eve_surface_primary_ghost_bg_enabled: transparent;
+		--eve_surface_primary_ghost_bg_hovered: oklch(55% 0.15 var(--eve_surface_primary_hue) / 0.1);
+		--eve_surface_primary_ghost_bg_pressed: oklch(55% 0.15 var(--eve_surface_primary_hue) / 0.2);
+		--eve_surface_primary_ghost_text_enabled: oklch(75% 0.12 var(--eve_surface_primary_hue));
+		--eve_surface_primary_ghost_text_disabled: oklch(55% 0 var(--eve_surface_primary_hue));
 
 		/* =========================================================================
 	   SECONDARY COLOR
 	   ========================================================================= */
 
-		--ds_surface_secondary_solid_bg_enabled: oklch(55% 0.15 var(--ds_surface_secondary_hue));
-		--ds_surface_secondary_solid_bg_hovered: oklch(60% 0.15 var(--ds_surface_secondary_hue));
-		--ds_surface_secondary_solid_bg_pressed: oklch(50% 0.15 var(--ds_surface_secondary_hue));
-		--ds_surface_secondary_solid_bg_disabled: oklch(35% 0.05 var(--ds_surface_secondary_hue));
-		--ds_surface_secondary_solid_text_enabled: oklch(100% 0 var(--ds_surface_secondary_hue));
-		--ds_surface_secondary_solid_text_disabled: oklch(60% 0 var(--ds_surface_secondary_hue));
+		--eve_surface_secondary_solid_bg_enabled: oklch(55% 0.15 var(--eve_surface_secondary_hue));
+		--eve_surface_secondary_solid_bg_hovered: oklch(60% 0.15 var(--eve_surface_secondary_hue));
+		--eve_surface_secondary_solid_bg_pressed: oklch(50% 0.15 var(--eve_surface_secondary_hue));
+		--eve_surface_secondary_solid_bg_disabled: oklch(35% 0.05 var(--eve_surface_secondary_hue));
+		--eve_surface_secondary_solid_text_enabled: oklch(100% 0 var(--eve_surface_secondary_hue));
+		--eve_surface_secondary_solid_text_disabled: oklch(60% 0 var(--eve_surface_secondary_hue));
 
-		--ds_surface_secondary_soft_bg_enabled: oklch(55% 0.15 var(--ds_surface_secondary_hue) / 0.15);
-		--ds_surface_secondary_soft_bg_hovered: oklch(55% 0.15 var(--ds_surface_secondary_hue) / 0.25);
-		--ds_surface_secondary_soft_bg_pressed: oklch(55% 0.15 var(--ds_surface_secondary_hue) / 0.35);
-		--ds_surface_secondary_soft_bg_disabled: oklch(50% 0.05 var(--ds_surface_secondary_hue) / 0.08);
-		--ds_surface_secondary_soft_text_enabled: oklch(75% 0.12 var(--ds_surface_secondary_hue));
-		--ds_surface_secondary_soft_text_disabled: oklch(55% 0 var(--ds_surface_secondary_hue));
+		--eve_surface_secondary_soft_bg_enabled: oklch(55% 0.15 var(--eve_surface_secondary_hue) / 0.15);
+		--eve_surface_secondary_soft_bg_hovered: oklch(55% 0.15 var(--eve_surface_secondary_hue) / 0.25);
+		--eve_surface_secondary_soft_bg_pressed: oklch(55% 0.15 var(--eve_surface_secondary_hue) / 0.35);
+		--eve_surface_secondary_soft_bg_disabled: oklch(50% 0.05 var(--eve_surface_secondary_hue) / 0.08);
+		--eve_surface_secondary_soft_text_enabled: oklch(75% 0.12 var(--eve_surface_secondary_hue));
+		--eve_surface_secondary_soft_text_disabled: oklch(55% 0 var(--eve_surface_secondary_hue));
 
-		--ds_surface_secondary_outline_bg_enabled: transparent;
-		--ds_surface_secondary_outline_bg_hovered: transparent;
-		--ds_surface_secondary_outline_bg_pressed: transparent;
-		--ds_surface_secondary_outline_text_enabled: oklch(75% 0.12 var(--ds_surface_secondary_hue));
-		--ds_surface_secondary_outline_text_disabled: oklch(55% 0 var(--ds_surface_secondary_hue));
+		--eve_surface_secondary_outline_bg_enabled: transparent;
+		--eve_surface_secondary_outline_bg_hovered: transparent;
+		--eve_surface_secondary_outline_bg_pressed: transparent;
+		--eve_surface_secondary_outline_text_enabled: oklch(75% 0.12 var(--eve_surface_secondary_hue));
+		--eve_surface_secondary_outline_text_disabled: oklch(55% 0 var(--eve_surface_secondary_hue));
 
-		--ds_surface_secondary_ghost_bg_enabled: transparent;
-		--ds_surface_secondary_ghost_bg_hovered: oklch(55% 0.15 var(--ds_surface_secondary_hue) / 0.1);
-		--ds_surface_secondary_ghost_bg_pressed: oklch(55% 0.15 var(--ds_surface_secondary_hue) / 0.2);
-		--ds_surface_secondary_ghost_text_enabled: oklch(75% 0.12 var(--ds_surface_secondary_hue));
-		--ds_surface_secondary_ghost_text_disabled: oklch(55% 0 var(--ds_surface_secondary_hue));
+		--eve_surface_secondary_ghost_bg_enabled: transparent;
+		--eve_surface_secondary_ghost_bg_hovered: oklch(55% 0.15 var(--eve_surface_secondary_hue) / 0.1);
+		--eve_surface_secondary_ghost_bg_pressed: oklch(55% 0.15 var(--eve_surface_secondary_hue) / 0.2);
+		--eve_surface_secondary_ghost_text_enabled: oklch(75% 0.12 var(--eve_surface_secondary_hue));
+		--eve_surface_secondary_ghost_text_disabled: oklch(55% 0 var(--eve_surface_secondary_hue));
 
 		/* =========================================================================
 	   TERTIARY COLOR
 	   ========================================================================= */
 
-		--ds_surface_tertiary_solid_bg_enabled: oklch(55% 0.15 var(--ds_surface_tertiary_hue));
-		--ds_surface_tertiary_solid_bg_hovered: oklch(60% 0.15 var(--ds_surface_tertiary_hue));
-		--ds_surface_tertiary_solid_bg_pressed: oklch(50% 0.15 var(--ds_surface_tertiary_hue));
-		--ds_surface_tertiary_solid_bg_disabled: oklch(35% 0.05 var(--ds_surface_tertiary_hue));
-		--ds_surface_tertiary_solid_text_enabled: oklch(100% 0 var(--ds_surface_tertiary_hue));
-		--ds_surface_tertiary_solid_text_disabled: oklch(60% 0 var(--ds_surface_tertiary_hue));
+		--eve_surface_tertiary_solid_bg_enabled: oklch(55% 0.15 var(--eve_surface_tertiary_hue));
+		--eve_surface_tertiary_solid_bg_hovered: oklch(60% 0.15 var(--eve_surface_tertiary_hue));
+		--eve_surface_tertiary_solid_bg_pressed: oklch(50% 0.15 var(--eve_surface_tertiary_hue));
+		--eve_surface_tertiary_solid_bg_disabled: oklch(35% 0.05 var(--eve_surface_tertiary_hue));
+		--eve_surface_tertiary_solid_text_enabled: oklch(100% 0 var(--eve_surface_tertiary_hue));
+		--eve_surface_tertiary_solid_text_disabled: oklch(60% 0 var(--eve_surface_tertiary_hue));
 
-		--ds_surface_tertiary_soft_bg_enabled: oklch(55% 0.15 var(--ds_surface_tertiary_hue) / 0.15);
-		--ds_surface_tertiary_soft_bg_hovered: oklch(55% 0.15 var(--ds_surface_tertiary_hue) / 0.25);
-		--ds_surface_tertiary_soft_bg_pressed: oklch(55% 0.15 var(--ds_surface_tertiary_hue) / 0.35);
-		--ds_surface_tertiary_soft_bg_disabled: oklch(50% 0.05 var(--ds_surface_tertiary_hue) / 0.08);
-		--ds_surface_tertiary_soft_text_enabled: oklch(75% 0.12 var(--ds_surface_tertiary_hue));
-		--ds_surface_tertiary_soft_text_disabled: oklch(55% 0 var(--ds_surface_tertiary_hue));
+		--eve_surface_tertiary_soft_bg_enabled: oklch(55% 0.15 var(--eve_surface_tertiary_hue) / 0.15);
+		--eve_surface_tertiary_soft_bg_hovered: oklch(55% 0.15 var(--eve_surface_tertiary_hue) / 0.25);
+		--eve_surface_tertiary_soft_bg_pressed: oklch(55% 0.15 var(--eve_surface_tertiary_hue) / 0.35);
+		--eve_surface_tertiary_soft_bg_disabled: oklch(50% 0.05 var(--eve_surface_tertiary_hue) / 0.08);
+		--eve_surface_tertiary_soft_text_enabled: oklch(75% 0.12 var(--eve_surface_tertiary_hue));
+		--eve_surface_tertiary_soft_text_disabled: oklch(55% 0 var(--eve_surface_tertiary_hue));
 
-		--ds_surface_tertiary_outline_bg_enabled: transparent;
-		--ds_surface_tertiary_outline_bg_hovered: transparent;
-		--ds_surface_tertiary_outline_bg_pressed: transparent;
-		--ds_surface_tertiary_outline_disabled_border: oklch(50% 0 var(--ds_surface_tertiary_hue) / 0.3);
-		--ds_surface_tertiary_outline_text_enabled: oklch(75% 0.12 var(--ds_surface_tertiary_hue));
-		--ds_surface_tertiary_outline_text_disabled: oklch(55% 0 var(--ds_surface_tertiary_hue));
+		--eve_surface_tertiary_outline_bg_enabled: transparent;
+		--eve_surface_tertiary_outline_bg_hovered: transparent;
+		--eve_surface_tertiary_outline_bg_pressed: transparent;
+		--eve_surface_tertiary_outline_disabled_border: oklch(50% 0 var(--eve_surface_tertiary_hue) / 0.3);
+		--eve_surface_tertiary_outline_text_enabled: oklch(75% 0.12 var(--eve_surface_tertiary_hue));
+		--eve_surface_tertiary_outline_text_disabled: oklch(55% 0 var(--eve_surface_tertiary_hue));
 
-		--ds_surface_tertiary_ghost_bg_enabled: transparent;
-		--ds_surface_tertiary_ghost_text_enabled: oklch(75% 0.12 var(--ds_surface_tertiary_hue));
-		--ds_surface_tertiary_ghost_bg_hovered: oklch(55% 0.15 var(--ds_surface_tertiary_hue) / 0.1);
-		--ds_surface_tertiary_ghost_bg_pressed: oklch(55% 0.15 var(--ds_surface_tertiary_hue) / 0.2);
-		--ds_surface_tertiary_ghost_text_disabled: oklch(55% 0 var(--ds_surface_tertiary_hue));
+		--eve_surface_tertiary_ghost_bg_enabled: transparent;
+		--eve_surface_tertiary_ghost_text_enabled: oklch(75% 0.12 var(--eve_surface_tertiary_hue));
+		--eve_surface_tertiary_ghost_bg_hovered: oklch(55% 0.15 var(--eve_surface_tertiary_hue) / 0.1);
+		--eve_surface_tertiary_ghost_bg_pressed: oklch(55% 0.15 var(--eve_surface_tertiary_hue) / 0.2);
+		--eve_surface_tertiary_ghost_text_disabled: oklch(55% 0 var(--eve_surface_tertiary_hue));
 
 		/* =========================================================================
 	   DANGER COLOR (Semantic)
 	   ========================================================================= */
 
-		--ds_surface_danger_solid_bg_enabled: oklch(55% 0.2 var(--ds_surface_danger_hue));
-		--ds_surface_danger_solid_bg_hovered: oklch(60% 0.2 var(--ds_surface_danger_hue));
-		--ds_surface_danger_solid_bg_pressed: oklch(50% 0.2 var(--ds_surface_danger_hue));
-		--ds_surface_danger_solid_bg_disabled: oklch(35% 0.08 var(--ds_surface_danger_hue));
-		--ds_surface_danger_solid_text_enabled: oklch(100% 0 var(--ds_surface_danger_hue));
-		--ds_surface_danger_solid_text_disabled: oklch(60% 0 var(--ds_surface_danger_hue));
+		--eve_surface_danger_solid_bg_enabled: oklch(55% 0.2 var(--eve_surface_danger_hue));
+		--eve_surface_danger_solid_bg_hovered: oklch(60% 0.2 var(--eve_surface_danger_hue));
+		--eve_surface_danger_solid_bg_pressed: oklch(50% 0.2 var(--eve_surface_danger_hue));
+		--eve_surface_danger_solid_bg_disabled: oklch(35% 0.08 var(--eve_surface_danger_hue));
+		--eve_surface_danger_solid_text_enabled: oklch(100% 0 var(--eve_surface_danger_hue));
+		--eve_surface_danger_solid_text_disabled: oklch(60% 0 var(--eve_surface_danger_hue));
 
-		--ds_surface_danger_soft_bg_enabled: oklch(55% 0.2 var(--ds_surface_danger_hue) / 0.15);
-		--ds_surface_danger_soft_bg_hovered: oklch(55% 0.2 var(--ds_surface_danger_hue) / 0.25);
-		--ds_surface_danger_soft_bg_pressed: oklch(55% 0.2 var(--ds_surface_danger_hue) / 0.35);
-		--ds_surface_danger_soft_bg_disabled: oklch(50% 0.08 var(--ds_surface_danger_hue) / 0.08);
-		--ds_surface_danger_soft_text_enabled: oklch(75% 0.16 var(--ds_surface_danger_hue));
-		--ds_surface_danger_soft_text_disabled: oklch(55% 0 var(--ds_surface_danger_hue));
+		--eve_surface_danger_soft_bg_enabled: oklch(55% 0.2 var(--eve_surface_danger_hue) / 0.15);
+		--eve_surface_danger_soft_bg_hovered: oklch(55% 0.2 var(--eve_surface_danger_hue) / 0.25);
+		--eve_surface_danger_soft_bg_pressed: oklch(55% 0.2 var(--eve_surface_danger_hue) / 0.35);
+		--eve_surface_danger_soft_bg_disabled: oklch(50% 0.08 var(--eve_surface_danger_hue) / 0.08);
+		--eve_surface_danger_soft_text_enabled: oklch(75% 0.16 var(--eve_surface_danger_hue));
+		--eve_surface_danger_soft_text_disabled: oklch(55% 0 var(--eve_surface_danger_hue));
 
-		--ds_surface_danger_outline_bg_enabled: transparent;
-		--ds_surface_danger_outline_bg_hovered: transparent;
-		--ds_surface_danger_outline_bg_pressed: transparent;
-		--ds_surface_danger_outline_text_enabled: oklch(75% 0.16 var(--ds_surface_danger_hue));
-		--ds_surface_danger_outline_text_disabled: oklch(55% 0 var(--ds_surface_danger_hue));
+		--eve_surface_danger_outline_bg_enabled: transparent;
+		--eve_surface_danger_outline_bg_hovered: transparent;
+		--eve_surface_danger_outline_bg_pressed: transparent;
+		--eve_surface_danger_outline_text_enabled: oklch(75% 0.16 var(--eve_surface_danger_hue));
+		--eve_surface_danger_outline_text_disabled: oklch(55% 0 var(--eve_surface_danger_hue));
 
-		--ds_surface_danger_ghost_bg_enabled: transparent;
-		--ds_surface_danger_ghost_bg_hovered: oklch(55% 0.2 var(--ds_surface_danger_hue) / 0.1);
-		--ds_surface_danger_ghost_bg_pressed: oklch(55% 0.2 var(--ds_surface_danger_hue) / 0.2);
-		--ds_surface_danger_ghost_text_enabled: oklch(75% 0.16 var(--ds_surface_danger_hue));
-		--ds_surface_danger_ghost_text_disabled: oklch(55% 0 var(--ds_surface_danger_hue));
+		--eve_surface_danger_ghost_bg_enabled: transparent;
+		--eve_surface_danger_ghost_bg_hovered: oklch(55% 0.2 var(--eve_surface_danger_hue) / 0.1);
+		--eve_surface_danger_ghost_bg_pressed: oklch(55% 0.2 var(--eve_surface_danger_hue) / 0.2);
+		--eve_surface_danger_ghost_text_enabled: oklch(75% 0.16 var(--eve_surface_danger_hue));
+		--eve_surface_danger_ghost_text_disabled: oklch(55% 0 var(--eve_surface_danger_hue));
 
 		/* =========================================================================
 	   WARNING COLOR (Semantic)
 	   ========================================================================= */
 
-		--ds_surface_warning_solid_bg_enabled: oklch(70% 0.15 var(--ds_surface_warning_hue));
-		--ds_surface_warning_solid_bg_hovered: oklch(75% 0.15 var(--ds_surface_warning_hue));
-		--ds_surface_warning_solid_bg_pressed: oklch(65% 0.15 var(--ds_surface_warning_hue));
-		--ds_surface_warning_solid_bg_disabled: oklch(50% 0.05 var(--ds_surface_warning_hue));
-		--ds_surface_warning_solid_text_enabled: oklch(20% 0.05 var(--ds_surface_warning_hue));
-		--ds_surface_warning_solid_text_disabled: oklch(60% 0 var(--ds_surface_warning_hue));
+		--eve_surface_warning_solid_bg_enabled: oklch(70% 0.15 var(--eve_surface_warning_hue));
+		--eve_surface_warning_solid_bg_hovered: oklch(75% 0.15 var(--eve_surface_warning_hue));
+		--eve_surface_warning_solid_bg_pressed: oklch(65% 0.15 var(--eve_surface_warning_hue));
+		--eve_surface_warning_solid_bg_disabled: oklch(50% 0.05 var(--eve_surface_warning_hue));
+		--eve_surface_warning_solid_text_enabled: oklch(20% 0.05 var(--eve_surface_warning_hue));
+		--eve_surface_warning_solid_text_disabled: oklch(60% 0 var(--eve_surface_warning_hue));
 
-		--ds_surface_warning_soft_bg_enabled: oklch(70% 0.15 var(--ds_surface_warning_hue) / 0.15);
-		--ds_surface_warning_soft_bg_hovered: oklch(70% 0.15 var(--ds_surface_warning_hue) / 0.25);
-		--ds_surface_warning_soft_bg_pressed: oklch(70% 0.15 var(--ds_surface_warning_hue) / 0.35);
-		--ds_surface_warning_soft_bg_disabled: oklch(50% 0.05 var(--ds_surface_warning_hue) / 0.08);
-		--ds_surface_warning_soft_text_enabled: oklch(80% 0.13 var(--ds_surface_warning_hue));
-		--ds_surface_warning_soft_text_disabled: oklch(60% 0 var(--ds_surface_warning_hue));
+		--eve_surface_warning_soft_bg_enabled: oklch(70% 0.15 var(--eve_surface_warning_hue) / 0.15);
+		--eve_surface_warning_soft_bg_hovered: oklch(70% 0.15 var(--eve_surface_warning_hue) / 0.25);
+		--eve_surface_warning_soft_bg_pressed: oklch(70% 0.15 var(--eve_surface_warning_hue) / 0.35);
+		--eve_surface_warning_soft_bg_disabled: oklch(50% 0.05 var(--eve_surface_warning_hue) / 0.08);
+		--eve_surface_warning_soft_text_enabled: oklch(80% 0.13 var(--eve_surface_warning_hue));
+		--eve_surface_warning_soft_text_disabled: oklch(60% 0 var(--eve_surface_warning_hue));
 
-		--ds_surface_warning_outline_bg_enabled: transparent;
-		--ds_surface_warning_outline_bg_hovered: transparent;
-		--ds_surface_warning_outline_bg_pressed: transparent;
-		--ds_surface_warning_outline_text_enabled: oklch(80% 0.13 var(--ds_surface_warning_hue));
-		--ds_surface_warning_outline_text_disabled: oklch(60% 0 var(--ds_surface_warning_hue));
+		--eve_surface_warning_outline_bg_enabled: transparent;
+		--eve_surface_warning_outline_bg_hovered: transparent;
+		--eve_surface_warning_outline_bg_pressed: transparent;
+		--eve_surface_warning_outline_text_enabled: oklch(80% 0.13 var(--eve_surface_warning_hue));
+		--eve_surface_warning_outline_text_disabled: oklch(60% 0 var(--eve_surface_warning_hue));
 
-		--ds_surface_warning_ghost_bg_enabled: transparent;
-		--ds_surface_warning_ghost_bg_hovered: oklch(70% 0.15 var(--ds_surface_warning_hue) / 0.1);
-		--ds_surface_warning_ghost_bg_pressed: oklch(70% 0.15 var(--ds_surface_warning_hue) / 0.2);
-		--ds_surface_warning_ghost_text_enabled: oklch(80% 0.13 var(--ds_surface_warning_hue));
-		--ds_surface_warning_ghost_text_disabled: oklch(60% 0 var(--ds_surface_warning_hue));
+		--eve_surface_warning_ghost_bg_enabled: transparent;
+		--eve_surface_warning_ghost_bg_hovered: oklch(70% 0.15 var(--eve_surface_warning_hue) / 0.1);
+		--eve_surface_warning_ghost_bg_pressed: oklch(70% 0.15 var(--eve_surface_warning_hue) / 0.2);
+		--eve_surface_warning_ghost_text_enabled: oklch(80% 0.13 var(--eve_surface_warning_hue));
+		--eve_surface_warning_ghost_text_disabled: oklch(60% 0 var(--eve_surface_warning_hue));
 
 		/* =========================================================================
 	   SUCCESS COLOR (Semantic)
 	   ========================================================================= */
 
-		--ds_surface_success_solid_bg_enabled: oklch(60% 0.16 var(--ds_surface_success_hue));
-		--ds_surface_success_solid_bg_hovered: oklch(65% 0.16 var(--ds_surface_success_hue));
-		--ds_surface_success_solid_bg_pressed: oklch(55% 0.16 var(--ds_surface_success_hue));
-		--ds_surface_success_solid_bg_disabled: oklch(40% 0.06 var(--ds_surface_success_hue));
-		--ds_surface_success_solid_text_enabled: oklch(100% 0 var(--ds_surface_success_hue));
-		--ds_surface_success_solid_text_disabled: oklch(60% 0 var(--ds_surface_success_hue));
+		--eve_surface_success_solid_bg_enabled: oklch(60% 0.16 var(--eve_surface_success_hue));
+		--eve_surface_success_solid_bg_hovered: oklch(65% 0.16 var(--eve_surface_success_hue));
+		--eve_surface_success_solid_bg_pressed: oklch(55% 0.16 var(--eve_surface_success_hue));
+		--eve_surface_success_solid_bg_disabled: oklch(40% 0.06 var(--eve_surface_success_hue));
+		--eve_surface_success_solid_text_enabled: oklch(100% 0 var(--eve_surface_success_hue));
+		--eve_surface_success_solid_text_disabled: oklch(60% 0 var(--eve_surface_success_hue));
 
-		--ds_surface_success_soft_bg_enabled: oklch(60% 0.16 var(--ds_surface_success_hue) / 0.15);
-		--ds_surface_success_soft_bg_hovered: oklch(60% 0.16 var(--ds_surface_success_hue) / 0.25);
-		--ds_surface_success_soft_bg_pressed: oklch(60% 0.16 var(--ds_surface_success_hue) / 0.35);
-		--ds_surface_success_soft_bg_disabled: oklch(50% 0.06 var(--ds_surface_success_hue) / 0.08);
-		--ds_surface_success_soft_text_enabled: oklch(75% 0.14 var(--ds_surface_success_hue));
-		--ds_surface_success_soft_text_disabled: oklch(55% 0 var(--ds_surface_success_hue));
+		--eve_surface_success_soft_bg_enabled: oklch(60% 0.16 var(--eve_surface_success_hue) / 0.15);
+		--eve_surface_success_soft_bg_hovered: oklch(60% 0.16 var(--eve_surface_success_hue) / 0.25);
+		--eve_surface_success_soft_bg_pressed: oklch(60% 0.16 var(--eve_surface_success_hue) / 0.35);
+		--eve_surface_success_soft_bg_disabled: oklch(50% 0.06 var(--eve_surface_success_hue) / 0.08);
+		--eve_surface_success_soft_text_enabled: oklch(75% 0.14 var(--eve_surface_success_hue));
+		--eve_surface_success_soft_text_disabled: oklch(55% 0 var(--eve_surface_success_hue));
 
-		--ds_surface_success_outline_bg_enabled: transparent;
-		--ds_surface_success_outline_bg_hovered: transparent;
-		--ds_surface_success_outline_bg_pressed: transparent;
-		--ds_surface_success_outline_text_enabled: oklch(75% 0.14 var(--ds_surface_success_hue));
-		--ds_surface_success_outline_text_disabled: oklch(55% 0 var(--ds_surface_success_hue));
+		--eve_surface_success_outline_bg_enabled: transparent;
+		--eve_surface_success_outline_bg_hovered: transparent;
+		--eve_surface_success_outline_bg_pressed: transparent;
+		--eve_surface_success_outline_text_enabled: oklch(75% 0.14 var(--eve_surface_success_hue));
+		--eve_surface_success_outline_text_disabled: oklch(55% 0 var(--eve_surface_success_hue));
 
-		--ds_surface_success_ghost_bg_enabled: transparent;
-		--ds_surface_success_ghost_bg_hovered: oklch(60% 0.16 var(--ds_surface_success_hue) / 0.1);
-		--ds_surface_success_ghost_bg_pressed: oklch(60% 0.16 var(--ds_surface_success_hue) / 0.2);
-		--ds_surface_success_ghost_text_enabled: oklch(75% 0.14 var(--ds_surface_success_hue));
-		--ds_surface_success_ghost_text_disabled: oklch(55% 0 var(--ds_surface_success_hue));
+		--eve_surface_success_ghost_bg_enabled: transparent;
+		--eve_surface_success_ghost_bg_hovered: oklch(60% 0.16 var(--eve_surface_success_hue) / 0.1);
+		--eve_surface_success_ghost_bg_pressed: oklch(60% 0.16 var(--eve_surface_success_hue) / 0.2);
+		--eve_surface_success_ghost_text_enabled: oklch(75% 0.14 var(--eve_surface_success_hue));
+		--eve_surface_success_ghost_text_disabled: oklch(55% 0 var(--eve_surface_success_hue));
 
 		/* =========================================================================
 	   INFO COLOR (Semantic)
 	   ========================================================================= */
 
-		--ds_surface_info_solid_bg_enabled: oklch(55% 0.14 var(--ds_surface_info_hue));
-		--ds_surface_info_solid_bg_hovered: oklch(60% 0.14 var(--ds_surface_info_hue));
-		--ds_surface_info_solid_bg_pressed: oklch(50% 0.14 var(--ds_surface_info_hue));
-		--ds_surface_info_solid_bg_disabled: oklch(35% 0.05 var(--ds_surface_info_hue));
-		--ds_surface_info_solid_text_enabled: oklch(100% 0 var(--ds_surface_info_hue));
-		--ds_surface_info_solid_text_disabled: oklch(60% 0 var(--ds_surface_info_hue));
+		--eve_surface_info_solid_bg_enabled: oklch(55% 0.14 var(--eve_surface_info_hue));
+		--eve_surface_info_solid_bg_hovered: oklch(60% 0.14 var(--eve_surface_info_hue));
+		--eve_surface_info_solid_bg_pressed: oklch(50% 0.14 var(--eve_surface_info_hue));
+		--eve_surface_info_solid_bg_disabled: oklch(35% 0.05 var(--eve_surface_info_hue));
+		--eve_surface_info_solid_text_enabled: oklch(100% 0 var(--eve_surface_info_hue));
+		--eve_surface_info_solid_text_disabled: oklch(60% 0 var(--eve_surface_info_hue));
 
-		--ds_surface_info_soft_bg_enabled: oklch(55% 0.14 var(--ds_surface_info_hue) / 0.4);
-		--ds_surface_info_soft_bg_hovered: oklch(55% 0.14 var(--ds_surface_info_hue) / 0.5);
-		--ds_surface_info_soft_bg_pressed: oklch(55% 0.14 var(--ds_surface_info_hue) / 0.6);
-		--ds_surface_info_soft_bg_disabled: oklch(50% 0.05 var(--ds_surface_info_hue) / 0.08);
-		--ds_surface_info_soft_text_enabled: oklch(75% 0.12 var(--ds_surface_info_hue));
-		--ds_surface_info_soft_text_disabled: oklch(55% 0 var(--ds_surface_info_hue));
+		--eve_surface_info_soft_bg_enabled: oklch(55% 0.14 var(--eve_surface_info_hue) / 0.4);
+		--eve_surface_info_soft_bg_hovered: oklch(55% 0.14 var(--eve_surface_info_hue) / 0.5);
+		--eve_surface_info_soft_bg_pressed: oklch(55% 0.14 var(--eve_surface_info_hue) / 0.6);
+		--eve_surface_info_soft_bg_disabled: oklch(50% 0.05 var(--eve_surface_info_hue) / 0.08);
+		--eve_surface_info_soft_text_enabled: oklch(75% 0.12 var(--eve_surface_info_hue));
+		--eve_surface_info_soft_text_disabled: oklch(55% 0 var(--eve_surface_info_hue));
 
-		--ds_surface_info_outline_bg_enabled: transparent;
-		--ds_surface_info_outline_bg_hovered: transparent;
-		--ds_surface_info_outline_bg_pressed: transparent;
-		--ds_surface_info_outline_text_enabled: oklch(75% 0.12 var(--ds_surface_info_hue));
-		--ds_surface_info_outline_text_disabled: oklch(55% 0 var(--ds_surface_info_hue));
+		--eve_surface_info_outline_bg_enabled: transparent;
+		--eve_surface_info_outline_bg_hovered: transparent;
+		--eve_surface_info_outline_bg_pressed: transparent;
+		--eve_surface_info_outline_text_enabled: oklch(75% 0.12 var(--eve_surface_info_hue));
+		--eve_surface_info_outline_text_disabled: oklch(55% 0 var(--eve_surface_info_hue));
 
-		--ds_surface_info_ghost_bg_enabled: transparent;
-		--ds_surface_info_ghost_bg_hovered: oklch(55% 0.14 var(--ds_surface_info_hue) / 0.1);
-		--ds_surface_info_ghost_bg_pressed: oklch(55% 0.14 var(--ds_surface_info_hue) / 0.2);
-		--ds_surface_info_ghost_text_enabled: oklch(75% 0.12 var(--ds_surface_info_hue));
-		--ds_surface_info_ghost_text_disabled: oklch(55% 0 var(--ds_surface_info_hue));
+		--eve_surface_info_ghost_bg_enabled: transparent;
+		--eve_surface_info_ghost_bg_hovered: oklch(55% 0.14 var(--eve_surface_info_hue) / 0.1);
+		--eve_surface_info_ghost_bg_pressed: oklch(55% 0.14 var(--eve_surface_info_hue) / 0.2);
+		--eve_surface_info_ghost_text_enabled: oklch(75% 0.12 var(--eve_surface_info_hue));
+		--eve_surface_info_ghost_text_disabled: oklch(55% 0 var(--eve_surface_info_hue));
 
 		/* =========================================================================
 	   SURFACE LEVELS
 	   ========================================================================= */
 
-		--ds_surface_lowest_solid_bg_enabled: oklch(0 0 0);
-		--ds_surface_lowest_solid_bg_hovered: oklch(0.18 0 0);
-		--ds_surface_lowest_solid_bg_pressed: oklch(0.2 0 0);
-		--ds_surface_lowest_solid_bg_disabled: oklch(0.2 0 0);
+		--eve_surface_lowest_solid_bg_enabled: oklch(0 0 0);
+		--eve_surface_lowest_solid_bg_hovered: oklch(0.18 0 0);
+		--eve_surface_lowest_solid_bg_pressed: oklch(0.2 0 0);
+		--eve_surface_lowest_solid_bg_disabled: oklch(0.2 0 0);
 
-		--ds_surface_low_solid_bg_enabled: oklch(0.2 0 0);
-		--ds_surface_low_solid_bg_hovered: oklch(0.2 0 0);
-		--ds_surface_low_solid_bg_pressed: oklch(0.21 0 0);
-		--ds_surface_low_solid_bg_disabled: oklch(0.22 0 0);
+		--eve_surface_low_solid_bg_enabled: oklch(0.2 0 0);
+		--eve_surface_low_solid_bg_hovered: oklch(0.2 0 0);
+		--eve_surface_low_solid_bg_pressed: oklch(0.21 0 0);
+		--eve_surface_low_solid_bg_disabled: oklch(0.22 0 0);
 
-		--ds_surface_medium_solid_bg_enabled: oklch(0.23 0 0);
-		--ds_surface_medium_solid_bg_hovered: oklch(0.24 0 0);
-		--ds_surface_medium_solid_bg_pressed: oklch(0.25 0 0);
-		--ds_surface_medium_solid_bg_disabled: oklch(0.31 0 0);
+		--eve_surface_medium_solid_bg_enabled: oklch(0.23 0 0);
+		--eve_surface_medium_solid_bg_hovered: oklch(0.24 0 0);
+		--eve_surface_medium_solid_bg_pressed: oklch(0.25 0 0);
+		--eve_surface_medium_solid_bg_disabled: oklch(0.31 0 0);
 
-		--ds_surface_high_solid_bg_enabled: oklch(0.3 0 0);
-		--ds_surface_high_solid_bg_hovered: oklch(0.35 0 0);
-		--ds_surface_high_solid_bg_pressed: oklch(0.4 0 0);
-		--ds_surface_high_solid_bg_disabled: oklch(0.4 0 0);
+		--eve_surface_high_solid_bg_enabled: oklch(0.3 0 0);
+		--eve_surface_high_solid_bg_hovered: oklch(0.35 0 0);
+		--eve_surface_high_solid_bg_pressed: oklch(0.4 0 0);
+		--eve_surface_high_solid_bg_disabled: oklch(0.4 0 0);
 
-		--ds_surface_highest_solid_bg_enabled: oklch(0.35 0 0);
-		--ds_surface_highest_solid_bg_hovered: oklch(0.4 0 0);
-		--ds_surface_highest_solid_bg_pressed: oklch(0.45 0 0);
-		--ds_surface_highest_solid_bg_disabled: oklch(0.45 0 0);
+		--eve_surface_highest_solid_bg_enabled: oklch(0.35 0 0);
+		--eve_surface_highest_solid_bg_hovered: oklch(0.4 0 0);
+		--eve_surface_highest_solid_bg_pressed: oklch(0.45 0 0);
+		--eve_surface_highest_solid_bg_disabled: oklch(0.45 0 0);
 	}
 }
 
@@ -312,236 +312,236 @@
 :where([mol_theme="$mol_theme_light"]) [mol_theme] {
 	/* Light theme uses hsl fallbacks */
 
-	--ds_surface_primary_solid_bg_enabled: hsl(var(--ds_surface_primary_hue), 60%, 50%);
-	--ds_surface_primary_solid_text: hsl(var(--ds_surface_primary_hue), 0%, 100%);
-	--ds_surface_primary_solid_bg_hovered: hsl(var(--ds_surface_primary_hue), 60%, 45%);
-	--ds_surface_primary_solid_bg_pressed: hsl(var(--ds_surface_primary_hue), 60%, 55%);
-	--ds_surface_primary_solid_bg_disabled: hsl(var(--ds_surface_primary_hue), 20%, 75%);
-	--ds_surface_primary_solid_text_disabled: hsl(var(--ds_surface_primary_hue), 0%, 50%);
+	--eve_surface_primary_solid_bg_enabled: hsl(var(--eve_surface_primary_hue), 60%, 50%);
+	--eve_surface_primary_solid_text: hsl(var(--eve_surface_primary_hue), 0%, 100%);
+	--eve_surface_primary_solid_bg_hovered: hsl(var(--eve_surface_primary_hue), 60%, 45%);
+	--eve_surface_primary_solid_bg_pressed: hsl(var(--eve_surface_primary_hue), 60%, 55%);
+	--eve_surface_primary_solid_bg_disabled: hsl(var(--eve_surface_primary_hue), 20%, 75%);
+	--eve_surface_primary_solid_text_disabled: hsl(var(--eve_surface_primary_hue), 0%, 50%);
 
-	--ds_surface_primary_soft_bg_enabled: hsl(var(--ds_surface_primary_hue), 60%, 50%, 0.12);
-	--ds_surface_primary_soft_text: hsl(var(--ds_surface_primary_hue), 70%, 35%);
-	--ds_surface_primary_soft_bg_hovered: hsl(var(--ds_surface_primary_hue), 60%, 50%, 0.2);
-	--ds_surface_primary_soft_bg_pressed: hsl(var(--ds_surface_primary_hue), 60%, 50%, 0.28);
+	--eve_surface_primary_soft_bg_enabled: hsl(var(--eve_surface_primary_hue), 60%, 50%, 0.12);
+	--eve_surface_primary_soft_text: hsl(var(--eve_surface_primary_hue), 70%, 35%);
+	--eve_surface_primary_soft_bg_hovered: hsl(var(--eve_surface_primary_hue), 60%, 50%, 0.2);
+	--eve_surface_primary_soft_bg_pressed: hsl(var(--eve_surface_primary_hue), 60%, 50%, 0.28);
 }
 @supports (color: oklch(0% 0 0deg)) {
 	[mol_theme="$mol_theme_light"],
 	:where([mol_theme="$mol_theme_light"]) [mol_theme] {
 		/* PRIMARY - OKLCH Light */
 
-		--ds_surface_primary_solid_bg_enabled: oklch(50% 0.18 var(--ds_surface_primary_hue));
-		--ds_surface_primary_solid_bg_hovered: oklch(45% 0.18 var(--ds_surface_primary_hue));
-		--ds_surface_primary_solid_bg_pressed: oklch(55% 0.18 var(--ds_surface_primary_hue));
-		--ds_surface_primary_solid_bg_disabled: oklch(75% 0.05 var(--ds_surface_primary_hue));
-		--ds_surface_primary_solid_text_enabled: oklch(100% 0 var(--ds_surface_primary_hue));
-		--ds_surface_primary_solid_text_disabled: oklch(50% 0 var(--ds_surface_primary_hue));
+		--eve_surface_primary_solid_bg_enabled: oklch(50% 0.18 var(--eve_surface_primary_hue));
+		--eve_surface_primary_solid_bg_hovered: oklch(45% 0.18 var(--eve_surface_primary_hue));
+		--eve_surface_primary_solid_bg_pressed: oklch(55% 0.18 var(--eve_surface_primary_hue));
+		--eve_surface_primary_solid_bg_disabled: oklch(75% 0.05 var(--eve_surface_primary_hue));
+		--eve_surface_primary_solid_text_enabled: oklch(100% 0 var(--eve_surface_primary_hue));
+		--eve_surface_primary_solid_text_disabled: oklch(50% 0 var(--eve_surface_primary_hue));
 
-		--ds_surface_primary_soft_bg_enabled: oklch(50% 0.18 var(--ds_surface_primary_hue) / 0.12);
-		--ds_surface_primary_soft_bg_hovered: oklch(50% 0.18 var(--ds_surface_primary_hue) / 0.2);
-		--ds_surface_primary_soft_bg_pressed: oklch(50% 0.18 var(--ds_surface_primary_hue) / 0.28);
-		--ds_surface_primary_soft_bg_disabled: oklch(50% 0.05 var(--ds_surface_primary_hue) / 0.06);
-		--ds_surface_primary_soft_text: oklch(35% 0.15 var(--ds_surface_primary_hue));
-		--ds_surface_primary_soft_text_disabled: oklch(70% 0 var(--ds_surface_primary_hue));
+		--eve_surface_primary_soft_bg_enabled: oklch(50% 0.18 var(--eve_surface_primary_hue) / 0.12);
+		--eve_surface_primary_soft_bg_hovered: oklch(50% 0.18 var(--eve_surface_primary_hue) / 0.2);
+		--eve_surface_primary_soft_bg_pressed: oklch(50% 0.18 var(--eve_surface_primary_hue) / 0.28);
+		--eve_surface_primary_soft_bg_disabled: oklch(50% 0.05 var(--eve_surface_primary_hue) / 0.06);
+		--eve_surface_primary_soft_text: oklch(35% 0.15 var(--eve_surface_primary_hue));
+		--eve_surface_primary_soft_text_disabled: oklch(70% 0 var(--eve_surface_primary_hue));
 
-		--ds_surface_primary_outline_bg_enabled: transparent;
-		--ds_surface_primary_outline_bg_hovered: oklch(50% 0.18 var(--ds_surface_primary_hue) / 0.08);
-		--ds_surface_primary_outline_bg_pressed: oklch(50% 0.18 var(--ds_surface_primary_hue) / 0.15);
-		--ds_surface_primary_outline_text: oklch(35% 0.15 var(--ds_surface_primary_hue));
-		--ds_surface_primary_outline_text_disabled: oklch(70% 0 var(--ds_surface_primary_hue));
+		--eve_surface_primary_outline_bg_enabled: transparent;
+		--eve_surface_primary_outline_bg_hovered: oklch(50% 0.18 var(--eve_surface_primary_hue) / 0.08);
+		--eve_surface_primary_outline_bg_pressed: oklch(50% 0.18 var(--eve_surface_primary_hue) / 0.15);
+		--eve_surface_primary_outline_text: oklch(35% 0.15 var(--eve_surface_primary_hue));
+		--eve_surface_primary_outline_text_disabled: oklch(70% 0 var(--eve_surface_primary_hue));
 
-		--ds_surface_primary_ghost_bg_enabled: transparent;
-		--ds_surface_primary_ghost_bg_hovered: oklch(50% 0.18 var(--ds_surface_primary_hue) / 0.08);
-		--ds_surface_primary_ghost_bg_pressed: oklch(50% 0.18 var(--ds_surface_primary_hue) / 0.15);
-		--ds_surface_primary_ghost_text: oklch(35% 0.15 var(--ds_surface_primary_hue));
-		--ds_surface_primary_ghost_text_disabled: oklch(70% 0 var(--ds_surface_primary_hue));
+		--eve_surface_primary_ghost_bg_enabled: transparent;
+		--eve_surface_primary_ghost_bg_hovered: oklch(50% 0.18 var(--eve_surface_primary_hue) / 0.08);
+		--eve_surface_primary_ghost_bg_pressed: oklch(50% 0.18 var(--eve_surface_primary_hue) / 0.15);
+		--eve_surface_primary_ghost_text: oklch(35% 0.15 var(--eve_surface_primary_hue));
+		--eve_surface_primary_ghost_text_disabled: oklch(70% 0 var(--eve_surface_primary_hue));
 
 		/* SECONDARY - OKLCH Light */
 
-		--ds_surface_secondary_solid_bg_enabled: oklch(50% 0.18 var(--ds_surface_secondary_hue));
-		--ds_surface_secondary_solid_bg_hovered: oklch(45% 0.18 var(--ds_surface_secondary_hue));
-		--ds_surface_secondary_solid_bg_pressed: oklch(55% 0.18 var(--ds_surface_secondary_hue));
-		--ds_surface_secondary_solid_bg_disabled: oklch(75% 0.05 var(--ds_surface_secondary_hue));
-		--ds_surface_secondary_solid_text_enabled: oklch(100% 0 var(--ds_surface_secondary_hue));
-		--ds_surface_secondary_solid_text_disabled: oklch(50% 0 var(--ds_surface_secondary_hue));
+		--eve_surface_secondary_solid_bg_enabled: oklch(50% 0.18 var(--eve_surface_secondary_hue));
+		--eve_surface_secondary_solid_bg_hovered: oklch(45% 0.18 var(--eve_surface_secondary_hue));
+		--eve_surface_secondary_solid_bg_pressed: oklch(55% 0.18 var(--eve_surface_secondary_hue));
+		--eve_surface_secondary_solid_bg_disabled: oklch(75% 0.05 var(--eve_surface_secondary_hue));
+		--eve_surface_secondary_solid_text_enabled: oklch(100% 0 var(--eve_surface_secondary_hue));
+		--eve_surface_secondary_solid_text_disabled: oklch(50% 0 var(--eve_surface_secondary_hue));
 
-		--ds_surface_secondary_soft_bg_enabled: oklch(50% 0.18 var(--ds_surface_secondary_hue) / 0.12);
-		--ds_surface_secondary_soft_bg_hovered: oklch(50% 0.18 var(--ds_surface_secondary_hue) / 0.2);
-		--ds_surface_secondary_soft_bg_pressed: oklch(50% 0.18 var(--ds_surface_secondary_hue) / 0.28);
-		--ds_surface_secondary_soft_bg_disabled: oklch(50% 0.05 var(--ds_surface_secondary_hue) / 0.06);
-		--ds_surface_secondary_soft_text: oklch(35% 0.15 var(--ds_surface_secondary_hue));
-		--ds_surface_secondary_soft_text_disabled: oklch(70% 0 var(--ds_surface_secondary_hue));
+		--eve_surface_secondary_soft_bg_enabled: oklch(50% 0.18 var(--eve_surface_secondary_hue) / 0.12);
+		--eve_surface_secondary_soft_bg_hovered: oklch(50% 0.18 var(--eve_surface_secondary_hue) / 0.2);
+		--eve_surface_secondary_soft_bg_pressed: oklch(50% 0.18 var(--eve_surface_secondary_hue) / 0.28);
+		--eve_surface_secondary_soft_bg_disabled: oklch(50% 0.05 var(--eve_surface_secondary_hue) / 0.06);
+		--eve_surface_secondary_soft_text: oklch(35% 0.15 var(--eve_surface_secondary_hue));
+		--eve_surface_secondary_soft_text_disabled: oklch(70% 0 var(--eve_surface_secondary_hue));
 
-		--ds_surface_secondary_outline_bg_enabled: transparent;
-		--ds_surface_secondary_outline_bg_hovered: transparent;
-		--ds_surface_secondary_outline_bg_pressed: transparent;
-		--ds_surface_secondary_outline_text: oklch(35% 0.15 var(--ds_surface_secondary_hue));
-		--ds_surface_secondary_outline_text_disabled: oklch(70% 0 var(--ds_surface_secondary_hue));
+		--eve_surface_secondary_outline_bg_enabled: transparent;
+		--eve_surface_secondary_outline_bg_hovered: transparent;
+		--eve_surface_secondary_outline_bg_pressed: transparent;
+		--eve_surface_secondary_outline_text: oklch(35% 0.15 var(--eve_surface_secondary_hue));
+		--eve_surface_secondary_outline_text_disabled: oklch(70% 0 var(--eve_surface_secondary_hue));
 
-		--ds_surface_secondary_ghost_bg_enabled: transparent;
-		--ds_surface_secondary_ghost_bg_hovered: oklch(50% 0.18 var(--ds_surface_secondary_hue) / 0.08);
-		--ds_surface_secondary_ghost_bg_pressed: oklch(50% 0.18 var(--ds_surface_secondary_hue) / 0.15);
-		--ds_surface_secondary_ghost_text: oklch(35% 0.15 var(--ds_surface_secondary_hue));
-		--ds_surface_secondary_ghost_text_disabled: oklch(70% 0 var(--ds_surface_secondary_hue));
+		--eve_surface_secondary_ghost_bg_enabled: transparent;
+		--eve_surface_secondary_ghost_bg_hovered: oklch(50% 0.18 var(--eve_surface_secondary_hue) / 0.08);
+		--eve_surface_secondary_ghost_bg_pressed: oklch(50% 0.18 var(--eve_surface_secondary_hue) / 0.15);
+		--eve_surface_secondary_ghost_text: oklch(35% 0.15 var(--eve_surface_secondary_hue));
+		--eve_surface_secondary_ghost_text_disabled: oklch(70% 0 var(--eve_surface_secondary_hue));
 
 		/* TERTIARY - OKLCH Light */
-		--ds_surface_tertiary_solid_bg_enabled: oklch(50% 0.18 var(--ds_surface_tertiary_hue));
-		--ds_surface_tertiary_solid_bg_hovered: oklch(45% 0.18 var(--ds_surface_tertiary_hue));
-		--ds_surface_tertiary_solid_bg_pressed: oklch(55% 0.18 var(--ds_surface_tertiary_hue));
-		--ds_surface_tertiary_solid_bg_disabled: oklch(75% 0.05 var(--ds_surface_tertiary_hue));
-		--ds_surface_tertiary_solid_text_enabled: oklch(100% 0 var(--ds_surface_tertiary_hue));
-		--ds_surface_tertiary_solid_text_disabled: oklch(50% 0 var(--ds_surface_tertiary_hue));
+		--eve_surface_tertiary_solid_bg_enabled: oklch(50% 0.18 var(--eve_surface_tertiary_hue));
+		--eve_surface_tertiary_solid_bg_hovered: oklch(45% 0.18 var(--eve_surface_tertiary_hue));
+		--eve_surface_tertiary_solid_bg_pressed: oklch(55% 0.18 var(--eve_surface_tertiary_hue));
+		--eve_surface_tertiary_solid_bg_disabled: oklch(75% 0.05 var(--eve_surface_tertiary_hue));
+		--eve_surface_tertiary_solid_text_enabled: oklch(100% 0 var(--eve_surface_tertiary_hue));
+		--eve_surface_tertiary_solid_text_disabled: oklch(50% 0 var(--eve_surface_tertiary_hue));
 
-		--ds_surface_tertiary_soft_bg_enabled: oklch(50% 0.18 var(--ds_surface_tertiary_hue) / 0.12);
-		--ds_surface_tertiary_soft_bg_hovered: oklch(50% 0.18 var(--ds_surface_tertiary_hue) / 0.2);
-		--ds_surface_tertiary_soft_bg_pressed: oklch(50% 0.18 var(--ds_surface_tertiary_hue) / 0.28);
-		--ds_surface_tertiary_soft_bg_disabled: oklch(50% 0.05 var(--ds_surface_tertiary_hue) / 0.06);
-		--ds_surface_tertiary_soft_text: oklch(35% 0.15 var(--ds_surface_tertiary_hue));
-		--ds_surface_tertiary_soft_text_disabled: oklch(70% 0 var(--ds_surface_tertiary_hue));
+		--eve_surface_tertiary_soft_bg_enabled: oklch(50% 0.18 var(--eve_surface_tertiary_hue) / 0.12);
+		--eve_surface_tertiary_soft_bg_hovered: oklch(50% 0.18 var(--eve_surface_tertiary_hue) / 0.2);
+		--eve_surface_tertiary_soft_bg_pressed: oklch(50% 0.18 var(--eve_surface_tertiary_hue) / 0.28);
+		--eve_surface_tertiary_soft_bg_disabled: oklch(50% 0.05 var(--eve_surface_tertiary_hue) / 0.06);
+		--eve_surface_tertiary_soft_text: oklch(35% 0.15 var(--eve_surface_tertiary_hue));
+		--eve_surface_tertiary_soft_text_disabled: oklch(70% 0 var(--eve_surface_tertiary_hue));
 
-		--ds_surface_tertiary_outline_bg_enabled: transparent;
-		--ds_surface_tertiary_outline_bg_hovered: transparent;
-		--ds_surface_tertiary_outline_bg_pressed: transparent;
-		--ds_surface_tertiary_outline_text: oklch(35% 0.15 var(--ds_surface_tertiary_hue));
-		--ds_surface_tertiary_outline_text_disabled: oklch(70% 0 var(--ds_surface_tertiary_hue));
+		--eve_surface_tertiary_outline_bg_enabled: transparent;
+		--eve_surface_tertiary_outline_bg_hovered: transparent;
+		--eve_surface_tertiary_outline_bg_pressed: transparent;
+		--eve_surface_tertiary_outline_text: oklch(35% 0.15 var(--eve_surface_tertiary_hue));
+		--eve_surface_tertiary_outline_text_disabled: oklch(70% 0 var(--eve_surface_tertiary_hue));
 
-		--ds_surface_tertiary_ghost_bg_enabled: transparent;
-		--ds_surface_tertiary_ghost_bg_hovered: oklch(50% 0.18 var(--ds_surface_tertiary_hue) / 0.08);
-		--ds_surface_tertiary_ghost_bg_pressed: oklch(50% 0.18 var(--ds_surface_tertiary_hue) / 0.15);
-		--ds_surface_tertiary_ghost_text: oklch(35% 0.15 var(--ds_surface_tertiary_hue));
-		--ds_surface_tertiary_ghost_text_disabled: oklch(70% 0 var(--ds_surface_tertiary_hue));
+		--eve_surface_tertiary_ghost_bg_enabled: transparent;
+		--eve_surface_tertiary_ghost_bg_hovered: oklch(50% 0.18 var(--eve_surface_tertiary_hue) / 0.08);
+		--eve_surface_tertiary_ghost_bg_pressed: oklch(50% 0.18 var(--eve_surface_tertiary_hue) / 0.15);
+		--eve_surface_tertiary_ghost_text: oklch(35% 0.15 var(--eve_surface_tertiary_hue));
+		--eve_surface_tertiary_ghost_text_disabled: oklch(70% 0 var(--eve_surface_tertiary_hue));
 
 		/* DANGER - OKLCH Light */
 
-		--ds_surface_danger_solid_bg_enabled: oklch(55% 0.22 var(--ds_surface_danger_hue));
-		--ds_surface_danger_solid_bg_hovered: oklch(50% 0.22 var(--ds_surface_danger_hue));
-		--ds_surface_danger_solid_bg_pressed: oklch(60% 0.22 var(--ds_surface_danger_hue));
-		--ds_surface_danger_solid_bg_disabled: oklch(75% 0.08 var(--ds_surface_danger_hue));
-		--ds_surface_danger_solid_text_enabled: oklch(100% 0 var(--ds_surface_danger_hue));
-		--ds_surface_danger_solid_text_disabled: oklch(50% 0 var(--ds_surface_danger_hue));
+		--eve_surface_danger_solid_bg_enabled: oklch(55% 0.22 var(--eve_surface_danger_hue));
+		--eve_surface_danger_solid_bg_hovered: oklch(50% 0.22 var(--eve_surface_danger_hue));
+		--eve_surface_danger_solid_bg_pressed: oklch(60% 0.22 var(--eve_surface_danger_hue));
+		--eve_surface_danger_solid_bg_disabled: oklch(75% 0.08 var(--eve_surface_danger_hue));
+		--eve_surface_danger_solid_text_enabled: oklch(100% 0 var(--eve_surface_danger_hue));
+		--eve_surface_danger_solid_text_disabled: oklch(50% 0 var(--eve_surface_danger_hue));
 
-		--ds_surface_danger_soft_bg_enabled: oklch(55% 0.22 var(--ds_surface_danger_hue) / 0.12);
-		--ds_surface_danger_soft_bg_hovered: oklch(55% 0.22 var(--ds_surface_danger_hue) / 0.2);
-		--ds_surface_danger_soft_bg_pressed: oklch(55% 0.22 var(--ds_surface_danger_hue) / 0.28);
-		--ds_surface_danger_soft_bg_disabled: oklch(50% 0.08 var(--ds_surface_danger_hue) / 0.06);
-		--ds_surface_danger_soft_text: oklch(40% 0.18 var(--ds_surface_danger_hue));
-		--ds_surface_danger_soft_text_disabled: oklch(70% 0 var(--ds_surface_danger_hue));
+		--eve_surface_danger_soft_bg_enabled: oklch(55% 0.22 var(--eve_surface_danger_hue) / 0.12);
+		--eve_surface_danger_soft_bg_hovered: oklch(55% 0.22 var(--eve_surface_danger_hue) / 0.2);
+		--eve_surface_danger_soft_bg_pressed: oklch(55% 0.22 var(--eve_surface_danger_hue) / 0.28);
+		--eve_surface_danger_soft_bg_disabled: oklch(50% 0.08 var(--eve_surface_danger_hue) / 0.06);
+		--eve_surface_danger_soft_text: oklch(40% 0.18 var(--eve_surface_danger_hue));
+		--eve_surface_danger_soft_text_disabled: oklch(70% 0 var(--eve_surface_danger_hue));
 
-		--ds_surface_danger_outline_bg_enabled: transparent;
-		--ds_surface_danger_outline_bg_hovered: transparent;
-		--ds_surface_danger_outline_bg_pressed: transparent;
-		--ds_surface_danger_outline_text: oklch(40% 0.18 var(--ds_surface_danger_hue));
-		--ds_surface_danger_outline_text_disabled: oklch(70% 0 var(--ds_surface_danger_hue));
+		--eve_surface_danger_outline_bg_enabled: transparent;
+		--eve_surface_danger_outline_bg_hovered: transparent;
+		--eve_surface_danger_outline_bg_pressed: transparent;
+		--eve_surface_danger_outline_text: oklch(40% 0.18 var(--eve_surface_danger_hue));
+		--eve_surface_danger_outline_text_disabled: oklch(70% 0 var(--eve_surface_danger_hue));
 
-		--ds_surface_danger_ghost_bg_enabled: transparent;
-		--ds_surface_danger_ghost_bg_hovered: oklch(55% 0.22 var(--ds_surface_danger_hue) / 0.08);
-		--ds_surface_danger_ghost_bg_pressed: oklch(55% 0.22 var(--ds_surface_danger_hue) / 0.15);
-		--ds_surface_danger_ghost_text: oklch(40% 0.18 var(--ds_surface_danger_hue));
-		--ds_surface_danger_ghost_text_disabled: oklch(70% 0 var(--ds_surface_danger_hue));
+		--eve_surface_danger_ghost_bg_enabled: transparent;
+		--eve_surface_danger_ghost_bg_hovered: oklch(55% 0.22 var(--eve_surface_danger_hue) / 0.08);
+		--eve_surface_danger_ghost_bg_pressed: oklch(55% 0.22 var(--eve_surface_danger_hue) / 0.15);
+		--eve_surface_danger_ghost_text: oklch(40% 0.18 var(--eve_surface_danger_hue));
+		--eve_surface_danger_ghost_text_disabled: oklch(70% 0 var(--eve_surface_danger_hue));
 
 		/* WARNING - OKLCH Light */
 
-		--ds_surface_warning_solid_bg_enabled: oklch(75% 0.14 var(--ds_surface_warning_hue));
-		--ds_surface_warning_solid_bg_hovered: oklch(70% 0.14 var(--ds_surface_warning_hue));
-		--ds_surface_warning_solid_bg_pressed: oklch(80% 0.14 var(--ds_surface_warning_hue));
-		--ds_surface_warning_solid_bg_disabled: oklch(85% 0.05 var(--ds_surface_warning_hue));
-		--ds_surface_warning_solid_text_enabled: oklch(20% 0.05 var(--ds_surface_warning_hue));
-		--ds_surface_warning_solid_text_disabled: oklch(60% 0 var(--ds_surface_warning_hue));
+		--eve_surface_warning_solid_bg_enabled: oklch(75% 0.14 var(--eve_surface_warning_hue));
+		--eve_surface_warning_solid_bg_hovered: oklch(70% 0.14 var(--eve_surface_warning_hue));
+		--eve_surface_warning_solid_bg_pressed: oklch(80% 0.14 var(--eve_surface_warning_hue));
+		--eve_surface_warning_solid_bg_disabled: oklch(85% 0.05 var(--eve_surface_warning_hue));
+		--eve_surface_warning_solid_text_enabled: oklch(20% 0.05 var(--eve_surface_warning_hue));
+		--eve_surface_warning_solid_text_disabled: oklch(60% 0 var(--eve_surface_warning_hue));
 
-		--ds_surface_warning_soft_bg_enabled: oklch(75% 0.14 var(--ds_surface_warning_hue) / 0.15);
-		--ds_surface_warning_soft_bg_hovered: oklch(75% 0.14 var(--ds_surface_warning_hue) / 0.22);
-		--ds_surface_warning_soft_bg_pressed: oklch(75% 0.14 var(--ds_surface_warning_hue) / 0.3);
-		--ds_surface_warning_soft_bg_disabled: oklch(75% 0.05 var(--ds_surface_warning_hue) / 0.06);
-		--ds_surface_warning_soft_text: oklch(40% 0.12 var(--ds_surface_warning_hue));
-		--ds_surface_warning_soft_text_disabled: oklch(70% 0 var(--ds_surface_warning_hue));
+		--eve_surface_warning_soft_bg_enabled: oklch(75% 0.14 var(--eve_surface_warning_hue) / 0.15);
+		--eve_surface_warning_soft_bg_hovered: oklch(75% 0.14 var(--eve_surface_warning_hue) / 0.22);
+		--eve_surface_warning_soft_bg_pressed: oklch(75% 0.14 var(--eve_surface_warning_hue) / 0.3);
+		--eve_surface_warning_soft_bg_disabled: oklch(75% 0.05 var(--eve_surface_warning_hue) / 0.06);
+		--eve_surface_warning_soft_text: oklch(40% 0.12 var(--eve_surface_warning_hue));
+		--eve_surface_warning_soft_text_disabled: oklch(70% 0 var(--eve_surface_warning_hue));
 
-		--ds_surface_warning_outline_bg_enabled: transparent;
-		--ds_surface_warning_outline_bg_hovered: transparent;
-		--ds_surface_warning_outline_bg_pressed: transparent;
-		--ds_surface_warning_outline_text: oklch(40% 0.12 var(--ds_surface_warning_hue));
-		--ds_surface_warning_outline_text_disabled: oklch(75% 0 var(--ds_surface_warning_hue));
+		--eve_surface_warning_outline_bg_enabled: transparent;
+		--eve_surface_warning_outline_bg_hovered: transparent;
+		--eve_surface_warning_outline_bg_pressed: transparent;
+		--eve_surface_warning_outline_text: oklch(40% 0.12 var(--eve_surface_warning_hue));
+		--eve_surface_warning_outline_text_disabled: oklch(75% 0 var(--eve_surface_warning_hue));
 
-		--ds_surface_warning_ghost_bg_enabled: transparent;
-		--ds_surface_warning_ghost_text: oklch(40% 0.12 var(--ds_surface_warning_hue));
-		--ds_surface_warning_ghost_bg_hovered: oklch(75% 0.14 var(--ds_surface_warning_hue) / 0.1);
-		--ds_surface_warning_ghost_bg_pressed: oklch(75% 0.14 var(--ds_surface_warning_hue) / 0.18);
-		--ds_surface_warning_ghost_text_disabled: oklch(75% 0 var(--ds_surface_warning_hue));
+		--eve_surface_warning_ghost_bg_enabled: transparent;
+		--eve_surface_warning_ghost_text: oklch(40% 0.12 var(--eve_surface_warning_hue));
+		--eve_surface_warning_ghost_bg_hovered: oklch(75% 0.14 var(--eve_surface_warning_hue) / 0.1);
+		--eve_surface_warning_ghost_bg_pressed: oklch(75% 0.14 var(--eve_surface_warning_hue) / 0.18);
+		--eve_surface_warning_ghost_text_disabled: oklch(75% 0 var(--eve_surface_warning_hue));
 
 		/* SUCCESS - OKLCH Light */
-		--ds_surface_success_solid_bg_enabled: oklch(55% 0.16 var(--ds_surface_success_hue));
-		--ds_surface_success_solid_bg_hovered: oklch(50% 0.16 var(--ds_surface_success_hue));
-		--ds_surface_success_solid_bg_pressed: oklch(60% 0.16 var(--ds_surface_success_hue));
-		--ds_surface_success_solid_bg_disabled: oklch(75% 0.06 var(--ds_surface_success_hue));
-		--ds_surface_success_solid_text_enabled: oklch(100% 0 var(--ds_surface_success_hue));
-		--ds_surface_success_solid_text_disabled: oklch(55% 0 var(--ds_surface_success_hue));
+		--eve_surface_success_solid_bg_enabled: oklch(55% 0.16 var(--eve_surface_success_hue));
+		--eve_surface_success_solid_bg_hovered: oklch(50% 0.16 var(--eve_surface_success_hue));
+		--eve_surface_success_solid_bg_pressed: oklch(60% 0.16 var(--eve_surface_success_hue));
+		--eve_surface_success_solid_bg_disabled: oklch(75% 0.06 var(--eve_surface_success_hue));
+		--eve_surface_success_solid_text_enabled: oklch(100% 0 var(--eve_surface_success_hue));
+		--eve_surface_success_solid_text_disabled: oklch(55% 0 var(--eve_surface_success_hue));
 
-		--ds_surface_success_soft_bg_enabled: oklch(55% 0.16 var(--ds_surface_success_hue) / 0.12);
-		--ds_surface_success_soft_bg_hovered: oklch(55% 0.16 var(--ds_surface_success_hue) / 0.2);
-		--ds_surface_success_soft_bg_pressed: oklch(55% 0.16 var(--ds_surface_success_hue) / 0.28);
-		--ds_surface_success_soft_bg_disabled: oklch(50% 0.06 var(--ds_surface_success_hue) / 0.06);
-		--ds_surface_success_soft_text: oklch(35% 0.14 var(--ds_surface_success_hue));
-		--ds_surface_success_soft_text_disabled: oklch(70% 0 var(--ds_surface_success_hue));
+		--eve_surface_success_soft_bg_enabled: oklch(55% 0.16 var(--eve_surface_success_hue) / 0.12);
+		--eve_surface_success_soft_bg_hovered: oklch(55% 0.16 var(--eve_surface_success_hue) / 0.2);
+		--eve_surface_success_soft_bg_pressed: oklch(55% 0.16 var(--eve_surface_success_hue) / 0.28);
+		--eve_surface_success_soft_bg_disabled: oklch(50% 0.06 var(--eve_surface_success_hue) / 0.06);
+		--eve_surface_success_soft_text: oklch(35% 0.14 var(--eve_surface_success_hue));
+		--eve_surface_success_soft_text_disabled: oklch(70% 0 var(--eve_surface_success_hue));
 
-		--ds_surface_success_outline_bg_enabled: transparent;
-		--ds_surface_success_outline_bg_hovered: transparent;
-		--ds_surface_success_outline_bg_pressed: transparent;
-		--ds_surface_success_outline_text: oklch(35% 0.14 var(--ds_surface_success_hue));
-		--ds_surface_success_outline_text_disabled: oklch(70% 0 var(--ds_surface_success_hue));
+		--eve_surface_success_outline_bg_enabled: transparent;
+		--eve_surface_success_outline_bg_hovered: transparent;
+		--eve_surface_success_outline_bg_pressed: transparent;
+		--eve_surface_success_outline_text: oklch(35% 0.14 var(--eve_surface_success_hue));
+		--eve_surface_success_outline_text_disabled: oklch(70% 0 var(--eve_surface_success_hue));
 
-		--ds_surface_success_ghost_bg_enabled: transparent;
-		--ds_surface_success_ghost_bg_hovered: oklch(55% 0.16 var(--ds_surface_success_hue) / 0.08);
-		--ds_surface_success_ghost_bg_pressed: oklch(55% 0.16 var(--ds_surface_success_hue) / 0.15);
-		--ds_surface_success_ghost_text: oklch(35% 0.14 var(--ds_surface_success_hue));
-		--ds_surface_success_ghost_text_disabled: oklch(70% 0 var(--ds_surface_success_hue));
+		--eve_surface_success_ghost_bg_enabled: transparent;
+		--eve_surface_success_ghost_bg_hovered: oklch(55% 0.16 var(--eve_surface_success_hue) / 0.08);
+		--eve_surface_success_ghost_bg_pressed: oklch(55% 0.16 var(--eve_surface_success_hue) / 0.15);
+		--eve_surface_success_ghost_text: oklch(35% 0.14 var(--eve_surface_success_hue));
+		--eve_surface_success_ghost_text_disabled: oklch(70% 0 var(--eve_surface_success_hue));
 
 		/* INFO - OKLCH Light */
 
-		--ds_surface_info_solid_bg_enabled: oklch(50% 0.16 var(--ds_surface_info_hue));
-		--ds_surface_info_solid_bg_hovered: oklch(45% 0.16 var(--ds_surface_info_hue));
-		--ds_surface_info_solid_bg_pressed: oklch(55% 0.16 var(--ds_surface_info_hue));
-		--ds_surface_info_solid_bg_disabled: oklch(75% 0.05 var(--ds_surface_info_hue));
-		--ds_surface_info_solid_text_enabled: oklch(100% 0 var(--ds_surface_info_hue));
-		--ds_surface_info_solid_text_disabled: oklch(50% 0 var(--ds_surface_info_hue));
+		--eve_surface_info_solid_bg_enabled: oklch(50% 0.16 var(--eve_surface_info_hue));
+		--eve_surface_info_solid_bg_hovered: oklch(45% 0.16 var(--eve_surface_info_hue));
+		--eve_surface_info_solid_bg_pressed: oklch(55% 0.16 var(--eve_surface_info_hue));
+		--eve_surface_info_solid_bg_disabled: oklch(75% 0.05 var(--eve_surface_info_hue));
+		--eve_surface_info_solid_text_enabled: oklch(100% 0 var(--eve_surface_info_hue));
+		--eve_surface_info_solid_text_disabled: oklch(50% 0 var(--eve_surface_info_hue));
 
-		--ds_surface_info_soft_bg_enabled: oklch(50% 0.16 var(--ds_surface_info_hue) / 0.12);
-		--ds_surface_info_soft_bg_hovered: oklch(50% 0.16 var(--ds_surface_info_hue) / 0.2);
-		--ds_surface_info_soft_bg_pressed: oklch(50% 0.16 var(--ds_surface_info_hue) / 0.28);
-		--ds_surface_info_soft_bg_disabled: oklch(50% 0.05 var(--ds_surface_info_hue) / 0.06);
-		--ds_surface_info_soft_text: oklch(35% 0.14 var(--ds_surface_info_hue));
-		--ds_surface_info_soft_text_disabled: oklch(70% 0 var(--ds_surface_info_hue));
+		--eve_surface_info_soft_bg_enabled: oklch(50% 0.16 var(--eve_surface_info_hue) / 0.12);
+		--eve_surface_info_soft_bg_hovered: oklch(50% 0.16 var(--eve_surface_info_hue) / 0.2);
+		--eve_surface_info_soft_bg_pressed: oklch(50% 0.16 var(--eve_surface_info_hue) / 0.28);
+		--eve_surface_info_soft_bg_disabled: oklch(50% 0.05 var(--eve_surface_info_hue) / 0.06);
+		--eve_surface_info_soft_text: oklch(35% 0.14 var(--eve_surface_info_hue));
+		--eve_surface_info_soft_text_disabled: oklch(70% 0 var(--eve_surface_info_hue));
 
-		--ds_surface_info_outline_bg_enabled: transparent;
-		--ds_surface_info_outline_bg_hovered: transparent;
-		--ds_surface_info_outline_bg_pressed: transparent;
-		--ds_surface_info_outline_text: oklch(35% 0.14 var(--ds_surface_info_hue));
-		--ds_surface_info_outline_text_disabled: oklch(70% 0 var(--ds_surface_info_hue));
+		--eve_surface_info_outline_bg_enabled: transparent;
+		--eve_surface_info_outline_bg_hovered: transparent;
+		--eve_surface_info_outline_bg_pressed: transparent;
+		--eve_surface_info_outline_text: oklch(35% 0.14 var(--eve_surface_info_hue));
+		--eve_surface_info_outline_text_disabled: oklch(70% 0 var(--eve_surface_info_hue));
 
-		--ds_surface_info_ghost_bg_enabled: transparent;
-		--ds_surface_info_ghost_bg_hovered: oklch(50% 0.16 var(--ds_surface_info_hue) / 0.08);
-		--ds_surface_info_ghost_bg_pressed: oklch(50% 0.16 var(--ds_surface_info_hue) / 0.15);
-		--ds_surface_info_ghost_text: oklch(35% 0.14 var(--ds_surface_info_hue));
-		--ds_surface_info_ghost_text_disabled: oklch(70% 0 var(--ds_surface_info_hue));
+		--eve_surface_info_ghost_bg_enabled: transparent;
+		--eve_surface_info_ghost_bg_hovered: oklch(50% 0.16 var(--eve_surface_info_hue) / 0.08);
+		--eve_surface_info_ghost_bg_pressed: oklch(50% 0.16 var(--eve_surface_info_hue) / 0.15);
+		--eve_surface_info_ghost_text: oklch(35% 0.14 var(--eve_surface_info_hue));
+		--eve_surface_info_ghost_text_disabled: oklch(70% 0 var(--eve_surface_info_hue));
 
 		/* SURFACE LEVELS Light */
 
-		--ds_surface_lowest_bg_enabled: oklch(98% 0.005 var(--ds_theme_hue));
-		--ds_surface_lowest_bg_hovered: oklch(96% 0.007 var(--ds_theme_hue));
-		--ds_surface_lowest_bg_pressed: oklch(94% 0.009 var(--ds_theme_hue));
+		--eve_surface_lowest_bg_enabled: oklch(98% 0.005 var(--eve_theme_hue));
+		--eve_surface_lowest_bg_hovered: oklch(96% 0.007 var(--eve_theme_hue));
+		--eve_surface_lowest_bg_pressed: oklch(94% 0.009 var(--eve_theme_hue));
 
-		--ds_surface_low_bg_enabled: oklch(96% 0.008 var(--ds_theme_hue));
-		--ds_surface_low_bg_hovered: oklch(94% 0.01 var(--ds_theme_hue));
-		--ds_surface_low_bg_pressed: oklch(92% 0.012 var(--ds_theme_hue));
+		--eve_surface_low_bg_enabled: oklch(96% 0.008 var(--eve_theme_hue));
+		--eve_surface_low_bg_hovered: oklch(94% 0.01 var(--eve_theme_hue));
+		--eve_surface_low_bg_pressed: oklch(92% 0.012 var(--eve_theme_hue));
 
-		--ds_surface_medium_bg_enabled: oklch(93% 0.01 var(--ds_theme_hue));
-		--ds_surface_medium_bg_hovered: oklch(91% 0.012 var(--ds_theme_hue));
-		--ds_surface_medium_bg_pressed: oklch(89% 0.014 var(--ds_theme_hue));
+		--eve_surface_medium_bg_enabled: oklch(93% 0.01 var(--eve_theme_hue));
+		--eve_surface_medium_bg_hovered: oklch(91% 0.012 var(--eve_theme_hue));
+		--eve_surface_medium_bg_pressed: oklch(89% 0.014 var(--eve_theme_hue));
 
-		--ds_surface_high_bg_enabled: oklch(88% 0.015 var(--ds_theme_hue));
-		--ds_surface_high_bg_hovered: oklch(86% 0.017 var(--ds_theme_hue));
-		--ds_surface_high_bg_pressed: oklch(84% 0.019 var(--ds_theme_hue));
+		--eve_surface_high_bg_enabled: oklch(88% 0.015 var(--eve_theme_hue));
+		--eve_surface_high_bg_hovered: oklch(86% 0.017 var(--eve_theme_hue));
+		--eve_surface_high_bg_pressed: oklch(84% 0.019 var(--eve_theme_hue));
 
-		--ds_surface_highest_bg_enabled: oklch(82% 0.02 var(--ds_theme_hue));
-		--ds_surface_highest_bg_hovered: oklch(80% 0.022 var(--ds_theme_hue));
-		--ds_surface_highest_bg_pressed: oklch(78% 0.024 var(--ds_theme_hue));
+		--eve_surface_highest_bg_enabled: oklch(82% 0.02 var(--eve_theme_hue));
+		--eve_surface_highest_bg_hovered: oklch(80% 0.022 var(--eve_theme_hue));
+		--eve_surface_highest_bg_pressed: oklch(78% 0.024 var(--eve_theme_hue));
 	}
 }
 
@@ -551,37 +551,37 @@
 
 :root {
 	/* Padding (horizontal) */
-	--ds_surface_size_xs_padding: 0.5rem;
-	--ds_surface_size_sm_padding: 0.75rem;
-	--ds_surface_size_md_padding: 1rem;
-	--ds_surface_size_lg_padding: 1.25rem;
-	--ds_surface_size_xl_padding: 1.5rem;
+	--eve_surface_size_xs_padding: 0.5rem;
+	--eve_surface_size_sm_padding: 0.75rem;
+	--eve_surface_size_md_padding: 1rem;
+	--eve_surface_size_lg_padding: 1.25rem;
+	--eve_surface_size_xl_padding: 1.5rem;
 
 	/* Height */
-	--ds_surface_size_xs_height: 1.75rem; /* 28px */
-	--ds_surface_size_sm_height: 2rem; /* 32px */
-	--ds_surface_size_md_height: 2.5rem; /* 40px */
-	--ds_surface_size_lg_height: 3rem; /* 48px */
-	--ds_surface_size_xl_height: 3.5rem; /* 56px */
+	--eve_surface_size_xs_height: 1.75rem; /* 28px */
+	--eve_surface_size_sm_height: 2rem; /* 32px */
+	--eve_surface_size_md_height: 2.5rem; /* 40px */
+	--eve_surface_size_lg_height: 3rem; /* 48px */
+	--eve_surface_size_xl_height: 3.5rem; /* 56px */
 
 	/* Font size */
-	--ds_surface_size_xs_font: 0.75rem; /* 12px */
-	--ds_surface_size_sm_font: 0.875rem; /* 14px */
-	--ds_surface_size_md_font: 1rem; /* 16px */
-	--ds_surface_size_lg_font: 1.125rem; /* 18px */
-	--ds_surface_size_xl_font: 1.25rem; /* 20px */
+	--eve_surface_size_xs_font: 0.75rem; /* 12px */
+	--eve_surface_size_sm_font: 0.875rem; /* 14px */
+	--eve_surface_size_md_font: 1rem; /* 16px */
+	--eve_surface_size_lg_font: 1.125rem; /* 18px */
+	--eve_surface_size_xl_font: 1.25rem; /* 20px */
 
 	/* Border radius */
-	--ds_surface_radius_xs: 0.25rem; /* 4px */
-	--ds_surface_radius_sm: 0.375rem; /* 6px */
-	--ds_surface_radius_md: 0.5rem; /* 8px */
-	--ds_surface_radius_lg: 0.625rem; /* 10px */
-	--ds_surface_radius_xl: 0.75rem; /* 12px */
+	--eve_surface_radius_xs: 0.25rem; /* 4px */
+	--eve_surface_radius_sm: 0.375rem; /* 6px */
+	--eve_surface_radius_md: 0.5rem; /* 8px */
+	--eve_surface_radius_lg: 0.625rem; /* 10px */
+	--eve_surface_radius_xl: 0.75rem; /* 12px */
 
 	/* Border width */
-	--ds_surface_border_width: 1px;
+	--eve_surface_border_width: 1px;
 
 	/* Transition */
-	--ds_surface_transition_duration: 150ms;
-	--ds_surface_transition_easing: cubic-bezier(0.4, 0, 0.2, 1);
+	--eve_surface_transition_duration: 150ms;
+	--eve_surface_transition_easing: cubic-bezier(0.4, 0, 0.2, 1);
 }

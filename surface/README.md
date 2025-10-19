@@ -1,6 +1,6 @@
 # Surface Component Theme System
 
-Компонент `$ds_surface` предоставляет базовую систему темизации для интерактивных и неинтерактивных поверхностей.
+Компонент `$eve_surface` предоставляет базовую систему темизации для интерактивных и неинтерактивных поверхностей.
 
 ## Архитектура
 
@@ -64,23 +64,23 @@
 ### Структура переменных
 
 ```
---ds_surface_{color}_{variant}_{property}
---ds_surface_{color}_{variant}_{state}_{property}
+--eve_surface_{color}_{variant}_{property}
+--eve_surface_{color}_{variant}_{state}_{property}
 ```
 
 Примеры:
 ```css
 /* Базовое состояние */
---ds_surface_primary_solid_bg
---ds_surface_primary_solid_text
+--eve_surface_primary_solid_bg
+--eve_surface_primary_solid_text
 
 /* Состояния hover/pressed */
---ds_surface_primary_solid_hover_bg
---ds_surface_primary_solid_pressed_bg
+--eve_surface_primary_solid_hover_bg
+--eve_surface_primary_solid_pressed_bg
 
 /* Disabled состояние */
---ds_surface_primary_solid_disabled_bg
---ds_surface_primary_solid_disabled_text
+--eve_surface_primary_solid_disabled_bg
+--eve_surface_primary_solid_disabled_text
 ```
 
 **Note о border:** Border цвета не выделены в отдельные переменные, т.к.:
@@ -90,20 +90,20 @@
 ### Пример применения
 
 ```css
-[ds_surface_color="primary"][ds_surface_variant="solid"] {
-  background: var(--ds_surface_primary_solid_bg);
-  color: var(--ds_surface_primary_solid_text);
-  border: var(--ds_surface_border_width) solid transparent;
+[eve_surface_color="primary"][eve_surface_variant="solid"] {
+  background: var(--eve_surface_primary_solid_bg);
+  color: var(--eve_surface_primary_solid_text);
+  border: var(--eve_surface_border_width) solid transparent;
 }
 
-[ds_surface_color="primary"][ds_surface_variant="outline"] {
+[eve_surface_color="primary"][eve_surface_variant="outline"] {
   background: transparent;
-  color: var(--ds_surface_primary_outline_text);
-  border: var(--ds_surface_border_width) solid var(--ds_surface_primary_outline_text);
+  color: var(--eve_surface_primary_outline_text);
+  border: var(--eve_surface_border_width) solid var(--eve_surface_primary_outline_text);
 }
 
-[ds_surface_state="hover"] {
-  background: var(--ds_surface_primary_solid_hover_bg);
+[eve_surface_state="hover"] {
+  background: var(--eve_surface_primary_solid_hover_bg);
   /* Border автоматически следует за color для outline */
 }
 ```

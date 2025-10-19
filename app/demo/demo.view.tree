@@ -1,4 +1,4 @@
-$ds_app_demo $ds_page
+$eve_app_demo $eve_page
 	title \Demo Website
 	tools /
 		<= Settings $mol_button_minor
@@ -18,12 +18,12 @@ $ds_app_demo $ds_page
 								\This is a complete preview of your theme. 
 								\All components are rendered with your custom colors.
 								\Try changing the colors in the editor to see live updates!
-				<= Cards_section $mol_list
+				<= Careve_section $mol_list
 					rows /
-						<= Cards_title $mol_view
-							sub / <= Cards_title_text $mol_dimmer
+						<= Careve_title $mol_view
+							sub / <= Careve_title_text $mol_dimmer
 								haystack \Cards Preview
-						<= Cards_row $mol_row
+						<= Careve_row $mol_row
 							sub /
 								<= Card1 $mol_view
 									sub /

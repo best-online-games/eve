@@ -1,7 +1,7 @@
 namespace $.$$ {
 	const { rem, px, vh } = $mol_style_unit
 
-	$mol_style_define( $ds_app_page_sb_playground, {
+	$mol_style_define( $eve_app_page_sb_playground, {
 
 		Live_component_container: {
 			minHeight: '100%',

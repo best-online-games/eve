@@ -1,19 +1,19 @@
 namespace $.$$ {
 
-	export class $ds_app_page_sb_playground_flex extends $.$ds_app_page_sb_playground_flex {
+	export class $eve_app_page_sb_playground_flex extends $.$eve_app_page_sb_playground_flex {
 
 		component_name(): string {
 			return 'Live_flex'
 		}
 
 		default_source(): string {
-			return `Live_flex $ds_flex
+			return `Live_flex $eve_flex
 	- Edit values of Flex component
 	justify_content \\center
 	align_items \\center
 	wrap \\wrap
 	sub /
-		<= Demo_item $ds_surface
+		<= Demo_item $eve_surface
 			colors \\medium
 			style *
 				width \\10vh

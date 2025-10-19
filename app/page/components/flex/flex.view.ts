@@ -1,5 +1,5 @@
 namespace $.$$ {
-	export class $ds_app_page_components_flex extends $.$ds_app_page_components_flex {
+	export class $eve_app_page_components_flex extends $.$eve_app_page_components_flex {
 
 		@$mol_mem
 		showcase_cells() {

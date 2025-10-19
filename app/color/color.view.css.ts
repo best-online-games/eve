@@ -1,7 +1,7 @@
 namespace $.$$ {
 	const { rem, px } = $mol_style_unit
 
-	$mol_style_define($ds_app_color, {
+	$mol_style_define( $eve_app_color, {
 		display: 'flex',
 		flex: {
 			direction: 'row',
@@ -23,14 +23,14 @@ namespace $.$$ {
 		},
 
 		Picker: {
-			width: px(40),
-			height: px(40),
+			width: px( 40 ),
+			height: px( 40 ),
 			border: {
 				width: 0,
 			},
-			borderRadius: px(4),
+			borderRadius: px( 4 ),
 			cursor: 'pointer',
 			padding: 0,
 		},
-	})
+	} )
 }

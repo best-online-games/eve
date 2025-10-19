@@ -1,4 +1,4 @@
-$ds_app $ds_page
+$eve_app $eve_page
 	plugins /
 		<= Theme $mol_theme_auto
 	title \$MOL UI
@@ -12,7 +12,7 @@ $ds_app $ds_page
 		Switch => Switch
 		Content => Content
 		items /
-			<= Libraries $ds_app_page_libraries
-			<= Components_page $ds_app_page_components
-			<= Design_page $ds_app_page_design
-			<= Themer_page $ds_app_page_themer
+			<= Libraries $eve_app_page_libraries
+			<= Components_page $eve_app_page_components
+			<= Design_page $eve_app_page_design
+			<= Themer_page $eve_app_page_themer

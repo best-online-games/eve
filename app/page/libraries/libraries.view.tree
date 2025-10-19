@@ -1,4 +1,4 @@
-$ds_app_page_libraries $ds_page
+$eve_app_page_libraries $eve_page
 	title \Libraries
 	Head null
 	body /

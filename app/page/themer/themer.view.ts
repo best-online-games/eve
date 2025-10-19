@@ -1,3 +1,3 @@
 namespace $.$$ {
-	export class $ds_app_page_themer extends $.$ds_app_page_themer {}
+	export class $eve_app_page_themer extends $.$eve_app_page_themer {}
 }

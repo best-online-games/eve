@@ -6,16 +6,16 @@ namespace $.$$ {
 	 * Surface styling system using CSS custom properties from theme.css
 	 * 
 	 * Theme variables follow the pattern:
-	 * --ds_surface_{color}_{variant}_{part}_{modifier}
+	 * --eve_surface_{color}_{variant}_{part}_{modifier}
 	 * 
 	 * Examples:
-	 * - --ds_surface_primary_solid_bg_enabled
-	 * - --ds_surface_primary_solid_bg_hovered
-	 * - --ds_surface_primary_solid_text_disabled
+	 * - --eve_surface_primary_solid_bg_enabled
+	 * - --eve_surface_primary_solid_bg_hovered
+	 * - --eve_surface_primary_solid_text_disabled
 	 */
 
 	/** Design system token prefix */
-	const TOKEN_PREFIX = '--ds_'
+	const TOKEN_PREFIX = '--eve_'
 
 	/**
 	 * Generate token name for any design system component
@@ -44,7 +44,7 @@ namespace $.$$ {
 	 * @param modifier - State modifier (default: 'enabled')
 	 * @returns Surface token name string
 	 */
-	export function $ds_surface_get_token_surface(
+	export function $eve_surface_get_token_surface(
 		color: string,
 		variant: string,
 		part: string,
@@ -59,15 +59,15 @@ namespace $.$$ {
 	 * @param modifier - State modifier (default: 'enabled')
 	 * @returns Surface level token name string
 	 */
-	export function $ds_surface_get_token_surface_level(
+	export function $eve_surface_get_token_surface_level(
 		level: string,
 		modifier: string = 'enabled'
 	): string {
-		return $ds_surface_get_token_surface( level, 'solid', 'bg', modifier )
+		return $eve_surface_get_token_surface( level, 'solid', 'bg', modifier )
 	}
 
-	export const $ds_surface_get_token_surface_level_var: typeof $ds_surface_get_token_surface_level = ( level, modifier ) => {
-		return var_token( $ds_surface_get_token_surface_level( level, modifier ) )
+	export const $eve_surface_get_token_surface_level_var: typeof $eve_surface_get_token_surface_level = ( level, modifier ) => {
+		return var_token( $eve_surface_get_token_surface_level( level, modifier ) )
 	}
 	/**
 	 * Wrap token in CSS var() with optional fallback
@@ -78,16 +78,16 @@ namespace $.$$ {
 
 	// Helper to generate color + variant + state styles
 	function generate_surface_styles() {
-		const colors = $ds_surface.COLORS
-		const variants = $ds_surface.VARIANTS
-		const states = $ds_surface.STATE_MODIFIERS
+		const colors = $eve_surface.COLORS
+		const variants = $eve_surface.VARIANTS
+		const states = $eve_surface.STATE_MODIFIERS
 
 		const colorStyles: any = {}
 
 		for( const color of colors ) {
 			// Surface levels (lowest, low, medium, high, highest) have simpler structure
-			// Tokens: --ds_surface_{level}_bg_{modifier}
-			if( $ds_surface.COLORS_SURFACE_LEVELS.includes( color as any ) ) {
+			// Tokens: --eve_surface_{level}_bg_{modifier}
+			if( $eve_surface.COLORS_SURFACE_LEVELS.includes( color as any ) ) {
 				const levelStates: any = {}
 
 				for( const state of states ) {
@@ -95,8 +95,8 @@ namespace $.$$ {
 						continue
 					}
 
-					const bgToken = $ds_surface_get_token_surface_level( color, state )
-					const baseBgToken = $ds_surface_get_token_surface_level( color )
+					const bgToken = $eve_surface_get_token_surface_level( color, state )
+					const baseBgToken = $eve_surface_get_token_surface_level( color )
 
 					levelStates[ state ] = {
 						background: {
@@ -107,10 +107,10 @@ namespace $.$$ {
 
 				colorStyles[ color ] = {
 					background: {
-						color: var_token( $ds_surface_get_token_surface_level( color ) ),
+						color: var_token( $eve_surface_get_token_surface_level( color ) ),
 					},
 					'@': {
-						ds_surface_state: levelStates,
+						eve_surface_state: levelStates,
 					},
 				}
 				continue
@@ -127,10 +127,10 @@ namespace $.$$ {
 						continue
 					}
 
-					const bg_token = $ds_surface_get_token_surface( color, variant, 'bg', state )
-					const text_token = $ds_surface_get_token_surface( color, variant, 'text', state )
-					const base_bg_token = $ds_surface_get_token_surface( color, variant, 'bg', 'enabled' )
-					const base_text_token = $ds_surface_get_token_surface( color, variant, 'text', 'enabled' )
+					const bg_token = $eve_surface_get_token_surface( color, variant, 'bg', state )
+					const text_token = $eve_surface_get_token_surface( color, variant, 'text', state )
+					const base_bg_token = $eve_surface_get_token_surface( color, variant, 'bg', 'enabled' )
+					const base_text_token = $eve_surface_get_token_surface( color, variant, 'text', 'enabled' )
 
 					state_styles[ state ] = {
 						background: {
@@ -146,8 +146,8 @@ namespace $.$$ {
 					}
 				}
 
-				const bg_token = $ds_surface_get_token_surface( color, variant, 'bg', 'enabled' )
-				const text_token = $ds_surface_get_token_surface( color, variant, 'text', 'enabled' )
+				const bg_token = $eve_surface_get_token_surface( color, variant, 'bg', 'enabled' )
+				const text_token = $eve_surface_get_token_surface( color, variant, 'text', 'enabled' )
 
 				variant_styles[ variant ] = {
 					background: {
@@ -155,24 +155,24 @@ namespace $.$$ {
 					},
 					color: var_token( text_token ),
 					border: {
-						width: `var(--ds_surface_border_width)`,
+						width: `var(--eve_surface_border_width)`,
 						style: 'solid',
 						// Border color: outline uses text color, others are transparent
 						color: variant === 'outline'
 							? var_token( text_token )
 							: 'transparent',
 					},
-					transition: `all var(--ds_surface_transition_duration) var(--ds_surface_transition_easing)`,
+					transition: `all var(--eve_surface_transition_duration) var(--eve_surface_transition_easing)`,
 
 					'@': {
-						ds_surface_state: state_styles,
+						eve_surface_state: state_styles,
 					},
 				}
 			}
 
 			colorStyles[ color ] = {
 				'@': {
-					ds_surface_variant: variant_styles,
+					eve_surface_variant: variant_styles,
 				},
 			}
 		}
@@ -180,7 +180,7 @@ namespace $.$$ {
 		return colorStyles
 	}
 
-	$mol_style_define( $ds_surface, {
+	$mol_style_define( $eve_surface, {
 		display: 'inline-flex',
 		alignItems: 'center',
 		justifyContent: 'center',
@@ -194,7 +194,7 @@ namespace $.$$ {
 
 		'@': {
 			// Interactive surfaces get pointer cursor
-			ds_surface_interactive: {
+			eve_surface_interactive: {
 				true: {
 					cursor: 'pointer',
 					userSelect: 'none',
@@ -202,47 +202,47 @@ namespace $.$$ {
 			},
 
 			// Color + Variant combinations
-			ds_surface_color: generate_surface_styles(),
+			eve_surface_color: generate_surface_styles(),
 
 			// Size presets
-			ds_surface_size: {
+			eve_surface_size: {
 				xs: {
-					minHeight: `var(--ds_surface_size_xs_height)`,
-					padding: [ 0, `var(--ds_surface_size_xs_padding)` ],
-					borderRadius: `var(--ds_surface_radius_xs)`,
-					fontSize: `var(--ds_surface_size_xs_font)`,
+					minHeight: `var(--eve_surface_size_xs_height)`,
+					padding: [ 0, `var(--eve_surface_size_xs_padding)` ],
+					borderRadius: `var(--eve_surface_radius_xs)`,
+					fontSize: `var(--eve_surface_size_xs_font)`,
 					gap: $mol_gap.text,
 				},
 
 				s: {
-					minHeight: `var(--ds_surface_size_sm_height)`,
-					padding: [ 0, `var(--ds_surface_size_sm_padding)` ],
-					borderRadius: `var(--ds_surface_radius_sm)`,
-					fontSize: `var(--ds_surface_size_sm_font)`,
+					minHeight: `var(--eve_surface_size_sm_height)`,
+					padding: [ 0, `var(--eve_surface_size_sm_padding)` ],
+					borderRadius: `var(--eve_surface_radius_sm)`,
+					fontSize: `var(--eve_surface_size_sm_font)`,
 					gap: $mol_gap.text,
 				},
 
 				m: {
-					minHeight: `var(--ds_surface_size_md_height)`,
-					padding: [ 0, `var(--ds_surface_size_md_padding)` ],
-					borderRadius: `var(--ds_surface_radius_md)`,
-					fontSize: `var(--ds_surface_size_md_font)`,
+					minHeight: `var(--eve_surface_size_md_height)`,
+					padding: [ 0, `var(--eve_surface_size_md_padding)` ],
+					borderRadius: `var(--eve_surface_radius_md)`,
+					fontSize: `var(--eve_surface_size_md_font)`,
 					gap: $mol_gap.space,
 				},
 
 				l: {
-					minHeight: `var(--ds_surface_size_lg_height)`,
-					padding: [ 0, `var(--ds_surface_size_lg_padding)` ],
-					borderRadius: `var(--ds_surface_radius_lg)`,
-					fontSize: `var(--ds_surface_size_lg_font)`,
+					minHeight: `var(--eve_surface_size_lg_height)`,
+					padding: [ 0, `var(--eve_surface_size_lg_padding)` ],
+					borderRadius: `var(--eve_surface_radius_lg)`,
+					fontSize: `var(--eve_surface_size_lg_font)`,
 					gap: $mol_gap.space,
 				},
 
 				xl: {
-					minHeight: `var(--ds_surface_size_xl_height)`,
-					padding: [ 0, `var(--ds_surface_size_xl_padding)` ],
-					borderRadius: `var(--ds_surface_radius_xl)`,
-					fontSize: `var(--ds_surface_size_xl_font)`,
+					minHeight: `var(--eve_surface_size_xl_height)`,
+					padding: [ 0, `var(--eve_surface_size_xl_padding)` ],
+					borderRadius: `var(--eve_surface_radius_xl)`,
+					fontSize: `var(--eve_surface_size_xl_font)`,
 					gap: $mol_gap.block,
 				},
 			},

@@ -9,7 +9,7 @@ namespace $.$$ {
 	 * - Interactive states (enabled, hovered, pressed, disabled)
 	 * - Flex layout for content alignment
 	 */
-	export class $ds_button extends $.$ds_button {
+	export class $eve_button extends $.$eve_button {
 
 		override dom_name() {
 			return 'button'

@@ -1,4 +1,4 @@
-$ds_surface $mol_view
+$eve_surface $mol_view
 	colors? null
 	variant? \solid
 	interactive? null

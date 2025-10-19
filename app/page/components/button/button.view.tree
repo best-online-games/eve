@@ -1,15 +1,15 @@
-$ds_app_page_components_button $ds_app_page_sb_page
+$eve_app_page_components_button $eve_app_page_sb_page
 	title \Buttons
 	Head null
 	body /
-		<= Buttons_catalog $ds_app_page_sb_catalog
+		<= Buttons_catalog $eve_app_page_sb_catalog
 			param \button
 			spreads *
-				overview <= Overview_page $ds_app_page_sb_page
+				overview <= Overview_page $eve_app_page_sb_page
 					title null
 					body /
-						<= Playground $ds_app_page_sb_playground_button
-				- variants <= Variants $ds_app_page_components_button_variants
-				- colors <= Colors $ds_app_page_components_button_colors
-				- sizes <= Sizes $ds_app_page_components_button_sizes
-				- states <= States $ds_app_page_components_button_states
+						<= Playground $eve_app_page_sb_playground_button
+				- variants <= Variants $eve_app_page_components_button_variants
+				- colors <= Colors $eve_app_page_components_button_colors
+				- sizes <= Sizes $eve_app_page_components_button_sizes
+				- states <= States $eve_app_page_components_button_states

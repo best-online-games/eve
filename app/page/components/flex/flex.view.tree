@@ -1,6 +1,6 @@
-$ds_app_page_components_flex $ds_app_page_sb_page
+$eve_app_page_components_flex $eve_app_page_sb_page
 	title \Flex
 	body /
-		<= Playground $ds_app_page_sb_playground_flex
-	Showcase_cell* $ds_surface
+		<= Playground $eve_app_page_sb_playground_flex
+	Showcase_cell* $eve_surface
 		colors \lowest

@@ -1,8 +1,8 @@
-$ds_app_color $mol_view
+$eve_app_color $mol_view
 	value? \
 	attr *
 		^
-		ds_themer_color \
+		eve_themer_color \
 	sub /
 		<= Input $mol_string
 			value? <=> value?

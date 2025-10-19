@@ -2,7 +2,7 @@
 
 ## Overview
 
-Компонент `$ds_surface` — это базовый строительный блок для создания интерактивных и неинтерактивных поверхностей в дизайн-системе. Он обеспечивает систематический подход к стилизации через комбинацию **цвета**, **варианта отображения**, **размера** и **состояния**.
+Компонент `$eve_surface` — это базовый строительный блок для создания интерактивных и неинтерактивных поверхностей в дизайн-системе. Он обеспечивает систематический подход к стилизации через комбинацию **цвета**, **варианта отображения**, **размера** и **состояния**.
 
 ## Design Principles
 
@@ -29,7 +29,7 @@
 background: oklch(55% 0.15 240deg);
 
 /* ✅ CSS Variables - хорошо */
-background: var(--ds_surface_primary_solid_bg);
+background: var(--eve_surface_primary_solid_bg);
 ```
 
 **Преимущества:**
@@ -67,9 +67,9 @@ Naming convention для CSS-переменных:
 
 Примеры:
 ```css
---ds_surface_primary_solid_bg              /* Base state */
---ds_surface_primary_solid_hover_bg        /* Hover state */
---ds_surface_danger_outline_disabled_text  /* Disabled state */
+--eve_surface_primary_solid_bg              /* Base state */
+--eve_surface_primary_solid_hover_bg        /* Hover state */
+--eve_surface_danger_outline_disabled_text  /* Disabled state */
 ```
 
 **Упрощение: Border переменные**

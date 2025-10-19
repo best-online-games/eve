@@ -3,12 +3,12 @@ namespace $.$$ {
 	// То есть ему просто не нравятся такие названия
 	// Ему не хватает допустим quaternary или quinary и тд. цветов внезапно в палитре
 	// То он просто добавляет новую строчку в конфигураторе и всё выводится
-	export type $ds_surface_color = typeof $ds_surface.COLORS[ number ]
-	export type $ds_surface_size = typeof $ds_surface.SIZES[ number ]
-	export type $ds_surface_state_modifiers = typeof $ds_surface.STATE_MODIFIERS[ number ]
-	export type $ds_surface_variant = typeof $ds_surface.VARIANTS[ number ]
+	export type $eve_surface_color = typeof $eve_surface.COLORS[ number ]
+	export type $eve_surface_size = typeof $eve_surface.SIZES[ number ]
+	export type $eve_surface_state_modifiers = typeof $eve_surface.STATE_MODIFIERS[ number ]
+	export type $eve_surface_variant = typeof $eve_surface.VARIANTS[ number ]
 
-	export class $ds_surface extends $.$ds_surface {
+	export class $eve_surface extends $.$eve_surface {
 
 		/**
 		 * Foundations: basic state modifiers
@@ -54,8 +54,8 @@ namespace $.$$ {
 		 * Foundations: all colors
 		 */
 		static readonly COLORS = [
-			...$ds_surface.COLORS_BRAND,
-			...$ds_surface.COLORS_SURFACE_LEVELS
+			...$eve_surface.COLORS_BRAND,
+			...$eve_surface.COLORS_SURFACE_LEVELS
 		] as const
 
 		// ===============================
@@ -85,7 +85,7 @@ namespace $.$$ {
 
 		// Возможно в выгрузке тогда и мапки с дефолтами надо будет делать
 		override attr() {
-			const fqnPrefix = 'ds_surface_'
+			const fqnPrefix = 'eve_surface_'
 
 			const attrs: Record<string, any> = {
 				...super.attr(),
@@ -100,29 +100,31 @@ namespace $.$$ {
 		}
 
 		@$mol_mem
-		state( next?: $ds_surface_state_modifiers ): $ds_surface_state_modifiers | undefined {
+		state( next?: $eve_surface_state_modifiers ): $eve_surface_state_modifiers | undefined {
 			return next
 		}
 
 		@$mol_mem
-		colors( next?: $ds_surface_color ): $ds_surface_color | undefined {
+		colors( next?: $eve_surface_color ): $eve_surface_color | undefined {
 			return next
 		}
 
 		@$mol_mem
-		variant( next?: $ds_surface_variant ): $ds_surface_variant {
+		variant( next?: $eve_surface_variant ): $eve_surface_variant {
 			return next ?? 'solid'
 		}
 
 		@$mol_mem
 		interactive( next?: boolean ): boolean | undefined {
+			console.log( 'interactive', next )
+
 			return next
 		}
 
 		// Возможно это будет лучше вынести в какой-нибудь компонент Controls,
 		// но пока не видно нужды в его выделении. 
 		@$mol_mem
-		size( next?: $ds_surface_size ): $ds_surface_size | undefined {
+		size( next?: $eve_surface_size ): $eve_surface_size | undefined {
 			return next
 		}
 	}

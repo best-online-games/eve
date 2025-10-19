@@ -1,6 +1,6 @@
 namespace $.$$ {
 
-	export class $ds_app_page_sb_playground extends $.$ds_app_page_sb_playground {
+	export class $eve_app_page_sb_playground extends $.$eve_app_page_sb_playground {
 
 		// Имя динамического компонента (переопределяется в наследниках)
 		component_name(): string {
@@ -58,7 +58,7 @@ namespace $.$$ {
 
 		// Динамическая компиляция компонента через eval
 		@$mol_mem
-		Live_component(): $ds_surface {
+		Live_component(): $eve_surface {
 			try {
 				// Выполняем скомпилированный код в контексте this.$
 				const $ = this.$
@@ -70,7 +70,7 @@ namespace $.$$ {
 
 				if( !DynamicClass ) {
 					this.$.$mol_fail_hidden( new Error( `Failed to create dynamic component: ${ componentName }` ) )
-					return new this.$.$ds_surface()
+					return new this.$.$eve_surface()
 				}
 
 				// Создаём экземпляр с правильным ambient контекстом
@@ -83,12 +83,12 @@ namespace $.$$ {
 			} catch( error: any ) {
 				// Обработка ошибок компиляции/выполнения
 				this.$.$mol_fail_log( error )
-				return new this.$.$ds_surface()
+				return new this.$.$eve_surface()
 			}
 		}
 
 		// Хук для кастомизации динамического компонента (переопределяется в наследниках)
-		customize_live_component( instance: any ): $ds_surface {
+		customize_live_component( instance: any ): $eve_surface {
 			return instance
 		}
 

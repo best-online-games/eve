@@ -1,4 +1,4 @@
-$ds_app_page_themer_colors $mol_row
+$eve_app_page_themer_colors $mol_row
 	color_back? \oklch(20% .01 240deg)
 	color_card? \oklch(30% .05 240deg / .25)
 	color_field? \oklch(15% 0 240deg / .25)
@@ -17,26 +17,26 @@ $ds_app_page_themer_colors $mol_row
 					rows /
 						<= Controls_title $mol_view
 							sub / <= Controls_title_text $mol_dimmer
-						<= Backgrounds_section $mol_list
+						<= Backgrouneve_section $mol_list
 							rows /
-								<= Backgrounds_title $mol_view
-									sub / <= Backgrounds_title_text $mol_dimmer
+								<= Backgrouneve_title $mol_view
+									sub / <= Backgrouneve_title_text $mol_dimmer
 										haystack \Backgrounds
 								<= Back_field $mol_form_field
 									name \Background
-									Content <= Back_color $ds_app_color
+									Content <= Back_color $eve_app_color
 										value? <=> color_back? \oklch(20% .01 240deg)
 								<= Card_field $mol_form_field
 									name \Card
-									Content <= Card_color $ds_app_color
+									Content <= Card_color $eve_app_color
 										value? <=> color_card? \oklch(30% .05 240deg / .25)
 								<= Field_field $mol_form_field
 									name \Field
-									Content <= Field_color $ds_app_color
+									Content <= Field_color $eve_app_color
 										value? <=> color_field? \oklch(15% 0 240deg / .25)
 								<= Hover_field $mol_form_field
 									name \Hover
-									Content <= Hover_color $ds_app_color
+									Content <= Hover_color $eve_app_color
 										value? <=> color_hover? \oklch(70% 0 240deg / .1)
 						<= Text_section $mol_list
 							rows /
@@ -45,19 +45,19 @@ $ds_app_page_themer_colors $mol_row
 										haystack \Text Colors
 								<= Text_field $mol_form_field
 									name \Text
-									Content <= Text_color $ds_app_color
+									Content <= Text_color $eve_app_color
 										value? <=> color_text? \oklch(80% 0 240deg)
 								<= Shade_field $mol_form_field
 									name \Shade
-									Content <= Shade_color $ds_app_color
+									Content <= Shade_color $eve_app_color
 										value? <=> color_shade? \oklch(60% 0 240deg)
 								<= Line_field $mol_form_field
 									name \Line
-									Content <= Line_color $ds_app_color
+									Content <= Line_color $eve_app_color
 										value? <=> color_line? \oklch(60% 0 240deg / .25)
 								<= Focus_field $mol_form_field
 									name \Focus
-									Content <= Focus_color $ds_app_color
+									Content <= Focus_color $eve_app_color
 										value? <=> color_focus? \oklch(80% .2 60deg)
 						<= Controls_section $mol_list
 							rows /
@@ -66,15 +66,15 @@ $ds_app_page_themer_colors $mol_row
 										haystack \Control Colors
 								<= Control_field $mol_form_field
 									name \Control
-									Content <= Control_color $ds_app_color
+									Content <= Control_color $eve_app_color
 										value? <=> color_control? \oklch(70% .1 240deg)
 								<= Current_field $mol_form_field
 									name \Current
-									Content <= Current_color $ds_app_color
+									Content <= Current_color $eve_app_color
 										value? <=> color_current? \oklch(70% .2 150deg)
 								<= Special_field $mol_form_field
 									name \Special
-									Content <= Special_color $ds_app_color
+									Content <= Special_color $eve_app_color
 										value? <=> color_special? \oklch(70% .2 330deg)
 		<= Preview $mol_scroll
 			sub /
@@ -92,4 +92,4 @@ $ds_app_page_themer_colors $mol_row
 						--mol_theme_current <= color_current
 						--mol_theme_special <= color_special
 					sub /
-						<= Demo_site $ds_app_demo
+						<= Demo_site $eve_app_demo
