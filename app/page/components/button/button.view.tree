@@ -8,21 +8,7 @@ $ds_app_page_components_button $ds_app_page_sb_page
 				overview <= Overview_page $ds_app_page_sb_page
 					title null
 					body /
-						<= Preview_card $ds_flex
-							justify_content \center
-							align_items \center
-							gap \32px
-							wrap \wrap
-							sub /
-								<= Live_button $ds_button
-								<= Editor_body $mol_view
-									sub <= editor_body /
-										<= Source_tree $hyoo_tree_edit
-											value? <=> source_tree? $mol_tree2
-										<= Source_text $mol_textarea
-											value?val <=> source?val \
-											hint \view.tree code
-											sidebar_showed true
+						<= Playground $ds_app_page_sb_playground_button
 				- variants <= Variants $ds_app_page_components_button_variants
 				- colors <= Colors $ds_app_page_components_button_colors
 				- sizes <= Sizes $ds_app_page_components_button_sizes

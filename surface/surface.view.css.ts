@@ -214,7 +214,7 @@ namespace $.$$ {
 					gap: $mol_gap.text,
 				},
 
-				sm: {
+				s: {
 					minHeight: `var(--ds_surface_size_sm_height)`,
 					padding: [ 0, `var(--ds_surface_size_sm_padding)` ],
 					borderRadius: `var(--ds_surface_radius_sm)`,
@@ -222,7 +222,7 @@ namespace $.$$ {
 					gap: $mol_gap.text,
 				},
 
-				md: {
+				m: {
 					minHeight: `var(--ds_surface_size_md_height)`,
 					padding: [ 0, `var(--ds_surface_size_md_padding)` ],
 					borderRadius: `var(--ds_surface_radius_md)`,
@@ -230,7 +230,7 @@ namespace $.$$ {
 					gap: $mol_gap.space,
 				},
 
-				lg: {
+				l: {
 					minHeight: `var(--ds_surface_size_lg_height)`,
 					padding: [ 0, `var(--ds_surface_size_lg_padding)` ],
 					borderRadius: `var(--ds_surface_radius_lg)`,

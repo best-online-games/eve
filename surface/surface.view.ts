@@ -65,9 +65,9 @@ namespace $.$$ {
 		 */
 		static readonly SIZES = [
 			'xs',
-			'sm',
-			'md',
-			'lg',
+			's',
+			'm',
+			'l',
 			'xl'
 		] as const
 
