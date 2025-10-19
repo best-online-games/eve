@@ -1,8 +1,10 @@
 $ds_app_page_components_flex $ds_app_page_sb_page
 	title \Flex
 	body /
-		<= Preview_card $ds_app_page_sb_card
+		<= Preview_card $ds_flex
 			justify_content \center
+			align_items \center
+			gap \32px
 			wrap \wrap
 			sub /
 				<= Live_flex $ds_flex

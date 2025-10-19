@@ -100,8 +100,8 @@ namespace $.$$ {
 		}
 
 		@$mol_mem
-		state( next?: $ds_surface_state_modifiers ): $ds_surface_state_modifiers {
-			return next ?? 'enabled'
+		state( next?: $ds_surface_state_modifiers ): $ds_surface_state_modifiers | undefined {
+			return next
 		}
 
 		@$mol_mem

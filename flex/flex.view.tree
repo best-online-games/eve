@@ -5,4 +5,4 @@ $ds_flex $ds_surface
 	wrap \nowrap
 	- потом подумать про спейсинги отдельно, 
 	- чтобы можно было прокинуть переменную типа или var(--SPx4) или shortcut типа SPx4
-	gap \0
+	gap null
