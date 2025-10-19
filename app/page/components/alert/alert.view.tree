@@ -1,0 +1,59 @@
+$eve_app_page_components_alert $eve_app_page_sb_page
+	Head null
+	title @ \Alert
+	body /
+		<= Overview_page $eve_app_page_sb_page
+			title null
+			body /
+				<= Overview $eve_surface
+					sub /
+						<= Playground $eve_app_page_sb_playground_alert
+		<= Variants_page $eve_app_page_sb_page
+			title @ \Variants
+			body /
+				<= Variants $eve_surface
+					sub /
+						<= Info_alert $eve_alert
+							colors \info
+							message / \Info alert message
+						<= Success_alert $eve_alert
+							colors \success
+							message / \Success alert message
+						<= Warning_alert $eve_alert
+							colors \warning
+							message / \Warning alert message
+						<= Error_alert $eve_alert
+							colors \danger
+							message / \Error alert message
+		<= With_description_page $eve_app_page_sb_page
+			title @ \With Description
+			body /
+				<= With_description $eve_surface
+					sub /
+						<= Description_alert $eve_alert
+							colors \info
+							message / \Alert with description
+							description / \This is a detailed description of the alert. It provides additional context and information.
+		<= Closable_page $eve_app_page_sb_page
+			title @ \Closable
+			body /
+				<= Closable $eve_surface
+					sub /
+						<= Closable_alert $eve_alert
+							colors \warning
+							message / \Closable alert
+							description / \You can close this alert by clicking the close button.
+		<= Without_icon_page $eve_app_page_sb_page
+			title @ \Without Icon
+			body /
+				<= Without_icon $eve_surface
+					sub /
+						<= Without_icon_alert $eve_alert
+							colors \info
+							Icon null
+							message / \Alert without icon
+						<= No_close_button_alert $eve_alert
+							colors \success
+							Close_button null
+							message / \Alert without close button
+

@@ -2,6 +2,7 @@
 [mol_icon] {
 	/* mol/icon/icon.view.css */
 	filter: none;
+	height: fit-content;
 }
 
 :root {
@@ -579,9 +580,9 @@
 
 	/* Border radius */
 	--eve_surface_radius_xs: 0.25rem; /* 4px */
-	--eve_surface_radius_sm: 0.375rem; /* 6px */
-	--eve_surface_radius_md: 0.5rem; /* 8px */
-	--eve_surface_radius_lg: 0.625rem; /* 10px */
+	--eve_surface_radius_s: 0.375rem; /* 6px */
+	--eve_surface_radius_m: 0.5rem; /* 8px */
+	--eve_surface_radius_l: 0.625rem; /* 10px */
 	--eve_surface_radius_xl: 0.75rem; /* 12px */
 
 	/* Border width */

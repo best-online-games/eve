@@ -1,0 +1,23 @@
+$eve_alert $eve_flex
+	colors \info
+	variant \soft
+	enabled? true
+	close?event null
+	attr *
+		^
+		role \alert
+	sub /
+		<= Icon $mol_icon
+		<= Content $eve_surface
+			sub /
+				<= Message $eve_surface
+					sub <= message /
+				<= Description $eve_surface
+					sub <= description /
+		<= Close_button $eve_button
+			variant \ghost
+			- colors \lowest
+			click? <=> close?
+			sub /
+				<= Close_icon $mol_icon_close
+

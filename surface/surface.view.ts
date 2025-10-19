@@ -117,6 +117,9 @@ namespace $.$$ {
 			return next ?? 'solid'
 		}
 
+		/**
+		 * Whether the surface is interactive. If true, the surface will be visually clickable and will have a hover & pressed states.
+		 */
 		@$mol_mem
 		interactive( next?: boolean ): boolean | undefined {
 			console.log( 'interactive', next )

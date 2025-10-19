@@ -88,6 +88,17 @@ namespace $.$$ {
 	}
 
 	/**
+	 * Generate border-width token name for specific size
+	 * Falls back to generic border_width if size not provided
+	 * @param size - Size name (e.g., 'xs', 'sm', 'md')
+	 */
+	export function get_token_border( size?: $eve_surface_size ): string {
+		return size
+			? `${ TOKEN_PREFIX }surface_size_${ size }_border`
+			: `${ TOKEN_PREFIX }surface_border_width`
+	}
+
+	/**
 	 * Generate generic surface token (for border, transition, etc.)
 	 * @param property - Property name (e.g., 'border_width', 'transition_duration')
 	 */
@@ -191,7 +202,7 @@ namespace $.$$ {
 					},
 					color: var_token( text_token ),
 					border: {
-						width: var_token( get_token_surface_property( 'border_width' ) ),
+						width: var_token( get_token_border() ), // Will be overridden by size-specific border
 						style: 'solid',
 						// Border color: outline uses text color, others are transparent
 						color: variant === 'outline'
@@ -250,6 +261,7 @@ namespace $.$$ {
 					minHeight: var_token( get_token_size( 'xs', 'height' ) ),
 					padding: [ 0, var_token( get_token_size( 'xs', 'padding' ) ) ],
 					borderRadius: var_token( get_token_radius( 'xs' ) ),
+					borderWidth: var_token( get_token_border( 'xs' ) ),
 					fontSize: var_token( get_token_size( 'xs', 'font' ) ),
 					gap: $mol_gap.text,
 				},
@@ -258,6 +270,7 @@ namespace $.$$ {
 					minHeight: var_token( get_token_size( 's', 'height' ) ),
 					padding: [ 0, var_token( get_token_size( 's', 'padding' ) ) ],
 					borderRadius: var_token( get_token_radius( 's' ) ),
+					borderWidth: var_token( get_token_border( 's' ) ),
 					fontSize: var_token( get_token_size( 's', 'font' ) ),
 					gap: $mol_gap.text,
 				},
@@ -266,6 +279,7 @@ namespace $.$$ {
 					minHeight: var_token( get_token_size( 'm', 'height' ) ),
 					padding: [ 0, var_token( get_token_size( 'm', 'padding' ) ) ],
 					borderRadius: var_token( get_token_radius( 'm' ) ),
+					borderWidth: var_token( get_token_border( 'm' ) ),
 					fontSize: var_token( get_token_size( 'm', 'font' ) ),
 					gap: $mol_gap.space,
 				},
@@ -274,6 +288,7 @@ namespace $.$$ {
 					minHeight: var_token( get_token_size( 'l', 'height' ) ),
 					padding: [ 0, var_token( get_token_size( 'l', 'padding' ) ) ],
 					borderRadius: var_token( get_token_radius( 'l' ) ),
+					borderWidth: var_token( get_token_border( 'l' ) ),
 					fontSize: var_token( get_token_size( 'l', 'font' ) ),
 					gap: $mol_gap.space,
 				},
@@ -282,6 +297,7 @@ namespace $.$$ {
 					minHeight: var_token( get_token_size( 'xl', 'height' ) ),
 					padding: [ 0, var_token( get_token_size( 'xl', 'padding' ) ) ],
 					borderRadius: var_token( get_token_radius( 'xl' ) ),
+					borderWidth: var_token( get_token_border( 'xl' ) ),
 					fontSize: var_token( get_token_size( 'xl', 'font' ) ),
 					gap: $mol_gap.block,
 				},

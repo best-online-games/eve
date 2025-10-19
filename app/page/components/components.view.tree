@@ -9,3 +9,4 @@ $eve_app_page_components $eve_page
 				surfaces <= Surfaces $eve_app_page_components_surface
 				flex <= Flex $eve_app_page_components_flex
 				buttons <= Buttons $eve_app_page_components_button
+				alert <= Alert $eve_app_page_components_alert
