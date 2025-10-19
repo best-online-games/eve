@@ -4,6 +4,9 @@ namespace $.$$ {
 	// Ему не хватает допустим quaternary или quinary и тд. цветов внезапно в палитре
 	// То он просто добавляет новую строчку в конфигураторе и всё выводится
 	export type $eve_surface_color = typeof $eve_surface.COLORS[ number ]
+	export type $eve_surface_color_surface_level = typeof $eve_surface.COLORS_SURFACE_LEVELS[ number ]
+	export type $eve_surface_color_brand = typeof $eve_surface.COLORS_BRAND[ number ]
+
 	export type $eve_surface_size = typeof $eve_surface.SIZES[ number ]
 	export type $eve_surface_state_modifiers = typeof $eve_surface.STATE_MODIFIERS[ number ]
 	export type $eve_surface_variant = typeof $eve_surface.VARIANTS[ number ]
