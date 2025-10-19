@@ -12,6 +12,7 @@ namespace $.$$ {
 	colors \\primary
 	variant \\solid
 	size \\m
+	- direction \\column
 	label \\Click Me!
 	sub /
 		<= Icon $mol_icon_karate
