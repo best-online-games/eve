@@ -1,15 +1,11 @@
-$ds_app_page_components_flex $ds_app_page_components_sb_page
+$ds_app_page_components_flex $ds_app_page_sb_page
 	title \Flex
 	body /
-		<= Preview_card $ds_app_page_components_sb_card
-			align_items \center
+		<= Preview_card $ds_app_page_sb_card
 			justify_content \center
-			colors \medium
+			wrap \wrap
 			sub /
 				<= Live_flex $ds_flex
-		<= Editor_card $ds_app_page_components_sb_card
-			colors \low
-			sub /
 				<= Editor_body $mol_view
 					sub <= editor_body /
 						<= Source_tree $hyoo_tree_edit
@@ -18,5 +14,6 @@ $ds_app_page_components_flex $ds_app_page_components_sb_page
 							value?val <=> source?val \
 							hint \view.tree code
 							sidebar_showed true
+						
 	Showcase_cell* $ds_surface
 		colors \high

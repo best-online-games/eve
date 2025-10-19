@@ -1,4 +1,4 @@
-$ds_app_page_themer $mol_page
+$ds_app_page_themer $ds_page
 	title \Themer
 	Head null
 	body /

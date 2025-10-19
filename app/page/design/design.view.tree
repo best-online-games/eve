@@ -1,4 +1,4 @@
-$ds_app_page_design $mol_page
+$ds_app_page_design $ds_page
 	title \Design
 	Head null
 	body /

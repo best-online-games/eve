@@ -1,4 +1,4 @@
-$ds_app_page_libraries $mol_page
+$ds_app_page_libraries $ds_page
 	title \Libraries
 	Head null
 	body /

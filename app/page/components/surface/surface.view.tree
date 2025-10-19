@@ -1,4 +1,4 @@
-$ds_app_page_components_surface $ds_app_page_components_sb_page
+$ds_app_page_components_surface $ds_app_page_sb_page
 	title \Surface
 	body /
 		<= Variant_select $mol_select
@@ -8,17 +8,16 @@ $ds_app_page_components_surface $ds_app_page_components_sb_page
 				outline \Outline
 				ghost \Ghost
 			value? <=> Variant_select_value? \soft
-		<= Card $ds_app_page_components_sb_card
+		<= Card $ds_app_page_sb_card
 			align_items \center
 			justify_content \center
-			colors \medium
 			sub /
 				<= Showcase_grid $ds_surface
 					sub <= grid_cells /
 	Grid_empty $ds_surface
-	Grid_header* $mol_paragraph
+	Grid_column_header* $mol_paragraph
 		title <= grid_header_text* \
-	Grid_row_label* $mol_paragraph
+	Grid_row_header* $mol_paragraph
 		title <= grid_row_text* \
 	Grid_cell* $ds_surface
 		variant <= Variant_select_value

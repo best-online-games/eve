@@ -1,13 +1,13 @@
-$ds_app_page_components $mol_page
+$ds_app_page_components $ds_page
 	title \Components
 	Head null
 	body /
-		<= Nav_menu $mol_book2_catalog
+		<= Nav_menu $ds_app_page_sb_catalog
 			spreads *
 				surfaces <= Surfaces $ds_app_page_components_surface
 				flex <= Flex $ds_app_page_components_flex
-				buttons <= Buttons $ds_app_page_components_sb_page
-					title \Buttons
+				buttons <= Buttons $ds_app_page_sb_page
+					title \Button
 					body /
 						<= Buttons_content $mol_text
 							text \Buttons page - Coming soon...

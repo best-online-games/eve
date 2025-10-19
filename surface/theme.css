@@ -274,33 +274,33 @@
 		--ds_surface_info_ghost_text_disabled: oklch(55% 0 var(--ds_surface_info_hue));
 
 		/* =========================================================================
-	   SURFACE LEVELS (Non-interactive backgrounds with hover/pressed states)
+	   SURFACE LEVELS
 	   ========================================================================= */
 
-		--ds_surface_lowest_bg_enabled: oklch(0 0 0);
-		--ds_surface_lowest_bg_hovered: oklch(0.18 0 0);
-		--ds_surface_lowest_bg_pressed: oklch(0.2 0 0);
-		--ds_surface_lowest_bg_disabled: oklch(0.2 0 0);
+		--ds_surface_lowest_solid_bg_enabled: oklch(0 0 0);
+		--ds_surface_lowest_solid_bg_hovered: oklch(0.18 0 0);
+		--ds_surface_lowest_solid_bg_pressed: oklch(0.2 0 0);
+		--ds_surface_lowest_solid_bg_disabled: oklch(0.2 0 0);
 
-		--ds_surface_low_bg_enabled: oklch(0.2 0 0);
-		--ds_surface_low_bg_hovered: oklch(0.2 0 0);
-		--ds_surface_low_bg_pressed: oklch(0.25 0 0);
-		--ds_surface_low_bg_disabled: oklch(0.25 0 0);
+		--ds_surface_low_solid_bg_enabled: oklch(0.2 0 0);
+		--ds_surface_low_solid_bg_hovered: oklch(0.2 0 0);
+		--ds_surface_low_solid_bg_pressed: oklch(0.21 0 0);
+		--ds_surface_low_solid_bg_disabled: oklch(0.22 0 0);
 
-		--ds_surface_medium_bg_enabled: oklch(0.25 0 0);
-		--ds_surface_medium_bg_hovered: oklch(0.3 0 0);
-		--ds_surface_medium_bg_pressed: oklch(0.35 0 0);
-		--ds_surface_medium_bg_disabled: oklch(0.35 0 0);
+		--ds_surface_medium_solid_bg_enabled: oklch(0.23 0 0);
+		--ds_surface_medium_solid_bg_hovered: oklch(0.24 0 0);
+		--ds_surface_medium_solid_bg_pressed: oklch(0.25 0 0);
+		--ds_surface_medium_solid_bg_disabled: oklch(0.31 0 0);
 
-		--ds_surface_high_bg_enabled: oklch(0.3 0 0);
-		--ds_surface_high_bg_hovered: oklch(0.35 0 0);
-		--ds_surface_high_bg_pressed: oklch(0.4 0 0);
-		--ds_surface_high_bg_disabled: oklch(0.4 0 0);
+		--ds_surface_high_solid_bg_enabled: oklch(0.3 0 0);
+		--ds_surface_high_solid_bg_hovered: oklch(0.35 0 0);
+		--ds_surface_high_solid_bg_pressed: oklch(0.4 0 0);
+		--ds_surface_high_solid_bg_disabled: oklch(0.4 0 0);
 
-		--ds_surface_highest_bg_enabled: oklch(0.35 0 0);
-		--ds_surface_highest_bg_hovered: oklch(0.4 0 0);
-		--ds_surface_highest_bg_pressed: oklch(0.45 0 0);
-		--ds_surface_highest_bg_disabled: oklch(0.45 0 0);
+		--ds_surface_highest_solid_bg_enabled: oklch(0.35 0 0);
+		--ds_surface_highest_solid_bg_hovered: oklch(0.4 0 0);
+		--ds_surface_highest_solid_bg_pressed: oklch(0.45 0 0);
+		--ds_surface_highest_solid_bg_disabled: oklch(0.45 0 0);
 	}
 }
 
