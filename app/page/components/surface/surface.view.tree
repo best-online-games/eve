@@ -8,7 +8,7 @@ $ds_app_page_components_surface $ds_app_page_sb_page
 				outline \Outline
 				ghost \Ghost
 			value? <=> Variant_select_value? \soft
-		<= Card $ds_app_page_sb_card
+		<= Card $ds_flex
 			align_items \center
 			justify_content \center
 			sub /

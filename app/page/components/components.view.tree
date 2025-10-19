@@ -3,13 +3,10 @@ $ds_app_page_components $ds_page
 	Head null
 	body /
 		<= Nav_menu $ds_app_page_sb_catalog
+			param \component
 			spreads *
 				surfaces <= Surfaces $ds_app_page_components_surface
 				flex <= Flex $ds_app_page_components_flex
-				buttons <= Buttons $ds_app_page_sb_page
-					title \Button
-					body /
-						<= Buttons_content $mol_text
-							text \Buttons page - Coming soon...
+				buttons <= Buttons $ds_app_page_components_button
 			- без понятия опять же, что это за компонент Placeholder и зачем он там нужен - 0 шансов и желания разбираться
 			Placeholder null

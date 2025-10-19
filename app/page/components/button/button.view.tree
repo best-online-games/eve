@@ -1,0 +1,175 @@
+$ds_app_page_components_button $ds_app_page_sb_page
+	title \Buttons
+	body /
+		<= Overview_section $ds_flex
+			direction \column
+			gap \1rem
+			sub /
+				<= Overview_title $mol_paragraph
+					title \Overview
+				<= Overview_description $mol_text
+					text \
+						\Button component based on Flex layout.
+						\
+						\Features:
+						\- All surface colors and variants
+						\- All surface sizes
+						\- Interactive states (hover, pressed, disabled)
+						\- Flex-based content alignment
+				
+				<= Overview_examples $ds_flex
+					gap \0.5rem
+					sub /
+						<= Example_basic $ds_button
+							colors \primary
+							variant \solid
+							size \md
+							sub / \Primary Button
+						
+						<= Example_secondary $ds_button
+							colors \secondary
+							variant \soft
+							size \md
+							sub / \Secondary Soft
+						
+						<= Example_danger $ds_button
+							colors \danger
+							variant \outline
+							size \md
+							sub / \Danger Outline
+		
+		<= Variants_section $ds_flex
+			direction \column
+			gap \1rem
+			sub /
+				<= Variants_title $mol_paragraph
+					title \Variants
+				<= Variants_grid $ds_flex
+					gap \0.5rem
+					sub /
+						<= Variant_solid $ds_button
+							colors \primary
+							variant \solid
+							sub / \Solid
+						
+						<= Variant_soft $ds_button
+							colors \primary
+							variant \soft
+							sub / \Soft
+						
+						<= Variant_outline $ds_button
+							colors \primary
+							variant \outline
+							sub / \Outline
+						
+						<= Variant_ghost $ds_button
+							colors \primary
+							variant \ghost
+							sub / \Ghost
+		
+		<= Colors_section $ds_flex
+			direction \column
+			gap \1rem
+			sub /
+				<= Colors_title $mol_paragraph
+					title \Colors
+				<= Colors_grid $ds_flex
+					gap \0.5rem
+					wrap \wrap
+					sub /
+						<= Color_primary $ds_button
+							colors \primary
+							variant \solid
+							sub / \Primary
+						
+						<= Color_secondary $ds_button
+							colors \secondary
+							variant \solid
+							sub / \Secondary
+						
+						<= Color_tertiary $ds_button
+							colors \tertiary
+							variant \solid
+							sub / \Tertiary
+						
+						<= Color_danger $ds_button
+							colors \danger
+							variant \solid
+							sub / \Danger
+						
+						<= Color_warning $ds_button
+							colors \warning
+							variant \solid
+							sub / \Warning
+						
+						<= Color_success $ds_button
+							colors \success
+							variant \solid
+							sub / \Success
+						
+						<= Color_info $ds_button
+							colors \info
+							variant \solid
+							sub / \Info
+		
+		<= Sizes_section $ds_flex
+			direction \column
+			gap \1rem
+			sub /
+				<= Sizes_title $mol_paragraph
+					title \Sizes
+				<= Sizes_grid $ds_flex
+					gap \0.5rem
+					align_items \center
+					sub /
+						<= Size_xs $ds_button
+							colors \primary
+							variant \solid
+							size \xs
+							sub / \Extra Small
+						
+						<= Size_sm $ds_button
+							colors \primary
+							variant \solid
+							size \sm
+							sub / \Small
+						
+						<= Size_md $ds_button
+							colors \primary
+							variant \solid
+							size \md
+							sub / \Medium
+						
+						<= Size_lg $ds_button
+							colors \primary
+							variant \solid
+							size \lg
+							sub / \Large
+						
+						<= Size_xl $ds_button
+							colors \primary
+							variant \solid
+							size \xl
+							sub / \Extra Large
+		
+		<= States_section $ds_flex
+			direction \column
+			gap \1rem
+			sub /
+				<= States_title $mol_paragraph
+					title \States
+				<= States_grid $ds_flex
+					gap \0.5rem
+					sub /
+						<= State_enabled $ds_button
+							colors \primary
+							variant \solid
+							disabled false
+							sub / \Enabled
+						
+						<= State_disabled $ds_button
+							colors \primary
+							variant \solid
+							disabled true
+							sub / \Disabled
+
