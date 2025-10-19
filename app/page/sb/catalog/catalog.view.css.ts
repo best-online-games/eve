@@ -1,4 +1,6 @@
 namespace $.$$ {
+	const { px } = $mol_style_unit
+
 	$mol_style_define( $ds_app_page_sb_catalog, {
 		Menu: {
 			Body: {

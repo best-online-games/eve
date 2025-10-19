@@ -16,6 +16,7 @@ namespace $.$$ {
 		},
 		Body_content: {
 			boxShadow: 'none',
+			paddingTop: px( 0 ),
 		}
 	} )
 }
