@@ -29,44 +29,35 @@
 	   ========================================================================= */
 
 	/* Solid variant: filled background, high contrast text */
-	--ds_surface_primary_solid_bg: hsl(var(--ds_surface_primary_hue), 60%, 50%);
-	--ds_surface_primary_solid_text: hsl(var(--ds_surface_primary_hue), 0%, 100%);
-	--ds_surface_primary_solid_border: transparent;
-
-	--ds_surface_primary_solid_hover_bg: hsl(var(--ds_surface_primary_hue), 60%, 55%);
-	--ds_surface_primary_solid_pressed_bg: hsl(var(--ds_surface_primary_hue), 60%, 45%);
-	--ds_surface_primary_solid_disabled_bg: hsl(var(--ds_surface_primary_hue), 20%, 30%);
-	--ds_surface_primary_solid_disabled_text: hsl(var(--ds_surface_primary_hue), 0%, 60%);
+	--ds_surface_primary_solid_bg_enabled: hsl(var(--ds_surface_primary_hue), 60%, 50%);
+	--ds_surface_primary_solid_bg_hovered: hsl(var(--ds_surface_primary_hue), 60%, 55%);
+	--ds_surface_primary_solid_bg_pressed: hsl(var(--ds_surface_primary_hue), 60%, 45%);
+	--ds_surface_primary_solid_bg_disabled: hsl(var(--ds_surface_primary_hue), 20%, 30%);
+	--ds_surface_primary_solid_text_enabled: hsl(var(--ds_surface_primary_hue), 0%, 100%);
+	--ds_surface_primary_solid_text_disabled: hsl(var(--ds_surface_primary_hue), 0%, 60%);
 
 	/* Soft variant: tinted background, colored text */
-	--ds_surface_primary_soft_bg: hsl(var(--ds_surface_primary_hue), 60%, 50% / 0.4);
-	--ds_surface_primary_soft_text: hsl(var(--ds_surface_primary_hue), 70%, 70%);
-	--ds_surface_primary_soft_border: transparent;
-
-	--ds_surface_primary_soft_hover_bg: hsl(var(--ds_surface_primary_hue), 60%, 50%, 0.25);
-	--ds_surface_primary_soft_pressed_bg: hsl(var(--ds_surface_primary_hue), 60%, 50%, 0.35);
-	--ds_surface_primary_soft_disabled_bg: hsl(var(--ds_surface_primary_hue), 20%, 50%, 0.08);
-	--ds_surface_primary_soft_disabled_text: hsl(var(--ds_surface_primary_hue), 0%, 50%);
+	--ds_surface_primary_soft_bg_enabled: hsl(var(--ds_surface_primary_hue), 60%, 50%);
+	--ds_surface_primary_soft_bg_hovered: hsl(var(--ds_surface_primary_hue), 60%, 50%);
+	--ds_surface_primary_soft_bg_pressed: hsl(var(--ds_surface_primary_hue), 60%, 50%);
+	--ds_surface_primary_soft_bg_disabled: hsl(var(--ds_surface_primary_hue), 20%, 50%);
+	--ds_surface_primary_soft_text_enabled: hsl(var(--ds_surface_primary_hue), 70%, 70%);
+	--ds_surface_primary_soft_text_disabled: hsl(var(--ds_surface_primary_hue), 0%, 50%);
 
 	/* Outline variant: transparent bg, colored border and text */
-	--ds_surface_primary_outline_bg: transparent;
-	--ds_surface_primary_outline_text: hsl(var(--ds_surface_primary_hue), 70%, 70%);
-	--ds_surface_primary_outline_border: hsl(var(--ds_surface_primary_hue), 60%, 55%);
-
-	--ds_surface_primary_outline_hover_bg: hsl(var(--ds_surface_primary_hue), 60%, 50%, 0.1);
-	--ds_surface_primary_outline_hover_border: hsl(var(--ds_surface_primary_hue), 70%, 65%);
-	--ds_surface_primary_outline_pressed_bg: hsl(var(--ds_surface_primary_hue), 60%, 50%, 0.2);
+	--ds_surface_primary_outline_bg_enabled: transparent;
+	--ds_surface_primary_outline_bg_hovered: hsl(var(--ds_surface_primary_hue), 60%, 50%, 0.1);
+	--ds_surface_primary_outline_bg_pressed: hsl(var(--ds_surface_primary_hue), 60%, 50%, 0.2);
 	--ds_surface_primary_outline_disabled_border: hsl(var(--ds_surface_primary_hue), 0%, 50%, 0.3);
-	--ds_surface_primary_outline_disabled_text: hsl(var(--ds_surface_primary_hue), 0%, 50%);
+	--ds_surface_primary_outline_text_enabled: hsl(var(--ds_surface_primary_hue), 70%, 70%);
+	--ds_surface_primary_outline_text_disabled: hsl(var(--ds_surface_primary_hue), 0%, 50%);
 
 	/* Ghost variant: fully transparent, minimal visual weight */
-	--ds_surface_primary_ghost_bg: transparent;
-	--ds_surface_primary_ghost_text: hsl(var(--ds_surface_primary_hue), 70%, 70%);
-	--ds_surface_primary_ghost_border: transparent;
-
-	--ds_surface_primary_ghost_hover_bg: hsl(var(--ds_surface_primary_hue), 60%, 50%, 0.1);
-	--ds_surface_primary_ghost_pressed_bg: hsl(var(--ds_surface_primary_hue), 60%, 50%, 0.2);
-	--ds_surface_primary_ghost_disabled_text: hsl(var(--ds_surface_primary_hue), 0%, 50%);
+	--ds_surface_primary_ghost_bg_enabled: transparent;
+	--ds_surface_primary_ghost_bg_hovered: hsl(var(--ds_surface_primary_hue), 60%, 50%, 0.1);
+	--ds_surface_primary_ghost_bg_pressed: hsl(var(--ds_surface_primary_hue), 60%, 50%, 0.2);
+	--ds_surface_primary_ghost_text_enabled: hsl(var(--ds_surface_primary_hue), 70%, 70%);
+	--ds_surface_primary_ghost_text_disabled: hsl(var(--ds_surface_primary_hue), 0%, 50%);
 }
 @supports (color: oklch(0% 0 0deg)) {
 	:root,
@@ -74,228 +65,242 @@
 	:where([mol_theme="$mol_theme_dark"]) [mol_theme] {
 		/* PRIMARY - OKLCH */
 
-		--ds_surface_primary_solid_bg: oklch(55% 0.15 var(--ds_surface_primary_hue));
-		--ds_surface_primary_solid_text: oklch(100% 0 var(--ds_surface_primary_hue));
-		--ds_surface_primary_solid_hover_bg: oklch(60% 0.15 var(--ds_surface_primary_hue));
-		--ds_surface_primary_solid_pressed_bg: oklch(50% 0.15 var(--ds_surface_primary_hue));
-		--ds_surface_primary_solid_disabled_bg: oklch(35% 0.05 var(--ds_surface_primary_hue));
-		--ds_surface_primary_solid_disabled_text: oklch(60% 0 var(--ds_surface_primary_hue));
+		--ds_surface_primary_solid_bg_enabled: oklch(55% 0.15 var(--ds_surface_primary_hue));
+		--ds_surface_primary_solid_bg_hovered: oklch(60% 0.15 var(--ds_surface_primary_hue));
+		--ds_surface_primary_solid_bg_pressed: oklch(50% 0.15 var(--ds_surface_primary_hue));
+		--ds_surface_primary_solid_bg_disabled: oklch(35% 0.05 var(--ds_surface_primary_hue));
+		--ds_surface_primary_solid_text_enabled: oklch(100% 0 var(--ds_surface_primary_hue));
+		--ds_surface_primary_solid_text_disabled: oklch(60% 0 var(--ds_surface_primary_hue));
 
-		--ds_surface_primary_soft_bg: oklch(55% 0.15 var(--ds_surface_primary_hue) / 0.15);
-		--ds_surface_primary_soft_text: oklch(75% 0.12 var(--ds_surface_primary_hue));
-		--ds_surface_primary_soft_hover_bg: oklch(55% 0.15 var(--ds_surface_primary_hue) / 0.25);
-		--ds_surface_primary_soft_pressed_bg: oklch(55% 0.15 var(--ds_surface_primary_hue) / 0.35);
-		--ds_surface_primary_soft_disabled_bg: oklch(50% 0.05 var(--ds_surface_primary_hue) / 0.08);
-		--ds_surface_primary_soft_disabled_text: oklch(55% 0 var(--ds_surface_primary_hue));
+		--ds_surface_primary_soft_bg_enabled: oklch(55% 0.15 var(--ds_surface_primary_hue));
+		--ds_surface_primary_soft_text_enabled: oklch(75% 0.12 var(--ds_surface_primary_hue));
+		--ds_surface_primary_soft_bg_hovered: oklch(55% 0.15 var(--ds_surface_primary_hue));
+		--ds_surface_primary_soft_bg_pressed: oklch(55% 0.15 var(--ds_surface_primary_hue));
+		--ds_surface_primary_soft_bg_disabled: oklch(50% 0.05 var(--ds_surface_primary_hue));
+		--ds_surface_primary_soft_text_disabled: oklch(55% 0 var(--ds_surface_primary_hue));
 
-		--ds_surface_primary_outline_text: oklch(75% 0.12 var(--ds_surface_primary_hue));
-		--ds_surface_primary_outline_border: oklch(60% 0.13 var(--ds_surface_primary_hue));
-		--ds_surface_primary_outline_hover_bg: oklch(55% 0.15 var(--ds_surface_primary_hue) / 0.1);
-		--ds_surface_primary_outline_hover_border: oklch(70% 0.14 var(--ds_surface_primary_hue));
-		--ds_surface_primary_outline_pressed_bg: oklch(55% 0.15 var(--ds_surface_primary_hue) / 0.2);
+		--ds_surface_primary_outline_bg_enabled: transparent;
+		--ds_surface_primary_outline_bg_hovered: transparent;
+		--ds_surface_primary_outline_bg_pressed: transparent;
 		--ds_surface_primary_outline_disabled_border: oklch(50% 0 var(--ds_surface_primary_hue) / 0.3);
-		--ds_surface_primary_outline_disabled_text: oklch(55% 0 var(--ds_surface_primary_hue));
+		--ds_surface_primary_outline_text_enabled: oklch(75% 0.12 var(--ds_surface_primary_hue));
+		--ds_surface_primary_outline_text_disabled: oklch(55% 0 var(--ds_surface_primary_hue));
 
-		--ds_surface_primary_ghost_text: oklch(75% 0.12 var(--ds_surface_primary_hue));
-		--ds_surface_primary_ghost_hover_bg: oklch(55% 0.15 var(--ds_surface_primary_hue) / 0.1);
-		--ds_surface_primary_ghost_pressed_bg: oklch(55% 0.15 var(--ds_surface_primary_hue) / 0.2);
-		--ds_surface_primary_ghost_disabled_text: oklch(55% 0 var(--ds_surface_primary_hue));
+		--ds_surface_primary_ghost_bg_enabled: transparent;
+		--ds_surface_primary_ghost_bg_hovered: oklch(55% 0.15 var(--ds_surface_primary_hue) / 0.1);
+		--ds_surface_primary_ghost_bg_pressed: oklch(55% 0.15 var(--ds_surface_primary_hue) / 0.2);
+		--ds_surface_primary_ghost_text_enabled: oklch(75% 0.12 var(--ds_surface_primary_hue));
+		--ds_surface_primary_ghost_text_disabled: oklch(55% 0 var(--ds_surface_primary_hue));
 
 		/* =========================================================================
 	   SECONDARY COLOR
 	   ========================================================================= */
 
-		--ds_surface_secondary_solid_bg: oklch(55% 0.15 var(--ds_surface_secondary_hue));
-		--ds_surface_secondary_solid_text: oklch(100% 0 var(--ds_surface_secondary_hue));
-		--ds_surface_secondary_solid_hover_bg: oklch(60% 0.15 var(--ds_surface_secondary_hue));
-		--ds_surface_secondary_solid_pressed_bg: oklch(50% 0.15 var(--ds_surface_secondary_hue));
-		--ds_surface_secondary_solid_disabled_bg: oklch(35% 0.05 var(--ds_surface_secondary_hue));
-		--ds_surface_secondary_solid_disabled_text: oklch(60% 0 var(--ds_surface_secondary_hue));
+		--ds_surface_secondary_solid_bg_enabled: oklch(55% 0.15 var(--ds_surface_secondary_hue));
+		--ds_surface_secondary_solid_bg_hovered: oklch(60% 0.15 var(--ds_surface_secondary_hue));
+		--ds_surface_secondary_solid_bg_pressed: oklch(50% 0.15 var(--ds_surface_secondary_hue));
+		--ds_surface_secondary_solid_bg_disabled: oklch(35% 0.05 var(--ds_surface_secondary_hue));
+		--ds_surface_secondary_solid_text_enabled: oklch(100% 0 var(--ds_surface_secondary_hue));
+		--ds_surface_secondary_solid_text_disabled: oklch(60% 0 var(--ds_surface_secondary_hue));
 
-		--ds_surface_secondary_soft_bg: oklch(55% 0.15 var(--ds_surface_secondary_hue) / 0.15);
-		--ds_surface_secondary_soft_text: oklch(75% 0.12 var(--ds_surface_secondary_hue));
-		--ds_surface_secondary_soft_hover_bg: oklch(55% 0.15 var(--ds_surface_secondary_hue) / 0.25);
-		--ds_surface_secondary_soft_pressed_bg: oklch(55% 0.15 var(--ds_surface_secondary_hue) / 0.35);
-		--ds_surface_secondary_soft_disabled_bg: oklch(50% 0.05 var(--ds_surface_secondary_hue) / 0.08);
-		--ds_surface_secondary_soft_disabled_text: oklch(55% 0 var(--ds_surface_secondary_hue));
+		--ds_surface_secondary_soft_bg_enabled: oklch(55% 0.15 var(--ds_surface_secondary_hue) / 0.15);
+		--ds_surface_secondary_soft_bg_hovered: oklch(55% 0.15 var(--ds_surface_secondary_hue) / 0.25);
+		--ds_surface_secondary_soft_bg_pressed: oklch(55% 0.15 var(--ds_surface_secondary_hue) / 0.35);
+		--ds_surface_secondary_soft_bg_disabled: oklch(50% 0.05 var(--ds_surface_secondary_hue) / 0.08);
+		--ds_surface_secondary_soft_text_enabled: oklch(75% 0.12 var(--ds_surface_secondary_hue));
+		--ds_surface_secondary_soft_text_disabled: oklch(55% 0 var(--ds_surface_secondary_hue));
 
-		--ds_surface_secondary_outline_text: oklch(75% 0.12 var(--ds_surface_secondary_hue));
-		--ds_surface_secondary_outline_border: oklch(60% 0.13 var(--ds_surface_secondary_hue));
-		--ds_surface_secondary_outline_hover_bg: oklch(55% 0.15 var(--ds_surface_secondary_hue) / 0.1);
-		--ds_surface_secondary_outline_hover_border: oklch(70% 0.14 var(--ds_surface_secondary_hue));
-		--ds_surface_secondary_outline_pressed_bg: oklch(55% 0.15 var(--ds_surface_secondary_hue) / 0.2);
-		--ds_surface_secondary_outline_disabled_border: oklch(50% 0 var(--ds_surface_secondary_hue) / 0.3);
-		--ds_surface_secondary_outline_disabled_text: oklch(55% 0 var(--ds_surface_secondary_hue));
+		--ds_surface_secondary_outline_bg_enabled: transparent;
+		--ds_surface_secondary_outline_bg_hovered: transparent;
+		--ds_surface_secondary_outline_bg_pressed: transparent;
+		--ds_surface_secondary_outline_text_enabled: oklch(75% 0.12 var(--ds_surface_secondary_hue));
+		--ds_surface_secondary_outline_text_disabled: oklch(55% 0 var(--ds_surface_secondary_hue));
 
-		--ds_surface_secondary_ghost_text: oklch(75% 0.12 var(--ds_surface_secondary_hue));
-		--ds_surface_secondary_ghost_hover_bg: oklch(55% 0.15 var(--ds_surface_secondary_hue) / 0.1);
-		--ds_surface_secondary_ghost_pressed_bg: oklch(55% 0.15 var(--ds_surface_secondary_hue) / 0.2);
-		--ds_surface_secondary_ghost_disabled_text: oklch(55% 0 var(--ds_surface_secondary_hue));
+		--ds_surface_secondary_ghost_bg_enabled: transparent;
+		--ds_surface_secondary_ghost_bg_hovered: oklch(55% 0.15 var(--ds_surface_secondary_hue) / 0.1);
+		--ds_surface_secondary_ghost_bg_pressed: oklch(55% 0.15 var(--ds_surface_secondary_hue) / 0.2);
+		--ds_surface_secondary_ghost_text_enabled: oklch(75% 0.12 var(--ds_surface_secondary_hue));
+		--ds_surface_secondary_ghost_text_disabled: oklch(55% 0 var(--ds_surface_secondary_hue));
 
 		/* =========================================================================
 	   TERTIARY COLOR
 	   ========================================================================= */
 
-		--ds_surface_tertiary_solid_bg: oklch(55% 0.15 var(--ds_surface_tertiary_hue));
-		--ds_surface_tertiary_solid_text: oklch(100% 0 var(--ds_surface_tertiary_hue));
-		--ds_surface_tertiary_solid_hover_bg: oklch(60% 0.15 var(--ds_surface_tertiary_hue));
-		--ds_surface_tertiary_solid_pressed_bg: oklch(50% 0.15 var(--ds_surface_tertiary_hue));
-		--ds_surface_tertiary_solid_disabled_bg: oklch(35% 0.05 var(--ds_surface_tertiary_hue));
-		--ds_surface_tertiary_solid_disabled_text: oklch(60% 0 var(--ds_surface_tertiary_hue));
+		--ds_surface_tertiary_solid_bg_enabled: oklch(55% 0.15 var(--ds_surface_tertiary_hue));
+		--ds_surface_tertiary_solid_bg_hovered: oklch(60% 0.15 var(--ds_surface_tertiary_hue));
+		--ds_surface_tertiary_solid_bg_pressed: oklch(50% 0.15 var(--ds_surface_tertiary_hue));
+		--ds_surface_tertiary_solid_bg_disabled: oklch(35% 0.05 var(--ds_surface_tertiary_hue));
+		--ds_surface_tertiary_solid_text_enabled: oklch(100% 0 var(--ds_surface_tertiary_hue));
+		--ds_surface_tertiary_solid_text_disabled: oklch(60% 0 var(--ds_surface_tertiary_hue));
 
-		--ds_surface_tertiary_soft_bg: oklch(55% 0.15 var(--ds_surface_tertiary_hue) / 0.15);
-		--ds_surface_tertiary_soft_text: oklch(75% 0.12 var(--ds_surface_tertiary_hue));
-		--ds_surface_tertiary_soft_hover_bg: oklch(55% 0.15 var(--ds_surface_tertiary_hue) / 0.25);
-		--ds_surface_tertiary_soft_pressed_bg: oklch(55% 0.15 var(--ds_surface_tertiary_hue) / 0.35);
-		--ds_surface_tertiary_soft_disabled_bg: oklch(50% 0.05 var(--ds_surface_tertiary_hue) / 0.08);
-		--ds_surface_tertiary_soft_disabled_text: oklch(55% 0 var(--ds_surface_tertiary_hue));
+		--ds_surface_tertiary_soft_bg_enabled: oklch(55% 0.15 var(--ds_surface_tertiary_hue) / 0.15);
+		--ds_surface_tertiary_soft_bg_hovered: oklch(55% 0.15 var(--ds_surface_tertiary_hue) / 0.25);
+		--ds_surface_tertiary_soft_bg_pressed: oklch(55% 0.15 var(--ds_surface_tertiary_hue) / 0.35);
+		--ds_surface_tertiary_soft_bg_disabled: oklch(50% 0.05 var(--ds_surface_tertiary_hue) / 0.08);
+		--ds_surface_tertiary_soft_text_enabled: oklch(75% 0.12 var(--ds_surface_tertiary_hue));
+		--ds_surface_tertiary_soft_text_disabled: oklch(55% 0 var(--ds_surface_tertiary_hue));
 
-		--ds_surface_tertiary_outline_text: oklch(75% 0.12 var(--ds_surface_tertiary_hue));
-		--ds_surface_tertiary_outline_border: oklch(60% 0.13 var(--ds_surface_tertiary_hue));
-		--ds_surface_tertiary_outline_hover_bg: oklch(55% 0.15 var(--ds_surface_tertiary_hue) / 0.1);
-		--ds_surface_tertiary_outline_hover_border: oklch(70% 0.14 var(--ds_surface_tertiary_hue));
-		--ds_surface_tertiary_outline_pressed_bg: oklch(55% 0.15 var(--ds_surface_tertiary_hue) / 0.2);
+		--ds_surface_tertiary_outline_bg_enabled: transparent;
+		--ds_surface_tertiary_outline_bg_hovered: transparent;
+		--ds_surface_tertiary_outline_bg_pressed: transparent;
 		--ds_surface_tertiary_outline_disabled_border: oklch(50% 0 var(--ds_surface_tertiary_hue) / 0.3);
-		--ds_surface_tertiary_outline_disabled_text: oklch(55% 0 var(--ds_surface_tertiary_hue));
+		--ds_surface_tertiary_outline_text_enabled: oklch(75% 0.12 var(--ds_surface_tertiary_hue));
+		--ds_surface_tertiary_outline_text_disabled: oklch(55% 0 var(--ds_surface_tertiary_hue));
 
-		--ds_surface_tertiary_ghost_text: oklch(75% 0.12 var(--ds_surface_tertiary_hue));
-		--ds_surface_tertiary_ghost_hover_bg: oklch(55% 0.15 var(--ds_surface_tertiary_hue) / 0.1);
-		--ds_surface_tertiary_ghost_pressed_bg: oklch(55% 0.15 var(--ds_surface_tertiary_hue) / 0.2);
-		--ds_surface_tertiary_ghost_disabled_text: oklch(55% 0 var(--ds_surface_tertiary_hue));
+		--ds_surface_tertiary_ghost_bg_enabled: transparent;
+		--ds_surface_tertiary_ghost_text_enabled: oklch(75% 0.12 var(--ds_surface_tertiary_hue));
+		--ds_surface_tertiary_ghost_bg_hovered: oklch(55% 0.15 var(--ds_surface_tertiary_hue) / 0.1);
+		--ds_surface_tertiary_ghost_bg_pressed: oklch(55% 0.15 var(--ds_surface_tertiary_hue) / 0.2);
+		--ds_surface_tertiary_ghost_text_disabled: oklch(55% 0 var(--ds_surface_tertiary_hue));
 
 		/* =========================================================================
 	   DANGER COLOR (Semantic)
 	   ========================================================================= */
 
-		--ds_surface_danger_solid_bg: oklch(55% 0.2 var(--ds_surface_danger_hue));
-		--ds_surface_danger_solid_text: oklch(100% 0 var(--ds_surface_danger_hue));
-		--ds_surface_danger_solid_hover_bg: oklch(60% 0.2 var(--ds_surface_danger_hue));
-		--ds_surface_danger_solid_pressed_bg: oklch(50% 0.2 var(--ds_surface_danger_hue));
-		--ds_surface_danger_solid_disabled_bg: oklch(35% 0.08 var(--ds_surface_danger_hue));
-		--ds_surface_danger_solid_disabled_text: oklch(60% 0 var(--ds_surface_danger_hue));
+		--ds_surface_danger_solid_bg_enabled: oklch(55% 0.2 var(--ds_surface_danger_hue));
+		--ds_surface_danger_solid_bg_hovered: oklch(60% 0.2 var(--ds_surface_danger_hue));
+		--ds_surface_danger_solid_bg_pressed: oklch(50% 0.2 var(--ds_surface_danger_hue));
+		--ds_surface_danger_solid_bg_disabled: oklch(35% 0.08 var(--ds_surface_danger_hue));
+		--ds_surface_danger_solid_text_enabled: oklch(100% 0 var(--ds_surface_danger_hue));
+		--ds_surface_danger_solid_text_disabled: oklch(60% 0 var(--ds_surface_danger_hue));
 
-		--ds_surface_danger_soft_bg: oklch(55% 0.2 var(--ds_surface_danger_hue) / 0.15);
-		--ds_surface_danger_soft_text: oklch(75% 0.16 var(--ds_surface_danger_hue));
-		--ds_surface_danger_soft_hover_bg: oklch(55% 0.2 var(--ds_surface_danger_hue) / 0.25);
-		--ds_surface_danger_soft_pressed_bg: oklch(55% 0.2 var(--ds_surface_danger_hue) / 0.35);
-		--ds_surface_danger_soft_disabled_bg: oklch(50% 0.08 var(--ds_surface_danger_hue) / 0.08);
-		--ds_surface_danger_soft_disabled_text: oklch(55% 0 var(--ds_surface_danger_hue));
+		--ds_surface_danger_soft_bg_enabled: oklch(55% 0.2 var(--ds_surface_danger_hue) / 0.15);
+		--ds_surface_danger_soft_bg_hovered: oklch(55% 0.2 var(--ds_surface_danger_hue) / 0.25);
+		--ds_surface_danger_soft_bg_pressed: oklch(55% 0.2 var(--ds_surface_danger_hue) / 0.35);
+		--ds_surface_danger_soft_bg_disabled: oklch(50% 0.08 var(--ds_surface_danger_hue) / 0.08);
+		--ds_surface_danger_soft_text_enabled: oklch(75% 0.16 var(--ds_surface_danger_hue));
+		--ds_surface_danger_soft_text_disabled: oklch(55% 0 var(--ds_surface_danger_hue));
 
-		--ds_surface_danger_outline_text: oklch(75% 0.16 var(--ds_surface_danger_hue));
-		--ds_surface_danger_outline_border: oklch(60% 0.18 var(--ds_surface_danger_hue));
-		--ds_surface_danger_outline_hover_bg: transparent;
-		--ds_surface_danger_outline_hover_border: oklch(70% 0.18 var(--ds_surface_danger_hue));
-		--ds_surface_danger_outline_pressed_bg: transparent;
-		--ds_surface_danger_outline_disabled_border: oklch(50% 0 var(--ds_surface_danger_hue) / 0.3);
-		--ds_surface_danger_outline_disabled_text: oklch(55% 0 var(--ds_surface_danger_hue));
+		--ds_surface_danger_outline_bg_enabled: transparent;
+		--ds_surface_danger_outline_bg_hovered: transparent;
+		--ds_surface_danger_outline_bg_pressed: transparent;
+		--ds_surface_danger_outline_text_enabled: oklch(75% 0.16 var(--ds_surface_danger_hue));
+		--ds_surface_danger_outline_text_disabled: oklch(55% 0 var(--ds_surface_danger_hue));
 
-		--ds_surface_danger_ghost_text: oklch(75% 0.16 var(--ds_surface_danger_hue));
-		--ds_surface_danger_ghost_hover_bg: oklch(55% 0.2 var(--ds_surface_danger_hue) / 0.1);
-		--ds_surface_danger_ghost_pressed_bg: oklch(55% 0.2 var(--ds_surface_danger_hue) / 0.2);
-		--ds_surface_danger_ghost_disabled_text: oklch(55% 0 var(--ds_surface_danger_hue));
+		--ds_surface_danger_ghost_bg_enabled: transparent;
+		--ds_surface_danger_ghost_bg_hovered: oklch(55% 0.2 var(--ds_surface_danger_hue) / 0.1);
+		--ds_surface_danger_ghost_bg_pressed: oklch(55% 0.2 var(--ds_surface_danger_hue) / 0.2);
+		--ds_surface_danger_ghost_text_enabled: oklch(75% 0.16 var(--ds_surface_danger_hue));
+		--ds_surface_danger_ghost_text_disabled: oklch(55% 0 var(--ds_surface_danger_hue));
 
 		/* =========================================================================
 	   WARNING COLOR (Semantic)
 	   ========================================================================= */
 
-		--ds_surface_warning_solid_bg: oklch(70% 0.15 var(--ds_surface_warning_hue));
-		--ds_surface_warning_solid_text: oklch(20% 0.05 var(--ds_surface_warning_hue));
-		--ds_surface_warning_solid_hover_bg: oklch(75% 0.15 var(--ds_surface_warning_hue));
-		--ds_surface_warning_solid_pressed_bg: oklch(65% 0.15 var(--ds_surface_warning_hue));
-		--ds_surface_warning_solid_disabled_bg: oklch(50% 0.05 var(--ds_surface_warning_hue));
-		--ds_surface_warning_solid_disabled_text: oklch(60% 0 var(--ds_surface_warning_hue));
+		--ds_surface_warning_solid_bg_enabled: oklch(70% 0.15 var(--ds_surface_warning_hue));
+		--ds_surface_warning_solid_bg_hovered: oklch(75% 0.15 var(--ds_surface_warning_hue));
+		--ds_surface_warning_solid_bg_pressed: oklch(65% 0.15 var(--ds_surface_warning_hue));
+		--ds_surface_warning_solid_bg_disabled: oklch(50% 0.05 var(--ds_surface_warning_hue));
+		--ds_surface_warning_solid_text_enabled: oklch(20% 0.05 var(--ds_surface_warning_hue));
+		--ds_surface_warning_solid_text_disabled: oklch(60% 0 var(--ds_surface_warning_hue));
 
-		--ds_surface_warning_soft_bg: oklch(70% 0.15 var(--ds_surface_warning_hue) / 0.15);
-		--ds_surface_warning_soft_text: oklch(80% 0.13 var(--ds_surface_warning_hue));
-		--ds_surface_warning_soft_hover_bg: oklch(70% 0.15 var(--ds_surface_warning_hue) / 0.25);
-		--ds_surface_warning_soft_pressed_bg: oklch(70% 0.15 var(--ds_surface_warning_hue) / 0.35);
-		--ds_surface_warning_soft_disabled_bg: oklch(50% 0.05 var(--ds_surface_warning_hue) / 0.08);
-		--ds_surface_warning_soft_disabled_text: oklch(60% 0 var(--ds_surface_warning_hue));
+		--ds_surface_warning_soft_bg_enabled: oklch(70% 0.15 var(--ds_surface_warning_hue) / 0.15);
+		--ds_surface_warning_soft_bg_hovered: oklch(70% 0.15 var(--ds_surface_warning_hue) / 0.25);
+		--ds_surface_warning_soft_bg_pressed: oklch(70% 0.15 var(--ds_surface_warning_hue) / 0.35);
+		--ds_surface_warning_soft_bg_disabled: oklch(50% 0.05 var(--ds_surface_warning_hue) / 0.08);
+		--ds_surface_warning_soft_text_enabled: oklch(80% 0.13 var(--ds_surface_warning_hue));
+		--ds_surface_warning_soft_text_disabled: oklch(60% 0 var(--ds_surface_warning_hue));
 
-		--ds_surface_warning_outline_text: oklch(80% 0.13 var(--ds_surface_warning_hue));
-		--ds_surface_warning_outline_border: oklch(70% 0.14 var(--ds_surface_warning_hue));
-		--ds_surface_warning_outline_hover_bg: transparent;
-		--ds_surface_warning_outline_hover_border: oklch(75% 0.14 var(--ds_surface_warning_hue));
-		--ds_surface_warning_outline_pressed_bg: transparent;
-		--ds_surface_warning_outline_disabled_border: oklch(50% 0 var(--ds_surface_warning_hue) / 0.3);
-		--ds_surface_warning_outline_disabled_text: oklch(60% 0 var(--ds_surface_warning_hue));
+		--ds_surface_warning_outline_bg_enabled: transparent;
+		--ds_surface_warning_outline_bg_hovered: transparent;
+		--ds_surface_warning_outline_bg_pressed: transparent;
+		--ds_surface_warning_outline_text_enabled: oklch(80% 0.13 var(--ds_surface_warning_hue));
+		--ds_surface_warning_outline_text_disabled: oklch(60% 0 var(--ds_surface_warning_hue));
 
-		--ds_surface_warning_ghost_text: oklch(80% 0.13 var(--ds_surface_warning_hue));
-		--ds_surface_warning_ghost_hover_bg: oklch(70% 0.15 var(--ds_surface_warning_hue) / 0.1);
-		--ds_surface_warning_ghost_pressed_bg: oklch(70% 0.15 var(--ds_surface_warning_hue) / 0.2);
-		--ds_surface_warning_ghost_disabled_text: oklch(60% 0 var(--ds_surface_warning_hue));
+		--ds_surface_warning_ghost_bg_enabled: transparent;
+		--ds_surface_warning_ghost_bg_hovered: oklch(70% 0.15 var(--ds_surface_warning_hue) / 0.1);
+		--ds_surface_warning_ghost_bg_pressed: oklch(70% 0.15 var(--ds_surface_warning_hue) / 0.2);
+		--ds_surface_warning_ghost_text_enabled: oklch(80% 0.13 var(--ds_surface_warning_hue));
+		--ds_surface_warning_ghost_text_disabled: oklch(60% 0 var(--ds_surface_warning_hue));
 
 		/* =========================================================================
 	   SUCCESS COLOR (Semantic)
 	   ========================================================================= */
 
-		--ds_surface_success_solid_bg: oklch(60% 0.16 var(--ds_surface_success_hue));
-		--ds_surface_success_solid_text: oklch(100% 0 var(--ds_surface_success_hue));
-		--ds_surface_success_solid_hover_bg: oklch(65% 0.16 var(--ds_surface_success_hue));
-		--ds_surface_success_solid_pressed_bg: oklch(55% 0.16 var(--ds_surface_success_hue));
-		--ds_surface_success_solid_disabled_bg: oklch(40% 0.06 var(--ds_surface_success_hue));
-		--ds_surface_success_solid_disabled_text: oklch(60% 0 var(--ds_surface_success_hue));
+		--ds_surface_success_solid_bg_enabled: oklch(60% 0.16 var(--ds_surface_success_hue));
+		--ds_surface_success_solid_bg_hovered: oklch(65% 0.16 var(--ds_surface_success_hue));
+		--ds_surface_success_solid_bg_pressed: oklch(55% 0.16 var(--ds_surface_success_hue));
+		--ds_surface_success_solid_bg_disabled: oklch(40% 0.06 var(--ds_surface_success_hue));
+		--ds_surface_success_solid_text_enabled: oklch(100% 0 var(--ds_surface_success_hue));
+		--ds_surface_success_solid_text_disabled: oklch(60% 0 var(--ds_surface_success_hue));
 
-		--ds_surface_success_soft_bg: oklch(60% 0.16 var(--ds_surface_success_hue) / 0.15);
-		--ds_surface_success_soft_text: oklch(75% 0.14 var(--ds_surface_success_hue));
-		--ds_surface_success_soft_hover_bg: oklch(60% 0.16 var(--ds_surface_success_hue) / 0.25);
-		--ds_surface_success_soft_pressed_bg: oklch(60% 0.16 var(--ds_surface_success_hue) / 0.35);
-		--ds_surface_success_soft_disabled_bg: oklch(50% 0.06 var(--ds_surface_success_hue) / 0.08);
-		--ds_surface_success_soft_disabled_text: oklch(55% 0 var(--ds_surface_success_hue));
+		--ds_surface_success_soft_bg_enabled: oklch(60% 0.16 var(--ds_surface_success_hue) / 0.15);
+		--ds_surface_success_soft_bg_hovered: oklch(60% 0.16 var(--ds_surface_success_hue) / 0.25);
+		--ds_surface_success_soft_bg_pressed: oklch(60% 0.16 var(--ds_surface_success_hue) / 0.35);
+		--ds_surface_success_soft_bg_disabled: oklch(50% 0.06 var(--ds_surface_success_hue) / 0.08);
+		--ds_surface_success_soft_text_enabled: oklch(75% 0.14 var(--ds_surface_success_hue));
+		--ds_surface_success_soft_text_disabled: oklch(55% 0 var(--ds_surface_success_hue));
 
-		--ds_surface_success_outline_text: oklch(75% 0.14 var(--ds_surface_success_hue));
-		--ds_surface_success_outline_border: oklch(65% 0.15 var(--ds_surface_success_hue));
-		--ds_surface_success_outline_hover_bg: transparent;
-		--ds_surface_success_outline_hover_border: oklch(70% 0.15 var(--ds_surface_success_hue));
-		--ds_surface_success_outline_pressed_bg: transparent;
-		--ds_surface_success_outline_disabled_border: oklch(50% 0 var(--ds_surface_success_hue) / 0.3);
-		--ds_surface_success_outline_disabled_text: oklch(55% 0 var(--ds_surface_success_hue));
+		--ds_surface_success_outline_bg_enabled: transparent;
+		--ds_surface_success_outline_bg_hovered: transparent;
+		--ds_surface_success_outline_bg_pressed: transparent;
+		--ds_surface_success_outline_text_enabled: oklch(75% 0.14 var(--ds_surface_success_hue));
+		--ds_surface_success_outline_text_disabled: oklch(55% 0 var(--ds_surface_success_hue));
 
-		--ds_surface_success_ghost_text: oklch(75% 0.14 var(--ds_surface_success_hue));
-		--ds_surface_success_ghost_hover_bg: oklch(60% 0.16 var(--ds_surface_success_hue) / 0.1);
-		--ds_surface_success_ghost_pressed_bg: oklch(60% 0.16 var(--ds_surface_success_hue) / 0.2);
-		--ds_surface_success_ghost_disabled_text: oklch(55% 0 var(--ds_surface_success_hue));
+		--ds_surface_success_ghost_bg_enabled: transparent;
+		--ds_surface_success_ghost_bg_hovered: oklch(60% 0.16 var(--ds_surface_success_hue) / 0.1);
+		--ds_surface_success_ghost_bg_pressed: oklch(60% 0.16 var(--ds_surface_success_hue) / 0.2);
+		--ds_surface_success_ghost_text_enabled: oklch(75% 0.14 var(--ds_surface_success_hue));
+		--ds_surface_success_ghost_text_disabled: oklch(55% 0 var(--ds_surface_success_hue));
 
 		/* =========================================================================
 	   INFO COLOR (Semantic)
 	   ========================================================================= */
 
-		--ds_surface_info_solid_bg: oklch(55% 0.14 var(--ds_surface_info_hue));
-		--ds_surface_info_solid_text: oklch(100% 0 var(--ds_surface_info_hue));
-		--ds_surface_info_solid_hover_bg: oklch(60% 0.14 var(--ds_surface_info_hue));
-		--ds_surface_info_solid_pressed_bg: oklch(50% 0.14 var(--ds_surface_info_hue));
-		--ds_surface_info_solid_disabled_bg: oklch(35% 0.05 var(--ds_surface_info_hue));
-		--ds_surface_info_solid_disabled_text: oklch(60% 0 var(--ds_surface_info_hue));
+		--ds_surface_info_solid_bg_enabled: oklch(55% 0.14 var(--ds_surface_info_hue));
+		--ds_surface_info_solid_bg_hovered: oklch(60% 0.14 var(--ds_surface_info_hue));
+		--ds_surface_info_solid_bg_pressed: oklch(50% 0.14 var(--ds_surface_info_hue));
+		--ds_surface_info_solid_bg_disabled: oklch(35% 0.05 var(--ds_surface_info_hue));
+		--ds_surface_info_solid_text_enabled: oklch(100% 0 var(--ds_surface_info_hue));
+		--ds_surface_info_solid_text_disabled: oklch(60% 0 var(--ds_surface_info_hue));
 
-		--ds_surface_info_soft_bg: oklch(55% 0.14 var(--ds_surface_info_hue) / 0.4);
-		--ds_surface_info_soft_text: oklch(75% 0.12 var(--ds_surface_info_hue));
-		--ds_surface_info_soft_hover_bg: oklch(55% 0.14 var(--ds_surface_info_hue) / 0.5);
-		--ds_surface_info_soft_pressed_bg: oklch(55% 0.14 var(--ds_surface_info_hue) / 0.6);
-		--ds_surface_info_soft_disabled_bg: oklch(50% 0.05 var(--ds_surface_info_hue) / 0.08);
-		--ds_surface_info_soft_disabled_text: oklch(55% 0 var(--ds_surface_info_hue));
+		--ds_surface_info_soft_bg_enabled: oklch(55% 0.14 var(--ds_surface_info_hue) / 0.4);
+		--ds_surface_info_soft_bg_hovered: oklch(55% 0.14 var(--ds_surface_info_hue) / 0.5);
+		--ds_surface_info_soft_bg_pressed: oklch(55% 0.14 var(--ds_surface_info_hue) / 0.6);
+		--ds_surface_info_soft_bg_disabled: oklch(50% 0.05 var(--ds_surface_info_hue) / 0.08);
+		--ds_surface_info_soft_text_enabled: oklch(75% 0.12 var(--ds_surface_info_hue));
+		--ds_surface_info_soft_text_disabled: oklch(55% 0 var(--ds_surface_info_hue));
 
-		--ds_surface_info_outline_text: oklch(75% 0.12 var(--ds_surface_info_hue));
-		--ds_surface_info_outline_border: oklch(60% 0.13 var(--ds_surface_info_hue));
-		--ds_surface_info_outline_hover_bg: transparent;
-		--ds_surface_info_outline_hover_border: oklch(70% 0.13 var(--ds_surface_info_hue));
-		--ds_surface_info_outline_pressed_bg: transparent;
-		--ds_surface_info_outline_disabled_border: oklch(50% 0 var(--ds_surface_info_hue) / 0.3);
-		--ds_surface_info_outline_disabled_text: oklch(55% 0 var(--ds_surface_info_hue));
+		--ds_surface_info_outline_bg_enabled: transparent;
+		--ds_surface_info_outline_bg_hovered: transparent;
+		--ds_surface_info_outline_bg_pressed: transparent;
+		--ds_surface_info_outline_text_enabled: oklch(75% 0.12 var(--ds_surface_info_hue));
+		--ds_surface_info_outline_text_disabled: oklch(55% 0 var(--ds_surface_info_hue));
 
-		--ds_surface_info_ghost_text: oklch(75% 0.12 var(--ds_surface_info_hue));
-		--ds_surface_info_ghost_hover_bg: oklch(55% 0.14 var(--ds_surface_info_hue) / 0.1);
-		--ds_surface_info_ghost_pressed_bg: oklch(55% 0.14 var(--ds_surface_info_hue) / 0.2);
-		--ds_surface_info_ghost_disabled_text: oklch(55% 0 var(--ds_surface_info_hue));
+		--ds_surface_info_ghost_bg_enabled: transparent;
+		--ds_surface_info_ghost_bg_hovered: oklch(55% 0.14 var(--ds_surface_info_hue) / 0.1);
+		--ds_surface_info_ghost_bg_pressed: oklch(55% 0.14 var(--ds_surface_info_hue) / 0.2);
+		--ds_surface_info_ghost_text_enabled: oklch(75% 0.12 var(--ds_surface_info_hue));
+		--ds_surface_info_ghost_text_disabled: oklch(55% 0 var(--ds_surface_info_hue));
 
 		/* =========================================================================
-	   SURFACE LEVELS (Non-interactive backgrounds)
+	   SURFACE LEVELS (Non-interactive backgrounds with hover/pressed states)
 	   ========================================================================= */
 
-		--ds_surface_lowest_bg: oklch(15% 0.015 var(--ds_theme_hue));
-		--ds_surface_low_bg: oklch(18% 0.02 var(--ds_theme_hue));
-		--ds_surface_medium_bg: oklch(22% 0.025 var(--ds_theme_hue));
-		--ds_surface_high_bg: oklch(28% 0.03 var(--ds_theme_hue));
-		--ds_surface_highest_bg: oklch(35% 0.04 var(--ds_theme_hue));
+		--ds_surface_lowest_bg_enabled: oklch(0 0 0);
+		--ds_surface_lowest_bg_hovered: oklch(0.18 0 0);
+		--ds_surface_lowest_bg_pressed: oklch(0.2 0 0);
+		--ds_surface_lowest_bg_disabled: oklch(0.2 0 0);
+
+		--ds_surface_low_bg_enabled: oklch(0.2 0 0);
+		--ds_surface_low_bg_hovered: oklch(0.2 0 0);
+		--ds_surface_low_bg_pressed: oklch(0.25 0 0);
+		--ds_surface_low_bg_disabled: oklch(0.25 0 0);
+
+		--ds_surface_medium_bg_enabled: oklch(0.25 0 0);
+		--ds_surface_medium_bg_hovered: oklch(0.3 0 0);
+		--ds_surface_medium_bg_pressed: oklch(0.35 0 0);
+		--ds_surface_medium_bg_disabled: oklch(0.35 0 0);
+
+		--ds_surface_high_bg_enabled: oklch(0.3 0 0);
+		--ds_surface_high_bg_hovered: oklch(0.35 0 0);
+		--ds_surface_high_bg_pressed: oklch(0.4 0 0);
+		--ds_surface_high_bg_disabled: oklch(0.4 0 0);
+
+		--ds_surface_highest_bg_enabled: oklch(0.35 0 0);
+		--ds_surface_highest_bg_hovered: oklch(0.4 0 0);
+		--ds_surface_highest_bg_pressed: oklch(0.45 0 0);
+		--ds_surface_highest_bg_disabled: oklch(0.45 0 0);
 	}
 }
 
@@ -307,231 +312,236 @@
 :where([mol_theme="$mol_theme_light"]) [mol_theme] {
 	/* Light theme uses hsl fallbacks */
 
-	--ds_surface_primary_solid_bg: hsl(var(--ds_surface_primary_hue), 60%, 50%);
+	--ds_surface_primary_solid_bg_enabled: hsl(var(--ds_surface_primary_hue), 60%, 50%);
 	--ds_surface_primary_solid_text: hsl(var(--ds_surface_primary_hue), 0%, 100%);
-	--ds_surface_primary_solid_hover_bg: hsl(var(--ds_surface_primary_hue), 60%, 45%);
-	--ds_surface_primary_solid_pressed_bg: hsl(var(--ds_surface_primary_hue), 60%, 55%);
-	--ds_surface_primary_solid_disabled_bg: hsl(var(--ds_surface_primary_hue), 20%, 75%);
-	--ds_surface_primary_solid_disabled_text: hsl(var(--ds_surface_primary_hue), 0%, 50%);
+	--ds_surface_primary_solid_bg_hovered: hsl(var(--ds_surface_primary_hue), 60%, 45%);
+	--ds_surface_primary_solid_bg_pressed: hsl(var(--ds_surface_primary_hue), 60%, 55%);
+	--ds_surface_primary_solid_bg_disabled: hsl(var(--ds_surface_primary_hue), 20%, 75%);
+	--ds_surface_primary_solid_text_disabled: hsl(var(--ds_surface_primary_hue), 0%, 50%);
 
-	--ds_surface_primary_soft_bg: hsl(var(--ds_surface_primary_hue), 60%, 50%, 0.12);
+	--ds_surface_primary_soft_bg_enabled: hsl(var(--ds_surface_primary_hue), 60%, 50%, 0.12);
 	--ds_surface_primary_soft_text: hsl(var(--ds_surface_primary_hue), 70%, 35%);
-	--ds_surface_primary_soft_hover_bg: hsl(var(--ds_surface_primary_hue), 60%, 50%, 0.2);
-	--ds_surface_primary_soft_pressed_bg: hsl(var(--ds_surface_primary_hue), 60%, 50%, 0.28);
+	--ds_surface_primary_soft_bg_hovered: hsl(var(--ds_surface_primary_hue), 60%, 50%, 0.2);
+	--ds_surface_primary_soft_bg_pressed: hsl(var(--ds_surface_primary_hue), 60%, 50%, 0.28);
 }
 @supports (color: oklch(0% 0 0deg)) {
 	[mol_theme="$mol_theme_light"],
 	:where([mol_theme="$mol_theme_light"]) [mol_theme] {
 		/* PRIMARY - OKLCH Light */
 
-		--ds_surface_primary_solid_bg: oklch(50% 0.18 var(--ds_surface_primary_hue));
-		--ds_surface_primary_solid_text: oklch(100% 0 var(--ds_surface_primary_hue));
-		--ds_surface_primary_solid_hover_bg: oklch(45% 0.18 var(--ds_surface_primary_hue));
-		--ds_surface_primary_solid_pressed_bg: oklch(55% 0.18 var(--ds_surface_primary_hue));
-		--ds_surface_primary_solid_disabled_bg: oklch(75% 0.05 var(--ds_surface_primary_hue));
-		--ds_surface_primary_solid_disabled_text: oklch(50% 0 var(--ds_surface_primary_hue));
+		--ds_surface_primary_solid_bg_enabled: oklch(50% 0.18 var(--ds_surface_primary_hue));
+		--ds_surface_primary_solid_bg_hovered: oklch(45% 0.18 var(--ds_surface_primary_hue));
+		--ds_surface_primary_solid_bg_pressed: oklch(55% 0.18 var(--ds_surface_primary_hue));
+		--ds_surface_primary_solid_bg_disabled: oklch(75% 0.05 var(--ds_surface_primary_hue));
+		--ds_surface_primary_solid_text_enabled: oklch(100% 0 var(--ds_surface_primary_hue));
+		--ds_surface_primary_solid_text_disabled: oklch(50% 0 var(--ds_surface_primary_hue));
 
-		--ds_surface_primary_soft_bg: oklch(50% 0.18 var(--ds_surface_primary_hue) / 0.12);
+		--ds_surface_primary_soft_bg_enabled: oklch(50% 0.18 var(--ds_surface_primary_hue) / 0.12);
+		--ds_surface_primary_soft_bg_hovered: oklch(50% 0.18 var(--ds_surface_primary_hue) / 0.2);
+		--ds_surface_primary_soft_bg_pressed: oklch(50% 0.18 var(--ds_surface_primary_hue) / 0.28);
+		--ds_surface_primary_soft_bg_disabled: oklch(50% 0.05 var(--ds_surface_primary_hue) / 0.06);
 		--ds_surface_primary_soft_text: oklch(35% 0.15 var(--ds_surface_primary_hue));
-		--ds_surface_primary_soft_hover_bg: oklch(50% 0.18 var(--ds_surface_primary_hue) / 0.2);
-		--ds_surface_primary_soft_pressed_bg: oklch(50% 0.18 var(--ds_surface_primary_hue) / 0.28);
-		--ds_surface_primary_soft_disabled_bg: oklch(50% 0.05 var(--ds_surface_primary_hue) / 0.06);
-		--ds_surface_primary_soft_disabled_text: oklch(70% 0 var(--ds_surface_primary_hue));
+		--ds_surface_primary_soft_text_disabled: oklch(70% 0 var(--ds_surface_primary_hue));
 
+		--ds_surface_primary_outline_bg_enabled: transparent;
+		--ds_surface_primary_outline_bg_hovered: oklch(50% 0.18 var(--ds_surface_primary_hue) / 0.08);
+		--ds_surface_primary_outline_bg_pressed: oklch(50% 0.18 var(--ds_surface_primary_hue) / 0.15);
 		--ds_surface_primary_outline_text: oklch(35% 0.15 var(--ds_surface_primary_hue));
-		--ds_surface_primary_outline_border: oklch(50% 0.16 var(--ds_surface_primary_hue));
-		--ds_surface_primary_outline_hover_bg: oklch(50% 0.18 var(--ds_surface_primary_hue) / 0.08);
-		--ds_surface_primary_outline_hover_border: oklch(45% 0.17 var(--ds_surface_primary_hue));
-		--ds_surface_primary_outline_pressed_bg: oklch(50% 0.18 var(--ds_surface_primary_hue) / 0.15);
-		--ds_surface_primary_outline_disabled_border: oklch(70% 0 var(--ds_surface_primary_hue) / 0.4);
-		--ds_surface_primary_outline_disabled_text: oklch(70% 0 var(--ds_surface_primary_hue));
+		--ds_surface_primary_outline_text_disabled: oklch(70% 0 var(--ds_surface_primary_hue));
 
+		--ds_surface_primary_ghost_bg_enabled: transparent;
+		--ds_surface_primary_ghost_bg_hovered: oklch(50% 0.18 var(--ds_surface_primary_hue) / 0.08);
+		--ds_surface_primary_ghost_bg_pressed: oklch(50% 0.18 var(--ds_surface_primary_hue) / 0.15);
 		--ds_surface_primary_ghost_text: oklch(35% 0.15 var(--ds_surface_primary_hue));
-		--ds_surface_primary_ghost_hover_bg: oklch(50% 0.18 var(--ds_surface_primary_hue) / 0.08);
-		--ds_surface_primary_ghost_pressed_bg: oklch(50% 0.18 var(--ds_surface_primary_hue) / 0.15);
-		--ds_surface_primary_ghost_disabled_text: oklch(70% 0 var(--ds_surface_primary_hue));
+		--ds_surface_primary_ghost_text_disabled: oklch(70% 0 var(--ds_surface_primary_hue));
 
 		/* SECONDARY - OKLCH Light */
 
-		--ds_surface_secondary_solid_bg: oklch(50% 0.18 var(--ds_surface_secondary_hue));
-		--ds_surface_secondary_solid_text: oklch(100% 0 var(--ds_surface_secondary_hue));
-		--ds_surface_secondary_solid_hover_bg: oklch(45% 0.18 var(--ds_surface_secondary_hue));
-		--ds_surface_secondary_solid_pressed_bg: oklch(55% 0.18 var(--ds_surface_secondary_hue));
-		--ds_surface_secondary_solid_disabled_bg: oklch(75% 0.05 var(--ds_surface_secondary_hue));
-		--ds_surface_secondary_solid_disabled_text: oklch(50% 0 var(--ds_surface_secondary_hue));
+		--ds_surface_secondary_solid_bg_enabled: oklch(50% 0.18 var(--ds_surface_secondary_hue));
+		--ds_surface_secondary_solid_bg_hovered: oklch(45% 0.18 var(--ds_surface_secondary_hue));
+		--ds_surface_secondary_solid_bg_pressed: oklch(55% 0.18 var(--ds_surface_secondary_hue));
+		--ds_surface_secondary_solid_bg_disabled: oklch(75% 0.05 var(--ds_surface_secondary_hue));
+		--ds_surface_secondary_solid_text_enabled: oklch(100% 0 var(--ds_surface_secondary_hue));
+		--ds_surface_secondary_solid_text_disabled: oklch(50% 0 var(--ds_surface_secondary_hue));
 
-		--ds_surface_secondary_soft_bg: oklch(50% 0.18 var(--ds_surface_secondary_hue) / 0.12);
+		--ds_surface_secondary_soft_bg_enabled: oklch(50% 0.18 var(--ds_surface_secondary_hue) / 0.12);
+		--ds_surface_secondary_soft_bg_hovered: oklch(50% 0.18 var(--ds_surface_secondary_hue) / 0.2);
+		--ds_surface_secondary_soft_bg_pressed: oklch(50% 0.18 var(--ds_surface_secondary_hue) / 0.28);
+		--ds_surface_secondary_soft_bg_disabled: oklch(50% 0.05 var(--ds_surface_secondary_hue) / 0.06);
 		--ds_surface_secondary_soft_text: oklch(35% 0.15 var(--ds_surface_secondary_hue));
-		--ds_surface_secondary_soft_hover_bg: oklch(50% 0.18 var(--ds_surface_secondary_hue) / 0.2);
-		--ds_surface_secondary_soft_pressed_bg: oklch(50% 0.18 var(--ds_surface_secondary_hue) / 0.28);
-		--ds_surface_secondary_soft_disabled_bg: oklch(50% 0.05 var(--ds_surface_secondary_hue) / 0.06);
-		--ds_surface_secondary_soft_disabled_text: oklch(70% 0 var(--ds_surface_secondary_hue));
+		--ds_surface_secondary_soft_text_disabled: oklch(70% 0 var(--ds_surface_secondary_hue));
 
+		--ds_surface_secondary_outline_bg_enabled: transparent;
+		--ds_surface_secondary_outline_bg_hovered: transparent;
+		--ds_surface_secondary_outline_bg_pressed: transparent;
 		--ds_surface_secondary_outline_text: oklch(35% 0.15 var(--ds_surface_secondary_hue));
-		--ds_surface_secondary_outline_border: oklch(50% 0.16 var(--ds_surface_secondary_hue));
-		--ds_surface_secondary_outline_hover_bg: transparent;
-		--ds_surface_secondary_outline_hover_border: oklch(45% 0.17 var(--ds_surface_secondary_hue));
-		--ds_surface_secondary_outline_pressed_bg: transparent;
-		--ds_surface_secondary_outline_disabled_border: oklch(70% 0 var(--ds_surface_secondary_hue) / 0.4);
-		--ds_surface_secondary_outline_disabled_text: oklch(70% 0 var(--ds_surface_secondary_hue));
+		--ds_surface_secondary_outline_text_disabled: oklch(70% 0 var(--ds_surface_secondary_hue));
 
+		--ds_surface_secondary_ghost_bg_enabled: transparent;
+		--ds_surface_secondary_ghost_bg_hovered: oklch(50% 0.18 var(--ds_surface_secondary_hue) / 0.08);
+		--ds_surface_secondary_ghost_bg_pressed: oklch(50% 0.18 var(--ds_surface_secondary_hue) / 0.15);
 		--ds_surface_secondary_ghost_text: oklch(35% 0.15 var(--ds_surface_secondary_hue));
-		--ds_surface_secondary_ghost_hover_bg: oklch(50% 0.18 var(--ds_surface_secondary_hue) / 0.08);
-		--ds_surface_secondary_ghost_pressed_bg: oklch(50% 0.18 var(--ds_surface_secondary_hue) / 0.15);
-		--ds_surface_secondary_ghost_disabled_text: oklch(70% 0 var(--ds_surface_secondary_hue));
+		--ds_surface_secondary_ghost_text_disabled: oklch(70% 0 var(--ds_surface_secondary_hue));
 
 		/* TERTIARY - OKLCH Light */
+		--ds_surface_tertiary_solid_bg_enabled: oklch(50% 0.18 var(--ds_surface_tertiary_hue));
+		--ds_surface_tertiary_solid_bg_hovered: oklch(45% 0.18 var(--ds_surface_tertiary_hue));
+		--ds_surface_tertiary_solid_bg_pressed: oklch(55% 0.18 var(--ds_surface_tertiary_hue));
+		--ds_surface_tertiary_solid_bg_disabled: oklch(75% 0.05 var(--ds_surface_tertiary_hue));
+		--ds_surface_tertiary_solid_text_enabled: oklch(100% 0 var(--ds_surface_tertiary_hue));
+		--ds_surface_tertiary_solid_text_disabled: oklch(50% 0 var(--ds_surface_tertiary_hue));
 
-		--ds_surface_tertiary_solid_bg: oklch(50% 0.18 var(--ds_surface_tertiary_hue));
-		--ds_surface_tertiary_solid_text: oklch(100% 0 var(--ds_surface_tertiary_hue));
-		--ds_surface_tertiary_solid_hover_bg: oklch(45% 0.18 var(--ds_surface_tertiary_hue));
-		--ds_surface_tertiary_solid_pressed_bg: oklch(55% 0.18 var(--ds_surface_tertiary_hue));
-		--ds_surface_tertiary_solid_disabled_bg: oklch(75% 0.05 var(--ds_surface_tertiary_hue));
-		--ds_surface_tertiary_solid_disabled_text: oklch(50% 0 var(--ds_surface_tertiary_hue));
-
-		--ds_surface_tertiary_soft_bg: oklch(50% 0.18 var(--ds_surface_tertiary_hue) / 0.12);
+		--ds_surface_tertiary_soft_bg_enabled: oklch(50% 0.18 var(--ds_surface_tertiary_hue) / 0.12);
+		--ds_surface_tertiary_soft_bg_hovered: oklch(50% 0.18 var(--ds_surface_tertiary_hue) / 0.2);
+		--ds_surface_tertiary_soft_bg_pressed: oklch(50% 0.18 var(--ds_surface_tertiary_hue) / 0.28);
+		--ds_surface_tertiary_soft_bg_disabled: oklch(50% 0.05 var(--ds_surface_tertiary_hue) / 0.06);
 		--ds_surface_tertiary_soft_text: oklch(35% 0.15 var(--ds_surface_tertiary_hue));
-		--ds_surface_tertiary_soft_hover_bg: oklch(50% 0.18 var(--ds_surface_tertiary_hue) / 0.2);
-		--ds_surface_tertiary_soft_pressed_bg: oklch(50% 0.18 var(--ds_surface_tertiary_hue) / 0.28);
-		--ds_surface_tertiary_soft_disabled_bg: oklch(50% 0.05 var(--ds_surface_tertiary_hue) / 0.06);
-		--ds_surface_tertiary_soft_disabled_text: oklch(70% 0 var(--ds_surface_tertiary_hue));
+		--ds_surface_tertiary_soft_text_disabled: oklch(70% 0 var(--ds_surface_tertiary_hue));
 
+		--ds_surface_tertiary_outline_bg_enabled: transparent;
+		--ds_surface_tertiary_outline_bg_hovered: transparent;
+		--ds_surface_tertiary_outline_bg_pressed: transparent;
 		--ds_surface_tertiary_outline_text: oklch(35% 0.15 var(--ds_surface_tertiary_hue));
-		--ds_surface_tertiary_outline_border: oklch(50% 0.16 var(--ds_surface_tertiary_hue));
-		--ds_surface_tertiary_outline_hover_bg: transparent;
-		--ds_surface_tertiary_outline_hover_border: oklch(45% 0.17 var(--ds_surface_tertiary_hue));
-		--ds_surface_tertiary_outline_pressed_bg: transparent;
-		--ds_surface_tertiary_outline_disabled_border: oklch(70% 0 var(--ds_surface_tertiary_hue) / 0.4);
-		--ds_surface_tertiary_outline_disabled_text: oklch(70% 0 var(--ds_surface_tertiary_hue));
+		--ds_surface_tertiary_outline_text_disabled: oklch(70% 0 var(--ds_surface_tertiary_hue));
 
+		--ds_surface_tertiary_ghost_bg_enabled: transparent;
+		--ds_surface_tertiary_ghost_bg_hovered: oklch(50% 0.18 var(--ds_surface_tertiary_hue) / 0.08);
+		--ds_surface_tertiary_ghost_bg_pressed: oklch(50% 0.18 var(--ds_surface_tertiary_hue) / 0.15);
 		--ds_surface_tertiary_ghost_text: oklch(35% 0.15 var(--ds_surface_tertiary_hue));
-		--ds_surface_tertiary_ghost_hover_bg: oklch(50% 0.18 var(--ds_surface_tertiary_hue) / 0.08);
-		--ds_surface_tertiary_ghost_pressed_bg: oklch(50% 0.18 var(--ds_surface_tertiary_hue) / 0.15);
-		--ds_surface_tertiary_ghost_disabled_text: oklch(70% 0 var(--ds_surface_tertiary_hue));
+		--ds_surface_tertiary_ghost_text_disabled: oklch(70% 0 var(--ds_surface_tertiary_hue));
 
 		/* DANGER - OKLCH Light */
 
-		--ds_surface_danger_solid_bg: oklch(55% 0.22 var(--ds_surface_danger_hue));
-		--ds_surface_danger_solid_text: oklch(100% 0 var(--ds_surface_danger_hue));
-		--ds_surface_danger_solid_hover_bg: oklch(50% 0.22 var(--ds_surface_danger_hue));
-		--ds_surface_danger_solid_pressed_bg: oklch(60% 0.22 var(--ds_surface_danger_hue));
-		--ds_surface_danger_solid_disabled_bg: oklch(75% 0.08 var(--ds_surface_danger_hue));
-		--ds_surface_danger_solid_disabled_text: oklch(50% 0 var(--ds_surface_danger_hue));
+		--ds_surface_danger_solid_bg_enabled: oklch(55% 0.22 var(--ds_surface_danger_hue));
+		--ds_surface_danger_solid_bg_hovered: oklch(50% 0.22 var(--ds_surface_danger_hue));
+		--ds_surface_danger_solid_bg_pressed: oklch(60% 0.22 var(--ds_surface_danger_hue));
+		--ds_surface_danger_solid_bg_disabled: oklch(75% 0.08 var(--ds_surface_danger_hue));
+		--ds_surface_danger_solid_text_enabled: oklch(100% 0 var(--ds_surface_danger_hue));
+		--ds_surface_danger_solid_text_disabled: oklch(50% 0 var(--ds_surface_danger_hue));
 
-		--ds_surface_danger_soft_bg: oklch(55% 0.22 var(--ds_surface_danger_hue) / 0.12);
+		--ds_surface_danger_soft_bg_enabled: oklch(55% 0.22 var(--ds_surface_danger_hue) / 0.12);
+		--ds_surface_danger_soft_bg_hovered: oklch(55% 0.22 var(--ds_surface_danger_hue) / 0.2);
+		--ds_surface_danger_soft_bg_pressed: oklch(55% 0.22 var(--ds_surface_danger_hue) / 0.28);
+		--ds_surface_danger_soft_bg_disabled: oklch(50% 0.08 var(--ds_surface_danger_hue) / 0.06);
 		--ds_surface_danger_soft_text: oklch(40% 0.18 var(--ds_surface_danger_hue));
-		--ds_surface_danger_soft_hover_bg: oklch(55% 0.22 var(--ds_surface_danger_hue) / 0.2);
-		--ds_surface_danger_soft_pressed_bg: oklch(55% 0.22 var(--ds_surface_danger_hue) / 0.28);
-		--ds_surface_danger_soft_disabled_bg: oklch(50% 0.08 var(--ds_surface_danger_hue) / 0.06);
-		--ds_surface_danger_soft_disabled_text: oklch(70% 0 var(--ds_surface_danger_hue));
+		--ds_surface_danger_soft_text_disabled: oklch(70% 0 var(--ds_surface_danger_hue));
 
+		--ds_surface_danger_outline_bg_enabled: transparent;
+		--ds_surface_danger_outline_bg_hovered: transparent;
+		--ds_surface_danger_outline_bg_pressed: transparent;
 		--ds_surface_danger_outline_text: oklch(40% 0.18 var(--ds_surface_danger_hue));
-		--ds_surface_danger_outline_border: oklch(55% 0.2 var(--ds_surface_danger_hue));
-		--ds_surface_danger_outline_hover_bg: transparent;
-		--ds_surface_danger_outline_hover_border: oklch(50% 0.2 var(--ds_surface_danger_hue));
-		--ds_surface_danger_outline_pressed_bg: transparent;
-		--ds_surface_danger_outline_disabled_border: oklch(70% 0 var(--ds_surface_danger_hue) / 0.4);
-		--ds_surface_danger_outline_disabled_text: oklch(70% 0 var(--ds_surface_danger_hue));
+		--ds_surface_danger_outline_text_disabled: oklch(70% 0 var(--ds_surface_danger_hue));
 
+		--ds_surface_danger_ghost_bg_enabled: transparent;
+		--ds_surface_danger_ghost_bg_hovered: oklch(55% 0.22 var(--ds_surface_danger_hue) / 0.08);
+		--ds_surface_danger_ghost_bg_pressed: oklch(55% 0.22 var(--ds_surface_danger_hue) / 0.15);
 		--ds_surface_danger_ghost_text: oklch(40% 0.18 var(--ds_surface_danger_hue));
-		--ds_surface_danger_ghost_hover_bg: oklch(55% 0.22 var(--ds_surface_danger_hue) / 0.08);
-		--ds_surface_danger_ghost_pressed_bg: oklch(55% 0.22 var(--ds_surface_danger_hue) / 0.15);
-		--ds_surface_danger_ghost_disabled_text: oklch(70% 0 var(--ds_surface_danger_hue));
+		--ds_surface_danger_ghost_text_disabled: oklch(70% 0 var(--ds_surface_danger_hue));
 
 		/* WARNING - OKLCH Light */
 
-		--ds_surface_warning_solid_bg: oklch(75% 0.14 var(--ds_surface_warning_hue));
-		--ds_surface_warning_solid_text: oklch(20% 0.05 var(--ds_surface_warning_hue));
-		--ds_surface_warning_solid_hover_bg: oklch(70% 0.14 var(--ds_surface_warning_hue));
-		--ds_surface_warning_solid_pressed_bg: oklch(80% 0.14 var(--ds_surface_warning_hue));
-		--ds_surface_warning_solid_disabled_bg: oklch(85% 0.05 var(--ds_surface_warning_hue));
-		--ds_surface_warning_solid_disabled_text: oklch(60% 0 var(--ds_surface_warning_hue));
+		--ds_surface_warning_solid_bg_enabled: oklch(75% 0.14 var(--ds_surface_warning_hue));
+		--ds_surface_warning_solid_bg_hovered: oklch(70% 0.14 var(--ds_surface_warning_hue));
+		--ds_surface_warning_solid_bg_pressed: oklch(80% 0.14 var(--ds_surface_warning_hue));
+		--ds_surface_warning_solid_bg_disabled: oklch(85% 0.05 var(--ds_surface_warning_hue));
+		--ds_surface_warning_solid_text_enabled: oklch(20% 0.05 var(--ds_surface_warning_hue));
+		--ds_surface_warning_solid_text_disabled: oklch(60% 0 var(--ds_surface_warning_hue));
 
-		--ds_surface_warning_soft_bg: oklch(75% 0.14 var(--ds_surface_warning_hue) / 0.15);
+		--ds_surface_warning_soft_bg_enabled: oklch(75% 0.14 var(--ds_surface_warning_hue) / 0.15);
+		--ds_surface_warning_soft_bg_hovered: oklch(75% 0.14 var(--ds_surface_warning_hue) / 0.22);
+		--ds_surface_warning_soft_bg_pressed: oklch(75% 0.14 var(--ds_surface_warning_hue) / 0.3);
+		--ds_surface_warning_soft_bg_disabled: oklch(75% 0.05 var(--ds_surface_warning_hue) / 0.06);
 		--ds_surface_warning_soft_text: oklch(40% 0.12 var(--ds_surface_warning_hue));
-		--ds_surface_warning_soft_hover_bg: oklch(75% 0.14 var(--ds_surface_warning_hue) / 0.22);
-		--ds_surface_warning_soft_pressed_bg: oklch(75% 0.14 var(--ds_surface_warning_hue) / 0.3);
-		--ds_surface_warning_soft_disabled_bg: oklch(75% 0.05 var(--ds_surface_warning_hue) / 0.06);
-		--ds_surface_warning_soft_disabled_text: oklch(70% 0 var(--ds_surface_warning_hue));
+		--ds_surface_warning_soft_text_disabled: oklch(70% 0 var(--ds_surface_warning_hue));
 
+		--ds_surface_warning_outline_bg_enabled: transparent;
+		--ds_surface_warning_outline_bg_hovered: transparent;
+		--ds_surface_warning_outline_bg_pressed: transparent;
 		--ds_surface_warning_outline_text: oklch(40% 0.12 var(--ds_surface_warning_hue));
-		--ds_surface_warning_outline_border: oklch(65% 0.13 var(--ds_surface_warning_hue));
-		--ds_surface_warning_outline_hover_bg: transparent;
-		--ds_surface_warning_outline_hover_border: oklch(60% 0.13 var(--ds_surface_warning_hue));
-		--ds_surface_warning_outline_pressed_bg: transparent;
-		--ds_surface_warning_outline_disabled_border: oklch(75% 0 var(--ds_surface_warning_hue) / 0.4);
-		--ds_surface_warning_outline_disabled_text: oklch(75% 0 var(--ds_surface_warning_hue));
+		--ds_surface_warning_outline_text_disabled: oklch(75% 0 var(--ds_surface_warning_hue));
 
+		--ds_surface_warning_ghost_bg_enabled: transparent;
 		--ds_surface_warning_ghost_text: oklch(40% 0.12 var(--ds_surface_warning_hue));
-		--ds_surface_warning_ghost_hover_bg: oklch(75% 0.14 var(--ds_surface_warning_hue) / 0.1);
-		--ds_surface_warning_ghost_pressed_bg: oklch(75% 0.14 var(--ds_surface_warning_hue) / 0.18);
-		--ds_surface_warning_ghost_disabled_text: oklch(75% 0 var(--ds_surface_warning_hue));
+		--ds_surface_warning_ghost_bg_hovered: oklch(75% 0.14 var(--ds_surface_warning_hue) / 0.1);
+		--ds_surface_warning_ghost_bg_pressed: oklch(75% 0.14 var(--ds_surface_warning_hue) / 0.18);
+		--ds_surface_warning_ghost_text_disabled: oklch(75% 0 var(--ds_surface_warning_hue));
 
 		/* SUCCESS - OKLCH Light */
+		--ds_surface_success_solid_bg_enabled: oklch(55% 0.16 var(--ds_surface_success_hue));
+		--ds_surface_success_solid_bg_hovered: oklch(50% 0.16 var(--ds_surface_success_hue));
+		--ds_surface_success_solid_bg_pressed: oklch(60% 0.16 var(--ds_surface_success_hue));
+		--ds_surface_success_solid_bg_disabled: oklch(75% 0.06 var(--ds_surface_success_hue));
+		--ds_surface_success_solid_text_enabled: oklch(100% 0 var(--ds_surface_success_hue));
+		--ds_surface_success_solid_text_disabled: oklch(55% 0 var(--ds_surface_success_hue));
 
-		--ds_surface_success_solid_bg: oklch(55% 0.16 var(--ds_surface_success_hue));
-		--ds_surface_success_solid_text: oklch(100% 0 var(--ds_surface_success_hue));
-		--ds_surface_success_solid_hover_bg: oklch(50% 0.16 var(--ds_surface_success_hue));
-		--ds_surface_success_solid_pressed_bg: oklch(60% 0.16 var(--ds_surface_success_hue));
-		--ds_surface_success_solid_disabled_bg: oklch(75% 0.06 var(--ds_surface_success_hue));
-		--ds_surface_success_solid_disabled_text: oklch(55% 0 var(--ds_surface_success_hue));
-
-		--ds_surface_success_soft_bg: oklch(55% 0.16 var(--ds_surface_success_hue) / 0.12);
+		--ds_surface_success_soft_bg_enabled: oklch(55% 0.16 var(--ds_surface_success_hue) / 0.12);
+		--ds_surface_success_soft_bg_hovered: oklch(55% 0.16 var(--ds_surface_success_hue) / 0.2);
+		--ds_surface_success_soft_bg_pressed: oklch(55% 0.16 var(--ds_surface_success_hue) / 0.28);
+		--ds_surface_success_soft_bg_disabled: oklch(50% 0.06 var(--ds_surface_success_hue) / 0.06);
 		--ds_surface_success_soft_text: oklch(35% 0.14 var(--ds_surface_success_hue));
-		--ds_surface_success_soft_hover_bg: oklch(55% 0.16 var(--ds_surface_success_hue) / 0.2);
-		--ds_surface_success_soft_pressed_bg: oklch(55% 0.16 var(--ds_surface_success_hue) / 0.28);
-		--ds_surface_success_soft_disabled_bg: oklch(50% 0.06 var(--ds_surface_success_hue) / 0.06);
-		--ds_surface_success_soft_disabled_text: oklch(70% 0 var(--ds_surface_success_hue));
+		--ds_surface_success_soft_text_disabled: oklch(70% 0 var(--ds_surface_success_hue));
 
+		--ds_surface_success_outline_bg_enabled: transparent;
+		--ds_surface_success_outline_bg_hovered: transparent;
+		--ds_surface_success_outline_bg_pressed: transparent;
 		--ds_surface_success_outline_text: oklch(35% 0.14 var(--ds_surface_success_hue));
-		--ds_surface_success_outline_border: oklch(55% 0.15 var(--ds_surface_success_hue));
-		--ds_surface_success_outline_hover_bg: transparent;
-		--ds_surface_success_outline_hover_border: oklch(50% 0.15 var(--ds_surface_success_hue));
-		--ds_surface_success_outline_pressed_bg: transparent;
-		--ds_surface_success_outline_disabled_border: oklch(70% 0 var(--ds_surface_success_hue) / 0.4);
-		--ds_surface_success_outline_disabled_text: oklch(70% 0 var(--ds_surface_success_hue));
+		--ds_surface_success_outline_text_disabled: oklch(70% 0 var(--ds_surface_success_hue));
 
+		--ds_surface_success_ghost_bg_enabled: transparent;
+		--ds_surface_success_ghost_bg_hovered: oklch(55% 0.16 var(--ds_surface_success_hue) / 0.08);
+		--ds_surface_success_ghost_bg_pressed: oklch(55% 0.16 var(--ds_surface_success_hue) / 0.15);
 		--ds_surface_success_ghost_text: oklch(35% 0.14 var(--ds_surface_success_hue));
-		--ds_surface_success_ghost_hover_bg: oklch(55% 0.16 var(--ds_surface_success_hue) / 0.08);
-		--ds_surface_success_ghost_pressed_bg: oklch(55% 0.16 var(--ds_surface_success_hue) / 0.15);
-		--ds_surface_success_ghost_disabled_text: oklch(70% 0 var(--ds_surface_success_hue));
+		--ds_surface_success_ghost_text_disabled: oklch(70% 0 var(--ds_surface_success_hue));
 
 		/* INFO - OKLCH Light */
 
-		--ds_surface_info_solid_bg: oklch(50% 0.16 var(--ds_surface_info_hue));
-		--ds_surface_info_solid_text: oklch(100% 0 var(--ds_surface_info_hue));
-		--ds_surface_info_solid_hover_bg: oklch(45% 0.16 var(--ds_surface_info_hue));
-		--ds_surface_info_solid_pressed_bg: oklch(55% 0.16 var(--ds_surface_info_hue));
-		--ds_surface_info_solid_disabled_bg: oklch(75% 0.05 var(--ds_surface_info_hue));
-		--ds_surface_info_solid_disabled_text: oklch(50% 0 var(--ds_surface_info_hue));
+		--ds_surface_info_solid_bg_enabled: oklch(50% 0.16 var(--ds_surface_info_hue));
+		--ds_surface_info_solid_bg_hovered: oklch(45% 0.16 var(--ds_surface_info_hue));
+		--ds_surface_info_solid_bg_pressed: oklch(55% 0.16 var(--ds_surface_info_hue));
+		--ds_surface_info_solid_bg_disabled: oklch(75% 0.05 var(--ds_surface_info_hue));
+		--ds_surface_info_solid_text_enabled: oklch(100% 0 var(--ds_surface_info_hue));
+		--ds_surface_info_solid_text_disabled: oklch(50% 0 var(--ds_surface_info_hue));
 
-		--ds_surface_info_soft_bg: oklch(50% 0.16 var(--ds_surface_info_hue) / 0.12);
+		--ds_surface_info_soft_bg_enabled: oklch(50% 0.16 var(--ds_surface_info_hue) / 0.12);
+		--ds_surface_info_soft_bg_hovered: oklch(50% 0.16 var(--ds_surface_info_hue) / 0.2);
+		--ds_surface_info_soft_bg_pressed: oklch(50% 0.16 var(--ds_surface_info_hue) / 0.28);
+		--ds_surface_info_soft_bg_disabled: oklch(50% 0.05 var(--ds_surface_info_hue) / 0.06);
 		--ds_surface_info_soft_text: oklch(35% 0.14 var(--ds_surface_info_hue));
-		--ds_surface_info_soft_hover_bg: oklch(50% 0.16 var(--ds_surface_info_hue) / 0.2);
-		--ds_surface_info_soft_pressed_bg: oklch(50% 0.16 var(--ds_surface_info_hue) / 0.28);
-		--ds_surface_info_soft_disabled_bg: oklch(50% 0.05 var(--ds_surface_info_hue) / 0.06);
-		--ds_surface_info_soft_disabled_text: oklch(70% 0 var(--ds_surface_info_hue));
+		--ds_surface_info_soft_text_disabled: oklch(70% 0 var(--ds_surface_info_hue));
 
+		--ds_surface_info_outline_bg_enabled: transparent;
+		--ds_surface_info_outline_bg_hovered: transparent;
+		--ds_surface_info_outline_bg_pressed: transparent;
 		--ds_surface_info_outline_text: oklch(35% 0.14 var(--ds_surface_info_hue));
-		--ds_surface_info_outline_border: oklch(50% 0.15 var(--ds_surface_info_hue));
-		--ds_surface_info_outline_hover_bg: transparent;
-		--ds_surface_info_outline_hover_border: oklch(45% 0.15 var(--ds_surface_info_hue));
-		--ds_surface_info_outline_pressed_bg: transparent;
-		--ds_surface_info_outline_disabled_border: oklch(70% 0 var(--ds_surface_info_hue) / 0.4);
-		--ds_surface_info_outline_disabled_text: oklch(70% 0 var(--ds_surface_info_hue));
+		--ds_surface_info_outline_text_disabled: oklch(70% 0 var(--ds_surface_info_hue));
 
+		--ds_surface_info_ghost_bg_enabled: transparent;
+		--ds_surface_info_ghost_bg_hovered: oklch(50% 0.16 var(--ds_surface_info_hue) / 0.08);
+		--ds_surface_info_ghost_bg_pressed: oklch(50% 0.16 var(--ds_surface_info_hue) / 0.15);
 		--ds_surface_info_ghost_text: oklch(35% 0.14 var(--ds_surface_info_hue));
-		--ds_surface_info_ghost_hover_bg: oklch(50% 0.16 var(--ds_surface_info_hue) / 0.08);
-		--ds_surface_info_ghost_pressed_bg: oklch(50% 0.16 var(--ds_surface_info_hue) / 0.15);
-		--ds_surface_info_ghost_disabled_text: oklch(70% 0 var(--ds_surface_info_hue));
+		--ds_surface_info_ghost_text_disabled: oklch(70% 0 var(--ds_surface_info_hue));
 
 		/* SURFACE LEVELS Light */
 
-		--ds_surface_lowest_bg: oklch(98% 0.005 var(--ds_theme_hue));
-		--ds_surface_low_bg: oklch(96% 0.008 var(--ds_theme_hue));
-		--ds_surface_medium_bg: oklch(93% 0.01 var(--ds_theme_hue));
-		--ds_surface_high_bg: oklch(88% 0.015 var(--ds_theme_hue));
-		--ds_surface_highest_bg: oklch(82% 0.02 var(--ds_theme_hue));
+		--ds_surface_lowest_bg_enabled: oklch(98% 0.005 var(--ds_theme_hue));
+		--ds_surface_lowest_bg_hovered: oklch(96% 0.007 var(--ds_theme_hue));
+		--ds_surface_lowest_bg_pressed: oklch(94% 0.009 var(--ds_theme_hue));
+
+		--ds_surface_low_bg_enabled: oklch(96% 0.008 var(--ds_theme_hue));
+		--ds_surface_low_bg_hovered: oklch(94% 0.01 var(--ds_theme_hue));
+		--ds_surface_low_bg_pressed: oklch(92% 0.012 var(--ds_theme_hue));
+
+		--ds_surface_medium_bg_enabled: oklch(93% 0.01 var(--ds_theme_hue));
+		--ds_surface_medium_bg_hovered: oklch(91% 0.012 var(--ds_theme_hue));
+		--ds_surface_medium_bg_pressed: oklch(89% 0.014 var(--ds_theme_hue));
+
+		--ds_surface_high_bg_enabled: oklch(88% 0.015 var(--ds_theme_hue));
+		--ds_surface_high_bg_hovered: oklch(86% 0.017 var(--ds_theme_hue));
+		--ds_surface_high_bg_pressed: oklch(84% 0.019 var(--ds_theme_hue));
+
+		--ds_surface_highest_bg_enabled: oklch(82% 0.02 var(--ds_theme_hue));
+		--ds_surface_highest_bg_hovered: oklch(80% 0.022 var(--ds_theme_hue));
+		--ds_surface_highest_bg_pressed: oklch(78% 0.024 var(--ds_theme_hue));
 	}
 }
 

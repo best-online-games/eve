@@ -6,9 +6,72 @@ namespace $.$$ {
 	 * Surface styling system using CSS custom properties from theme.css
 	 * 
 	 * Theme variables follow the pattern:
-	 * --ds_surface_{color}_{variant}_{property}
-	 * --ds_surface_{color}_{variant}_{state}_{property}
+	 * --ds_surface_{color}_{variant}_{part}_{modifier}
+	 * 
+	 * Examples:
+	 * - --ds_surface_primary_solid_bg_enabled
+	 * - --ds_surface_primary_solid_bg_hovered
+	 * - --ds_surface_primary_solid_text_disabled
 	 */
+
+	/** Design system token prefix */
+	const TOKEN_PREFIX = '--ds_'
+
+	/**
+	 * Generate token name for any design system component
+	 * @param component - Component namespace (e.g., 'surface', 'button')
+	 * @param color - Color name (e.g., 'primary', 'danger')
+	 * @param variant - Variant name (e.g., 'solid', 'outline')
+	 * @param part - Part name (e.g., 'bg', 'text', 'border')
+	 * @param modifier - State modifier (e.g., 'enabled', 'hovered', 'pressed', 'disabled')
+	 * @returns Token name string
+	 */
+	function getToken(
+		component: string,
+		color: string,
+		variant: string,
+		part: string,
+		modifier: string = 'enabled'
+	): string {
+		return `${ TOKEN_PREFIX }${ component }_${ color }_${ variant }_${ part }_${ modifier }`
+	}
+
+	/**
+	 * Generate surface token name (shorthand for getToken with component='surface')
+	 * @param color - Color name (e.g., 'primary', 'danger')
+	 * @param variant - Variant name (e.g., 'solid', 'outline')
+	 * @param part - Part name (e.g., 'bg', 'text')
+	 * @param modifier - State modifier (default: 'enabled')
+	 * @returns Surface token name string
+	 */
+	function getTokenSurface(
+		color: string,
+		variant: string,
+		part: string,
+		modifier: string = 'enabled'
+	): string {
+		return getToken( 'surface', color, variant, part, modifier )
+	}
+
+	/**
+	 * Generate surface level token name (simpler structure without variant)
+	 * @param level - Level name (e.g., 'lowest', 'low', 'medium')
+	 * @param modifier - State modifier (default: 'enabled')
+	 * @returns Surface level token name string
+	 */
+	function getTokenSurfaceLevel(
+		level: string,
+		modifier: string = 'enabled'
+	): string {
+		return `${ TOKEN_PREFIX }surface_${ level }_bg_${ modifier }`
+	}
+
+	/**
+	 * Wrap token in CSS var() with optional fallback
+	 */
+	function varToken( token: string, fallback?: string ): string {
+		return fallback ? `var(${ token }, ${ fallback })` : `var(${ token })`
+	}
 
 	// Helper to generate color + variant + state styles
 	function generateSurfaceStyles() {
@@ -19,11 +82,32 @@ namespace $.$$ {
 		const colorStyles: any = {}
 
 		for( const color of colors ) {
-			// Skip surface levels (lowest, low, medium, high, highest) - they're for non-interactive backgrounds
-			if( [ 'lowest', 'low', 'medium', 'high', 'highest' ].includes( color ) ) {
+			// Surface levels (lowest, low, medium, high, highest) have simpler structure
+			// Tokens: --ds_surface_{level}_bg_{modifier}
+			if( $ds_surface.COLORS_SURFACE_LEVELS.includes( color as any ) ) {
+				const levelStates: any = {}
+
+				for( const state of states ) {
+					if( state === 'enabled' ) {
+						continue
+					}
+
+					const bgToken = getTokenSurfaceLevel( color, state )
+					const baseBgToken = getTokenSurfaceLevel( color, 'enabled' )
+
+					levelStates[ state ] = {
+						background: {
+							color: varToken( bgToken, varToken( baseBgToken ) ),
+						},
+					}
+				}
+
 				colorStyles[ color ] = {
 					background: {
-						color: `var(--ds_surface_${ color }_bg)`,
+						color: varToken( getTokenSurfaceLevel( color, 'enabled' ) ),
+					},
+					'@': {
+						ds_surface_state: levelStates,
 					},
 				}
 				continue
@@ -40,33 +124,39 @@ namespace $.$$ {
 						continue
 					}
 
-					const suffix = state === 'disabled' ? 'disabled' : `${ state }`
+					const bgToken = getTokenSurface( color, variant, 'bg', state )
+					const textToken = getTokenSurface( color, variant, 'text', state )
+					const baseBgToken = getTokenSurface( color, variant, 'bg', 'enabled' )
+					const baseTextToken = getTokenSurface( color, variant, 'text', 'enabled' )
 
 					stateStyles[ state ] = {
 						background: {
-							color: `var(--ds_surface_${ color }_${ variant }_${ suffix }_bg, var(--ds_surface_${ color }_${ variant }_bg))`,
+							color: varToken( bgToken, varToken( baseBgToken ) ),
 						},
-						color: `var(--ds_surface_${ color }_${ variant }_${ suffix }_text, var(--ds_surface_${ color }_${ variant }_text))`,
+						color: varToken( textToken, varToken( baseTextToken ) ),
 						// Border follows text color for outline, transparent for others
 						border: {
 							color: variant === 'outline'
-								? `var(--ds_surface_${ color }_${ variant }_${ suffix }_text, var(--ds_surface_${ color }_${ variant }_text))`
+								? varToken( textToken, varToken( baseTextToken ) )
 								: 'transparent',
 						},
 					}
 				}
 
+				const bgToken = getTokenSurface( color, variant, 'bg', 'enabled' )
+				const textToken = getTokenSurface( color, variant, 'text', 'enabled' )
+
 				variantStyles[ variant ] = {
 					background: {
-						color: `var(--ds_surface_${ color }_${ variant }_bg)`,
+						color: varToken( bgToken ),
 					},
-					color: `var(--ds_surface_${ color }_${ variant }_text)`,
+					color: varToken( textToken ),
 					border: {
 						width: `var(--ds_surface_border_width)`,
 						style: 'solid',
 						// Border color: outline uses text color, others are transparent
 						color: variant === 'outline'
-							? `var(--ds_surface_${ color }_${ variant }_text)`
+							? varToken( textToken )
 							: 'transparent',
 					},
 					transition: `all var(--ds_surface_transition_duration) var(--ds_surface_transition_easing)`,

@@ -15,16 +15,20 @@ namespace $.$$ {
 		 */
 		static readonly STATE_MODIFIERS = [
 			'enabled',
-			'hover',
+			'hovered',
 			'pressed',
 			'disabled',
 			'loading'
 		] as const
 
+		// ===============================
+		// Foundations: colors palette
+		// ===============================
+
 		/**
-		 * Foundations: colors palette
+		 * Foundations: brand colors
 		 */
-		static readonly COLORS = [
+		static readonly COLORS_BRAND = [
 			'primary',
 			'secondary',
 			'tertiary',
@@ -32,13 +36,29 @@ namespace $.$$ {
 			'warning',
 			'success',
 			'info',
-			// Surface levels
+		] as const
+
+
+		/**
+		 * Foundations: surface levels
+		 */
+		static readonly COLORS_SURFACE_LEVELS = [
 			'lowest',
 			'low',
 			'medium',
 			'high',
 			'highest'
 		] as const
+
+		/**
+		 * Foundations: all colors
+		 */
+		static readonly COLORS = [
+			...$ds_surface.COLORS_BRAND,
+			...$ds_surface.COLORS_SURFACE_LEVELS
+		] as const
+
+		// ===============================
 
 		/**
 		 * Foundations: sizes presets

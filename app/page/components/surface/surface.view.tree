@@ -7,7 +7,7 @@ $ds_app_page_components_surface $ds_app_page_components_sb_page
 				solid \Solid
 				outline \Outline
 				ghost \Ghost
-			value? <=> Variant_select_value? \solid
+			value? <=> Variant_select_value? \soft
 		<= Card $ds_app_page_components_sb_card
 			align_items \center
 			justify_content \center

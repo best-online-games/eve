@@ -8,9 +8,10 @@ namespace $.$$ {
 		Showcase_grid: {
 			display: 'grid',
 			gridTemplateColumns: `120px repeat(${ $ds_surface.STATE_MODIFIERS.length }, 1fr)`,
-			gap: px( 1 ),
+			gap: px( 8 ),
 			background: { color: $mol_theme.line },
 			padding: px( 1 ),
+
 		},
 
 		Grid_empty: {
