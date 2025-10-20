@@ -3,6 +3,11 @@ $eve_app_page_sb_playground $eve_flex
 	align_items \center
 	gap \32px
 	wrap \wrap
+	component_name \Live_component
+	default_source \
+		\Live_component $mol_view
+		\	sub /
+		\		\\Edit component...
 	sub /
 		<= Live_component_container $eve_surface
 			colors \lowest

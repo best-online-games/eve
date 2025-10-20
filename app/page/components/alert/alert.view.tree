@@ -7,7 +7,20 @@ $eve_app_page_components_alert $eve_app_page_sb_page
 			body /
 				<= Overview $eve_surface
 					sub /
-						<= Playground $eve_app_page_sb_playground_alert
+						<= Playground $eve_app_page_sb_playground
+							component_name \Live_alert
+							default_source \
+								\Live_alert $eve_alert
+								\	- Edit values of Alert component
+								\	colors \info
+								\	variant \soft
+								\	message /
+								\		\This is an alert message
+								\	description /
+								\		\This is a detailed description providing additional context.
+								\	- Icon null
+								\	- Close_button null
+								\
 		<= Variants_page $eve_app_page_sb_page
 			title @ \Variants
 			body /

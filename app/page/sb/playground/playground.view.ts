@@ -2,18 +2,11 @@ namespace $.$$ {
 
 	export class $eve_app_page_sb_playground extends $.$eve_app_page_sb_playground {
 
-		// Имя динамического компонента (переопределяется в наследниках)
-		component_name(): string {
-			return 'Live_component'
-		}
+		// Имя динамического компонента (теперь берётся из view.tree)
+		// component_name(): string - определено в view.tree
 
-		// Дефолтный код (переопределяется в наследниках)
-		default_source(): string {
-			return `Live_component $mol_view
-	sub /
-		\\Edit component...
-`
-		}
+		// Дефолтный код (теперь берётся из view.tree)
+		// default_source(): string - определено в view.tree
 
 		// Tree editor mode (без URL синка)
 		@$mol_mem
