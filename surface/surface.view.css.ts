@@ -72,7 +72,7 @@ namespace $.$$ {
 
 	/**
 	 * Generate size token name
-	 * @param size - Size name (e.g., 'xs', 'sm', 'md')
+	 * @param size - Size name (e.g., 'xs', 's', 'm', 'l', 'xl')
 	 * @param property - Property name (e.g., 'height', 'padding', 'font')
 	 */
 	export function get_token_size( size: $eve_surface_size, property: string ): string {

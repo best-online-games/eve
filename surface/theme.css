@@ -559,34 +559,40 @@
 :root {
 	/* Padding (horizontal) */
 	--eve_surface_size_xs_padding: 0.5rem;
-	--eve_surface_size_sm_padding: 0.75rem;
-	--eve_surface_size_md_padding: 1rem;
-	--eve_surface_size_lg_padding: 1.25rem;
+	--eve_surface_size_s_padding: 0.75rem;
+	--eve_surface_size_m_padding: 1rem;
+	--eve_surface_size_l_padding: 1.25rem;
 	--eve_surface_size_xl_padding: 1.5rem;
 
 	/* Height */
 	--eve_surface_size_xs_height: 1.75rem; /* 28px */
-	--eve_surface_size_sm_height: 2rem; /* 32px */
-	--eve_surface_size_md_height: 2.5rem; /* 40px */
-	--eve_surface_size_lg_height: 3rem; /* 48px */
+	--eve_surface_size_s_height: 2rem; /* 32px */
+	--eve_surface_size_m_height: 2.5rem; /* 40px */
+	--eve_surface_size_l_height: 3rem; /* 48px */
 	--eve_surface_size_xl_height: 3.5rem; /* 56px */
+
+	/* Border radius */
+	/* In ideal world it should be min(height, width) / X, where X is a preferred number */
+	--eve_surface_radius_xs: calc(var(--eve_surface_size_xs_height) / 4); /* 4px */
+	--eve_surface_radius_s: calc(var(--eve_surface_size_s_height) / 4); /* 6px */
+	--eve_surface_radius_m: calc(var(--eve_surface_size_m_height) / 4); /* 8px */
+	--eve_surface_radius_l: calc(var(--eve_surface_size_l_height) / 4); /* 10px */
+	--eve_surface_radius_xl: calc(var(--eve_surface_size_xl_height) / 4); /* 12px */
 
 	/* Font size */
 	--eve_surface_size_xs_font: 0.75rem; /* 12px */
-	--eve_surface_size_sm_font: 0.875rem; /* 14px */
-	--eve_surface_size_md_font: 1rem; /* 16px */
-	--eve_surface_size_lg_font: 1.125rem; /* 18px */
+	--eve_surface_size_s_font: 0.875rem; /* 14px */
+	--eve_surface_size_m_font: 1rem; /* 16px */
+	--eve_surface_size_l_font: 1.125rem; /* 18px */
 	--eve_surface_size_xl_font: 1.25rem; /* 20px */
-
-	/* Border radius */
-	--eve_surface_radius_xs: 0.25rem; /* 4px */
-	--eve_surface_radius_s: 0.375rem; /* 6px */
-	--eve_surface_radius_m: 0.5rem; /* 8px */
-	--eve_surface_radius_l: 0.625rem; /* 10px */
-	--eve_surface_radius_xl: 0.75rem; /* 12px */
 
 	/* Border width */
 	--eve_surface_border_width: 1px;
+	--eve_surface_size_xs_border: 1px;
+	--eve_surface_size_s_border: 1px;
+	--eve_surface_size_m_border: 1px;
+	--eve_surface_size_l_border: 1px;
+	--eve_surface_size_xl_border: 1px;
 
 	/* Transition */
 	--eve_surface_transition_duration: 150ms;
