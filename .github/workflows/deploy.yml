@@ -1,27 +1,24 @@
-name: $eve_themer
+name: Deploy Club on Github Pages
 
 permissions: write-all
 
 on:
-  workflow_dispatch:
-  push:
-  pull_request:
-  schedule:
-  - cron: "0 7 * * *"
+    workflow_dispatch:
+    push:
+    pull_request:
 
 jobs:
-  build:
+    build:
+        runs-on: ubuntu-latest
 
-    runs-on: ubuntu-latest
+        steps:
+            - uses: hyoo-ru/mam_build@master2
+              with:
+                  token: ${{ secrets.GH_PAT }}
+                  package: eve
+                  modules: app
 
-    steps:
-
-    - uses: hyoo-ru/mam_build@master2
-      with:
-        package: 'ds'
-        modules: 'themer'
-
-    - uses: hyoo-ru/gh-deploy@v4.4.1
-      if: github.ref == 'refs/heads/main'
-      with:
-        folder: 'ds/themer/-'
+            - uses: JamesIves/github-pages-deploy-action@4.1.7
+              with:
+                  branch: gh-pages
+                  folder: eve/app/-
