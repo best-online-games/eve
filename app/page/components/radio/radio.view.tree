@@ -1,0 +1,22 @@
+$eve_app_page_components_radio $eve_app_page_sb_page
+	title \Radio
+	Head null
+	body /
+		<= Radio_catalog $eve_app_page_sb_catalog
+			param \radio
+			spreads *
+				overview <= Overview_page $eve_app_page_sb_page
+					title null
+					body /
+						<= Playground $eve_app_page_sb_playground
+							component_name \Live_radio
+							default_source \
+								\Live_radio $eve_radio
+								\	- Edit values of Radio component
+								\	options *
+								\		option1 \Option 1
+								\		option2 \Option 2
+								\		option3 \Option 3
+								\	value? \option1
+								\
+

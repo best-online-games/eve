@@ -1,16 +1,18 @@
 namespace $.$$ {
 	export class $eve_app_page_components extends $.$eve_app_page_components {
-		@$mol_mem_key
-		spread_title( id: string ) {
-			const titles: Record<string, string> = {
-				buttons: 'Buttons',
-				inputs: 'Inputs',
-				cards: 'Cards',
-				tables: 'Tables',
-				surfaces: 'Surfaces',
-			}
-			return titles[ id ] || id
+	@$mol_mem_key
+	spread_title( id: string ) {
+		const titles: Record<string, string> = {
+			buttons: 'Buttons',
+			radio: 'Radio',
+			checkbox: 'Checkbox',
+			inputs: 'Inputs',
+			cards: 'Cards',
+			tables: 'Tables',
+			surfaces: 'Surfaces',
 		}
+		return titles[ id ] || id
+	}
 
 		// 5 строк - по одной на каждый размер
 		@$mol_mem

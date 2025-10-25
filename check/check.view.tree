@@ -1,0 +1,11 @@
+$eve_check $mol_check
+	sub /$mol_view_content
+		<= Box $eve_flex
+			justify_content \center
+			align_items \center
+			sub /
+				<= Icon $mol_icon_check
+		<= label /
+			<= Title $mol_view
+				sub /
+					<= title \
