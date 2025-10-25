@@ -13957,6 +13957,486 @@ var $;
 })($ || ($ = {}));
 
 ;
+	($.$mol_check_list) = class $mol_check_list extends ($.$mol_view) {
+		option_checked(id, next){
+			if(next !== undefined) return next;
+			return false;
+		}
+		option_title(id){
+			return "";
+		}
+		option_label(id){
+			return [(this.option_title(id))];
+		}
+		enabled(){
+			return true;
+		}
+		option_enabled(id){
+			return (this.enabled());
+		}
+		option_hint(id){
+			return "";
+		}
+		items(){
+			return [];
+		}
+		dictionary(){
+			return {};
+		}
+		Option(id){
+			const obj = new this.$.$mol_check();
+			(obj.checked) = (next) => ((this.option_checked(id, next)));
+			(obj.label) = () => ((this.option_label(id)));
+			(obj.enabled) = () => ((this.option_enabled(id)));
+			(obj.hint) = () => ((this.option_hint(id)));
+			(obj.minimal_height) = () => (24);
+			return obj;
+		}
+		options(){
+			return {};
+		}
+		keys(){
+			return [];
+		}
+		sub(){
+			return (this.items());
+		}
+	};
+	($mol_mem_key(($.$mol_check_list.prototype), "option_checked"));
+	($mol_mem_key(($.$mol_check_list.prototype), "Option"));
+
+
+;
+"use strict";
+
+;
+"use strict";
+var $;
+(function ($) {
+    var $$;
+    (function ($$) {
+        class $mol_check_list extends $.$mol_check_list {
+            options() {
+                return {};
+            }
+            dictionary(next) {
+                return next ?? {};
+            }
+            option_checked(id, next) {
+                const prev = this.dictionary();
+                if (next === undefined)
+                    return prev[id] ?? null;
+                const next_rec = { ...prev, [id]: next };
+                if (next === null)
+                    delete next_rec[id];
+                return this.dictionary(next_rec)[id] ?? null;
+            }
+            keys() {
+                return Object.keys(this.options());
+            }
+            items() {
+                return this.keys().map(key => this.Option(key));
+            }
+            option_title(key) {
+                return this.options()[key] || key;
+            }
+        }
+        __decorate([
+            $mol_mem
+        ], $mol_check_list.prototype, "keys", null);
+        __decorate([
+            $mol_mem
+        ], $mol_check_list.prototype, "items", null);
+        $$.$mol_check_list = $mol_check_list;
+    })($$ = $.$$ || ($.$$ = {}));
+})($ || ($ = {}));
+
+;
+"use strict";
+var $;
+(function ($) {
+    $mol_style_attach("mol/check/list/list.view.css", "[mol_check_list] {\n\tdisplay: flex;\n\tflex-wrap: wrap;\n\tflex: 1 1 auto;\n\tborder-radius: var(--mol_gap_round);\n\tgap: 1px;\n}\n\n[mol_check_list_option] {\n\tflex: 0 1 auto;\n}\n\n[mol_check_list_option]:where([mol_check_checked=\"true\"]) {\n\ttext-shadow: 0 0;\n\tcolor: var(--mol_theme_current);\n}\n\n[mol_check_list_option]:where([mol_check_checked=\"true\"][disabled]) {\n\tcolor: var(--mol_theme_text);\n}\n");
+})($ || ($ = {}));
+
+;
+	($.$mol_switch) = class $mol_switch extends ($.$mol_check_list) {
+		value(next){
+			if(next !== undefined) return next;
+			return "";
+		}
+	};
+	($mol_mem(($.$mol_switch.prototype), "value"));
+
+
+;
+"use strict";
+
+;
+"use strict";
+var $;
+(function ($) {
+    var $$;
+    (function ($$) {
+        class $mol_switch extends $.$mol_switch {
+            value(next) {
+                return $mol_state_session.value(`${this}.value()`, next) ?? '';
+            }
+            option_checked(key, next) {
+                if (next === undefined)
+                    return this.value() == key;
+                this.value(next ? key : '');
+                return next;
+            }
+        }
+        $$.$mol_switch = $mol_switch;
+    })($$ = $.$$ || ($.$$ = {}));
+})($ || ($ = {}));
+
+;
+	($.$eve_radio) = class $eve_radio extends ($.$mol_switch) {
+		Circle_inner(id){
+			const obj = new this.$.$eve_surface();
+			return obj;
+		}
+		circle_inner(id){
+			return [(this.Circle_inner(id))];
+		}
+		Circle(id){
+			const obj = new this.$.$eve_flex();
+			(obj.justify_content) = () => ("center");
+			(obj.align_items) = () => ("center");
+			(obj.sub) = () => ((this.circle_inner(id)));
+			return obj;
+		}
+		option_label(id){
+			return [(this.Circle(id)), (this.option_title(id))];
+		}
+	};
+	($mol_mem_key(($.$eve_radio.prototype), "Circle_inner"));
+	($mol_mem_key(($.$eve_radio.prototype), "Circle"));
+
+
+;
+"use strict";
+
+;
+"use strict";
+var $;
+(function ($) {
+    var $$;
+    (function ($$) {
+        class $eve_radio extends $.$eve_radio {
+            circle_inner(id) {
+                return this.option_checked(id) ? super.circle_inner(id) : [];
+            }
+        }
+        __decorate([
+            $mol_mem_key
+        ], $eve_radio.prototype, "circle_inner", null);
+        $$.$eve_radio = $eve_radio;
+    })($$ = $.$$ || ($.$$ = {}));
+})($ || ($ = {}));
+
+;
+"use strict";
+var $;
+(function ($) {
+    var $$;
+    (function ($$) {
+        const { rem } = $mol_style_unit;
+        $mol_style_define($eve_radio, {
+            gap: rem(1),
+            Circle: {
+                height: rem(1.25),
+                width: rem(1.25),
+                minWidth: rem(1.25),
+                minHeight: rem(1.25),
+                border: {
+                    radius: '50%',
+                },
+                box: {
+                    shadow: [['inset', 0, 0, 0, rem(0.0625), $mol_theme.control]],
+                },
+                transition: 'box-shadow 0.2s ease',
+            },
+            Option: {
+                padding: 0,
+                gap: rem(0.5),
+                cursor: 'pointer',
+                ':hover': {
+                    ['Circle']: {
+                        box: {
+                            shadow: [['inset', 0, 0, 0, rem(0.0625), $mol_theme.current]],
+                        },
+                    },
+                },
+                '[mol_check_checked]': {
+                    true: {
+                        ['Circle']: {
+                            box: {
+                                shadow: [['inset', 0, 0, 0, rem(0.125), $mol_theme.current]],
+                            },
+                        },
+                    },
+                },
+            },
+            Circle_inner: {
+                height: rem(0.625),
+                width: rem(0.625),
+                background: {
+                    color: $mol_theme.current,
+                },
+                border: {
+                    radius: '50%',
+                },
+                transition: 'all 0.2s ease',
+            },
+        });
+    })($$ = $.$$ || ($.$$ = {}));
+})($ || ($ = {}));
+
+;
+	($.$eve_app_page_components_radio) = class $eve_app_page_components_radio extends ($.$eve_app_page_sb_page) {
+		Playground(){
+			const obj = new this.$.$eve_app_page_sb_playground();
+			(obj.component_name) = () => ("Live_radio");
+			(obj.default_source) = () => ("Live_radio $eve_radio\n\t- Edit values of Radio component\n\toptions *\n\t\toption1 \\Option 1\n\t\toption2 \\Option 2\n\t\toption3 \\Option 3\n\tvalue? \\option1\n");
+			return obj;
+		}
+		Overview_page(){
+			const obj = new this.$.$eve_app_page_sb_page();
+			(obj.title) = () => (null);
+			(obj.body) = () => ([(this.Playground())]);
+			return obj;
+		}
+		Radio_catalog(){
+			const obj = new this.$.$eve_app_page_sb_catalog();
+			(obj.param) = () => ("radio");
+			(obj.spreads) = () => ({"overview": (this.Overview_page())});
+			return obj;
+		}
+		title(){
+			return "Radio";
+		}
+		Head(){
+			return null;
+		}
+		body(){
+			return [(this.Radio_catalog())];
+		}
+	};
+	($mol_mem(($.$eve_app_page_components_radio.prototype), "Playground"));
+	($mol_mem(($.$eve_app_page_components_radio.prototype), "Overview_page"));
+	($mol_mem(($.$eve_app_page_components_radio.prototype), "Radio_catalog"));
+
+
+;
+"use strict";
+
+;
+"use strict";
+var $;
+(function ($) {
+    var $$;
+    (function ($$) {
+        class $eve_app_page_components_radio extends $.$eve_app_page_components_radio {
+        }
+        $$.$eve_app_page_components_radio = $eve_app_page_components_radio;
+    })($$ = $.$$ || ($.$$ = {}));
+})($ || ($ = {}));
+
+;
+	($.$mol_icon_check) = class $mol_icon_check extends ($.$mol_icon) {
+		path(){
+			return "M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z";
+		}
+	};
+
+
+;
+"use strict";
+
+;
+	($.$eve_check) = class $eve_check extends ($.$mol_check) {
+		Icon(){
+			const obj = new this.$.$mol_icon_check();
+			return obj;
+		}
+		Box(){
+			const obj = new this.$.$eve_flex();
+			(obj.justify_content) = () => ("center");
+			(obj.align_items) = () => ("center");
+			(obj.sub) = () => ([(this.Icon())]);
+			return obj;
+		}
+		title(){
+			return "";
+		}
+		Title(){
+			const obj = new this.$.$mol_view();
+			(obj.sub) = () => ([(this.title())]);
+			return obj;
+		}
+		label(){
+			return [(this.Title())];
+		}
+		sub(){
+			return [(this.Box()), (this.label())];
+		}
+	};
+	($mol_mem(($.$eve_check.prototype), "Icon"));
+	($mol_mem(($.$eve_check.prototype), "Box"));
+	($mol_mem(($.$eve_check.prototype), "Title"));
+
+
+;
+"use strict";
+
+;
+"use strict";
+var $;
+(function ($) {
+    var $$;
+    (function ($$) {
+        class $eve_check extends $.$eve_check {
+            click(next) {
+                if (next?.defaultPrevented)
+                    return;
+                this.checked(!this.checked());
+                if (next)
+                    next.preventDefault();
+            }
+            sub() {
+                return [
+                    this.Box(),
+                    ...this.label(),
+                ];
+            }
+            label() {
+                return this.title() ? super.label() : [];
+            }
+            aria_checked() {
+                return String(this.checked());
+            }
+        }
+        $$.$eve_check = $eve_check;
+    })($$ = $.$$ || ($.$$ = {}));
+})($ || ($ = {}));
+
+;
+"use strict";
+var $;
+(function ($) {
+    var $$;
+    (function ($$) {
+        const { rem } = $mol_style_unit;
+        $mol_style_define($eve_check, {
+            display: 'flex',
+            flexDirection: 'row',
+            alignItems: 'center',
+            gap: rem(0.5),
+            cursor: 'pointer',
+            userSelect: 'none',
+            Box: {
+                height: rem(1.25),
+                width: rem(1.25),
+                minWidth: rem(1.25),
+                minHeight: rem(1.25),
+                border: {
+                    radius: rem(0.25),
+                },
+                box: {
+                    shadow: [['inset', 0, 0, 0, rem(0.0625), $mol_theme.control]],
+                },
+                transition: 'all 0.2s ease',
+                background: {
+                    color: 'transparent',
+                },
+            },
+            Icon: {
+                width: rem(0.875),
+                height: rem(0.875),
+                opacity: 0,
+                transition: 'opacity 0.2s ease',
+                color: $mol_theme.back,
+            },
+            ':hover': {
+                Box: {
+                    box: {
+                        shadow: [['inset', 0, 0, 0, rem(0.0625), $mol_theme.current]],
+                    },
+                },
+            },
+            '[mol_check_checked]': {
+                true: {
+                    Box: {
+                        background: {
+                            color: $mol_theme.current,
+                        },
+                        box: {
+                            shadow: [['inset', 0, 0, 0, rem(0.125), $mol_theme.current]],
+                        },
+                    },
+                    Icon: {
+                        opacity: 1,
+                    },
+                },
+            },
+        });
+    })($$ = $.$$ || ($.$$ = {}));
+})($ || ($ = {}));
+
+;
+	($.$eve_app_page_components_check) = class $eve_app_page_components_check extends ($.$eve_app_page_sb_page) {
+		Playground(){
+			const obj = new this.$.$eve_app_page_sb_playground();
+			(obj.component_name) = () => ("Live_check");
+			(obj.default_source) = () => ("Live_check $eve_check\n\t- Edit values of Check component\n\tchecked? true\n\ttitle \\Accept terms and conditions\n");
+			return obj;
+		}
+		Overview_page(){
+			const obj = new this.$.$eve_app_page_sb_page();
+			(obj.title) = () => (null);
+			(obj.body) = () => ([(this.Playground())]);
+			return obj;
+		}
+		Check_catalog(){
+			const obj = new this.$.$eve_app_page_sb_catalog();
+			(obj.param) = () => ("check");
+			(obj.spreads) = () => ({"overview": (this.Overview_page())});
+			return obj;
+		}
+		title(){
+			return "Check";
+		}
+		Head(){
+			return null;
+		}
+		body(){
+			return [(this.Check_catalog())];
+		}
+	};
+	($mol_mem(($.$eve_app_page_components_check.prototype), "Playground"));
+	($mol_mem(($.$eve_app_page_components_check.prototype), "Overview_page"));
+	($mol_mem(($.$eve_app_page_components_check.prototype), "Check_catalog"));
+
+
+;
+"use strict";
+var $;
+(function ($) {
+    var $$;
+    (function ($$) {
+        class $eve_app_page_components_check extends $.$eve_app_page_components_check {
+        }
+        $$.$eve_app_page_components_check = $eve_app_page_components_check;
+    })($$ = $.$$ || ($.$$ = {}));
+})($ || ($ = {}));
+
+;
+"use strict";
+
+;
 	($.$eve_alert) = class $eve_alert extends ($.$eve_flex) {
 		Icon(){
 			const obj = new this.$.$mol_icon();
@@ -14028,17 +14508,6 @@ var $;
 	($mol_mem(($.$eve_alert.prototype), "enabled"));
 	($mol_mem(($.$eve_alert.prototype), "close"));
 
-
-;
-	($.$mol_icon_check) = class $mol_icon_check extends ($.$mol_icon) {
-		path(){
-			return "M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z";
-		}
-	};
-
-
-;
-"use strict";
 
 ;
 	($.$mol_icon_check_circle) = class $mol_icon_check_circle extends ($.$mol_icon) {
@@ -14424,6 +14893,14 @@ var $;
 			const obj = new this.$.$eve_app_page_components_button();
 			return obj;
 		}
+		Radio(){
+			const obj = new this.$.$eve_app_page_components_radio();
+			return obj;
+		}
+		Check(){
+			const obj = new this.$.$eve_app_page_components_check();
+			return obj;
+		}
 		Alert(){
 			const obj = new this.$.$eve_app_page_components_alert();
 			return obj;
@@ -14436,6 +14913,8 @@ var $;
 				"surfaces": (this.Surfaces()), 
 				"flex": (this.Flex()), 
 				"buttons": (this.Buttons()), 
+				"radio": (this.Radio()), 
+				"check": (this.Check()), 
 				"alert": (this.Alert())
 			});
 			return obj;
@@ -14453,6 +14932,8 @@ var $;
 	($mol_mem(($.$eve_app_page_components.prototype), "Surfaces"));
 	($mol_mem(($.$eve_app_page_components.prototype), "Flex"));
 	($mol_mem(($.$eve_app_page_components.prototype), "Buttons"));
+	($mol_mem(($.$eve_app_page_components.prototype), "Radio"));
+	($mol_mem(($.$eve_app_page_components.prototype), "Check"));
 	($mol_mem(($.$eve_app_page_components.prototype), "Alert"));
 	($mol_mem(($.$eve_app_page_components.prototype), "Nav_menu"));
 
@@ -14470,6 +14951,8 @@ var $;
             spread_title(id) {
                 const titles = {
                     buttons: 'Buttons',
+                    radio: 'Radio',
+                    checkbox: 'Checkbox',
                     inputs: 'Inputs',
                     cards: 'Cards',
                     tables: 'Tables',
@@ -16210,142 +16693,6 @@ var $;
 
 ;
 "use strict";
-
-;
-	($.$mol_check_list) = class $mol_check_list extends ($.$mol_view) {
-		option_checked(id, next){
-			if(next !== undefined) return next;
-			return false;
-		}
-		option_title(id){
-			return "";
-		}
-		option_label(id){
-			return [(this.option_title(id))];
-		}
-		enabled(){
-			return true;
-		}
-		option_enabled(id){
-			return (this.enabled());
-		}
-		option_hint(id){
-			return "";
-		}
-		items(){
-			return [];
-		}
-		dictionary(){
-			return {};
-		}
-		Option(id){
-			const obj = new this.$.$mol_check();
-			(obj.checked) = (next) => ((this.option_checked(id, next)));
-			(obj.label) = () => ((this.option_label(id)));
-			(obj.enabled) = () => ((this.option_enabled(id)));
-			(obj.hint) = () => ((this.option_hint(id)));
-			(obj.minimal_height) = () => (24);
-			return obj;
-		}
-		options(){
-			return {};
-		}
-		keys(){
-			return [];
-		}
-		sub(){
-			return (this.items());
-		}
-	};
-	($mol_mem_key(($.$mol_check_list.prototype), "option_checked"));
-	($mol_mem_key(($.$mol_check_list.prototype), "Option"));
-
-
-;
-"use strict";
-
-;
-"use strict";
-var $;
-(function ($) {
-    var $$;
-    (function ($$) {
-        class $mol_check_list extends $.$mol_check_list {
-            options() {
-                return {};
-            }
-            dictionary(next) {
-                return next ?? {};
-            }
-            option_checked(id, next) {
-                const prev = this.dictionary();
-                if (next === undefined)
-                    return prev[id] ?? null;
-                const next_rec = { ...prev, [id]: next };
-                if (next === null)
-                    delete next_rec[id];
-                return this.dictionary(next_rec)[id] ?? null;
-            }
-            keys() {
-                return Object.keys(this.options());
-            }
-            items() {
-                return this.keys().map(key => this.Option(key));
-            }
-            option_title(key) {
-                return this.options()[key] || key;
-            }
-        }
-        __decorate([
-            $mol_mem
-        ], $mol_check_list.prototype, "keys", null);
-        __decorate([
-            $mol_mem
-        ], $mol_check_list.prototype, "items", null);
-        $$.$mol_check_list = $mol_check_list;
-    })($$ = $.$$ || ($.$$ = {}));
-})($ || ($ = {}));
-
-;
-"use strict";
-var $;
-(function ($) {
-    $mol_style_attach("mol/check/list/list.view.css", "[mol_check_list] {\n\tdisplay: flex;\n\tflex-wrap: wrap;\n\tflex: 1 1 auto;\n\tborder-radius: var(--mol_gap_round);\n\tgap: 1px;\n}\n\n[mol_check_list_option] {\n\tflex: 0 1 auto;\n}\n\n[mol_check_list_option]:where([mol_check_checked=\"true\"]) {\n\ttext-shadow: 0 0;\n\tcolor: var(--mol_theme_current);\n}\n\n[mol_check_list_option]:where([mol_check_checked=\"true\"][disabled]) {\n\tcolor: var(--mol_theme_text);\n}\n");
-})($ || ($ = {}));
-
-;
-	($.$mol_switch) = class $mol_switch extends ($.$mol_check_list) {
-		value(next){
-			if(next !== undefined) return next;
-			return "";
-		}
-	};
-	($mol_mem(($.$mol_switch.prototype), "value"));
-
-
-;
-"use strict";
-
-;
-"use strict";
-var $;
-(function ($) {
-    var $$;
-    (function ($$) {
-        class $mol_switch extends $.$mol_switch {
-            value(next) {
-                return $mol_state_session.value(`${this}.value()`, next) ?? '';
-            }
-            option_checked(key, next) {
-                if (next === undefined)
-                    return this.value() == key;
-                this.value(next ? key : '');
-                return next;
-            }
-        }
-        $$.$mol_switch = $mol_switch;
-    })($$ = $.$$ || ($.$$ = {}));
-})($ || ($ = {}));
 
 ;
 	($.$mol_deck) = class $mol_deck extends ($.$mol_list) {

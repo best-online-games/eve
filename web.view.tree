@@ -1060,6 +1060,87 @@ $eve_app_page_components_button $eve_app_page_sb_page
 				- sizes <= Sizes $eve_app_page_components_button_sizes
 				- states <= States $eve_app_page_components_button_states
 
+$mol_check_list $mol_view
+	dictionary *
+	Option* $mol_check
+		checked? <=> option_checked*? false
+		label <= option_label* /
+			<= option_title* \
+		enabled <= option_enabled* <= enabled true
+		hint <= option_hint* \
+		minimal_height 24
+	options *
+	keys /string
+	sub <= items /$mol_check
+
+$mol_switch $mol_check_list
+	value? \
+
+$eve_radio $mol_switch
+	option_label* /
+		<= Circle* $eve_flex
+			justify_content \center
+			align_items \center
+			sub <= circle_inner* / <= Circle_inner* $eve_surface
+		<= option_title*
+
+$eve_app_page_components_radio $eve_app_page_sb_page
+	title \Radio
+	Head null
+	body /
+		<= Radio_catalog $eve_app_page_sb_catalog
+			param \radio
+			spreads *
+				overview <= Overview_page $eve_app_page_sb_page
+					title null
+					body /
+						<= Playground $eve_app_page_sb_playground
+							component_name \Live_radio
+							default_source \
+								\Live_radio $eve_radio
+								\	- Edit values of Radio component
+								\	options *
+								\		option1 \Option 1
+								\		option2 \Option 2
+								\		option3 \Option 3
+								\	value? \option1
+								\
+
+
+$mol_icon_check $mol_icon path \M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z
+
+$eve_check $mol_check
+	sub /$mol_view_content
+		<= Box $eve_flex
+			justify_content \center
+			align_items \center
+			sub /
+				<= Icon $mol_icon_check
+		<= label /
+			<= Title $mol_view
+				sub /
+					<= title \
+
+$eve_app_page_components_check $eve_app_page_sb_page
+	title \Check
+	Head null
+	body /
+		<= Check_catalog $eve_app_page_sb_catalog
+			param \check
+			spreads *
+				overview <= Overview_page $eve_app_page_sb_page
+					title null
+					body /
+						<= Playground $eve_app_page_sb_playground
+							component_name \Live_check
+							default_source \
+								\Live_check $eve_check
+								\	- Edit values of Check component
+								\	checked? true
+								\	title \Accept terms and conditions
+								\
+
+
 $eve_alert $eve_flex
 	colors \info
 	variant \soft
@@ -1083,8 +1164,6 @@ $eve_alert $eve_flex
 			sub /
 				<= Close_icon $mol_icon_close
 
-
-$mol_icon_check $mol_icon path \M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z
 
 $mol_icon_check_circle $mol_icon path \M12 2C6.5 2 2 6.5 2 12S6.5 22 12 22 22 17.5 22 12 17.5 2 12 2M10 17L5 12L6.41 10.59L10 14.17L17.59 6.58L19 8L10 17Z
 
@@ -1178,6 +1257,8 @@ $eve_app_page_components $eve_page
 				surfaces <= Surfaces $eve_app_page_components_surface
 				flex <= Flex $eve_app_page_components_flex
 				buttons <= Buttons $eve_app_page_components_button
+				radio <= Radio $eve_app_page_components_radio
+				check <= Check $eve_app_page_components_check
 				alert <= Alert $eve_app_page_components_alert
 
 $eve_app_page_design $eve_page
@@ -1474,22 +1555,6 @@ $eve_app_page_themer $eve_page
 	Head null
 	body /
 		<= Colors $eve_app_page_themer_colors
-
-$mol_check_list $mol_view
-	dictionary *
-	Option* $mol_check
-		checked? <=> option_checked*? false
-		label <= option_label* /
-			<= option_title* \
-		enabled <= option_enabled* <= enabled true
-		hint <= option_hint* \
-		minimal_height 24
-	options *
-	keys /string
-	sub <= items /$mol_check
-
-$mol_switch $mol_check_list
-	value? \
 
 $mol_deck $mol_list
 	items /$mol_view
