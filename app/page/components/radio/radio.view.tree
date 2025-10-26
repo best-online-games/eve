@@ -6,19 +6,18 @@ $eve_app_page_components_radio $eve_app_page_sb_page
 			param \radio
 			spreads *
 				bare <= Bare_page $eve_app_page_sb_page
-					title \Bare Radio
+					title \Bare
 					body /
 						<= Bare_playground $eve_app_page_sb_playground
-							component_name \Live_radio_bare
+							component_name \Live_radio
 							default_source \
-								\Live_radio_bare $eve_radio
-								\	- Bare radio control (no label, fixed 1rem size)
+								\Live_radio $eve_radio
 								\	colors \primary
 								\	checked? true
 								\	disabled? false
 								\
 				labelled <= Labelled_page $eve_app_page_sb_page
-					title \Labelled Radio
+					title \Labelled
 					body /
 						<= Labelled_playground $eve_app_page_sb_playground
 							component_name \Live_radio_labelled

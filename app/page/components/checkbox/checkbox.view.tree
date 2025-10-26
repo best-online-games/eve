@@ -6,20 +6,19 @@ $eve_app_page_components_checkbox $eve_app_page_sb_page
 			param \checkbox
 			spreads *
 				bare <= Bare_page $eve_app_page_sb_page
-					title \Bare Checkbox
+					title \Bare
 					body /
 						<= Bare_playground $eve_app_page_sb_playground
 							component_name \Live_checkbox
 							default_source \
 								\Live_checkbox $eve_checkbox
-								\	- Bare checkbox control (no label, fixed 1rem size)
 								\	colors \primary
 								\	checked? true
 								\	disabled? false
 								\	indeterminate? false
 								\
 				labelled <= Labelled_page $eve_app_page_sb_page
-					title \Labelled Checkbox
+					title \Labelled
 					body /
 						<= Labelled_playground $eve_app_page_sb_playground
 							component_name \Live_checkbox_labelled
