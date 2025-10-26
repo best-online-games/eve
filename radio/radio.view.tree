@@ -1,7 +1,1 @@
-$eve_radio $mol_switch
-	option_label* /
-		<= Circle* $eve_flex
-			justify_content \center
-			align_items \center
-			sub <= circle_inner* / <= Circle_inner* $eve_surface
-		<= option_title*
+$eve_radio $eve_input_logical_radio

@@ -10,5 +10,6 @@ $eve_app_page_components $eve_page
 				flex <= Flex $eve_app_page_components_flex
 				buttons <= Buttons $eve_app_page_components_button
 				radio <= Radio $eve_app_page_components_radio
-				check <= Check $eve_app_page_components_check
+				checkbox <= Checkbox $eve_app_page_components_checkbox
+				switch <= Switch $eve_app_page_components_switch
 				alert <= Alert $eve_app_page_components_alert

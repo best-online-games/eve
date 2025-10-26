@@ -5,18 +5,44 @@ $eve_app_page_components_radio $eve_app_page_sb_page
 		<= Radio_catalog $eve_app_page_sb_catalog
 			param \radio
 			spreads *
-				overview <= Overview_page $eve_app_page_sb_page
-					title null
+				bare <= Bare_page $eve_app_page_sb_page
+					title \Bare Radio
 					body /
-						<= Playground $eve_app_page_sb_playground
-							component_name \Live_radio
+						<= Bare_playground $eve_app_page_sb_playground
+							component_name \Live_radio_bare
 							default_source \
-								\Live_radio $eve_radio
-								\	- Edit values of Radio component
+								\Live_radio_bare $eve_radio
+								\	- Bare radio control (no label, fixed 1rem size)
+								\	colors \primary
+								\	checked? true
+								\	disabled? false
+								\
+				labelled <= Labelled_page $eve_app_page_sb_page
+					title \Labelled Radio
+					body /
+						<= Labelled_playground $eve_app_page_sb_playground
+							component_name \Live_radio_labelled
+							default_source \
+								\Live_radio_labelled $eve_radio_labelled
+								\	- Radio with label (based on eve_button ghost)
+								\	size? \m
+								\	checked? true
+								\	disabled? false
+								\	label \Select this option
+								\
+				group <= Group_page $eve_app_page_sb_page
+					title \Radio Group
+					body /
+						<= Group_playground $eve_app_page_sb_playground
+							component_name \Live_radio_group
+							default_source \
+								\Live_radio_group $eve_radio_group
+								\	- Radio group with single selection (based on mol_switch)
+								\	size? \m
 								\	options *
-								\		option1 \Option 1
-								\		option2 \Option 2
-								\		option3 \Option 3
+								\		option1 \First Option
+								\		option2 \Second Option
+								\		option3 \Third Option
 								\	value? \option1
 								\
 

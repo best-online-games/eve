@@ -1,0 +1,35 @@
+$eve_app_page_components_checkbox $eve_app_page_sb_page
+	title \Checkbox
+	Head null
+	body /
+		<= Check_catalog $eve_app_page_sb_catalog
+			param \checkbox
+			spreads *
+				bare <= Bare_page $eve_app_page_sb_page
+					title \Bare Checkbox
+					body /
+						<= Bare_playground $eve_app_page_sb_playground
+							component_name \Live_checkbox
+							default_source \
+								\Live_checkbox $eve_checkbox
+								\	- Bare checkbox control (no label, fixed 1rem size)
+								\	colors \primary
+								\	checked? true
+								\	disabled? false
+								\	indeterminate? false
+								\
+				labelled <= Labelled_page $eve_app_page_sb_page
+					title \Labelled Checkbox
+					body /
+						<= Labelled_playground $eve_app_page_sb_playground
+							component_name \Live_checkbox_labelled
+							default_source \
+								\Live_checkbox_labelled $eve_checkbox_labelled
+								\	- Checkbox with label (based on eve_button ghost)
+								\	size? \m
+								\	checked? true
+								\	disabled? false
+								\	indeterminate? false
+								\	label \Accept terms and conditions
+								\
+

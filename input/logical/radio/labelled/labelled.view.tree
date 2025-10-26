@@ -1,0 +1,10 @@
+$eve_input_logical_radio_labelled $eve_button
+	variant \ghost
+	size? \m
+	justify_content \flex-start
+	sub /
+		<= Radio $eve_input_logical_radio
+			checked? <=> checked? false
+			disabled? <=> disabled? false
+		<= Label
+

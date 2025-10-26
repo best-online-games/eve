@@ -1,0 +1,16 @@
+$eve_input_logical_checkbox $eve_button
+	indeterminate? null
+	disabled? null
+	colors? \primary
+	size null
+	attr *
+		^
+		mol_check_checked <= checked? false
+		aria-checked <= aria_checked \false
+		role <= aria_role \checkbox
+	event *
+		^
+		click?event <=> event_click?event null
+	sub /
+		<= Icon $mol_icon_check
+

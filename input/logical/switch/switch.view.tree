@@ -1,0 +1,14 @@
+$eve_input_logical_switch $eve_surface
+	disabled? null
+	attr *
+		^
+		mol_check_checked <= checked? false
+		aria-checked <= aria_checked \false
+		role <= aria_role \switch
+		eve_input_logical_switch_size <= size? \m
+	event *
+		^
+		click?event <=> event_click?event null
+	sub /
+		<= Slider $eve_surface
+

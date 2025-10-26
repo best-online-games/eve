@@ -1,0 +1,10 @@
+$eve_input_logical_switch_labelled $eve_button
+	variant \ghost
+	size? \m
+	justify_content \flex-start
+	sub /
+		<= Switch $eve_input_logical_switch
+			size <= switch_size \m
+			checked? <=> checked? false
+			disabled? <=> disabled? false
+		<= Label

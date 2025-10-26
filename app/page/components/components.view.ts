@@ -5,7 +5,8 @@ namespace $.$$ {
 		const titles: Record<string, string> = {
 			buttons: 'Buttons',
 			radio: 'Radio',
-			checkbox: 'Checkbox',
+			check: 'Checkbox',
+			switch: 'Switch',
 			inputs: 'Inputs',
 			cards: 'Cards',
 			tables: 'Tables',

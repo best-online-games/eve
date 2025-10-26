@@ -1,0 +1,11 @@
+$eve_input_logical_checkbox_labelled $eve_button
+	variant \ghost
+	size? \m
+	justify_content \flex-start
+	sub /
+		<= Checkbox $eve_input_logical_checkbox
+			checked? <=> checked? false
+			disabled? <=> disabled? false
+			indeterminate? <=> indeterminate? false
+		<= Label
+

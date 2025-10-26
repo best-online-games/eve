@@ -1,0 +1,9 @@
+$eve_input_logical_radio_group $eve_flex
+	direction? \column
+	options* /
+		<= Option* $eve_radio
+			size <= size?
+			checked? <= option_checked* false
+			disabled? <= option_disabled* true
+			label <= option_title* \
+
