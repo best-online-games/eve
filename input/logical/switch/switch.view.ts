@@ -1,24 +1,41 @@
 namespace $.$$ {
 
-	export type $eve_input_logical_switch_size = 's' | 'm' | 'l'
-
 	/**
-	 * Switch control - visual indicator only (no label)
-	 * Pure toggle switch component
+	 * Switch control - based on eve_button
+	 * Uses eve_surface token system for consistent styling
 	 * 
-	 * Sizes:
-	 * - s: 28x16px (slider 12px)
-	 * - m: 36x20px (slider 16px)
-	 * - l: 42x24px (slider 18px)
+	 * Fixed size: 2rem × 1rem (slider 0.75rem)
+	 * Uses variant system: outline (unchecked) → solid (checked)
+	 * Uses flex direction: row (unchecked) → row-reverse (checked)
 	 * 
 	 * For labeled version use $eve_input_logical_switch_labelled
 	 */
 	export class $eve_input_logical_switch extends $.$eve_input_logical_switch {
 
-		@$mol_mem
-		size( next?: $eve_input_logical_switch_size ): $eve_input_logical_switch_size {
-			return next ?? 'm'
+		override dom_name() {
+			return 'input'
 		}
+
+		// override variant(): $eve_surface_variant {
+		// 	return this.checked() ? 'solid' : 'outline'
+		// }
+
+		@$mol_mem
+		override direction( next?: $eve_flex_direction ): $eve_flex_direction {
+			return this.checked() ? 'row-reverse' : 'row'
+		}
+
+		@$mol_mem
+		override switch_variant(): $eve_surface_variant {
+			console.log( 'switch_variant', this.checked() ? 'solid' : 'outline' )
+			return this.checked() ? 'solid' : 'outline'
+		}
+
+		@$mol_mem
+		override colors( next?: $eve_surface_color ): $eve_surface_color {
+			return this.checked() ? 'primary' : 'low'
+		}
+
 
 		@$mol_mem
 		checked( next?: boolean ): boolean {

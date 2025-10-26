@@ -1,11 +1,15 @@
-$eve_input_logical_switch $eve_surface
+$eve_input_logical_switch $eve_button
 	disabled? null
+	size null
+	direction <= switch_direction \row
+	align_items \center
+	justify_content \flex-start
 	attr *
 		^
 		mol_check_checked <= checked? false
 		aria-checked <= aria_checked \false
 		role <= aria_role \switch
-		eve_input_logical_switch_size <= size? \m
+		type \checkbox
 	event *
 		^
 		click?event <=> event_click?event null

@@ -12,8 +12,6 @@ $eve_app_page_components_switch $eve_app_page_sb_page
 							component_name \Live_switch_bare
 							default_source \
 								\Live_switch_bare $eve_switch
-								\	- Bare switch control (no label)
-								\	size? \m
 								\	checked? true
 								\	disabled? false
 								\
@@ -24,7 +22,6 @@ $eve_app_page_components_switch $eve_app_page_sb_page
 							component_name \Live_switch_labelled
 							default_source \
 								\Live_switch_labelled $eve_switch_labelled
-								\	- Switch with label (based on eve_button ghost)
 								\	size? \m
 								\	checked? true
 								\	disabled? false
