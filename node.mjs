@@ -5787,6 +5787,805 @@ var $;
 })($ || ($ = {}));
 
 ;
+	($.$mol_link) = class $mol_link extends ($.$mol_view) {
+		uri_toggle(){
+			return "";
+		}
+		hint(){
+			return "";
+		}
+		hint_safe(){
+			return (this.hint());
+		}
+		target(){
+			return "_self";
+		}
+		file_name(){
+			return "";
+		}
+		current(){
+			return false;
+		}
+		relation(){
+			return "";
+		}
+		event_click(next){
+			if(next !== undefined) return next;
+			return null;
+		}
+		click(next){
+			return (this.event_click(next));
+		}
+		uri(){
+			return "";
+		}
+		dom_name(){
+			return "a";
+		}
+		uri_off(){
+			return "";
+		}
+		uri_native(){
+			return null;
+		}
+		external(){
+			return false;
+		}
+		attr(){
+			return {
+				...(super.attr()), 
+				"href": (this.uri_toggle()), 
+				"title": (this.hint_safe()), 
+				"target": (this.target()), 
+				"download": (this.file_name()), 
+				"mol_link_current": (this.current()), 
+				"rel": (this.relation())
+			};
+		}
+		sub(){
+			return [(this.title())];
+		}
+		arg(){
+			return {};
+		}
+		event(){
+			return {...(super.event()), "click": (next) => (this.click(next))};
+		}
+	};
+	($mol_mem(($.$mol_link.prototype), "event_click"));
+
+
+;
+"use strict";
+
+;
+"use strict";
+var $;
+(function ($) {
+    var $$;
+    (function ($$) {
+        class $mol_link extends $.$mol_link {
+            uri_toggle() {
+                return this.current() ? this.uri_off() : this.uri();
+            }
+            uri() {
+                return new this.$.$mol_state_arg(this.state_key()).link(this.arg());
+            }
+            uri_off() {
+                const arg2 = {};
+                for (let i in this.arg())
+                    arg2[i] = null;
+                return new this.$.$mol_state_arg(this.state_key()).link(arg2);
+            }
+            uri_native() {
+                const base = this.$.$mol_state_arg.href();
+                return new URL(this.uri(), base);
+            }
+            current() {
+                const base = this.$.$mol_state_arg.href_normal();
+                const target = this.uri_native().toString();
+                if (base === target)
+                    return true;
+                const args = this.arg();
+                const keys = Object.keys(args).filter(key => args[key] != null);
+                if (keys.length === 0)
+                    return false;
+                for (const key of keys) {
+                    if (this.$.$mol_state_arg.value(key) != args[key])
+                        return false;
+                }
+                return true;
+            }
+            file_name() {
+                return null;
+            }
+            minimal_height() {
+                return Math.max(super.minimal_height(), 24);
+            }
+            external() {
+                return this.uri_native().origin !== $mol_dom_context.location.origin;
+            }
+            target() {
+                return this.external() ? '_blank' : '_self';
+            }
+            hint_safe() {
+                try {
+                    return this.hint();
+                }
+                catch (error) {
+                    $mol_fail_log(error);
+                    return '';
+                }
+            }
+        }
+        __decorate([
+            $mol_mem
+        ], $mol_link.prototype, "uri_toggle", null);
+        __decorate([
+            $mol_mem
+        ], $mol_link.prototype, "uri", null);
+        __decorate([
+            $mol_mem
+        ], $mol_link.prototype, "uri_off", null);
+        __decorate([
+            $mol_mem
+        ], $mol_link.prototype, "uri_native", null);
+        __decorate([
+            $mol_mem
+        ], $mol_link.prototype, "current", null);
+        $$.$mol_link = $mol_link;
+    })($$ = $.$$ || ($.$$ = {}));
+})($ || ($ = {}));
+
+;
+"use strict";
+var $;
+(function ($) {
+    const { rem } = $mol_style_unit;
+    $mol_style_define($mol_link, {
+        textDecoration: 'none',
+        color: $mol_theme.control,
+        stroke: 'currentcolor',
+        cursor: 'pointer',
+        padding: $mol_gap.text,
+        boxSizing: 'border-box',
+        position: 'relative',
+        minWidth: rem(2.5),
+        minHeight: rem(2.5),
+        gap: $mol_gap.space,
+        border: {
+            radius: $mol_gap.round,
+        },
+        ':hover': {
+            background: {
+                color: $mol_theme.hover,
+            },
+        },
+        ':focus': {
+            outline: 'none',
+        },
+        ':focus-visible': {
+            outline: 'none',
+            background: {
+                color: $mol_theme.hover,
+            }
+        },
+        ':active': {
+            color: $mol_theme.focus,
+        },
+        '@': {
+            mol_link_current: {
+                'true': {
+                    color: $mol_theme.current,
+                    textShadow: '0 0',
+                }
+            }
+        },
+    });
+})($ || ($ = {}));
+
+;
+	($.$mol_icon_script) = class $mol_icon_script extends ($.$mol_icon) {
+		path(){
+			return "M17.8,20C17.4,21.2 16.3,22 15,22H5C3.3,22 2,20.7 2,19V18H5L14.2,18C14.6,19.2 15.7,20 17,20H17.8M19,2H8C6.3,2 5,3.3 5,5V16H16V17C16,17.6 16.4,18 17,18H18V5C18,4.4 18.4,4 19,4C19.6,4 20,4.4 20,5V6H22V5C22,3.3 20.7,2 19,2Z";
+		}
+	};
+
+
+;
+"use strict";
+
+;
+	($.$mol_icon_script_text) = class $mol_icon_script_text extends ($.$mol_icon) {
+		path(){
+			return "M17.8,20C17.4,21.2 16.3,22 15,22H5C3.3,22 2,20.7 2,19V18H5L14.2,18C14.6,19.2 15.7,20 17,20H17.8M19,2C20.7,2 22,3.3 22,5V6H20V5C20,4.4 19.6,4 19,4C18.4,4 18,4.4 18,5V18H17C16.4,18 16,17.6 16,17V16H5V5C5,3.3 6.3,2 8,2H19M8,6V8H15V6H8M8,10V12H14V10H8Z";
+		}
+	};
+
+
+;
+"use strict";
+
+;
+"use strict";
+var $;
+(function ($) {
+    class $mol_locale extends $mol_object {
+        static lang_default() {
+            return 'en';
+        }
+        static lang(next) {
+            return this.$.$mol_state_local.value('locale', next) || $mol_dom_context.navigator.language.replace(/-.*/, '') || this.lang_default();
+        }
+        static source(lang) {
+            return JSON.parse(this.$.$mol_file.relative(`web.locale=${lang}.json`).text().toString());
+        }
+        static texts(lang, next) {
+            if (next)
+                return next;
+            try {
+                return this.source(lang).valueOf();
+            }
+            catch (error) {
+                if ($mol_fail_catch(error)) {
+                    const def = this.lang_default();
+                    if (lang === def)
+                        throw error;
+                }
+            }
+            return {};
+        }
+        static text(key) {
+            const lang = this.lang();
+            const target = this.texts(lang)[key];
+            if (target)
+                return target;
+            this.warn(key);
+            const en = this.texts('en')[key];
+            if (!en)
+                return key;
+            return en;
+        }
+        static warn(key) {
+            console.warn(`Not translated to "${this.lang()}": ${key}`);
+            return null;
+        }
+    }
+    __decorate([
+        $mol_mem
+    ], $mol_locale, "lang_default", null);
+    __decorate([
+        $mol_mem
+    ], $mol_locale, "lang", null);
+    __decorate([
+        $mol_mem_key
+    ], $mol_locale, "source", null);
+    __decorate([
+        $mol_mem_key
+    ], $mol_locale, "texts", null);
+    __decorate([
+        $mol_mem_key
+    ], $mol_locale, "text", null);
+    __decorate([
+        $mol_mem_key
+    ], $mol_locale, "warn", null);
+    $.$mol_locale = $mol_locale;
+})($ || ($ = {}));
+
+;
+	($.$mol_link_source) = class $mol_link_source extends ($.$mol_link) {
+		Icon(){
+			const obj = new this.$.$mol_icon_script_text();
+			return obj;
+		}
+		hint(){
+			return (this.$.$mol_locale.text("$mol_link_source_hint"));
+		}
+		sub(){
+			return [(this.Icon())];
+		}
+	};
+	($mol_mem(($.$mol_link_source.prototype), "Icon"));
+
+
+;
+"use strict";
+
+;
+	($.$mol_speck) = class $mol_speck extends ($.$mol_view) {
+		value(){
+			return null;
+		}
+		theme(){
+			return "$mol_theme_accent";
+		}
+		sub(){
+			return [(this.value())];
+		}
+	};
+
+
+;
+"use strict";
+var $;
+(function ($) {
+    $.$mol_layer = $mol_style_prop('mol_layer', [
+        'hover',
+        'focus',
+        'speck',
+        'float',
+        'popup',
+    ]);
+})($ || ($ = {}));
+
+;
+"use strict";
+var $;
+(function ($) {
+    $mol_style_attach("mol/layer/layer.css", ":root {\n\t--mol_layer_hover: 1;\n\t--mol_layer_focus: 2;\n\t--mol_layer_speck: 3;\n\t--mol_layer_float: 4;\n\t--mol_layer_popup: 5;\n}\n");
+})($ || ($ = {}));
+
+;
+"use strict";
+var $;
+(function ($) {
+    $mol_style_attach("mol/speck/speck.view.css", "[mol_speck] {\n\tfont-size: .75rem;\n\tborder-radius: 1rem;\n\tmargin: -0.5rem -0.2rem;\n\talign-self: flex-start;\n\tmin-height: 1em;\n\tmin-width: .75rem;\n\tvertical-align: sub;\n\tpadding: 0 .2rem;\n\tposition: absolute;\n\tz-index: var(--mol_layer_speck);\n\ttext-align: center;\n\tline-height: .9;\n\tdisplay: inline-block;\n\twhite-space: nowrap;\n\ttext-overflow: ellipsis;\n\tuser-select: none;\n\tbox-shadow: 0 0 3px rgba(0,0,0,.5);\n}\n");
+})($ || ($ = {}));
+
+;
+"use strict";
+
+;
+	($.$mol_button) = class $mol_button extends ($.$mol_view) {
+		event_activate(next){
+			if(next !== undefined) return next;
+			return null;
+		}
+		activate(next){
+			return (this.event_activate(next));
+		}
+		clicks(next){
+			if(next !== undefined) return next;
+			return null;
+		}
+		event_key_press(next){
+			if(next !== undefined) return next;
+			return null;
+		}
+		key_press(next){
+			return (this.event_key_press(next));
+		}
+		disabled(){
+			return false;
+		}
+		tab_index(){
+			return 0;
+		}
+		hint(){
+			return "";
+		}
+		hint_safe(){
+			return (this.hint());
+		}
+		error(){
+			return "";
+		}
+		enabled(){
+			return true;
+		}
+		click(next){
+			if(next !== undefined) return next;
+			return null;
+		}
+		event_click(next){
+			if(next !== undefined) return next;
+			return null;
+		}
+		event(){
+			return {
+				...(super.event()), 
+				"click": (next) => (this.activate(next)), 
+				"dblclick": (next) => (this.clicks(next)), 
+				"keydown": (next) => (this.key_press(next))
+			};
+		}
+		attr(){
+			return {
+				...(super.attr()), 
+				"disabled": (this.disabled()), 
+				"role": "button", 
+				"tabindex": (this.tab_index()), 
+				"title": (this.hint_safe())
+			};
+		}
+		sub(){
+			return [(this.title())];
+		}
+		Speck(){
+			const obj = new this.$.$mol_speck();
+			(obj.value) = () => ((this.error()));
+			return obj;
+		}
+	};
+	($mol_mem(($.$mol_button.prototype), "event_activate"));
+	($mol_mem(($.$mol_button.prototype), "clicks"));
+	($mol_mem(($.$mol_button.prototype), "event_key_press"));
+	($mol_mem(($.$mol_button.prototype), "click"));
+	($mol_mem(($.$mol_button.prototype), "event_click"));
+	($mol_mem(($.$mol_button.prototype), "Speck"));
+
+
+;
+"use strict";
+var $;
+(function ($) {
+    let $mol_keyboard_code;
+    (function ($mol_keyboard_code) {
+        $mol_keyboard_code[$mol_keyboard_code["backspace"] = 8] = "backspace";
+        $mol_keyboard_code[$mol_keyboard_code["tab"] = 9] = "tab";
+        $mol_keyboard_code[$mol_keyboard_code["enter"] = 13] = "enter";
+        $mol_keyboard_code[$mol_keyboard_code["shift"] = 16] = "shift";
+        $mol_keyboard_code[$mol_keyboard_code["ctrl"] = 17] = "ctrl";
+        $mol_keyboard_code[$mol_keyboard_code["alt"] = 18] = "alt";
+        $mol_keyboard_code[$mol_keyboard_code["pause"] = 19] = "pause";
+        $mol_keyboard_code[$mol_keyboard_code["capsLock"] = 20] = "capsLock";
+        $mol_keyboard_code[$mol_keyboard_code["escape"] = 27] = "escape";
+        $mol_keyboard_code[$mol_keyboard_code["space"] = 32] = "space";
+        $mol_keyboard_code[$mol_keyboard_code["pageUp"] = 33] = "pageUp";
+        $mol_keyboard_code[$mol_keyboard_code["pageDown"] = 34] = "pageDown";
+        $mol_keyboard_code[$mol_keyboard_code["end"] = 35] = "end";
+        $mol_keyboard_code[$mol_keyboard_code["home"] = 36] = "home";
+        $mol_keyboard_code[$mol_keyboard_code["left"] = 37] = "left";
+        $mol_keyboard_code[$mol_keyboard_code["up"] = 38] = "up";
+        $mol_keyboard_code[$mol_keyboard_code["right"] = 39] = "right";
+        $mol_keyboard_code[$mol_keyboard_code["down"] = 40] = "down";
+        $mol_keyboard_code[$mol_keyboard_code["insert"] = 45] = "insert";
+        $mol_keyboard_code[$mol_keyboard_code["delete"] = 46] = "delete";
+        $mol_keyboard_code[$mol_keyboard_code["key0"] = 48] = "key0";
+        $mol_keyboard_code[$mol_keyboard_code["key1"] = 49] = "key1";
+        $mol_keyboard_code[$mol_keyboard_code["key2"] = 50] = "key2";
+        $mol_keyboard_code[$mol_keyboard_code["key3"] = 51] = "key3";
+        $mol_keyboard_code[$mol_keyboard_code["key4"] = 52] = "key4";
+        $mol_keyboard_code[$mol_keyboard_code["key5"] = 53] = "key5";
+        $mol_keyboard_code[$mol_keyboard_code["key6"] = 54] = "key6";
+        $mol_keyboard_code[$mol_keyboard_code["key7"] = 55] = "key7";
+        $mol_keyboard_code[$mol_keyboard_code["key8"] = 56] = "key8";
+        $mol_keyboard_code[$mol_keyboard_code["key9"] = 57] = "key9";
+        $mol_keyboard_code[$mol_keyboard_code["A"] = 65] = "A";
+        $mol_keyboard_code[$mol_keyboard_code["B"] = 66] = "B";
+        $mol_keyboard_code[$mol_keyboard_code["C"] = 67] = "C";
+        $mol_keyboard_code[$mol_keyboard_code["D"] = 68] = "D";
+        $mol_keyboard_code[$mol_keyboard_code["E"] = 69] = "E";
+        $mol_keyboard_code[$mol_keyboard_code["F"] = 70] = "F";
+        $mol_keyboard_code[$mol_keyboard_code["G"] = 71] = "G";
+        $mol_keyboard_code[$mol_keyboard_code["H"] = 72] = "H";
+        $mol_keyboard_code[$mol_keyboard_code["I"] = 73] = "I";
+        $mol_keyboard_code[$mol_keyboard_code["J"] = 74] = "J";
+        $mol_keyboard_code[$mol_keyboard_code["K"] = 75] = "K";
+        $mol_keyboard_code[$mol_keyboard_code["L"] = 76] = "L";
+        $mol_keyboard_code[$mol_keyboard_code["M"] = 77] = "M";
+        $mol_keyboard_code[$mol_keyboard_code["N"] = 78] = "N";
+        $mol_keyboard_code[$mol_keyboard_code["O"] = 79] = "O";
+        $mol_keyboard_code[$mol_keyboard_code["P"] = 80] = "P";
+        $mol_keyboard_code[$mol_keyboard_code["Q"] = 81] = "Q";
+        $mol_keyboard_code[$mol_keyboard_code["R"] = 82] = "R";
+        $mol_keyboard_code[$mol_keyboard_code["S"] = 83] = "S";
+        $mol_keyboard_code[$mol_keyboard_code["T"] = 84] = "T";
+        $mol_keyboard_code[$mol_keyboard_code["U"] = 85] = "U";
+        $mol_keyboard_code[$mol_keyboard_code["V"] = 86] = "V";
+        $mol_keyboard_code[$mol_keyboard_code["W"] = 87] = "W";
+        $mol_keyboard_code[$mol_keyboard_code["X"] = 88] = "X";
+        $mol_keyboard_code[$mol_keyboard_code["Y"] = 89] = "Y";
+        $mol_keyboard_code[$mol_keyboard_code["Z"] = 90] = "Z";
+        $mol_keyboard_code[$mol_keyboard_code["metaLeft"] = 91] = "metaLeft";
+        $mol_keyboard_code[$mol_keyboard_code["metaRight"] = 92] = "metaRight";
+        $mol_keyboard_code[$mol_keyboard_code["select"] = 93] = "select";
+        $mol_keyboard_code[$mol_keyboard_code["numpad0"] = 96] = "numpad0";
+        $mol_keyboard_code[$mol_keyboard_code["numpad1"] = 97] = "numpad1";
+        $mol_keyboard_code[$mol_keyboard_code["numpad2"] = 98] = "numpad2";
+        $mol_keyboard_code[$mol_keyboard_code["numpad3"] = 99] = "numpad3";
+        $mol_keyboard_code[$mol_keyboard_code["numpad4"] = 100] = "numpad4";
+        $mol_keyboard_code[$mol_keyboard_code["numpad5"] = 101] = "numpad5";
+        $mol_keyboard_code[$mol_keyboard_code["numpad6"] = 102] = "numpad6";
+        $mol_keyboard_code[$mol_keyboard_code["numpad7"] = 103] = "numpad7";
+        $mol_keyboard_code[$mol_keyboard_code["numpad8"] = 104] = "numpad8";
+        $mol_keyboard_code[$mol_keyboard_code["numpad9"] = 105] = "numpad9";
+        $mol_keyboard_code[$mol_keyboard_code["multiply"] = 106] = "multiply";
+        $mol_keyboard_code[$mol_keyboard_code["add"] = 107] = "add";
+        $mol_keyboard_code[$mol_keyboard_code["subtract"] = 109] = "subtract";
+        $mol_keyboard_code[$mol_keyboard_code["decimal"] = 110] = "decimal";
+        $mol_keyboard_code[$mol_keyboard_code["divide"] = 111] = "divide";
+        $mol_keyboard_code[$mol_keyboard_code["F1"] = 112] = "F1";
+        $mol_keyboard_code[$mol_keyboard_code["F2"] = 113] = "F2";
+        $mol_keyboard_code[$mol_keyboard_code["F3"] = 114] = "F3";
+        $mol_keyboard_code[$mol_keyboard_code["F4"] = 115] = "F4";
+        $mol_keyboard_code[$mol_keyboard_code["F5"] = 116] = "F5";
+        $mol_keyboard_code[$mol_keyboard_code["F6"] = 117] = "F6";
+        $mol_keyboard_code[$mol_keyboard_code["F7"] = 118] = "F7";
+        $mol_keyboard_code[$mol_keyboard_code["F8"] = 119] = "F8";
+        $mol_keyboard_code[$mol_keyboard_code["F9"] = 120] = "F9";
+        $mol_keyboard_code[$mol_keyboard_code["F10"] = 121] = "F10";
+        $mol_keyboard_code[$mol_keyboard_code["F11"] = 122] = "F11";
+        $mol_keyboard_code[$mol_keyboard_code["F12"] = 123] = "F12";
+        $mol_keyboard_code[$mol_keyboard_code["numLock"] = 144] = "numLock";
+        $mol_keyboard_code[$mol_keyboard_code["scrollLock"] = 145] = "scrollLock";
+        $mol_keyboard_code[$mol_keyboard_code["semicolon"] = 186] = "semicolon";
+        $mol_keyboard_code[$mol_keyboard_code["equals"] = 187] = "equals";
+        $mol_keyboard_code[$mol_keyboard_code["comma"] = 188] = "comma";
+        $mol_keyboard_code[$mol_keyboard_code["dash"] = 189] = "dash";
+        $mol_keyboard_code[$mol_keyboard_code["period"] = 190] = "period";
+        $mol_keyboard_code[$mol_keyboard_code["forwardSlash"] = 191] = "forwardSlash";
+        $mol_keyboard_code[$mol_keyboard_code["graveAccent"] = 192] = "graveAccent";
+        $mol_keyboard_code[$mol_keyboard_code["bracketOpen"] = 219] = "bracketOpen";
+        $mol_keyboard_code[$mol_keyboard_code["slashBack"] = 220] = "slashBack";
+        $mol_keyboard_code[$mol_keyboard_code["slashBackLeft"] = 226] = "slashBackLeft";
+        $mol_keyboard_code[$mol_keyboard_code["bracketClose"] = 221] = "bracketClose";
+        $mol_keyboard_code[$mol_keyboard_code["quoteSingle"] = 222] = "quoteSingle";
+    })($mol_keyboard_code = $.$mol_keyboard_code || ($.$mol_keyboard_code = {}));
+})($ || ($ = {}));
+
+;
+"use strict";
+
+;
+"use strict";
+var $;
+(function ($) {
+    var $$;
+    (function ($$) {
+        class $mol_button extends $.$mol_button {
+            status(next = [null]) { return next; }
+            disabled() {
+                return !this.enabled();
+            }
+            event_activate(next) {
+                if (!next)
+                    return;
+                if (!this.enabled())
+                    return;
+                try {
+                    this.event_click(next);
+                    this.click(next);
+                    this.status([null]);
+                }
+                catch (error) {
+                    Promise.resolve().then(() => this.status([error]));
+                    $mol_fail_hidden(error);
+                }
+            }
+            event_key_press(event) {
+                if (event.keyCode === $mol_keyboard_code.enter) {
+                    return this.activate(event);
+                }
+            }
+            tab_index() {
+                return this.enabled() ? super.tab_index() : -1;
+            }
+            error() {
+                const [error] = this.status();
+                if (!error)
+                    return '';
+                if (error instanceof Promise) {
+                    return $mol_fail_hidden(error);
+                }
+                return String(error.message ?? error);
+            }
+            hint_safe() {
+                try {
+                    return this.hint();
+                }
+                catch (error) {
+                    $mol_fail_log(error);
+                    return '';
+                }
+            }
+            sub_visible() {
+                return [
+                    ...this.error() ? [this.Speck()] : [],
+                    ...this.sub(),
+                ];
+            }
+        }
+        __decorate([
+            $mol_mem
+        ], $mol_button.prototype, "status", null);
+        $$.$mol_button = $mol_button;
+    })($$ = $.$$ || ($.$$ = {}));
+})($ || ($ = {}));
+
+;
+"use strict";
+var $;
+(function ($) {
+    $mol_style_attach("mol/button/button.view.css", "[mol_button] {\n\tborder: none;\n\tfont: inherit;\n\tdisplay: inline-flex;\n\tflex-shrink: 0;\n\ttext-decoration: inherit;\n\tcursor: inherit;\n\tposition: relative;\n\tbox-sizing: border-box;\n\tword-break: normal;\n\tcursor: default;\n\tuser-select: none;\n\t-webkit-user-select: none;\n\tborder-radius: var(--mol_gap_round);\n\tbackground: transparent;\n\tcolor: inherit;\n}\n\n[mol_button]:where(:not(:disabled)):hover {\n\tz-index: var(--mol_layer_hover);\n}\n\n[mol_button]:focus {\n\toutline: none;\n\tz-index: var(--mol_layer_focus);\n}\n");
+})($ || ($ = {}));
+
+;
+	($.$mol_button_typed) = class $mol_button_typed extends ($.$mol_button) {
+		minimal_height(){
+			return 40;
+		}
+		minimal_width(){
+			return 40;
+		}
+	};
+
+
+;
+"use strict";
+var $;
+(function ($) {
+    $mol_style_attach("mol/button/typed/typed.view.css", "[mol_button_typed] {\n\talign-content: center;\n\talign-items: center;\n\tpadding: var(--mol_gap_text);\n\tborder-radius: var(--mol_gap_round);\n\tgap: var(--mol_gap_space);\n\tuser-select: none;\n\tcursor: pointer;\n\tmin-width: 2.5rem;\n\tmin-height: 2.5rem;\n}\n\n[mol_button_typed][disabled] {\n\tpointer-events: none;\n}\n\n[mol_button_typed]:hover ,\n[mol_button_typed]:focus-visible {\n\tbox-shadow: inset 0 0 0 100vmax var(--mol_theme_hover);\n}\n\n[mol_button_typed]:active {\n\tcolor: var(--mol_theme_focus);\n}\n");
+})($ || ($ = {}));
+
+;
+"use strict";
+
+;
+	($.$mol_button_minor) = class $mol_button_minor extends ($.$mol_button_typed) {};
+
+
+;
+"use strict";
+var $;
+(function ($) {
+    $mol_style_attach("mol/button/minor/minor.view.css", "[mol_button_minor] {\n\tcolor: var(--mol_theme_control);\n}\n\n[mol_button_minor][disabled] {\n\tcolor: var(--mol_theme_shade);\n}\n");
+})($ || ($ = {}));
+
+;
+"use strict";
+
+;
+	($.$mol_check) = class $mol_check extends ($.$mol_button_minor) {
+		checked(next){
+			if(next !== undefined) return next;
+			return false;
+		}
+		aria_checked(){
+			return "false";
+		}
+		aria_role(){
+			return "checkbox";
+		}
+		Icon(){
+			return null;
+		}
+		title(){
+			return "";
+		}
+		Title(){
+			const obj = new this.$.$mol_view();
+			(obj.sub) = () => ([(this.title())]);
+			return obj;
+		}
+		label(){
+			return [(this.Title())];
+		}
+		attr(){
+			return {
+				...(super.attr()), 
+				"mol_check_checked": (this.checked()), 
+				"aria-checked": (this.aria_checked()), 
+				"role": (this.aria_role())
+			};
+		}
+		sub(){
+			return [(this.Icon()), (this.label())];
+		}
+	};
+	($mol_mem(($.$mol_check.prototype), "checked"));
+	($mol_mem(($.$mol_check.prototype), "Title"));
+
+
+;
+"use strict";
+var $;
+(function ($) {
+    $mol_style_attach("mol/check/check.css", "[mol_check] {\n\tflex: 0 0 auto;\n\tjustify-content: flex-start;\n\talign-content: center;\n\t/* align-items: flex-start; */\n\tborder: none;\n\tfont-weight: inherit;\n\tbox-shadow: none;\n\ttext-align: left;\n\tdisplay: inline-flex;\n\tflex-wrap: nowrap;\n}\n\n[mol_check_title] {\n\tflex-shrink: 1;\n}\n");
+})($ || ($ = {}));
+
+;
+"use strict";
+
+;
+"use strict";
+var $;
+(function ($) {
+    var $$;
+    (function ($$) {
+        class $mol_check extends $.$mol_check {
+            click(next) {
+                if (next?.defaultPrevented)
+                    return;
+                this.checked(!this.checked());
+                if (next)
+                    next.preventDefault();
+            }
+            sub() {
+                return [
+                    ...$mol_maybe(this.Icon()),
+                    ...this.label(),
+                ];
+            }
+            label() {
+                return this.title() ? super.label() : [];
+            }
+            aria_checked() {
+                return String(this.checked());
+            }
+        }
+        $$.$mol_check = $mol_check;
+    })($$ = $.$$ || ($.$$ = {}));
+})($ || ($ = {}));
+
+;
+	($.$mol_check_icon) = class $mol_check_icon extends ($.$mol_check) {};
+
+
+;
+"use strict";
+var $;
+(function ($) {
+    $mol_style_attach("mol/check/icon/icon.view.css", "[mol_check_icon]:where([mol_check_checked]) {\n\tcolor: var(--mol_theme_current);\n}\n");
+})($ || ($ = {}));
+
+;
+"use strict";
+
+;
+	($.$mol_icon_brightness_4) = class $mol_icon_brightness_4 extends ($.$mol_icon) {
+		path(){
+			return "M12,18C11.11,18 10.26,17.8 9.5,17.45C11.56,16.5 13,14.42 13,12C13,9.58 11.56,7.5 9.5,6.55C10.26,6.2 11.11,6 12,6A6,6 0 0,1 18,12A6,6 0 0,1 12,18M20,8.69V4H15.31L12,0.69L8.69,4H4V8.69L0.69,12L4,15.31V20H8.69L12,23.31L15.31,20H20V15.31L23.31,12L20,8.69Z";
+		}
+	};
+
+
+;
+"use strict";
+
+;
+	($.$mol_lights_toggle) = class $mol_lights_toggle extends ($.$mol_check_icon) {
+		Lights_icon(){
+			const obj = new this.$.$mol_icon_brightness_4();
+			return obj;
+		}
+		lights(next){
+			if(next !== undefined) return next;
+			return false;
+		}
+		Icon(){
+			return (this.Lights_icon());
+		}
+		hint(){
+			return (this.$.$mol_locale.text("$mol_lights_toggle_hint"));
+		}
+		checked(next){
+			return (this.lights(next));
+		}
+	};
+	($mol_mem(($.$mol_lights_toggle.prototype), "Lights_icon"));
+	($mol_mem(($.$mol_lights_toggle.prototype), "lights"));
+
+
+;
+"use strict";
+
+;
+"use strict";
+var $;
+(function ($) {
+    var $$;
+    (function ($$) {
+        class $mol_lights_toggle extends $.$mol_lights_toggle {
+            lights(next) {
+                return this.$.$mol_lights(next);
+            }
+        }
+        $$.$mol_lights_toggle = $mol_lights_toggle;
+    })($$ = $.$$ || ($.$$ = {}));
+})($ || ($ = {}));
+
+;
 	($.$mol_list) = class $mol_list extends ($.$mol_view) {
 		gap_before(){
 			return 0;
@@ -6902,350 +7701,6 @@ var $;
 })($ || ($ = {}));
 
 ;
-	($.$mol_speck) = class $mol_speck extends ($.$mol_view) {
-		value(){
-			return null;
-		}
-		theme(){
-			return "$mol_theme_accent";
-		}
-		sub(){
-			return [(this.value())];
-		}
-	};
-
-
-;
-"use strict";
-var $;
-(function ($) {
-    $.$mol_layer = $mol_style_prop('mol_layer', [
-        'hover',
-        'focus',
-        'speck',
-        'float',
-        'popup',
-    ]);
-})($ || ($ = {}));
-
-;
-"use strict";
-var $;
-(function ($) {
-    $mol_style_attach("mol/layer/layer.css", ":root {\n\t--mol_layer_hover: 1;\n\t--mol_layer_focus: 2;\n\t--mol_layer_speck: 3;\n\t--mol_layer_float: 4;\n\t--mol_layer_popup: 5;\n}\n");
-})($ || ($ = {}));
-
-;
-"use strict";
-var $;
-(function ($) {
-    $mol_style_attach("mol/speck/speck.view.css", "[mol_speck] {\n\tfont-size: .75rem;\n\tborder-radius: 1rem;\n\tmargin: -0.5rem -0.2rem;\n\talign-self: flex-start;\n\tmin-height: 1em;\n\tmin-width: .75rem;\n\tvertical-align: sub;\n\tpadding: 0 .2rem;\n\tposition: absolute;\n\tz-index: var(--mol_layer_speck);\n\ttext-align: center;\n\tline-height: .9;\n\tdisplay: inline-block;\n\twhite-space: nowrap;\n\ttext-overflow: ellipsis;\n\tuser-select: none;\n\tbox-shadow: 0 0 3px rgba(0,0,0,.5);\n}\n");
-})($ || ($ = {}));
-
-;
-"use strict";
-
-;
-	($.$mol_button) = class $mol_button extends ($.$mol_view) {
-		event_activate(next){
-			if(next !== undefined) return next;
-			return null;
-		}
-		activate(next){
-			return (this.event_activate(next));
-		}
-		clicks(next){
-			if(next !== undefined) return next;
-			return null;
-		}
-		event_key_press(next){
-			if(next !== undefined) return next;
-			return null;
-		}
-		key_press(next){
-			return (this.event_key_press(next));
-		}
-		disabled(){
-			return false;
-		}
-		tab_index(){
-			return 0;
-		}
-		hint(){
-			return "";
-		}
-		hint_safe(){
-			return (this.hint());
-		}
-		error(){
-			return "";
-		}
-		enabled(){
-			return true;
-		}
-		click(next){
-			if(next !== undefined) return next;
-			return null;
-		}
-		event_click(next){
-			if(next !== undefined) return next;
-			return null;
-		}
-		event(){
-			return {
-				...(super.event()), 
-				"click": (next) => (this.activate(next)), 
-				"dblclick": (next) => (this.clicks(next)), 
-				"keydown": (next) => (this.key_press(next))
-			};
-		}
-		attr(){
-			return {
-				...(super.attr()), 
-				"disabled": (this.disabled()), 
-				"role": "button", 
-				"tabindex": (this.tab_index()), 
-				"title": (this.hint_safe())
-			};
-		}
-		sub(){
-			return [(this.title())];
-		}
-		Speck(){
-			const obj = new this.$.$mol_speck();
-			(obj.value) = () => ((this.error()));
-			return obj;
-		}
-	};
-	($mol_mem(($.$mol_button.prototype), "event_activate"));
-	($mol_mem(($.$mol_button.prototype), "clicks"));
-	($mol_mem(($.$mol_button.prototype), "event_key_press"));
-	($mol_mem(($.$mol_button.prototype), "click"));
-	($mol_mem(($.$mol_button.prototype), "event_click"));
-	($mol_mem(($.$mol_button.prototype), "Speck"));
-
-
-;
-"use strict";
-var $;
-(function ($) {
-    let $mol_keyboard_code;
-    (function ($mol_keyboard_code) {
-        $mol_keyboard_code[$mol_keyboard_code["backspace"] = 8] = "backspace";
-        $mol_keyboard_code[$mol_keyboard_code["tab"] = 9] = "tab";
-        $mol_keyboard_code[$mol_keyboard_code["enter"] = 13] = "enter";
-        $mol_keyboard_code[$mol_keyboard_code["shift"] = 16] = "shift";
-        $mol_keyboard_code[$mol_keyboard_code["ctrl"] = 17] = "ctrl";
-        $mol_keyboard_code[$mol_keyboard_code["alt"] = 18] = "alt";
-        $mol_keyboard_code[$mol_keyboard_code["pause"] = 19] = "pause";
-        $mol_keyboard_code[$mol_keyboard_code["capsLock"] = 20] = "capsLock";
-        $mol_keyboard_code[$mol_keyboard_code["escape"] = 27] = "escape";
-        $mol_keyboard_code[$mol_keyboard_code["space"] = 32] = "space";
-        $mol_keyboard_code[$mol_keyboard_code["pageUp"] = 33] = "pageUp";
-        $mol_keyboard_code[$mol_keyboard_code["pageDown"] = 34] = "pageDown";
-        $mol_keyboard_code[$mol_keyboard_code["end"] = 35] = "end";
-        $mol_keyboard_code[$mol_keyboard_code["home"] = 36] = "home";
-        $mol_keyboard_code[$mol_keyboard_code["left"] = 37] = "left";
-        $mol_keyboard_code[$mol_keyboard_code["up"] = 38] = "up";
-        $mol_keyboard_code[$mol_keyboard_code["right"] = 39] = "right";
-        $mol_keyboard_code[$mol_keyboard_code["down"] = 40] = "down";
-        $mol_keyboard_code[$mol_keyboard_code["insert"] = 45] = "insert";
-        $mol_keyboard_code[$mol_keyboard_code["delete"] = 46] = "delete";
-        $mol_keyboard_code[$mol_keyboard_code["key0"] = 48] = "key0";
-        $mol_keyboard_code[$mol_keyboard_code["key1"] = 49] = "key1";
-        $mol_keyboard_code[$mol_keyboard_code["key2"] = 50] = "key2";
-        $mol_keyboard_code[$mol_keyboard_code["key3"] = 51] = "key3";
-        $mol_keyboard_code[$mol_keyboard_code["key4"] = 52] = "key4";
-        $mol_keyboard_code[$mol_keyboard_code["key5"] = 53] = "key5";
-        $mol_keyboard_code[$mol_keyboard_code["key6"] = 54] = "key6";
-        $mol_keyboard_code[$mol_keyboard_code["key7"] = 55] = "key7";
-        $mol_keyboard_code[$mol_keyboard_code["key8"] = 56] = "key8";
-        $mol_keyboard_code[$mol_keyboard_code["key9"] = 57] = "key9";
-        $mol_keyboard_code[$mol_keyboard_code["A"] = 65] = "A";
-        $mol_keyboard_code[$mol_keyboard_code["B"] = 66] = "B";
-        $mol_keyboard_code[$mol_keyboard_code["C"] = 67] = "C";
-        $mol_keyboard_code[$mol_keyboard_code["D"] = 68] = "D";
-        $mol_keyboard_code[$mol_keyboard_code["E"] = 69] = "E";
-        $mol_keyboard_code[$mol_keyboard_code["F"] = 70] = "F";
-        $mol_keyboard_code[$mol_keyboard_code["G"] = 71] = "G";
-        $mol_keyboard_code[$mol_keyboard_code["H"] = 72] = "H";
-        $mol_keyboard_code[$mol_keyboard_code["I"] = 73] = "I";
-        $mol_keyboard_code[$mol_keyboard_code["J"] = 74] = "J";
-        $mol_keyboard_code[$mol_keyboard_code["K"] = 75] = "K";
-        $mol_keyboard_code[$mol_keyboard_code["L"] = 76] = "L";
-        $mol_keyboard_code[$mol_keyboard_code["M"] = 77] = "M";
-        $mol_keyboard_code[$mol_keyboard_code["N"] = 78] = "N";
-        $mol_keyboard_code[$mol_keyboard_code["O"] = 79] = "O";
-        $mol_keyboard_code[$mol_keyboard_code["P"] = 80] = "P";
-        $mol_keyboard_code[$mol_keyboard_code["Q"] = 81] = "Q";
-        $mol_keyboard_code[$mol_keyboard_code["R"] = 82] = "R";
-        $mol_keyboard_code[$mol_keyboard_code["S"] = 83] = "S";
-        $mol_keyboard_code[$mol_keyboard_code["T"] = 84] = "T";
-        $mol_keyboard_code[$mol_keyboard_code["U"] = 85] = "U";
-        $mol_keyboard_code[$mol_keyboard_code["V"] = 86] = "V";
-        $mol_keyboard_code[$mol_keyboard_code["W"] = 87] = "W";
-        $mol_keyboard_code[$mol_keyboard_code["X"] = 88] = "X";
-        $mol_keyboard_code[$mol_keyboard_code["Y"] = 89] = "Y";
-        $mol_keyboard_code[$mol_keyboard_code["Z"] = 90] = "Z";
-        $mol_keyboard_code[$mol_keyboard_code["metaLeft"] = 91] = "metaLeft";
-        $mol_keyboard_code[$mol_keyboard_code["metaRight"] = 92] = "metaRight";
-        $mol_keyboard_code[$mol_keyboard_code["select"] = 93] = "select";
-        $mol_keyboard_code[$mol_keyboard_code["numpad0"] = 96] = "numpad0";
-        $mol_keyboard_code[$mol_keyboard_code["numpad1"] = 97] = "numpad1";
-        $mol_keyboard_code[$mol_keyboard_code["numpad2"] = 98] = "numpad2";
-        $mol_keyboard_code[$mol_keyboard_code["numpad3"] = 99] = "numpad3";
-        $mol_keyboard_code[$mol_keyboard_code["numpad4"] = 100] = "numpad4";
-        $mol_keyboard_code[$mol_keyboard_code["numpad5"] = 101] = "numpad5";
-        $mol_keyboard_code[$mol_keyboard_code["numpad6"] = 102] = "numpad6";
-        $mol_keyboard_code[$mol_keyboard_code["numpad7"] = 103] = "numpad7";
-        $mol_keyboard_code[$mol_keyboard_code["numpad8"] = 104] = "numpad8";
-        $mol_keyboard_code[$mol_keyboard_code["numpad9"] = 105] = "numpad9";
-        $mol_keyboard_code[$mol_keyboard_code["multiply"] = 106] = "multiply";
-        $mol_keyboard_code[$mol_keyboard_code["add"] = 107] = "add";
-        $mol_keyboard_code[$mol_keyboard_code["subtract"] = 109] = "subtract";
-        $mol_keyboard_code[$mol_keyboard_code["decimal"] = 110] = "decimal";
-        $mol_keyboard_code[$mol_keyboard_code["divide"] = 111] = "divide";
-        $mol_keyboard_code[$mol_keyboard_code["F1"] = 112] = "F1";
-        $mol_keyboard_code[$mol_keyboard_code["F2"] = 113] = "F2";
-        $mol_keyboard_code[$mol_keyboard_code["F3"] = 114] = "F3";
-        $mol_keyboard_code[$mol_keyboard_code["F4"] = 115] = "F4";
-        $mol_keyboard_code[$mol_keyboard_code["F5"] = 116] = "F5";
-        $mol_keyboard_code[$mol_keyboard_code["F6"] = 117] = "F6";
-        $mol_keyboard_code[$mol_keyboard_code["F7"] = 118] = "F7";
-        $mol_keyboard_code[$mol_keyboard_code["F8"] = 119] = "F8";
-        $mol_keyboard_code[$mol_keyboard_code["F9"] = 120] = "F9";
-        $mol_keyboard_code[$mol_keyboard_code["F10"] = 121] = "F10";
-        $mol_keyboard_code[$mol_keyboard_code["F11"] = 122] = "F11";
-        $mol_keyboard_code[$mol_keyboard_code["F12"] = 123] = "F12";
-        $mol_keyboard_code[$mol_keyboard_code["numLock"] = 144] = "numLock";
-        $mol_keyboard_code[$mol_keyboard_code["scrollLock"] = 145] = "scrollLock";
-        $mol_keyboard_code[$mol_keyboard_code["semicolon"] = 186] = "semicolon";
-        $mol_keyboard_code[$mol_keyboard_code["equals"] = 187] = "equals";
-        $mol_keyboard_code[$mol_keyboard_code["comma"] = 188] = "comma";
-        $mol_keyboard_code[$mol_keyboard_code["dash"] = 189] = "dash";
-        $mol_keyboard_code[$mol_keyboard_code["period"] = 190] = "period";
-        $mol_keyboard_code[$mol_keyboard_code["forwardSlash"] = 191] = "forwardSlash";
-        $mol_keyboard_code[$mol_keyboard_code["graveAccent"] = 192] = "graveAccent";
-        $mol_keyboard_code[$mol_keyboard_code["bracketOpen"] = 219] = "bracketOpen";
-        $mol_keyboard_code[$mol_keyboard_code["slashBack"] = 220] = "slashBack";
-        $mol_keyboard_code[$mol_keyboard_code["slashBackLeft"] = 226] = "slashBackLeft";
-        $mol_keyboard_code[$mol_keyboard_code["bracketClose"] = 221] = "bracketClose";
-        $mol_keyboard_code[$mol_keyboard_code["quoteSingle"] = 222] = "quoteSingle";
-    })($mol_keyboard_code = $.$mol_keyboard_code || ($.$mol_keyboard_code = {}));
-})($ || ($ = {}));
-
-;
-"use strict";
-
-;
-"use strict";
-var $;
-(function ($) {
-    var $$;
-    (function ($$) {
-        class $mol_button extends $.$mol_button {
-            status(next = [null]) { return next; }
-            disabled() {
-                return !this.enabled();
-            }
-            event_activate(next) {
-                if (!next)
-                    return;
-                if (!this.enabled())
-                    return;
-                try {
-                    this.event_click(next);
-                    this.click(next);
-                    this.status([null]);
-                }
-                catch (error) {
-                    Promise.resolve().then(() => this.status([error]));
-                    $mol_fail_hidden(error);
-                }
-            }
-            event_key_press(event) {
-                if (event.keyCode === $mol_keyboard_code.enter) {
-                    return this.activate(event);
-                }
-            }
-            tab_index() {
-                return this.enabled() ? super.tab_index() : -1;
-            }
-            error() {
-                const [error] = this.status();
-                if (!error)
-                    return '';
-                if (error instanceof Promise) {
-                    return $mol_fail_hidden(error);
-                }
-                return String(error.message ?? error);
-            }
-            hint_safe() {
-                try {
-                    return this.hint();
-                }
-                catch (error) {
-                    $mol_fail_log(error);
-                    return '';
-                }
-            }
-            sub_visible() {
-                return [
-                    ...this.error() ? [this.Speck()] : [],
-                    ...this.sub(),
-                ];
-            }
-        }
-        __decorate([
-            $mol_mem
-        ], $mol_button.prototype, "status", null);
-        $$.$mol_button = $mol_button;
-    })($$ = $.$$ || ($.$$ = {}));
-})($ || ($ = {}));
-
-;
-"use strict";
-var $;
-(function ($) {
-    $mol_style_attach("mol/button/button.view.css", "[mol_button] {\n\tborder: none;\n\tfont: inherit;\n\tdisplay: inline-flex;\n\tflex-shrink: 0;\n\ttext-decoration: inherit;\n\tcursor: inherit;\n\tposition: relative;\n\tbox-sizing: border-box;\n\tword-break: normal;\n\tcursor: default;\n\tuser-select: none;\n\t-webkit-user-select: none;\n\tborder-radius: var(--mol_gap_round);\n\tbackground: transparent;\n\tcolor: inherit;\n}\n\n[mol_button]:where(:not(:disabled)):hover {\n\tz-index: var(--mol_layer_hover);\n}\n\n[mol_button]:focus {\n\toutline: none;\n\tz-index: var(--mol_layer_focus);\n}\n");
-})($ || ($ = {}));
-
-;
-	($.$mol_button_typed) = class $mol_button_typed extends ($.$mol_button) {
-		minimal_height(){
-			return 40;
-		}
-		minimal_width(){
-			return 40;
-		}
-	};
-
-
-;
-"use strict";
-var $;
-(function ($) {
-    $mol_style_attach("mol/button/typed/typed.view.css", "[mol_button_typed] {\n\talign-content: center;\n\talign-items: center;\n\tpadding: var(--mol_gap_text);\n\tborder-radius: var(--mol_gap_round);\n\tgap: var(--mol_gap_space);\n\tuser-select: none;\n\tcursor: pointer;\n\tmin-width: 2.5rem;\n\tmin-height: 2.5rem;\n}\n\n[mol_button_typed][disabled] {\n\tpointer-events: none;\n}\n\n[mol_button_typed]:hover ,\n[mol_button_typed]:focus-visible {\n\tbox-shadow: inset 0 0 0 100vmax var(--mol_theme_hover);\n}\n\n[mol_button_typed]:active {\n\tcolor: var(--mol_theme_focus);\n}\n");
-})($ || ($ = {}));
-
-;
-"use strict";
-
-;
-	($.$mol_button_minor) = class $mol_button_minor extends ($.$mol_button_typed) {};
-
-
-;
-"use strict";
-var $;
-(function ($) {
-    $mol_style_attach("mol/button/minor/minor.view.css", "[mol_button_minor] {\n\tcolor: var(--mol_theme_control);\n}\n\n[mol_button_minor][disabled] {\n\tcolor: var(--mol_theme_shade);\n}\n");
-})($ || ($ = {}));
-
-;
-"use strict";
-
-;
 "use strict";
 var $;
 (function ($) {
@@ -7366,72 +7821,6 @@ var $;
         ], $mol_button_copy.prototype, "attachments", null);
         $$.$mol_button_copy = $mol_button_copy;
     })($$ = $.$$ || ($.$$ = {}));
-})($ || ($ = {}));
-
-;
-"use strict";
-var $;
-(function ($) {
-    class $mol_locale extends $mol_object {
-        static lang_default() {
-            return 'en';
-        }
-        static lang(next) {
-            return this.$.$mol_state_local.value('locale', next) || $mol_dom_context.navigator.language.replace(/-.*/, '') || this.lang_default();
-        }
-        static source(lang) {
-            return JSON.parse(this.$.$mol_file.relative(`web.locale=${lang}.json`).text().toString());
-        }
-        static texts(lang, next) {
-            if (next)
-                return next;
-            try {
-                return this.source(lang).valueOf();
-            }
-            catch (error) {
-                if ($mol_fail_catch(error)) {
-                    const def = this.lang_default();
-                    if (lang === def)
-                        throw error;
-                }
-            }
-            return {};
-        }
-        static text(key) {
-            const lang = this.lang();
-            const target = this.texts(lang)[key];
-            if (target)
-                return target;
-            this.warn(key);
-            const en = this.texts('en')[key];
-            if (!en)
-                return key;
-            return en;
-        }
-        static warn(key) {
-            console.warn(`Not translated to "${this.lang()}": ${key}`);
-            return null;
-        }
-    }
-    __decorate([
-        $mol_mem
-    ], $mol_locale, "lang_default", null);
-    __decorate([
-        $mol_mem
-    ], $mol_locale, "lang", null);
-    __decorate([
-        $mol_mem_key
-    ], $mol_locale, "source", null);
-    __decorate([
-        $mol_mem_key
-    ], $mol_locale, "texts", null);
-    __decorate([
-        $mol_mem_key
-    ], $mol_locale, "text", null);
-    __decorate([
-        $mol_mem_key
-    ], $mol_locale, "warn", null);
-    $.$mol_locale = $mol_locale;
 })($ || ($ = {}));
 
 ;
@@ -7662,89 +8051,6 @@ var $;
 
 ;
 "use strict";
-
-;
-	($.$mol_check) = class $mol_check extends ($.$mol_button_minor) {
-		checked(next){
-			if(next !== undefined) return next;
-			return false;
-		}
-		aria_checked(){
-			return "false";
-		}
-		aria_role(){
-			return "checkbox";
-		}
-		Icon(){
-			return null;
-		}
-		title(){
-			return "";
-		}
-		Title(){
-			const obj = new this.$.$mol_view();
-			(obj.sub) = () => ([(this.title())]);
-			return obj;
-		}
-		label(){
-			return [(this.Title())];
-		}
-		attr(){
-			return {
-				...(super.attr()), 
-				"mol_check_checked": (this.checked()), 
-				"aria-checked": (this.aria_checked()), 
-				"role": (this.aria_role())
-			};
-		}
-		sub(){
-			return [(this.Icon()), (this.label())];
-		}
-	};
-	($mol_mem(($.$mol_check.prototype), "checked"));
-	($mol_mem(($.$mol_check.prototype), "Title"));
-
-
-;
-"use strict";
-var $;
-(function ($) {
-    $mol_style_attach("mol/check/check.css", "[mol_check] {\n\tflex: 0 0 auto;\n\tjustify-content: flex-start;\n\talign-content: center;\n\t/* align-items: flex-start; */\n\tborder: none;\n\tfont-weight: inherit;\n\tbox-shadow: none;\n\ttext-align: left;\n\tdisplay: inline-flex;\n\tflex-wrap: nowrap;\n}\n\n[mol_check_title] {\n\tflex-shrink: 1;\n}\n");
-})($ || ($ = {}));
-
-;
-"use strict";
-
-;
-"use strict";
-var $;
-(function ($) {
-    var $$;
-    (function ($$) {
-        class $mol_check extends $.$mol_check {
-            click(next) {
-                if (next?.defaultPrevented)
-                    return;
-                this.checked(!this.checked());
-                if (next)
-                    next.preventDefault();
-            }
-            sub() {
-                return [
-                    ...$mol_maybe(this.Icon()),
-                    ...this.label(),
-                ];
-            }
-            label() {
-                return this.title() ? super.label() : [];
-            }
-            aria_checked() {
-                return String(this.checked());
-            }
-        }
-        $$.$mol_check = $mol_check;
-    })($$ = $.$$ || ($.$$ = {}));
-})($ || ($ = {}));
 
 ;
 	($.$mol_icon_chevron) = class $mol_icon_chevron extends ($.$mol_icon) {
@@ -8167,204 +8473,6 @@ var $;
 var $;
 (function ($) {
     $mol_style_attach("mol/grid/grid.view.css", "[mol_grid] {\n\tdisplay: block;\n\tflex: 0 1 auto;\n\tposition: relative;\n\toverflow-x: auto;\n}\n\n[mol_grid_gap] {\n\tposition: absolute;\n\tpadding: .1px;\n\ttop: 0;\n\ttransform: translateZ(0);\n}\n\n[mol_grid_table] {\n\tborder-spacing: 0;\n\tdisplay: table-row-group;\n\tposition: relative;\n}\n\n[mol_grid_table] > * {\n\tdisplay: table-row;\n\ttransition: none;\n}\n\n[mol_grid_head] > *,\n[mol_grid_table] > * > * {\n\tdisplay: table-cell;\n\tpadding: var(--mol_gap_text);\n\twhite-space: nowrap;\n\tvertical-align: middle;\n\tbox-shadow: inset 2px 2px 0 -1px var(--mol_theme_line);\n}\n\n[mol_grid_row]:where(:first-child) > * {\n\tbox-shadow: inset 2px 0 0 -1px var(--mol_theme_line);\n}\n\n[mol_grid_table] > * > *:where(:first-child) {\n\tbox-shadow: inset 0px 2px 0 -1px var(--mol_theme_line);\n}\n\n[mol_grid_head] > * {\n\tbox-shadow: inset 2px -2px 0 -1px var(--mol_theme_line);\n}\n\n[mol_grid_head] > *:where(:first-child) {\n\tbox-shadow: inset 0px -2px 0 -1px var(--mol_theme_line);\n}\n\n[mol_grid_table] > [mol_grid_row]:where(:first-child) > *:where(:first-child) {\n\tbox-shadow: none;\n}\t\n\n[mol_grid_head] {\n\tdisplay: table-row;\n\ttransform: none !important;\n}\n\n/* [mol_grid_cell_number] {\n\ttext-align: right;\n} */\n\n[mol_grid_col_head] {\n\tfont-weight: inherit;\n\ttext-align: inherit;\n\tdisplay: table-cell;\n\tcolor: var(--mol_theme_shade);\n}\n\n[mol_grid_cell_dimmer] {\n\tdisplay: inline-block;\n\tvertical-align: inherit;\n}\n");
-})($ || ($ = {}));
-
-;
-	($.$mol_link) = class $mol_link extends ($.$mol_view) {
-		uri_toggle(){
-			return "";
-		}
-		hint(){
-			return "";
-		}
-		hint_safe(){
-			return (this.hint());
-		}
-		target(){
-			return "_self";
-		}
-		file_name(){
-			return "";
-		}
-		current(){
-			return false;
-		}
-		relation(){
-			return "";
-		}
-		event_click(next){
-			if(next !== undefined) return next;
-			return null;
-		}
-		click(next){
-			return (this.event_click(next));
-		}
-		uri(){
-			return "";
-		}
-		dom_name(){
-			return "a";
-		}
-		uri_off(){
-			return "";
-		}
-		uri_native(){
-			return null;
-		}
-		external(){
-			return false;
-		}
-		attr(){
-			return {
-				...(super.attr()), 
-				"href": (this.uri_toggle()), 
-				"title": (this.hint_safe()), 
-				"target": (this.target()), 
-				"download": (this.file_name()), 
-				"mol_link_current": (this.current()), 
-				"rel": (this.relation())
-			};
-		}
-		sub(){
-			return [(this.title())];
-		}
-		arg(){
-			return {};
-		}
-		event(){
-			return {...(super.event()), "click": (next) => (this.click(next))};
-		}
-	};
-	($mol_mem(($.$mol_link.prototype), "event_click"));
-
-
-;
-"use strict";
-
-;
-"use strict";
-var $;
-(function ($) {
-    var $$;
-    (function ($$) {
-        class $mol_link extends $.$mol_link {
-            uri_toggle() {
-                return this.current() ? this.uri_off() : this.uri();
-            }
-            uri() {
-                return new this.$.$mol_state_arg(this.state_key()).link(this.arg());
-            }
-            uri_off() {
-                const arg2 = {};
-                for (let i in this.arg())
-                    arg2[i] = null;
-                return new this.$.$mol_state_arg(this.state_key()).link(arg2);
-            }
-            uri_native() {
-                const base = this.$.$mol_state_arg.href();
-                return new URL(this.uri(), base);
-            }
-            current() {
-                const base = this.$.$mol_state_arg.href_normal();
-                const target = this.uri_native().toString();
-                if (base === target)
-                    return true;
-                const args = this.arg();
-                const keys = Object.keys(args).filter(key => args[key] != null);
-                if (keys.length === 0)
-                    return false;
-                for (const key of keys) {
-                    if (this.$.$mol_state_arg.value(key) != args[key])
-                        return false;
-                }
-                return true;
-            }
-            file_name() {
-                return null;
-            }
-            minimal_height() {
-                return Math.max(super.minimal_height(), 24);
-            }
-            external() {
-                return this.uri_native().origin !== $mol_dom_context.location.origin;
-            }
-            target() {
-                return this.external() ? '_blank' : '_self';
-            }
-            hint_safe() {
-                try {
-                    return this.hint();
-                }
-                catch (error) {
-                    $mol_fail_log(error);
-                    return '';
-                }
-            }
-        }
-        __decorate([
-            $mol_mem
-        ], $mol_link.prototype, "uri_toggle", null);
-        __decorate([
-            $mol_mem
-        ], $mol_link.prototype, "uri", null);
-        __decorate([
-            $mol_mem
-        ], $mol_link.prototype, "uri_off", null);
-        __decorate([
-            $mol_mem
-        ], $mol_link.prototype, "uri_native", null);
-        __decorate([
-            $mol_mem
-        ], $mol_link.prototype, "current", null);
-        $$.$mol_link = $mol_link;
-    })($$ = $.$$ || ($.$$ = {}));
-})($ || ($ = {}));
-
-;
-"use strict";
-var $;
-(function ($) {
-    const { rem } = $mol_style_unit;
-    $mol_style_define($mol_link, {
-        textDecoration: 'none',
-        color: $mol_theme.control,
-        stroke: 'currentcolor',
-        cursor: 'pointer',
-        padding: $mol_gap.text,
-        boxSizing: 'border-box',
-        position: 'relative',
-        minWidth: rem(2.5),
-        minHeight: rem(2.5),
-        gap: $mol_gap.space,
-        border: {
-            radius: $mol_gap.round,
-        },
-        ':hover': {
-            background: {
-                color: $mol_theme.hover,
-            },
-        },
-        ':focus': {
-            outline: 'none',
-        },
-        ':focus-visible': {
-            outline: 'none',
-            background: {
-                color: $mol_theme.hover,
-            }
-        },
-        ':active': {
-            color: $mol_theme.focus,
-        },
-        '@': {
-            mol_link_current: {
-                'true': {
-                    color: $mol_theme.current,
-                    textShadow: '0 0',
-                }
-            }
-        },
-    });
 })($ || ($ = {}));
 
 ;
@@ -11458,20 +11566,6 @@ var $;
 		}
 	};
 
-
-;
-"use strict";
-
-;
-	($.$mol_check_icon) = class $mol_check_icon extends ($.$mol_check) {};
-
-
-;
-"use strict";
-var $;
-(function ($) {
-    $mol_style_attach("mol/check/icon/icon.view.css", "[mol_check_icon]:where([mol_check_checked]) {\n\tcolor: var(--mol_theme_current);\n}\n");
-})($ || ($ = {}));
 
 ;
 "use strict";
@@ -17550,6 +17644,16 @@ var $;
 			const obj = new this.$.$mol_theme_auto();
 			return obj;
 		}
+		Sources(){
+			const obj = new this.$.$mol_link_source();
+			(obj.uri) = () => ("https://github.com/best-online-games/eve");
+			(obj.style) = () => ({"alignItems": "center"});
+			return obj;
+		}
+		Lights(){
+			const obj = new this.$.$mol_lights_toggle();
+			return obj;
+		}
 		Switch(){
 			return (this.Deck().Switch());
 		}
@@ -17585,6 +17689,9 @@ var $;
 				(this.Tools())
 			];
 		}
+		tools(){
+			return [(this.Sources()), (this.Lights())];
+		}
 		body(){
 			return [(this.Content())];
 		}
@@ -17600,6 +17707,8 @@ var $;
 		}
 	};
 	($mol_mem(($.$eve_app.prototype), "Theme"));
+	($mol_mem(($.$eve_app.prototype), "Sources"));
+	($mol_mem(($.$eve_app.prototype), "Lights"));
 	($mol_mem(($.$eve_app.prototype), "Libraries"));
 	($mol_mem(($.$eve_app.prototype), "Components_page"));
 	($mol_mem(($.$eve_app.prototype), "Design_page"));
