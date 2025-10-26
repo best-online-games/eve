@@ -17,11 +17,10 @@ namespace $.$$ {
 		},
 
 		Disc: {
-			// Inner disc indicator
+			// Inner disc indicator (hidden by default)
 			border: {
 				radius: '50%',
 			},
-			// Use current color (inherited from text) for the disc
 			background: {
 				color: 'currentcolor',
 			},

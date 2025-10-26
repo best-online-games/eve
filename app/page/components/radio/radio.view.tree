@@ -37,12 +37,9 @@ $eve_app_page_components_radio $eve_app_page_sb_page
 							component_name \Live_radio_group
 							default_source \
 								\Live_radio_group $eve_radio_group
-								\	- Radio group with single selection (based on mol_switch)
-								\	size? \m
 								\	options *
 								\		option1 \First Option
 								\		option2 \Second Option
 								\		option3 \Third Option
 								\	value? \option1
 								\
-

@@ -9,9 +9,18 @@ namespace $.$$ {
 	 * - Checked: solid variant (filled background with disc)
 	 * 
 	 * For labeled version use $eve_radio_labelled
-	 * For radio group use $eve_radio_group (based on $mol_switch)
+	 * For radio group use $eve_radio_group
 	 */
 	export class $eve_input_logical_radio extends $.$eve_input_logical_radio {
+
+		override dom_name() {
+			return 'input'
+		}
+
+		@$mol_mem
+		dom_id() {
+			return `${ this }:radio`
+		}
 
 		@$mol_mem
 		checked( next?: boolean ): boolean {
@@ -35,8 +44,7 @@ namespace $.$$ {
 				return
 			}
 			if( next?.defaultPrevented ) return
-			// For radio, checking is usually handled by radio group
-			// But we can still set checked for standalone usage
+			// For radio, always set checked to true (not toggle like checkbox)
 			this.checked( true )
 			if( next ) next.preventDefault()
 		}

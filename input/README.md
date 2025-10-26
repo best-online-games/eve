@@ -1,7 +1,12 @@
-Все инпуты отсюда будут выставлены наружу, для удобства
+- inputs
 
-потому что не хочется писать
+-- logical
+--- checkbox
+--- radio
 
-eve_input_logical_checkbox 
-когда можно написать 
-eve_checkbox
+-- field (основаннные на поле ввода)
+--- select
+--- text
+--- textarea
+--- number
+--- date

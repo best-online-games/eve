@@ -3,6 +3,7 @@ namespace $.$$ {
 	/**
 	 * Radio with label - based on eve_button ghost variant
 	 * Radio size is fixed at 1rem, button size controls padding/spacing
+	 * Uses native <label for="..."> to link with <input id="...">
 	 */
 	export class $eve_input_logical_radio_labelled extends $.$eve_input_logical_radio_labelled {
 
@@ -10,11 +11,9 @@ namespace $.$$ {
 			return 'label'
 		}
 
-		override click( event?: MouseEvent ) {
-			if( this.disabled() ) {
-				event?.preventDefault()
-				return
-			}
+		@$mol_mem
+		radio_id() {
+			return `${ this }:radio`
 		}
 
 	}

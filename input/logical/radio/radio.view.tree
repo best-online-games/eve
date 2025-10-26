@@ -7,9 +7,13 @@ $eve_input_logical_radio $eve_button
 		mol_check_checked <= checked? false
 		aria-checked <= aria_checked \false
 		role <= aria_role \radio
+		type \radio
+		id <= dom_id \
+		name <= name \
+		value <= value \
 	event *
 		^
 		click?event <=> event_click?event null
 	sub /
-		<= Disc $mol_view
+		<= Disc $eve_surface
 
