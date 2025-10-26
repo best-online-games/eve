@@ -1636,8 +1636,8 @@ declare namespace $.$$ {
 declare namespace $.$$ {
     function get_token(component: string, color: string, variant: string, part: string, modifier?: string): string;
     function $eve_surface_get_token_surface(color: string, variant: string, part: string, modifier?: string): string;
-    function $eve_surface_get_token_surface_level(level: $eve_surface_color, modifier?: string): string;
-    const $eve_surface_get_token_surface_level_var: typeof $eve_surface_get_token_surface_level;
+    function $eve_surface_get_token_surface_level(level: $eve_surface_color, variant?: $eve_surface_variant, part?: string, modifier?: string): string;
+    function $eve_surface_get_token_surface_level_var(level: $eve_surface_color, variant?: $eve_surface_variant, part?: string, modifier?: string): any;
     function get_token_size(size: $eve_surface_size, property: string): string;
     function get_token_radius(size: $eve_surface_size): string;
     function get_token_border(size?: $eve_surface_size): string;
@@ -5421,110 +5421,48 @@ declare namespace $.$$ {
 
 declare namespace $ {
 
-	type $mol_check__checked_mol_check_list_1 = $mol_type_enforce<
-		ReturnType< $mol_check_list['option_checked'] >
+	type $eve_input_logical_radio_labelled__name_eve_input_logical_radio_group_1 = $mol_type_enforce<
+		ReturnType< $eve_input_logical_radio_group['group_name'] >
 		,
-		ReturnType< $mol_check['checked'] >
+		ReturnType< $eve_input_logical_radio_labelled['name'] >
 	>
-	type $mol_check__label_mol_check_list_2 = $mol_type_enforce<
-		ReturnType< $mol_check_list['option_label'] >
+	type $eve_input_logical_radio_labelled__value_eve_input_logical_radio_group_2 = $mol_type_enforce<
+		ReturnType< $eve_input_logical_radio_group['option_value'] >
 		,
-		ReturnType< $mol_check['label'] >
+		ReturnType< $eve_input_logical_radio_labelled['value'] >
 	>
-	type $mol_check__enabled_mol_check_list_3 = $mol_type_enforce<
-		ReturnType< $mol_check_list['option_enabled'] >
-		,
-		ReturnType< $mol_check['enabled'] >
-	>
-	type $mol_check__hint_mol_check_list_4 = $mol_type_enforce<
-		ReturnType< $mol_check_list['option_hint'] >
-		,
-		ReturnType< $mol_check['hint'] >
-	>
-	type $mol_check__minimal_height_mol_check_list_5 = $mol_type_enforce<
-		number
-		,
-		ReturnType< $mol_check['minimal_height'] >
-	>
-	export class $mol_check_list extends $mol_view {
-		option_checked( id: any, next?: boolean ): boolean
-		option_title( id: any): string
-		option_label( id: any): readonly(any)[]
-		enabled( ): boolean
-		option_enabled( id: any): ReturnType< $mol_check_list['enabled'] >
-		option_hint( id: any): string
-		items( ): readonly($mol_check)[]
-		dictionary( ): Record<string, any>
-		Option( id: any): $mol_check
-		options( ): Record<string, any>
-		keys( ): readonly(string)[]
-		sub( ): ReturnType< $mol_check_list['items'] >
-	}
-	
-}
-
-//# sourceMappingURL=list.view.tree.d.ts.map
-declare namespace $.$$ {
-    class $mol_check_list extends $.$mol_check_list {
-        options(): {
-            [key: string]: string;
-        };
-        dictionary(next?: Record<string, boolean>): Record<string, boolean>;
-        option_checked(id: string, next?: boolean | null): boolean;
-        keys(): readonly string[];
-        items(): $.$mol_check[];
-        option_title(key: string): string;
-    }
-}
-
-declare namespace $ {
-}
-
-declare namespace $ {
-
-	export class $mol_switch extends $mol_check_list {
-		value( next?: string ): string
-	}
-	
-}
-
-//# sourceMappingURL=switch.view.tree.d.ts.map
-declare namespace $.$$ {
-    class $mol_switch extends $.$mol_switch {
-        value(next?: string): string;
-        option_checked(key: string, next?: boolean): boolean;
-    }
-}
-
-declare namespace $ {
-
-	type $eve_radio__size_eve_input_logical_radio_group_1 = $mol_type_enforce<
-		ReturnType< $eve_input_logical_radio_group['size'] >
-		,
-		ReturnType< $eve_radio['size'] >
-	>
-	type $eve_radio__checked_eve_input_logical_radio_group_2 = $mol_type_enforce<
+	type $eve_input_logical_radio_labelled__checked_eve_input_logical_radio_group_3 = $mol_type_enforce<
 		ReturnType< $eve_input_logical_radio_group['option_checked'] >
 		,
-		ReturnType< $eve_radio['checked'] >
+		ReturnType< $eve_input_logical_radio_labelled['checked'] >
 	>
-	type $eve_radio__disabled_eve_input_logical_radio_group_3 = $mol_type_enforce<
-		ReturnType< $eve_input_logical_radio_group['option_disabled'] >
-		,
-		ReturnType< $eve_radio['disabled'] >
-	>
-	type $eve_radio__label_eve_input_logical_radio_group_4 = $mol_type_enforce<
+	type $eve_input_logical_radio_labelled__label_eve_input_logical_radio_group_4 = $mol_type_enforce<
 		ReturnType< $eve_input_logical_radio_group['option_title'] >
 		,
-		ReturnType< $eve_radio['label'] >
+		ReturnType< $eve_input_logical_radio_labelled['label'] >
+	>
+	type $eve_input_logical_radio_labelled__event_click_eve_input_logical_radio_group_5 = $mol_type_enforce<
+		ReturnType< $eve_input_logical_radio_group['option_click'] >
+		,
+		ReturnType< $eve_input_logical_radio_labelled['event_click'] >
 	>
 	export class $eve_input_logical_radio_group extends $eve_flex {
+		group_name( ): string
+		option_value( id: any): string
 		option_checked( id: any): boolean
-		option_disabled( id: any): boolean
 		option_title( id: any): string
-		Option( id: any): $eve_radio
+		option_click( id: any, next?: any ): any
+		Option( id: any): $eve_input_logical_radio_labelled
+		Options( ): readonly(any)[]
 		direction( next?: string ): string
-		options( id: any): readonly(any)[]
+		value( next?: string ): string
+		name( ): ReturnType< $eve_input_logical_radio_group['group_name'] >
+		attr( ): ({ 
+			'role': string,
+		}) 
+		options( ): Record<string, any>
+		Option_ids( ): readonly(any)[]
+		sub( ): ReturnType< $eve_input_logical_radio_group['Options'] >
 	}
 	
 }
@@ -5532,7 +5470,17 @@ declare namespace $ {
 //# sourceMappingURL=group.view.tree.d.ts.map
 declare namespace $.$$ {
     class $eve_input_logical_radio_group extends $.$eve_input_logical_radio_group {
-        size(next?: $eve_surface_size): $eve_surface_size;
+        options(): {
+            [key: string]: string;
+        };
+        group_name(): string;
+        value(next?: string): string;
+        Option_ids(): string[];
+        Options(): $.$eve_input_logical_radio_labelled[];
+        option_value(id: string): string;
+        option_title(id: string): string;
+        option_checked(id: string): boolean;
+        option_click(id: string, event?: Event): Event | null;
     }
 }
 
@@ -5553,8 +5501,11 @@ declare namespace $ {
 		checked( next?: boolean ): boolean
 		aria_checked( ): string
 		aria_role( ): string
+		dom_id( ): string
+		name( ): string
+		value( ): string
 		event_click( next?: any ): any
-		Disc( ): $mol_view
+		Disc( ): $eve_surface
 		disabled( next?: any ): any
 		colors( next?: string ): string
 		size( ): any
@@ -5562,6 +5513,10 @@ declare namespace $ {
 			'mol_check_checked': ReturnType< $eve_input_logical_radio['checked'] >,
 			'aria-checked': ReturnType< $eve_input_logical_radio['aria_checked'] >,
 			'role': ReturnType< $eve_input_logical_radio['aria_role'] >,
+			'type': string,
+			'id': ReturnType< $eve_input_logical_radio['dom_id'] >,
+			'name': ReturnType< $eve_input_logical_radio['name'] >,
+			'value': ReturnType< $eve_input_logical_radio['value'] >,
 		})  & ReturnType< $eve_button['attr'] >
 		event( ): ({ 
 			click( next?: ReturnType< $eve_input_logical_radio['event_click'] > ): ReturnType< $eve_input_logical_radio['event_click'] >,
@@ -5574,6 +5529,8 @@ declare namespace $ {
 //# sourceMappingURL=radio.view.tree.d.ts.map
 declare namespace $.$$ {
     class $eve_input_logical_radio extends $.$eve_input_logical_radio {
+        dom_name(): string;
+        dom_id(): string;
         checked(next?: boolean): boolean;
         disabled(next?: boolean): boolean;
         variant(): $eve_surface_variant;
@@ -5587,23 +5544,44 @@ declare namespace $.$$ {
 
 declare namespace $ {
 
-	type $eve_input_logical_radio__checked_eve_input_logical_radio_labelled_1 = $mol_type_enforce<
+	type $eve_input_logical_radio__dom_id_eve_input_logical_radio_labelled_1 = $mol_type_enforce<
+		ReturnType< $eve_input_logical_radio_labelled['radio_id'] >
+		,
+		ReturnType< $eve_input_logical_radio['dom_id'] >
+	>
+	type $eve_input_logical_radio__name_eve_input_logical_radio_labelled_2 = $mol_type_enforce<
+		ReturnType< $eve_input_logical_radio_labelled['name'] >
+		,
+		ReturnType< $eve_input_logical_radio['name'] >
+	>
+	type $eve_input_logical_radio__value_eve_input_logical_radio_labelled_3 = $mol_type_enforce<
+		ReturnType< $eve_input_logical_radio_labelled['value'] >
+		,
+		ReturnType< $eve_input_logical_radio['value'] >
+	>
+	type $eve_input_logical_radio__checked_eve_input_logical_radio_labelled_4 = $mol_type_enforce<
 		ReturnType< $eve_input_logical_radio_labelled['checked'] >
 		,
 		ReturnType< $eve_input_logical_radio['checked'] >
 	>
-	type $eve_input_logical_radio__disabled_eve_input_logical_radio_labelled_2 = $mol_type_enforce<
+	type $eve_input_logical_radio__disabled_eve_input_logical_radio_labelled_5 = $mol_type_enforce<
 		ReturnType< $eve_input_logical_radio_labelled['disabled'] >
 		,
 		ReturnType< $eve_input_logical_radio['disabled'] >
 	>
 	export class $eve_input_logical_radio_labelled extends $eve_button {
+		radio_id( ): string
+		name( ): string
+		value( ): string
 		checked( next?: boolean ): boolean
 		disabled( next?: boolean ): boolean
 		Radio( ): $eve_input_logical_radio
 		variant( ): string
 		size( next?: string ): string
 		justify_content( ): string
+		attr( ): ({ 
+			'for': ReturnType< $eve_input_logical_radio_labelled['radio_id'] >,
+		})  & ReturnType< $eve_button['attr'] >
 		sub( ): readonly(any)[]
 	}
 	
@@ -5613,8 +5591,11 @@ declare namespace $ {
 declare namespace $.$$ {
     class $eve_input_logical_radio_labelled extends $.$eve_input_logical_radio_labelled {
         dom_name(): string;
-        click(event?: MouseEvent): void;
+        radio_id(): string;
     }
+}
+
+declare namespace $.$$ {
 }
 
 declare namespace $ {
@@ -5909,23 +5890,29 @@ declare namespace $.$$ {
 
 declare namespace $ {
 
-	export class $eve_input_logical_switch extends $eve_surface {
+	export class $eve_input_logical_switch extends $eve_button {
+		switch_colors( ): string
+		switch_direction( ): string
 		checked( next?: boolean ): boolean
 		aria_checked( ): string
 		aria_role( ): string
-		size( next?: string ): string
 		event_click( next?: any ): any
 		Slider( ): $eve_surface
 		disabled( next?: any ): any
+		size( ): any
+		colors( ): ReturnType< $eve_input_logical_switch['switch_colors'] >
+		direction( ): ReturnType< $eve_input_logical_switch['switch_direction'] >
+		align_items( ): string
+		justify_content( ): string
 		attr( ): ({ 
 			'mol_check_checked': ReturnType< $eve_input_logical_switch['checked'] >,
 			'aria-checked': ReturnType< $eve_input_logical_switch['aria_checked'] >,
 			'role': ReturnType< $eve_input_logical_switch['aria_role'] >,
-			'eve_input_logical_switch_size': ReturnType< $eve_input_logical_switch['size'] >,
-		})  & ReturnType< $eve_surface['attr'] >
+			'type': string,
+		})  & ReturnType< $eve_button['attr'] >
 		event( ): ({ 
 			click( next?: ReturnType< $eve_input_logical_switch['event_click'] > ): ReturnType< $eve_input_logical_switch['event_click'] >,
-		})  & ReturnType< $eve_surface['event'] >
+		})  & ReturnType< $eve_button['event'] >
 		sub( ): readonly(any)[]
 	}
 	
@@ -5933,9 +5920,11 @@ declare namespace $ {
 
 //# sourceMappingURL=switch.view.tree.d.ts.map
 declare namespace $.$$ {
-    type $eve_input_logical_switch_size = 's' | 'm' | 'l';
     class $eve_input_logical_switch extends $.$eve_input_logical_switch {
-        size(next?: $eve_input_logical_switch_size): $eve_input_logical_switch_size;
+        dom_name(): string;
+        variant(): $eve_surface_variant;
+        direction(next?: $eve_flex_direction): $eve_flex_direction;
+        switch_colors(next?: $eve_surface_color): $eve_surface_color;
         checked(next?: boolean): boolean;
         disabled(next?: boolean): boolean;
         event_click(next?: Event): void;
@@ -5948,23 +5937,17 @@ declare namespace $.$$ {
 
 declare namespace $ {
 
-	type $eve_input_logical_switch__size_eve_input_logical_switch_labelled_1 = $mol_type_enforce<
-		ReturnType< $eve_input_logical_switch_labelled['switch_size'] >
-		,
-		ReturnType< $eve_input_logical_switch['size'] >
-	>
-	type $eve_input_logical_switch__checked_eve_input_logical_switch_labelled_2 = $mol_type_enforce<
+	type $eve_input_logical_switch__checked_eve_input_logical_switch_labelled_1 = $mol_type_enforce<
 		ReturnType< $eve_input_logical_switch_labelled['checked'] >
 		,
 		ReturnType< $eve_input_logical_switch['checked'] >
 	>
-	type $eve_input_logical_switch__disabled_eve_input_logical_switch_labelled_3 = $mol_type_enforce<
+	type $eve_input_logical_switch__disabled_eve_input_logical_switch_labelled_2 = $mol_type_enforce<
 		ReturnType< $eve_input_logical_switch_labelled['disabled'] >
 		,
 		ReturnType< $eve_input_logical_switch['disabled'] >
 	>
 	export class $eve_input_logical_switch_labelled extends $eve_button {
-		switch_size( ): string
 		checked( next?: boolean ): boolean
 		disabled( next?: boolean ): boolean
 		Switch( ): $eve_input_logical_switch
@@ -5980,8 +5963,6 @@ declare namespace $ {
 declare namespace $.$$ {
     class $eve_input_logical_switch_labelled extends $.$eve_input_logical_switch_labelled {
         dom_name(): string;
-        switch_size(): $eve_input_logical_switch_size;
-        click(event?: MouseEvent): void;
     }
 }
 
@@ -7554,6 +7535,83 @@ declare namespace $.$$ {
 }
 
 declare namespace $.$$ { }
+
+declare namespace $ {
+
+	type $mol_check__checked_mol_check_list_1 = $mol_type_enforce<
+		ReturnType< $mol_check_list['option_checked'] >
+		,
+		ReturnType< $mol_check['checked'] >
+	>
+	type $mol_check__label_mol_check_list_2 = $mol_type_enforce<
+		ReturnType< $mol_check_list['option_label'] >
+		,
+		ReturnType< $mol_check['label'] >
+	>
+	type $mol_check__enabled_mol_check_list_3 = $mol_type_enforce<
+		ReturnType< $mol_check_list['option_enabled'] >
+		,
+		ReturnType< $mol_check['enabled'] >
+	>
+	type $mol_check__hint_mol_check_list_4 = $mol_type_enforce<
+		ReturnType< $mol_check_list['option_hint'] >
+		,
+		ReturnType< $mol_check['hint'] >
+	>
+	type $mol_check__minimal_height_mol_check_list_5 = $mol_type_enforce<
+		number
+		,
+		ReturnType< $mol_check['minimal_height'] >
+	>
+	export class $mol_check_list extends $mol_view {
+		option_checked( id: any, next?: boolean ): boolean
+		option_title( id: any): string
+		option_label( id: any): readonly(any)[]
+		enabled( ): boolean
+		option_enabled( id: any): ReturnType< $mol_check_list['enabled'] >
+		option_hint( id: any): string
+		items( ): readonly($mol_check)[]
+		dictionary( ): Record<string, any>
+		Option( id: any): $mol_check
+		options( ): Record<string, any>
+		keys( ): readonly(string)[]
+		sub( ): ReturnType< $mol_check_list['items'] >
+	}
+	
+}
+
+//# sourceMappingURL=list.view.tree.d.ts.map
+declare namespace $.$$ {
+    class $mol_check_list extends $.$mol_check_list {
+        options(): {
+            [key: string]: string;
+        };
+        dictionary(next?: Record<string, boolean>): Record<string, boolean>;
+        option_checked(id: string, next?: boolean | null): boolean;
+        keys(): readonly string[];
+        items(): $.$mol_check[];
+        option_title(key: string): string;
+    }
+}
+
+declare namespace $ {
+}
+
+declare namespace $ {
+
+	export class $mol_switch extends $mol_check_list {
+		value( next?: string ): string
+	}
+	
+}
+
+//# sourceMappingURL=switch.view.tree.d.ts.map
+declare namespace $.$$ {
+    class $mol_switch extends $.$mol_switch {
+        value(next?: string): string;
+        option_checked(key: string, next?: boolean): boolean;
+    }
+}
 
 declare namespace $ {
 

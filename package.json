@@ -272,8 +272,6 @@
     "$eve_input_logical_radio_labelled",
     "$eve_radio_group",
     "$eve_input_logical_radio_group",
-    "$mol_switch",
-    "$mol_check_list",
     "$eve_app_page_components_checkbox",
     "$eve_checkbox",
     "$eve_input_logical_checkbox",
@@ -305,6 +303,8 @@
     "$mol_check_box",
     "$mol_icon_tick",
     "$mol_deck",
+    "$mol_switch",
+    "$mol_check_list",
     "$mol_offline_install",
     "$mol_offline"
   ],
