@@ -5465,40 +5465,141 @@ declare namespace $.$$ {
 
 declare namespace $ {
 
-	type $eve_flex__justify_content_eve_radio_1 = $mol_type_enforce<
-		string
+	type $eve_radio__size_eve_input_logical_radio_group_1 = $mol_type_enforce<
+		ReturnType< $eve_input_logical_radio_group['size'] >
 		,
-		ReturnType< $eve_flex['justify_content'] >
+		ReturnType< $eve_radio['size'] >
 	>
-	type $eve_flex__align_items_eve_radio_2 = $mol_type_enforce<
-		string
+	type $eve_radio__checked_eve_input_logical_radio_group_2 = $mol_type_enforce<
+		ReturnType< $eve_input_logical_radio_group['option_checked'] >
 		,
-		ReturnType< $eve_flex['align_items'] >
+		ReturnType< $eve_radio['checked'] >
 	>
-	type $eve_flex__sub_eve_radio_3 = $mol_type_enforce<
-		ReturnType< $eve_radio['circle_inner'] >
+	type $eve_radio__disabled_eve_input_logical_radio_group_3 = $mol_type_enforce<
+		ReturnType< $eve_input_logical_radio_group['option_disabled'] >
 		,
-		ReturnType< $eve_flex['sub'] >
+		ReturnType< $eve_radio['disabled'] >
 	>
-	export class $eve_radio extends $mol_switch {
-		Circle_inner( id: any): $eve_surface
-		circle_inner( id: any): readonly(any)[]
-		Circle( id: any): $eve_flex
-		option_label( id: any): readonly(any)[]
+	type $eve_radio__label_eve_input_logical_radio_group_4 = $mol_type_enforce<
+		ReturnType< $eve_input_logical_radio_group['option_title'] >
+		,
+		ReturnType< $eve_radio['label'] >
+	>
+	export class $eve_input_logical_radio_group extends $eve_flex {
+		option_checked( id: any): boolean
+		option_disabled( id: any): boolean
+		option_title( id: any): string
+		Option( id: any): $eve_radio
+		direction( next?: string ): string
+		options( id: any): readonly(any)[]
 	}
 	
 }
 
-//# sourceMappingURL=radio.view.tree.d.ts.map
+//# sourceMappingURL=group.view.tree.d.ts.map
 declare namespace $.$$ {
-    class $eve_radio extends $.$eve_radio {
-        circle_inner(id: any): readonly any[];
+    class $eve_input_logical_radio_group extends $.$eve_input_logical_radio_group {
+        size(next?: $eve_surface_size): $eve_surface_size;
     }
 }
 
 declare namespace $.$$ {
 }
 
+declare namespace $ {
+
+	export class $eve_radio_group extends $eve_input_logical_radio_group {
+	}
+	
+}
+
+//# sourceMappingURL=group.view.tree.d.ts.map
+declare namespace $ {
+
+	export class $eve_input_logical_radio extends $eve_button {
+		checked( next?: boolean ): boolean
+		aria_checked( ): string
+		aria_role( ): string
+		event_click( next?: any ): any
+		Disc( ): $mol_view
+		disabled( next?: any ): any
+		colors( next?: string ): string
+		size( ): any
+		attr( ): ({ 
+			'mol_check_checked': ReturnType< $eve_input_logical_radio['checked'] >,
+			'aria-checked': ReturnType< $eve_input_logical_radio['aria_checked'] >,
+			'role': ReturnType< $eve_input_logical_radio['aria_role'] >,
+		})  & ReturnType< $eve_button['attr'] >
+		event( ): ({ 
+			click( next?: ReturnType< $eve_input_logical_radio['event_click'] > ): ReturnType< $eve_input_logical_radio['event_click'] >,
+		})  & ReturnType< $eve_button['event'] >
+		sub( ): readonly(any)[]
+	}
+	
+}
+
+//# sourceMappingURL=radio.view.tree.d.ts.map
+declare namespace $.$$ {
+    class $eve_input_logical_radio extends $.$eve_input_logical_radio {
+        checked(next?: boolean): boolean;
+        disabled(next?: boolean): boolean;
+        variant(): $eve_surface_variant;
+        event_click(next?: Event): void;
+        aria_checked(): string;
+    }
+}
+
+declare namespace $.$$ {
+}
+
+declare namespace $ {
+
+	type $eve_input_logical_radio__checked_eve_input_logical_radio_labelled_1 = $mol_type_enforce<
+		ReturnType< $eve_input_logical_radio_labelled['checked'] >
+		,
+		ReturnType< $eve_input_logical_radio['checked'] >
+	>
+	type $eve_input_logical_radio__disabled_eve_input_logical_radio_labelled_2 = $mol_type_enforce<
+		ReturnType< $eve_input_logical_radio_labelled['disabled'] >
+		,
+		ReturnType< $eve_input_logical_radio['disabled'] >
+	>
+	export class $eve_input_logical_radio_labelled extends $eve_button {
+		checked( next?: boolean ): boolean
+		disabled( next?: boolean ): boolean
+		Radio( ): $eve_input_logical_radio
+		variant( ): string
+		size( next?: string ): string
+		justify_content( ): string
+		sub( ): readonly(any)[]
+	}
+	
+}
+
+//# sourceMappingURL=labelled.view.tree.d.ts.map
+declare namespace $.$$ {
+    class $eve_input_logical_radio_labelled extends $.$eve_input_logical_radio_labelled {
+        dom_name(): string;
+        click(event?: MouseEvent): void;
+    }
+}
+
+declare namespace $ {
+
+	export class $eve_radio_labelled extends $eve_input_logical_radio_labelled {
+	}
+	
+}
+
+//# sourceMappingURL=labelled.view.tree.d.ts.map
+declare namespace $ {
+
+	export class $eve_radio extends $eve_input_logical_radio {
+	}
+	
+}
+
+//# sourceMappingURL=radio.view.tree.d.ts.map
 declare namespace $ {
 
 	type $eve_app_page_sb_playground__component_name_eve_app_page_components_radio_1 = $mol_type_enforce<
@@ -5512,7 +5613,7 @@ declare namespace $ {
 		ReturnType< $eve_app_page_sb_playground['default_source'] >
 	>
 	type $eve_app_page_sb_page__title_eve_app_page_components_radio_3 = $mol_type_enforce<
-		any
+		string
 		,
 		ReturnType< $eve_app_page_sb_page['title'] >
 	>
@@ -5521,21 +5622,67 @@ declare namespace $ {
 		,
 		ReturnType< $eve_app_page_sb_page['body'] >
 	>
-	type $eve_app_page_sb_catalog__param_eve_app_page_components_radio_5 = $mol_type_enforce<
+	type $eve_app_page_sb_playground__component_name_eve_app_page_components_radio_5 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $eve_app_page_sb_playground['component_name'] >
+	>
+	type $eve_app_page_sb_playground__default_source_eve_app_page_components_radio_6 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $eve_app_page_sb_playground['default_source'] >
+	>
+	type $eve_app_page_sb_page__title_eve_app_page_components_radio_7 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $eve_app_page_sb_page['title'] >
+	>
+	type $eve_app_page_sb_page__body_eve_app_page_components_radio_8 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $eve_app_page_sb_page['body'] >
+	>
+	type $eve_app_page_sb_playground__component_name_eve_app_page_components_radio_9 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $eve_app_page_sb_playground['component_name'] >
+	>
+	type $eve_app_page_sb_playground__default_source_eve_app_page_components_radio_10 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $eve_app_page_sb_playground['default_source'] >
+	>
+	type $eve_app_page_sb_page__title_eve_app_page_components_radio_11 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $eve_app_page_sb_page['title'] >
+	>
+	type $eve_app_page_sb_page__body_eve_app_page_components_radio_12 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $eve_app_page_sb_page['body'] >
+	>
+	type $eve_app_page_sb_catalog__param_eve_app_page_components_radio_13 = $mol_type_enforce<
 		string
 		,
 		ReturnType< $eve_app_page_sb_catalog['param'] >
 	>
-	type $eve_app_page_sb_catalog__spreads_eve_app_page_components_radio_6 = $mol_type_enforce<
+	type $eve_app_page_sb_catalog__spreads_eve_app_page_components_radio_14 = $mol_type_enforce<
 		({ 
-			'overview': ReturnType< $eve_app_page_components_radio['Overview_page'] >,
+			'bare': ReturnType< $eve_app_page_components_radio['Bare_page'] >,
+			'labelled': ReturnType< $eve_app_page_components_radio['Labelled_page'] >,
+			'group': ReturnType< $eve_app_page_components_radio['Group_page'] >,
 		}) 
 		,
 		ReturnType< $eve_app_page_sb_catalog['spreads'] >
 	>
 	export class $eve_app_page_components_radio extends $eve_app_page_sb_page {
-		Playground( ): $eve_app_page_sb_playground
-		Overview_page( ): $eve_app_page_sb_page
+		Bare_playground( ): $eve_app_page_sb_playground
+		Bare_page( ): $eve_app_page_sb_page
+		Labelled_playground( ): $eve_app_page_sb_playground
+		Labelled_page( ): $eve_app_page_sb_page
+		Group_playground( ): $eve_app_page_sb_playground
+		Group_page( ): $eve_app_page_sb_page
 		Radio_catalog( ): $eve_app_page_sb_catalog
 		title( ): string
 		Head( ): any
@@ -5561,43 +5708,37 @@ declare namespace $ {
 //# sourceMappingURL=check.view.tree.d.ts.map
 declare namespace $ {
 
-	type $eve_flex__justify_content_eve_check_1 = $mol_type_enforce<
-		string
-		,
-		ReturnType< $eve_flex['justify_content'] >
-	>
-	type $eve_flex__align_items_eve_check_2 = $mol_type_enforce<
-		string
-		,
-		ReturnType< $eve_flex['align_items'] >
-	>
-	type $eve_flex__sub_eve_check_3 = $mol_type_enforce<
-		readonly(any)[]
-		,
-		ReturnType< $eve_flex['sub'] >
-	>
-	type $mol_view__sub_eve_check_4 = $mol_type_enforce<
-		readonly(any)[]
-		,
-		ReturnType< $mol_view['sub'] >
-	>
-	export class $eve_check extends $mol_check {
+	export class $eve_input_logical_checkbox extends $eve_button {
+		checked( next?: boolean ): boolean
+		aria_checked( ): string
+		aria_role( ): string
+		event_click( next?: any ): any
 		Icon( ): $mol_icon_check
-		Box( ): $eve_flex
-		title( ): string
-		Title( ): $mol_view
-		label( ): readonly(any)[]
-		sub( ): readonly($mol_view_content)[]
+		indeterminate( next?: any ): any
+		disabled( next?: any ): any
+		colors( next?: string ): string
+		size( ): any
+		attr( ): ({ 
+			'mol_check_checked': ReturnType< $eve_input_logical_checkbox['checked'] >,
+			'aria-checked': ReturnType< $eve_input_logical_checkbox['aria_checked'] >,
+			'role': ReturnType< $eve_input_logical_checkbox['aria_role'] >,
+		})  & ReturnType< $eve_button['attr'] >
+		event( ): ({ 
+			click( next?: ReturnType< $eve_input_logical_checkbox['event_click'] > ): ReturnType< $eve_input_logical_checkbox['event_click'] >,
+		})  & ReturnType< $eve_button['event'] >
+		sub( ): readonly(any)[]
 	}
 	
 }
 
-//# sourceMappingURL=check.view.tree.d.ts.map
+//# sourceMappingURL=checkbox.view.tree.d.ts.map
 declare namespace $.$$ {
-    class $eve_check extends $.$eve_check {
-        click(next?: Event): void;
-        sub(): readonly $mol_view_content[];
-        label(): readonly any[];
+    class $eve_input_logical_checkbox extends $.$eve_input_logical_checkbox {
+        checked(next?: boolean): boolean;
+        disabled(next?: boolean): boolean;
+        indeterminate(next?: boolean): boolean;
+        variant(): $eve_surface_variant;
+        event_click(next?: Event): void;
         aria_checked(): string;
     }
 }
@@ -5605,48 +5746,120 @@ declare namespace $.$$ {
 declare namespace $.$$ {
 }
 
+declare namespace $ {
+
+	type $eve_input_logical_checkbox__checked_eve_input_logical_checkbox_labelled_1 = $mol_type_enforce<
+		ReturnType< $eve_input_logical_checkbox_labelled['checked'] >
+		,
+		ReturnType< $eve_input_logical_checkbox['checked'] >
+	>
+	type $eve_input_logical_checkbox__disabled_eve_input_logical_checkbox_labelled_2 = $mol_type_enforce<
+		ReturnType< $eve_input_logical_checkbox_labelled['disabled'] >
+		,
+		ReturnType< $eve_input_logical_checkbox['disabled'] >
+	>
+	type $eve_input_logical_checkbox__indeterminate_eve_input_logical_checkbox_labelled_3 = $mol_type_enforce<
+		ReturnType< $eve_input_logical_checkbox_labelled['indeterminate'] >
+		,
+		ReturnType< $eve_input_logical_checkbox['indeterminate'] >
+	>
+	export class $eve_input_logical_checkbox_labelled extends $eve_button {
+		checked( next?: boolean ): boolean
+		disabled( next?: boolean ): boolean
+		indeterminate( next?: boolean ): boolean
+		Checkbox( ): $eve_input_logical_checkbox
+		variant( ): string
+		size( next?: string ): string
+		justify_content( ): string
+		sub( ): readonly(any)[]
+	}
+	
+}
+
+//# sourceMappingURL=labelled.view.tree.d.ts.map
 declare namespace $.$$ {
-    class $eve_app_page_components_check extends $.$eve_app_page_components_check {
+    class $eve_input_logical_checkbox_labelled extends $.$eve_input_logical_checkbox_labelled {
+        dom_name(): string;
+        click(event?: MouseEvent): void;
     }
 }
 
 declare namespace $ {
 
-	type $eve_app_page_sb_playground__component_name_eve_app_page_components_check_1 = $mol_type_enforce<
+	export class $eve_checkbox_labelled extends $eve_input_logical_checkbox_labelled {
+	}
+	
+}
+
+//# sourceMappingURL=labelled.view.tree.d.ts.map
+declare namespace $ {
+
+	export class $eve_checkbox extends $eve_input_logical_checkbox {
+	}
+	
+}
+
+//# sourceMappingURL=checkbox.view.tree.d.ts.map
+declare namespace $ {
+
+	type $eve_app_page_sb_playground__component_name_eve_app_page_components_checkbox_1 = $mol_type_enforce<
 		string
 		,
 		ReturnType< $eve_app_page_sb_playground['component_name'] >
 	>
-	type $eve_app_page_sb_playground__default_source_eve_app_page_components_check_2 = $mol_type_enforce<
+	type $eve_app_page_sb_playground__default_source_eve_app_page_components_checkbox_2 = $mol_type_enforce<
 		string
 		,
 		ReturnType< $eve_app_page_sb_playground['default_source'] >
 	>
-	type $eve_app_page_sb_page__title_eve_app_page_components_check_3 = $mol_type_enforce<
-		any
+	type $eve_app_page_sb_page__title_eve_app_page_components_checkbox_3 = $mol_type_enforce<
+		string
 		,
 		ReturnType< $eve_app_page_sb_page['title'] >
 	>
-	type $eve_app_page_sb_page__body_eve_app_page_components_check_4 = $mol_type_enforce<
+	type $eve_app_page_sb_page__body_eve_app_page_components_checkbox_4 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $eve_app_page_sb_page['body'] >
 	>
-	type $eve_app_page_sb_catalog__param_eve_app_page_components_check_5 = $mol_type_enforce<
+	type $eve_app_page_sb_playground__component_name_eve_app_page_components_checkbox_5 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $eve_app_page_sb_playground['component_name'] >
+	>
+	type $eve_app_page_sb_playground__default_source_eve_app_page_components_checkbox_6 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $eve_app_page_sb_playground['default_source'] >
+	>
+	type $eve_app_page_sb_page__title_eve_app_page_components_checkbox_7 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $eve_app_page_sb_page['title'] >
+	>
+	type $eve_app_page_sb_page__body_eve_app_page_components_checkbox_8 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $eve_app_page_sb_page['body'] >
+	>
+	type $eve_app_page_sb_catalog__param_eve_app_page_components_checkbox_9 = $mol_type_enforce<
 		string
 		,
 		ReturnType< $eve_app_page_sb_catalog['param'] >
 	>
-	type $eve_app_page_sb_catalog__spreads_eve_app_page_components_check_6 = $mol_type_enforce<
+	type $eve_app_page_sb_catalog__spreads_eve_app_page_components_checkbox_10 = $mol_type_enforce<
 		({ 
-			'overview': ReturnType< $eve_app_page_components_check['Overview_page'] >,
+			'bare': ReturnType< $eve_app_page_components_checkbox['Bare_page'] >,
+			'labelled': ReturnType< $eve_app_page_components_checkbox['Labelled_page'] >,
 		}) 
 		,
 		ReturnType< $eve_app_page_sb_catalog['spreads'] >
 	>
-	export class $eve_app_page_components_check extends $eve_app_page_sb_page {
-		Playground( ): $eve_app_page_sb_playground
-		Overview_page( ): $eve_app_page_sb_page
+	export class $eve_app_page_components_checkbox extends $eve_app_page_sb_page {
+		Bare_playground( ): $eve_app_page_sb_playground
+		Bare_page( ): $eve_app_page_sb_page
+		Labelled_playground( ): $eve_app_page_sb_playground
+		Labelled_page( ): $eve_app_page_sb_page
 		Check_catalog( ): $eve_app_page_sb_catalog
 		title( ): string
 		Head( ): any
@@ -5655,7 +5868,193 @@ declare namespace $ {
 	
 }
 
-//# sourceMappingURL=check.view.tree.d.ts.map
+//# sourceMappingURL=checkbox.view.tree.d.ts.map
+declare namespace $.$$ {
+    class $eve_app_page_components_checkbox extends $.$eve_app_page_components_checkbox {
+    }
+}
+
+declare namespace $ {
+
+	export class $eve_input_logical_switch extends $eve_surface {
+		checked( next?: boolean ): boolean
+		aria_checked( ): string
+		aria_role( ): string
+		size( next?: string ): string
+		event_click( next?: any ): any
+		Slider( ): $eve_surface
+		disabled( next?: any ): any
+		attr( ): ({ 
+			'mol_check_checked': ReturnType< $eve_input_logical_switch['checked'] >,
+			'aria-checked': ReturnType< $eve_input_logical_switch['aria_checked'] >,
+			'role': ReturnType< $eve_input_logical_switch['aria_role'] >,
+			'eve_input_logical_switch_size': ReturnType< $eve_input_logical_switch['size'] >,
+		})  & ReturnType< $eve_surface['attr'] >
+		event( ): ({ 
+			click( next?: ReturnType< $eve_input_logical_switch['event_click'] > ): ReturnType< $eve_input_logical_switch['event_click'] >,
+		})  & ReturnType< $eve_surface['event'] >
+		sub( ): readonly(any)[]
+	}
+	
+}
+
+//# sourceMappingURL=switch.view.tree.d.ts.map
+declare namespace $.$$ {
+    type $eve_input_logical_switch_size = 's' | 'm' | 'l';
+    class $eve_input_logical_switch extends $.$eve_input_logical_switch {
+        size(next?: $eve_input_logical_switch_size): $eve_input_logical_switch_size;
+        checked(next?: boolean): boolean;
+        disabled(next?: boolean): boolean;
+        event_click(next?: Event): void;
+        aria_checked(): string;
+    }
+}
+
+declare namespace $.$$ {
+}
+
+declare namespace $ {
+
+	type $eve_input_logical_switch__size_eve_input_logical_switch_labelled_1 = $mol_type_enforce<
+		ReturnType< $eve_input_logical_switch_labelled['switch_size'] >
+		,
+		ReturnType< $eve_input_logical_switch['size'] >
+	>
+	type $eve_input_logical_switch__checked_eve_input_logical_switch_labelled_2 = $mol_type_enforce<
+		ReturnType< $eve_input_logical_switch_labelled['checked'] >
+		,
+		ReturnType< $eve_input_logical_switch['checked'] >
+	>
+	type $eve_input_logical_switch__disabled_eve_input_logical_switch_labelled_3 = $mol_type_enforce<
+		ReturnType< $eve_input_logical_switch_labelled['disabled'] >
+		,
+		ReturnType< $eve_input_logical_switch['disabled'] >
+	>
+	export class $eve_input_logical_switch_labelled extends $eve_button {
+		switch_size( ): string
+		checked( next?: boolean ): boolean
+		disabled( next?: boolean ): boolean
+		Switch( ): $eve_input_logical_switch
+		variant( ): string
+		size( next?: string ): string
+		justify_content( ): string
+		sub( ): readonly(any)[]
+	}
+	
+}
+
+//# sourceMappingURL=labelled.view.tree.d.ts.map
+declare namespace $.$$ {
+    class $eve_input_logical_switch_labelled extends $.$eve_input_logical_switch_labelled {
+        dom_name(): string;
+        switch_size(): $eve_input_logical_switch_size;
+        click(event?: MouseEvent): void;
+    }
+}
+
+declare namespace $.$$ {
+}
+
+declare namespace $ {
+
+	export class $eve_switch extends $eve_input_logical_switch {
+	}
+	
+}
+
+//# sourceMappingURL=switch.view.tree.d.ts.map
+declare namespace $ {
+
+	export class $eve_switch_labelled extends $eve_input_logical_switch_labelled {
+	}
+	
+}
+
+//# sourceMappingURL=labelled.view.tree.d.ts.map
+declare namespace $.$$ {
+    class $eve_switch_labelled extends $.$eve_switch_labelled {
+        dom_name(): string;
+        event_click(next?: Event): void;
+    }
+}
+
+declare namespace $.$$ {
+}
+
+declare namespace $ {
+
+	type $eve_app_page_sb_playground__component_name_eve_app_page_components_switch_1 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $eve_app_page_sb_playground['component_name'] >
+	>
+	type $eve_app_page_sb_playground__default_source_eve_app_page_components_switch_2 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $eve_app_page_sb_playground['default_source'] >
+	>
+	type $eve_app_page_sb_page__title_eve_app_page_components_switch_3 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $eve_app_page_sb_page['title'] >
+	>
+	type $eve_app_page_sb_page__body_eve_app_page_components_switch_4 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $eve_app_page_sb_page['body'] >
+	>
+	type $eve_app_page_sb_playground__component_name_eve_app_page_components_switch_5 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $eve_app_page_sb_playground['component_name'] >
+	>
+	type $eve_app_page_sb_playground__default_source_eve_app_page_components_switch_6 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $eve_app_page_sb_playground['default_source'] >
+	>
+	type $eve_app_page_sb_page__title_eve_app_page_components_switch_7 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $eve_app_page_sb_page['title'] >
+	>
+	type $eve_app_page_sb_page__body_eve_app_page_components_switch_8 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $eve_app_page_sb_page['body'] >
+	>
+	type $eve_app_page_sb_catalog__param_eve_app_page_components_switch_9 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $eve_app_page_sb_catalog['param'] >
+	>
+	type $eve_app_page_sb_catalog__spreads_eve_app_page_components_switch_10 = $mol_type_enforce<
+		({ 
+			'bare': ReturnType< $eve_app_page_components_switch['Bare_page'] >,
+			'labelled': ReturnType< $eve_app_page_components_switch['Labelled_page'] >,
+		}) 
+		,
+		ReturnType< $eve_app_page_sb_catalog['spreads'] >
+	>
+	export class $eve_app_page_components_switch extends $eve_app_page_sb_page {
+		Bare_playground( ): $eve_app_page_sb_playground
+		Bare_page( ): $eve_app_page_sb_page
+		Labelled_playground( ): $eve_app_page_sb_playground
+		Labelled_page( ): $eve_app_page_sb_page
+		Switch_catalog( ): $eve_app_page_sb_catalog
+		title( ): string
+		Head( ): any
+		body( ): readonly(any)[]
+	}
+	
+}
+
+//# sourceMappingURL=switch.view.tree.d.ts.map
+declare namespace $.$$ {
+    class $eve_app_page_components_switch extends $.$eve_app_page_components_switch {
+    }
+}
+
 declare namespace $ {
 
 	export class $mol_icon_check_circle extends $mol_icon {
@@ -6003,7 +6402,8 @@ declare namespace $ {
 			'flex': ReturnType< $eve_app_page_components['Flex'] >,
 			'buttons': ReturnType< $eve_app_page_components['Buttons'] >,
 			'radio': ReturnType< $eve_app_page_components['Radio'] >,
-			'check': ReturnType< $eve_app_page_components['Check'] >,
+			'checkbox': ReturnType< $eve_app_page_components['Checkbox'] >,
+			'switch': ReturnType< $eve_app_page_components['Switch'] >,
 			'alert': ReturnType< $eve_app_page_components['Alert'] >,
 		}) 
 		,
@@ -6014,7 +6414,8 @@ declare namespace $ {
 		Flex( ): $eve_app_page_components_flex
 		Buttons( ): $eve_app_page_components_button
 		Radio( ): $eve_app_page_components_radio
-		Check( ): $eve_app_page_components_check
+		Checkbox( ): $eve_app_page_components_checkbox
+		Switch( ): $eve_app_page_components_switch
 		Alert( ): $eve_app_page_components_alert
 		Nav_menu( ): $eve_app_page_sb_catalog
 		title( ): string

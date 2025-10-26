@@ -13957,6 +13957,90 @@ var $;
 })($ || ($ = {}));
 
 ;
+	($.$eve_input_logical_radio) = class $eve_input_logical_radio extends ($.$eve_button) {
+		checked(next){
+			if(next !== undefined) return next;
+			return false;
+		}
+		aria_checked(){
+			return "false";
+		}
+		aria_role(){
+			return "radio";
+		}
+		event_click(next){
+			if(next !== undefined) return next;
+			return null;
+		}
+		Disc(){
+			const obj = new this.$.$mol_view();
+			return obj;
+		}
+		disabled(next){
+			if(next !== undefined) return next;
+			return null;
+		}
+		colors(next){
+			if(next !== undefined) return next;
+			return "primary";
+		}
+		size(){
+			return null;
+		}
+		attr(){
+			return {
+				...(super.attr()), 
+				"mol_check_checked": (this.checked()), 
+				"aria-checked": (this.aria_checked()), 
+				"role": (this.aria_role())
+			};
+		}
+		event(){
+			return {...(super.event()), "click": (next) => (this.event_click(next))};
+		}
+		sub(){
+			return [(this.Disc())];
+		}
+	};
+	($mol_mem(($.$eve_input_logical_radio.prototype), "checked"));
+	($mol_mem(($.$eve_input_logical_radio.prototype), "event_click"));
+	($mol_mem(($.$eve_input_logical_radio.prototype), "Disc"));
+	($mol_mem(($.$eve_input_logical_radio.prototype), "disabled"));
+	($mol_mem(($.$eve_input_logical_radio.prototype), "colors"));
+
+
+;
+	($.$eve_input_logical_radio_group) = class $eve_input_logical_radio_group extends ($.$eve_flex) {
+		option_checked(id){
+			return false;
+		}
+		option_disabled(id){
+			return true;
+		}
+		option_title(id){
+			return "";
+		}
+		Option(id){
+			const obj = new this.$.$eve_radio();
+			(obj.size) = () => ((this.size()));
+			(obj.checked) = (next) => ((this.option_checked(id)));
+			(obj.disabled) = (next) => ((this.option_disabled(id)));
+			(obj.label) = () => ((this.option_title(id)));
+			return obj;
+		}
+		direction(next){
+			if(next !== undefined) return next;
+			return "column";
+		}
+		options(id){
+			return [(this.Option(id))];
+		}
+	};
+	($mol_mem_key(($.$eve_input_logical_radio_group.prototype), "Option"));
+	($mol_mem(($.$eve_input_logical_radio_group.prototype), "direction"));
+
+
+;
 	($.$mol_check_list) = class $mol_check_list extends ($.$mol_view) {
 		option_checked(id, next){
 			if(next !== undefined) return next;
@@ -14093,30 +14177,6 @@ var $;
 })($ || ($ = {}));
 
 ;
-	($.$eve_radio) = class $eve_radio extends ($.$mol_switch) {
-		Circle_inner(id){
-			const obj = new this.$.$eve_surface();
-			return obj;
-		}
-		circle_inner(id){
-			return [(this.Circle_inner(id))];
-		}
-		Circle(id){
-			const obj = new this.$.$eve_flex();
-			(obj.justify_content) = () => ("center");
-			(obj.align_items) = () => ("center");
-			(obj.sub) = () => ((this.circle_inner(id)));
-			return obj;
-		}
-		option_label(id){
-			return [(this.Circle(id)), (this.option_title(id))];
-		}
-	};
-	($mol_mem_key(($.$eve_radio.prototype), "Circle_inner"));
-	($mol_mem_key(($.$eve_radio.prototype), "Circle"));
-
-
-;
 "use strict";
 
 ;
@@ -14125,15 +14185,15 @@ var $;
 (function ($) {
     var $$;
     (function ($$) {
-        class $eve_radio extends $.$eve_radio {
-            circle_inner(id) {
-                return this.option_checked(id) ? super.circle_inner(id) : [];
+        class $eve_input_logical_radio_group extends $.$eve_input_logical_radio_group {
+            size(next) {
+                return next ?? 'm';
             }
         }
         __decorate([
-            $mol_mem_key
-        ], $eve_radio.prototype, "circle_inner", null);
-        $$.$eve_radio = $eve_radio;
+            $mol_mem
+        ], $eve_input_logical_radio_group.prototype, "size", null);
+        $$.$eve_input_logical_radio_group = $eve_input_logical_radio_group;
     })($$ = $.$$ || ($.$$ = {}));
 })($ || ($ = {}));
 
@@ -14144,75 +14204,230 @@ var $;
     var $$;
     (function ($$) {
         const { rem } = $mol_style_unit;
-        $mol_style_define($eve_radio, {
-            gap: rem(1),
-            Circle: {
-                height: rem(1.25),
-                width: rem(1.25),
-                minWidth: rem(1.25),
-                minHeight: rem(1.25),
+        $mol_style_define($eve_input_logical_radio_group, {
+            display: 'flex',
+            flex: {
+                direction: 'column',
+            },
+            gap: rem(0.5),
+        });
+    })($$ = $.$$ || ($.$$ = {}));
+})($ || ($ = {}));
+
+;
+	($.$eve_radio_group) = class $eve_radio_group extends ($.$eve_input_logical_radio_group) {};
+
+
+;
+"use strict";
+
+;
+"use strict";
+
+;
+"use strict";
+var $;
+(function ($) {
+    var $$;
+    (function ($$) {
+        class $eve_input_logical_radio extends $.$eve_input_logical_radio {
+            checked(next) {
+                return next ?? false;
+            }
+            disabled(next) {
+                return next ?? false;
+            }
+            variant() {
+                return this.checked() ? 'solid' : 'outline';
+            }
+            event_click(next) {
+                if (this.disabled()) {
+                    next?.preventDefault();
+                    return;
+                }
+                if (next?.defaultPrevented)
+                    return;
+                this.checked(true);
+                if (next)
+                    next.preventDefault();
+            }
+            aria_checked() {
+                return String(this.checked());
+            }
+        }
+        __decorate([
+            $mol_mem
+        ], $eve_input_logical_radio.prototype, "checked", null);
+        __decorate([
+            $mol_mem
+        ], $eve_input_logical_radio.prototype, "disabled", null);
+        $$.$eve_input_logical_radio = $eve_input_logical_radio;
+    })($$ = $.$$ || ($.$$ = {}));
+})($ || ($ = {}));
+
+;
+"use strict";
+var $;
+(function ($) {
+    var $$;
+    (function ($$) {
+        const { rem } = $mol_style_unit;
+        $mol_style_define($eve_input_logical_radio, {
+            minHeight: rem(1),
+            width: rem(1),
+            height: rem(1),
+            padding: 0,
+            flex: {
+                shrink: 0,
+            },
+            border: {
+                radius: '50%',
+            },
+            Disc: {
                 border: {
                     radius: '50%',
                 },
-                box: {
-                    shadow: [['inset', 0, 0, 0, rem(0.0625), $mol_theme.control]],
-                },
-                transition: 'box-shadow 0.2s ease',
-            },
-            Option: {
-                padding: 0,
-                gap: rem(0.5),
-                cursor: 'pointer',
-                ':hover': {
-                    ['Circle']: {
-                        box: {
-                            shadow: [['inset', 0, 0, 0, rem(0.0625), $mol_theme.current]],
-                        },
-                    },
-                },
-                '[mol_check_checked]': {
-                    true: {
-                        ['Circle']: {
-                            box: {
-                                shadow: [['inset', 0, 0, 0, rem(0.125), $mol_theme.current]],
-                            },
-                        },
-                    },
-                },
-            },
-            Circle_inner: {
-                height: rem(0.625),
-                width: rem(0.625),
                 background: {
-                    color: $mol_theme.current,
+                    color: 'currentcolor',
                 },
-                border: {
-                    radius: '50%',
+                opacity: 0,
+                transform: 'scale(0.1)',
+                transition: 'opacity 0.15s ease, transform 0.2s ease',
+                width: rem(0.375),
+                height: rem(0.375),
+            },
+            '[mol_check_checked]': {
+                true: {
+                    Disc: {
+                        opacity: 1,
+                        transform: 'scale(1)',
+                    },
                 },
-                transition: 'all 0.2s ease',
             },
         });
     })($$ = $.$$ || ($.$$ = {}));
 })($ || ($ = {}));
 
 ;
-	($.$eve_app_page_components_radio) = class $eve_app_page_components_radio extends ($.$eve_app_page_sb_page) {
-		Playground(){
-			const obj = new this.$.$eve_app_page_sb_playground();
-			(obj.component_name) = () => ("Live_radio");
-			(obj.default_source) = () => ("Live_radio $eve_radio\n\t- Edit values of Radio component\n\toptions *\n\t\toption1 \\Option 1\n\t\toption2 \\Option 2\n\t\toption3 \\Option 3\n\tvalue? \\option1\n");
+	($.$eve_radio) = class $eve_radio extends ($.$eve_input_logical_radio) {};
+
+
+;
+	($.$eve_input_logical_radio_labelled) = class $eve_input_logical_radio_labelled extends ($.$eve_button) {
+		checked(next){
+			if(next !== undefined) return next;
+			return false;
+		}
+		disabled(next){
+			if(next !== undefined) return next;
+			return false;
+		}
+		Radio(){
+			const obj = new this.$.$eve_input_logical_radio();
+			(obj.checked) = (next) => ((this.checked(next)));
+			(obj.disabled) = (next) => ((this.disabled(next)));
 			return obj;
 		}
-		Overview_page(){
+		variant(){
+			return "ghost";
+		}
+		size(next){
+			if(next !== undefined) return next;
+			return "m";
+		}
+		justify_content(){
+			return "flex-start";
+		}
+		sub(){
+			return [(this.Radio()), (this.Label())];
+		}
+	};
+	($mol_mem(($.$eve_input_logical_radio_labelled.prototype), "checked"));
+	($mol_mem(($.$eve_input_logical_radio_labelled.prototype), "disabled"));
+	($mol_mem(($.$eve_input_logical_radio_labelled.prototype), "Radio"));
+	($mol_mem(($.$eve_input_logical_radio_labelled.prototype), "size"));
+
+
+;
+"use strict";
+
+;
+"use strict";
+var $;
+(function ($) {
+    var $$;
+    (function ($$) {
+        class $eve_input_logical_radio_labelled extends $.$eve_input_logical_radio_labelled {
+            dom_name() {
+                return 'label';
+            }
+            click(event) {
+                if (this.disabled()) {
+                    event?.preventDefault();
+                    return;
+                }
+            }
+        }
+        $$.$eve_input_logical_radio_labelled = $eve_input_logical_radio_labelled;
+    })($$ = $.$$ || ($.$$ = {}));
+})($ || ($ = {}));
+
+;
+	($.$eve_radio_labelled) = class $eve_radio_labelled extends ($.$eve_input_logical_radio_labelled) {};
+
+
+;
+"use strict";
+
+;
+"use strict";
+
+;
+	($.$eve_app_page_components_radio) = class $eve_app_page_components_radio extends ($.$eve_app_page_sb_page) {
+		Bare_playground(){
+			const obj = new this.$.$eve_app_page_sb_playground();
+			(obj.component_name) = () => ("Live_radio_bare");
+			(obj.default_source) = () => ("Live_radio_bare $eve_radio\n\t- Bare radio control (no label, fixed 1rem size)\n\tcolors \\primary\n\tchecked? true\n\tdisabled? false\n");
+			return obj;
+		}
+		Bare_page(){
 			const obj = new this.$.$eve_app_page_sb_page();
-			(obj.title) = () => (null);
-			(obj.body) = () => ([(this.Playground())]);
+			(obj.title) = () => ("Bare Radio");
+			(obj.body) = () => ([(this.Bare_playground())]);
+			return obj;
+		}
+		Labelled_playground(){
+			const obj = new this.$.$eve_app_page_sb_playground();
+			(obj.component_name) = () => ("Live_radio_labelled");
+			(obj.default_source) = () => ("Live_radio_labelled $eve_radio_labelled\n\t- Radio with label (based on eve_button ghost)\n\tsize? \\m\n\tchecked? true\n\tdisabled? false\n\tlabel \\Select this option\n");
+			return obj;
+		}
+		Labelled_page(){
+			const obj = new this.$.$eve_app_page_sb_page();
+			(obj.title) = () => ("Labelled Radio");
+			(obj.body) = () => ([(this.Labelled_playground())]);
+			return obj;
+		}
+		Group_playground(){
+			const obj = new this.$.$eve_app_page_sb_playground();
+			(obj.component_name) = () => ("Live_radio_group");
+			(obj.default_source) = () => ("Live_radio_group $eve_radio_group\n\t- Radio group with single selection (based on mol_switch)\n\tsize? \\m\n\toptions *\n\t\toption1 \\First Option\n\t\toption2 \\Second Option\n\t\toption3 \\Third Option\n\tvalue? \\option1\n");
+			return obj;
+		}
+		Group_page(){
+			const obj = new this.$.$eve_app_page_sb_page();
+			(obj.title) = () => ("Radio Group");
+			(obj.body) = () => ([(this.Group_playground())]);
 			return obj;
 		}
 		Radio_catalog(){
 			const obj = new this.$.$eve_app_page_sb_catalog();
 			(obj.param) = () => ("radio");
-			(obj.spreads) = () => ({"overview": (this.Overview_page())});
+			(obj.spreads) = () => ({
+				"bare": (this.Bare_page()), 
+				"labelled": (this.Labelled_page()), 
+				"group": (this.Group_page())
+			});
 			return obj;
 		}
 		title(){
@@ -14225,8 +14440,12 @@ var $;
 			return [(this.Radio_catalog())];
 		}
 	};
-	($mol_mem(($.$eve_app_page_components_radio.prototype), "Playground"));
-	($mol_mem(($.$eve_app_page_components_radio.prototype), "Overview_page"));
+	($mol_mem(($.$eve_app_page_components_radio.prototype), "Bare_playground"));
+	($mol_mem(($.$eve_app_page_components_radio.prototype), "Bare_page"));
+	($mol_mem(($.$eve_app_page_components_radio.prototype), "Labelled_playground"));
+	($mol_mem(($.$eve_app_page_components_radio.prototype), "Labelled_page"));
+	($mol_mem(($.$eve_app_page_components_radio.prototype), "Group_playground"));
+	($mol_mem(($.$eve_app_page_components_radio.prototype), "Group_page"));
 	($mol_mem(($.$eve_app_page_components_radio.prototype), "Radio_catalog"));
 
 
@@ -14257,36 +14476,61 @@ var $;
 "use strict";
 
 ;
-	($.$eve_check) = class $eve_check extends ($.$mol_check) {
+	($.$eve_input_logical_checkbox) = class $eve_input_logical_checkbox extends ($.$eve_button) {
+		checked(next){
+			if(next !== undefined) return next;
+			return false;
+		}
+		aria_checked(){
+			return "false";
+		}
+		aria_role(){
+			return "checkbox";
+		}
+		event_click(next){
+			if(next !== undefined) return next;
+			return null;
+		}
 		Icon(){
 			const obj = new this.$.$mol_icon_check();
 			return obj;
 		}
-		Box(){
-			const obj = new this.$.$eve_flex();
-			(obj.justify_content) = () => ("center");
-			(obj.align_items) = () => ("center");
-			(obj.sub) = () => ([(this.Icon())]);
-			return obj;
+		indeterminate(next){
+			if(next !== undefined) return next;
+			return null;
 		}
-		title(){
-			return "";
+		disabled(next){
+			if(next !== undefined) return next;
+			return null;
 		}
-		Title(){
-			const obj = new this.$.$mol_view();
-			(obj.sub) = () => ([(this.title())]);
-			return obj;
+		colors(next){
+			if(next !== undefined) return next;
+			return "primary";
 		}
-		label(){
-			return [(this.Title())];
+		size(){
+			return null;
+		}
+		attr(){
+			return {
+				...(super.attr()), 
+				"mol_check_checked": (this.checked()), 
+				"aria-checked": (this.aria_checked()), 
+				"role": (this.aria_role())
+			};
+		}
+		event(){
+			return {...(super.event()), "click": (next) => (this.event_click(next))};
 		}
 		sub(){
-			return [(this.Box()), (this.label())];
+			return [(this.Icon())];
 		}
 	};
-	($mol_mem(($.$eve_check.prototype), "Icon"));
-	($mol_mem(($.$eve_check.prototype), "Box"));
-	($mol_mem(($.$eve_check.prototype), "Title"));
+	($mol_mem(($.$eve_input_logical_checkbox.prototype), "checked"));
+	($mol_mem(($.$eve_input_logical_checkbox.prototype), "event_click"));
+	($mol_mem(($.$eve_input_logical_checkbox.prototype), "Icon"));
+	($mol_mem(($.$eve_input_logical_checkbox.prototype), "indeterminate"));
+	($mol_mem(($.$eve_input_logical_checkbox.prototype), "disabled"));
+	($mol_mem(($.$eve_input_logical_checkbox.prototype), "colors"));
 
 
 ;
@@ -14298,28 +14542,46 @@ var $;
 (function ($) {
     var $$;
     (function ($$) {
-        class $eve_check extends $.$eve_check {
-            click(next) {
+        class $eve_input_logical_checkbox extends $.$eve_input_logical_checkbox {
+            checked(next) {
+                return next ?? false;
+            }
+            disabled(next) {
+                return next ?? false;
+            }
+            indeterminate(next) {
+                return next ?? false;
+            }
+            variant() {
+                return this.checked() ? 'solid' : 'outline';
+            }
+            event_click(next) {
+                if (this.disabled()) {
+                    next?.preventDefault();
+                    return;
+                }
                 if (next?.defaultPrevented)
                     return;
                 this.checked(!this.checked());
                 if (next)
                     next.preventDefault();
             }
-            sub() {
-                return [
-                    this.Box(),
-                    ...this.label(),
-                ];
-            }
-            label() {
-                return this.title() ? super.label() : [];
-            }
             aria_checked() {
+                if (this.indeterminate())
+                    return 'mixed';
                 return String(this.checked());
             }
         }
-        $$.$eve_check = $eve_check;
+        __decorate([
+            $mol_mem
+        ], $eve_input_logical_checkbox.prototype, "checked", null);
+        __decorate([
+            $mol_mem
+        ], $eve_input_logical_checkbox.prototype, "disabled", null);
+        __decorate([
+            $mol_mem
+        ], $eve_input_logical_checkbox.prototype, "indeterminate", null);
+        $$.$eve_input_logical_checkbox = $eve_input_logical_checkbox;
     })($$ = $.$$ || ($.$$ = {}));
 })($ || ($ = {}));
 
@@ -14330,55 +14592,31 @@ var $;
     var $$;
     (function ($$) {
         const { rem } = $mol_style_unit;
-        $mol_style_define($eve_check, {
-            display: 'flex',
-            flexDirection: 'row',
-            alignItems: 'center',
-            gap: rem(0.5),
-            cursor: 'pointer',
-            userSelect: 'none',
-            Box: {
-                height: rem(1.25),
-                width: rem(1.25),
-                minWidth: rem(1.25),
-                minHeight: rem(1.25),
-                border: {
-                    radius: rem(0.25),
-                },
-                box: {
-                    shadow: [['inset', 0, 0, 0, rem(0.0625), $mol_theme.control]],
-                },
-                transition: 'all 0.2s ease',
-                background: {
-                    color: 'transparent',
-                },
+        $mol_style_define($eve_input_logical_checkbox, {
+            minHeight: rem(1),
+            width: rem(1),
+            height: rem(1),
+            padding: 0,
+            flex: {
+                shrink: 0,
+            },
+            border: {
+                radius: rem(0.25),
             },
             Icon: {
-                width: rem(0.875),
-                height: rem(0.875),
+                visibility: 'hidden',
                 opacity: 0,
-                transition: 'opacity 0.2s ease',
-                color: $mol_theme.back,
-            },
-            ':hover': {
-                Box: {
-                    box: {
-                        shadow: [['inset', 0, 0, 0, rem(0.0625), $mol_theme.current]],
-                    },
-                },
+                transition: 'opacity 0.15s ease, transform 0.2s ease',
+                transform: 'translateY(-0.125rem)',
+                width: rem(0.625),
+                height: rem(0.625),
             },
             '[mol_check_checked]': {
                 true: {
-                    Box: {
-                        background: {
-                            color: $mol_theme.current,
-                        },
-                        box: {
-                            shadow: [['inset', 0, 0, 0, rem(0.125), $mol_theme.current]],
-                        },
-                    },
                     Icon: {
+                        visibility: 'visible',
                         opacity: 1,
+                        transform: 'translateY(0)',
                     },
                 },
             },
@@ -14387,27 +14625,119 @@ var $;
 })($ || ($ = {}));
 
 ;
-	($.$eve_app_page_components_check) = class $eve_app_page_components_check extends ($.$eve_app_page_sb_page) {
-		Playground(){
-			const obj = new this.$.$eve_app_page_sb_playground();
-			(obj.component_name) = () => ("Live_check");
-			(obj.default_source) = () => ("Live_check $eve_check\n\t- Edit values of Check component\n\tchecked? true\n\ttitle \\Accept terms and conditions\n");
+	($.$eve_checkbox) = class $eve_checkbox extends ($.$eve_input_logical_checkbox) {};
+
+
+;
+	($.$eve_input_logical_checkbox_labelled) = class $eve_input_logical_checkbox_labelled extends ($.$eve_button) {
+		checked(next){
+			if(next !== undefined) return next;
+			return false;
+		}
+		disabled(next){
+			if(next !== undefined) return next;
+			return false;
+		}
+		indeterminate(next){
+			if(next !== undefined) return next;
+			return false;
+		}
+		Checkbox(){
+			const obj = new this.$.$eve_input_logical_checkbox();
+			(obj.checked) = (next) => ((this.checked(next)));
+			(obj.disabled) = (next) => ((this.disabled(next)));
+			(obj.indeterminate) = (next) => ((this.indeterminate(next)));
 			return obj;
 		}
-		Overview_page(){
+		variant(){
+			return "ghost";
+		}
+		size(next){
+			if(next !== undefined) return next;
+			return "m";
+		}
+		justify_content(){
+			return "flex-start";
+		}
+		sub(){
+			return [(this.Checkbox()), (this.Label())];
+		}
+	};
+	($mol_mem(($.$eve_input_logical_checkbox_labelled.prototype), "checked"));
+	($mol_mem(($.$eve_input_logical_checkbox_labelled.prototype), "disabled"));
+	($mol_mem(($.$eve_input_logical_checkbox_labelled.prototype), "indeterminate"));
+	($mol_mem(($.$eve_input_logical_checkbox_labelled.prototype), "Checkbox"));
+	($mol_mem(($.$eve_input_logical_checkbox_labelled.prototype), "size"));
+
+
+;
+"use strict";
+
+;
+"use strict";
+var $;
+(function ($) {
+    var $$;
+    (function ($$) {
+        class $eve_input_logical_checkbox_labelled extends $.$eve_input_logical_checkbox_labelled {
+            dom_name() {
+                return 'label';
+            }
+            click(event) {
+                if (this.disabled()) {
+                    event?.preventDefault();
+                    return;
+                }
+            }
+        }
+        $$.$eve_input_logical_checkbox_labelled = $eve_input_logical_checkbox_labelled;
+    })($$ = $.$$ || ($.$$ = {}));
+})($ || ($ = {}));
+
+;
+	($.$eve_checkbox_labelled) = class $eve_checkbox_labelled extends ($.$eve_input_logical_checkbox_labelled) {};
+
+
+;
+"use strict";
+
+;
+"use strict";
+
+;
+	($.$eve_app_page_components_checkbox) = class $eve_app_page_components_checkbox extends ($.$eve_app_page_sb_page) {
+		Bare_playground(){
+			const obj = new this.$.$eve_app_page_sb_playground();
+			(obj.component_name) = () => ("Live_checkbox");
+			(obj.default_source) = () => ("Live_checkbox $eve_checkbox\n\t- Bare checkbox control (no label, fixed 1rem size)\n\tcolors \\primary\n\tchecked? true\n\tdisabled? false\n\tindeterminate? false\n");
+			return obj;
+		}
+		Bare_page(){
 			const obj = new this.$.$eve_app_page_sb_page();
-			(obj.title) = () => (null);
-			(obj.body) = () => ([(this.Playground())]);
+			(obj.title) = () => ("Bare Checkbox");
+			(obj.body) = () => ([(this.Bare_playground())]);
+			return obj;
+		}
+		Labelled_playground(){
+			const obj = new this.$.$eve_app_page_sb_playground();
+			(obj.component_name) = () => ("Live_checkbox_labelled");
+			(obj.default_source) = () => ("Live_checkbox_labelled $eve_checkbox_labelled\n\t- Checkbox with label (based on eve_button ghost)\n\tsize? \\m\n\tchecked? true\n\tdisabled? false\n\tindeterminate? false\n\tlabel \\Accept terms and conditions\n");
+			return obj;
+		}
+		Labelled_page(){
+			const obj = new this.$.$eve_app_page_sb_page();
+			(obj.title) = () => ("Labelled Checkbox");
+			(obj.body) = () => ([(this.Labelled_playground())]);
 			return obj;
 		}
 		Check_catalog(){
 			const obj = new this.$.$eve_app_page_sb_catalog();
-			(obj.param) = () => ("check");
-			(obj.spreads) = () => ({"overview": (this.Overview_page())});
+			(obj.param) = () => ("checkbox");
+			(obj.spreads) = () => ({"bare": (this.Bare_page()), "labelled": (this.Labelled_page())});
 			return obj;
 		}
 		title(){
-			return "Check";
+			return "Checkbox";
 		}
 		Head(){
 			return null;
@@ -14416,10 +14746,15 @@ var $;
 			return [(this.Check_catalog())];
 		}
 	};
-	($mol_mem(($.$eve_app_page_components_check.prototype), "Playground"));
-	($mol_mem(($.$eve_app_page_components_check.prototype), "Overview_page"));
-	($mol_mem(($.$eve_app_page_components_check.prototype), "Check_catalog"));
+	($mol_mem(($.$eve_app_page_components_checkbox.prototype), "Bare_playground"));
+	($mol_mem(($.$eve_app_page_components_checkbox.prototype), "Bare_page"));
+	($mol_mem(($.$eve_app_page_components_checkbox.prototype), "Labelled_playground"));
+	($mol_mem(($.$eve_app_page_components_checkbox.prototype), "Labelled_page"));
+	($mol_mem(($.$eve_app_page_components_checkbox.prototype), "Check_catalog"));
 
+
+;
+"use strict";
 
 ;
 "use strict";
@@ -14427,14 +14762,404 @@ var $;
 (function ($) {
     var $$;
     (function ($$) {
-        class $eve_app_page_components_check extends $.$eve_app_page_components_check {
+        class $eve_app_page_components_checkbox extends $.$eve_app_page_components_checkbox {
         }
-        $$.$eve_app_page_components_check = $eve_app_page_components_check;
+        $$.$eve_app_page_components_checkbox = $eve_app_page_components_checkbox;
+    })($$ = $.$$ || ($.$$ = {}));
+})($ || ($ = {}));
+
+;
+	($.$eve_input_logical_switch) = class $eve_input_logical_switch extends ($.$eve_surface) {
+		checked(next){
+			if(next !== undefined) return next;
+			return false;
+		}
+		aria_checked(){
+			return "false";
+		}
+		aria_role(){
+			return "switch";
+		}
+		size(next){
+			if(next !== undefined) return next;
+			return "m";
+		}
+		event_click(next){
+			if(next !== undefined) return next;
+			return null;
+		}
+		Slider(){
+			const obj = new this.$.$eve_surface();
+			return obj;
+		}
+		disabled(next){
+			if(next !== undefined) return next;
+			return null;
+		}
+		attr(){
+			return {
+				...(super.attr()), 
+				"mol_check_checked": (this.checked()), 
+				"aria-checked": (this.aria_checked()), 
+				"role": (this.aria_role()), 
+				"eve_input_logical_switch_size": (this.size())
+			};
+		}
+		event(){
+			return {...(super.event()), "click": (next) => (this.event_click(next))};
+		}
+		sub(){
+			return [(this.Slider())];
+		}
+	};
+	($mol_mem(($.$eve_input_logical_switch.prototype), "checked"));
+	($mol_mem(($.$eve_input_logical_switch.prototype), "size"));
+	($mol_mem(($.$eve_input_logical_switch.prototype), "event_click"));
+	($mol_mem(($.$eve_input_logical_switch.prototype), "Slider"));
+	($mol_mem(($.$eve_input_logical_switch.prototype), "disabled"));
+
+
+;
+"use strict";
+
+;
+"use strict";
+var $;
+(function ($) {
+    var $$;
+    (function ($$) {
+        class $eve_input_logical_switch extends $.$eve_input_logical_switch {
+            size(next) {
+                return next ?? 'm';
+            }
+            checked(next) {
+                return next ?? false;
+            }
+            disabled(next) {
+                return next ?? false;
+            }
+            event_click(next) {
+                if (this.disabled()) {
+                    next?.preventDefault();
+                    return;
+                }
+                if (next?.defaultPrevented)
+                    return;
+                this.checked(!this.checked());
+                if (next)
+                    next.preventDefault();
+            }
+            aria_checked() {
+                return String(this.checked());
+            }
+        }
+        __decorate([
+            $mol_mem
+        ], $eve_input_logical_switch.prototype, "size", null);
+        __decorate([
+            $mol_mem
+        ], $eve_input_logical_switch.prototype, "checked", null);
+        __decorate([
+            $mol_mem
+        ], $eve_input_logical_switch.prototype, "disabled", null);
+        $$.$eve_input_logical_switch = $eve_input_logical_switch;
     })($$ = $.$$ || ($.$$ = {}));
 })($ || ($ = {}));
 
 ;
 "use strict";
+var $;
+(function ($) {
+    var $$;
+    (function ($$) {
+        const { rem } = $mol_style_unit;
+        $mol_style_define($eve_input_logical_switch, {
+            display: 'inline-flex',
+            position: 'relative',
+            cursor: 'pointer',
+            userSelect: 'none',
+            flex: {
+                shrink: 0,
+            },
+            background: {
+                color: $mol_theme.shade,
+            },
+            transition: 'background-color 0.15s ease',
+            width: rem(2),
+            height: rem(1),
+            border: {
+                radius: rem(0.5),
+            },
+            Slider: {
+                position: 'absolute',
+                background: {
+                    color: $mol_theme.back,
+                },
+                border: {
+                    radius: '50%',
+                },
+                transition: 'transform 0.15s ease-out',
+                width: rem(0.75),
+                height: rem(0.75),
+                top: rem(0.125),
+                left: rem(0.125),
+            },
+            ':hover': {
+                opacity: 0.9,
+            },
+            '[mol_check_checked]': {
+                true: {
+                    background: {
+                        color: $mol_theme.current,
+                    },
+                    Slider: {
+                        transform: `translateX(${rem(1)})`,
+                    },
+                },
+            },
+            '@': {
+                eve_input_logical_switch_size: {
+                    s: {
+                        width: rem(1.75),
+                        height: rem(0.875),
+                        Slider: {
+                            width: rem(0.625),
+                            height: rem(0.625),
+                        },
+                    },
+                    m: {
+                        width: rem(2),
+                        height: rem(1),
+                        Slider: {
+                            width: rem(0.75),
+                            height: rem(0.75),
+                        },
+                    },
+                    l: {
+                        width: rem(2.25),
+                        height: rem(1.125),
+                        Slider: {
+                            width: rem(0.875),
+                            height: rem(0.875),
+                        },
+                    },
+                },
+            },
+            '[mol_check_checked][eve_input_logical_switch_size="s"]': {
+                Slider: { transform: `translateX(${rem(0.875)})` },
+            },
+            '[mol_check_checked][eve_input_logical_switch_size="m"]': {
+                Slider: { transform: `translateX(${rem(1)})` },
+            },
+            '[mol_check_checked][eve_input_logical_switch_size="l"]': {
+                Slider: { transform: `translateX(${rem(1.125)})` },
+            },
+        });
+    })($$ = $.$$ || ($.$$ = {}));
+})($ || ($ = {}));
+
+;
+	($.$eve_switch) = class $eve_switch extends ($.$eve_input_logical_switch) {};
+
+
+;
+	($.$eve_input_logical_switch_labelled) = class $eve_input_logical_switch_labelled extends ($.$eve_button) {
+		switch_size(){
+			return "m";
+		}
+		checked(next){
+			if(next !== undefined) return next;
+			return false;
+		}
+		disabled(next){
+			if(next !== undefined) return next;
+			return false;
+		}
+		Switch(){
+			const obj = new this.$.$eve_input_logical_switch();
+			(obj.size) = () => ((this.switch_size()));
+			(obj.checked) = (next) => ((this.checked(next)));
+			(obj.disabled) = (next) => ((this.disabled(next)));
+			return obj;
+		}
+		variant(){
+			return "ghost";
+		}
+		size(next){
+			if(next !== undefined) return next;
+			return "m";
+		}
+		justify_content(){
+			return "flex-start";
+		}
+		sub(){
+			return [(this.Switch()), (this.Label())];
+		}
+	};
+	($mol_mem(($.$eve_input_logical_switch_labelled.prototype), "checked"));
+	($mol_mem(($.$eve_input_logical_switch_labelled.prototype), "disabled"));
+	($mol_mem(($.$eve_input_logical_switch_labelled.prototype), "Switch"));
+	($mol_mem(($.$eve_input_logical_switch_labelled.prototype), "size"));
+
+
+;
+"use strict";
+
+;
+"use strict";
+var $;
+(function ($) {
+    var $$;
+    (function ($$) {
+        class $eve_input_logical_switch_labelled extends $.$eve_input_logical_switch_labelled {
+            dom_name() {
+                return 'label';
+            }
+            switch_size() {
+                const buttonSize = this.size();
+                const sizeMap = {
+                    xs: 's',
+                    s: 's',
+                    m: 'm',
+                    l: 'l',
+                    xl: 'l',
+                };
+                return sizeMap[buttonSize || 'm'] || 'm';
+            }
+            click(event) {
+                if (this.disabled()) {
+                    event?.preventDefault();
+                    return;
+                }
+            }
+        }
+        __decorate([
+            $mol_mem
+        ], $eve_input_logical_switch_labelled.prototype, "switch_size", null);
+        $$.$eve_input_logical_switch_labelled = $eve_input_logical_switch_labelled;
+    })($$ = $.$$ || ($.$$ = {}));
+})($ || ($ = {}));
+
+;
+"use strict";
+var $;
+(function ($) {
+    var $$;
+    (function ($$) {
+        $mol_style_define($eve_input_logical_switch_labelled, {});
+    })($$ = $.$$ || ($.$$ = {}));
+})($ || ($ = {}));
+
+;
+"use strict";
+
+;
+	($.$eve_switch_labelled) = class $eve_switch_labelled extends ($.$eve_input_logical_switch_labelled) {};
+
+
+;
+"use strict";
+
+;
+"use strict";
+var $;
+(function ($) {
+    var $$;
+    (function ($$) {
+        class $eve_switch_labelled extends $.$eve_switch_labelled {
+            dom_name() {
+                return 'label';
+            }
+            event_click(next) {
+                if (this.disabled()) {
+                    next?.preventDefault();
+                    return;
+                }
+            }
+        }
+        $$.$eve_switch_labelled = $eve_switch_labelled;
+    })($$ = $.$$ || ($.$$ = {}));
+})($ || ($ = {}));
+
+;
+"use strict";
+var $;
+(function ($) {
+    var $$;
+    (function ($$) {
+        $mol_style_define($eve_switch_labelled, {
+            cursor: 'pointer',
+            userSelect: 'none',
+            Label: {
+                cursor: 'pointer',
+            },
+        });
+    })($$ = $.$$ || ($.$$ = {}));
+})($ || ($ = {}));
+
+;
+	($.$eve_app_page_components_switch) = class $eve_app_page_components_switch extends ($.$eve_app_page_sb_page) {
+		Bare_playground(){
+			const obj = new this.$.$eve_app_page_sb_playground();
+			(obj.component_name) = () => ("Live_switch_bare");
+			(obj.default_source) = () => ("Live_switch_bare $eve_switch\n\t- Bare switch control (no label)\n\tsize? \\m\n\tchecked? true\n\tdisabled? false\n");
+			return obj;
+		}
+		Bare_page(){
+			const obj = new this.$.$eve_app_page_sb_page();
+			(obj.title) = () => ("Bare Switch");
+			(obj.body) = () => ([(this.Bare_playground())]);
+			return obj;
+		}
+		Labelled_playground(){
+			const obj = new this.$.$eve_app_page_sb_playground();
+			(obj.component_name) = () => ("Live_switch_labelled");
+			(obj.default_source) = () => ("Live_switch_labelled $eve_switch_labelled\n\t- Switch with label (based on eve_button ghost)\n\tsize? \\m\n\tchecked? true\n\tdisabled? false\n\tlabel \\Enable notifications\n");
+			return obj;
+		}
+		Labelled_page(){
+			const obj = new this.$.$eve_app_page_sb_page();
+			(obj.title) = () => ("Labelled Switch");
+			(obj.body) = () => ([(this.Labelled_playground())]);
+			return obj;
+		}
+		Switch_catalog(){
+			const obj = new this.$.$eve_app_page_sb_catalog();
+			(obj.param) = () => ("switch");
+			(obj.spreads) = () => ({"bare": (this.Bare_page()), "labelled": (this.Labelled_page())});
+			return obj;
+		}
+		title(){
+			return "Switch";
+		}
+		Head(){
+			return null;
+		}
+		body(){
+			return [(this.Switch_catalog())];
+		}
+	};
+	($mol_mem(($.$eve_app_page_components_switch.prototype), "Bare_playground"));
+	($mol_mem(($.$eve_app_page_components_switch.prototype), "Bare_page"));
+	($mol_mem(($.$eve_app_page_components_switch.prototype), "Labelled_playground"));
+	($mol_mem(($.$eve_app_page_components_switch.prototype), "Labelled_page"));
+	($mol_mem(($.$eve_app_page_components_switch.prototype), "Switch_catalog"));
+
+
+;
+"use strict";
+
+;
+"use strict";
+var $;
+(function ($) {
+    var $$;
+    (function ($$) {
+        class $eve_app_page_components_switch extends $.$eve_app_page_components_switch {
+        }
+        $$.$eve_app_page_components_switch = $eve_app_page_components_switch;
+    })($$ = $.$$ || ($.$$ = {}));
+})($ || ($ = {}));
 
 ;
 	($.$eve_alert) = class $eve_alert extends ($.$eve_flex) {
@@ -14897,8 +15622,12 @@ var $;
 			const obj = new this.$.$eve_app_page_components_radio();
 			return obj;
 		}
-		Check(){
-			const obj = new this.$.$eve_app_page_components_check();
+		Checkbox(){
+			const obj = new this.$.$eve_app_page_components_checkbox();
+			return obj;
+		}
+		Switch(){
+			const obj = new this.$.$eve_app_page_components_switch();
 			return obj;
 		}
 		Alert(){
@@ -14914,7 +15643,8 @@ var $;
 				"flex": (this.Flex()), 
 				"buttons": (this.Buttons()), 
 				"radio": (this.Radio()), 
-				"check": (this.Check()), 
+				"checkbox": (this.Checkbox()), 
+				"switch": (this.Switch()), 
 				"alert": (this.Alert())
 			});
 			return obj;
@@ -14933,7 +15663,8 @@ var $;
 	($mol_mem(($.$eve_app_page_components.prototype), "Flex"));
 	($mol_mem(($.$eve_app_page_components.prototype), "Buttons"));
 	($mol_mem(($.$eve_app_page_components.prototype), "Radio"));
-	($mol_mem(($.$eve_app_page_components.prototype), "Check"));
+	($mol_mem(($.$eve_app_page_components.prototype), "Checkbox"));
+	($mol_mem(($.$eve_app_page_components.prototype), "Switch"));
 	($mol_mem(($.$eve_app_page_components.prototype), "Alert"));
 	($mol_mem(($.$eve_app_page_components.prototype), "Nav_menu"));
 
@@ -14952,7 +15683,8 @@ var $;
                 const titles = {
                     buttons: 'Buttons',
                     radio: 'Radio',
-                    checkbox: 'Checkbox',
+                    check: 'Checkbox',
+                    switch: 'Switch',
                     inputs: 'Inputs',
                     cards: 'Cards',
                     tables: 'Tables',

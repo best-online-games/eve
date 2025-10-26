@@ -1060,6 +1060,32 @@ $eve_app_page_components_button $eve_app_page_sb_page
 				- sizes <= Sizes $eve_app_page_components_button_sizes
 				- states <= States $eve_app_page_components_button_states
 
+$eve_input_logical_radio $eve_button
+	disabled? null
+	colors? \primary
+	size null
+	attr *
+		^
+		mol_check_checked <= checked? false
+		aria-checked <= aria_checked \false
+		role <= aria_role \radio
+	event *
+		^
+		click?event <=> event_click?event null
+	sub /
+		<= Disc $mol_view
+
+
+$eve_input_logical_radio_group $eve_flex
+	direction? \column
+	options* /
+		<= Option* $eve_radio
+			size <= size?
+			checked? <= option_checked* false
+			disabled? <= option_disabled* true
+			label <= option_title* \
+
+
 $mol_check_list $mol_view
 	dictionary *
 	Option* $mol_check
@@ -1076,13 +1102,24 @@ $mol_check_list $mol_view
 $mol_switch $mol_check_list
 	value? \
 
-$eve_radio $mol_switch
-	option_label* /
-		<= Circle* $eve_flex
-			justify_content \center
-			align_items \center
-			sub <= circle_inner* / <= Circle_inner* $eve_surface
-		<= option_title*
+$eve_radio_group $eve_input_logical_radio_group
+
+
+$eve_input_logical_radio_labelled $eve_button
+	variant \ghost
+	size? \m
+	justify_content \flex-start
+	sub /
+		<= Radio $eve_input_logical_radio
+			checked? <=> checked? false
+			disabled? <=> disabled? false
+		<= Label
+
+
+$eve_radio_labelled $eve_input_logical_radio_labelled
+
+
+$eve_radio $eve_input_logical_radio
 
 $eve_app_page_components_radio $eve_app_page_sb_page
 	title \Radio
@@ -1091,53 +1128,181 @@ $eve_app_page_components_radio $eve_app_page_sb_page
 		<= Radio_catalog $eve_app_page_sb_catalog
 			param \radio
 			spreads *
-				overview <= Overview_page $eve_app_page_sb_page
-					title null
+				bare <= Bare_page $eve_app_page_sb_page
+					title \Bare Radio
 					body /
-						<= Playground $eve_app_page_sb_playground
-							component_name \Live_radio
+						<= Bare_playground $eve_app_page_sb_playground
+							component_name \Live_radio_bare
 							default_source \
-								\Live_radio $eve_radio
-								\	- Edit values of Radio component
+								\Live_radio_bare $eve_radio
+								\	- Bare radio control (no label, fixed 1rem size)
+								\	colors \primary
+								\	checked? true
+								\	disabled? false
+								\
+				labelled <= Labelled_page $eve_app_page_sb_page
+					title \Labelled Radio
+					body /
+						<= Labelled_playground $eve_app_page_sb_playground
+							component_name \Live_radio_labelled
+							default_source \
+								\Live_radio_labelled $eve_radio_labelled
+								\	- Radio with label (based on eve_button ghost)
+								\	size? \m
+								\	checked? true
+								\	disabled? false
+								\	label \Select this option
+								\
+				group <= Group_page $eve_app_page_sb_page
+					title \Radio Group
+					body /
+						<= Group_playground $eve_app_page_sb_playground
+							component_name \Live_radio_group
+							default_source \
+								\Live_radio_group $eve_radio_group
+								\	- Radio group with single selection (based on mol_switch)
+								\	size? \m
 								\	options *
-								\		option1 \Option 1
-								\		option2 \Option 2
-								\		option3 \Option 3
+								\		option1 \First Option
+								\		option2 \Second Option
+								\		option3 \Third Option
 								\	value? \option1
 								\
 
 
 $mol_icon_check $mol_icon path \M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z
 
-$eve_check $mol_check
-	sub /$mol_view_content
-		<= Box $eve_flex
-			justify_content \center
-			align_items \center
-			sub /
-				<= Icon $mol_icon_check
-		<= label /
-			<= Title $mol_view
-				sub /
-					<= title \
+$eve_input_logical_checkbox $eve_button
+	indeterminate? null
+	disabled? null
+	colors? \primary
+	size null
+	attr *
+		^
+		mol_check_checked <= checked? false
+		aria-checked <= aria_checked \false
+		role <= aria_role \checkbox
+	event *
+		^
+		click?event <=> event_click?event null
+	sub /
+		<= Icon $mol_icon_check
 
-$eve_app_page_components_check $eve_app_page_sb_page
-	title \Check
+
+$eve_input_logical_checkbox_labelled $eve_button
+	variant \ghost
+	size? \m
+	justify_content \flex-start
+	sub /
+		<= Checkbox $eve_input_logical_checkbox
+			checked? <=> checked? false
+			disabled? <=> disabled? false
+			indeterminate? <=> indeterminate? false
+		<= Label
+
+
+$eve_checkbox_labelled $eve_input_logical_checkbox_labelled
+
+
+$eve_checkbox $eve_input_logical_checkbox
+
+$eve_app_page_components_checkbox $eve_app_page_sb_page
+	title \Checkbox
 	Head null
 	body /
 		<= Check_catalog $eve_app_page_sb_catalog
-			param \check
+			param \checkbox
 			spreads *
-				overview <= Overview_page $eve_app_page_sb_page
-					title null
+				bare <= Bare_page $eve_app_page_sb_page
+					title \Bare Checkbox
 					body /
-						<= Playground $eve_app_page_sb_playground
-							component_name \Live_check
+						<= Bare_playground $eve_app_page_sb_playground
+							component_name \Live_checkbox
 							default_source \
-								\Live_check $eve_check
-								\	- Edit values of Check component
+								\Live_checkbox $eve_checkbox
+								\	- Bare checkbox control (no label, fixed 1rem size)
+								\	colors \primary
 								\	checked? true
-								\	title \Accept terms and conditions
+								\	disabled? false
+								\	indeterminate? false
+								\
+				labelled <= Labelled_page $eve_app_page_sb_page
+					title \Labelled Checkbox
+					body /
+						<= Labelled_playground $eve_app_page_sb_playground
+							component_name \Live_checkbox_labelled
+							default_source \
+								\Live_checkbox_labelled $eve_checkbox_labelled
+								\	- Checkbox with label (based on eve_button ghost)
+								\	size? \m
+								\	checked? true
+								\	disabled? false
+								\	indeterminate? false
+								\	label \Accept terms and conditions
+								\
+
+
+$eve_input_logical_switch $eve_surface
+	disabled? null
+	attr *
+		^
+		mol_check_checked <= checked? false
+		aria-checked <= aria_checked \false
+		role <= aria_role \switch
+		eve_input_logical_switch_size <= size? \m
+	event *
+		^
+		click?event <=> event_click?event null
+	sub /
+		<= Slider $eve_surface
+
+
+$eve_input_logical_switch_labelled $eve_button
+	variant \ghost
+	size? \m
+	justify_content \flex-start
+	sub /
+		<= Switch $eve_input_logical_switch
+			size <= switch_size \m
+			checked? <=> checked? false
+			disabled? <=> disabled? false
+		<= Label
+
+$eve_switch $eve_input_logical_switch
+
+$eve_switch_labelled $eve_input_logical_switch_labelled
+
+$eve_app_page_components_switch $eve_app_page_sb_page
+	title \Switch
+	Head null
+	body /
+		<= Switch_catalog $eve_app_page_sb_catalog
+			param \switch
+			spreads *
+				bare <= Bare_page $eve_app_page_sb_page
+					title \Bare Switch
+					body /
+						<= Bare_playground $eve_app_page_sb_playground
+							component_name \Live_switch_bare
+							default_source \
+								\Live_switch_bare $eve_switch
+								\	- Bare switch control (no label)
+								\	size? \m
+								\	checked? true
+								\	disabled? false
+								\
+				labelled <= Labelled_page $eve_app_page_sb_page
+					title \Labelled Switch
+					body /
+						<= Labelled_playground $eve_app_page_sb_playground
+							component_name \Live_switch_labelled
+							default_source \
+								\Live_switch_labelled $eve_switch_labelled
+								\	- Switch with label (based on eve_button ghost)
+								\	size? \m
+								\	checked? true
+								\	disabled? false
+								\	label \Enable notifications
 								\
 
 
@@ -1258,7 +1423,8 @@ $eve_app_page_components $eve_page
 				flex <= Flex $eve_app_page_components_flex
 				buttons <= Buttons $eve_app_page_components_button
 				radio <= Radio $eve_app_page_components_radio
-				check <= Check $eve_app_page_components_check
+				checkbox <= Checkbox $eve_app_page_components_checkbox
+				switch <= Switch $eve_app_page_components_switch
 				alert <= Alert $eve_app_page_components_alert
 
 $eve_app_page_design $eve_page
