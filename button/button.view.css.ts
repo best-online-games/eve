@@ -24,9 +24,6 @@ namespace $.$$ {
 			pointerEvents: 'none',
 		},
 
-		':active': {
-			transform: 'scale(0.98)',
-		},
 
 		// Подумать над тем, чтобы вынести
 		'@': {

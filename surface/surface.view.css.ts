@@ -54,20 +54,38 @@ namespace $.$$ {
 	}
 
 	/**
-	 * Generate surface level token name (simpler structure without variant)
+	 * Generate surface level token name with variant support
+	 * Now supports all variants: solid, soft, outline, ghost
 	 * @param level - Level name (e.g., 'lowest', 'low', 'medium')
+	 * @param variant - Variant name (default: 'solid')
+	 * @param part - Part name (default: 'bg')
 	 * @param modifier - State modifier (default: 'enabled')
 	 * @returns Surface level token name string
 	 */
 	export function $eve_surface_get_token_surface_level(
 		level: $eve_surface_color,
+		variant: $eve_surface_variant = 'solid',
+		part: string = 'bg',
 		modifier: string = 'enabled'
 	): string {
-		return $eve_surface_get_token_surface( level, 'solid', 'bg', modifier )
+		return $eve_surface_get_token_surface( level, variant, part, modifier )
 	}
 
-	export const $eve_surface_get_token_surface_level_var: typeof $eve_surface_get_token_surface_level = ( level, modifier ) => {
-		return var_token( $eve_surface_get_token_surface_level( level, modifier ) )
+	/**
+	 * Generate var(...) wrapped surface level token
+	 * @param level - Level name (e.g., 'lowest', 'low', 'medium')
+	 * @param variant - Variant name (default: 'solid')
+	 * @param part - Part name (default: 'bg')
+	 * @param modifier - State modifier (default: 'enabled')
+	 * @returns var(...) wrapped token
+	 */
+	export function $eve_surface_get_token_surface_level_var(
+		level: $eve_surface_color,
+		variant: $eve_surface_variant = 'solid',
+		part: string = 'bg',
+		modifier: string = 'enabled'
+	): any {
+		return var_token( $eve_surface_get_token_surface_level( level, variant, part, modifier ) )
 	}
 
 	/**
@@ -122,47 +140,7 @@ namespace $.$$ {
 		const colorStyles: any = {}
 
 		for( const color of colors ) {
-			// Surface levels (lowest, low, medium, high, highest) have simpler structure
-			// Tokens: --eve_surface_{level}_bg_{modifier}
-			if( $eve_surface.COLORS_SURFACE_LEVELS.includes( color as any ) ) {
-				const levelStates: any = {}
-
-				for( const state of states ) {
-					if( state === 'enabled' ) {
-						continue
-					}
-
-					const bgToken = $eve_surface_get_token_surface_level( color, state )
-					const baseBgToken = $eve_surface_get_token_surface_level( color )
-
-					levelStates[ state ] = {
-						background: {
-							color: var_token( bgToken, var_token( baseBgToken ) ),
-						},
-					}
-				}
-
-				colorStyles[ color ] = {
-					background: {
-						color: var_token( $eve_surface_get_token_surface_level( color ) ),
-					},
-					'@': {
-						// Native CSS pseudo-classes for interactive elements
-						eve_surface_interactive: {
-							true: {
-								':hover': levelStates[ 'hovered' ] || {},
-								':active': levelStates[ 'pressed' ] || {},
-								':disabled': levelStates[ 'disabled' ] || {},
-							},
-						},
-						// Programmatic states via attributes
-						eve_surface_state: levelStates,
-					},
-				}
-				continue
-			}
-
-			// Brand colors (primary, secondary, etc.) have variant structure
+			// All colors (brand + surface levels) now support all variants!
 			const variant_styles: any = {}
 
 			for( const variant of variants ) {
@@ -179,36 +157,53 @@ namespace $.$$ {
 					const base_bg_token = $eve_surface_get_token_surface( color, variant, 'bg', 'enabled' )
 					const base_text_token = $eve_surface_get_token_surface( color, variant, 'text', 'enabled' )
 
-					state_styles[ state ] = {
+					const style: any = {
 						background: {
 							color: var_token( bg_token, var_token( base_bg_token ) ),
 						},
 						color: var_token( text_token, var_token( base_text_token ) ),
-						// Border follows text color for outline, transparent for others
-						border: {
-							color: variant === 'outline'
-								? var_token( text_token, var_token( base_text_token ) )
-								: 'transparent',
-						},
 					}
+
+					// Only outline variant gets border color change in states
+					if( variant === 'outline' ) {
+						// Border uses solid variant bg color (base color)
+						const border_token = $eve_surface_get_token_surface( color, 'solid', 'bg', state )
+						const base_border_token = $eve_surface_get_token_surface( color, 'solid', 'bg', 'enabled' )
+						style.border = {
+							color: var_token( border_token, var_token( base_border_token ) ),
+						}
+					}
+					// Note: other variants inherit border: none from base styles
+
+					state_styles[ state ] = style
 				}
 
 				const bg_token = $eve_surface_get_token_surface( color, variant, 'bg', 'enabled' )
 				const text_token = $eve_surface_get_token_surface( color, variant, 'text', 'enabled' )
 
-				variant_styles[ variant ] = {
+				const base_styles: any = {
 					background: {
 						color: var_token( bg_token ),
 					},
 					color: var_token( text_token ),
-					border: {
+				}
+
+				// Only outline variant gets border, others have none
+				if( variant === 'outline' ) {
+					// Border uses solid variant bg color (base color)
+					const border_token = $eve_surface_get_token_surface( color, 'solid', 'bg', 'enabled' )
+					base_styles.border = {
 						width: var_token( get_token_border() ), // Will be overridden by size-specific border
 						style: 'solid',
-						// Border color: outline uses text color, others are transparent
-						color: variant === 'outline'
-							? var_token( text_token )
-							: 'transparent',
-					},
+						color: var_token( border_token ),
+					}
+				} else {
+					// Explicitly set border to none for other variants
+					base_styles.border = 'none'
+				}
+
+				variant_styles[ variant ] = {
+					...base_styles,
 					transition: `all ${ var_token( get_token_surface_property( 'transition_duration' ) ) } ${ var_token( get_token_surface_property( 'transition_easing' ) ) }`,
 
 					'@': {

@@ -13,12 +13,13 @@ namespace $.$$ {
 	export class $eve_input_logical_switch extends $.$eve_input_logical_switch {
 
 		override dom_name() {
-			return 'input'
+			return 'button'
 		}
 
-		// override variant(): $eve_surface_variant {
-		// 	return this.checked() ? 'solid' : 'outline'
-		// }
+		@$mol_mem
+		override variant(): $eve_surface_variant {
+			return this.checked() ? 'solid' : 'outline'
+		}
 
 		@$mol_mem
 		override direction( next?: $eve_flex_direction ): $eve_flex_direction {
@@ -26,13 +27,7 @@ namespace $.$$ {
 		}
 
 		@$mol_mem
-		override switch_variant(): $eve_surface_variant {
-			console.log( 'switch_variant', this.checked() ? 'solid' : 'outline' )
-			return this.checked() ? 'solid' : 'outline'
-		}
-
-		@$mol_mem
-		override colors( next?: $eve_surface_color ): $eve_surface_color {
+		override switch_colors( next?: $eve_surface_color ): $eve_surface_color {
 			return this.checked() ? 'primary' : 'low'
 		}
 

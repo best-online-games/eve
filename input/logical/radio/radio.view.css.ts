@@ -25,7 +25,6 @@ namespace $.$$ {
 				color: 'currentcolor',
 			},
 			opacity: 0,
-			transform: 'scale(0.1)',
 			transition: 'opacity 0.15s ease, transform 0.2s ease',
 			width: rem( 0.375 ),
 			height: rem( 0.375 ),
@@ -36,7 +35,6 @@ namespace $.$$ {
 			true: {
 				Disc: {
 					opacity: 1,
-					transform: 'scale(1)',
 				},
 			},
 		},
