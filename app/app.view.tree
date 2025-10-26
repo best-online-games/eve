@@ -6,6 +6,12 @@ $eve_app $eve_page
 		<= Title
 		<= Switch
 		<= Tools
+	tools /
+		<= Sources $mol_link_source
+			uri \https://github.com/best-online-games/eve
+			style *
+				alignItems \center
+		<= Lights $mol_lights_toggle
 	body /
 		<= Content
 	Deck $mol_deck
