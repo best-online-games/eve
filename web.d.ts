@@ -3669,13 +3669,65 @@ declare namespace $.$$ {
 
 declare namespace $ {
 
+	export class $mol_icon_github extends $mol_icon {
+		path( ): string
+	}
+	
+}
+
+//# sourceMappingURL=github.view.tree.d.ts.map
+declare namespace $ {
+
+	type $mol_paragraph__title_eve_app_source_1 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_paragraph['title'] >
+	>
+	export class $eve_app_source extends $mol_link_source {
+		Icon( ): $mol_icon_github
+		GitHub( ): $mol_paragraph
+		uri_base( ): string
+		uri_end( ): string
+		sub( ): readonly(any)[]
+	}
+	
+}
+
+//# sourceMappingURL=source.view.tree.d.ts.map
+declare namespace $.$$ {
+    class $eve_app_source extends $.$eve_app_source {
+        uri(): string;
+    }
+}
+
+declare namespace $ {
+    function $milis_log(target: any, key: string, descriptor: PropertyDescriptor): PropertyDescriptor;
+    function $milis_log_in(target: any, key: string, descriptor: PropertyDescriptor): PropertyDescriptor;
+    function $milis_log_out(target: any, key: string, descriptor: PropertyDescriptor): PropertyDescriptor;
+}
+
+declare namespace $ {
+
+	type $eve_app_source__uri_end_eve_app_page_sb_page_1 = $mol_type_enforce<
+		ReturnType< $eve_app_page_sb_page['title_lower'] >
+		,
+		ReturnType< $eve_app_source['uri_end'] >
+	>
 	export class $eve_app_page_sb_page extends $eve_page {
-		Head( ): any
+		title_lower( ): string
+		Source( ): $eve_app_source
+		tools( ): readonly(any)[]
 	}
 	
 }
 
 //# sourceMappingURL=page.view.tree.d.ts.map
+declare namespace $.$$ {
+    class $eve_app_page_sb_page extends $.$eve_app_page_sb_page {
+        title_lower(): string;
+    }
+}
+
 declare namespace $.$$ {
 }
 
@@ -5402,22 +5454,17 @@ declare namespace $ {
 		,
 		ReturnType< $eve_app_page_sb_playground['default_source'] >
 	>
-	type $eve_app_page_sb_page__title_eve_app_page_components_button_3 = $mol_type_enforce<
-		any
-		,
-		ReturnType< $eve_app_page_sb_page['title'] >
-	>
-	type $eve_app_page_sb_page__body_eve_app_page_components_button_4 = $mol_type_enforce<
+	type $eve_app_page_sb_page__body_eve_app_page_components_button_3 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $eve_app_page_sb_page['body'] >
 	>
-	type $eve_app_page_sb_catalog__param_eve_app_page_components_button_5 = $mol_type_enforce<
+	type $eve_app_page_sb_catalog__param_eve_app_page_components_button_4 = $mol_type_enforce<
 		string
 		,
 		ReturnType< $eve_app_page_sb_catalog['param'] >
 	>
-	type $eve_app_page_sb_catalog__spreads_eve_app_page_components_button_6 = $mol_type_enforce<
+	type $eve_app_page_sb_catalog__spreads_eve_app_page_components_button_5 = $mol_type_enforce<
 		({ 
 			'overview': ReturnType< $eve_app_page_components_button['Overview_page'] >,
 		}) 

@@ -9483,15 +9483,132 @@ var $;
 })($ || ($ = {}));
 
 ;
-	($.$eve_app_page_sb_page) = class $eve_app_page_sb_page extends ($.$eve_page) {
-		Head(){
-			return null;
+	($.$mol_icon_github) = class $mol_icon_github extends ($.$mol_icon) {
+		path(){
+			return "M12,2A10,10 0 0,0 2,12C2,16.42 4.87,20.17 8.84,21.5C9.34,21.58 9.5,21.27 9.5,21C9.5,20.77 9.5,20.14 9.5,19.31C6.73,19.91 6.14,17.97 6.14,17.97C5.68,16.81 5.03,16.5 5.03,16.5C4.12,15.88 5.1,15.9 5.1,15.9C6.1,15.97 6.63,16.93 6.63,16.93C7.5,18.45 8.97,18 9.54,17.76C9.63,17.11 9.89,16.67 10.17,16.42C7.95,16.17 5.62,15.31 5.62,11.5C5.62,10.39 6,9.5 6.65,8.79C6.55,8.54 6.2,7.5 6.75,6.15C6.75,6.15 7.59,5.88 9.5,7.17C10.29,6.95 11.15,6.84 12,6.84C12.85,6.84 13.71,6.95 14.5,7.17C16.41,5.88 17.25,6.15 17.25,6.15C17.8,7.5 17.45,8.54 17.35,8.79C18,9.5 18.38,10.39 18.38,11.5C18.38,15.32 16.04,16.16 13.81,16.41C14.17,16.72 14.5,17.33 14.5,18.26C14.5,19.6 14.5,20.68 14.5,21C14.5,21.27 14.66,21.59 15.17,21.5C19.14,20.16 22,16.42 22,12A10,10 0 0,0 12,2Z";
 		}
 	};
 
 
 ;
 "use strict";
+
+;
+	($.$eve_app_source) = class $eve_app_source extends ($.$mol_link_source) {
+		Icon(){
+			const obj = new this.$.$mol_icon_github();
+			return obj;
+		}
+		GitHub(){
+			const obj = new this.$.$mol_paragraph();
+			(obj.title) = () => ("GitHub");
+			return obj;
+		}
+		uri_base(){
+			return "https://github.com/best-online-games/eve/tree/main/";
+		}
+		uri_end(){
+			return "";
+		}
+		sub(){
+			return [(this.Icon()), (this.GitHub())];
+		}
+	};
+	($mol_mem(($.$eve_app_source.prototype), "Icon"));
+	($mol_mem(($.$eve_app_source.prototype), "GitHub"));
+
+
+;
+"use strict";
+
+;
+"use strict";
+var $;
+(function ($) {
+    var $$;
+    (function ($$) {
+        class $eve_app_source extends $.$eve_app_source {
+            uri() {
+                return this.uri_base() + this.uri_end();
+            }
+        }
+        $$.$eve_app_source = $eve_app_source;
+    })($$ = $.$$ || ($.$$ = {}));
+})($ || ($ = {}));
+
+;
+	($.$eve_app_page_sb_page) = class $eve_app_page_sb_page extends ($.$eve_page) {
+		title_lower(){
+			return "";
+		}
+		Source(){
+			const obj = new this.$.$eve_app_source();
+			(obj.uri_end) = () => ((this.title_lower()));
+			return obj;
+		}
+		tools(){
+			return [(this.Source())];
+		}
+	};
+	($mol_mem(($.$eve_app_page_sb_page.prototype), "Source"));
+
+
+;
+"use strict";
+var $;
+(function ($) {
+    function $milis_log(target, key, descriptor) {
+        const originalMethod = descriptor.value;
+        descriptor.value = function (...args) {
+            const result = originalMethod.apply(this, args);
+            console.debug(`%c\t${key}\n>>>`, 'color: lightyellow', args, '\t', JSON.stringify(args), '\n<<<', result, '\t', JSON.stringify(result));
+            return result;
+        };
+        return descriptor;
+    }
+    $.$milis_log = $milis_log;
+    function $milis_log_in(target, key, descriptor) {
+        const originalMethod = descriptor.value;
+        descriptor.value = function (...args) {
+            const result = originalMethod.apply(this, args);
+            console.debug(`%c\t${key}\n>>>`, 'color: lightyellow', args, '\t', JSON.stringify(args));
+            return result;
+        };
+        return descriptor;
+    }
+    $.$milis_log_in = $milis_log_in;
+    function $milis_log_out(target, key, descriptor) {
+        const originalMethod = descriptor.value;
+        descriptor.value = function (...args) {
+            const result = originalMethod.apply(this, args);
+            console.debug(`%c\t${key}\n<<<`, 'color: lightyellow', result, '\t', JSON.stringify(result));
+            return result;
+        };
+        return descriptor;
+    }
+    $.$milis_log_out = $milis_log_out;
+})($ || ($ = {}));
+
+;
+"use strict";
+
+;
+"use strict";
+var $;
+(function ($) {
+    var $$;
+    (function ($$) {
+        class $eve_app_page_sb_page extends $.$eve_app_page_sb_page {
+            title_lower() {
+                return this.title() ? this.title().replaceAll(' ', '/').toLowerCase() : '';
+            }
+        }
+        __decorate([
+            $milis_log
+        ], $eve_app_page_sb_page.prototype, "title_lower", null);
+        $$.$eve_app_page_sb_page = $eve_app_page_sb_page;
+    })($$ = $.$$ || ($.$$ = {}));
+})($ || ($ = {}));
 
 ;
 "use strict";
@@ -13901,7 +14018,6 @@ var $;
 		}
 		Overview_page(){
 			const obj = new this.$.$eve_app_page_sb_page();
-			(obj.title) = () => (null);
 			(obj.body) = () => ([(this.Playground())]);
 			return obj;
 		}
