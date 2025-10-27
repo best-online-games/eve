@@ -15,6 +15,7 @@ namespace $.$$ {
 
 		@$mol_mem
 		checked( next?: boolean ): boolean {
+			
 			return next ?? false
 		}
 
@@ -29,6 +30,7 @@ namespace $.$$ {
 		}
 
 		event_click( next?: Event ) {
+			console.log($eve_tab.prototype)
 			if( this.disabled() ) {
 				next?.preventDefault()
 				return
