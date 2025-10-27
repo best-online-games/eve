@@ -122,7 +122,6 @@ namespace $.$$ {
 		 */
 		@$mol_mem
 		interactive( next?: boolean ): boolean | undefined {
-			console.log( 'interactive', next )
 
 			return next
 		}
