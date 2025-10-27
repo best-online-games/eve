@@ -1623,7 +1623,7 @@ declare namespace $.$$ {
         static readonly COLORS_SURFACE_LEVELS: readonly ["lowest", "low", "medium", "high", "highest"];
         static readonly COLORS: readonly ["primary", "secondary", "tertiary", "danger", "warning", "success", "info", "lowest", "low", "medium", "high", "highest"];
         static readonly SIZES: readonly ["xs", "s", "m", "l", "xl"];
-        static readonly VARIANTS: readonly ["solid", "outline", "soft", "ghost"];
+        static readonly VARIANTS: readonly ["solid", "outline", "soft", "ghost", "text"];
         attr(): Record<string, any>;
         state(next?: $eve_surface_state_modifiers): $eve_surface_state_modifiers | undefined;
         colors(next?: $eve_surface_color): $eve_surface_color | undefined;
@@ -2876,7 +2876,7 @@ declare namespace $.$$ {
         col_head_content(colId: string): readonly string[];
         rows(): readonly $mol_view[];
         cells(row_id: string[]): readonly $mol_view[];
-        col_type(col_id: string): "number" | "text" | "branch";
+        col_type(col_id: string): "text" | "number" | "branch";
         Cell(id: {
             row: string[];
             col: string;
