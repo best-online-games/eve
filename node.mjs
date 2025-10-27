@@ -15929,6 +15929,7 @@ var $;
                 return this.checked() ? 'primary' : 'low';
             }
             event_click(next) {
+                console.log($eve_tab.prototype);
                 if (this.disabled()) {
                     next?.preventDefault();
                     return;
