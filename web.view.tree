@@ -1483,7 +1483,7 @@ $eve_app_page_components_switch $eve_app_page_sb_page
 
 $eve_tab $eve_button
 	size null
-	variant <= tab_variant \ghost
+	variant <= tab_variant \text
 	colors <= tab_colors \primary
 	attr *
 		^

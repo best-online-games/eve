@@ -15778,7 +15778,7 @@ var $;
 ;
 	($.$eve_tab) = class $eve_tab extends ($.$eve_button) {
 		tab_variant(){
-			return "ghost";
+			return "text";
 		}
 		tab_colors(){
 			return "primary";
@@ -15835,9 +15835,6 @@ var $;
             }
             disabled(next) {
                 return next ?? false;
-            }
-            tab_variant() {
-                return this.checked() ? 'soft' : 'ghost';
             }
             tab_colors() {
                 return this.checked() ? 'primary' : 'low';

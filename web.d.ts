@@ -6624,7 +6624,6 @@ declare namespace $.$$ {
     class $eve_tab extends $.$eve_tab {
         checked(next?: boolean): boolean;
         disabled(next?: boolean): boolean;
-        tab_variant(): $eve_surface_variant;
         tab_colors(): $eve_surface_color;
         event_click(next?: Event): void;
         aria_checked(): string;
