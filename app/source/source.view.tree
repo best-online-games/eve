@@ -1,0 +1,6 @@
+$eve_app_source $mol_link_source
+	uri_base \https://github.com/best-online-games/eve/tree/main/
+	uri_end \
+	sub /
+		<= Icon $mol_icon_github
+		<= GitHub $mol_paragraph title \GitHub

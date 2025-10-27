@@ -6,7 +6,6 @@ $eve_app_page_components_button $eve_app_page_sb_page
 			param \button
 			spreads *
 				overview <= Overview_page $eve_app_page_sb_page
-					title null
 					body /
 						<= Playground $eve_app_page_sb_playground
 							component_name \Live_button

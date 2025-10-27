@@ -1,3 +1,4 @@
 $eve_app_page_sb_page $eve_page
+	tools / <= Source $eve_app_source uri_end <= title_lower \
 	- слева в нав меню уже есть индикатор активной страницы. Повторять заголовок излишне
-	Head null
+	- Head null
