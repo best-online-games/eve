@@ -59,3 +59,4 @@ Vue:
 Просто найс ресурсы и вандерфул designs:  
 * https://www.awwwards.com/  
 * https://tympanus.net/codrops/  
+* https://reactbits.dev/get-started/index  
