@@ -13,10 +13,6 @@ namespace $.$$ {
 	 */
 	export class $eve_input_logical_radio extends $.$eve_input_logical_radio {
 
-		override dom_name() {
-			return 'input'
-		}
-
 		@$mol_mem
 		dom_id() {
 			return `${ this }:radio`
@@ -25,6 +21,11 @@ namespace $.$$ {
 		@$mol_mem
 		checked( next?: boolean ): boolean {
 			return next ?? false
+		}
+
+		@$mol_mem
+		input_checked() {
+			return this.checked()
 		}
 
 		@$mol_mem

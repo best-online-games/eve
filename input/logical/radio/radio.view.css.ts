@@ -9,11 +9,24 @@ namespace $.$$ {
 		width: rem( 1 ),
 		height: rem( 1 ),
 		padding: 0,
+		margin: 0,
 		flex: {
 			shrink: 0,
 		},
 		border: {
 			radius: '50%', // Circular shape
+		},
+		position: 'relative',
+
+		Input: {
+			// Hide native input but keep it functional for accessibility
+			position: 'absolute',
+			opacity: 0,
+			width: 0,
+			height: 0,
+			margin: 0,
+			padding: 0,
+			pointerEvents: 'none',
 		},
 
 		Disc: {
@@ -22,7 +35,7 @@ namespace $.$$ {
 				radius: '50%',
 			},
 			background: {
-				color: 'currentcolor',
+				color: $mol_theme.back,
 			},
 			opacity: 0,
 			transition: 'opacity 0.15s ease, transform 0.2s ease',
