@@ -1,8 +1,8 @@
 $eve_app_page_components_button $eve_app_page_sb_page
-	title \Buttons
+	title \Button
 	Head null
 	body /
-		<= Buttons_catalog $eve_app_page_sb_catalog
+		<= Button_catalog $eve_app_page_sb_catalog
 			param \button
 			spreads *
 				overview <= Overview_page $eve_app_page_sb_page

@@ -1,25 +1,32 @@
-$eve_app_page_sb_playground $eve_flex
-	justify_content \center
-	align_items \center
-	gap \32px
-	wrap \wrap
+$eve_app_page_sb_playground $mol_book2
 	component_name \Live_component
 	default_source \
 		\Live_component $mol_view
 		\	sub /
 		\		\\Edit component...
-	sub /
-		<= Live_component_container $eve_surface
-			colors \lowest
-			sub /
-				<= Live_component $eve_surface
-		<= Editor_body $eve_surface
-			colors \lowest
-			sub <= editor_body /
-				<= Source_tree $hyoo_tree_edit
-					value? <=> source_tree? $mol_tree2
-				<= Source_text $mol_textarea
-					value?val <=> source?val \
-					hint \view.tree code
-					sidebar_showed true
+	Placeholder null
+	pages /
+		<= Demo_page $eve_page
+			Head null
+			title \Demo
+			body /
+				<= Live_component_container $eve_flex
+					colors \lowest
+					justify_content \center
+					align_items \center
+					sub /
+						<= Live_component $eve_surface
+		<= Code_page $eve_page
+			Head null
+			title \Code
+			body /
+				<= Editor_body $eve_surface
+					colors \lowest
+					sub <= editor_body /
+						<= Source_tree $hyoo_tree_edit
+							value? <=> source_tree? $mol_tree2
+						<= Source_text $mol_textarea
+							value?val <=> source?val \
+							hint \view.tree code
+							sidebar_showed true
 
