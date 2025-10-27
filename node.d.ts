@@ -3816,12 +3816,6 @@ declare namespace $.$$ {
 }
 
 declare namespace $ {
-    function $milis_log(target: any, key: string, descriptor: PropertyDescriptor): PropertyDescriptor;
-    function $milis_log_in(target: any, key: string, descriptor: PropertyDescriptor): PropertyDescriptor;
-    function $milis_log_out(target: any, key: string, descriptor: PropertyDescriptor): PropertyDescriptor;
-}
-
-declare namespace $ {
 
 	type $eve_app_source__uri_end_eve_app_page_sb_page_1 = $mol_type_enforce<
 		ReturnType< $eve_app_page_sb_page['title_lower'] >
