@@ -19,14 +19,28 @@ $eve_app_page_sb_playground $mol_book2
 		<= Code_page $eve_page
 			Head null
 			title \Code
+			tools /
+				<= Editor_mode_toggle $mol_check_icon
+					checked? <=> raw? true
+					hint \Toggle tree/text editor
+					- Icon <= Editor_mode_icon $mol_icon_code
 			body /
-				<= Editor_body $eve_surface
-					colors \lowest
-					sub <= editor_body /
-						<= Source_tree $hyoo_tree_edit
-							value? <=> source_tree? $mol_tree2
-						<= Source_text $mol_textarea
-							value?val <=> source?val \
-							hint \view.tree code
-							sidebar_showed true
-
+				<= Code_tabs $eve_tab_container
+					tab? <=> code_tab? \source
+					spreads *
+						source
+							<= Source_panel $eve_surface
+								colors \lowest
+								sub <= source_editor /
+									<= Source_text $mol_textarea
+										value?val <=> source?val \
+										hint \view.tree code
+										sidebar_showed true
+									<= Source_tree $hyoo_tree_edit
+										value? <=> source_tree? $mol_tree2
+						props
+							<= Props_panel $eve_surface
+								colors \lowest
+								sub /
+									<= Props_placeholder $mol_paragraph
+										title \Properties panel - coming soon

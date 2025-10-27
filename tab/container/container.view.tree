@@ -1,0 +1,20 @@
+$eve_tab_container $mol_view
+	tab? \
+	spreads *
+	Spread* $mol_view
+	spread_ids /string
+	spread_current null
+	tab_label* \
+	tab_checked* false
+	tab_click*?event null
+	sub /
+		<= Tab_group $eve_tab_group
+			value? <=> tab?
+			tabs <= tabs /
+			tab_label* <= tab_label*
+			tab_checked* <= tab_checked*
+			tab_click*?event <=> tab_click*?event
+		<= Content $mol_switch
+			value <= tab
+			options <= content_options *
+

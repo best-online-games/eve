@@ -8,21 +8,27 @@ namespace $.$$ {
 		// Дефолтный код (теперь берётся из view.tree)
 		// default_source(): string - определено в view.tree
 
-		// Tree editor mode (без URL синка)
-		@$mol_mem
-		raw( next?: boolean ) {
-			return next ?? true
-		}
+	// Active tab in code panel
+	@$mol_mem
+	code_tab( next?: string ) {
+		return next ?? 'source'
+	}
 
-		// Редактор: tree или text
-		@$mol_mem
-		editor_body() {
-			return this.raw()
-				? [ this.Source_text() ]
-				: [ this.Source_tree() ]
-		}
+	// Tree editor mode (без URL синка)
+	@$mol_mem
+	raw( next?: boolean ) {
+		return next ?? true
+	}
 
-		// Исходный код (локально, без URL)
+	// Редактор: tree или text
+	@$mol_mem
+	source_editor() {
+		return this.raw()
+			? [ this.Source_text() ]
+			: [ this.Source_tree() ]
+	}
+
+	// Исходный код (локально, без URL)
 		@$mol_mem
 		source( next?: string ) {
 			return next ?? this.default_source()
