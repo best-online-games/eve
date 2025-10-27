@@ -1,6 +1,6 @@
 $eve_tab $eve_button
 	size null
-	variant <= tab_variant \ghost
+	variant <= tab_variant \text
 	colors <= tab_colors \primary
 	attr *
 		^

@@ -23,9 +23,6 @@ namespace $.$$ {
 			return next ?? false
 		}
 
-		override tab_variant(): $eve_surface_variant {
-			return this.checked() ? 'soft' : 'ghost'
-		}
 
 		override tab_colors(): $eve_surface_color {
 			return this.checked() ? 'primary' : 'low'
