@@ -99,6 +99,16 @@
 		--eve_surface_primary_ghost_text_enabled: oklch(75% 0.12 var(--eve_surface_primary_hue));
 		--eve_surface_primary_ghost_text_disabled: oklch(55% 0 var(--eve_surface_primary_hue));
 
+		/* PRIMARY - TEXT (always transparent bg, only text color) */
+		--eve_surface_primary_text_bg_enabled: transparent;
+		--eve_surface_primary_text_bg_hovered: transparent;
+		--eve_surface_primary_text_bg_pressed: transparent;
+		--eve_surface_primary_text_bg_disabled: transparent;
+		--eve_surface_primary_text_text_enabled: oklch(75% 0.12 var(--eve_surface_primary_hue));
+		--eve_surface_primary_text_text_hovered: oklch(80% 0.13 var(--eve_surface_primary_hue));
+		--eve_surface_primary_text_text_pressed: oklch(70% 0.11 var(--eve_surface_primary_hue));
+		--eve_surface_primary_text_text_disabled: oklch(55% 0 var(--eve_surface_primary_hue));
+
 		/* =========================================================================
 	   SECONDARY COLOR
 	   ========================================================================= */
@@ -128,6 +138,16 @@
 		--eve_surface_secondary_ghost_bg_pressed: oklch(55% 0.15 var(--eve_surface_secondary_hue) / 0.2);
 		--eve_surface_secondary_ghost_text_enabled: oklch(75% 0.12 var(--eve_surface_secondary_hue));
 		--eve_surface_secondary_ghost_text_disabled: oklch(55% 0 var(--eve_surface_secondary_hue));
+
+		/* SECONDARY - TEXT */
+		--eve_surface_secondary_text_bg_enabled: transparent;
+		--eve_surface_secondary_text_bg_hovered: transparent;
+		--eve_surface_secondary_text_bg_pressed: transparent;
+		--eve_surface_secondary_text_bg_disabled: transparent;
+		--eve_surface_secondary_text_text_enabled: oklch(75% 0.12 var(--eve_surface_secondary_hue));
+		--eve_surface_secondary_text_text_hovered: oklch(80% 0.13 var(--eve_surface_secondary_hue));
+		--eve_surface_secondary_text_text_pressed: oklch(70% 0.11 var(--eve_surface_secondary_hue));
+		--eve_surface_secondary_text_text_disabled: oklch(55% 0 var(--eve_surface_secondary_hue));
 
 		/* =========================================================================
 	   TERTIARY COLOR
@@ -417,6 +437,107 @@
 		--eve_surface_highest_ghost_bg_pressed: oklch(0.2 0 0 / 0.15);
 		--eve_surface_highest_ghost_text_enabled: oklch(0.85 0 0);
 		--eve_surface_highest_ghost_text_disabled: oklch(0.5 0 0);
+
+		/* =========================================================================
+		   TEXT VARIANT - ALL COLORS (Dark theme)
+		   Always transparent background, only text color changes
+		   ========================================================================= */
+
+		/* TERTIARY - TEXT */
+		--eve_surface_tertiary_text_bg_enabled: transparent;
+		--eve_surface_tertiary_text_bg_hovered: transparent;
+		--eve_surface_tertiary_text_bg_pressed: transparent;
+		--eve_surface_tertiary_text_bg_disabled: transparent;
+		--eve_surface_tertiary_text_text_enabled: oklch(75% 0.12 var(--eve_surface_tertiary_hue));
+		--eve_surface_tertiary_text_text_hovered: oklch(80% 0.13 var(--eve_surface_tertiary_hue));
+		--eve_surface_tertiary_text_text_pressed: oklch(70% 0.11 var(--eve_surface_tertiary_hue));
+		--eve_surface_tertiary_text_text_disabled: oklch(55% 0 var(--eve_surface_tertiary_hue));
+
+		/* DANGER - TEXT */
+		--eve_surface_danger_text_bg_enabled: transparent;
+		--eve_surface_danger_text_bg_hovered: transparent;
+		--eve_surface_danger_text_bg_pressed: transparent;
+		--eve_surface_danger_text_bg_disabled: transparent;
+		--eve_surface_danger_text_text_enabled: oklch(75% 0.12 var(--eve_surface_danger_hue));
+		--eve_surface_danger_text_text_hovered: oklch(80% 0.13 var(--eve_surface_danger_hue));
+		--eve_surface_danger_text_text_pressed: oklch(70% 0.11 var(--eve_surface_danger_hue));
+		--eve_surface_danger_text_text_disabled: oklch(55% 0 var(--eve_surface_danger_hue));
+
+		/* WARNING - TEXT */
+		--eve_surface_warning_text_bg_enabled: transparent;
+		--eve_surface_warning_text_bg_hovered: transparent;
+		--eve_surface_warning_text_bg_pressed: transparent;
+		--eve_surface_warning_text_bg_disabled: transparent;
+		--eve_surface_warning_text_text_enabled: oklch(80% 0.12 var(--eve_surface_warning_hue));
+		--eve_surface_warning_text_text_hovered: oklch(85% 0.13 var(--eve_surface_warning_hue));
+		--eve_surface_warning_text_text_pressed: oklch(75% 0.11 var(--eve_surface_warning_hue));
+		--eve_surface_warning_text_text_disabled: oklch(60% 0 var(--eve_surface_warning_hue));
+
+		/* SUCCESS - TEXT */
+		--eve_surface_success_text_bg_enabled: transparent;
+		--eve_surface_success_text_bg_hovered: transparent;
+		--eve_surface_success_text_bg_pressed: transparent;
+		--eve_surface_success_text_bg_disabled: transparent;
+		--eve_surface_success_text_text_enabled: oklch(75% 0.12 var(--eve_surface_success_hue));
+		--eve_surface_success_text_text_hovered: oklch(80% 0.13 var(--eve_surface_success_hue));
+		--eve_surface_success_text_text_pressed: oklch(70% 0.11 var(--eve_surface_success_hue));
+		--eve_surface_success_text_text_disabled: oklch(55% 0 var(--eve_surface_success_hue));
+
+		/* INFO - TEXT */
+		--eve_surface_info_text_bg_enabled: transparent;
+		--eve_surface_info_text_bg_hovered: transparent;
+		--eve_surface_info_text_bg_pressed: transparent;
+		--eve_surface_info_text_bg_disabled: transparent;
+		--eve_surface_info_text_text_enabled: oklch(75% 0.12 var(--eve_surface_info_hue));
+		--eve_surface_info_text_text_hovered: oklch(80% 0.13 var(--eve_surface_info_hue));
+		--eve_surface_info_text_text_pressed: oklch(70% 0.11 var(--eve_surface_info_hue));
+		--eve_surface_info_text_text_disabled: oklch(55% 0 var(--eve_surface_info_hue));
+
+		/* SURFACE LEVELS - TEXT (dark theme uses light text) */
+		--eve_surface_lowest_text_bg_enabled: transparent;
+		--eve_surface_lowest_text_bg_hovered: transparent;
+		--eve_surface_lowest_text_bg_pressed: transparent;
+		--eve_surface_lowest_text_bg_disabled: transparent;
+		--eve_surface_lowest_text_text_enabled: oklch(0.85 0 0);
+		--eve_surface_lowest_text_text_hovered: oklch(0.9 0 0);
+		--eve_surface_lowest_text_text_pressed: oklch(0.8 0 0);
+		--eve_surface_lowest_text_text_disabled: oklch(0.5 0 0);
+
+		--eve_surface_low_text_bg_enabled: transparent;
+		--eve_surface_low_text_bg_hovered: transparent;
+		--eve_surface_low_text_bg_pressed: transparent;
+		--eve_surface_low_text_bg_disabled: transparent;
+		--eve_surface_low_text_text_enabled: oklch(0.85 0 0);
+		--eve_surface_low_text_text_hovered: oklch(0.9 0 0);
+		--eve_surface_low_text_text_pressed: oklch(0.8 0 0);
+		--eve_surface_low_text_text_disabled: oklch(0.5 0 0);
+
+		--eve_surface_medium_text_bg_enabled: transparent;
+		--eve_surface_medium_text_bg_hovered: transparent;
+		--eve_surface_medium_text_bg_pressed: transparent;
+		--eve_surface_medium_text_bg_disabled: transparent;
+		--eve_surface_medium_text_text_enabled: oklch(0.85 0 0);
+		--eve_surface_medium_text_text_hovered: oklch(0.9 0 0);
+		--eve_surface_medium_text_text_pressed: oklch(0.8 0 0);
+		--eve_surface_medium_text_text_disabled: oklch(0.5 0 0);
+
+		--eve_surface_high_text_bg_enabled: transparent;
+		--eve_surface_high_text_bg_hovered: transparent;
+		--eve_surface_high_text_bg_pressed: transparent;
+		--eve_surface_high_text_bg_disabled: transparent;
+		--eve_surface_high_text_text_enabled: oklch(0.85 0 0);
+		--eve_surface_high_text_text_hovered: oklch(0.9 0 0);
+		--eve_surface_high_text_text_pressed: oklch(0.8 0 0);
+		--eve_surface_high_text_text_disabled: oklch(0.5 0 0);
+
+		--eve_surface_highest_text_bg_enabled: transparent;
+		--eve_surface_highest_text_bg_hovered: transparent;
+		--eve_surface_highest_text_bg_pressed: transparent;
+		--eve_surface_highest_text_bg_disabled: transparent;
+		--eve_surface_highest_text_text_enabled: oklch(0.85 0 0);
+		--eve_surface_highest_text_text_hovered: oklch(0.9 0 0);
+		--eve_surface_highest_text_text_pressed: oklch(0.8 0 0);
+		--eve_surface_highest_text_text_disabled: oklch(0.5 0 0);
 
 	}
 }
@@ -771,6 +892,107 @@
 		--eve_surface_highest_ghost_bg_pressed: oklch(78% 0.024 var(--eve_theme_hue) / 0.15);
 		--eve_surface_highest_ghost_text_enabled: oklch(25% 0.05 var(--eve_theme_hue));
 		--eve_surface_highest_ghost_text_disabled: oklch(55% 0.02 var(--eve_theme_hue));
+
+		/* =========================================================================
+		   TEXT VARIANT - ALL COLORS (Light theme)
+		   Always transparent background, only text color changes
+		   ========================================================================= */
+
+		/* TERTIARY - TEXT */
+		--eve_surface_tertiary_text_bg_enabled: transparent;
+		--eve_surface_tertiary_text_bg_hovered: transparent;
+		--eve_surface_tertiary_text_bg_pressed: transparent;
+		--eve_surface_tertiary_text_bg_disabled: transparent;
+		--eve_surface_tertiary_text_text_enabled: oklch(35% 0.15 var(--eve_surface_tertiary_hue));
+		--eve_surface_tertiary_text_text_hovered: oklch(30% 0.16 var(--eve_surface_tertiary_hue));
+		--eve_surface_tertiary_text_text_pressed: oklch(40% 0.14 var(--eve_surface_tertiary_hue));
+		--eve_surface_tertiary_text_text_disabled: oklch(70% 0 var(--eve_surface_tertiary_hue));
+
+		/* DANGER - TEXT */
+		--eve_surface_danger_text_bg_enabled: transparent;
+		--eve_surface_danger_text_bg_hovered: transparent;
+		--eve_surface_danger_text_bg_pressed: transparent;
+		--eve_surface_danger_text_bg_disabled: transparent;
+		--eve_surface_danger_text_text_enabled: oklch(35% 0.15 var(--eve_surface_danger_hue));
+		--eve_surface_danger_text_text_hovered: oklch(30% 0.16 var(--eve_surface_danger_hue));
+		--eve_surface_danger_text_text_pressed: oklch(40% 0.14 var(--eve_surface_danger_hue));
+		--eve_surface_danger_text_text_disabled: oklch(70% 0 var(--eve_surface_danger_hue));
+
+		/* WARNING - TEXT */
+		--eve_surface_warning_text_bg_enabled: transparent;
+		--eve_surface_warning_text_bg_hovered: transparent;
+		--eve_surface_warning_text_bg_pressed: transparent;
+		--eve_surface_warning_text_bg_disabled: transparent;
+		--eve_surface_warning_text_text_enabled: oklch(40% 0.12 var(--eve_surface_warning_hue));
+		--eve_surface_warning_text_text_hovered: oklch(35% 0.13 var(--eve_surface_warning_hue));
+		--eve_surface_warning_text_text_pressed: oklch(45% 0.11 var(--eve_surface_warning_hue));
+		--eve_surface_warning_text_text_disabled: oklch(75% 0 var(--eve_surface_warning_hue));
+
+		/* SUCCESS - TEXT */
+		--eve_surface_success_text_bg_enabled: transparent;
+		--eve_surface_success_text_bg_hovered: transparent;
+		--eve_surface_success_text_bg_pressed: transparent;
+		--eve_surface_success_text_bg_disabled: transparent;
+		--eve_surface_success_text_text_enabled: oklch(35% 0.15 var(--eve_surface_success_hue));
+		--eve_surface_success_text_text_hovered: oklch(30% 0.16 var(--eve_surface_success_hue));
+		--eve_surface_success_text_text_pressed: oklch(40% 0.14 var(--eve_surface_success_hue));
+		--eve_surface_success_text_text_disabled: oklch(70% 0 var(--eve_surface_success_hue));
+
+		/* INFO - TEXT */
+		--eve_surface_info_text_bg_enabled: transparent;
+		--eve_surface_info_text_bg_hovered: transparent;
+		--eve_surface_info_text_bg_pressed: transparent;
+		--eve_surface_info_text_bg_disabled: transparent;
+		--eve_surface_info_text_text_enabled: oklch(35% 0.15 var(--eve_surface_info_hue));
+		--eve_surface_info_text_text_hovered: oklch(30% 0.16 var(--eve_surface_info_hue));
+		--eve_surface_info_text_text_pressed: oklch(40% 0.14 var(--eve_surface_info_hue));
+		--eve_surface_info_text_text_disabled: oklch(70% 0 var(--eve_surface_info_hue));
+
+		/* SURFACE LEVELS - TEXT (light theme uses dark text) */
+		--eve_surface_lowest_text_bg_enabled: transparent;
+		--eve_surface_lowest_text_bg_hovered: transparent;
+		--eve_surface_lowest_text_bg_pressed: transparent;
+		--eve_surface_lowest_text_bg_disabled: transparent;
+		--eve_surface_lowest_text_text_enabled: oklch(25% 0.05 var(--eve_theme_hue));
+		--eve_surface_lowest_text_text_hovered: oklch(20% 0.06 var(--eve_theme_hue));
+		--eve_surface_lowest_text_text_pressed: oklch(30% 0.04 var(--eve_theme_hue));
+		--eve_surface_lowest_text_text_disabled: oklch(55% 0.02 var(--eve_theme_hue));
+
+		--eve_surface_low_text_bg_enabled: transparent;
+		--eve_surface_low_text_bg_hovered: transparent;
+		--eve_surface_low_text_bg_pressed: transparent;
+		--eve_surface_low_text_bg_disabled: transparent;
+		--eve_surface_low_text_text_enabled: oklch(25% 0.05 var(--eve_theme_hue));
+		--eve_surface_low_text_text_hovered: oklch(20% 0.06 var(--eve_theme_hue));
+		--eve_surface_low_text_text_pressed: oklch(30% 0.04 var(--eve_theme_hue));
+		--eve_surface_low_text_text_disabled: oklch(55% 0.02 var(--eve_theme_hue));
+
+		--eve_surface_medium_text_bg_enabled: transparent;
+		--eve_surface_medium_text_bg_hovered: transparent;
+		--eve_surface_medium_text_bg_pressed: transparent;
+		--eve_surface_medium_text_bg_disabled: transparent;
+		--eve_surface_medium_text_text_enabled: oklch(25% 0.05 var(--eve_theme_hue));
+		--eve_surface_medium_text_text_hovered: oklch(20% 0.06 var(--eve_theme_hue));
+		--eve_surface_medium_text_text_pressed: oklch(30% 0.04 var(--eve_theme_hue));
+		--eve_surface_medium_text_text_disabled: oklch(55% 0.02 var(--eve_theme_hue));
+
+		--eve_surface_high_text_bg_enabled: transparent;
+		--eve_surface_high_text_bg_hovered: transparent;
+		--eve_surface_high_text_bg_pressed: transparent;
+		--eve_surface_high_text_bg_disabled: transparent;
+		--eve_surface_high_text_text_enabled: oklch(25% 0.05 var(--eve_theme_hue));
+		--eve_surface_high_text_text_hovered: oklch(20% 0.06 var(--eve_theme_hue));
+		--eve_surface_high_text_text_pressed: oklch(30% 0.04 var(--eve_theme_hue));
+		--eve_surface_high_text_text_disabled: oklch(55% 0.02 var(--eve_theme_hue));
+
+		--eve_surface_highest_text_bg_enabled: transparent;
+		--eve_surface_highest_text_bg_hovered: transparent;
+		--eve_surface_highest_text_bg_pressed: transparent;
+		--eve_surface_highest_text_bg_disabled: transparent;
+		--eve_surface_highest_text_text_enabled: oklch(25% 0.05 var(--eve_theme_hue));
+		--eve_surface_highest_text_text_hovered: oklch(20% 0.06 var(--eve_theme_hue));
+		--eve_surface_highest_text_text_pressed: oklch(30% 0.04 var(--eve_theme_hue));
+		--eve_surface_highest_text_text_disabled: oklch(55% 0.02 var(--eve_theme_hue));
 	}
 }
 

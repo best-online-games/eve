@@ -74,15 +74,16 @@ namespace $.$$ {
 			'xl'
 		] as const
 
-		/**
-		 * Foundations: appearances palette
-		 */
-		static readonly VARIANTS = [
-			'solid',
-			'outline',
-			'soft', // antd 'filled' аналог. soft - куда более понятно. Мягкий background, немного прозрачная поверхность
-			'ghost' // transparent enabled, но при hover и pressed что-то вроде soft
-		] as const
+	/**
+	 * Foundations: appearances palette
+	 */
+	static readonly VARIANTS = [
+		'solid',
+		'outline',
+		'soft', // antd 'filled' аналог. soft - куда более понятно. Мягкий background, немного прозрачная поверхность
+		'ghost', // transparent enabled, но при hover и pressed что-то вроде soft
+		'text' // всегда прозрачный фон, только цветной текст (как antd text button)
+	] as const
 
 		// ===============================
 
