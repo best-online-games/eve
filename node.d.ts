@@ -3785,6 +3785,7 @@ declare namespace $.$$ {
 declare namespace $ {
 
 	export class $eve_app_page_sb_page extends $eve_page {
+		Head( ): any
 	}
 	
 }
@@ -5478,6 +5479,344 @@ declare namespace $.$$ {
 
 declare namespace $ {
 
+	export class $mol_icon_check extends $mol_icon {
+		path( ): string
+	}
+	
+}
+
+//# sourceMappingURL=check.view.tree.d.ts.map
+declare namespace $ {
+
+	export class $mol_icon_check_circle extends $mol_icon {
+		path( ): string
+	}
+	
+}
+
+//# sourceMappingURL=circle.view.tree.d.ts.map
+declare namespace $ {
+
+	export class $mol_icon_information extends $mol_icon {
+		path( ): string
+	}
+	
+}
+
+//# sourceMappingURL=information.view.tree.d.ts.map
+declare namespace $ {
+
+	export class $mol_icon_alert extends $mol_icon {
+		path( ): string
+	}
+	
+}
+
+//# sourceMappingURL=alert.view.tree.d.ts.map
+declare namespace $ {
+
+	export class $mol_icon_close_circle extends $mol_icon {
+		path( ): string
+	}
+	
+}
+
+//# sourceMappingURL=circle.view.tree.d.ts.map
+declare namespace $ {
+
+	type $eve_surface__sub_eve_alert_1 = $mol_type_enforce<
+		ReturnType< $eve_alert['message'] >
+		,
+		ReturnType< $eve_surface['sub'] >
+	>
+	type $eve_surface__sub_eve_alert_2 = $mol_type_enforce<
+		ReturnType< $eve_alert['description'] >
+		,
+		ReturnType< $eve_surface['sub'] >
+	>
+	type $eve_surface__sub_eve_alert_3 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $eve_surface['sub'] >
+	>
+	type $eve_button__variant_eve_alert_4 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $eve_button['variant'] >
+	>
+	type $eve_button__click_eve_alert_5 = $mol_type_enforce<
+		ReturnType< $eve_alert['close'] >
+		,
+		ReturnType< $eve_button['click'] >
+	>
+	type $eve_button__sub_eve_alert_6 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $eve_button['sub'] >
+	>
+	export class $eve_alert extends $eve_flex {
+		Icon( ): $mol_icon
+		message( ): readonly(any)[]
+		Message( ): $eve_surface
+		description( ): readonly(any)[]
+		Description( ): $eve_surface
+		Content( ): $eve_surface
+		Close_icon( ): $mol_icon_close
+		Close_button( ): $eve_button
+		colors( ): string
+		variant( ): string
+		enabled( next?: boolean ): boolean
+		close( next?: any ): any
+		attr( ): ({ 
+			'role': string,
+		})  & ReturnType< $eve_flex['attr'] >
+		sub( ): readonly(any)[]
+	}
+	
+}
+
+//# sourceMappingURL=alert.view.tree.d.ts.map
+declare namespace $.$$ {
+    class $eve_alert extends $.$eve_alert {
+        enabled(next?: boolean): boolean;
+        close(event?: Event): void;
+        Icon(): $mol_icon;
+        attr(): {
+            eve_alert_with_description: true | undefined;
+            eve_alert_colors: string;
+            role: string;
+        };
+    }
+}
+
+declare namespace $.$$ {
+}
+
+declare namespace $ {
+
+	type $eve_app_page_sb_playground__component_name_eve_app_page_components_alert_1 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $eve_app_page_sb_playground['component_name'] >
+	>
+	type $eve_app_page_sb_playground__default_source_eve_app_page_components_alert_2 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $eve_app_page_sb_playground['default_source'] >
+	>
+	type $eve_surface__sub_eve_app_page_components_alert_3 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $eve_surface['sub'] >
+	>
+	type $eve_app_page_sb_page__title_eve_app_page_components_alert_4 = $mol_type_enforce<
+		any
+		,
+		ReturnType< $eve_app_page_sb_page['title'] >
+	>
+	type $eve_app_page_sb_page__body_eve_app_page_components_alert_5 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $eve_app_page_sb_page['body'] >
+	>
+	type $eve_alert__colors_eve_app_page_components_alert_6 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $eve_alert['colors'] >
+	>
+	type $eve_alert__message_eve_app_page_components_alert_7 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $eve_alert['message'] >
+	>
+	type $eve_alert__colors_eve_app_page_components_alert_8 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $eve_alert['colors'] >
+	>
+	type $eve_alert__message_eve_app_page_components_alert_9 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $eve_alert['message'] >
+	>
+	type $eve_alert__colors_eve_app_page_components_alert_10 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $eve_alert['colors'] >
+	>
+	type $eve_alert__message_eve_app_page_components_alert_11 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $eve_alert['message'] >
+	>
+	type $eve_alert__colors_eve_app_page_components_alert_12 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $eve_alert['colors'] >
+	>
+	type $eve_alert__message_eve_app_page_components_alert_13 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $eve_alert['message'] >
+	>
+	type $eve_surface__sub_eve_app_page_components_alert_14 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $eve_surface['sub'] >
+	>
+	type $eve_app_page_sb_page__title_eve_app_page_components_alert_15 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $eve_app_page_sb_page['title'] >
+	>
+	type $eve_app_page_sb_page__body_eve_app_page_components_alert_16 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $eve_app_page_sb_page['body'] >
+	>
+	type $eve_alert__colors_eve_app_page_components_alert_17 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $eve_alert['colors'] >
+	>
+	type $eve_alert__message_eve_app_page_components_alert_18 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $eve_alert['message'] >
+	>
+	type $eve_alert__description_eve_app_page_components_alert_19 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $eve_alert['description'] >
+	>
+	type $eve_surface__sub_eve_app_page_components_alert_20 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $eve_surface['sub'] >
+	>
+	type $eve_app_page_sb_page__title_eve_app_page_components_alert_21 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $eve_app_page_sb_page['title'] >
+	>
+	type $eve_app_page_sb_page__body_eve_app_page_components_alert_22 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $eve_app_page_sb_page['body'] >
+	>
+	type $eve_alert__colors_eve_app_page_components_alert_23 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $eve_alert['colors'] >
+	>
+	type $eve_alert__message_eve_app_page_components_alert_24 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $eve_alert['message'] >
+	>
+	type $eve_alert__description_eve_app_page_components_alert_25 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $eve_alert['description'] >
+	>
+	type $eve_surface__sub_eve_app_page_components_alert_26 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $eve_surface['sub'] >
+	>
+	type $eve_app_page_sb_page__title_eve_app_page_components_alert_27 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $eve_app_page_sb_page['title'] >
+	>
+	type $eve_app_page_sb_page__body_eve_app_page_components_alert_28 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $eve_app_page_sb_page['body'] >
+	>
+	type $eve_alert__colors_eve_app_page_components_alert_29 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $eve_alert['colors'] >
+	>
+	type $eve_alert__Icon_eve_app_page_components_alert_30 = $mol_type_enforce<
+		any
+		,
+		ReturnType< $eve_alert['Icon'] >
+	>
+	type $eve_alert__message_eve_app_page_components_alert_31 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $eve_alert['message'] >
+	>
+	type $eve_alert__colors_eve_app_page_components_alert_32 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $eve_alert['colors'] >
+	>
+	type $eve_alert__Close_button_eve_app_page_components_alert_33 = $mol_type_enforce<
+		any
+		,
+		ReturnType< $eve_alert['Close_button'] >
+	>
+	type $eve_alert__message_eve_app_page_components_alert_34 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $eve_alert['message'] >
+	>
+	type $eve_surface__sub_eve_app_page_components_alert_35 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $eve_surface['sub'] >
+	>
+	type $eve_app_page_sb_page__title_eve_app_page_components_alert_36 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $eve_app_page_sb_page['title'] >
+	>
+	type $eve_app_page_sb_page__body_eve_app_page_components_alert_37 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $eve_app_page_sb_page['body'] >
+	>
+	export class $eve_app_page_components_alert extends $eve_app_page_sb_page {
+		Playground( ): $eve_app_page_sb_playground
+		Overview( ): $eve_surface
+		Overview_page( ): $eve_app_page_sb_page
+		Info_alert( ): $eve_alert
+		Success_alert( ): $eve_alert
+		Warning_alert( ): $eve_alert
+		Error_alert( ): $eve_alert
+		Variants( ): $eve_surface
+		Variants_page( ): $eve_app_page_sb_page
+		Description_alert( ): $eve_alert
+		With_description( ): $eve_surface
+		With_description_page( ): $eve_app_page_sb_page
+		Closable_alert( ): $eve_alert
+		Closable( ): $eve_surface
+		Closable_page( ): $eve_app_page_sb_page
+		Without_icon_alert( ): $eve_alert
+		No_close_button_alert( ): $eve_alert
+		Without_icon( ): $eve_surface
+		Without_icon_page( ): $eve_app_page_sb_page
+		Head( ): any
+		title( ): string
+		body( ): readonly(any)[]
+	}
+	
+}
+
+//# sourceMappingURL=alert.view.tree.d.ts.map
+declare namespace $.$$ {
+    class $eve_app_page_components_alert extends $.$eve_app_page_components_alert {
+    }
+}
+
+declare namespace $.$$ {
+}
+
+declare namespace $ {
+
 	type $eve_input_logical_radio_labelled__name_eve_input_logical_radio_group_1 = $mol_type_enforce<
 		ReturnType< $eve_input_logical_radio_group['group_name'] >
 		,
@@ -5768,15 +6107,6 @@ declare namespace $.$$ {
     }
 }
 
-declare namespace $ {
-
-	export class $mol_icon_check extends $mol_icon {
-		path( ): string
-	}
-	
-}
-
-//# sourceMappingURL=check.view.tree.d.ts.map
 declare namespace $ {
 
 	export class $eve_input_logical_checkbox extends $eve_button {
@@ -6128,335 +6458,6 @@ declare namespace $.$$ {
 
 declare namespace $ {
 
-	export class $mol_icon_check_circle extends $mol_icon {
-		path( ): string
-	}
-	
-}
-
-//# sourceMappingURL=circle.view.tree.d.ts.map
-declare namespace $ {
-
-	export class $mol_icon_information extends $mol_icon {
-		path( ): string
-	}
-	
-}
-
-//# sourceMappingURL=information.view.tree.d.ts.map
-declare namespace $ {
-
-	export class $mol_icon_alert extends $mol_icon {
-		path( ): string
-	}
-	
-}
-
-//# sourceMappingURL=alert.view.tree.d.ts.map
-declare namespace $ {
-
-	export class $mol_icon_close_circle extends $mol_icon {
-		path( ): string
-	}
-	
-}
-
-//# sourceMappingURL=circle.view.tree.d.ts.map
-declare namespace $ {
-
-	type $eve_surface__sub_eve_alert_1 = $mol_type_enforce<
-		ReturnType< $eve_alert['message'] >
-		,
-		ReturnType< $eve_surface['sub'] >
-	>
-	type $eve_surface__sub_eve_alert_2 = $mol_type_enforce<
-		ReturnType< $eve_alert['description'] >
-		,
-		ReturnType< $eve_surface['sub'] >
-	>
-	type $eve_surface__sub_eve_alert_3 = $mol_type_enforce<
-		readonly(any)[]
-		,
-		ReturnType< $eve_surface['sub'] >
-	>
-	type $eve_button__variant_eve_alert_4 = $mol_type_enforce<
-		string
-		,
-		ReturnType< $eve_button['variant'] >
-	>
-	type $eve_button__click_eve_alert_5 = $mol_type_enforce<
-		ReturnType< $eve_alert['close'] >
-		,
-		ReturnType< $eve_button['click'] >
-	>
-	type $eve_button__sub_eve_alert_6 = $mol_type_enforce<
-		readonly(any)[]
-		,
-		ReturnType< $eve_button['sub'] >
-	>
-	export class $eve_alert extends $eve_flex {
-		Icon( ): $mol_icon
-		message( ): readonly(any)[]
-		Message( ): $eve_surface
-		description( ): readonly(any)[]
-		Description( ): $eve_surface
-		Content( ): $eve_surface
-		Close_icon( ): $mol_icon_close
-		Close_button( ): $eve_button
-		colors( ): string
-		variant( ): string
-		enabled( next?: boolean ): boolean
-		close( next?: any ): any
-		attr( ): ({ 
-			'role': string,
-		})  & ReturnType< $eve_flex['attr'] >
-		sub( ): readonly(any)[]
-	}
-	
-}
-
-//# sourceMappingURL=alert.view.tree.d.ts.map
-declare namespace $.$$ {
-    class $eve_alert extends $.$eve_alert {
-        enabled(next?: boolean): boolean;
-        close(event?: Event): void;
-        Icon(): $mol_icon;
-        attr(): {
-            eve_alert_with_description: true | undefined;
-            eve_alert_colors: string;
-            role: string;
-        };
-    }
-}
-
-declare namespace $.$$ {
-}
-
-declare namespace $ {
-
-	type $eve_app_page_sb_playground__component_name_eve_app_page_components_alert_1 = $mol_type_enforce<
-		string
-		,
-		ReturnType< $eve_app_page_sb_playground['component_name'] >
-	>
-	type $eve_app_page_sb_playground__default_source_eve_app_page_components_alert_2 = $mol_type_enforce<
-		string
-		,
-		ReturnType< $eve_app_page_sb_playground['default_source'] >
-	>
-	type $eve_surface__sub_eve_app_page_components_alert_3 = $mol_type_enforce<
-		readonly(any)[]
-		,
-		ReturnType< $eve_surface['sub'] >
-	>
-	type $eve_app_page_sb_page__title_eve_app_page_components_alert_4 = $mol_type_enforce<
-		any
-		,
-		ReturnType< $eve_app_page_sb_page['title'] >
-	>
-	type $eve_app_page_sb_page__body_eve_app_page_components_alert_5 = $mol_type_enforce<
-		readonly(any)[]
-		,
-		ReturnType< $eve_app_page_sb_page['body'] >
-	>
-	type $eve_alert__colors_eve_app_page_components_alert_6 = $mol_type_enforce<
-		string
-		,
-		ReturnType< $eve_alert['colors'] >
-	>
-	type $eve_alert__message_eve_app_page_components_alert_7 = $mol_type_enforce<
-		readonly(any)[]
-		,
-		ReturnType< $eve_alert['message'] >
-	>
-	type $eve_alert__colors_eve_app_page_components_alert_8 = $mol_type_enforce<
-		string
-		,
-		ReturnType< $eve_alert['colors'] >
-	>
-	type $eve_alert__message_eve_app_page_components_alert_9 = $mol_type_enforce<
-		readonly(any)[]
-		,
-		ReturnType< $eve_alert['message'] >
-	>
-	type $eve_alert__colors_eve_app_page_components_alert_10 = $mol_type_enforce<
-		string
-		,
-		ReturnType< $eve_alert['colors'] >
-	>
-	type $eve_alert__message_eve_app_page_components_alert_11 = $mol_type_enforce<
-		readonly(any)[]
-		,
-		ReturnType< $eve_alert['message'] >
-	>
-	type $eve_alert__colors_eve_app_page_components_alert_12 = $mol_type_enforce<
-		string
-		,
-		ReturnType< $eve_alert['colors'] >
-	>
-	type $eve_alert__message_eve_app_page_components_alert_13 = $mol_type_enforce<
-		readonly(any)[]
-		,
-		ReturnType< $eve_alert['message'] >
-	>
-	type $eve_surface__sub_eve_app_page_components_alert_14 = $mol_type_enforce<
-		readonly(any)[]
-		,
-		ReturnType< $eve_surface['sub'] >
-	>
-	type $eve_app_page_sb_page__title_eve_app_page_components_alert_15 = $mol_type_enforce<
-		string
-		,
-		ReturnType< $eve_app_page_sb_page['title'] >
-	>
-	type $eve_app_page_sb_page__body_eve_app_page_components_alert_16 = $mol_type_enforce<
-		readonly(any)[]
-		,
-		ReturnType< $eve_app_page_sb_page['body'] >
-	>
-	type $eve_alert__colors_eve_app_page_components_alert_17 = $mol_type_enforce<
-		string
-		,
-		ReturnType< $eve_alert['colors'] >
-	>
-	type $eve_alert__message_eve_app_page_components_alert_18 = $mol_type_enforce<
-		readonly(any)[]
-		,
-		ReturnType< $eve_alert['message'] >
-	>
-	type $eve_alert__description_eve_app_page_components_alert_19 = $mol_type_enforce<
-		readonly(any)[]
-		,
-		ReturnType< $eve_alert['description'] >
-	>
-	type $eve_surface__sub_eve_app_page_components_alert_20 = $mol_type_enforce<
-		readonly(any)[]
-		,
-		ReturnType< $eve_surface['sub'] >
-	>
-	type $eve_app_page_sb_page__title_eve_app_page_components_alert_21 = $mol_type_enforce<
-		string
-		,
-		ReturnType< $eve_app_page_sb_page['title'] >
-	>
-	type $eve_app_page_sb_page__body_eve_app_page_components_alert_22 = $mol_type_enforce<
-		readonly(any)[]
-		,
-		ReturnType< $eve_app_page_sb_page['body'] >
-	>
-	type $eve_alert__colors_eve_app_page_components_alert_23 = $mol_type_enforce<
-		string
-		,
-		ReturnType< $eve_alert['colors'] >
-	>
-	type $eve_alert__message_eve_app_page_components_alert_24 = $mol_type_enforce<
-		readonly(any)[]
-		,
-		ReturnType< $eve_alert['message'] >
-	>
-	type $eve_alert__description_eve_app_page_components_alert_25 = $mol_type_enforce<
-		readonly(any)[]
-		,
-		ReturnType< $eve_alert['description'] >
-	>
-	type $eve_surface__sub_eve_app_page_components_alert_26 = $mol_type_enforce<
-		readonly(any)[]
-		,
-		ReturnType< $eve_surface['sub'] >
-	>
-	type $eve_app_page_sb_page__title_eve_app_page_components_alert_27 = $mol_type_enforce<
-		string
-		,
-		ReturnType< $eve_app_page_sb_page['title'] >
-	>
-	type $eve_app_page_sb_page__body_eve_app_page_components_alert_28 = $mol_type_enforce<
-		readonly(any)[]
-		,
-		ReturnType< $eve_app_page_sb_page['body'] >
-	>
-	type $eve_alert__colors_eve_app_page_components_alert_29 = $mol_type_enforce<
-		string
-		,
-		ReturnType< $eve_alert['colors'] >
-	>
-	type $eve_alert__Icon_eve_app_page_components_alert_30 = $mol_type_enforce<
-		any
-		,
-		ReturnType< $eve_alert['Icon'] >
-	>
-	type $eve_alert__message_eve_app_page_components_alert_31 = $mol_type_enforce<
-		readonly(any)[]
-		,
-		ReturnType< $eve_alert['message'] >
-	>
-	type $eve_alert__colors_eve_app_page_components_alert_32 = $mol_type_enforce<
-		string
-		,
-		ReturnType< $eve_alert['colors'] >
-	>
-	type $eve_alert__Close_button_eve_app_page_components_alert_33 = $mol_type_enforce<
-		any
-		,
-		ReturnType< $eve_alert['Close_button'] >
-	>
-	type $eve_alert__message_eve_app_page_components_alert_34 = $mol_type_enforce<
-		readonly(any)[]
-		,
-		ReturnType< $eve_alert['message'] >
-	>
-	type $eve_surface__sub_eve_app_page_components_alert_35 = $mol_type_enforce<
-		readonly(any)[]
-		,
-		ReturnType< $eve_surface['sub'] >
-	>
-	type $eve_app_page_sb_page__title_eve_app_page_components_alert_36 = $mol_type_enforce<
-		string
-		,
-		ReturnType< $eve_app_page_sb_page['title'] >
-	>
-	type $eve_app_page_sb_page__body_eve_app_page_components_alert_37 = $mol_type_enforce<
-		readonly(any)[]
-		,
-		ReturnType< $eve_app_page_sb_page['body'] >
-	>
-	export class $eve_app_page_components_alert extends $eve_app_page_sb_page {
-		Playground( ): $eve_app_page_sb_playground
-		Overview( ): $eve_surface
-		Overview_page( ): $eve_app_page_sb_page
-		Info_alert( ): $eve_alert
-		Success_alert( ): $eve_alert
-		Warning_alert( ): $eve_alert
-		Error_alert( ): $eve_alert
-		Variants( ): $eve_surface
-		Variants_page( ): $eve_app_page_sb_page
-		Description_alert( ): $eve_alert
-		With_description( ): $eve_surface
-		With_description_page( ): $eve_app_page_sb_page
-		Closable_alert( ): $eve_alert
-		Closable( ): $eve_surface
-		Closable_page( ): $eve_app_page_sb_page
-		Without_icon_alert( ): $eve_alert
-		No_close_button_alert( ): $eve_alert
-		Without_icon( ): $eve_surface
-		Without_icon_page( ): $eve_app_page_sb_page
-		Head( ): any
-		title( ): string
-		body( ): readonly(any)[]
-	}
-	
-}
-
-//# sourceMappingURL=alert.view.tree.d.ts.map
-declare namespace $.$$ {
-    class $eve_app_page_components_alert extends $.$eve_app_page_components_alert {
-    }
-}
-
-declare namespace $.$$ {
-}
-
-declare namespace $ {
-
 	type $eve_app_page_sb_catalog__param_eve_app_page_components_1 = $mol_type_enforce<
 		string
 		,
@@ -6472,10 +6473,10 @@ declare namespace $ {
 			'surfaces': ReturnType< $eve_app_page_components['Surfaces'] >,
 			'flex': ReturnType< $eve_app_page_components['Flex'] >,
 			'buttons': ReturnType< $eve_app_page_components['Buttons'] >,
+			'alert': ReturnType< $eve_app_page_components['Alert'] >,
 			'radio': ReturnType< $eve_app_page_components['Radio'] >,
 			'checkbox': ReturnType< $eve_app_page_components['Checkbox'] >,
 			'switch': ReturnType< $eve_app_page_components['Switch'] >,
-			'alert': ReturnType< $eve_app_page_components['Alert'] >,
 		}) 
 		,
 		ReturnType< $eve_app_page_sb_catalog['spreads'] >
@@ -6484,10 +6485,10 @@ declare namespace $ {
 		Surfaces( ): $eve_app_page_components_surface
 		Flex( ): $eve_app_page_components_flex
 		Buttons( ): $eve_app_page_components_button
+		Alert( ): $eve_app_page_components_alert
 		Radio( ): $eve_app_page_components_radio
 		Checkbox( ): $eve_app_page_components_checkbox
 		Switch( ): $eve_app_page_components_switch
-		Alert( ): $eve_app_page_components_alert
 		Nav_menu( ): $eve_app_page_sb_catalog
 		title( ): string
 		Head( ): any

@@ -9949,7 +9949,11 @@ var $;
 })($ || ($ = {}));
 
 ;
-	($.$eve_app_page_sb_page) = class $eve_app_page_sb_page extends ($.$eve_page) {};
+	($.$eve_app_page_sb_page) = class $eve_app_page_sb_page extends ($.$eve_page) {
+		Head(){
+			return null;
+		}
+	};
 
 
 ;
@@ -14037,6 +14041,460 @@ var $;
 })($ || ($ = {}));
 
 ;
+	($.$eve_alert) = class $eve_alert extends ($.$eve_flex) {
+		Icon(){
+			const obj = new this.$.$mol_icon();
+			return obj;
+		}
+		message(){
+			return [];
+		}
+		Message(){
+			const obj = new this.$.$eve_surface();
+			(obj.sub) = () => ((this.message()));
+			return obj;
+		}
+		description(){
+			return [];
+		}
+		Description(){
+			const obj = new this.$.$eve_surface();
+			(obj.sub) = () => ((this.description()));
+			return obj;
+		}
+		Content(){
+			const obj = new this.$.$eve_surface();
+			(obj.sub) = () => ([(this.Message()), (this.Description())]);
+			return obj;
+		}
+		Close_icon(){
+			const obj = new this.$.$mol_icon_close();
+			return obj;
+		}
+		Close_button(){
+			const obj = new this.$.$eve_button();
+			(obj.variant) = () => ("ghost");
+			(obj.click) = (next) => ((this.close(next)));
+			(obj.sub) = () => ([(this.Close_icon())]);
+			return obj;
+		}
+		colors(){
+			return "info";
+		}
+		variant(){
+			return "soft";
+		}
+		enabled(next){
+			if(next !== undefined) return next;
+			return true;
+		}
+		close(next){
+			if(next !== undefined) return next;
+			return null;
+		}
+		attr(){
+			return {...(super.attr()), "role": "alert"};
+		}
+		sub(){
+			return [
+				(this.Icon()), 
+				(this.Content()), 
+				(this.Close_button())
+			];
+		}
+	};
+	($mol_mem(($.$eve_alert.prototype), "Icon"));
+	($mol_mem(($.$eve_alert.prototype), "Message"));
+	($mol_mem(($.$eve_alert.prototype), "Description"));
+	($mol_mem(($.$eve_alert.prototype), "Content"));
+	($mol_mem(($.$eve_alert.prototype), "Close_icon"));
+	($mol_mem(($.$eve_alert.prototype), "Close_button"));
+	($mol_mem(($.$eve_alert.prototype), "enabled"));
+	($mol_mem(($.$eve_alert.prototype), "close"));
+
+
+;
+	($.$mol_icon_check) = class $mol_icon_check extends ($.$mol_icon) {
+		path(){
+			return "M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z";
+		}
+	};
+
+
+;
+"use strict";
+
+;
+	($.$mol_icon_check_circle) = class $mol_icon_check_circle extends ($.$mol_icon) {
+		path(){
+			return "M12 2C6.5 2 2 6.5 2 12S6.5 22 12 22 22 17.5 22 12 17.5 2 12 2M10 17L5 12L6.41 10.59L10 14.17L17.59 6.58L19 8L10 17Z";
+		}
+	};
+
+
+;
+"use strict";
+
+;
+	($.$mol_icon_information) = class $mol_icon_information extends ($.$mol_icon) {
+		path(){
+			return "M13,9H11V7H13M13,17H11V11H13M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z";
+		}
+	};
+
+
+;
+"use strict";
+
+;
+	($.$mol_icon_alert) = class $mol_icon_alert extends ($.$mol_icon) {
+		path(){
+			return "M13 14H11V9H13M13 18H11V16H13M1 21H23L12 2L1 21Z";
+		}
+	};
+
+
+;
+"use strict";
+
+;
+	($.$mol_icon_close_circle) = class $mol_icon_close_circle extends ($.$mol_icon) {
+		path(){
+			return "M12,2C17.53,2 22,6.47 22,12C22,17.53 17.53,22 12,22C6.47,22 2,17.53 2,12C2,6.47 6.47,2 12,2M15.59,7L12,10.59L8.41,7L7,8.41L10.59,12L7,15.59L8.41,17L12,13.41L15.59,17L17,15.59L13.41,12L17,8.41L15.59,7Z";
+		}
+	};
+
+
+;
+"use strict";
+
+;
+"use strict";
+
+;
+"use strict";
+var $;
+(function ($) {
+    var $$;
+    (function ($$) {
+        const ALERT_ICONS = {
+            success: $mol_icon_check_circle,
+            info: $mol_icon_information,
+            warning: $mol_icon_alert,
+            danger: $mol_icon_close_circle,
+        };
+        class $eve_alert extends $.$eve_alert {
+            enabled(next) {
+                return next ?? true;
+            }
+            close(event) {
+                this.enabled(false);
+            }
+            Icon() {
+                const color = this.colors();
+                const IconClass = ALERT_ICONS[color] ?? $mol_icon_information;
+                return new IconClass();
+            }
+            attr() {
+                return {
+                    ...super.attr(),
+                    eve_alert_with_description: this.description().length > 0 || undefined,
+                    eve_alert_colors: this.colors(),
+                };
+            }
+        }
+        __decorate([
+            $mol_mem
+        ], $eve_alert.prototype, "enabled", null);
+        __decorate([
+            $mol_mem
+        ], $eve_alert.prototype, "Icon", null);
+        __decorate([
+            $mol_mem
+        ], $eve_alert.prototype, "attr", null);
+        $$.$eve_alert = $eve_alert;
+    })($$ = $.$$ || ($.$$ = {}));
+})($ || ($ = {}));
+
+;
+"use strict";
+var $;
+(function ($) {
+    var $$;
+    (function ($$) {
+        const { rem } = $mol_style_unit;
+        $mol_style_define($eve_alert, {
+            position: 'relative',
+            display: 'flex',
+            alignItems: 'flex-start',
+            justifyContent: 'flex-start',
+            gap: rem(0.75),
+            padding: rem(1),
+            width: '100%',
+            maxWidth: '100%',
+            boxSizing: 'border-box',
+            textAlign: 'left',
+            Icon: {
+                flex: {
+                    shrink: 0,
+                },
+                fontSize: rem(1.25),
+                lineHeight: '1',
+                marginTop: rem(0.125),
+                marginRight: 'fit-content',
+            },
+            Content: {
+                flex: {
+                    grow: 1,
+                    shrink: 1,
+                },
+                minWidth: rem(0),
+                maxWidth: '100%',
+                display: 'flex',
+                flexDirection: 'column',
+                gap: rem(0.5),
+                overflow: 'hidden',
+            },
+            Message: {
+                fontSize: rem(0.875),
+                fontWeight: '500',
+                lineHeight: '1.5',
+                maxWidth: '100%',
+                wordBreak: 'break-word',
+                overflowWrap: 'break-word',
+            },
+            Description: {
+                fontSize: rem(0.875),
+                lineHeight: '1.5',
+                opacity: 0.85,
+                maxWidth: '100%',
+                wordBreak: 'break-word',
+                overflowWrap: 'break-word',
+                whiteSpace: 'pre-wrap',
+            },
+            Close_button: {
+                flex: {
+                    shrink: 0,
+                },
+                padding: rem(0.25),
+                opacity: 0.6,
+                transition: 'opacity 0.2s',
+                ':hover': {
+                    opacity: 1,
+                },
+            },
+            Close_icon: {
+                fontSize: rem(0.875),
+            },
+        });
+    })($$ = $.$$ || ($.$$ = {}));
+})($ || ($ = {}));
+
+;
+	($.$eve_app_page_components_alert) = class $eve_app_page_components_alert extends ($.$eve_app_page_sb_page) {
+		Playground(){
+			const obj = new this.$.$eve_app_page_sb_playground();
+			(obj.component_name) = () => ("Live_alert");
+			(obj.default_source) = () => ("Live_alert $eve_alert\n\t- Edit values of Alert component\n\tcolors \\info\n\tvariant \\soft\n\tmessage /\n\t\t\\This is an alert message\n\tdescription /\n\t\t\\This is a detailed description providing additional context.\n\t- Icon null\n\t- Close_button null\n");
+			return obj;
+		}
+		Overview(){
+			const obj = new this.$.$eve_surface();
+			(obj.sub) = () => ([(this.Playground())]);
+			return obj;
+		}
+		Overview_page(){
+			const obj = new this.$.$eve_app_page_sb_page();
+			(obj.title) = () => (null);
+			(obj.body) = () => ([(this.Overview())]);
+			return obj;
+		}
+		Info_alert(){
+			const obj = new this.$.$eve_alert();
+			(obj.colors) = () => ("info");
+			(obj.message) = () => (["Info alert message"]);
+			return obj;
+		}
+		Success_alert(){
+			const obj = new this.$.$eve_alert();
+			(obj.colors) = () => ("success");
+			(obj.message) = () => (["Success alert message"]);
+			return obj;
+		}
+		Warning_alert(){
+			const obj = new this.$.$eve_alert();
+			(obj.colors) = () => ("warning");
+			(obj.message) = () => (["Warning alert message"]);
+			return obj;
+		}
+		Error_alert(){
+			const obj = new this.$.$eve_alert();
+			(obj.colors) = () => ("danger");
+			(obj.message) = () => (["Error alert message"]);
+			return obj;
+		}
+		Variants(){
+			const obj = new this.$.$eve_surface();
+			(obj.sub) = () => ([
+				(this.Info_alert()), 
+				(this.Success_alert()), 
+				(this.Warning_alert()), 
+				(this.Error_alert())
+			]);
+			return obj;
+		}
+		Variants_page(){
+			const obj = new this.$.$eve_app_page_sb_page();
+			(obj.title) = () => ((this.$.$mol_locale.text("$eve_app_page_components_alert_Variants_page_title")));
+			(obj.body) = () => ([(this.Variants())]);
+			return obj;
+		}
+		Description_alert(){
+			const obj = new this.$.$eve_alert();
+			(obj.colors) = () => ("info");
+			(obj.message) = () => (["Alert with description"]);
+			(obj.description) = () => (["This is a detailed description of the alert. It provides additional context and information."]);
+			return obj;
+		}
+		With_description(){
+			const obj = new this.$.$eve_surface();
+			(obj.sub) = () => ([(this.Description_alert())]);
+			return obj;
+		}
+		With_description_page(){
+			const obj = new this.$.$eve_app_page_sb_page();
+			(obj.title) = () => ((this.$.$mol_locale.text("$eve_app_page_components_alert_With_description_page_title")));
+			(obj.body) = () => ([(this.With_description())]);
+			return obj;
+		}
+		Closable_alert(){
+			const obj = new this.$.$eve_alert();
+			(obj.colors) = () => ("warning");
+			(obj.message) = () => (["Closable alert"]);
+			(obj.description) = () => (["You can close this alert by clicking the close button."]);
+			return obj;
+		}
+		Closable(){
+			const obj = new this.$.$eve_surface();
+			(obj.sub) = () => ([(this.Closable_alert())]);
+			return obj;
+		}
+		Closable_page(){
+			const obj = new this.$.$eve_app_page_sb_page();
+			(obj.title) = () => ((this.$.$mol_locale.text("$eve_app_page_components_alert_Closable_page_title")));
+			(obj.body) = () => ([(this.Closable())]);
+			return obj;
+		}
+		Without_icon_alert(){
+			const obj = new this.$.$eve_alert();
+			(obj.colors) = () => ("info");
+			(obj.Icon) = () => (null);
+			(obj.message) = () => (["Alert without icon"]);
+			return obj;
+		}
+		No_close_button_alert(){
+			const obj = new this.$.$eve_alert();
+			(obj.colors) = () => ("success");
+			(obj.Close_button) = () => (null);
+			(obj.message) = () => (["Alert without close button"]);
+			return obj;
+		}
+		Without_icon(){
+			const obj = new this.$.$eve_surface();
+			(obj.sub) = () => ([(this.Without_icon_alert()), (this.No_close_button_alert())]);
+			return obj;
+		}
+		Without_icon_page(){
+			const obj = new this.$.$eve_app_page_sb_page();
+			(obj.title) = () => ((this.$.$mol_locale.text("$eve_app_page_components_alert_Without_icon_page_title")));
+			(obj.body) = () => ([(this.Without_icon())]);
+			return obj;
+		}
+		Head(){
+			return null;
+		}
+		title(){
+			return (this.$.$mol_locale.text("$eve_app_page_components_alert_title"));
+		}
+		body(){
+			return [
+				(this.Overview_page()), 
+				(this.Variants_page()), 
+				(this.With_description_page()), 
+				(this.Closable_page()), 
+				(this.Without_icon_page())
+			];
+		}
+	};
+	($mol_mem(($.$eve_app_page_components_alert.prototype), "Playground"));
+	($mol_mem(($.$eve_app_page_components_alert.prototype), "Overview"));
+	($mol_mem(($.$eve_app_page_components_alert.prototype), "Overview_page"));
+	($mol_mem(($.$eve_app_page_components_alert.prototype), "Info_alert"));
+	($mol_mem(($.$eve_app_page_components_alert.prototype), "Success_alert"));
+	($mol_mem(($.$eve_app_page_components_alert.prototype), "Warning_alert"));
+	($mol_mem(($.$eve_app_page_components_alert.prototype), "Error_alert"));
+	($mol_mem(($.$eve_app_page_components_alert.prototype), "Variants"));
+	($mol_mem(($.$eve_app_page_components_alert.prototype), "Variants_page"));
+	($mol_mem(($.$eve_app_page_components_alert.prototype), "Description_alert"));
+	($mol_mem(($.$eve_app_page_components_alert.prototype), "With_description"));
+	($mol_mem(($.$eve_app_page_components_alert.prototype), "With_description_page"));
+	($mol_mem(($.$eve_app_page_components_alert.prototype), "Closable_alert"));
+	($mol_mem(($.$eve_app_page_components_alert.prototype), "Closable"));
+	($mol_mem(($.$eve_app_page_components_alert.prototype), "Closable_page"));
+	($mol_mem(($.$eve_app_page_components_alert.prototype), "Without_icon_alert"));
+	($mol_mem(($.$eve_app_page_components_alert.prototype), "No_close_button_alert"));
+	($mol_mem(($.$eve_app_page_components_alert.prototype), "Without_icon"));
+	($mol_mem(($.$eve_app_page_components_alert.prototype), "Without_icon_page"));
+
+
+;
+"use strict";
+
+;
+"use strict";
+var $;
+(function ($) {
+    var $$;
+    (function ($$) {
+        class $eve_app_page_components_alert extends $.$eve_app_page_components_alert {
+        }
+        $$.$eve_app_page_components_alert = $eve_app_page_components_alert;
+    })($$ = $.$$ || ($.$$ = {}));
+})($ || ($ = {}));
+
+;
+"use strict";
+var $;
+(function ($) {
+    var $$;
+    (function ($$) {
+        const { rem } = $mol_style_unit;
+        $mol_style_define($eve_app_page_components_alert, {
+            Variants: {
+                display: 'flex',
+                flexDirection: 'column',
+                gap: rem(1),
+            },
+            With_description: {
+                display: 'flex',
+                flexDirection: 'column',
+                gap: rem(1),
+            },
+            Closable: {
+                display: 'flex',
+                flexDirection: 'column',
+                gap: rem(1),
+            },
+            Without_icon: {
+                display: 'flex',
+                flexDirection: 'column',
+                gap: rem(1),
+            },
+        });
+    })($$ = $.$$ || ($.$$ = {}));
+})($ || ($ = {}));
+
+;
 	($.$eve_input_logical_radio) = class $eve_input_logical_radio extends ($.$eve_button) {
 		checked(next){
 			if(next !== undefined) return next;
@@ -14456,13 +14914,13 @@ var $;
 	($.$eve_app_page_components_radio) = class $eve_app_page_components_radio extends ($.$eve_app_page_sb_page) {
 		Bare_playground(){
 			const obj = new this.$.$eve_app_page_sb_playground();
-			(obj.component_name) = () => ("Live_radio_bare");
-			(obj.default_source) = () => ("Live_radio_bare $eve_radio\n\t- Bare radio control (no label, fixed 1rem size)\n\tcolors \\primary\n\tchecked? true\n\tdisabled? false\n");
+			(obj.component_name) = () => ("Live_radio");
+			(obj.default_source) = () => ("Live_radio $eve_radio\n\tcolors \\primary\n\tchecked? true\n\tdisabled? false\n");
 			return obj;
 		}
 		Bare_page(){
 			const obj = new this.$.$eve_app_page_sb_page();
-			(obj.title) = () => ("Bare Radio");
+			(obj.title) = () => ("Bare");
 			(obj.body) = () => ([(this.Bare_playground())]);
 			return obj;
 		}
@@ -14474,7 +14932,7 @@ var $;
 		}
 		Labelled_page(){
 			const obj = new this.$.$eve_app_page_sb_page();
-			(obj.title) = () => ("Labelled Radio");
+			(obj.title) = () => ("Labelled");
 			(obj.body) = () => ([(this.Labelled_playground())]);
 			return obj;
 		}
@@ -14533,17 +14991,6 @@ var $;
         $$.$eve_app_page_components_radio = $eve_app_page_components_radio;
     })($$ = $.$$ || ($.$$ = {}));
 })($ || ($ = {}));
-
-;
-	($.$mol_icon_check) = class $mol_icon_check extends ($.$mol_icon) {
-		path(){
-			return "M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z";
-		}
-	};
-
-
-;
-"use strict";
 
 ;
 	($.$eve_input_logical_checkbox) = class $eve_input_logical_checkbox extends ($.$eve_button) {
@@ -14779,12 +15226,12 @@ var $;
 		Bare_playground(){
 			const obj = new this.$.$eve_app_page_sb_playground();
 			(obj.component_name) = () => ("Live_checkbox");
-			(obj.default_source) = () => ("Live_checkbox $eve_checkbox\n\t- Bare checkbox control (no label, fixed 1rem size)\n\tcolors \\primary\n\tchecked? true\n\tdisabled? false\n\tindeterminate? false\n");
+			(obj.default_source) = () => ("Live_checkbox $eve_checkbox\n\tcolors \\primary\n\tchecked? true\n\tdisabled? false\n\tindeterminate? false\n");
 			return obj;
 		}
 		Bare_page(){
 			const obj = new this.$.$eve_app_page_sb_page();
-			(obj.title) = () => ("Bare Checkbox");
+			(obj.title) = () => ("Bare");
 			(obj.body) = () => ([(this.Bare_playground())]);
 			return obj;
 		}
@@ -14796,7 +15243,7 @@ var $;
 		}
 		Labelled_page(){
 			const obj = new this.$.$eve_app_page_sb_page();
-			(obj.title) = () => ("Labelled Checkbox");
+			(obj.title) = () => ("Labelled");
 			(obj.body) = () => ([(this.Labelled_playground())]);
 			return obj;
 		}
@@ -15115,13 +15562,13 @@ var $;
 	($.$eve_app_page_components_switch) = class $eve_app_page_components_switch extends ($.$eve_app_page_sb_page) {
 		Bare_playground(){
 			const obj = new this.$.$eve_app_page_sb_playground();
-			(obj.component_name) = () => ("Live_switch_bare");
-			(obj.default_source) = () => ("Live_switch_bare $eve_switch\n\tchecked? true\n\tdisabled? false\n");
+			(obj.component_name) = () => ("Live_switch");
+			(obj.default_source) = () => ("Live_switch $eve_switch\n\tchecked? true\n\tdisabled? false\n");
 			return obj;
 		}
 		Bare_page(){
 			const obj = new this.$.$eve_app_page_sb_page();
-			(obj.title) = () => ("Bare Switch");
+			(obj.title) = () => ("Bare");
 			(obj.body) = () => ([(this.Bare_playground())]);
 			return obj;
 		}
@@ -15133,7 +15580,7 @@ var $;
 		}
 		Labelled_page(){
 			const obj = new this.$.$eve_app_page_sb_page();
-			(obj.title) = () => ("Labelled Switch");
+			(obj.title) = () => ("Labelled");
 			(obj.body) = () => ([(this.Labelled_playground())]);
 			return obj;
 		}
@@ -15176,449 +15623,6 @@ var $;
 })($ || ($ = {}));
 
 ;
-	($.$eve_alert) = class $eve_alert extends ($.$eve_flex) {
-		Icon(){
-			const obj = new this.$.$mol_icon();
-			return obj;
-		}
-		message(){
-			return [];
-		}
-		Message(){
-			const obj = new this.$.$eve_surface();
-			(obj.sub) = () => ((this.message()));
-			return obj;
-		}
-		description(){
-			return [];
-		}
-		Description(){
-			const obj = new this.$.$eve_surface();
-			(obj.sub) = () => ((this.description()));
-			return obj;
-		}
-		Content(){
-			const obj = new this.$.$eve_surface();
-			(obj.sub) = () => ([(this.Message()), (this.Description())]);
-			return obj;
-		}
-		Close_icon(){
-			const obj = new this.$.$mol_icon_close();
-			return obj;
-		}
-		Close_button(){
-			const obj = new this.$.$eve_button();
-			(obj.variant) = () => ("ghost");
-			(obj.click) = (next) => ((this.close(next)));
-			(obj.sub) = () => ([(this.Close_icon())]);
-			return obj;
-		}
-		colors(){
-			return "info";
-		}
-		variant(){
-			return "soft";
-		}
-		enabled(next){
-			if(next !== undefined) return next;
-			return true;
-		}
-		close(next){
-			if(next !== undefined) return next;
-			return null;
-		}
-		attr(){
-			return {...(super.attr()), "role": "alert"};
-		}
-		sub(){
-			return [
-				(this.Icon()), 
-				(this.Content()), 
-				(this.Close_button())
-			];
-		}
-	};
-	($mol_mem(($.$eve_alert.prototype), "Icon"));
-	($mol_mem(($.$eve_alert.prototype), "Message"));
-	($mol_mem(($.$eve_alert.prototype), "Description"));
-	($mol_mem(($.$eve_alert.prototype), "Content"));
-	($mol_mem(($.$eve_alert.prototype), "Close_icon"));
-	($mol_mem(($.$eve_alert.prototype), "Close_button"));
-	($mol_mem(($.$eve_alert.prototype), "enabled"));
-	($mol_mem(($.$eve_alert.prototype), "close"));
-
-
-;
-	($.$mol_icon_check_circle) = class $mol_icon_check_circle extends ($.$mol_icon) {
-		path(){
-			return "M12 2C6.5 2 2 6.5 2 12S6.5 22 12 22 22 17.5 22 12 17.5 2 12 2M10 17L5 12L6.41 10.59L10 14.17L17.59 6.58L19 8L10 17Z";
-		}
-	};
-
-
-;
-"use strict";
-
-;
-	($.$mol_icon_information) = class $mol_icon_information extends ($.$mol_icon) {
-		path(){
-			return "M13,9H11V7H13M13,17H11V11H13M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z";
-		}
-	};
-
-
-;
-"use strict";
-
-;
-	($.$mol_icon_alert) = class $mol_icon_alert extends ($.$mol_icon) {
-		path(){
-			return "M13 14H11V9H13M13 18H11V16H13M1 21H23L12 2L1 21Z";
-		}
-	};
-
-
-;
-"use strict";
-
-;
-	($.$mol_icon_close_circle) = class $mol_icon_close_circle extends ($.$mol_icon) {
-		path(){
-			return "M12,2C17.53,2 22,6.47 22,12C22,17.53 17.53,22 12,22C6.47,22 2,17.53 2,12C2,6.47 6.47,2 12,2M15.59,7L12,10.59L8.41,7L7,8.41L10.59,12L7,15.59L8.41,17L12,13.41L15.59,17L17,15.59L13.41,12L17,8.41L15.59,7Z";
-		}
-	};
-
-
-;
-"use strict";
-
-;
-"use strict";
-
-;
-"use strict";
-var $;
-(function ($) {
-    var $$;
-    (function ($$) {
-        const ALERT_ICONS = {
-            success: $mol_icon_check_circle,
-            info: $mol_icon_information,
-            warning: $mol_icon_alert,
-            danger: $mol_icon_close_circle,
-        };
-        class $eve_alert extends $.$eve_alert {
-            enabled(next) {
-                return next ?? true;
-            }
-            close(event) {
-                this.enabled(false);
-            }
-            Icon() {
-                const color = this.colors();
-                const IconClass = ALERT_ICONS[color] ?? $mol_icon_information;
-                return new IconClass();
-            }
-            attr() {
-                return {
-                    ...super.attr(),
-                    eve_alert_with_description: this.description().length > 0 || undefined,
-                    eve_alert_colors: this.colors(),
-                };
-            }
-        }
-        __decorate([
-            $mol_mem
-        ], $eve_alert.prototype, "enabled", null);
-        __decorate([
-            $mol_mem
-        ], $eve_alert.prototype, "Icon", null);
-        __decorate([
-            $mol_mem
-        ], $eve_alert.prototype, "attr", null);
-        $$.$eve_alert = $eve_alert;
-    })($$ = $.$$ || ($.$$ = {}));
-})($ || ($ = {}));
-
-;
-"use strict";
-var $;
-(function ($) {
-    var $$;
-    (function ($$) {
-        const { rem } = $mol_style_unit;
-        $mol_style_define($eve_alert, {
-            position: 'relative',
-            display: 'flex',
-            alignItems: 'flex-start',
-            justifyContent: 'flex-start',
-            gap: rem(0.75),
-            padding: rem(1),
-            width: '100%',
-            maxWidth: '100%',
-            boxSizing: 'border-box',
-            textAlign: 'left',
-            Icon: {
-                flex: {
-                    shrink: 0,
-                },
-                fontSize: rem(1.25),
-                lineHeight: '1',
-                marginTop: rem(0.125),
-                marginRight: 'fit-content',
-            },
-            Content: {
-                flex: {
-                    grow: 1,
-                    shrink: 1,
-                },
-                minWidth: rem(0),
-                maxWidth: '100%',
-                display: 'flex',
-                flexDirection: 'column',
-                gap: rem(0.5),
-                overflow: 'hidden',
-            },
-            Message: {
-                fontSize: rem(0.875),
-                fontWeight: '500',
-                lineHeight: '1.5',
-                maxWidth: '100%',
-                wordBreak: 'break-word',
-                overflowWrap: 'break-word',
-            },
-            Description: {
-                fontSize: rem(0.875),
-                lineHeight: '1.5',
-                opacity: 0.85,
-                maxWidth: '100%',
-                wordBreak: 'break-word',
-                overflowWrap: 'break-word',
-                whiteSpace: 'pre-wrap',
-            },
-            Close_button: {
-                flex: {
-                    shrink: 0,
-                },
-                padding: rem(0.25),
-                opacity: 0.6,
-                transition: 'opacity 0.2s',
-                ':hover': {
-                    opacity: 1,
-                },
-            },
-            Close_icon: {
-                fontSize: rem(0.875),
-            },
-        });
-    })($$ = $.$$ || ($.$$ = {}));
-})($ || ($ = {}));
-
-;
-	($.$eve_app_page_components_alert) = class $eve_app_page_components_alert extends ($.$eve_app_page_sb_page) {
-		Playground(){
-			const obj = new this.$.$eve_app_page_sb_playground();
-			(obj.component_name) = () => ("Live_alert");
-			(obj.default_source) = () => ("Live_alert $eve_alert\n\t- Edit values of Alert component\n\tcolors \\info\n\tvariant \\soft\n\tmessage /\n\t\t\\This is an alert message\n\tdescription /\n\t\t\\This is a detailed description providing additional context.\n\t- Icon null\n\t- Close_button null\n");
-			return obj;
-		}
-		Overview(){
-			const obj = new this.$.$eve_surface();
-			(obj.sub) = () => ([(this.Playground())]);
-			return obj;
-		}
-		Overview_page(){
-			const obj = new this.$.$eve_app_page_sb_page();
-			(obj.title) = () => (null);
-			(obj.body) = () => ([(this.Overview())]);
-			return obj;
-		}
-		Info_alert(){
-			const obj = new this.$.$eve_alert();
-			(obj.colors) = () => ("info");
-			(obj.message) = () => (["Info alert message"]);
-			return obj;
-		}
-		Success_alert(){
-			const obj = new this.$.$eve_alert();
-			(obj.colors) = () => ("success");
-			(obj.message) = () => (["Success alert message"]);
-			return obj;
-		}
-		Warning_alert(){
-			const obj = new this.$.$eve_alert();
-			(obj.colors) = () => ("warning");
-			(obj.message) = () => (["Warning alert message"]);
-			return obj;
-		}
-		Error_alert(){
-			const obj = new this.$.$eve_alert();
-			(obj.colors) = () => ("danger");
-			(obj.message) = () => (["Error alert message"]);
-			return obj;
-		}
-		Variants(){
-			const obj = new this.$.$eve_surface();
-			(obj.sub) = () => ([
-				(this.Info_alert()), 
-				(this.Success_alert()), 
-				(this.Warning_alert()), 
-				(this.Error_alert())
-			]);
-			return obj;
-		}
-		Variants_page(){
-			const obj = new this.$.$eve_app_page_sb_page();
-			(obj.title) = () => ((this.$.$mol_locale.text("$eve_app_page_components_alert_Variants_page_title")));
-			(obj.body) = () => ([(this.Variants())]);
-			return obj;
-		}
-		Description_alert(){
-			const obj = new this.$.$eve_alert();
-			(obj.colors) = () => ("info");
-			(obj.message) = () => (["Alert with description"]);
-			(obj.description) = () => (["This is a detailed description of the alert. It provides additional context and information."]);
-			return obj;
-		}
-		With_description(){
-			const obj = new this.$.$eve_surface();
-			(obj.sub) = () => ([(this.Description_alert())]);
-			return obj;
-		}
-		With_description_page(){
-			const obj = new this.$.$eve_app_page_sb_page();
-			(obj.title) = () => ((this.$.$mol_locale.text("$eve_app_page_components_alert_With_description_page_title")));
-			(obj.body) = () => ([(this.With_description())]);
-			return obj;
-		}
-		Closable_alert(){
-			const obj = new this.$.$eve_alert();
-			(obj.colors) = () => ("warning");
-			(obj.message) = () => (["Closable alert"]);
-			(obj.description) = () => (["You can close this alert by clicking the close button."]);
-			return obj;
-		}
-		Closable(){
-			const obj = new this.$.$eve_surface();
-			(obj.sub) = () => ([(this.Closable_alert())]);
-			return obj;
-		}
-		Closable_page(){
-			const obj = new this.$.$eve_app_page_sb_page();
-			(obj.title) = () => ((this.$.$mol_locale.text("$eve_app_page_components_alert_Closable_page_title")));
-			(obj.body) = () => ([(this.Closable())]);
-			return obj;
-		}
-		Without_icon_alert(){
-			const obj = new this.$.$eve_alert();
-			(obj.colors) = () => ("info");
-			(obj.Icon) = () => (null);
-			(obj.message) = () => (["Alert without icon"]);
-			return obj;
-		}
-		No_close_button_alert(){
-			const obj = new this.$.$eve_alert();
-			(obj.colors) = () => ("success");
-			(obj.Close_button) = () => (null);
-			(obj.message) = () => (["Alert without close button"]);
-			return obj;
-		}
-		Without_icon(){
-			const obj = new this.$.$eve_surface();
-			(obj.sub) = () => ([(this.Without_icon_alert()), (this.No_close_button_alert())]);
-			return obj;
-		}
-		Without_icon_page(){
-			const obj = new this.$.$eve_app_page_sb_page();
-			(obj.title) = () => ((this.$.$mol_locale.text("$eve_app_page_components_alert_Without_icon_page_title")));
-			(obj.body) = () => ([(this.Without_icon())]);
-			return obj;
-		}
-		Head(){
-			return null;
-		}
-		title(){
-			return (this.$.$mol_locale.text("$eve_app_page_components_alert_title"));
-		}
-		body(){
-			return [
-				(this.Overview_page()), 
-				(this.Variants_page()), 
-				(this.With_description_page()), 
-				(this.Closable_page()), 
-				(this.Without_icon_page())
-			];
-		}
-	};
-	($mol_mem(($.$eve_app_page_components_alert.prototype), "Playground"));
-	($mol_mem(($.$eve_app_page_components_alert.prototype), "Overview"));
-	($mol_mem(($.$eve_app_page_components_alert.prototype), "Overview_page"));
-	($mol_mem(($.$eve_app_page_components_alert.prototype), "Info_alert"));
-	($mol_mem(($.$eve_app_page_components_alert.prototype), "Success_alert"));
-	($mol_mem(($.$eve_app_page_components_alert.prototype), "Warning_alert"));
-	($mol_mem(($.$eve_app_page_components_alert.prototype), "Error_alert"));
-	($mol_mem(($.$eve_app_page_components_alert.prototype), "Variants"));
-	($mol_mem(($.$eve_app_page_components_alert.prototype), "Variants_page"));
-	($mol_mem(($.$eve_app_page_components_alert.prototype), "Description_alert"));
-	($mol_mem(($.$eve_app_page_components_alert.prototype), "With_description"));
-	($mol_mem(($.$eve_app_page_components_alert.prototype), "With_description_page"));
-	($mol_mem(($.$eve_app_page_components_alert.prototype), "Closable_alert"));
-	($mol_mem(($.$eve_app_page_components_alert.prototype), "Closable"));
-	($mol_mem(($.$eve_app_page_components_alert.prototype), "Closable_page"));
-	($mol_mem(($.$eve_app_page_components_alert.prototype), "Without_icon_alert"));
-	($mol_mem(($.$eve_app_page_components_alert.prototype), "No_close_button_alert"));
-	($mol_mem(($.$eve_app_page_components_alert.prototype), "Without_icon"));
-	($mol_mem(($.$eve_app_page_components_alert.prototype), "Without_icon_page"));
-
-
-;
-"use strict";
-
-;
-"use strict";
-var $;
-(function ($) {
-    var $$;
-    (function ($$) {
-        class $eve_app_page_components_alert extends $.$eve_app_page_components_alert {
-        }
-        $$.$eve_app_page_components_alert = $eve_app_page_components_alert;
-    })($$ = $.$$ || ($.$$ = {}));
-})($ || ($ = {}));
-
-;
-"use strict";
-var $;
-(function ($) {
-    var $$;
-    (function ($$) {
-        const { rem } = $mol_style_unit;
-        $mol_style_define($eve_app_page_components_alert, {
-            Variants: {
-                display: 'flex',
-                flexDirection: 'column',
-                gap: rem(1),
-            },
-            With_description: {
-                display: 'flex',
-                flexDirection: 'column',
-                gap: rem(1),
-            },
-            Closable: {
-                display: 'flex',
-                flexDirection: 'column',
-                gap: rem(1),
-            },
-            Without_icon: {
-                display: 'flex',
-                flexDirection: 'column',
-                gap: rem(1),
-            },
-        });
-    })($$ = $.$$ || ($.$$ = {}));
-})($ || ($ = {}));
-
-;
 	($.$eve_app_page_components) = class $eve_app_page_components extends ($.$eve_page) {
 		Surfaces(){
 			const obj = new this.$.$eve_app_page_components_surface();
@@ -15630,6 +15634,10 @@ var $;
 		}
 		Buttons(){
 			const obj = new this.$.$eve_app_page_components_button();
+			return obj;
+		}
+		Alert(){
+			const obj = new this.$.$eve_app_page_components_alert();
 			return obj;
 		}
 		Radio(){
@@ -15644,10 +15652,6 @@ var $;
 			const obj = new this.$.$eve_app_page_components_switch();
 			return obj;
 		}
-		Alert(){
-			const obj = new this.$.$eve_app_page_components_alert();
-			return obj;
-		}
 		Nav_menu(){
 			const obj = new this.$.$eve_app_page_sb_catalog();
 			(obj.param) = () => ("component");
@@ -15656,10 +15660,10 @@ var $;
 				"surfaces": (this.Surfaces()), 
 				"flex": (this.Flex()), 
 				"buttons": (this.Buttons()), 
+				"alert": (this.Alert()), 
 				"radio": (this.Radio()), 
 				"checkbox": (this.Checkbox()), 
-				"switch": (this.Switch()), 
-				"alert": (this.Alert())
+				"switch": (this.Switch())
 			});
 			return obj;
 		}
@@ -15676,10 +15680,10 @@ var $;
 	($mol_mem(($.$eve_app_page_components.prototype), "Surfaces"));
 	($mol_mem(($.$eve_app_page_components.prototype), "Flex"));
 	($mol_mem(($.$eve_app_page_components.prototype), "Buttons"));
+	($mol_mem(($.$eve_app_page_components.prototype), "Alert"));
 	($mol_mem(($.$eve_app_page_components.prototype), "Radio"));
 	($mol_mem(($.$eve_app_page_components.prototype), "Checkbox"));
 	($mol_mem(($.$eve_app_page_components.prototype), "Switch"));
-	($mol_mem(($.$eve_app_page_components.prototype), "Alert"));
 	($mol_mem(($.$eve_app_page_components.prototype), "Nav_menu"));
 
 
