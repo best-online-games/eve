@@ -1188,21 +1188,29 @@ $eve_app_page_components_alert $eve_app_page_sb_page
 $eve_input_logical_radio $eve_button
 	disabled? null
 	colors? \primary
+	justify_content \center
+	align_items \center
 	size null
 	attr *
 		^
 		mol_check_checked <= checked? false
 		aria-checked <= aria_checked \false
 		role <= aria_role \radio
-		type \radio
-		id <= dom_id \
-		name <= name \
-		value <= value \
 	event *
 		^
 		click?event <=> event_click?event null
 	sub /
+		<= Input $mol_view
+			dom_name \input
+			attr *
+				type \radio
+				id <= dom_id \
+				name <= name \
+				value <= value \
+				checked <= input_checked? false
+				tabindex \-1
 		<= Disc $eve_surface
+			colors? \primary
 
 
 $eve_input_logical_radio_group $eve_flex

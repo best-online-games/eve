@@ -5860,26 +5860,48 @@ declare namespace $ {
 //# sourceMappingURL=group.view.tree.d.ts.map
 declare namespace $ {
 
+	type $mol_view__dom_name_eve_input_logical_radio_1 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_view['dom_name'] >
+	>
+	type $mol_view__attr_eve_input_logical_radio_2 = $mol_type_enforce<
+		({ 
+			'type': string,
+			'id': ReturnType< $eve_input_logical_radio['dom_id'] >,
+			'name': ReturnType< $eve_input_logical_radio['name'] >,
+			'value': ReturnType< $eve_input_logical_radio['value'] >,
+			'checked': ReturnType< $eve_input_logical_radio['input_checked'] >,
+			'tabindex': string,
+		}) 
+		,
+		ReturnType< $mol_view['attr'] >
+	>
+	type $eve_surface__colors_eve_input_logical_radio_3 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $eve_surface['colors'] >
+	>
 	export class $eve_input_logical_radio extends $eve_button {
 		checked( next?: boolean ): boolean
 		aria_checked( ): string
 		aria_role( ): string
+		event_click( next?: any ): any
 		dom_id( ): string
 		name( ): string
 		value( ): string
-		event_click( next?: any ): any
+		input_checked( next?: boolean ): boolean
+		Input( ): $mol_view
 		Disc( ): $eve_surface
 		disabled( next?: any ): any
 		colors( next?: string ): string
+		justify_content( ): string
+		align_items( ): string
 		size( ): any
 		attr( ): ({ 
 			'mol_check_checked': ReturnType< $eve_input_logical_radio['checked'] >,
 			'aria-checked': ReturnType< $eve_input_logical_radio['aria_checked'] >,
 			'role': ReturnType< $eve_input_logical_radio['aria_role'] >,
-			'type': string,
-			'id': ReturnType< $eve_input_logical_radio['dom_id'] >,
-			'name': ReturnType< $eve_input_logical_radio['name'] >,
-			'value': ReturnType< $eve_input_logical_radio['value'] >,
 		})  & ReturnType< $eve_button['attr'] >
 		event( ): ({ 
 			click( next?: ReturnType< $eve_input_logical_radio['event_click'] > ): ReturnType< $eve_input_logical_radio['event_click'] >,
@@ -5892,9 +5914,9 @@ declare namespace $ {
 //# sourceMappingURL=radio.view.tree.d.ts.map
 declare namespace $.$$ {
     class $eve_input_logical_radio extends $.$eve_input_logical_radio {
-        dom_name(): string;
         dom_id(): string;
         checked(next?: boolean): boolean;
+        input_checked(): boolean;
         disabled(next?: boolean): boolean;
         variant(): $eve_surface_variant;
         event_click(next?: Event): void;

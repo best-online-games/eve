@@ -14497,6 +14497,10 @@ var $;
 		aria_role(){
 			return "radio";
 		}
+		event_click(next){
+			if(next !== undefined) return next;
+			return null;
+		}
 		dom_id(){
 			return "";
 		}
@@ -14506,12 +14510,26 @@ var $;
 		value(){
 			return "";
 		}
-		event_click(next){
+		input_checked(next){
 			if(next !== undefined) return next;
-			return null;
+			return false;
+		}
+		Input(){
+			const obj = new this.$.$mol_view();
+			(obj.dom_name) = () => ("input");
+			(obj.attr) = () => ({
+				"type": "radio", 
+				"id": (this.dom_id()), 
+				"name": (this.name()), 
+				"value": (this.value()), 
+				"checked": (this.input_checked()), 
+				"tabindex": "-1"
+			});
+			return obj;
 		}
 		Disc(){
 			const obj = new this.$.$eve_surface();
+			(obj.colors) = (next) => ("primary");
 			return obj;
 		}
 		disabled(next){
@@ -14522,6 +14540,12 @@ var $;
 			if(next !== undefined) return next;
 			return "primary";
 		}
+		justify_content(){
+			return "center";
+		}
+		align_items(){
+			return "center";
+		}
 		size(){
 			return null;
 		}
@@ -14530,22 +14554,20 @@ var $;
 				...(super.attr()), 
 				"mol_check_checked": (this.checked()), 
 				"aria-checked": (this.aria_checked()), 
-				"role": (this.aria_role()), 
-				"type": "radio", 
-				"id": (this.dom_id()), 
-				"name": (this.name()), 
-				"value": (this.value())
+				"role": (this.aria_role())
 			};
 		}
 		event(){
 			return {...(super.event()), "click": (next) => (this.event_click(next))};
 		}
 		sub(){
-			return [(this.Disc())];
+			return [(this.Input()), (this.Disc())];
 		}
 	};
 	($mol_mem(($.$eve_input_logical_radio.prototype), "checked"));
 	($mol_mem(($.$eve_input_logical_radio.prototype), "event_click"));
+	($mol_mem(($.$eve_input_logical_radio.prototype), "input_checked"));
+	($mol_mem(($.$eve_input_logical_radio.prototype), "Input"));
 	($mol_mem(($.$eve_input_logical_radio.prototype), "Disc"));
 	($mol_mem(($.$eve_input_logical_radio.prototype), "disabled"));
 	($mol_mem(($.$eve_input_logical_radio.prototype), "colors"));
@@ -14714,14 +14736,14 @@ var $;
     var $$;
     (function ($$) {
         class $eve_input_logical_radio extends $.$eve_input_logical_radio {
-            dom_name() {
-                return 'input';
-            }
             dom_id() {
                 return `${this}:radio`;
             }
             checked(next) {
                 return next ?? false;
+            }
+            input_checked() {
+                return this.checked();
             }
             disabled(next) {
                 return next ?? false;
@@ -14752,6 +14774,9 @@ var $;
         ], $eve_input_logical_radio.prototype, "checked", null);
         __decorate([
             $mol_mem
+        ], $eve_input_logical_radio.prototype, "input_checked", null);
+        __decorate([
+            $mol_mem
         ], $eve_input_logical_radio.prototype, "disabled", null);
         $$.$eve_input_logical_radio = $eve_input_logical_radio;
     })($$ = $.$$ || ($.$$ = {}));
@@ -14769,18 +14794,29 @@ var $;
             width: rem(1),
             height: rem(1),
             padding: 0,
+            margin: 0,
             flex: {
                 shrink: 0,
             },
             border: {
                 radius: '50%',
             },
+            position: 'relative',
+            Input: {
+                position: 'absolute',
+                opacity: 0,
+                width: 0,
+                height: 0,
+                margin: 0,
+                padding: 0,
+                pointerEvents: 'none',
+            },
             Disc: {
                 border: {
                     radius: '50%',
                 },
                 background: {
-                    color: 'currentcolor',
+                    color: $mol_theme.back,
                 },
                 opacity: 0,
                 transition: 'opacity 0.15s ease, transform 0.2s ease',
