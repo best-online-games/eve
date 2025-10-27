@@ -1201,6 +1201,38 @@ $eve_app_page_components_alert $eve_app_page_sb_page
 							message / \Alert without close button
 
 
+$eve_card $eve_flex
+	direction \column
+	sub /
+		<= Head $eve_surface
+			variant \ghost
+			sub /
+				<= Title $mol_paragraph
+					title <= title \
+		<= Body $eve_flex
+			direction \column
+			sub <= content /$mol_view_content
+
+
+$eve_app_page_components_card $eve_app_page_sb_page
+	title \Card
+	Head null
+	body /
+		<= Playground $eve_app_page_sb_playground
+			component_name \Live_card
+			default_source \
+				\Live_card $eve_card
+				\	title \My Card Title
+				\	content /
+				\		<= Content_text $mol_paragraph
+				\			title \This is the card content. You can put any components here.
+				\		<= Content_button $eve_button
+				\			sub /
+				\				<= Button_label $mol_paragraph
+				\					title \Action Button
+				\
+
+
 $eve_input_logical_radio $eve_button
 	disabled? null
 	colors? \primary
@@ -1449,6 +1481,67 @@ $eve_app_page_components_switch $eve_app_page_sb_page
 								\
 
 
+$eve_tab $eve_button
+	size null
+	variant <= tab_variant \ghost
+	colors <= tab_colors \primary
+	attr *
+		^
+		mol_check_checked <= checked? false
+		aria-checked <= aria_checked \false
+		role \tab
+		aria-selected <= aria_checked
+	event *
+		^
+		click?event <=> event_click?event null
+
+$eve_tab_group $eve_flex
+	direction \row
+	wrap \nowrap
+	value? \
+	attr *
+		^
+		role \tablist
+	sub <= tabs /
+		<= Tab* $eve_tab
+			label <= tab_label* \
+			checked? <= tab_checked* false
+			event_click?event <=> tab_click*?event null
+
+
+$eve_app_page_components_tab $eve_app_page_sb_page
+	title \Tabs
+	Head null
+	body /
+		<= Tab_catalog $eve_app_page_sb_catalog
+			param \tab_variant
+			spreads *
+				group <= Group_page $eve_app_page_sb_page
+					title \Tab Group
+					body /
+						<= Group_playground $eve_app_page_sb_playground
+							component_name \Live_tab_group
+							default_source \
+								\Live_tab_group $eve_tab_group
+								\	options *
+								\		home \Home
+								\		profile \Profile
+								\		settings \Settings
+								\		about \About
+								\	value? \home
+								\
+				single <= Single_page $eve_app_page_sb_page
+					title \Single Tab
+					body /
+						<= Single_playground $eve_app_page_sb_playground
+							component_name \Live_tab
+							default_source \
+								\Live_tab $eve_tab
+								\	label \Tab Label
+								\	checked? true
+								\
+
+
 $eve_app_page_components $eve_page
 	title \Components
 	Head null
@@ -1461,10 +1554,12 @@ $eve_app_page_components $eve_page
 				flex <= Flex $eve_app_page_components_flex
 				button <= Button $eve_app_page_components_button
 				alert <= Alert $eve_app_page_components_alert
+				card <= Card $eve_app_page_components_card
 				- delimiter for input logical (Надо где-то его придумать) 
 				radio <= Radio $eve_app_page_components_radio
 				checkbox <= Checkbox $eve_app_page_components_checkbox
 				switch <= Switch $eve_app_page_components_switch
+				tab <= Tab $eve_app_page_components_tab
 
 $eve_app_page_design $eve_page
 	title \Design

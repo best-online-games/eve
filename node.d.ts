@@ -5897,6 +5897,76 @@ declare namespace $.$$ {
 
 declare namespace $ {
 
+	type $mol_paragraph__title_eve_card_1 = $mol_type_enforce<
+		ReturnType< $eve_card['title'] >
+		,
+		ReturnType< $mol_paragraph['title'] >
+	>
+	type $eve_surface__variant_eve_card_2 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $eve_surface['variant'] >
+	>
+	type $eve_surface__sub_eve_card_3 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $eve_surface['sub'] >
+	>
+	type $eve_flex__direction_eve_card_4 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $eve_flex['direction'] >
+	>
+	type $eve_flex__sub_eve_card_5 = $mol_type_enforce<
+		ReturnType< $eve_card['content'] >
+		,
+		ReturnType< $eve_flex['sub'] >
+	>
+	export class $eve_card extends $eve_flex {
+		title( ): string
+		Title( ): $mol_paragraph
+		Head( ): $eve_surface
+		content( ): readonly($mol_view_content)[]
+		Body( ): $eve_flex
+		direction( ): string
+		sub( ): readonly(any)[]
+	}
+	
+}
+
+//# sourceMappingURL=card.view.tree.d.ts.map
+declare namespace $.$$ {
+    class $eve_card extends $.$eve_card {
+    }
+}
+
+declare namespace $.$$ {
+}
+
+declare namespace $ {
+
+	type $eve_app_page_sb_playground__component_name_eve_app_page_components_card_1 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $eve_app_page_sb_playground['component_name'] >
+	>
+	type $eve_app_page_sb_playground__default_source_eve_app_page_components_card_2 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $eve_app_page_sb_playground['default_source'] >
+	>
+	export class $eve_app_page_components_card extends $eve_app_page_sb_page {
+		Playground( ): $eve_app_page_sb_playground
+		title( ): string
+		Head( ): any
+		body( ): readonly(any)[]
+	}
+	
+}
+
+//# sourceMappingURL=card.view.tree.d.ts.map
+declare namespace $ {
+
 	type $eve_input_logical_radio_labelled__name_eve_input_logical_radio_group_1 = $mol_type_enforce<
 		ReturnType< $eve_input_logical_radio_group['group_name'] >
 		,
@@ -6560,6 +6630,163 @@ declare namespace $.$$ {
 
 declare namespace $ {
 
+	export class $eve_tab extends $eve_button {
+		tab_variant( ): string
+		tab_colors( ): string
+		checked( next?: boolean ): boolean
+		aria_checked( ): string
+		event_click( next?: any ): any
+		size( ): any
+		variant( ): ReturnType< $eve_tab['tab_variant'] >
+		colors( ): ReturnType< $eve_tab['tab_colors'] >
+		attr( ): ({ 
+			'mol_check_checked': ReturnType< $eve_tab['checked'] >,
+			'aria-checked': ReturnType< $eve_tab['aria_checked'] >,
+			'role': string,
+			'aria-selected': ReturnType< $eve_tab['aria_checked'] >,
+		})  & ReturnType< $eve_button['attr'] >
+		event( ): ({ 
+			click( next?: ReturnType< $eve_tab['event_click'] > ): ReturnType< $eve_tab['event_click'] >,
+		})  & ReturnType< $eve_button['event'] >
+	}
+	
+}
+
+//# sourceMappingURL=tab.view.tree.d.ts.map
+declare namespace $.$$ {
+    class $eve_tab extends $.$eve_tab {
+        checked(next?: boolean): boolean;
+        disabled(next?: boolean): boolean;
+        tab_variant(): $eve_surface_variant;
+        tab_colors(): $eve_surface_color;
+        event_click(next?: Event): void;
+        aria_checked(): string;
+    }
+}
+
+declare namespace $.$$ {
+}
+
+declare namespace $ {
+
+	type $eve_tab__label_eve_tab_group_1 = $mol_type_enforce<
+		ReturnType< $eve_tab_group['tab_label'] >
+		,
+		ReturnType< $eve_tab['label'] >
+	>
+	type $eve_tab__checked_eve_tab_group_2 = $mol_type_enforce<
+		ReturnType< $eve_tab_group['tab_checked'] >
+		,
+		ReturnType< $eve_tab['checked'] >
+	>
+	type $eve_tab__event_click_eve_tab_group_3 = $mol_type_enforce<
+		ReturnType< $eve_tab_group['tab_click'] >
+		,
+		ReturnType< $eve_tab['event_click'] >
+	>
+	export class $eve_tab_group extends $eve_flex {
+		tab_label( id: any): string
+		tab_checked( id: any): boolean
+		tab_click( id: any, next?: any ): any
+		Tab( id: any): $eve_tab
+		tabs( ): readonly(any)[]
+		direction( ): string
+		wrap( ): string
+		value( next?: string ): string
+		attr( ): ({ 
+			'role': string,
+		})  & ReturnType< $eve_flex['attr'] >
+		sub( ): ReturnType< $eve_tab_group['tabs'] >
+	}
+	
+}
+
+//# sourceMappingURL=group.view.tree.d.ts.map
+declare namespace $.$$ {
+    class $eve_tab_group extends $.$eve_tab_group {
+        value(next?: string): string;
+        options(): Record<string, string>;
+        tabs(): $.$eve_tab[];
+        tab_label(id: string): string;
+        tab_checked(id: string): boolean;
+        tab_click(id: string, event?: Event): Event | null;
+    }
+}
+
+declare namespace $.$$ {
+}
+
+declare namespace $ {
+
+	type $eve_app_page_sb_playground__component_name_eve_app_page_components_tab_1 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $eve_app_page_sb_playground['component_name'] >
+	>
+	type $eve_app_page_sb_playground__default_source_eve_app_page_components_tab_2 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $eve_app_page_sb_playground['default_source'] >
+	>
+	type $eve_app_page_sb_page__title_eve_app_page_components_tab_3 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $eve_app_page_sb_page['title'] >
+	>
+	type $eve_app_page_sb_page__body_eve_app_page_components_tab_4 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $eve_app_page_sb_page['body'] >
+	>
+	type $eve_app_page_sb_playground__component_name_eve_app_page_components_tab_5 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $eve_app_page_sb_playground['component_name'] >
+	>
+	type $eve_app_page_sb_playground__default_source_eve_app_page_components_tab_6 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $eve_app_page_sb_playground['default_source'] >
+	>
+	type $eve_app_page_sb_page__title_eve_app_page_components_tab_7 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $eve_app_page_sb_page['title'] >
+	>
+	type $eve_app_page_sb_page__body_eve_app_page_components_tab_8 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $eve_app_page_sb_page['body'] >
+	>
+	type $eve_app_page_sb_catalog__param_eve_app_page_components_tab_9 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $eve_app_page_sb_catalog['param'] >
+	>
+	type $eve_app_page_sb_catalog__spreads_eve_app_page_components_tab_10 = $mol_type_enforce<
+		({ 
+			'group': ReturnType< $eve_app_page_components_tab['Group_page'] >,
+			'single': ReturnType< $eve_app_page_components_tab['Single_page'] >,
+		}) 
+		,
+		ReturnType< $eve_app_page_sb_catalog['spreads'] >
+	>
+	export class $eve_app_page_components_tab extends $eve_app_page_sb_page {
+		Group_playground( ): $eve_app_page_sb_playground
+		Group_page( ): $eve_app_page_sb_page
+		Single_playground( ): $eve_app_page_sb_playground
+		Single_page( ): $eve_app_page_sb_page
+		Tab_catalog( ): $eve_app_page_sb_catalog
+		title( ): string
+		Head( ): any
+		body( ): readonly(any)[]
+	}
+	
+}
+
+//# sourceMappingURL=tab.view.tree.d.ts.map
+declare namespace $ {
+
 	type $eve_app_page_sb_catalog__param_eve_app_page_components_1 = $mol_type_enforce<
 		string
 		,
@@ -6576,9 +6803,11 @@ declare namespace $ {
 			'flex': ReturnType< $eve_app_page_components['Flex'] >,
 			'button': ReturnType< $eve_app_page_components['Button'] >,
 			'alert': ReturnType< $eve_app_page_components['Alert'] >,
+			'card': ReturnType< $eve_app_page_components['Card'] >,
 			'radio': ReturnType< $eve_app_page_components['Radio'] >,
 			'checkbox': ReturnType< $eve_app_page_components['Checkbox'] >,
 			'switch': ReturnType< $eve_app_page_components['Switch'] >,
+			'tab': ReturnType< $eve_app_page_components['Tab'] >,
 		}) 
 		,
 		ReturnType< $eve_app_page_sb_catalog['spreads'] >
@@ -6588,9 +6817,11 @@ declare namespace $ {
 		Flex( ): $eve_app_page_components_flex
 		Button( ): $eve_app_page_components_button
 		Alert( ): $eve_app_page_components_alert
+		Card( ): $eve_app_page_components_card
 		Radio( ): $eve_app_page_components_radio
 		Checkbox( ): $eve_app_page_components_checkbox
 		Switch( ): $eve_app_page_components_switch
+		Tab( ): $eve_app_page_components_tab
 		Nav_menu( ): $eve_app_page_sb_catalog
 		title( ): string
 		Head( ): any

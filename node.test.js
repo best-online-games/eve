@@ -14590,6 +14590,107 @@ var $;
 })($ || ($ = {}));
 
 ;
+	($.$eve_card) = class $eve_card extends ($.$eve_flex) {
+		title(){
+			return "";
+		}
+		Title(){
+			const obj = new this.$.$mol_paragraph();
+			(obj.title) = () => ((this.title()));
+			return obj;
+		}
+		Head(){
+			const obj = new this.$.$eve_surface();
+			(obj.variant) = () => ("ghost");
+			(obj.sub) = () => ([(this.Title())]);
+			return obj;
+		}
+		content(){
+			return [];
+		}
+		Body(){
+			const obj = new this.$.$eve_flex();
+			(obj.direction) = () => ("column");
+			(obj.sub) = () => ((this.content()));
+			return obj;
+		}
+		direction(){
+			return "column";
+		}
+		sub(){
+			return [(this.Head()), (this.Body())];
+		}
+	};
+	($mol_mem(($.$eve_card.prototype), "Title"));
+	($mol_mem(($.$eve_card.prototype), "Head"));
+	($mol_mem(($.$eve_card.prototype), "Body"));
+
+
+;
+"use strict";
+
+;
+"use strict";
+var $;
+(function ($) {
+    var $$;
+    (function ($$) {
+        class $eve_card extends $.$eve_card {
+        }
+        $$.$eve_card = $eve_card;
+    })($$ = $.$$ || ($.$$ = {}));
+})($ || ($ = {}));
+
+;
+"use strict";
+var $;
+(function ($) {
+    var $$;
+    (function ($$) {
+        const { rem } = $mol_style_unit;
+        $mol_style_define($eve_card, {
+            border: {
+                radius: rem(0.5),
+            },
+            overflow: 'hidden',
+            Title: {
+                fontWeight: '600',
+                fontSize: rem(1),
+            },
+            Body: {
+                flex: {
+                    grow: 1,
+                },
+            },
+        });
+    })($$ = $.$$ || ($.$$ = {}));
+})($ || ($ = {}));
+
+;
+	($.$eve_app_page_components_card) = class $eve_app_page_components_card extends ($.$eve_app_page_sb_page) {
+		Playground(){
+			const obj = new this.$.$eve_app_page_sb_playground();
+			(obj.component_name) = () => ("Live_card");
+			(obj.default_source) = () => ("Live_card $eve_card\n\ttitle \\My Card Title\n\tcontent /\n\t\t<= Content_text $mol_paragraph\n\t\t\ttitle \\This is the card content. You can put any components here.\n\t\t<= Content_button $eve_button\n\t\t\tsub /\n\t\t\t\t<= Button_label $mol_paragraph\n\t\t\t\t\ttitle \\Action Button\n");
+			return obj;
+		}
+		title(){
+			return "Card";
+		}
+		Head(){
+			return null;
+		}
+		body(){
+			return [(this.Playground())];
+		}
+	};
+	($mol_mem(($.$eve_app_page_components_card.prototype), "Playground"));
+
+
+;
+"use strict";
+
+;
 	($.$eve_input_logical_radio) = class $eve_input_logical_radio extends ($.$eve_button) {
 		checked(next){
 			if(next !== undefined) return next;
@@ -15754,6 +15855,292 @@ var $;
 })($ || ($ = {}));
 
 ;
+	($.$eve_tab) = class $eve_tab extends ($.$eve_button) {
+		tab_variant(){
+			return "ghost";
+		}
+		tab_colors(){
+			return "primary";
+		}
+		checked(next){
+			if(next !== undefined) return next;
+			return false;
+		}
+		aria_checked(){
+			return "false";
+		}
+		event_click(next){
+			if(next !== undefined) return next;
+			return null;
+		}
+		size(){
+			return null;
+		}
+		variant(){
+			return (this.tab_variant());
+		}
+		colors(){
+			return (this.tab_colors());
+		}
+		attr(){
+			return {
+				...(super.attr()), 
+				"mol_check_checked": (this.checked()), 
+				"aria-checked": (this.aria_checked()), 
+				"role": "tab", 
+				"aria-selected": (this.aria_checked())
+			};
+		}
+		event(){
+			return {...(super.event()), "click": (next) => (this.event_click(next))};
+		}
+	};
+	($mol_mem(($.$eve_tab.prototype), "checked"));
+	($mol_mem(($.$eve_tab.prototype), "event_click"));
+
+
+;
+"use strict";
+
+;
+"use strict";
+var $;
+(function ($) {
+    var $$;
+    (function ($$) {
+        class $eve_tab extends $.$eve_tab {
+            checked(next) {
+                return next ?? false;
+            }
+            disabled(next) {
+                return next ?? false;
+            }
+            tab_variant() {
+                return this.checked() ? 'soft' : 'ghost';
+            }
+            tab_colors() {
+                return this.checked() ? 'primary' : 'low';
+            }
+            event_click(next) {
+                if (this.disabled()) {
+                    next?.preventDefault();
+                    return;
+                }
+                if (next?.defaultPrevented)
+                    return;
+                this.checked(true);
+                if (next)
+                    next.preventDefault();
+            }
+            aria_checked() {
+                return String(this.checked());
+            }
+        }
+        __decorate([
+            $mol_mem
+        ], $eve_tab.prototype, "checked", null);
+        __decorate([
+            $mol_mem
+        ], $eve_tab.prototype, "disabled", null);
+        $$.$eve_tab = $eve_tab;
+    })($$ = $.$$ || ($.$$ = {}));
+})($ || ($ = {}));
+
+;
+"use strict";
+var $;
+(function ($) {
+    var $$;
+    (function ($$) {
+        const { rem } = $mol_style_unit;
+        $mol_style_define($eve_tab, {
+            minHeight: rem(2.5),
+            cursor: 'pointer',
+            transition: 'all 0.2s ease-out',
+            fontWeight: '500',
+            '[mol_check_checked]': {
+                true: {
+                    borderBottom: {
+                        width: rem(0.125),
+                        style: 'solid',
+                        color: 'currentcolor',
+                    }
+                },
+            },
+        });
+    })($$ = $.$$ || ($.$$ = {}));
+})($ || ($ = {}));
+
+;
+	($.$eve_tab_group) = class $eve_tab_group extends ($.$eve_flex) {
+		tab_label(id){
+			return "";
+		}
+		tab_checked(id){
+			return false;
+		}
+		tab_click(id, next){
+			if(next !== undefined) return next;
+			return null;
+		}
+		Tab(id){
+			const obj = new this.$.$eve_tab();
+			(obj.label) = () => ((this.tab_label(id)));
+			(obj.checked) = (next) => ((this.tab_checked(id)));
+			(obj.event_click) = (next) => ((this.tab_click(id, next)));
+			return obj;
+		}
+		tabs(){
+			return [(this.Tab(id))];
+		}
+		direction(){
+			return "row";
+		}
+		wrap(){
+			return "nowrap";
+		}
+		value(next){
+			if(next !== undefined) return next;
+			return "";
+		}
+		attr(){
+			return {...(super.attr()), "role": "tablist"};
+		}
+		sub(){
+			return (this.tabs());
+		}
+	};
+	($mol_mem_key(($.$eve_tab_group.prototype), "tab_click"));
+	($mol_mem_key(($.$eve_tab_group.prototype), "Tab"));
+	($mol_mem(($.$eve_tab_group.prototype), "value"));
+
+
+;
+"use strict";
+
+;
+"use strict";
+var $;
+(function ($) {
+    var $$;
+    (function ($$) {
+        class $eve_tab_group extends $.$eve_tab_group {
+            value(next) {
+                return $mol_state_session.value(`${this}.value()`, next) ?? '';
+            }
+            options() {
+                return {};
+            }
+            tabs() {
+                return Object.keys(this.options()).map(id => this.Tab(id));
+            }
+            tab_label(id) {
+                return this.options()[id] ?? id;
+            }
+            tab_checked(id) {
+                return this.value() === id;
+            }
+            tab_click(id, event) {
+                if (!event)
+                    return null;
+                this.value(id);
+                return event;
+            }
+        }
+        __decorate([
+            $mol_mem
+        ], $eve_tab_group.prototype, "value", null);
+        __decorate([
+            $mol_mem
+        ], $eve_tab_group.prototype, "options", null);
+        __decorate([
+            $mol_mem
+        ], $eve_tab_group.prototype, "tabs", null);
+        __decorate([
+            $mol_mem_key
+        ], $eve_tab_group.prototype, "tab_label", null);
+        __decorate([
+            $mol_mem_key
+        ], $eve_tab_group.prototype, "tab_checked", null);
+        __decorate([
+            $mol_mem_key
+        ], $eve_tab_group.prototype, "tab_click", null);
+        $$.$eve_tab_group = $eve_tab_group;
+    })($$ = $.$$ || ($.$$ = {}));
+})($ || ($ = {}));
+
+;
+"use strict";
+var $;
+(function ($) {
+    var $$;
+    (function ($$) {
+        const { rem } = $mol_style_unit;
+        $mol_style_define($eve_tab_group, {
+            border: {
+                bottom: {
+                    width: rem(0.0625),
+                    style: 'solid',
+                    color: 'var(--mol_theme_line)',
+                },
+            },
+        });
+    })($$ = $.$$ || ($.$$ = {}));
+})($ || ($ = {}));
+
+;
+	($.$eve_app_page_components_tab) = class $eve_app_page_components_tab extends ($.$eve_app_page_sb_page) {
+		Group_playground(){
+			const obj = new this.$.$eve_app_page_sb_playground();
+			(obj.component_name) = () => ("Live_tab_group");
+			(obj.default_source) = () => ("Live_tab_group $eve_tab_group\n\toptions *\n\t\thome \\Home\n\t\tprofile \\Profile\n\t\tsettings \\Settings\n\t\tabout \\About\n\tvalue? \\home\n");
+			return obj;
+		}
+		Group_page(){
+			const obj = new this.$.$eve_app_page_sb_page();
+			(obj.title) = () => ("Tab Group");
+			(obj.body) = () => ([(this.Group_playground())]);
+			return obj;
+		}
+		Single_playground(){
+			const obj = new this.$.$eve_app_page_sb_playground();
+			(obj.component_name) = () => ("Live_tab");
+			(obj.default_source) = () => ("Live_tab $eve_tab\n\tlabel \\Tab Label\n\tchecked? true\n");
+			return obj;
+		}
+		Single_page(){
+			const obj = new this.$.$eve_app_page_sb_page();
+			(obj.title) = () => ("Single Tab");
+			(obj.body) = () => ([(this.Single_playground())]);
+			return obj;
+		}
+		Tab_catalog(){
+			const obj = new this.$.$eve_app_page_sb_catalog();
+			(obj.param) = () => ("tab_variant");
+			(obj.spreads) = () => ({"group": (this.Group_page()), "single": (this.Single_page())});
+			return obj;
+		}
+		title(){
+			return "Tabs";
+		}
+		Head(){
+			return null;
+		}
+		body(){
+			return [(this.Tab_catalog())];
+		}
+	};
+	($mol_mem(($.$eve_app_page_components_tab.prototype), "Group_playground"));
+	($mol_mem(($.$eve_app_page_components_tab.prototype), "Group_page"));
+	($mol_mem(($.$eve_app_page_components_tab.prototype), "Single_playground"));
+	($mol_mem(($.$eve_app_page_components_tab.prototype), "Single_page"));
+	($mol_mem(($.$eve_app_page_components_tab.prototype), "Tab_catalog"));
+
+
+;
+"use strict";
+
+;
 	($.$eve_app_page_components) = class $eve_app_page_components extends ($.$eve_page) {
 		Surfaces(){
 			const obj = new this.$.$eve_app_page_components_surface();
@@ -15771,6 +16158,10 @@ var $;
 			const obj = new this.$.$eve_app_page_components_alert();
 			return obj;
 		}
+		Card(){
+			const obj = new this.$.$eve_app_page_components_card();
+			return obj;
+		}
 		Radio(){
 			const obj = new this.$.$eve_app_page_components_radio();
 			return obj;
@@ -15783,6 +16174,10 @@ var $;
 			const obj = new this.$.$eve_app_page_components_switch();
 			return obj;
 		}
+		Tab(){
+			const obj = new this.$.$eve_app_page_components_tab();
+			return obj;
+		}
 		Nav_menu(){
 			const obj = new this.$.$eve_app_page_sb_catalog();
 			(obj.param) = () => ("component");
@@ -15792,9 +16187,11 @@ var $;
 				"flex": (this.Flex()), 
 				"button": (this.Button()), 
 				"alert": (this.Alert()), 
+				"card": (this.Card()), 
 				"radio": (this.Radio()), 
 				"checkbox": (this.Checkbox()), 
-				"switch": (this.Switch())
+				"switch": (this.Switch()), 
+				"tab": (this.Tab())
 			});
 			return obj;
 		}
@@ -15812,9 +16209,11 @@ var $;
 	($mol_mem(($.$eve_app_page_components.prototype), "Flex"));
 	($mol_mem(($.$eve_app_page_components.prototype), "Button"));
 	($mol_mem(($.$eve_app_page_components.prototype), "Alert"));
+	($mol_mem(($.$eve_app_page_components.prototype), "Card"));
 	($mol_mem(($.$eve_app_page_components.prototype), "Radio"));
 	($mol_mem(($.$eve_app_page_components.prototype), "Checkbox"));
 	($mol_mem(($.$eve_app_page_components.prototype), "Switch"));
+	($mol_mem(($.$eve_app_page_components.prototype), "Tab"));
 	($mol_mem(($.$eve_app_page_components.prototype), "Nav_menu"));
 
 
@@ -15830,14 +16229,17 @@ var $;
         class $eve_app_page_components extends $.$eve_app_page_components {
             spread_title(id) {
                 const titles = {
-                    button: 'Button',
-                    radio: 'Radio',
-                    check: 'Checkbox',
-                    switch: 'Switch',
-                    inputs: 'Inputs',
-                    cards: 'Cards',
-                    tables: 'Tables',
                     surfaces: 'Surfaces',
+                    flex: 'Flex',
+                    button: 'Button',
+                    alert: 'Alert',
+                    card: 'Card',
+                    radio: 'Radio',
+                    checkbox: 'Checkbox',
+                    switch: 'Switch',
+                    tab: 'Tabs',
+                    inputs: 'Inputs',
+                    tables: 'Tables',
                 };
                 return titles[id] || id;
             }
