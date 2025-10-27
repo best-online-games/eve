@@ -1,0 +1,400 @@
+= Декларативная композиция компонентов
+
+= Компонентная модель
+
+Каждый компонент в ;;$mol;; - это обычный TypeScript класс, унаследованный от базового класса ;;$mol_view;; или любого другого его наследника. Каждый компонент отвечает за рендеринг ровно одного DOM-элемента. За вложенные в него DOM-элементы отвечают уже вложенные компоненты. Поэтому во многих контекстах термины компонент и элемент могут употребляться как синонимы.
+
+Тем не менее важно иметь ввиду, что компоненты часто используются и без собственно рендеринга в DOM. Например, при виртуализации компоненты всё равно создаются для оценки их размеров, но DOM генерируется только для видимых.
+
+Кроме того, есть два специфичных типа компонент, играющие по своим правилам:
+
+- **Плагины** - наследники от ;;$mol_plugin;;, которые вместо создания своего DOM-элемента используют DOM-элемент владельца.
+- **Призраки** - наследники от ;;$mol_ghost;;, которые вместо создания создания своего DOM-элемента используют DOM-элемент переданного им компонента.
+
+Есть ряд стандартных свойств, переопределение которых, позволяет детально настроить рендеринг:
+
+- ;;dom_name(): string;; - имя DOM-элемента. По умолчанию это имя класса, но может быть любое HTML имя, SVG имя, имя веб-компонента и так далее.
+- ;;dom_name_space(): string;; - неймспейс DOM-элемента. По умолчанию это XHTML пространство имён.
+- ;;sub(): $mol_view_content;; - содержимое DOM-элемента в виде массива. Элементами массива могут быть примитивы JS, DOM-узлы и другие компоненты.
+- ;;minimal_height(): number;; - минимальная высота компонента. Она не только задаёт соответствующий стиль, но и учитывается системой виртуализации рендеринга.
+- ;;minimal_width(): number;; - минимальная ширина компонента. Используется так же как и минимальная высота.
+- ;;attr(): Record< string, primitive >;; - словарь динамических атрибутов DOM-элемента. Статические атрибуты задаются автоматически при создании DOM-элемента.
+- ;;field(): Record< string, any >;; - словарь значений полей DOM-элемента.
+- ;;style(): Record< string, primitive >;; - словарь динамических стилей DOM-элемента. Статические стили задаются через $mol_style или CSS.
+- ;;event(): Record< string, Event => void >;; - словарь каналов, куда направляются события с DOM-элемента.
+- ;;plugins(): $mol_plugin[];; - список подключённых к DOM-элементу плагинов, которые могут дополнительно менять атрибуты, поля, стили и обработчики событий.
+
+= Декларативная композиция
+
+;;view.tree;; - специальный DSL, основанный на \\формате Tree\https://page.hyoo.ru/#!=8i7ao7_xfyxah\\, позволяющий в лаконичной и наглядной форме описывать новые компоненты как композицию уже существующих, и гибко настраивать реактивные потоки данных между ними.
+
+" \\Введение во view.tree за 5 минут\https://page.hyoo.ru/#!=jfketb_3qo2ad/View%22jfketb_3qo2ad%22.Details=%D0%9A%D0%BE%D0%BC%D0%BF%D0%BE%D0%B7%D0%B8%D1%86%D0%B8%D1%8F%20%D0%B2%D0%BE%20view.tree\\
+" \\Почему не HTML / JSX / JS / TS / XML / JSON?\https://page.hyoo.ru/#!=gf3a0a_5koj1m\\
+" \\Сравнение DSL-ей на простом примере\https://habr.com/ru/post/314752/\\
+
+**Обратите внимание**:
+- Отступы строго табами
+- Переводы строк как в Юниксе
+- Файл заканчивается переводом строки
+- Пробелы между узлами строго одинарные
+
+== Создание компонента
+
+В файле ;;*.view.tree;; может быть произвольное число объявлений компонент вида:
+
+\\buton.view.tree ▶ buton.view.tree.js\https://tree.hyoo.ru/#!source=%24my_button%20%24mol_view%0A%24my_button_minor%20%24my_button%0A%24my_button_major%20%24my_button%0A/pipeline=%24mol_tree2_from_string~%24mol_view_tree2_to_text~%24mol_tree2_text_to_string\\
+\\buton.view.tree ▶ buton.view.tree.d.ts\https://tree.hyoo.ru/#!source=%24my_button%20%24mol_view%0A%24my_button_minor%20%24my_button%0A%24my_button_major%20%24my_button%0A/pipeline=%24mol_tree2_from_string~%24mol_view_tree2_to_dts~%24mol_tree2_text_to_string\\
+
+	$my_button $mol_view
+	$my_button_minor $my_button
+	$my_button_major $my_button
+
+Первым идёт \\FQN\https://page.hyoo.ru/#!=xps6z2_b92esq\\ имя нового компонента, а вторым - родителя.
+
+== Настройка при наследовании
+
+В наследнике можно как объявлять новые свойства, так и переопределять уже существующие, доставшиеся по наследству:
+
+\\cta.view.tree ▶ cta.view.tree.js\https://tree.hyoo.ru/#!source=%24my_cta%20%24mol_view%0A%09dom_name%20%5Cbutton%0A%09type%20%5CCTA%0A/pipeline=%24mol_tree2_from_string~%24mol_view_tree2_to_text~%24mol_tree2_text_to_string\\
+\\cta.view.tree ▶ cta.view.tree.d.ts\https://tree.hyoo.ru/#!source=%24my_cta%20%24mol_view%0A%09dom_name%20%5Cbutton%0A%09type%20%5CCTA%0A/pipeline=%24mol_tree2_from_string~%24mol_view_tree2_to_dts~%24mol_tree2_text_to_string\\
+
+	$my_cta $mol_view
+		dom_name \button
+		type \CTA
+
+Тут мы переопределили имя DOM-элемента, и создали новое свойство для типа кнопки.
+
+== Типы значений
+
+Язык ;;view.tree;; использует синтаксис \\json.tree\https://github.com/nin-jin/tree.d/wiki/json.tree\\ с небольшими расширениями для описания JSON типов данных: Null, Boolean, Number, String, Array, Object.
+
+\\values.view.tree ▶ values.view.tree.js\https://tree.hyoo.ru/#!source=%24my_values%20%24mol_view%0A%09nil%20null%0A%09maybe%20null%20number%7Cstring%0A%09bool%20true%0A%09numb_finite%20%2B5%0A%09numb_infinite%20-Infinity%0A%09numb_isnt_numb%20NaN%0A%09str_single_line%20%5Chello%20world%0A%09str_multi_line%20%5C%0A%09%09%5Chello%0A%09%09%5Cworld%0A%09list_of_any%20%2F%0A%09%09null%0A%09%09%2B1%0A%09%09%5Csecond%0A%09list_typed%20%2Fstring%0A%09%09%5Cfirst%0A%09%09%5Csecond%0A%09dict_infered%20*%0A%09%09name%20%5CJin%0A%09%09age%20100500%0A%09dict_explicit%20*string%0A%09%09jin%20%5CJin%0A%09%09john%20%5CJohn%0A/pipeline=%24mol_tree2_from_string~%24mol_view_tree2_to_js~%24mol_tree2_js_to_text~%24mol_tree2_text_to_string\\
+\\values.view.tree ▶ values.view.tree.d.ts\https://tree.hyoo.ru/#!source=%24my_values%20%24mol_view%0A%09nil%20null%0A%09maybe%20null%20number%7Cstring%0A%09bool%20true%0A%09numb_finite%20%2B5%0A%09numb_infinite%20-Infinity%0A%09numb_isnt_numb%20NaN%0A%09str_single_line%20%5Chello%20world%0A%09str_multi_line%20%5C%0A%09%09%5Chello%0A%09%09%5Cworld%0A%09list_of_any%20%2F%0A%09%09null%0A%09%09%2B1%0A%09%09%5Csecond%0A%09list_typed%20%2Fstring%0A%09%09%5Cfirst%0A%09%09%5Csecond%0A%09dict_infered%20*%0A%09%09name%20%5CJin%0A%09%09age%20100500%0A%09dict_explicit%20*string%0A%09%09jin%20%5CJin%0A%09%09john%20%5CJohn%0A/pipeline=%24mol_tree2_from_string~%24mol_view_tree2_to_dts~%24mol_tree2_text_to_string\\
+
+	$my_values $mol_view
+		nil null
+		maybe null number|string
+		bool true
+		numb_finite +5
+		numb_infinite -Infinity
+		numb_isnt_numb NaN
+		str_single_line \hello world
+		str_multi_line \
+			\hello
+			\world
+		list_of_any /
+			null
+			+1
+			\second
+		list_typed /string
+			\first
+			\second
+		dict_infered *
+			name \Jin
+			age 100500
+		dict_explicit *string
+			jin \Jin
+			john \John
+
+
+В строках никакое экранирование не требуется - только префикс ;;\;; в начале каждой строки.
+
+== Значения свойств
+
+Вместо конкретного значения свойству можно задать значение, взятое из другого свойства, используя стрелку влево, показывающую направление движения данных.
+
+\\input.view.tree ▶ input.view.tree.js\https://tree.hyoo.ru/#!source=%24my_input%20%24mol_string%0A%09title%20%3C%3D%20value%0A/pipeline=%24mol_tree2_from_string~%24mol_view_tree2_to_text~%24mol_tree2_text_to_string\\
+\\input.view.tree ▶ input.view.tree.d.ts\https://tree.hyoo.ru/#!source=%24my_input%20%24mol_string%0A%09title%20%3C%3D%20value%0A/pipeline=%24mol_tree2_from_string~%24mol_view_tree2_to_dts~%24mol_tree2_text_to_string\\
+
+	$my_input $mol_string
+		title <= value
+
+Тут мы говорим, что свойство `title` должно быть всегда равно значению свойства `value`, как бы то ни менялось. Права от стрелки - всегда имя свойства. А вот слева - можно выводить значения в разные места. Например, можно собрать какую-нибудь структуру:
+
+\\picker.view.tree ▶ picker.view.tree.js\https://tree.hyoo.ru/#!source=%24my_color_picker%20%24mol_string%0A%09style%20*%0A%09%09backgroundColor%20%3C%3D%20value%0A/pipeline=%24mol_tree2_from_string~%24mol_view_tree2_to_text~%24mol_tree2_text_to_string\\
+
+	$my_color_picker $mol_string
+		style *
+			backgroundColor <= value
+
+Тут мы формируем словарь стилей на основе введённого в поле ввода значения. При этом важно отметить, что идёт полное переопределение родительского словаря с потерей ключей из него. Чтобы их не терять, можно использовать крышечку для разворачивания одноимённого свойства родителя:
+
+\\picker.view.tree ▶ picker.view.tree.js\https://tree.hyoo.ru/#!source=%24my_color_picker%20%24mol_string%0A%09style%20*%0A%09%09backgroundColor%20%3C%3D%20value%0A%24my_color_picker2%20%24my_color_picker%0A%09style%20*%0A%09%09%5E%0A%09%09color%20%3C%3D%20value_inversed%20%5C%0A/pipeline=%24mol_tree2_from_string~%24mol_view_tree2_to_text~%24mol_tree2_text_to_string\\
+
+	$my_color_picker $mol_string
+		style *
+			backgroundColor <= value
+	
+	$my_color_picker2 $my_color_picker
+		style *
+			^
+			color <= value_inversed \
+
+Обратите внимание, что в последней строке совмещено взятие значения свойства и его объявление - это очень частый паттерн. Следующие два описания полностью эквивалентны:
+
+\\input.view.tree ▶ input.view.tree.js\https://tree.hyoo.ru/#!source=%24my_input_1%20%24mol_string%0A%09title%20%3C%3D%20value_trimmed%20%5C%0A%24my_input_2%20%24mol_string%0A%09value_trimmed%20%5C%0A%09title%20%3C%3D%20value_trimmed%0A/pipeline=%24mol_tree2_from_string~%24mol_view_tree2_to_text~%24mol_tree2_text_to_string\\
+
+	$my_input_1 $mol_string
+		title <= value_trimmed \
+	
+	$my_input_2 $mol_string
+		value_trimmed \
+		title <= value_trimmed
+
+Использование крышечки место стрелочки позволяет не просто получить значение свойства, а развернуть его в месте использования:
+
+\\config.view.tree ▶ config.view.tree.js\https://tree.hyoo.ru/#!source=%24my_config%20%24mol_view%0A%09sex%20%2F%0A%09%09%5Cmale%0A%09%09%5Cfemale%0A%09gender%20%2F%0A%09%09%5E%20sex%0A%09%09%5Chelicopter%0A%09%09%5Cmushroom%0A/pipeline=%24mol_tree2_from_string~%24mol_view_tree2_to_text~%24mol_tree2_text_to_string\\
+	$my_config $mol_view
+		sex /
+			\male
+			\female
+		gender /
+			^ sex
+			\helicopter
+			\mushroom
+
+== Подконтрольные объекты
+
+Если в качестве значения свойства указать имя класс, то такое свойство становится локальной фабрикой, создающей экземпляр этого класса и контролирующей время его жизни:
+
+\\app.view.tree ▶ app.view.tree.js\https://tree.hyoo.ru/#!source=%24my_app%20%24mol_view%0A%09plugins%20%2F%0A%09%09%3C%3D%20Theme%20%24mol_theme_auto%0A/pipeline=%24mol_tree2_from_string~%24mol_view_tree2_to_text~%24mol_tree2_text_to_string\\
+
+	$my_app $mol_view
+		plugins /
+			<= Theme $mol_theme_auto
+
+Тут к приложению подключается плагин, который автоматически выставляет тёмную или светлую тему. Обратите внимание, что фабрики принято именовать с большой буквы.
+
+Подконтрольные компоненты можно настраивать, переопределяя любые их свойства:
+
+\\basket.view.tree ▶ basket.view.tree.js\https://tree.hyoo.ru/#!source=%24my_basket%20%24mol_view%0A%09options%20%2F%24mol_view%0A%09sub%20%2F%0A%09%09%3C%3D%20Options%20%24mol_list%0A%09%09%09rows%20%3C%3D%20options%0A%09plugins%20%2F%20%0A%09%09%3C%3D%20Nav%20%24mol_nav%0A%09%09%09cycle%20true%0A%09%09%09keys_y%20%3C%3D%20options%0A/pipeline=%24mol_tree2_from_string~%24mol_view_tree2_to_text~%24mol_tree2_text_to_string\\
+
+	$my_basket $mol_view
+		options /$mol_view
+		sub /
+			<= Options $mol_list
+				rows <= options
+		plugins / 
+			<= Nav $mol_nav
+				cycle true
+				keys_y <= options
+
+Тут компонент ;;$mol_nav;; настраивается так, чтобы циклически переключать фокус по вертикали стрелками клавиатуры по тем же опциям, которые переданы в ;;$mol_list;; для рендеринга.
+
+Все преопределения свойств, что доступны при наследовании, можно применять и для настройки подконтрольных компонент. Это позволяет связывать друг с другом компоненты, которые ничего не знают друг про друга и при этом иметь полный контроль за этой связью из вне:
+
+\\app.view.tree ▶ app.view.tree.js\https://tree.hyoo.ru/#!source=%24my_app%20%24mol_view%0A%09sub%20%2F%0A%09%09%3C%3D%20Basket%20%24my_basket%0A%09%09%09options%20%2F%24mol_view%0A%09%09%09%09%3C%3D%20Best%20%24mol_link_iconed%0A%09%09%09%09%09uri%20%5Chttps%3A%2F%2Fmol.hyoo.ru%2F%0A%09%09%09%09%3C%3D%20Suggest%20%24mol_link_iconed%0A%09%09%09%09%09uri%20%5Chttps%3A%2F%2Fmol.love%2F%0A%09%0A/pipeline=%24mol_tree2_from_string~%24mol_view_tree2_to_text~%24mol_tree2_text_to_string\\
+
+	$my_app $mol_view
+		sub /
+			<= Basket $my_basket
+				options /$mol_view
+					<= Best $mol_link_iconed
+						uri \https://mol.hyoo.ru/
+					<= Suggest $mol_link_iconed
+						uri \https://mol.love/
+	
+Тут в корзину передаётся две ссылки, между которыми можно переключаться стрелками клавиатуры.
+
+Обобщённые параметры классов необходимо явно указывать. При этом в них нельзя использовать пробельные символы:
+
+\\app.view.tree ▶ app.view.tree.js\https://tree.hyoo.ru/#!source=%24my_app%20%24mol_view%0A%09center%20%24mol_vector_2d%3Cnumber%3E%20%2F%0A%09%090%0A%09%090%0A/pipeline=%24mol_tree2_from_string~%24mol_view_tree2_to_js~%24mol_tree2_js_to_text~%24mol_tree2_text_to_string\\
+\\app.view.tree ▶ app.view.tree.d.ts\https://tree.hyoo.ru/#!source=%24my_app%20%24mol_view%0A%09center%20%24mol_vector_2d%3Cnumber%3E%20%2F%0A%09%090%0A%09%090%0A/pipeline=%24mol_tree2_from_string~%24mol_view_tree2_to_dts~%24mol_tree2_text_to_string\\
+
+	$my_app $mol_view
+		center $mol_vector_2d<number> /
+			0
+			0
+
+== Двустороннее связывание
+
+Используя двустороннюю стрелку можно связывать мутабельные свойства двусторонней связью, позволяющей менять значение через любое из свойств:
+
+\\greeter.view.tree ▶ greeter.view.tree.js\https://tree.hyoo.ru/#!source=%24my_greeter%20%24mol_view%0A%09sub%20%2F%0A%09%09%3C%3D%20Input%20%24mol_string%0A%09%09%09hint%20%5CName%0A%09%09%09value%3F%20%3C%3D%3E%20name%3F%20%5C%0A%09%09%3C%3D%20Output%20%24mol_view%0A%09%09%09sub%20%2F%0A%09%09%09%09%3C%3D%20name%0A/pipeline=%24mol_tree2_from_string~%24mol_view_tree2_to_text~%24mol_tree2_text_to_string\\
+
+	$my_greeter $mol_view
+		sub /
+			<= Input $mol_string
+				hint \Name
+				value? <=> name? \
+			<= Output $mol_view
+				sub /
+					<= name
+
+Тут изменение свойства ;;.Input().value();; отражается на значении свойства ;;.name();;, что уже отражается на ;;.Output().sub();;. Важно отметить что собственно значение при этом хранится только в свойстве ;;.name();;, а остальные - не более, чем делегаты к нему. Двойная стрелка создаёт мутабельный делегат, а левосторонняя - иммутабельный. А знак вопроса показывает, что свойство изменяемое.
+
+Тот же механизм используется и для направления событий в канал:
+
+\\remove.view.tree ▶ remove.view.tree.js\https://tree.hyoo.ru/#!source=%24my_remove%20%24mol_view%0A%09event%20*%0A%09%09%5E%0A%09%09click%3F%20%3C%3D%3E%20remove%3F%20null%20%0A%09sub%20%2F%0A%09%09%5CRemove%0A/pipeline=%24mol_tree2_from_string~%24mol_view_tree2_to_text~%24mol_tree2_text_to_string\\
+
+	$my_remove $mol_view
+		event *
+			^
+			click? <=> remove? null 
+		sub /
+			\Remove
+
+Стоит отметить, что переопределять словари в подконтрольных компонентах - не самая светлая идея, так как требует знать все объявленные там ключи. Если все же есть в этом потребность, то лучше создать наследника, где с помощью крышечки добавить свои ключи, привязанные к свойствам, а при настройке уже переопределять эти свойства.
+
+== Алиасинг
+
+Чтобы иметь возможность обращаться к свойству подконтрольного компонента, без его переопределения, используется правосторонняя стрелка, экспортирующая свойство подкомпонента в виде свойства владельца:
+
+\\view.view.tree ▶ view.view.tree.js\https://tree.hyoo.ru/#!source=%24my_task_view%20%24mol_view%0A%09Task%20%24my_task%0A%09%09title%20%3D%3E%20task_title%0A%09%09deadline%20%3D%3E%20deadline%0A%09%09%09moment%20%3D%3E%20deadline_moment%0A%09sub%20%2F%0A%09%09%3C%3D%20task_title%0A%09%09%5C%20%3A%20%0A%09%09%3C%3D%20task_dealine%0A/pipeline=%24mol_tree2_from_string~%24mol_view_tree2_to_text~%24mol_tree2_text_to_string\\
+
+	$my_task_view $mol_view
+		Task $my_task
+			title => task_title
+			deadline => deadline
+				moment => deadline_moment
+		sub /
+			<= task_title
+			\ : 
+			<= task_dealine
+
+== Мультиплексированные свойства
+
+Свойства, работающие с разными значениями в зависимости от ключа, именуются со звёздочкой в качестве суффикса, после которой может идти значение ключа в месте использования свойства:
+
+\\tasks.view.tree ▶ tasks.view.tree.js\https://tree.hyoo.ru/#!source=%24my_tasks%20%24mol_list%0A%09sub%20%3C%3D%20task_rows%20%2F%0A%09%09%3C%3D%20Task_row*0%20%24mol_string%0A%09%09%09value%3F%20%3C%3D%3E%20task_title*%3F%20%5C%0A/pipeline=%24mol_tree2_from_string~%24mol_view_tree2_to_text~%24mol_tree2_text_to_string\\
+
+	$my_tasks $mol_list
+		sub <= task_rows /
+			<= Task_row*0 $mol_string
+				value? <=> task_title*? \
+
+Тут ;;task_rows;; по умолчанию содержит лишь один компонент, полученный через фабрику ;;Task_row;; по ключу ;;0;;. Этот же ключ автоматически передаётся и при использовании внутри мультиплексированного свойства ;;task_title;;.
+
+== Локализация
+
+Любую строку легко сделать локализуемой, просто добавив собачку перед ней. При компиляции, эта строка вырезается и отправляется в бандл с англоязычными текстами, а вместо неё вставляется получение этой строки по идентификатору. Компилятор достаточно умный, чтобы сгенерировать уникальный, но человеко-понятный идентификатор.
+
+\\tasks.view.tree ▶ tasks.view.tree.js\https://tree.hyoo.ru/#!source=%24my_tasks%20%24mol_list%0A%09title%20%40%20%5CTasks%0A%09filters%20*%0A%09%09all%20%40%20%5CAll%0A%09%09new%20%40%20%5CNew%0A%09%09done%20%40%20%5CDone%0A%09rows%20%2F%0A%09%09%3C%3D%20Task*0%20%24mol_view%0A%09%09%09sub%20%2F%20%3C%3D%20task_title*%20%40%20%5CNo%20title%0A/pipeline=%24mol_tree2_from_string~%24mol_view_tree2_to_text~%24mol_tree2_text_to_string\\
+
+\\tasks.view.tree ▶ tasks.view.tree.locale=en.json\https://tree.hyoo.ru/#!source=%24my_tasks%20%24mol_list%0A%09title%20%40%20%5CTasks%0A%09filters%20*%0A%09%09all%20%40%20%5CAll%0A%09%09new%20%40%20%5CNew%0A%09%09done%20%40%20%5CDone%0A%09rows%20%2F%0A%09%09%3C%3D%20Task*0%20%24mol_view%0A%09%09%09sub%20%2F%20%3C%3D%20task_title*%20%40%20%5CNo%20title%0A/pipeline=%24mol_tree2_from_string~%24mol_view_tree2_to_locale\\
+
+	$my_tasks $mol_list
+		title @ \Tasks
+		filters *
+			all @ \All
+			new @ \New
+			done @ \Done
+		rows /
+			<= Task*0 $mol_view
+				sub / <= task_title* @ \No title
+
+Рядом можно положить локализацию и на других языках, чтобы сборщик их подхватил:
+
+;;tasks.view.tree.locale=ru.json;;
+
+	{
+		"$my_tasks_title": "Задачи",
+		"$my_tasks_filters_all": "Все",
+		"$my_tasks_filters_new": "Новые",
+		"$my_tasks_filters_done": "Завершённые",
+		"$my_tasks_task_title": "Нет заголовка"
+	}
+
+== Комментарии
+
+Если завернуть поддерево в узел с именем ;;-;;, то оно будет проигнорировано компилятором:
+
+\\page.view.tree ▶ page.view.tree.js\https://tree.hyoo.ru/#!source=-%20%5CMy%20super-puper%20app%0A%24my_page%20%24mol_section%0A%09%0A%09-%20%5Cdefine%20localized%20title%0A%09title%20%40%20%5CSuper%20App!%0A%09%0A%09-%20%5CTODO%3A%20fill%20content!%0A%09-%20content%20%2F%0A%09%09%5Cblah-blah-blah%0A/pipeline=%24mol_tree2_from_string~%24mol_view_tree2_to_text~%24mol_tree2_text_to_string\\
+
+	- \My super-puper app
+	$my_page $mol_section
+		
+		- \define localized title
+		title @ \Super App!
+		
+		- \TODO: fill content!
+		- content /
+			\blah-blah-blah
+
+Этот код эквивалентен следующему:
+
+	$my_page $mol_section title @ \Super App!
+
+== Шпаргалка по спецсимволам
+
+Типы узлов:
+
+" ;;-;; - комментарий, всё поддерево игнорируется. Мнемоника: удаление.
+" ;;/;; - массив, опционально после него идёт тип элементов. Мнемоника: директория с файлами.
+" ;;*;; - словарь //ключ-значение//. Мнемоника: произвольный ключ.
+" ;;^;; - разворачивает значение указанного свойства или одноимённого свойства родителя.
+" ;;\;; - сырая строка без экранирования. Мнемоника: экранирование до конца строки.
+" ;;@;; - локализуемая строка. Мнемоника: упоминаниие по id.
+" ;;<=;; - значение свойства владельца. Мнемоника: поток данных справа налево.
+" ;;=>;; - экспорт свойства подконтрольного объекта во владельца. Мнемоника: поток данных слева направо.
+" ;;<=>;; - двусторонняя связь двух мутабельных свойств. Мнемоника: потоки данных в обе стороны.
+
+Суффиксы в именах свойств:
+
+" ;;*;; - мультиплексированное свойство, принимающее ключ, значение которого идёт далее. Мнемоника: произвольный ключ.
+" ;;?;; - изменяемое свойство, опционально принимающее новое значение. Мнемоника: опциональный параметр с новым значением.
+
+= Императивная логика
+
+В дополнение к декларативному описанию компонента, можно добавить TS код в файле ;;view.ts;;, где создаётся класс, наследуемый от того класса, который генерируется из декларативного описания. Для примера возьмём такой код:
+
+	- \hello.view.tree
+	$my_hello $mol_view
+		sub /
+			<= Input $mol_string
+				hint \Name
+				value? <=> name? \
+			<= message \
+
+Он транслируется в такой TS класс:
+
+	// hello.view.tree.ts
+	namespace $ {
+		export class $my_hello extends $mol_view {
+			
+			sub() {
+				return [
+					this.Input(),
+					this.message()
+				] as readonly any[]
+			}
+			
+			@ $mol_mem
+			name(next?: any) {
+				if ( next !== undefined ) return next as never
+				return ""
+			}
+			
+			@ $mol_mem
+			Input() {
+				const obj = new this.$.$mol_string()
+				obj.hint = () => "Name"
+				obj.value = (next?: any) => this.name(next)
+				return obj
+			}
+			
+			message() {
+				return ""
+			}
+		}
+		
+	}
+
+Теперь реализуем ;;message;; более интересным образом:
+
+	// hello.view.ts
+	namespace $.$$ {
+		export class $my_hello extends $.$my_hello {
+			
+			message() {
+				const name = this.name()
+				return name && `Hello, ${name}!`
+			}
+			
+		}
+	}
+
+Аналогичным образом можно переопределить любой метод, в том числе и любую фабрику.
+--
+
+\\Current Original on $hyoo_page.\https://page.hyoo.ru/#!=cx1tyu_aduyqj\\
