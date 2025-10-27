@@ -804,57 +804,6 @@ $mol_book2 $mol_scroll
 	minimal_width 0
 	Gap* $mol_view title \
 
-$mol_string_button $mol_string
-
-$mol_icon_translate $mol_icon path \M12.87,15.07L10.33,12.56L10.36,12.53C12.1,10.59 13.34,8.36 14.07,6H17V4H10V2H8V4H1V6H12.17C11.5,7.92 10.44,9.75 9,11.35C8.07,10.32 7.3,9.19 6.69,8H4.69C5.42,9.63 6.42,11.17 7.67,12.56L2.58,17.58L4,19L9,14L12.11,17.11L12.87,15.07M18.5,10H16.5L12,22H14L15.12,19H19.87L21,22H23L18.5,10M15.88,17L17.5,12.67L19.12,17H15.88Z
-
-$mol_icon_plus $mol_icon path \M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z
-
-$mol_icon_delete $mol_icon path \M19,4H15.5L14.5,3H9.5L8.5,4H5V6H19M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19Z
-
-$mol_icon_delete_outline $mol_icon path \M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19M8,9H16V19H8V9M15.5,4L14.5,3H9.5L8.5,4H5V6H19V4H15.5Z
-
-$hyoo_tree_edit $mol_list
-	value? $mol_tree2
-	enabled true
-	rows <= list*0 /
-		<= Item*0 $mol_list rows /
-			<= Item_row* $mol_view sub <= item_row* /
-				<= Item_type* $mol_string_button
-					hint \Type
-					value? <=> item_type*? \
-					enabled <= enabled
-				<= Item_value* $mol_string
-					hint \Value
-					value? <=> item_value*? \
-					enabled <= enabled
-				<= Item_kind* $mol_check_icon
-					hint \Toggle kind
-					checked? <=> item_kind*? false
-					enabled <= enabled
-					sub /
-						<= Item_kind_icon* $mol_icon_translate
-				<= Item_born* $mol_button_minor
-					hint \Add item
-					click? <=> item_born*? null
-					enabled <= enabled
-					sub /
-						<= Item_born_icon* $mol_icon_plus
-				<= Item_delete* $mol_pick
-					hint \Delete
-					trigger_enabled <= enabled
-					trigger_content /
-						<= Item_delete_icon* $mol_icon_delete_outline
-					bubble_content /
-						<= Item_delete_options* $mol_list rows /
-							<= Item_delete_self* $mol_button_minor
-								click? <=> item_delete_self*? null
-								sub / \Disappear
-							<= Item_delete_tree* $mol_button_minor
-								click? <=> item_delete_tree*? null
-								sub / \Truncate
-			<= List* $mol_list rows <= list*
-
 $mol_textarea $mol_stack
 	attr *
 		^
@@ -930,65 +879,56 @@ $mol_textarea_edit $mol_string
 		^
 		scrollTop 0
 
-$eve_app_page_sb_playground $mol_book2
-	component_name \Live_component
-	default_source \
-		\Live_component $mol_view
-		\	sub /
-		\		\\Edit component...
-	Placeholder null
-	pages /
-		<= Demo_page $eve_page
-			Head null
-			title \Demo
-			body /
-				<= Live_component_container $eve_flex
-					colors \lowest
-					justify_content \center
-					align_items \center
+$mol_string_button $mol_string
+
+$mol_icon_translate $mol_icon path \M12.87,15.07L10.33,12.56L10.36,12.53C12.1,10.59 13.34,8.36 14.07,6H17V4H10V2H8V4H1V6H12.17C11.5,7.92 10.44,9.75 9,11.35C8.07,10.32 7.3,9.19 6.69,8H4.69C5.42,9.63 6.42,11.17 7.67,12.56L2.58,17.58L4,19L9,14L12.11,17.11L12.87,15.07M18.5,10H16.5L12,22H14L15.12,19H19.87L21,22H23L18.5,10M15.88,17L17.5,12.67L19.12,17H15.88Z
+
+$mol_icon_plus $mol_icon path \M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z
+
+$mol_icon_delete $mol_icon path \M19,4H15.5L14.5,3H9.5L8.5,4H5V6H19M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19Z
+
+$mol_icon_delete_outline $mol_icon path \M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19M8,9H16V19H8V9M15.5,4L14.5,3H9.5L8.5,4H5V6H19V4H15.5Z
+
+$hyoo_tree_edit $mol_list
+	value? $mol_tree2
+	enabled true
+	rows <= list*0 /
+		<= Item*0 $mol_list rows /
+			<= Item_row* $mol_view sub <= item_row* /
+				<= Item_type* $mol_string_button
+					hint \Type
+					value? <=> item_type*? \
+					enabled <= enabled
+				<= Item_value* $mol_string
+					hint \Value
+					value? <=> item_value*? \
+					enabled <= enabled
+				<= Item_kind* $mol_check_icon
+					hint \Toggle kind
+					checked? <=> item_kind*? false
+					enabled <= enabled
 					sub /
-						<= Live_component $eve_surface
-		<= Code_page $eve_page
-			Head null
-			title \Code
-			body /
-				<= Editor_body $eve_surface
-					colors \lowest
-					sub <= editor_body /
-						<= Source_tree $hyoo_tree_edit
-							value? <=> source_tree? $mol_tree2
-						<= Source_text $mol_textarea
-							value?val <=> source?val \
-							hint \view.tree code
-							sidebar_showed true
-
-
-$eve_app_page_components_flex $eve_app_page_sb_page
-	title \Flex
-	body /
-		<= Playground $eve_app_page_sb_playground
-			component_name \Live_flex
-			default_source \
-				\Live_flex $eve_flex
-				\	- Edit values of Flex component
-				\	justify_content \center
-				\	align_items \center
-				\	- TODO: узнать как стилизовать .view.css.ts для этого компонента
-				\	style *
-				\		width \30%
-				\		height \30%
-				\		position \relative
-				\	wrap \wrap
-				\	sub /
-				\		<= Demo_item $eve_surface
-				\			colors \medium
-				\			style *
-				\				width \10%
-				\				height \10%
-				\				position \absolute
-				\
-	Showcase_cell* $eve_surface
-		colors \lowest
+						<= Item_kind_icon* $mol_icon_translate
+				<= Item_born* $mol_button_minor
+					hint \Add item
+					click? <=> item_born*? null
+					enabled <= enabled
+					sub /
+						<= Item_born_icon* $mol_icon_plus
+				<= Item_delete* $mol_pick
+					hint \Delete
+					trigger_enabled <= enabled
+					trigger_content /
+						<= Item_delete_icon* $mol_icon_delete_outline
+					bubble_content /
+						<= Item_delete_options* $mol_list rows /
+							<= Item_delete_self* $mol_button_minor
+								click? <=> item_delete_self*? null
+								sub / \Disappear
+							<= Item_delete_tree* $mol_button_minor
+								click? <=> item_delete_tree*? null
+								sub / \Truncate
+			<= List* $mol_list rows <= list*
 
 $eve_button $eve_flex
 	interactive true
@@ -1016,7 +956,70 @@ $eve_button $eve_flex
 		tabindex <= tab_index 0
 		title <= hint_safe <= hint \
 
-$mol_icon_karate $mol_icon path \M19.8 2L11.6 8.7L10.39 7.66L14 5.58L9.41 1L8 2.41L10.74 5.15L5 8.46L3.81 12.75L6.27 17L8 16L5.97 12.5L6.32 11.18L9.5 13L10 22H12L12.5 12L21 3.4L19.8 2M5 3C6.11 3 7 3.9 7 5S6.11 7 5 7 3 6.11 3 5 3.9 3 5 3Z
+$eve_tab $eve_button
+	size null
+	variant <= tab_variant \text
+	colors <= tab_colors \primary
+	attr *
+		^
+		mol_check_checked <= checked? false
+		aria-checked <= aria_checked \false
+		role \tab
+		aria-selected <= aria_checked
+	event *
+		^
+		click?event <=> event_click?event null
+
+$eve_tab_group $eve_flex
+	direction \row
+	wrap \nowrap
+	value? \
+	attr *
+		^
+		role \tablist
+	sub <= tabs /
+		<= Tab* $eve_tab
+			label <= tab_label* \
+			checked? <= tab_checked* false
+			event_click?event <=> tab_click*?event null
+
+
+$mol_check_list $mol_view
+	dictionary *
+	Option* $mol_check
+		checked? <=> option_checked*? false
+		label <= option_label* /
+			<= option_title* \
+		enabled <= option_enabled* <= enabled true
+		hint <= option_hint* \
+		minimal_height 24
+	options *
+	keys /string
+	sub <= items /$mol_check
+
+$mol_switch $mol_check_list
+	value? \
+
+$eve_tab_container $mol_view
+	tab? \
+	spreads *
+	Spread* $mol_view
+	spread_ids /string
+	spread_current null
+	tab_label* \
+	tab_checked* false
+	tab_click*?event null
+	sub /
+		<= Tab_group $eve_tab_group
+			value? <=> tab?
+			tabs <= tabs /
+			tab_label* <= tab_label*
+			tab_checked* <= tab_checked*
+			tab_click*?event <=> tab_click*?event
+		<= Content $mol_switch
+			value <= tab
+			options <= content_options *
+
 
 $mol_book2_catalog $mol_book2
 	param \
@@ -1062,6 +1065,82 @@ $mol_book2_catalog $mol_book2
 		hint @ \Close page
 		sub /
 			<= Spread_close_icon $mol_icon_close
+
+$eve_app_page_sb_playground $mol_book2
+	component_name \Live_component
+	default_source \
+		\Live_component $mol_view
+		\	sub /
+		\		\\Edit component...
+	Placeholder null
+	pages /
+		<= Demo_page $eve_page
+			Head null
+			title \Demo
+			body /
+				<= Live_component_container $eve_flex
+					colors \lowest
+					justify_content \center
+					align_items \center
+					sub /
+						<= Live_component $eve_surface
+		<= Code_page $eve_page
+			Head null
+			title \Code
+			tools /
+				<= Editor_mode_toggle $mol_check_icon
+					checked? <=> raw? true
+					hint \Toggle tree/text editor
+					- Icon <= Editor_mode_icon $mol_icon_code
+			body /
+				<= Code_tabs $eve_tab_container
+					tab? <=> code_tab? \source
+					spreads *
+						source
+							<= Source_panel $eve_surface
+								colors \lowest
+								sub <= source_editor /
+									<= Source_text $mol_textarea
+										value?val <=> source?val \
+										hint \view.tree code
+										sidebar_showed true
+									<= Source_tree $hyoo_tree_edit
+										value? <=> source_tree? $mol_tree2
+						props
+							<= Props_panel $eve_surface
+								colors \lowest
+								sub /
+									<= Props_placeholder $mol_paragraph
+										title \Properties panel - coming soon
+
+$eve_app_page_components_flex $eve_app_page_sb_page
+	title \Flex
+	body /
+		<= Playground $eve_app_page_sb_playground
+			component_name \Live_flex
+			default_source \
+				\Live_flex $eve_flex
+				\	- Edit values of Flex component
+				\	justify_content \center
+				\	align_items \center
+				\	- TODO: узнать как стилизовать .view.css.ts для этого компонента
+				\	style *
+				\		width \30%
+				\		height \30%
+				\		position \relative
+				\	wrap \wrap
+				\	sub /
+				\		<= Demo_item $eve_surface
+				\			colors \medium
+				\			style *
+				\				width \10%
+				\				height \10%
+				\				position \absolute
+				\
+	Showcase_cell* $eve_surface
+		colors \lowest
+
+$mol_icon_karate $mol_icon path \M19.8 2L11.6 8.7L10.39 7.66L14 5.58L9.41 1L8 2.41L10.74 5.15L5 8.46L3.81 12.75L6.27 17L8 16L5.97 12.5L6.32 11.18L9.5 13L10 22H12L12.5 12L21 3.4L19.8 2M5 3C6.11 3 7 3.9 7 5S6.11 7 5 7 3 6.11 3 5 3.9 3 5 3Z
 
 $eve_app_page_sb_catalog $mol_book2_catalog
 	- без понятия опять же, что это за компонент Placeholder и зачем он там нужен - 0 шансов и желания разбираться
@@ -1481,34 +1560,6 @@ $eve_app_page_components_switch $eve_app_page_sb_page
 								\
 
 
-$eve_tab $eve_button
-	size null
-	variant <= tab_variant \text
-	colors <= tab_colors \primary
-	attr *
-		^
-		mol_check_checked <= checked? false
-		aria-checked <= aria_checked \false
-		role \tab
-		aria-selected <= aria_checked
-	event *
-		^
-		click?event <=> event_click?event null
-
-$eve_tab_group $eve_flex
-	direction \row
-	wrap \nowrap
-	value? \
-	attr *
-		^
-		role \tablist
-	sub <= tabs /
-		<= Tab* $eve_tab
-			label <= tab_label* \
-			checked? <= tab_checked* false
-			event_click?event <=> tab_click*?event null
-
-
 $eve_app_page_components_tab $eve_app_page_sb_page
 	title \Tabs
 	Head null
@@ -1855,22 +1906,6 @@ $eve_app_page_themer $eve_page
 	Head null
 	body /
 		<= Colors $eve_app_page_themer_colors
-
-$mol_check_list $mol_view
-	dictionary *
-	Option* $mol_check
-		checked? <=> option_checked*? false
-		label <= option_label* /
-			<= option_title* \
-		enabled <= option_enabled* <= enabled true
-		hint <= option_hint* \
-		minimal_height 24
-	options *
-	keys /string
-	sub <= items /$mol_check
-
-$mol_switch $mol_check_list
-	value? \
 
 $mol_deck $mol_list
 	items /$mol_view

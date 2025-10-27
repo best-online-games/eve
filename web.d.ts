@@ -4508,6 +4508,155 @@ declare namespace $ {
 }
 
 declare namespace $ {
+
+	type $mol_textarea_edit__value_mol_textarea_1 = $mol_type_enforce<
+		ReturnType< $mol_textarea['value'] >
+		,
+		ReturnType< $mol_textarea_edit['value'] >
+	>
+	type $mol_textarea_edit__hint_mol_textarea_2 = $mol_type_enforce<
+		ReturnType< $mol_textarea['hint'] >
+		,
+		ReturnType< $mol_textarea_edit['hint'] >
+	>
+	type $mol_textarea_edit__enabled_mol_textarea_3 = $mol_type_enforce<
+		ReturnType< $mol_textarea['enabled'] >
+		,
+		ReturnType< $mol_textarea_edit['enabled'] >
+	>
+	type $mol_textarea_edit__spellcheck_mol_textarea_4 = $mol_type_enforce<
+		ReturnType< $mol_textarea['spellcheck'] >
+		,
+		ReturnType< $mol_textarea_edit['spellcheck'] >
+	>
+	type $mol_textarea_edit__length_max_mol_textarea_5 = $mol_type_enforce<
+		ReturnType< $mol_textarea['length_max'] >
+		,
+		ReturnType< $mol_textarea_edit['length_max'] >
+	>
+	type $mol_textarea_edit__selection_mol_textarea_6 = $mol_type_enforce<
+		ReturnType< $mol_textarea['selection'] >
+		,
+		ReturnType< $mol_textarea_edit['selection'] >
+	>
+	type $mol_textarea_edit__submit_mol_textarea_7 = $mol_type_enforce<
+		ReturnType< $mol_textarea['submit'] >
+		,
+		ReturnType< $mol_textarea_edit['submit'] >
+	>
+	type $mol_textarea_edit__submit_with_ctrl_mol_textarea_8 = $mol_type_enforce<
+		ReturnType< $mol_textarea['submit_with_ctrl'] >
+		,
+		ReturnType< $mol_textarea_edit['submit_with_ctrl'] >
+	>
+	type $mol_text_code__text_mol_textarea_9 = $mol_type_enforce<
+		ReturnType< $mol_textarea['value'] >
+		,
+		ReturnType< $mol_text_code['text'] >
+	>
+	type $mol_text_code__render_visible_only_mol_textarea_10 = $mol_type_enforce<
+		boolean
+		,
+		ReturnType< $mol_text_code['render_visible_only'] >
+	>
+	type $mol_text_code__row_numb_mol_textarea_11 = $mol_type_enforce<
+		ReturnType< $mol_textarea['row_numb'] >
+		,
+		ReturnType< $mol_text_code['row_numb'] >
+	>
+	type $mol_text_code__sidebar_showed_mol_textarea_12 = $mol_type_enforce<
+		ReturnType< $mol_textarea['sidebar_showed'] >
+		,
+		ReturnType< $mol_text_code['sidebar_showed'] >
+	>
+	type $mol_text_code__highlight_mol_textarea_13 = $mol_type_enforce<
+		ReturnType< $mol_textarea['highlight'] >
+		,
+		ReturnType< $mol_text_code['highlight'] >
+	>
+	type $mol_text_code__syntax_mol_textarea_14 = $mol_type_enforce<
+		ReturnType< $mol_textarea['syntax'] >
+		,
+		ReturnType< $mol_text_code['syntax'] >
+	>
+	export class $mol_textarea extends $mol_stack {
+		clickable( next?: boolean ): boolean
+		sidebar_showed( ): boolean
+		press( next?: any ): any
+		hover( next?: any ): any
+		value( next?: string ): string
+		hint( ): string
+		enabled( ): boolean
+		spellcheck( ): boolean
+		length_max( ): number
+		selection( next?: readonly(number)[] ): readonly(number)[]
+		bring( ): ReturnType< ReturnType< $mol_textarea['Edit'] >['bring'] >
+		submit( next?: any ): any
+		submit_with_ctrl( ): boolean
+		Edit( ): $mol_textarea_edit
+		row_numb( id: any): number
+		highlight( ): string
+		syntax( ): $mol_syntax2
+		View( ): $mol_text_code
+		attr( ): ({ 
+			'mol_textarea_clickable': ReturnType< $mol_textarea['clickable'] >,
+			'mol_textarea_sidebar_showed': ReturnType< $mol_textarea['sidebar_showed'] >,
+		})  & ReturnType< $mol_stack['attr'] >
+		event( ): ({ 
+			keydown( next?: ReturnType< $mol_textarea['press'] > ): ReturnType< $mol_textarea['press'] >,
+			pointermove( next?: ReturnType< $mol_textarea['hover'] > ): ReturnType< $mol_textarea['hover'] >,
+		}) 
+		sub( ): readonly(any)[]
+		symbols_alt( ): Record<string, string>
+		symbols_alt_ctrl( ): Record<string, string>
+		symbols_alt_shift( ): Record<string, string>
+	}
+	
+	export class $mol_textarea_edit extends $mol_string {
+		dom_name( ): string
+		enter( ): string
+		field( ): ({ 
+			'scrollTop': number,
+		})  & ReturnType< $mol_string['field'] >
+	}
+	
+}
+
+//# sourceMappingURL=textarea.view.tree.d.ts.map
+declare namespace $.$$ {
+    class $mol_textarea extends $.$mol_textarea {
+        indent_inc(): void;
+        indent_dec(): void;
+        symbol_insert(event: KeyboardEvent): void;
+        clickable(next?: boolean): boolean;
+        hover(event: PointerEvent): void;
+        press(event: KeyboardEvent): void;
+        row_numb(index: number): number;
+        syntax(): $mol_syntax2<{
+            'code-indent': RegExp;
+            'code-docs': RegExp;
+            'code-comment-block': RegExp;
+            'code-link': RegExp;
+            'code-comment-inline': RegExp;
+            'code-string': RegExp;
+            'code-number': RegExp;
+            'code-call': RegExp;
+            'code-sexpr': RegExp;
+            'code-field': RegExp;
+            'code-keyword': RegExp;
+            'code-global': RegExp;
+            'code-word': RegExp;
+            'code-decorator': RegExp;
+            'code-tag': RegExp;
+            'code-punctuation': RegExp;
+        }>;
+    }
+}
+
+declare namespace $ {
+}
+
+declare namespace $ {
     class $mol_span extends $mol_object2 {
         readonly uri: string;
         readonly source: string;
@@ -4819,423 +4968,6 @@ declare namespace $.$$ {
 
 declare namespace $ {
 
-	type $mol_textarea_edit__value_mol_textarea_1 = $mol_type_enforce<
-		ReturnType< $mol_textarea['value'] >
-		,
-		ReturnType< $mol_textarea_edit['value'] >
-	>
-	type $mol_textarea_edit__hint_mol_textarea_2 = $mol_type_enforce<
-		ReturnType< $mol_textarea['hint'] >
-		,
-		ReturnType< $mol_textarea_edit['hint'] >
-	>
-	type $mol_textarea_edit__enabled_mol_textarea_3 = $mol_type_enforce<
-		ReturnType< $mol_textarea['enabled'] >
-		,
-		ReturnType< $mol_textarea_edit['enabled'] >
-	>
-	type $mol_textarea_edit__spellcheck_mol_textarea_4 = $mol_type_enforce<
-		ReturnType< $mol_textarea['spellcheck'] >
-		,
-		ReturnType< $mol_textarea_edit['spellcheck'] >
-	>
-	type $mol_textarea_edit__length_max_mol_textarea_5 = $mol_type_enforce<
-		ReturnType< $mol_textarea['length_max'] >
-		,
-		ReturnType< $mol_textarea_edit['length_max'] >
-	>
-	type $mol_textarea_edit__selection_mol_textarea_6 = $mol_type_enforce<
-		ReturnType< $mol_textarea['selection'] >
-		,
-		ReturnType< $mol_textarea_edit['selection'] >
-	>
-	type $mol_textarea_edit__submit_mol_textarea_7 = $mol_type_enforce<
-		ReturnType< $mol_textarea['submit'] >
-		,
-		ReturnType< $mol_textarea_edit['submit'] >
-	>
-	type $mol_textarea_edit__submit_with_ctrl_mol_textarea_8 = $mol_type_enforce<
-		ReturnType< $mol_textarea['submit_with_ctrl'] >
-		,
-		ReturnType< $mol_textarea_edit['submit_with_ctrl'] >
-	>
-	type $mol_text_code__text_mol_textarea_9 = $mol_type_enforce<
-		ReturnType< $mol_textarea['value'] >
-		,
-		ReturnType< $mol_text_code['text'] >
-	>
-	type $mol_text_code__render_visible_only_mol_textarea_10 = $mol_type_enforce<
-		boolean
-		,
-		ReturnType< $mol_text_code['render_visible_only'] >
-	>
-	type $mol_text_code__row_numb_mol_textarea_11 = $mol_type_enforce<
-		ReturnType< $mol_textarea['row_numb'] >
-		,
-		ReturnType< $mol_text_code['row_numb'] >
-	>
-	type $mol_text_code__sidebar_showed_mol_textarea_12 = $mol_type_enforce<
-		ReturnType< $mol_textarea['sidebar_showed'] >
-		,
-		ReturnType< $mol_text_code['sidebar_showed'] >
-	>
-	type $mol_text_code__highlight_mol_textarea_13 = $mol_type_enforce<
-		ReturnType< $mol_textarea['highlight'] >
-		,
-		ReturnType< $mol_text_code['highlight'] >
-	>
-	type $mol_text_code__syntax_mol_textarea_14 = $mol_type_enforce<
-		ReturnType< $mol_textarea['syntax'] >
-		,
-		ReturnType< $mol_text_code['syntax'] >
-	>
-	export class $mol_textarea extends $mol_stack {
-		clickable( next?: boolean ): boolean
-		sidebar_showed( ): boolean
-		press( next?: any ): any
-		hover( next?: any ): any
-		value( next?: string ): string
-		hint( ): string
-		enabled( ): boolean
-		spellcheck( ): boolean
-		length_max( ): number
-		selection( next?: readonly(number)[] ): readonly(number)[]
-		bring( ): ReturnType< ReturnType< $mol_textarea['Edit'] >['bring'] >
-		submit( next?: any ): any
-		submit_with_ctrl( ): boolean
-		Edit( ): $mol_textarea_edit
-		row_numb( id: any): number
-		highlight( ): string
-		syntax( ): $mol_syntax2
-		View( ): $mol_text_code
-		attr( ): ({ 
-			'mol_textarea_clickable': ReturnType< $mol_textarea['clickable'] >,
-			'mol_textarea_sidebar_showed': ReturnType< $mol_textarea['sidebar_showed'] >,
-		})  & ReturnType< $mol_stack['attr'] >
-		event( ): ({ 
-			keydown( next?: ReturnType< $mol_textarea['press'] > ): ReturnType< $mol_textarea['press'] >,
-			pointermove( next?: ReturnType< $mol_textarea['hover'] > ): ReturnType< $mol_textarea['hover'] >,
-		}) 
-		sub( ): readonly(any)[]
-		symbols_alt( ): Record<string, string>
-		symbols_alt_ctrl( ): Record<string, string>
-		symbols_alt_shift( ): Record<string, string>
-	}
-	
-	export class $mol_textarea_edit extends $mol_string {
-		dom_name( ): string
-		enter( ): string
-		field( ): ({ 
-			'scrollTop': number,
-		})  & ReturnType< $mol_string['field'] >
-	}
-	
-}
-
-//# sourceMappingURL=textarea.view.tree.d.ts.map
-declare namespace $.$$ {
-    class $mol_textarea extends $.$mol_textarea {
-        indent_inc(): void;
-        indent_dec(): void;
-        symbol_insert(event: KeyboardEvent): void;
-        clickable(next?: boolean): boolean;
-        hover(event: PointerEvent): void;
-        press(event: KeyboardEvent): void;
-        row_numb(index: number): number;
-        syntax(): $mol_syntax2<{
-            'code-indent': RegExp;
-            'code-docs': RegExp;
-            'code-comment-block': RegExp;
-            'code-link': RegExp;
-            'code-comment-inline': RegExp;
-            'code-string': RegExp;
-            'code-number': RegExp;
-            'code-call': RegExp;
-            'code-sexpr': RegExp;
-            'code-field': RegExp;
-            'code-keyword': RegExp;
-            'code-global': RegExp;
-            'code-word': RegExp;
-            'code-decorator': RegExp;
-            'code-tag': RegExp;
-            'code-punctuation': RegExp;
-        }>;
-    }
-}
-
-declare namespace $ {
-}
-
-declare namespace $ {
-    function $mol_tree2_text_to_string(this: $, text: $mol_tree2): string;
-}
-
-declare namespace $ {
-    function $mol_vlq_encode(val: number): string;
-}
-
-declare namespace $ {
-    type $mol_sourcemap_segment = [number] | [number, number, number, number] | [number, number, number, number, number];
-    type $mol_sourcemap_line = $mol_sourcemap_segment[];
-    type $mol_sourcemap_mappings = $mol_sourcemap_line[];
-    interface $mol_sourcemap_raw {
-        version: number;
-        sources: string[];
-        names?: string[];
-        sourceRoot?: string;
-        sourcesContent?: (string | null)[];
-        mappings: string | $mol_sourcemap_line[];
-        file?: string;
-    }
-}
-
-declare namespace $ {
-    function $mol_tree2_text_to_sourcemap(this: $, tree: $mol_tree2): $mol_sourcemap_raw;
-}
-
-declare namespace $ {
-    function $mol_sourcemap_url(this: $, uri: string, type?: "js" | "css"): string;
-}
-
-declare namespace $ {
-    function $mol_sourcemap_dataurl_decode(this: $, data: string): $mol_sourcemap_raw | undefined;
-    function $mol_sourcemap_dataurl_encode(this: $, map: $mol_sourcemap_raw, type?: "js" | "css"): string;
-}
-
-declare namespace $ {
-    function $mol_tree2_text_to_string_mapped(this: $, text: $mol_tree2, type: 'js' | 'css'): string;
-    function $mol_tree2_text_to_string_mapped_js(this: $, text: $mol_tree2): string;
-    function $mol_tree2_text_to_string_mapped_css(this: $, text: $mol_tree2): string;
-}
-
-declare namespace $ {
-    function $mol_tree2_js_is_number(type: string): boolean | RegExpMatchArray;
-}
-
-declare namespace $ {
-    function $mol_tree2_js_to_text(this: $, js: $mol_tree2): $mol_tree2;
-}
-
-declare namespace $ {
-    class $mol_view_tree2_error extends Error {
-        readonly spans: readonly $mol_span[];
-        constructor(message: string, spans: readonly $mol_span[]);
-        toJSON(): {
-            message: string;
-            spans: readonly $mol_span[];
-        };
-    }
-    class $mol_view_tree2_error_suggestions {
-        readonly suggestions: readonly string[];
-        constructor(suggestions: readonly string[]);
-        toString(): string;
-        toJSON(): readonly string[];
-    }
-    function $mol_view_tree2_error_str(strings: readonly string[], ...parts: readonly ($mol_span | readonly $mol_span[] | string | number | $mol_view_tree2_error_suggestions)[]): $mol_view_tree2_error;
-}
-
-declare namespace $ {
-    function $mol_view_tree2_child(this: $, tree: $mol_tree2): $mol_tree2;
-}
-
-declare namespace $ {
-    function $mol_view_tree2_classes(defs: $mol_tree2): $mol_tree2;
-}
-
-declare namespace $ {
-    function $mol_view_tree2_normalize(this: $, defs: $mol_tree2): $mol_tree2;
-}
-
-declare namespace $ {
-    let $mol_view_tree2_prop_signature: $mol_regexp<{
-        readonly name: string;
-        readonly key: string;
-        readonly next: string;
-    }>;
-}
-
-declare namespace $ {
-    function $mol_view_tree2_prop_parts(this: $, prop: $mol_tree2): {
-        name: string;
-        key: string;
-        next: string;
-    };
-}
-
-declare namespace $ {
-    function $mol_view_tree2_prop_quote(name: $mol_tree2): $mol_tree2;
-}
-
-declare namespace $ {
-    function $mol_view_tree2_class_match(klass?: $mol_tree2): boolean;
-}
-
-declare namespace $ {
-    function $mol_view_tree2_class_super(this: $, klass: $mol_tree2): $mol_tree2;
-}
-
-declare namespace $ {
-    function $mol_view_tree2_class_props(this: $, klass: $mol_tree2): $mol_tree2[];
-}
-
-declare namespace $ {
-    function $mol_view_tree2_to_js(this: $, descr: $mol_tree2): $mol_tree2;
-}
-
-declare namespace $ {
-
-	type $eve_flex__colors_eve_app_page_sb_playground_1 = $mol_type_enforce<
-		string
-		,
-		ReturnType< $eve_flex['colors'] >
-	>
-	type $eve_flex__justify_content_eve_app_page_sb_playground_2 = $mol_type_enforce<
-		string
-		,
-		ReturnType< $eve_flex['justify_content'] >
-	>
-	type $eve_flex__align_items_eve_app_page_sb_playground_3 = $mol_type_enforce<
-		string
-		,
-		ReturnType< $eve_flex['align_items'] >
-	>
-	type $eve_flex__sub_eve_app_page_sb_playground_4 = $mol_type_enforce<
-		readonly(any)[]
-		,
-		ReturnType< $eve_flex['sub'] >
-	>
-	type $eve_page__Head_eve_app_page_sb_playground_5 = $mol_type_enforce<
-		any
-		,
-		ReturnType< $eve_page['Head'] >
-	>
-	type $eve_page__title_eve_app_page_sb_playground_6 = $mol_type_enforce<
-		string
-		,
-		ReturnType< $eve_page['title'] >
-	>
-	type $eve_page__body_eve_app_page_sb_playground_7 = $mol_type_enforce<
-		readonly(any)[]
-		,
-		ReturnType< $eve_page['body'] >
-	>
-	type $hyoo_tree_edit__value_eve_app_page_sb_playground_8 = $mol_type_enforce<
-		ReturnType< $eve_app_page_sb_playground['source_tree'] >
-		,
-		ReturnType< $hyoo_tree_edit['value'] >
-	>
-	type $mol_textarea__value_eve_app_page_sb_playground_9 = $mol_type_enforce<
-		ReturnType< $eve_app_page_sb_playground['source'] >
-		,
-		ReturnType< $mol_textarea['value'] >
-	>
-	type $mol_textarea__hint_eve_app_page_sb_playground_10 = $mol_type_enforce<
-		string
-		,
-		ReturnType< $mol_textarea['hint'] >
-	>
-	type $mol_textarea__sidebar_showed_eve_app_page_sb_playground_11 = $mol_type_enforce<
-		boolean
-		,
-		ReturnType< $mol_textarea['sidebar_showed'] >
-	>
-	type $eve_surface__colors_eve_app_page_sb_playground_12 = $mol_type_enforce<
-		string
-		,
-		ReturnType< $eve_surface['colors'] >
-	>
-	type $eve_surface__sub_eve_app_page_sb_playground_13 = $mol_type_enforce<
-		ReturnType< $eve_app_page_sb_playground['editor_body'] >
-		,
-		ReturnType< $eve_surface['sub'] >
-	>
-	type $eve_page__Head_eve_app_page_sb_playground_14 = $mol_type_enforce<
-		any
-		,
-		ReturnType< $eve_page['Head'] >
-	>
-	type $eve_page__title_eve_app_page_sb_playground_15 = $mol_type_enforce<
-		string
-		,
-		ReturnType< $eve_page['title'] >
-	>
-	type $eve_page__body_eve_app_page_sb_playground_16 = $mol_type_enforce<
-		readonly(any)[]
-		,
-		ReturnType< $eve_page['body'] >
-	>
-	export class $eve_app_page_sb_playground extends $mol_book2 {
-		Live_component( ): $eve_surface
-		Live_component_container( ): $eve_flex
-		Demo_page( ): $eve_page
-		source_tree( next?: $mol_tree2 ): $mol_tree2
-		Source_tree( ): $hyoo_tree_edit
-		source( next?: string ): string
-		Source_text( ): $mol_textarea
-		editor_body( ): readonly(any)[]
-		Editor_body( ): $eve_surface
-		Code_page( ): $eve_page
-		component_name( ): string
-		default_source( ): string
-		Placeholder( ): any
-		pages( ): readonly(any)[]
-	}
-	
-}
-
-//# sourceMappingURL=playground.view.tree.d.ts.map
-declare namespace $.$$ {
-    class $eve_app_page_sb_playground extends $.$eve_app_page_sb_playground {
-        raw(next?: boolean): boolean;
-        editor_body(): $.$mol_textarea[] | $.$hyoo_tree_edit[];
-        source(next?: string): string;
-        source_tree(next?: $mol_tree2): $mol_tree2;
-        live_component_code(): string;
-        Live_component(): $eve_surface;
-        customize_live_component(instance: any): $eve_surface;
-    }
-}
-
-declare namespace $.$$ {
-}
-
-declare namespace $ {
-
-	type $eve_app_page_sb_playground__component_name_eve_app_page_components_flex_1 = $mol_type_enforce<
-		string
-		,
-		ReturnType< $eve_app_page_sb_playground['component_name'] >
-	>
-	type $eve_app_page_sb_playground__default_source_eve_app_page_components_flex_2 = $mol_type_enforce<
-		string
-		,
-		ReturnType< $eve_app_page_sb_playground['default_source'] >
-	>
-	type $eve_surface__colors_eve_app_page_components_flex_3 = $mol_type_enforce<
-		string
-		,
-		ReturnType< $eve_surface['colors'] >
-	>
-	export class $eve_app_page_components_flex extends $eve_app_page_sb_page {
-		Playground( ): $eve_app_page_sb_playground
-		title( ): string
-		body( ): readonly(any)[]
-		Showcase_cell( id: any): $eve_surface
-	}
-	
-}
-
-//# sourceMappingURL=flex.view.tree.d.ts.map
-declare namespace $.$$ {
-    class $eve_app_page_components_flex extends $.$eve_app_page_components_flex {
-    }
-}
-
-declare namespace $.$$ {
-}
-
-declare namespace $ {
-
 	type $mol_text__text_eve_button_1 = $mol_type_enforce<
 		ReturnType< $eve_button['label'] >
 		,
@@ -5299,13 +5031,168 @@ declare namespace $.$$ {
 
 declare namespace $ {
 
-	export class $mol_icon_karate extends $mol_icon {
-		path( ): string
+	export class $eve_tab extends $eve_button {
+		tab_variant( ): string
+		tab_colors( ): string
+		checked( next?: boolean ): boolean
+		aria_checked( ): string
+		event_click( next?: any ): any
+		size( ): any
+		variant( ): ReturnType< $eve_tab['tab_variant'] >
+		colors( ): ReturnType< $eve_tab['tab_colors'] >
+		attr( ): ({ 
+			'mol_check_checked': ReturnType< $eve_tab['checked'] >,
+			'aria-checked': ReturnType< $eve_tab['aria_checked'] >,
+			'role': string,
+			'aria-selected': ReturnType< $eve_tab['aria_checked'] >,
+		})  & ReturnType< $eve_button['attr'] >
+		event( ): ({ 
+			click( next?: ReturnType< $eve_tab['event_click'] > ): ReturnType< $eve_tab['event_click'] >,
+		})  & ReturnType< $eve_button['event'] >
 	}
 	
 }
 
-//# sourceMappingURL=karate.view.tree.d.ts.map
+//# sourceMappingURL=tab.view.tree.d.ts.map
+declare namespace $.$$ {
+    class $eve_tab extends $.$eve_tab {
+        checked(next?: boolean): boolean;
+        disabled(next?: boolean): boolean;
+        tab_colors(): $eve_surface_color;
+        event_click(next?: Event): void;
+        aria_checked(): string;
+    }
+}
+
+declare namespace $.$$ {
+}
+
+declare namespace $ {
+
+	type $eve_tab__label_eve_tab_group_1 = $mol_type_enforce<
+		ReturnType< $eve_tab_group['tab_label'] >
+		,
+		ReturnType< $eve_tab['label'] >
+	>
+	type $eve_tab__checked_eve_tab_group_2 = $mol_type_enforce<
+		ReturnType< $eve_tab_group['tab_checked'] >
+		,
+		ReturnType< $eve_tab['checked'] >
+	>
+	type $eve_tab__event_click_eve_tab_group_3 = $mol_type_enforce<
+		ReturnType< $eve_tab_group['tab_click'] >
+		,
+		ReturnType< $eve_tab['event_click'] >
+	>
+	export class $eve_tab_group extends $eve_flex {
+		tab_label( id: any): string
+		tab_checked( id: any): boolean
+		tab_click( id: any, next?: any ): any
+		Tab( id: any): $eve_tab
+		tabs( ): readonly(any)[]
+		direction( ): string
+		wrap( ): string
+		value( next?: string ): string
+		attr( ): ({ 
+			'role': string,
+		})  & ReturnType< $eve_flex['attr'] >
+		sub( ): ReturnType< $eve_tab_group['tabs'] >
+	}
+	
+}
+
+//# sourceMappingURL=group.view.tree.d.ts.map
+declare namespace $.$$ {
+    class $eve_tab_group extends $.$eve_tab_group {
+        value(next?: string): string;
+        options(): Record<string, string>;
+        tabs(): $.$eve_tab[];
+        tab_label(id: string): string;
+        tab_checked(id: string): boolean;
+        tab_click(id: string, event?: Event): Event | null;
+    }
+}
+
+declare namespace $.$$ {
+}
+
+declare namespace $ {
+
+	type $mol_check__checked_mol_check_list_1 = $mol_type_enforce<
+		ReturnType< $mol_check_list['option_checked'] >
+		,
+		ReturnType< $mol_check['checked'] >
+	>
+	type $mol_check__label_mol_check_list_2 = $mol_type_enforce<
+		ReturnType< $mol_check_list['option_label'] >
+		,
+		ReturnType< $mol_check['label'] >
+	>
+	type $mol_check__enabled_mol_check_list_3 = $mol_type_enforce<
+		ReturnType< $mol_check_list['option_enabled'] >
+		,
+		ReturnType< $mol_check['enabled'] >
+	>
+	type $mol_check__hint_mol_check_list_4 = $mol_type_enforce<
+		ReturnType< $mol_check_list['option_hint'] >
+		,
+		ReturnType< $mol_check['hint'] >
+	>
+	type $mol_check__minimal_height_mol_check_list_5 = $mol_type_enforce<
+		number
+		,
+		ReturnType< $mol_check['minimal_height'] >
+	>
+	export class $mol_check_list extends $mol_view {
+		option_checked( id: any, next?: boolean ): boolean
+		option_title( id: any): string
+		option_label( id: any): readonly(any)[]
+		enabled( ): boolean
+		option_enabled( id: any): ReturnType< $mol_check_list['enabled'] >
+		option_hint( id: any): string
+		items( ): readonly($mol_check)[]
+		dictionary( ): Record<string, any>
+		Option( id: any): $mol_check
+		options( ): Record<string, any>
+		keys( ): readonly(string)[]
+		sub( ): ReturnType< $mol_check_list['items'] >
+	}
+	
+}
+
+//# sourceMappingURL=list.view.tree.d.ts.map
+declare namespace $.$$ {
+    class $mol_check_list extends $.$mol_check_list {
+        options(): {
+            [key: string]: string;
+        };
+        dictionary(next?: Record<string, boolean>): Record<string, boolean>;
+        option_checked(id: string, next?: boolean | null): boolean;
+        keys(): readonly string[];
+        items(): $.$mol_check[];
+        option_title(key: string): string;
+    }
+}
+
+declare namespace $ {
+}
+
+declare namespace $ {
+
+	export class $mol_switch extends $mol_check_list {
+		value( next?: string ): string
+	}
+	
+}
+
+//# sourceMappingURL=switch.view.tree.d.ts.map
+declare namespace $.$$ {
+    class $mol_switch extends $.$mol_switch {
+        value(next?: string): string;
+        option_checked(key: string, next?: boolean): boolean;
+    }
+}
+
 declare namespace $ {
 
 	type $mol_search__query_mol_book2_catalog_1 = $mol_type_enforce<
@@ -5463,6 +5350,405 @@ declare namespace $.$$ {
 declare namespace $.$$ {
 }
 
+declare namespace $ {
+
+	type $eve_tab_group__value_eve_tab_container_1 = $mol_type_enforce<
+		ReturnType< $eve_tab_container['tab'] >
+		,
+		ReturnType< $eve_tab_group['value'] >
+	>
+	type $eve_tab_group__tabs_eve_tab_container_2 = $mol_type_enforce<
+		ReturnType< $eve_tab_container['tabs'] >
+		,
+		ReturnType< $eve_tab_group['tabs'] >
+	>
+	type $eve_tab_group__tab_label_eve_tab_container_3 = $mol_type_enforce<
+		ReturnType< $eve_tab_container['tab_label'] >
+		,
+		ReturnType< $eve_tab_group['tab_label'] >
+	>
+	type $eve_tab_group__tab_checked_eve_tab_container_4 = $mol_type_enforce<
+		ReturnType< $eve_tab_container['tab_checked'] >
+		,
+		ReturnType< $eve_tab_group['tab_checked'] >
+	>
+	type $eve_tab_group__tab_click_eve_tab_container_5 = $mol_type_enforce<
+		ReturnType< $eve_tab_container['tab_click'] >
+		,
+		ReturnType< $eve_tab_group['tab_click'] >
+	>
+	type $mol_switch__value_eve_tab_container_6 = $mol_type_enforce<
+		ReturnType< $eve_tab_container['tab'] >
+		,
+		ReturnType< $mol_switch['value'] >
+	>
+	type $mol_switch__options_eve_tab_container_7 = $mol_type_enforce<
+		ReturnType< $eve_tab_container['content_options'] >
+		,
+		ReturnType< $mol_switch['options'] >
+	>
+	export class $eve_tab_container extends $mol_view {
+		tabs( ): readonly(any)[]
+		Tab_group( ): $eve_tab_group
+		content_options( ): Record<string, any>
+		Content( ): $mol_switch
+		tab( next?: string ): string
+		spreads( ): Record<string, any>
+		Spread( id: any): $mol_view
+		spread_ids( ): readonly(string)[]
+		spread_current( ): any
+		tab_label( id: any): string
+		tab_checked( id: any): boolean
+		tab_click( id: any, next?: any ): any
+		sub( ): readonly(any)[]
+	}
+	
+}
+
+//# sourceMappingURL=container.view.tree.d.ts.map
+declare namespace $.$$ {
+    class $eve_tab_container extends $.$eve_tab_container {
+        spread_ids(): string[];
+        Spread(id: string): any;
+        spread_current(): any;
+        tabs(): $.$eve_tab[];
+        tab_label(id: string): string;
+        tab_checked(id: string): boolean;
+        tab_click(id: string, event?: Event): void;
+        content_options(): Record<string, $mol_view>;
+    }
+}
+
+declare namespace $.$$ {
+}
+
+declare namespace $ {
+    function $mol_tree2_text_to_string(this: $, text: $mol_tree2): string;
+}
+
+declare namespace $ {
+    function $mol_vlq_encode(val: number): string;
+}
+
+declare namespace $ {
+    type $mol_sourcemap_segment = [number] | [number, number, number, number] | [number, number, number, number, number];
+    type $mol_sourcemap_line = $mol_sourcemap_segment[];
+    type $mol_sourcemap_mappings = $mol_sourcemap_line[];
+    interface $mol_sourcemap_raw {
+        version: number;
+        sources: string[];
+        names?: string[];
+        sourceRoot?: string;
+        sourcesContent?: (string | null)[];
+        mappings: string | $mol_sourcemap_line[];
+        file?: string;
+    }
+}
+
+declare namespace $ {
+    function $mol_tree2_text_to_sourcemap(this: $, tree: $mol_tree2): $mol_sourcemap_raw;
+}
+
+declare namespace $ {
+    function $mol_sourcemap_url(this: $, uri: string, type?: "js" | "css"): string;
+}
+
+declare namespace $ {
+    function $mol_sourcemap_dataurl_decode(this: $, data: string): $mol_sourcemap_raw | undefined;
+    function $mol_sourcemap_dataurl_encode(this: $, map: $mol_sourcemap_raw, type?: "js" | "css"): string;
+}
+
+declare namespace $ {
+    function $mol_tree2_text_to_string_mapped(this: $, text: $mol_tree2, type: 'js' | 'css'): string;
+    function $mol_tree2_text_to_string_mapped_js(this: $, text: $mol_tree2): string;
+    function $mol_tree2_text_to_string_mapped_css(this: $, text: $mol_tree2): string;
+}
+
+declare namespace $ {
+    function $mol_tree2_js_is_number(type: string): boolean | RegExpMatchArray;
+}
+
+declare namespace $ {
+    function $mol_tree2_js_to_text(this: $, js: $mol_tree2): $mol_tree2;
+}
+
+declare namespace $ {
+    class $mol_view_tree2_error extends Error {
+        readonly spans: readonly $mol_span[];
+        constructor(message: string, spans: readonly $mol_span[]);
+        toJSON(): {
+            message: string;
+            spans: readonly $mol_span[];
+        };
+    }
+    class $mol_view_tree2_error_suggestions {
+        readonly suggestions: readonly string[];
+        constructor(suggestions: readonly string[]);
+        toString(): string;
+        toJSON(): readonly string[];
+    }
+    function $mol_view_tree2_error_str(strings: readonly string[], ...parts: readonly ($mol_span | readonly $mol_span[] | string | number | $mol_view_tree2_error_suggestions)[]): $mol_view_tree2_error;
+}
+
+declare namespace $ {
+    function $mol_view_tree2_child(this: $, tree: $mol_tree2): $mol_tree2;
+}
+
+declare namespace $ {
+    function $mol_view_tree2_classes(defs: $mol_tree2): $mol_tree2;
+}
+
+declare namespace $ {
+    function $mol_view_tree2_normalize(this: $, defs: $mol_tree2): $mol_tree2;
+}
+
+declare namespace $ {
+    let $mol_view_tree2_prop_signature: $mol_regexp<{
+        readonly name: string;
+        readonly key: string;
+        readonly next: string;
+    }>;
+}
+
+declare namespace $ {
+    function $mol_view_tree2_prop_parts(this: $, prop: $mol_tree2): {
+        name: string;
+        key: string;
+        next: string;
+    };
+}
+
+declare namespace $ {
+    function $mol_view_tree2_prop_quote(name: $mol_tree2): $mol_tree2;
+}
+
+declare namespace $ {
+    function $mol_view_tree2_class_match(klass?: $mol_tree2): boolean;
+}
+
+declare namespace $ {
+    function $mol_view_tree2_class_super(this: $, klass: $mol_tree2): $mol_tree2;
+}
+
+declare namespace $ {
+    function $mol_view_tree2_class_props(this: $, klass: $mol_tree2): $mol_tree2[];
+}
+
+declare namespace $ {
+    function $mol_view_tree2_to_js(this: $, descr: $mol_tree2): $mol_tree2;
+}
+
+declare namespace $ {
+
+	type $eve_flex__colors_eve_app_page_sb_playground_1 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $eve_flex['colors'] >
+	>
+	type $eve_flex__justify_content_eve_app_page_sb_playground_2 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $eve_flex['justify_content'] >
+	>
+	type $eve_flex__align_items_eve_app_page_sb_playground_3 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $eve_flex['align_items'] >
+	>
+	type $eve_flex__sub_eve_app_page_sb_playground_4 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $eve_flex['sub'] >
+	>
+	type $eve_page__Head_eve_app_page_sb_playground_5 = $mol_type_enforce<
+		any
+		,
+		ReturnType< $eve_page['Head'] >
+	>
+	type $eve_page__title_eve_app_page_sb_playground_6 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $eve_page['title'] >
+	>
+	type $eve_page__body_eve_app_page_sb_playground_7 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $eve_page['body'] >
+	>
+	type $mol_check_icon__checked_eve_app_page_sb_playground_8 = $mol_type_enforce<
+		ReturnType< $eve_app_page_sb_playground['raw'] >
+		,
+		ReturnType< $mol_check_icon['checked'] >
+	>
+	type $mol_check_icon__hint_eve_app_page_sb_playground_9 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_check_icon['hint'] >
+	>
+	type $mol_textarea__value_eve_app_page_sb_playground_10 = $mol_type_enforce<
+		ReturnType< $eve_app_page_sb_playground['source'] >
+		,
+		ReturnType< $mol_textarea['value'] >
+	>
+	type $mol_textarea__hint_eve_app_page_sb_playground_11 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_textarea['hint'] >
+	>
+	type $mol_textarea__sidebar_showed_eve_app_page_sb_playground_12 = $mol_type_enforce<
+		boolean
+		,
+		ReturnType< $mol_textarea['sidebar_showed'] >
+	>
+	type $hyoo_tree_edit__value_eve_app_page_sb_playground_13 = $mol_type_enforce<
+		ReturnType< $eve_app_page_sb_playground['source_tree'] >
+		,
+		ReturnType< $hyoo_tree_edit['value'] >
+	>
+	type $eve_surface__colors_eve_app_page_sb_playground_14 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $eve_surface['colors'] >
+	>
+	type $eve_surface__sub_eve_app_page_sb_playground_15 = $mol_type_enforce<
+		ReturnType< $eve_app_page_sb_playground['source_editor'] >
+		,
+		ReturnType< $eve_surface['sub'] >
+	>
+	type $mol_paragraph__title_eve_app_page_sb_playground_16 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_paragraph['title'] >
+	>
+	type $eve_surface__colors_eve_app_page_sb_playground_17 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $eve_surface['colors'] >
+	>
+	type $eve_surface__sub_eve_app_page_sb_playground_18 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $eve_surface['sub'] >
+	>
+	type $eve_tab_container__tab_eve_app_page_sb_playground_19 = $mol_type_enforce<
+		ReturnType< $eve_app_page_sb_playground['code_tab'] >
+		,
+		ReturnType< $eve_tab_container['tab'] >
+	>
+	type $eve_tab_container__spreads_eve_app_page_sb_playground_20 = $mol_type_enforce<
+		({ 
+			'source': ReturnType< $eve_app_page_sb_playground['Source_panel'] >,
+			'props': ReturnType< $eve_app_page_sb_playground['Props_panel'] >,
+		}) 
+		,
+		ReturnType< $eve_tab_container['spreads'] >
+	>
+	type $eve_page__Head_eve_app_page_sb_playground_21 = $mol_type_enforce<
+		any
+		,
+		ReturnType< $eve_page['Head'] >
+	>
+	type $eve_page__title_eve_app_page_sb_playground_22 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $eve_page['title'] >
+	>
+	type $eve_page__tools_eve_app_page_sb_playground_23 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $eve_page['tools'] >
+	>
+	type $eve_page__body_eve_app_page_sb_playground_24 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $eve_page['body'] >
+	>
+	export class $eve_app_page_sb_playground extends $mol_book2 {
+		Live_component( ): $eve_surface
+		Live_component_container( ): $eve_flex
+		Demo_page( ): $eve_page
+		raw( next?: boolean ): boolean
+		Editor_mode_toggle( ): $mol_check_icon
+		code_tab( next?: string ): string
+		source( next?: string ): string
+		Source_text( ): $mol_textarea
+		source_tree( next?: $mol_tree2 ): $mol_tree2
+		Source_tree( ): $hyoo_tree_edit
+		source_editor( ): readonly(any)[]
+		Source_panel( ): $eve_surface
+		Props_placeholder( ): $mol_paragraph
+		Props_panel( ): $eve_surface
+		Code_tabs( ): $eve_tab_container
+		Code_page( ): $eve_page
+		component_name( ): string
+		default_source( ): string
+		Placeholder( ): any
+		pages( ): readonly(any)[]
+	}
+	
+}
+
+//# sourceMappingURL=playground.view.tree.d.ts.map
+declare namespace $.$$ {
+    class $eve_app_page_sb_playground extends $.$eve_app_page_sb_playground {
+        code_tab(next?: string): string;
+        raw(next?: boolean): boolean;
+        source_editor(): $.$mol_textarea[] | $.$hyoo_tree_edit[];
+        source(next?: string): string;
+        source_tree(next?: $mol_tree2): $mol_tree2;
+        live_component_code(): string;
+        Live_component(): $eve_surface;
+        customize_live_component(instance: any): $eve_surface;
+    }
+}
+
+declare namespace $.$$ {
+}
+
+declare namespace $ {
+
+	type $eve_app_page_sb_playground__component_name_eve_app_page_components_flex_1 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $eve_app_page_sb_playground['component_name'] >
+	>
+	type $eve_app_page_sb_playground__default_source_eve_app_page_components_flex_2 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $eve_app_page_sb_playground['default_source'] >
+	>
+	type $eve_surface__colors_eve_app_page_components_flex_3 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $eve_surface['colors'] >
+	>
+	export class $eve_app_page_components_flex extends $eve_app_page_sb_page {
+		Playground( ): $eve_app_page_sb_playground
+		title( ): string
+		body( ): readonly(any)[]
+		Showcase_cell( id: any): $eve_surface
+	}
+	
+}
+
+//# sourceMappingURL=flex.view.tree.d.ts.map
+declare namespace $.$$ {
+    class $eve_app_page_components_flex extends $.$eve_app_page_components_flex {
+    }
+}
+
+declare namespace $.$$ {
+}
+
+declare namespace $ {
+
+	export class $mol_icon_karate extends $mol_icon {
+		path( ): string
+	}
+	
+}
+
+//# sourceMappingURL=karate.view.tree.d.ts.map
 declare namespace $ {
 
 	export class $eve_app_page_sb_catalog extends $mol_book2_catalog {
@@ -6593,93 +6879,6 @@ declare namespace $ {
 declare namespace $.$$ {
     class $eve_app_page_components_switch extends $.$eve_app_page_components_switch {
     }
-}
-
-declare namespace $ {
-
-	export class $eve_tab extends $eve_button {
-		tab_variant( ): string
-		tab_colors( ): string
-		checked( next?: boolean ): boolean
-		aria_checked( ): string
-		event_click( next?: any ): any
-		size( ): any
-		variant( ): ReturnType< $eve_tab['tab_variant'] >
-		colors( ): ReturnType< $eve_tab['tab_colors'] >
-		attr( ): ({ 
-			'mol_check_checked': ReturnType< $eve_tab['checked'] >,
-			'aria-checked': ReturnType< $eve_tab['aria_checked'] >,
-			'role': string,
-			'aria-selected': ReturnType< $eve_tab['aria_checked'] >,
-		})  & ReturnType< $eve_button['attr'] >
-		event( ): ({ 
-			click( next?: ReturnType< $eve_tab['event_click'] > ): ReturnType< $eve_tab['event_click'] >,
-		})  & ReturnType< $eve_button['event'] >
-	}
-	
-}
-
-//# sourceMappingURL=tab.view.tree.d.ts.map
-declare namespace $.$$ {
-    class $eve_tab extends $.$eve_tab {
-        checked(next?: boolean): boolean;
-        disabled(next?: boolean): boolean;
-        tab_colors(): $eve_surface_color;
-        event_click(next?: Event): void;
-        aria_checked(): string;
-    }
-}
-
-declare namespace $.$$ {
-}
-
-declare namespace $ {
-
-	type $eve_tab__label_eve_tab_group_1 = $mol_type_enforce<
-		ReturnType< $eve_tab_group['tab_label'] >
-		,
-		ReturnType< $eve_tab['label'] >
-	>
-	type $eve_tab__checked_eve_tab_group_2 = $mol_type_enforce<
-		ReturnType< $eve_tab_group['tab_checked'] >
-		,
-		ReturnType< $eve_tab['checked'] >
-	>
-	type $eve_tab__event_click_eve_tab_group_3 = $mol_type_enforce<
-		ReturnType< $eve_tab_group['tab_click'] >
-		,
-		ReturnType< $eve_tab['event_click'] >
-	>
-	export class $eve_tab_group extends $eve_flex {
-		tab_label( id: any): string
-		tab_checked( id: any): boolean
-		tab_click( id: any, next?: any ): any
-		Tab( id: any): $eve_tab
-		tabs( ): readonly(any)[]
-		direction( ): string
-		wrap( ): string
-		value( next?: string ): string
-		attr( ): ({ 
-			'role': string,
-		})  & ReturnType< $eve_flex['attr'] >
-		sub( ): ReturnType< $eve_tab_group['tabs'] >
-	}
-	
-}
-
-//# sourceMappingURL=group.view.tree.d.ts.map
-declare namespace $.$$ {
-    class $eve_tab_group extends $.$eve_tab_group {
-        value(next?: string): string;
-        options(): Record<string, string>;
-        tabs(): $.$eve_tab[];
-        tab_label(id: string): string;
-        tab_checked(id: string): boolean;
-        tab_click(id: string, event?: Event): Event | null;
-    }
-}
-
-declare namespace $.$$ {
 }
 
 declare namespace $ {
@@ -7892,83 +8091,6 @@ declare namespace $.$$ {
 }
 
 declare namespace $.$$ { }
-
-declare namespace $ {
-
-	type $mol_check__checked_mol_check_list_1 = $mol_type_enforce<
-		ReturnType< $mol_check_list['option_checked'] >
-		,
-		ReturnType< $mol_check['checked'] >
-	>
-	type $mol_check__label_mol_check_list_2 = $mol_type_enforce<
-		ReturnType< $mol_check_list['option_label'] >
-		,
-		ReturnType< $mol_check['label'] >
-	>
-	type $mol_check__enabled_mol_check_list_3 = $mol_type_enforce<
-		ReturnType< $mol_check_list['option_enabled'] >
-		,
-		ReturnType< $mol_check['enabled'] >
-	>
-	type $mol_check__hint_mol_check_list_4 = $mol_type_enforce<
-		ReturnType< $mol_check_list['option_hint'] >
-		,
-		ReturnType< $mol_check['hint'] >
-	>
-	type $mol_check__minimal_height_mol_check_list_5 = $mol_type_enforce<
-		number
-		,
-		ReturnType< $mol_check['minimal_height'] >
-	>
-	export class $mol_check_list extends $mol_view {
-		option_checked( id: any, next?: boolean ): boolean
-		option_title( id: any): string
-		option_label( id: any): readonly(any)[]
-		enabled( ): boolean
-		option_enabled( id: any): ReturnType< $mol_check_list['enabled'] >
-		option_hint( id: any): string
-		items( ): readonly($mol_check)[]
-		dictionary( ): Record<string, any>
-		Option( id: any): $mol_check
-		options( ): Record<string, any>
-		keys( ): readonly(string)[]
-		sub( ): ReturnType< $mol_check_list['items'] >
-	}
-	
-}
-
-//# sourceMappingURL=list.view.tree.d.ts.map
-declare namespace $.$$ {
-    class $mol_check_list extends $.$mol_check_list {
-        options(): {
-            [key: string]: string;
-        };
-        dictionary(next?: Record<string, boolean>): Record<string, boolean>;
-        option_checked(id: string, next?: boolean | null): boolean;
-        keys(): readonly string[];
-        items(): $.$mol_check[];
-        option_title(key: string): string;
-    }
-}
-
-declare namespace $ {
-}
-
-declare namespace $ {
-
-	export class $mol_switch extends $mol_check_list {
-		value( next?: string ): string
-	}
-	
-}
-
-//# sourceMappingURL=switch.view.tree.d.ts.map
-declare namespace $.$$ {
-    class $mol_switch extends $.$mol_switch {
-        value(next?: string): string;
-        option_checked(key: string, next?: boolean): boolean;
-    }
-}
 
 declare namespace $ {
 
