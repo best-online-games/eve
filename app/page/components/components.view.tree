@@ -10,7 +10,9 @@ $eve_app_page_components $eve_page
 				flex <= Flex $eve_app_page_components_flex
 				button <= Button $eve_app_page_components_button
 				alert <= Alert $eve_app_page_components_alert
+				card <= Card $eve_app_page_components_card
 				- delimiter for input logical (Надо где-то его придумать) 
 				radio <= Radio $eve_app_page_components_radio
 				checkbox <= Checkbox $eve_app_page_components_checkbox
 				switch <= Switch $eve_app_page_components_switch
+				tab <= Tab $eve_app_page_components_tab

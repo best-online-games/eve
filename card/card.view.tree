@@ -1,0 +1,12 @@
+$eve_card $eve_flex
+	direction \column
+	sub /
+		<= Head $eve_surface
+			variant \ghost
+			sub /
+				<= Title $mol_paragraph
+					title <= title \
+		<= Body $eve_flex
+			direction \column
+			sub <= content /$mol_view_content
+

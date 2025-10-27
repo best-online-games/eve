@@ -3,14 +3,17 @@ namespace $.$$ {
 	@$mol_mem_key
 	spread_title( id: string ) {
 		const titles: Record<string, string> = {
-			button: 'Button',
-			radio: 'Radio',
-			check: 'Checkbox',
-			switch: 'Switch',
-			inputs: 'Inputs',
-			cards: 'Cards',
-			tables: 'Tables',
 			surfaces: 'Surfaces',
+			flex: 'Flex',
+			button: 'Button',
+			alert: 'Alert',
+			card: 'Card',
+			radio: 'Radio',
+			checkbox: 'Checkbox',
+			switch: 'Switch',
+			tab: 'Tabs',
+			inputs: 'Inputs',
+			tables: 'Tables',
 		}
 		return titles[ id ] || id
 	}

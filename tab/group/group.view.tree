@@ -1,0 +1,13 @@
+$eve_tab_group $eve_flex
+	direction \row
+	wrap \nowrap
+	value? \
+	attr *
+		^
+		role \tablist
+	sub <= tabs /
+		<= Tab* $eve_tab
+			label <= tab_label* \
+			checked? <= tab_checked* false
+			event_click?event <=> tab_click*?event null
+

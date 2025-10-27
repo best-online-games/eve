@@ -1,0 +1,13 @@
+$eve_tab $eve_button
+	size null
+	variant <= tab_variant \ghost
+	colors <= tab_colors \primary
+	attr *
+		^
+		mol_check_checked <= checked? false
+		aria-checked <= aria_checked \false
+		role \tab
+		aria-selected <= aria_checked
+	event *
+		^
+		click?event <=> event_click?event null

@@ -1,0 +1,18 @@
+$eve_app_page_components_card $eve_app_page_sb_page
+	title \Card
+	Head null
+	body /
+		<= Playground $eve_app_page_sb_playground
+			component_name \Live_card
+			default_source \
+				\Live_card $eve_card
+				\	title \My Card Title
+				\	content /
+				\		<= Content_text $mol_paragraph
+				\			title \This is the card content. You can put any components here.
+				\		<= Content_button $eve_button
+				\			sub /
+				\				<= Button_label $mol_paragraph
+				\					title \Action Button
+				\
+
