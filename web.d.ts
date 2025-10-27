@@ -6502,7 +6502,7 @@ declare namespace $ {
 		({ 
 			'surfaces': ReturnType< $eve_app_page_components['Surfaces'] >,
 			'flex': ReturnType< $eve_app_page_components['Flex'] >,
-			'buttons': ReturnType< $eve_app_page_components['Buttons'] >,
+			'button': ReturnType< $eve_app_page_components['Button'] >,
 			'alert': ReturnType< $eve_app_page_components['Alert'] >,
 			'radio': ReturnType< $eve_app_page_components['Radio'] >,
 			'checkbox': ReturnType< $eve_app_page_components['Checkbox'] >,
@@ -6514,7 +6514,7 @@ declare namespace $ {
 	export class $eve_app_page_components extends $eve_page {
 		Surfaces( ): $eve_app_page_components_surface
 		Flex( ): $eve_app_page_components_flex
-		Buttons( ): $eve_app_page_components_button
+		Button( ): $eve_app_page_components_button
 		Alert( ): $eve_app_page_components_alert
 		Radio( ): $eve_app_page_components_radio
 		Checkbox( ): $eve_app_page_components_checkbox

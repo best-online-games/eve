@@ -15744,7 +15744,7 @@ var $;
 			const obj = new this.$.$eve_app_page_components_flex();
 			return obj;
 		}
-		Buttons(){
+		Button(){
 			const obj = new this.$.$eve_app_page_components_button();
 			return obj;
 		}
@@ -15771,7 +15771,7 @@ var $;
 			(obj.spreads) = () => ({
 				"surfaces": (this.Surfaces()), 
 				"flex": (this.Flex()), 
-				"buttons": (this.Buttons()), 
+				"button": (this.Button()), 
 				"alert": (this.Alert()), 
 				"radio": (this.Radio()), 
 				"checkbox": (this.Checkbox()), 
@@ -15791,7 +15791,7 @@ var $;
 	};
 	($mol_mem(($.$eve_app_page_components.prototype), "Surfaces"));
 	($mol_mem(($.$eve_app_page_components.prototype), "Flex"));
-	($mol_mem(($.$eve_app_page_components.prototype), "Buttons"));
+	($mol_mem(($.$eve_app_page_components.prototype), "Button"));
 	($mol_mem(($.$eve_app_page_components.prototype), "Alert"));
 	($mol_mem(($.$eve_app_page_components.prototype), "Radio"));
 	($mol_mem(($.$eve_app_page_components.prototype), "Checkbox"));
@@ -15811,7 +15811,7 @@ var $;
         class $eve_app_page_components extends $.$eve_app_page_components {
             spread_title(id) {
                 const titles = {
-                    buttons: 'Buttons',
+                    button: 'Button',
                     radio: 'Radio',
                     check: 'Checkbox',
                     switch: 'Switch',

@@ -1452,7 +1452,7 @@ $eve_app_page_components $eve_page
 			spreads *
 				surfaces <= Surfaces $eve_app_page_components_surface
 				flex <= Flex $eve_app_page_components_flex
-				buttons <= Buttons $eve_app_page_components_button
+				button <= Button $eve_app_page_components_button
 				alert <= Alert $eve_app_page_components_alert
 				- delimiter for input logical (Надо где-то его придумать) 
 				radio <= Radio $eve_app_page_components_radio
