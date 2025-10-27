@@ -11158,6 +11158,121 @@ var $;
 })($ || ($ = {}));
 
 ;
+	($.$mol_book2) = class $mol_book2 extends ($.$mol_scroll) {
+		pages_deep(){
+			return [];
+		}
+		pages(){
+			return (this.pages_deep());
+		}
+		Placeholder(){
+			const obj = new this.$.$mol_view();
+			return obj;
+		}
+		placeholders(){
+			return [(this.Placeholder())];
+		}
+		menu_title(){
+			return "";
+		}
+		sub(){
+			return [...(this.pages()), ...(this.placeholders())];
+		}
+		minimal_width(){
+			return 0;
+		}
+		Gap(id){
+			const obj = new this.$.$mol_view();
+			(obj.title) = () => ("");
+			return obj;
+		}
+	};
+	($mol_mem(($.$mol_book2.prototype), "Placeholder"));
+	($mol_mem_key(($.$mol_book2.prototype), "Gap"));
+
+
+;
+"use strict";
+
+;
+"use strict";
+var $;
+(function ($) {
+    var $$;
+    (function ($$) {
+        class $mol_book2 extends $.$mol_book2 {
+            pages_deep() {
+                let result = [];
+                for (const subpage of this.pages()) {
+                    if (subpage instanceof $mol_book2)
+                        result = [...result, ...subpage.pages_deep()];
+                    else
+                        result.push(subpage);
+                }
+                return result;
+            }
+            title() {
+                return this.pages_deep().map(page => {
+                    try {
+                        return page?.title();
+                    }
+                    catch (error) {
+                        $mol_fail_log(error);
+                    }
+                }).reverse().filter(Boolean).join(' | ');
+            }
+            menu_title() {
+                return this.pages_deep()[0]?.title() || this.title();
+            }
+            sub() {
+                const placeholders = this.placeholders();
+                const next = this.pages_deep().filter(Boolean);
+                const prev = $mol_mem_cached(() => this.sub())?.filter(page => !placeholders.includes(page)) ?? [];
+                for (let i = 1; i; ++i) {
+                    const p = prev[prev.length - i];
+                    const n = next[next.length - i];
+                    if (!n)
+                        break;
+                    if (p === n)
+                        continue;
+                    new this.$.$mol_after_tick(() => {
+                        const b = this.dom_node();
+                        const p = n.dom_node();
+                        b.scroll({
+                            left: p.offsetLeft + p.offsetWidth - b.offsetWidth,
+                            behavior: 'smooth',
+                        });
+                    });
+                    break;
+                }
+                return [...next, ...placeholders];
+            }
+            bring() {
+                const pages = this.pages_deep();
+                if (pages.length)
+                    pages[pages.length - 1].bring();
+                else
+                    super.bring();
+            }
+        }
+        __decorate([
+            $mol_mem
+        ], $mol_book2.prototype, "pages_deep", null);
+        __decorate([
+            $mol_mem
+        ], $mol_book2.prototype, "sub", null);
+        $$.$mol_book2 = $mol_book2;
+    })($$ = $.$$ || ($.$$ = {}));
+})($ || ($ = {}));
+
+;
+"use strict";
+var $;
+(function ($) {
+    $mol_style_attach("mol/book2/book2.view.css", "[mol_book2] {\n\tdisplay: flex;\n\tflex-flow: row nowrap;\n\talign-items: stretch;\n\tflex: 1 1 auto;\n\talign-self: stretch;\n\tmargin: 0;\n\t/* box-shadow: 0 0 0 1px var(--mol_theme_line); */\n\t/* transform: translateZ(0); */\n\ttransition: none;\n\tscroll-snap-type: x mandatory;\n\t/* padding: 0 1px;\n\tscroll-padding: 0 1px;\n\tgap: 1px; */\n}\n\n[mol_book2] > * {\n/* \tflex: none; */\n\tscroll-snap-stop: always;\n\tscroll-snap-align: end;\n\tposition: relative;\n\tmin-height: 100%;\n\tmax-height: 100%;\n\tmax-width: 100%;\n\tflex-shrink: 0;\n\tbox-shadow: inset 0 0 0 1px var(--mol_theme_field);\n}\n\n[mol_book2] > *:not(:first-of-type):before,\n[mol_book2] > *:not(:last-of-type)::after {\n\tcontent: '';\n\tposition: absolute;\n\ttop: 1.5rem;\n\twidth: 3px;\n\theight: 1rem;\n\tbackground: linear-gradient(\n\t\tto bottom,\n\t\tvar(--mol_theme_special) 0%,\n\t\tvar(--mol_theme_special) 14%,\n\t\ttransparent 15%,\n\t\ttransparent 42%,\n\t\tvar(--mol_theme_special) 43%,\n\t\tvar(--mol_theme_special) 57%,\n\t\ttransparent 58%,\n\t\ttransparent 85%,\n\t\tvar(--mol_theme_special) 86%,\n\t\tvar(--mol_theme_special) 100%\n\t);\n\topacity: .5;\n\tz-index: var(--mol_layer_speck);\n}\n[mol_book2] > *:not(:first-of-type):before {\n\tleft: -3px;\n}\n[mol_book2] > *:not(:last-of-type)::after {\n\tright: -3px;\n}\n\n:where([mol_book2]) > * {\n\tbackground-color: var(--mol_theme_card);\n\t/* box-shadow: 0 0 0 1px var(--mol_theme_back); */\n}\n\n[mol_book2] > [mol_book2] {\n\tdisplay: contents;\n}\n\n[mol_book2] > *:first-child {\n\tscroll-snap-align: start;\n}\n\n[mol_book2] > [mol_view] {\n\ttransform: none; /* prevent content clipping */\n}\n\n[mol_book2_placeholder] {\n\tflex: 1 1 0;\n\tbackground: none;\n}\n\n[mol_book2_gap] {\n\tbackground: none;\n\tflex-grow: 1;\n\tscroll-snap-align: none;\n\tmargin-right: -1px;\n\tbox-shadow: none;\n}\n\n[mol_book2_gap]::before,\n[mol_book2_gap]::after {\n\tdisplay: none;\n}\n");
+})($ || ($ = {}));
+
+;
 "use strict";
 var $;
 (function ($) {
@@ -12139,15 +12254,24 @@ var $;
 })($ || ($ = {}));
 
 ;
-	($.$eve_app_page_sb_playground) = class $eve_app_page_sb_playground extends ($.$eve_flex) {
+	($.$eve_app_page_sb_playground) = class $eve_app_page_sb_playground extends ($.$mol_book2) {
 		Live_component(){
 			const obj = new this.$.$eve_surface();
 			return obj;
 		}
 		Live_component_container(){
-			const obj = new this.$.$eve_surface();
+			const obj = new this.$.$eve_flex();
 			(obj.colors) = () => ("lowest");
+			(obj.justify_content) = () => ("center");
+			(obj.align_items) = () => ("center");
 			(obj.sub) = () => ([(this.Live_component())]);
+			return obj;
+		}
+		Demo_page(){
+			const obj = new this.$.$eve_page();
+			(obj.Head) = () => (null);
+			(obj.title) = () => ("Demo");
+			(obj.body) = () => ([(this.Live_component_container())]);
 			return obj;
 		}
 		source_tree(next){
@@ -12180,17 +12304,12 @@ var $;
 			(obj.sub) = () => ((this.editor_body()));
 			return obj;
 		}
-		justify_content(){
-			return "center";
-		}
-		align_items(){
-			return "center";
-		}
-		gap(){
-			return "32px";
-		}
-		wrap(){
-			return "wrap";
+		Code_page(){
+			const obj = new this.$.$eve_page();
+			(obj.Head) = () => (null);
+			(obj.title) = () => ("Code");
+			(obj.body) = () => ([(this.Editor_body())]);
+			return obj;
 		}
 		component_name(){
 			return "Live_component";
@@ -12198,17 +12317,22 @@ var $;
 		default_source(){
 			return "Live_component $mol_view\n\tsub /\n\t\t\\\\Edit component...";
 		}
-		sub(){
-			return [(this.Live_component_container()), (this.Editor_body())];
+		Placeholder(){
+			return null;
+		}
+		pages(){
+			return [(this.Demo_page()), (this.Code_page())];
 		}
 	};
 	($mol_mem(($.$eve_app_page_sb_playground.prototype), "Live_component"));
 	($mol_mem(($.$eve_app_page_sb_playground.prototype), "Live_component_container"));
+	($mol_mem(($.$eve_app_page_sb_playground.prototype), "Demo_page"));
 	($mol_mem(($.$eve_app_page_sb_playground.prototype), "source_tree"));
 	($mol_mem(($.$eve_app_page_sb_playground.prototype), "Source_tree"));
 	($mol_mem(($.$eve_app_page_sb_playground.prototype), "source"));
 	($mol_mem(($.$eve_app_page_sb_playground.prototype), "Source_text"));
 	($mol_mem(($.$eve_app_page_sb_playground.prototype), "Editor_body"));
+	($mol_mem(($.$eve_app_page_sb_playground.prototype), "Code_page"));
 
 
 ;
@@ -13250,26 +13374,45 @@ var $;
     (function ($$) {
         const { rem, px, vh } = $mol_style_unit;
         $mol_style_define($eve_app_page_sb_playground, {
+            flex: {
+                grow: 1,
+            },
+            Demo_page: {
+                flex: {
+                    basis: rem(30),
+                },
+            },
+            Code_page: {
+                flex: {
+                    basis: rem(40),
+                },
+            },
             Live_component_container: {
-                minHeight: '100%',
-                height: vh(30),
-                maxHeight: vh(80),
-                width: vh(30),
-                maxWidth: vh(80),
+                maxWidth: '100%',
+                minHeight: vh(50),
+                maxHeight: vh(50),
+                flex: {
+                    grow: 1,
+                },
             },
             Editor_body: {
-                maxWidth: vh(80),
-                width: 'fit-content',
-                height: vh(30),
-                maxHeight: vh(80),
-                padding: {
-                    left: rem(0.5),
-                    right: rem(1),
-                }
+                flex: {
+                    grow: 1,
+                },
+                padding: rem(1),
             },
             Source_text: {
                 width: '100%',
-            }
+                flex: {
+                    grow: 1,
+                },
+                fontFamily: 'monospace',
+            },
+            Source_tree: {
+                flex: {
+                    grow: 1,
+                },
+            },
         });
     })($$ = $.$$ || ($.$$ = {}));
 })($ || ($ = {}));
@@ -13279,7 +13422,7 @@ var $;
 		Playground(){
 			const obj = new this.$.$eve_app_page_sb_playground();
 			(obj.component_name) = () => ("Live_flex");
-			(obj.default_source) = () => ("Live_flex $eve_flex\n\t- Edit values of Flex component\n\tjustify_content \\center\n\talign_items \\center\n\t- TODO: узнать как стилизовать .view.css.ts для этого компонента\n\tstyle *\n\t\twidth \\30vh\n\t\theight \\30vh\n\t\tposition \\relative\n\twrap \\wrap\n\tsub /\n\t\t<= Demo_item $eve_surface\n\t\t\tcolors \\medium\n\t\t\tstyle *\n\t\t\t\twidth \\10vh\n\t\t\t\theight \\10vh\n\t\t\t\tposition \\absolute\n");
+			(obj.default_source) = () => ("Live_flex $eve_flex\n\t- Edit values of Flex component\n\tjustify_content \\center\n\talign_items \\center\n\t- TODO: узнать как стилизовать .view.css.ts для этого компонента\n\tstyle *\n\t\twidth \\30%\n\t\theight \\30%\n\t\tposition \\relative\n\twrap \\wrap\n\tsub /\n\t\t<= Demo_item $eve_surface\n\t\t\tcolors \\medium\n\t\t\tstyle *\n\t\t\t\twidth \\10%\n\t\t\t\theight \\10%\n\t\t\t\tposition \\absolute\n");
 			return obj;
 		}
 		title(){
@@ -13525,121 +13668,6 @@ var $;
 
 ;
 "use strict";
-
-;
-	($.$mol_book2) = class $mol_book2 extends ($.$mol_scroll) {
-		pages_deep(){
-			return [];
-		}
-		pages(){
-			return (this.pages_deep());
-		}
-		Placeholder(){
-			const obj = new this.$.$mol_view();
-			return obj;
-		}
-		placeholders(){
-			return [(this.Placeholder())];
-		}
-		menu_title(){
-			return "";
-		}
-		sub(){
-			return [...(this.pages()), ...(this.placeholders())];
-		}
-		minimal_width(){
-			return 0;
-		}
-		Gap(id){
-			const obj = new this.$.$mol_view();
-			(obj.title) = () => ("");
-			return obj;
-		}
-	};
-	($mol_mem(($.$mol_book2.prototype), "Placeholder"));
-	($mol_mem_key(($.$mol_book2.prototype), "Gap"));
-
-
-;
-"use strict";
-
-;
-"use strict";
-var $;
-(function ($) {
-    var $$;
-    (function ($$) {
-        class $mol_book2 extends $.$mol_book2 {
-            pages_deep() {
-                let result = [];
-                for (const subpage of this.pages()) {
-                    if (subpage instanceof $mol_book2)
-                        result = [...result, ...subpage.pages_deep()];
-                    else
-                        result.push(subpage);
-                }
-                return result;
-            }
-            title() {
-                return this.pages_deep().map(page => {
-                    try {
-                        return page?.title();
-                    }
-                    catch (error) {
-                        $mol_fail_log(error);
-                    }
-                }).reverse().filter(Boolean).join(' | ');
-            }
-            menu_title() {
-                return this.pages_deep()[0]?.title() || this.title();
-            }
-            sub() {
-                const placeholders = this.placeholders();
-                const next = this.pages_deep().filter(Boolean);
-                const prev = $mol_mem_cached(() => this.sub())?.filter(page => !placeholders.includes(page)) ?? [];
-                for (let i = 1; i; ++i) {
-                    const p = prev[prev.length - i];
-                    const n = next[next.length - i];
-                    if (!n)
-                        break;
-                    if (p === n)
-                        continue;
-                    new this.$.$mol_after_tick(() => {
-                        const b = this.dom_node();
-                        const p = n.dom_node();
-                        b.scroll({
-                            left: p.offsetLeft + p.offsetWidth - b.offsetWidth,
-                            behavior: 'smooth',
-                        });
-                    });
-                    break;
-                }
-                return [...next, ...placeholders];
-            }
-            bring() {
-                const pages = this.pages_deep();
-                if (pages.length)
-                    pages[pages.length - 1].bring();
-                else
-                    super.bring();
-            }
-        }
-        __decorate([
-            $mol_mem
-        ], $mol_book2.prototype, "pages_deep", null);
-        __decorate([
-            $mol_mem
-        ], $mol_book2.prototype, "sub", null);
-        $$.$mol_book2 = $mol_book2;
-    })($$ = $.$$ || ($.$$ = {}));
-})($ || ($ = {}));
-
-;
-"use strict";
-var $;
-(function ($) {
-    $mol_style_attach("mol/book2/book2.view.css", "[mol_book2] {\n\tdisplay: flex;\n\tflex-flow: row nowrap;\n\talign-items: stretch;\n\tflex: 1 1 auto;\n\talign-self: stretch;\n\tmargin: 0;\n\t/* box-shadow: 0 0 0 1px var(--mol_theme_line); */\n\t/* transform: translateZ(0); */\n\ttransition: none;\n\tscroll-snap-type: x mandatory;\n\t/* padding: 0 1px;\n\tscroll-padding: 0 1px;\n\tgap: 1px; */\n}\n\n[mol_book2] > * {\n/* \tflex: none; */\n\tscroll-snap-stop: always;\n\tscroll-snap-align: end;\n\tposition: relative;\n\tmin-height: 100%;\n\tmax-height: 100%;\n\tmax-width: 100%;\n\tflex-shrink: 0;\n\tbox-shadow: inset 0 0 0 1px var(--mol_theme_field);\n}\n\n[mol_book2] > *:not(:first-of-type):before,\n[mol_book2] > *:not(:last-of-type)::after {\n\tcontent: '';\n\tposition: absolute;\n\ttop: 1.5rem;\n\twidth: 3px;\n\theight: 1rem;\n\tbackground: linear-gradient(\n\t\tto bottom,\n\t\tvar(--mol_theme_special) 0%,\n\t\tvar(--mol_theme_special) 14%,\n\t\ttransparent 15%,\n\t\ttransparent 42%,\n\t\tvar(--mol_theme_special) 43%,\n\t\tvar(--mol_theme_special) 57%,\n\t\ttransparent 58%,\n\t\ttransparent 85%,\n\t\tvar(--mol_theme_special) 86%,\n\t\tvar(--mol_theme_special) 100%\n\t);\n\topacity: .5;\n\tz-index: var(--mol_layer_speck);\n}\n[mol_book2] > *:not(:first-of-type):before {\n\tleft: -3px;\n}\n[mol_book2] > *:not(:last-of-type)::after {\n\tright: -3px;\n}\n\n:where([mol_book2]) > * {\n\tbackground-color: var(--mol_theme_card);\n\t/* box-shadow: 0 0 0 1px var(--mol_theme_back); */\n}\n\n[mol_book2] > [mol_book2] {\n\tdisplay: contents;\n}\n\n[mol_book2] > *:first-child {\n\tscroll-snap-align: start;\n}\n\n[mol_book2] > [mol_view] {\n\ttransform: none; /* prevent content clipping */\n}\n\n[mol_book2_placeholder] {\n\tflex: 1 1 0;\n\tbackground: none;\n}\n\n[mol_book2_gap] {\n\tbackground: none;\n\tflex-grow: 1;\n\tscroll-snap-align: none;\n\tmargin-right: -1px;\n\tbox-shadow: none;\n}\n\n[mol_book2_gap]::before,\n[mol_book2_gap]::after {\n\tdisplay: none;\n}\n");
-})($ || ($ = {}));
 
 ;
 	($.$mol_book2_catalog) = class $mol_book2_catalog extends ($.$mol_book2) {
@@ -13981,25 +14009,25 @@ var $;
 			(obj.body) = () => ([(this.Playground())]);
 			return obj;
 		}
-		Buttons_catalog(){
+		Button_catalog(){
 			const obj = new this.$.$eve_app_page_sb_catalog();
 			(obj.param) = () => ("button");
 			(obj.spreads) = () => ({"overview": (this.Overview_page())});
 			return obj;
 		}
 		title(){
-			return "Buttons";
+			return "Button";
 		}
 		Head(){
 			return null;
 		}
 		body(){
-			return [(this.Buttons_catalog())];
+			return [(this.Button_catalog())];
 		}
 	};
 	($mol_mem(($.$eve_app_page_components_button.prototype), "Playground"));
 	($mol_mem(($.$eve_app_page_components_button.prototype), "Overview_page"));
-	($mol_mem(($.$eve_app_page_components_button.prototype), "Buttons_catalog"));
+	($mol_mem(($.$eve_app_page_components_button.prototype), "Button_catalog"));
 
 
 ;

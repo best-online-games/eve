@@ -4464,6 +4464,50 @@ declare namespace $.$$ {
 }
 
 declare namespace $ {
+
+	type $mol_book2_sub__1 = $mol_type_enforce<
+		ReturnType< $mol_book2['pages'] >[number]
+		,
+		$mol_view
+	>
+	type $mol_book2_sub__2 = $mol_type_enforce<
+		ReturnType< $mol_book2['placeholders'] >[number]
+		,
+		$mol_view
+	>
+	type $mol_view__title_mol_book2_3 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_view['title'] >
+	>
+	export class $mol_book2 extends $mol_scroll {
+		pages_deep( ): readonly($mol_view)[]
+		pages( ): ReturnType< $mol_book2['pages_deep'] >
+		Placeholder( ): $mol_view
+		placeholders( ): readonly($mol_view)[]
+		menu_title( ): string
+		sub( ): readonly($mol_view)[]
+		minimal_width( ): number
+		Gap( id: any): $mol_view
+	}
+	
+}
+
+//# sourceMappingURL=book2.view.tree.d.ts.map
+declare namespace $.$$ {
+    class $mol_book2 extends $.$mol_book2 {
+        pages_deep(): $mol_view[];
+        title(): string;
+        menu_title(): string;
+        sub(): $mol_view[];
+        bring(): void;
+    }
+}
+
+declare namespace $ {
+}
+
+declare namespace $ {
     class $mol_span extends $mol_object2 {
         readonly uri: string;
         readonly source: string;
@@ -5040,62 +5084,101 @@ declare namespace $ {
 
 declare namespace $ {
 
-	type $eve_surface__colors_eve_app_page_sb_playground_1 = $mol_type_enforce<
+	type $eve_flex__colors_eve_app_page_sb_playground_1 = $mol_type_enforce<
 		string
 		,
-		ReturnType< $eve_surface['colors'] >
+		ReturnType< $eve_flex['colors'] >
 	>
-	type $eve_surface__sub_eve_app_page_sb_playground_2 = $mol_type_enforce<
+	type $eve_flex__justify_content_eve_app_page_sb_playground_2 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $eve_flex['justify_content'] >
+	>
+	type $eve_flex__align_items_eve_app_page_sb_playground_3 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $eve_flex['align_items'] >
+	>
+	type $eve_flex__sub_eve_app_page_sb_playground_4 = $mol_type_enforce<
 		readonly(any)[]
 		,
-		ReturnType< $eve_surface['sub'] >
+		ReturnType< $eve_flex['sub'] >
 	>
-	type $hyoo_tree_edit__value_eve_app_page_sb_playground_3 = $mol_type_enforce<
+	type $eve_page__Head_eve_app_page_sb_playground_5 = $mol_type_enforce<
+		any
+		,
+		ReturnType< $eve_page['Head'] >
+	>
+	type $eve_page__title_eve_app_page_sb_playground_6 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $eve_page['title'] >
+	>
+	type $eve_page__body_eve_app_page_sb_playground_7 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $eve_page['body'] >
+	>
+	type $hyoo_tree_edit__value_eve_app_page_sb_playground_8 = $mol_type_enforce<
 		ReturnType< $eve_app_page_sb_playground['source_tree'] >
 		,
 		ReturnType< $hyoo_tree_edit['value'] >
 	>
-	type $mol_textarea__value_eve_app_page_sb_playground_4 = $mol_type_enforce<
+	type $mol_textarea__value_eve_app_page_sb_playground_9 = $mol_type_enforce<
 		ReturnType< $eve_app_page_sb_playground['source'] >
 		,
 		ReturnType< $mol_textarea['value'] >
 	>
-	type $mol_textarea__hint_eve_app_page_sb_playground_5 = $mol_type_enforce<
+	type $mol_textarea__hint_eve_app_page_sb_playground_10 = $mol_type_enforce<
 		string
 		,
 		ReturnType< $mol_textarea['hint'] >
 	>
-	type $mol_textarea__sidebar_showed_eve_app_page_sb_playground_6 = $mol_type_enforce<
+	type $mol_textarea__sidebar_showed_eve_app_page_sb_playground_11 = $mol_type_enforce<
 		boolean
 		,
 		ReturnType< $mol_textarea['sidebar_showed'] >
 	>
-	type $eve_surface__colors_eve_app_page_sb_playground_7 = $mol_type_enforce<
+	type $eve_surface__colors_eve_app_page_sb_playground_12 = $mol_type_enforce<
 		string
 		,
 		ReturnType< $eve_surface['colors'] >
 	>
-	type $eve_surface__sub_eve_app_page_sb_playground_8 = $mol_type_enforce<
+	type $eve_surface__sub_eve_app_page_sb_playground_13 = $mol_type_enforce<
 		ReturnType< $eve_app_page_sb_playground['editor_body'] >
 		,
 		ReturnType< $eve_surface['sub'] >
 	>
-	export class $eve_app_page_sb_playground extends $eve_flex {
+	type $eve_page__Head_eve_app_page_sb_playground_14 = $mol_type_enforce<
+		any
+		,
+		ReturnType< $eve_page['Head'] >
+	>
+	type $eve_page__title_eve_app_page_sb_playground_15 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $eve_page['title'] >
+	>
+	type $eve_page__body_eve_app_page_sb_playground_16 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $eve_page['body'] >
+	>
+	export class $eve_app_page_sb_playground extends $mol_book2 {
 		Live_component( ): $eve_surface
-		Live_component_container( ): $eve_surface
+		Live_component_container( ): $eve_flex
+		Demo_page( ): $eve_page
 		source_tree( next?: $mol_tree2 ): $mol_tree2
 		Source_tree( ): $hyoo_tree_edit
 		source( next?: string ): string
 		Source_text( ): $mol_textarea
 		editor_body( ): readonly(any)[]
 		Editor_body( ): $eve_surface
-		justify_content( ): string
-		align_items( ): string
-		gap( ): string
-		wrap( ): string
+		Code_page( ): $eve_page
 		component_name( ): string
 		default_source( ): string
-		sub( ): readonly(any)[]
+		Placeholder( ): any
+		pages( ): readonly(any)[]
 	}
 	
 }
@@ -5223,50 +5306,6 @@ declare namespace $ {
 }
 
 //# sourceMappingURL=karate.view.tree.d.ts.map
-declare namespace $ {
-
-	type $mol_book2_sub__1 = $mol_type_enforce<
-		ReturnType< $mol_book2['pages'] >[number]
-		,
-		$mol_view
-	>
-	type $mol_book2_sub__2 = $mol_type_enforce<
-		ReturnType< $mol_book2['placeholders'] >[number]
-		,
-		$mol_view
-	>
-	type $mol_view__title_mol_book2_3 = $mol_type_enforce<
-		string
-		,
-		ReturnType< $mol_view['title'] >
-	>
-	export class $mol_book2 extends $mol_scroll {
-		pages_deep( ): readonly($mol_view)[]
-		pages( ): ReturnType< $mol_book2['pages_deep'] >
-		Placeholder( ): $mol_view
-		placeholders( ): readonly($mol_view)[]
-		menu_title( ): string
-		sub( ): readonly($mol_view)[]
-		minimal_width( ): number
-		Gap( id: any): $mol_view
-	}
-	
-}
-
-//# sourceMappingURL=book2.view.tree.d.ts.map
-declare namespace $.$$ {
-    class $mol_book2 extends $.$mol_book2 {
-        pages_deep(): $mol_view[];
-        title(): string;
-        menu_title(): string;
-        sub(): $mol_view[];
-        bring(): void;
-    }
-}
-
-declare namespace $ {
-}
-
 declare namespace $ {
 
 	type $mol_search__query_mol_book2_catalog_1 = $mol_type_enforce<
@@ -5468,7 +5507,7 @@ declare namespace $ {
 	export class $eve_app_page_components_button extends $eve_app_page_sb_page {
 		Playground( ): $eve_app_page_sb_playground
 		Overview_page( ): $eve_app_page_sb_page
-		Buttons_catalog( ): $eve_app_page_sb_catalog
+		Button_catalog( ): $eve_app_page_sb_catalog
 		title( ): string
 		Head( ): any
 		body( ): readonly(any)[]
