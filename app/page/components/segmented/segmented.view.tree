@@ -12,9 +12,10 @@ $eve_app_page_components_segmented $eve_app_page_sb_page
 							component_name \Live_segmented
 							default_source \
 								\Live_segmented $eve_segmented
-								\	value? <=> mode? \grid
+								\	value? \home
 								\	options *
-								\		grid \Grid
-								\		list \List
-								\		table \Table
+								\		home \home
+								\		profile \profile
+								\		settings \settings
+								\		about \about
 								\

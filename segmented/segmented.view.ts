@@ -29,6 +29,15 @@ namespace $.$$ {
 		}
 
 		/**
+		 * Current selected value
+		 * Stored in session state for persistence
+		 */
+		@$mol_mem
+		value( next?: string ) {
+			return $mol_state_session.value( `${ this }.value()`, next ) ?? ''
+		}
+
+		/**
 		 * List of option keys (IDs)
 		 */
 		@$mol_mem
@@ -91,30 +100,21 @@ namespace $.$$ {
 			return event
 		}
 
-		// Calculate plate position and width
+		// Set CSS variables for plate animation
 		@$mol_mem
-		plate_style() {
+		override Container() {
+			const container = super.Container()
 			const ids = this.Option_ids()
 			const index = ids.indexOf( this.value() )
 			const count = ids.length
 
-			if( count === 0 ) return {}
-
-			const widthPercent = 100 / count
-			const leftPercent = index * widthPercent
-
-			return {
-				width: `${ widthPercent }%`,
-				left: `${ leftPercent }%`,
+			if( count > 0 ) {
+				const node = container.dom_node() as HTMLElement
+				node.style.setProperty( '--eve-segment-index', String( index ) )
+				node.style.setProperty( '--eve-segment-count', String( count ) )
 			}
-		}
 
-		@$mol_mem
-		override Plate() {
-			const plate = super.Plate()
-			const node = plate.dom_node() as HTMLElement
-			Object.assign( node.style, this.plate_style() )
-			return plate
+			return container
 		}
 
 	}

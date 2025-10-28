@@ -6,24 +6,40 @@ namespace $.$$ {
 		position: 'relative',
 		borderRadius: rem( 0.5 ),
 
-		// Options: {
-		// 	position: 'relative',
-		// 	zIndex: 1,
-		// 	display: 'grid',
-		// 	gridAutoFlow: 'column',
-		// 	gridAutoColumns: '1fr',
-		// },
+		Container: {
+			display: 'grid',
+			gridAutoFlow: 'column',
+			gridAutoColumns: '1fr',
+			position: 'relative',
+			borderRadius: rem( 0.375 ),
+			minHeight: rem( 2.5 ),
+		},
 
-	Plate: {
-		position: 'absolute',
-		top: rem( 0.25 ),
-		bottom: rem( 0.25 ),
-		left: 0,
-		zIndex: 0,
-		borderRadius: rem( 0.375 ), // 0.5 - 0.125
-		boxShadow: '0 2px 8px rgba(0, 0, 0, 0.08)',
-		transition: 'left 0.3s ease, width 0.3s ease',
-		// Width and left position set via inline styles in TypeScript
-	},
+		Plate: {
+			position: 'absolute',
+			top: 0,
+			bottom: 0,
+			zIndex: 0,
+			borderRadius: rem( 0.375 ),
+			boxShadow: '0 4px 24px rgba(16, 3, 43, 0.07)',
+			transition: 'left 0.3s ease, width 0.3s ease',
+			// Width and left position set via CSS variables and calc in TypeScript
+			width: 'calc(100% / var(--eve-segment-count))' as any,
+			left: 'calc(var(--eve-segment-index) * (100% / var(--eve-segment-count)))' as any,
+		},
+	} )
+
+	$mol_style_define( $eve_segmented_option, {
+		position: 'relative',
+		zIndex: 1,
+		padding: {
+			left: rem( 0.75 ),
+			right: rem( 1.5 ),
+		},
+		borderRadius: rem( 0.375 ),
+		textAlign: 'center',
+		cursor: 'pointer',
+		userSelect: 'none',
+		transition: 'none',
 	} )
 }

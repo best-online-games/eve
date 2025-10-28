@@ -1,5 +1,6 @@
 $eve_segmented_option $eve_button
 	variant* \ghost
+	size? \s
 	value \
 	label \
 	checked false

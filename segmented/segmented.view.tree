@@ -1,15 +1,15 @@
 $eve_segmented $eve_surface
+	variant \outline
 	colors \low
-	value? \
+	value? <= value \
 	options *
 	option_title* \
 	sub /
 		<= Container $eve_flex
-			colors \low
 			direction \row
 			sub /
 				<= Plate $eve_surface
-					colors \lowest
+					colors \low
 				<= Options_container $eve_flex
 					sub <= Options /
 						<= Option* $eve_segmented_option
