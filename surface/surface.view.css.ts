@@ -232,9 +232,6 @@ namespace $.$$ {
 	}
 
 	$mol_style_define( $eve_surface, {
-		display: 'inline-flex',
-		alignItems: 'center',
-		justifyContent: 'center',
 		boxSizing: 'border-box',
 		outline: 'none',
 

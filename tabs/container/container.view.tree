@@ -1,0 +1,14 @@
+$eve_tabs_container $mol_view
+	tab? \
+	spreads *
+	Spread* $mol_view
+	spread_ids /string
+	spread_current null
+	sub /
+		<= Tab $eve_tab_group
+			options <= tab_options *
+			value? <=> tab?
+		<= Content $mol_switch
+			value <= tab
+			options <= content_options *
+
