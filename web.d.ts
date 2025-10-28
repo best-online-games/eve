@@ -5118,242 +5118,8 @@ declare namespace $.$$ {
 
 declare namespace $ {
 
-	type $mol_check__checked_mol_check_list_1 = $mol_type_enforce<
-		ReturnType< $mol_check_list['option_checked'] >
-		,
-		ReturnType< $mol_check['checked'] >
-	>
-	type $mol_check__label_mol_check_list_2 = $mol_type_enforce<
-		ReturnType< $mol_check_list['option_label'] >
-		,
-		ReturnType< $mol_check['label'] >
-	>
-	type $mol_check__enabled_mol_check_list_3 = $mol_type_enforce<
-		ReturnType< $mol_check_list['option_enabled'] >
-		,
-		ReturnType< $mol_check['enabled'] >
-	>
-	type $mol_check__hint_mol_check_list_4 = $mol_type_enforce<
-		ReturnType< $mol_check_list['option_hint'] >
-		,
-		ReturnType< $mol_check['hint'] >
-	>
-	type $mol_check__minimal_height_mol_check_list_5 = $mol_type_enforce<
-		number
-		,
-		ReturnType< $mol_check['minimal_height'] >
-	>
-	export class $mol_check_list extends $mol_view {
-		option_checked( id: any, next?: boolean ): boolean
-		option_title( id: any): string
-		option_label( id: any): readonly(any)[]
-		enabled( ): boolean
-		option_enabled( id: any): ReturnType< $mol_check_list['enabled'] >
-		option_hint( id: any): string
-		items( ): readonly($mol_check)[]
-		dictionary( ): Record<string, any>
-		Option( id: any): $mol_check
-		options( ): Record<string, any>
-		keys( ): readonly(string)[]
-		sub( ): ReturnType< $mol_check_list['items'] >
-	}
-	
-}
-
-//# sourceMappingURL=list.view.tree.d.ts.map
-declare namespace $.$$ {
-    class $mol_check_list extends $.$mol_check_list {
-        options(): {
-            [key: string]: string;
-        };
-        dictionary(next?: Record<string, boolean>): Record<string, boolean>;
-        option_checked(id: string, next?: boolean | null): boolean;
-        keys(): readonly string[];
-        items(): $.$mol_check[];
-        option_title(key: string): string;
-    }
-}
-
-declare namespace $ {
-}
-
-declare namespace $ {
-
-	export class $mol_switch extends $mol_check_list {
-		value( next?: string ): string
-	}
-	
-}
-
-//# sourceMappingURL=switch.view.tree.d.ts.map
-declare namespace $.$$ {
-    class $mol_switch extends $.$mol_switch {
-        value(next?: string): string;
-        option_checked(key: string, next?: boolean): boolean;
-    }
-}
-
-declare namespace $ {
-
-	type $mol_search__query_mol_book2_catalog_1 = $mol_type_enforce<
-		ReturnType< $mol_book2_catalog['menu_filter'] >
-		,
-		ReturnType< $mol_search['query'] >
-	>
-	type $mol_dimmer__needle_mol_book2_catalog_2 = $mol_type_enforce<
-		ReturnType< $mol_book2_catalog['menu_filter'] >
-		,
-		ReturnType< $mol_dimmer['needle'] >
-	>
-	type $mol_dimmer__haystack_mol_book2_catalog_3 = $mol_type_enforce<
-		ReturnType< $mol_book2_catalog['spread_title'] >
-		,
-		ReturnType< $mol_dimmer['haystack'] >
-	>
-	type $mol_link__arg_mol_book2_catalog_4 = $mol_type_enforce<
-		ReturnType< $mol_book2_catalog['menu_link_arg'] >
-		,
-		ReturnType< $mol_link['arg'] >
-	>
-	type $mol_link__sub_mol_book2_catalog_5 = $mol_type_enforce<
-		ReturnType< $mol_book2_catalog['menu_link_content'] >
-		,
-		ReturnType< $mol_link['sub'] >
-	>
-	type $mol_view__sub_mol_book2_catalog_6 = $mol_type_enforce<
-		ReturnType< $mol_book2_catalog['menu_item_content'] >
-		,
-		ReturnType< $mol_view['sub'] >
-	>
-	type $mol_list__Empty_mol_book2_catalog_7 = $mol_type_enforce<
-		ReturnType< $mol_book2_catalog['Menu_links_empty'] >
-		,
-		ReturnType< $mol_list['Empty'] >
-	>
-	type $mol_list__rows_mol_book2_catalog_8 = $mol_type_enforce<
-		ReturnType< $mol_book2_catalog['menu_links'] >
-		,
-		ReturnType< $mol_list['rows'] >
-	>
-	type $mol_page__title_mol_book2_catalog_9 = $mol_type_enforce<
-		ReturnType< $mol_book2_catalog['menu_title'] >
-		,
-		ReturnType< $mol_page['title'] >
-	>
-	type $mol_page__Logo_mol_book2_catalog_10 = $mol_type_enforce<
-		ReturnType< $mol_book2_catalog['Menu_logo'] >
-		,
-		ReturnType< $mol_page['Logo'] >
-	>
-	type $mol_page__tools_mol_book2_catalog_11 = $mol_type_enforce<
-		readonly(any)[]
-		,
-		ReturnType< $mol_page['tools'] >
-	>
-	type $mol_page__head_mol_book2_catalog_12 = $mol_type_enforce<
-		ReturnType< $mol_book2_catalog['menu_head'] >
-		,
-		ReturnType< $mol_page['head'] >
-	>
-	type $mol_page__body_mol_book2_catalog_13 = $mol_type_enforce<
-		ReturnType< $mol_book2_catalog['menu_body'] >
-		,
-		ReturnType< $mol_page['body'] >
-	>
-	type $mol_page__foot_mol_book2_catalog_14 = $mol_type_enforce<
-		ReturnType< $mol_book2_catalog['menu_foot'] >
-		,
-		ReturnType< $mol_page['foot'] >
-	>
-	type $mol_link__arg_mol_book2_catalog_15 = $mol_type_enforce<
-		ReturnType< $mol_book2_catalog['spread_close_arg'] >
-		,
-		ReturnType< $mol_link['arg'] >
-	>
-	type $mol_link__hint_mol_book2_catalog_16 = $mol_type_enforce<
-		string
-		,
-		ReturnType< $mol_link['hint'] >
-	>
-	type $mol_link__sub_mol_book2_catalog_17 = $mol_type_enforce<
-		readonly(any)[]
-		,
-		ReturnType< $mol_link['sub'] >
-	>
-	export class $mol_book2_catalog extends $mol_book2 {
-		Menu_title( ): ReturnType< ReturnType< $mol_book2_catalog['Menu'] >['Title'] >
-		menu_title( ): string
-		Menu_tools( ): ReturnType< ReturnType< $mol_book2_catalog['Menu'] >['Tools'] >
-		Menu_logo( ): any
-		menu_head( ): readonly($mol_view_content)[]
-		menu_filter( next?: string ): string
-		Menu_filter( ): $mol_search
-		Menu_links_empty( ): $mol_view
-		arg( id: any): Record<string, any>
-		menu_link_arg( id: any): ReturnType< $mol_book2_catalog['arg'] >
-		spread_title( id: any): string
-		Menu_link_title( id: any): $mol_dimmer
-		menu_link_content( id: any): readonly($mol_view_content)[]
-		Menu_link( id: any): $mol_link
-		menu_item_content( id: any): readonly($mol_view)[]
-		Menu_item( id: any): $mol_view
-		menu_links( ): readonly($mol_view)[]
-		Menu_links( ): $mol_list
-		menu_body( ): readonly($mol_view)[]
-		menu_foot( ): readonly($mol_view)[]
-		Menu( ): $mol_page
-		spread_close_arg( ): Record<string, any>
-		Spread_close_icon( ): $mol_icon_close
-		param( ): string
-		spread( next?: string ): string
-		spreads( ): Record<string, any>
-		Spread( id: any): $mol_view
-		Spread_default( ): any
-		spread_ids( ): readonly(string)[]
-		menu_filter_enabled( ): boolean
-		spread_ids_filtered( ): readonly(string)[]
-		spread_current( ): any
-		menu_tools( ): readonly(any)[]
-		addon_tools( ): readonly(any)[]
-		pages( ): readonly(any)[]
-		Spread_close( ): $mol_link
-	}
-	
-}
-
-//# sourceMappingURL=catalog.view.tree.d.ts.map
-declare namespace $.$$ {
-    class $mol_book2_catalog extends $.$mol_book2_catalog {
-        spread_current(): any;
-        pages(): any[];
-        auto(): void;
-        spread_ids(): readonly string[];
-        menu_body(): ($.$mol_list | $.$mol_search)[];
-        menu_filter_enabled(): boolean;
-        menu_links(): $mol_view[];
-        spread_ids_filtered(): string[];
-        Spread(id: string): $mol_view;
-        Spread_default(): any;
-        spread(next?: string): string;
-        arg(spread: string): {
-            [x: string]: string | null;
-        };
-        spread_close_arg(): {
-            [x: string]: null;
-        };
-        spread_title(spread: string): string;
-        spread_current_book(): $mol_book2 | null;
-        placeholders(): readonly $mol_view[];
-    }
-}
-
-declare namespace $.$$ {
-}
-
-declare namespace $ {
-
 	type $eve_tab_group__value_eve_tab_container_1 = $mol_type_enforce<
-		ReturnType< $eve_tab_container['tab'] >
+		ReturnType< $eve_tab_container['value'] >
 		,
 		ReturnType< $eve_tab_group['value'] >
 	>
@@ -5363,7 +5129,7 @@ declare namespace $ {
 		ReturnType< $eve_tab_group['tabs'] >
 	>
 	type $eve_tab_group__tab_label_eve_tab_container_3 = $mol_type_enforce<
-		ReturnType< $eve_tab_container['tab_label'] >
+		ReturnType< $eve_tab_container['spread_title'] >
 		,
 		ReturnType< $eve_tab_group['tab_label'] >
 	>
@@ -5377,29 +5143,21 @@ declare namespace $ {
 		,
 		ReturnType< $eve_tab_group['tab_click'] >
 	>
-	type $mol_switch__value_eve_tab_container_6 = $mol_type_enforce<
-		ReturnType< $eve_tab_container['tab'] >
+	type $eve_surface__sub_eve_tab_container_6 = $mol_type_enforce<
+		ReturnType< $eve_tab_container['content'] >
 		,
-		ReturnType< $mol_switch['value'] >
-	>
-	type $mol_switch__options_eve_tab_container_7 = $mol_type_enforce<
-		ReturnType< $eve_tab_container['content_options'] >
-		,
-		ReturnType< $mol_switch['options'] >
+		ReturnType< $eve_surface['sub'] >
 	>
 	export class $eve_tab_container extends $eve_surface {
 		tabs( ): readonly(any)[]
-		Tab_group( ): $eve_tab_group
-		content_options( ): Record<string, any>
-		Content( ): $mol_switch
-		tab( next?: string ): string
+		Tabs( ): $eve_tab_group
+		Content( ): $eve_surface
+		value( next?: string ): string
 		spreads( ): Record<string, any>
-		Spread( id: any): $mol_view
-		spread_ids( ): readonly(string)[]
-		spread_current( ): any
-		tab_label( id: any): string
+		spread_title( id: any): string
 		tab_checked( id: any): boolean
 		tab_click( id: any, next?: any ): any
+		content( ): readonly(any)[]
 		sub( ): readonly(any)[]
 	}
 	
@@ -5408,14 +5166,13 @@ declare namespace $ {
 //# sourceMappingURL=container.view.tree.d.ts.map
 declare namespace $.$$ {
     class $eve_tab_container extends $.$eve_tab_container {
-        spread_ids(): string[];
-        Spread(id: string): any;
-        spread_current(): any;
         tabs(): $.$eve_tab[];
-        tab_label(id: string): string;
+        spread_ids(): readonly string[];
+        Spread(id: string): $mol_view;
+        spread_title(id: string): string;
         tab_checked(id: string): boolean;
         tab_click(id: string, event?: Event): void;
-        content_options(): Record<string, $mol_view>;
+        content(): $mol_view[];
     }
 }
 
@@ -5630,10 +5387,10 @@ declare namespace $ {
 		,
 		ReturnType< $eve_surface['sub'] >
 	>
-	type $eve_tab_container__tab_eve_app_page_sb_playground_19 = $mol_type_enforce<
+	type $eve_tab_container__value_eve_app_page_sb_playground_19 = $mol_type_enforce<
 		ReturnType< $eve_app_page_sb_playground['code_tab'] >
 		,
-		ReturnType< $eve_tab_container['tab'] >
+		ReturnType< $eve_tab_container['value'] >
 	>
 	type $eve_tab_container__spreads_eve_app_page_sb_playground_20 = $mol_type_enforce<
 		({ 
@@ -5749,6 +5506,163 @@ declare namespace $ {
 }
 
 //# sourceMappingURL=karate.view.tree.d.ts.map
+declare namespace $ {
+
+	type $mol_search__query_mol_book2_catalog_1 = $mol_type_enforce<
+		ReturnType< $mol_book2_catalog['menu_filter'] >
+		,
+		ReturnType< $mol_search['query'] >
+	>
+	type $mol_dimmer__needle_mol_book2_catalog_2 = $mol_type_enforce<
+		ReturnType< $mol_book2_catalog['menu_filter'] >
+		,
+		ReturnType< $mol_dimmer['needle'] >
+	>
+	type $mol_dimmer__haystack_mol_book2_catalog_3 = $mol_type_enforce<
+		ReturnType< $mol_book2_catalog['spread_title'] >
+		,
+		ReturnType< $mol_dimmer['haystack'] >
+	>
+	type $mol_link__arg_mol_book2_catalog_4 = $mol_type_enforce<
+		ReturnType< $mol_book2_catalog['menu_link_arg'] >
+		,
+		ReturnType< $mol_link['arg'] >
+	>
+	type $mol_link__sub_mol_book2_catalog_5 = $mol_type_enforce<
+		ReturnType< $mol_book2_catalog['menu_link_content'] >
+		,
+		ReturnType< $mol_link['sub'] >
+	>
+	type $mol_view__sub_mol_book2_catalog_6 = $mol_type_enforce<
+		ReturnType< $mol_book2_catalog['menu_item_content'] >
+		,
+		ReturnType< $mol_view['sub'] >
+	>
+	type $mol_list__Empty_mol_book2_catalog_7 = $mol_type_enforce<
+		ReturnType< $mol_book2_catalog['Menu_links_empty'] >
+		,
+		ReturnType< $mol_list['Empty'] >
+	>
+	type $mol_list__rows_mol_book2_catalog_8 = $mol_type_enforce<
+		ReturnType< $mol_book2_catalog['menu_links'] >
+		,
+		ReturnType< $mol_list['rows'] >
+	>
+	type $mol_page__title_mol_book2_catalog_9 = $mol_type_enforce<
+		ReturnType< $mol_book2_catalog['menu_title'] >
+		,
+		ReturnType< $mol_page['title'] >
+	>
+	type $mol_page__Logo_mol_book2_catalog_10 = $mol_type_enforce<
+		ReturnType< $mol_book2_catalog['Menu_logo'] >
+		,
+		ReturnType< $mol_page['Logo'] >
+	>
+	type $mol_page__tools_mol_book2_catalog_11 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_page['tools'] >
+	>
+	type $mol_page__head_mol_book2_catalog_12 = $mol_type_enforce<
+		ReturnType< $mol_book2_catalog['menu_head'] >
+		,
+		ReturnType< $mol_page['head'] >
+	>
+	type $mol_page__body_mol_book2_catalog_13 = $mol_type_enforce<
+		ReturnType< $mol_book2_catalog['menu_body'] >
+		,
+		ReturnType< $mol_page['body'] >
+	>
+	type $mol_page__foot_mol_book2_catalog_14 = $mol_type_enforce<
+		ReturnType< $mol_book2_catalog['menu_foot'] >
+		,
+		ReturnType< $mol_page['foot'] >
+	>
+	type $mol_link__arg_mol_book2_catalog_15 = $mol_type_enforce<
+		ReturnType< $mol_book2_catalog['spread_close_arg'] >
+		,
+		ReturnType< $mol_link['arg'] >
+	>
+	type $mol_link__hint_mol_book2_catalog_16 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_link['hint'] >
+	>
+	type $mol_link__sub_mol_book2_catalog_17 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_link['sub'] >
+	>
+	export class $mol_book2_catalog extends $mol_book2 {
+		Menu_title( ): ReturnType< ReturnType< $mol_book2_catalog['Menu'] >['Title'] >
+		menu_title( ): string
+		Menu_tools( ): ReturnType< ReturnType< $mol_book2_catalog['Menu'] >['Tools'] >
+		Menu_logo( ): any
+		menu_head( ): readonly($mol_view_content)[]
+		menu_filter( next?: string ): string
+		Menu_filter( ): $mol_search
+		Menu_links_empty( ): $mol_view
+		arg( id: any): Record<string, any>
+		menu_link_arg( id: any): ReturnType< $mol_book2_catalog['arg'] >
+		spread_title( id: any): string
+		Menu_link_title( id: any): $mol_dimmer
+		menu_link_content( id: any): readonly($mol_view_content)[]
+		Menu_link( id: any): $mol_link
+		menu_item_content( id: any): readonly($mol_view)[]
+		Menu_item( id: any): $mol_view
+		menu_links( ): readonly($mol_view)[]
+		Menu_links( ): $mol_list
+		menu_body( ): readonly($mol_view)[]
+		menu_foot( ): readonly($mol_view)[]
+		Menu( ): $mol_page
+		spread_close_arg( ): Record<string, any>
+		Spread_close_icon( ): $mol_icon_close
+		param( ): string
+		spread( next?: string ): string
+		spreads( ): Record<string, any>
+		Spread( id: any): $mol_view
+		Spread_default( ): any
+		spread_ids( ): readonly(string)[]
+		menu_filter_enabled( ): boolean
+		spread_ids_filtered( ): readonly(string)[]
+		spread_current( ): any
+		menu_tools( ): readonly(any)[]
+		addon_tools( ): readonly(any)[]
+		pages( ): readonly(any)[]
+		Spread_close( ): $mol_link
+	}
+	
+}
+
+//# sourceMappingURL=catalog.view.tree.d.ts.map
+declare namespace $.$$ {
+    class $mol_book2_catalog extends $.$mol_book2_catalog {
+        spread_current(): any;
+        pages(): any[];
+        auto(): void;
+        spread_ids(): readonly string[];
+        menu_body(): ($.$mol_list | $.$mol_search)[];
+        menu_filter_enabled(): boolean;
+        menu_links(): $mol_view[];
+        spread_ids_filtered(): string[];
+        Spread(id: string): $mol_view;
+        Spread_default(): any;
+        spread(next?: string): string;
+        arg(spread: string): {
+            [x: string]: string | null;
+        };
+        spread_close_arg(): {
+            [x: string]: null;
+        };
+        spread_title(spread: string): string;
+        spread_current_book(): $mol_book2 | null;
+        placeholders(): readonly $mol_view[];
+    }
+}
+
+declare namespace $.$$ {
+}
+
 declare namespace $ {
 
 	export class $eve_app_page_sb_catalog extends $mol_book2_catalog {
@@ -6952,6 +6866,164 @@ declare namespace $ {
 //# sourceMappingURL=tab.view.tree.d.ts.map
 declare namespace $ {
 
+	export class $eve_segmented_option extends $eve_button {
+		variant( id: any): string
+		size( next?: string ): string
+		value( ): string
+		label( ): string
+		checked( ): boolean
+		sub( ): readonly(any)[]
+	}
+	
+}
+
+//# sourceMappingURL=option.view.tree.d.ts.map
+declare namespace $.$$ {
+    class $eve_segmented_option extends $.$eve_segmented_option {
+        variant(): "ghost" | "text";
+    }
+}
+
+declare namespace $.$$ {
+}
+
+declare namespace $ {
+
+	type $eve_surface__colors_eve_segmented_1 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $eve_surface['colors'] >
+	>
+	type $eve_segmented_option__value_eve_segmented_2 = $mol_type_enforce<
+		ReturnType< $eve_segmented['option_value'] >
+		,
+		ReturnType< $eve_segmented_option['value'] >
+	>
+	type $eve_segmented_option__checked_eve_segmented_3 = $mol_type_enforce<
+		ReturnType< $eve_segmented['option_checked'] >
+		,
+		ReturnType< $eve_segmented_option['checked'] >
+	>
+	type $eve_segmented_option__label_eve_segmented_4 = $mol_type_enforce<
+		ReturnType< $eve_segmented['option_title'] >
+		,
+		ReturnType< $eve_segmented_option['label'] >
+	>
+	type $eve_segmented_option__event_click_eve_segmented_5 = $mol_type_enforce<
+		ReturnType< $eve_segmented['option_click'] >
+		,
+		ReturnType< $eve_segmented_option['event_click'] >
+	>
+	type $eve_flex__sub_eve_segmented_6 = $mol_type_enforce<
+		ReturnType< $eve_segmented['Options'] >
+		,
+		ReturnType< $eve_flex['sub'] >
+	>
+	type $eve_flex__direction_eve_segmented_7 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $eve_flex['direction'] >
+	>
+	type $eve_flex__sub_eve_segmented_8 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $eve_flex['sub'] >
+	>
+	export class $eve_segmented extends $eve_surface {
+		Plate( ): $eve_surface
+		option_value( id: any): string
+		option_checked( id: any): boolean
+		option_click( id: any, next?: any ): any
+		Option( id: any): $eve_segmented_option
+		Options( ): readonly(any)[]
+		Options_container( ): $eve_flex
+		Container( ): $eve_flex
+		variant( ): string
+		colors( ): string
+		options( ): Record<string, any>
+		option_title( id: any): string
+		sub( ): readonly(any)[]
+	}
+	
+}
+
+//# sourceMappingURL=segmented.view.tree.d.ts.map
+declare namespace $.$$ {
+    class $eve_segmented extends $.$eve_segmented {
+        options(): {
+            [key: string]: string;
+        };
+        value(next?: string): string;
+        Option_ids(): string[];
+        Options(): $eve_segmented_option[];
+        Option(id: string): $eve_segmented_option;
+        option_value(id: string): string;
+        option_title(id: string): string;
+        option_checked(id: string): boolean;
+        option_click(id: string, event?: Event): Event | null;
+        Container(): $.$eve_flex;
+    }
+}
+
+declare namespace $.$$ {
+}
+
+declare namespace $ {
+
+	type $eve_app_page_sb_playground__component_name_eve_app_page_components_segmented_1 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $eve_app_page_sb_playground['component_name'] >
+	>
+	type $eve_app_page_sb_playground__default_source_eve_app_page_components_segmented_2 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $eve_app_page_sb_playground['default_source'] >
+	>
+	type $eve_app_page_sb_page__title_eve_app_page_components_segmented_3 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $eve_app_page_sb_page['title'] >
+	>
+	type $eve_app_page_sb_page__body_eve_app_page_components_segmented_4 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $eve_app_page_sb_page['body'] >
+	>
+	type $eve_app_page_sb_catalog__param_eve_app_page_components_segmented_5 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $eve_app_page_sb_catalog['param'] >
+	>
+	type $eve_app_page_sb_catalog__spreads_eve_app_page_components_segmented_6 = $mol_type_enforce<
+		({ 
+			'basic': ReturnType< $eve_app_page_components_segmented['Basic_page'] >,
+		}) 
+		,
+		ReturnType< $eve_app_page_sb_catalog['spreads'] >
+	>
+	export class $eve_app_page_components_segmented extends $eve_app_page_sb_page {
+		Basic_playground( ): $eve_app_page_sb_playground
+		Basic_page( ): $eve_app_page_sb_page
+		Segmented_catalog( ): $eve_app_page_sb_catalog
+		title( ): string
+		Head( ): any
+		body( ): readonly(any)[]
+	}
+	
+}
+
+//# sourceMappingURL=segmented.view.tree.d.ts.map
+declare namespace $.$$ {
+    class $eve_app_page_components_segmented extends $.$eve_app_page_components_segmented {
+    }
+}
+
+declare namespace $.$$ {
+}
+
+declare namespace $ {
+
 	type $eve_app_page_sb_catalog__param_eve_app_page_components_1 = $mol_type_enforce<
 		string
 		,
@@ -6973,6 +7045,7 @@ declare namespace $ {
 			'checkbox': ReturnType< $eve_app_page_components['Checkbox'] >,
 			'switch': ReturnType< $eve_app_page_components['Switch'] >,
 			'tab': ReturnType< $eve_app_page_components['Tab'] >,
+			'segmented': ReturnType< $eve_app_page_components['Segmented'] >,
 		}) 
 		,
 		ReturnType< $eve_app_page_sb_catalog['spreads'] >
@@ -6987,6 +7060,7 @@ declare namespace $ {
 		Checkbox( ): $eve_app_page_components_checkbox
 		Switch( ): $eve_app_page_components_switch
 		Tab( ): $eve_app_page_components_tab
+		Segmented( ): $eve_app_page_components_segmented
 		Nav_menu( ): $eve_app_page_sb_catalog
 		title( ): string
 		Head( ): any
@@ -8091,6 +8165,83 @@ declare namespace $.$$ {
 }
 
 declare namespace $.$$ { }
+
+declare namespace $ {
+
+	type $mol_check__checked_mol_check_list_1 = $mol_type_enforce<
+		ReturnType< $mol_check_list['option_checked'] >
+		,
+		ReturnType< $mol_check['checked'] >
+	>
+	type $mol_check__label_mol_check_list_2 = $mol_type_enforce<
+		ReturnType< $mol_check_list['option_label'] >
+		,
+		ReturnType< $mol_check['label'] >
+	>
+	type $mol_check__enabled_mol_check_list_3 = $mol_type_enforce<
+		ReturnType< $mol_check_list['option_enabled'] >
+		,
+		ReturnType< $mol_check['enabled'] >
+	>
+	type $mol_check__hint_mol_check_list_4 = $mol_type_enforce<
+		ReturnType< $mol_check_list['option_hint'] >
+		,
+		ReturnType< $mol_check['hint'] >
+	>
+	type $mol_check__minimal_height_mol_check_list_5 = $mol_type_enforce<
+		number
+		,
+		ReturnType< $mol_check['minimal_height'] >
+	>
+	export class $mol_check_list extends $mol_view {
+		option_checked( id: any, next?: boolean ): boolean
+		option_title( id: any): string
+		option_label( id: any): readonly(any)[]
+		enabled( ): boolean
+		option_enabled( id: any): ReturnType< $mol_check_list['enabled'] >
+		option_hint( id: any): string
+		items( ): readonly($mol_check)[]
+		dictionary( ): Record<string, any>
+		Option( id: any): $mol_check
+		options( ): Record<string, any>
+		keys( ): readonly(string)[]
+		sub( ): ReturnType< $mol_check_list['items'] >
+	}
+	
+}
+
+//# sourceMappingURL=list.view.tree.d.ts.map
+declare namespace $.$$ {
+    class $mol_check_list extends $.$mol_check_list {
+        options(): {
+            [key: string]: string;
+        };
+        dictionary(next?: Record<string, boolean>): Record<string, boolean>;
+        option_checked(id: string, next?: boolean | null): boolean;
+        keys(): readonly string[];
+        items(): $.$mol_check[];
+        option_title(key: string): string;
+    }
+}
+
+declare namespace $ {
+}
+
+declare namespace $ {
+
+	export class $mol_switch extends $mol_check_list {
+		value( next?: string ): string
+	}
+	
+}
+
+//# sourceMappingURL=switch.view.tree.d.ts.map
+declare namespace $.$$ {
+    class $mol_switch extends $.$mol_switch {
+        value(next?: string): string;
+        option_checked(key: string, next?: boolean): boolean;
+    }
+}
 
 declare namespace $ {
 
