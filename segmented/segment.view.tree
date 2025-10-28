@@ -1,0 +1,15 @@
+$eve_segmented $eve_surface
+	colors \low
+	value? \
+	Option* $mol_view
+	option_ids /string
+	option_id* \
+	option_checked* false
+	option_click*?event null
+	sub /
+		<= Plate $eve_surface
+			colors \lowest
+		<= Options $eve_flex
+			direction \row
+			gap null
+			sub <= options /

@@ -1,0 +1,21 @@
+$eve_app_page_components_segmented $eve_app_page_sb_page
+	title \Segmented Control
+	Head null
+	body /
+		<= Segmented_catalog $eve_app_page_sb_catalog
+			param \segmented
+			spreads *
+				basic <= Basic_page $eve_app_page_sb_page
+					title \Basic
+					body /
+						<= Basic_playground $eve_app_page_sb_playground
+							component_name \Live_segmented
+							default_source \
+								\Live_segmented $eve_segmented
+								\	value? <=> mode? \grid
+								\	option_ids /
+								\		\grid
+								\		\list
+								\		\table
+								\	Option* <= mode_option*
+								\

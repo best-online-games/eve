@@ -12,6 +12,7 @@ namespace $.$$ {
 			checkbox: 'Checkbox',
 			switch: 'Switch',
 			tab: 'Tabs',
+			segmented: 'Segmented Control',
 			inputs: 'Inputs',
 			tables: 'Tables',
 		}

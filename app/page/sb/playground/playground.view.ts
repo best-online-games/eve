@@ -14,6 +14,15 @@ namespace $.$$ {
 		return next ?? 'source'
 	}
 
+	// Map tab IDs to panels
+	code_option( id: string ) {
+		switch( id ) {
+			case 'source': return this.Source_panel()
+			case 'props': return this.Props_panel()
+			default: return new this.$.$mol_view()
+		}
+	}
+
 	// Tree editor mode (без URL синка)
 	@$mol_mem
 	raw( next?: boolean ) {

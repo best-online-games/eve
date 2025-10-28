@@ -56,12 +56,6 @@ namespace $.$$ {
 			fontFamily: 'monospace',
 			fontSize: rem( 0.875 ),
 		},
-
-		Source_tree: {
-			flex: {
-				grow: 1,
-			},
-		},
 	} )
 }
 

@@ -26,21 +26,22 @@ $eve_app_page_sb_playground $mol_book2
 					- Icon <= Editor_mode_icon $mol_icon_code
 			body /
 				<= Code_tabs $eve_tab_container
-					tab? <=> code_tab? \source
-					spreads *
-						source
-							<= Source_panel $eve_surface
-								colors \lowest
-								sub <= source_editor /
-									<= Source_text $mol_textarea
-										value?val <=> source?val \
-										hint \view.tree code
-										sidebar_showed true
-									<= Source_tree $hyoo_tree_edit
-										value? <=> source_tree? $mol_tree2
-						props
-							<= Props_panel $eve_surface
-								colors \lowest
-								sub /
-									<= Props_placeholder $mol_paragraph
-										title \Properties panel - coming soon
+					value? <=> code_tab? \source
+					option_ids /
+						\source
+						\props
+					Option* <= code_option*
+						source <= Source_panel $eve_surface
+							colors \lowest
+							sub <= source_editor /
+								<= Source_text $mol_textarea
+									value?val <=> source?val \
+									hint \view.tree code
+									sidebar_showed true
+								<= Source_tree $hyoo_tree_edit
+									value? <=> source_tree? $mol_tree2
+						props <= Props_panel $eve_surface
+							colors \lowest
+							sub /
+								<= Props_placeholder $mol_paragraph
+									title \Properties panel - coming soon

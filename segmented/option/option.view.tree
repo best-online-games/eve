@@ -1,0 +1,7 @@
+$eve_segmented_option $eve_button
+	variant* \ghost
+	value \
+	label \
+	checked false
+	sub / <= label
+

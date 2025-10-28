@@ -1,0 +1,58 @@
+$eve_segmented_demo $mol_example_large
+	title \Segmented Control
+	sub /
+		<= View_mode_label $mol_labeler
+			title \View Mode (with icons)
+			Content <= View_mode $eve_segmented
+				value? <=> view_mode? \grid
+				option_ids /
+					\grid
+					\list
+					\table
+				Option* <= view_option*
+					grid $eve_flex
+						direction \row
+						gap \0.5rem
+						align_items \center
+						sub /
+							<= Grid_icon $mol_icon_view_module
+							<= Grid_label $mol_paragraph
+								title \Grid
+					list $eve_flex
+						direction \row
+						gap \0.5rem
+						align_items \center
+						sub /
+							<= List_icon $mol_icon_view_list
+							<= List_label $mol_paragraph
+								title \List
+					table $eve_flex
+						direction \row
+						gap \0.5rem
+						align_items \center
+						sub /
+							<= Table_icon $mol_icon_view_column
+							<= Table_label $mol_paragraph
+								title \Table
+		<= Size_label $mol_labeler
+			title \Size (text only)
+			Content <= Size_selector $eve_segmented
+				value? <=> size? \medium
+				option_ids /
+					\small
+					\medium
+					\large
+				Option* <= size_option*
+		<= Theme_label $mol_labeler
+			title \Theme (icons only)
+			Content <= Theme_selector $eve_segmented
+				value? <=> theme? \light
+				option_ids /
+					\light
+					\dark
+					\auto
+				Option* <= theme_option*
+					light <= Light_icon $mol_icon_wb_sunny
+					dark <= Dark_icon $mol_icon_nights_stay
+					auto <= Auto_icon $mol_icon_brightness_auto
+

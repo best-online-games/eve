@@ -16,3 +16,4 @@ $eve_app_page_components $eve_page
 				checkbox <= Checkbox $eve_app_page_components_checkbox
 				switch <= Switch $eve_app_page_components_switch
 				tab <= Tab $eve_app_page_components_tab
+				segmented <= Segmented $eve_app_page_components_segmented

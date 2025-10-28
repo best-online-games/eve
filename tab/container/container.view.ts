@@ -2,71 +2,49 @@ namespace $.$$ {
 
 	/**
 	 * Container with tabs and corresponding content.
-	 * Similar to $mol_book2_catalog pattern.
+	 * Minimal API with multiplexed options.
 	 * 
 	 * @example
 	 * ```tree
 	 * <= Editor $eve_tab_container
-	 *     tab? <=> active_tab? \source
-	 *     spreads *
-	 *         source <= Source_panel $mol_view
-	 *         props <= Props_panel $mol_view
+	 *     value? <=> active_tab? \source
+	 *     Option* <= editor_option*
+	 *         source <= Source_panel $eve_surface
+	 *         props <= Props_panel $eve_surface
 	 * ```
 	 */
 	export class $eve_tab_container extends $.$eve_tab_container {
 
-		// Get spread IDs from spreads dictionary
+		// Generate tabs array
 		@$mol_mem
-		spread_ids() {
-			return Object.keys( this.spreads() )
+		tabs() {
+			return this.option_ids().map( id => this.Tabs().Tab( id ) )
 		}
 
-	// Get current spread by ID
-	Spread( id: string ) {
-		return this.spreads()[ id ] ?? null
-	}
-
-		// Get current spread
-		@$mol_mem
-		spread_current() {
-			const tab = this.tab()
-			return tab ? this.Spread( tab ) : null
+		// Get option ID as label
+		option_id( id: string ) {
+			return id
 		}
 
-	// Generate tabs array for eve_tab_group
-	@$mol_mem
-	tabs() {
-		return this.spread_ids().map( id => this.Tab_group().Tab( id ) )
-	}
-
-	// Get tab label (override to customize)
-	tab_label( id: string ): string {
-		// Capitalize first letter by default
-		return id.charAt( 0 ).toUpperCase() + id.slice( 1 )
-	}
-
-	// Check if tab is active
-	tab_checked( id: string ): boolean {
-		return this.tab() === id
-	}
+		// Check if tab is active
+		tab_checked( id: string ) {
+			return this.value() === id
+		}
 
 	// Handle tab click
-	tab_click( id: string, event?: Event ): void {
-		this.tab( id )
+	@$mol_mem_key
+	tab_click( id: string, event?: Event ) {
+		this.value( id )
 	}
 
-		// Generate content options for mol_switch
-		@$mol_mem
-		content_options() {
-			const options: Record<string, $mol_view> = {}
-			for( const id of this.spread_ids() ) {
-				const spread = this.Spread( id )
-				if( spread ) options[ id ] = spread
-			}
-			return options
-		}
-
+	// Render only active content
+	@$mol_mem
+	content() {
+		const active = this.value()
+		return active ? [ this.Option( active ) ] : []
 	}
+
+}
 
 }
 

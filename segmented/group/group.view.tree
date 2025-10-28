@@ -1,0 +1,29 @@
+$eve_segmented_group $eve_surface
+	size? \m
+	variant? \flat
+	colors? \neutral
+	
+	value? \
+	name <= group_name \
+	
+	options *
+	option_ids /
+	
+	attr *
+		^
+		role \radiogroup
+	
+	sub /
+		<= Plate $mol_view
+		<= Segments $eve_flex
+			direction \row
+			wrap \nowrap
+			gap \0
+			sub <= segments /
+				<= Segment* $eve_segmented
+					name <= group_name
+					value <= option_value* \
+					checked? <= option_checked* false
+					content <= option_content* /
+					event_click?event <=> option_click*?event null
+

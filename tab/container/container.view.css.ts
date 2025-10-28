@@ -8,7 +8,7 @@ namespace $.$$ {
 		display: 'flex',
 		flexDirection: 'column',
 
-		Tab_group: {
+		Tabs: {
 			flex: {
 				shrink: 0,
 			},
