@@ -5673,9 +5673,6 @@ var $;
             return colorStyles;
         }
         $mol_style_define($eve_surface, {
-            display: 'inline-flex',
-            alignItems: 'center',
-            justifyContent: 'center',
             boxSizing: 'border-box',
             outline: 'none',
             '@': {
@@ -12903,7 +12900,7 @@ var $;
 })($ || ($ = {}));
 
 ;
-	($.$eve_tab_container) = class $eve_tab_container extends ($.$mol_view) {
+	($.$eve_tab_container) = class $eve_tab_container extends ($.$eve_surface) {
 		tabs(){
 			return [];
 		}

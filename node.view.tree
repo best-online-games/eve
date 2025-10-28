@@ -1000,7 +1000,7 @@ $mol_check_list $mol_view
 $mol_switch $mol_check_list
 	value? \
 
-$eve_tab_container $mol_view
+$eve_tab_container $eve_surface
 	tab? \
 	spreads *
 	Spread* $mol_view

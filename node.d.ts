@@ -5420,7 +5420,7 @@ declare namespace $ {
 		,
 		ReturnType< $mol_switch['options'] >
 	>
-	export class $eve_tab_container extends $mol_view {
+	export class $eve_tab_container extends $eve_surface {
 		tabs( ): readonly(any)[]
 		Tab_group( ): $eve_tab_group
 		content_options( ): Record<string, any>
