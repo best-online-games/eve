@@ -15,11 +15,11 @@ namespace $.$$ {
 	}
 
 	// Map tab IDs to panels
-	code_option( id: string ) {
+	code_option( id: string ): any {
 		switch( id ) {
 			case 'source': return this.Source_panel()
 			case 'props': return this.Props_panel()
-			default: return new this.$.$mol_view()
+			default: return new this.$.$eve_surface()
 		}
 	}
 

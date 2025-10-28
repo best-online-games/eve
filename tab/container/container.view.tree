@@ -1,6 +1,6 @@
 $eve_tab_container $eve_surface
 	value? \
-	Option* $mol_view
+	Option* $eve_surface
 	option_ids /string
 	option_id* \
 	tab_checked* false

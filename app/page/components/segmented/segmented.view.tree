@@ -13,9 +13,8 @@ $eve_app_page_components_segmented $eve_app_page_sb_page
 							default_source \
 								\Live_segmented $eve_segmented
 								\	value? <=> mode? \grid
-								\	option_ids /
-								\		\grid
-								\		\list
-								\		\table
-								\	Option* <= mode_option*
+								\	options *
+								\		grid \Grid
+								\		list \List
+								\		table \Table
 								\

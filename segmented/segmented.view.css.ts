@@ -6,13 +6,13 @@ namespace $.$$ {
 		position: 'relative',
 		borderRadius: rem( 0.5 ),
 
-		Options: {
-			position: 'relative',
-			zIndex: 1,
-			display: 'grid',
-			gridAutoFlow: 'column',
-			gridAutoColumns: '1fr',
-		},
+		// Options: {
+		// 	position: 'relative',
+		// 	zIndex: 1,
+		// 	display: 'grid',
+		// 	gridAutoFlow: 'column',
+		// 	gridAutoColumns: '1fr',
+		// },
 
 	Plate: {
 		position: 'absolute',
