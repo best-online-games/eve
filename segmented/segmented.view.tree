@@ -1,7 +1,6 @@
 $eve_segmented $eve_surface
 	variant \outline
 	colors \low
-	value? <= value \
 	options *
 	option_title* \
 	sub /

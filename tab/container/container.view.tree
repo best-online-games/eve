@@ -1,8 +1,7 @@
 $eve_tab_container $eve_surface
 	value? \
-	Option* $eve_surface
-	option_ids /string
-	option_id* \
+	spreads *
+	spread_title* \
 	tab_checked* false
 	tab_click*?event null
 	content /
@@ -10,7 +9,7 @@ $eve_tab_container $eve_surface
 		<= Tabs $eve_tab_group
 			value? <=> value?
 			tabs <= tabs /
-			tab_label* <= option_id*
+			tab_label* <= spread_title*
 			tab_checked* <= tab_checked*
 			tab_click*?event <=> tab_click*?event
 		<= Content $eve_surface

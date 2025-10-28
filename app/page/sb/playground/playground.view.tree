@@ -27,10 +27,7 @@ $eve_app_page_sb_playground $mol_book2
 			body /
 				<= Code_tabs $eve_tab_container
 					value? <=> code_tab? \source
-					option_ids /
-						\source
-						\props
-					Option* <= code_option*
+					spreads *
 						source <= Source_panel $eve_surface
 							colors \lowest
 							sub <= source_editor /

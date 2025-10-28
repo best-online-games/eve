@@ -14,14 +14,7 @@ namespace $.$$ {
 			return next ?? 'source'
 		}
 
-		// Map tab IDs to panels
-		code_option( id: string ): any {
-			switch( id ) {
-				case 'source': return this.Source_panel()
-				case 'props': return this.Props_panel()
-				default: return new this.$.$eve_surface()
-			}
-		}
+		// spreads handled declaratively in view.tree
 
 		// Tree editor mode (без URL синка)
 		@$mol_mem

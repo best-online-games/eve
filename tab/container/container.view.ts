@@ -15,36 +15,46 @@ namespace $.$$ {
 	 */
 	export class $eve_tab_container extends $.$eve_tab_container {
 
-		// Generate tabs array
+		// Generate tabs from spreads keys
 		@$mol_mem
 		tabs() {
-			return this.option_ids().map( id => this.Tabs().Tab( id ) )
+			return this.spread_ids().map( id => this.Tabs().Tab( id ) )
 		}
 
-		// Get option ID as label
-		option_id( id: string ) {
-			return id
+		// IDs from spreads dict
+		@$mol_mem
+		spread_ids() {
+			return Object.keys( this.spreads() as any ) as readonly string[]
 		}
+
+		// Get spread by id
+		@$mol_mem_key
+		Spread( id: string ) {
+			const dict = this.spreads() as any as Record<string, $mol_view>
+			return dict?.[ id ] ?? new this.$.$eve_surface()
+		}
+
+		spread_title( id: string ) { return id }
 
 		// Check if tab is active
 		tab_checked( id: string ) {
 			return this.value() === id
 		}
 
-	// Handle tab click
-	@$mol_mem_key
-	tab_click( id: string, event?: Event ) {
-		this.value( id )
-	}
+		// Handle tab click
+		@$mol_mem_key
+		tab_click( id: string, event?: Event ) {
+			this.value( id )
+		}
 
-	// Render only active content
-	@$mol_mem
-	content() {
-		const active = this.value()
-		return active ? [ this.Option( active ) ] : []
-	}
+		// Render only active content
+		@$mol_mem
+		content() {
+			const active = this.value()
+			return active ? [ this.Spread( active ) ] : []
+		}
 
-}
+	}
 
 }
 
