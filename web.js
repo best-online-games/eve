@@ -1648,15 +1648,15 @@ var $;
 "use strict";
 var $;
 (function ($) {
-    const catched = new WeakMap();
+    const catched = new WeakSet();
     function $mol_fail_catch(error) {
         if (typeof error !== 'object')
             return false;
         if ($mol_promise_like(error))
             $mol_fail_hidden(error);
-        if (catched.get(error))
+        if (catched.has(error))
             return false;
-        catched.set(error, true);
+        catched.add(error);
         return true;
     }
     $.$mol_fail_catch = $mol_fail_catch;
@@ -2975,6 +2975,16 @@ var $;
 "use strict";
 var $;
 (function ($) {
+    function $mol_error_message(error) {
+        return String((error instanceof Error ? error.message : null) || error) || 'Unknown';
+    }
+    $.$mol_error_message = $mol_error_message;
+})($ || ($ = {}));
+
+;
+"use strict";
+var $;
+(function ($) {
     function $mol_dom_render_styles(el, styles) {
         for (let name in styles) {
             let val = styles[name];
@@ -3260,8 +3270,8 @@ var $;
                 if ($mol_promise_like(error))
                     break render;
                 try {
-                    const message = error.message || error;
-                    node.innerText = message.replace(/^|$/mg, '\xA0\xA0');
+                    ;
+                    node.innerText = this.$.$mol_error_message(error).replace(/^|$/mg, '\xA0\xA0');
                 }
                 catch { }
             }
@@ -3361,7 +3371,7 @@ var $;
             }
             return names;
         }
-        theme(next = null) {
+        theme(next) {
             return next;
         }
         attr_static() {
@@ -3372,7 +3382,7 @@ var $;
         }
         attr() {
             return {
-                mol_theme: this.theme() ?? undefined,
+                mol_theme: this.theme(),
             };
         }
         style() {
@@ -3507,9 +3517,6 @@ var $;
     __decorate([
         $mol_memo.method
     ], $mol_view.prototype, "view_names", null);
-    __decorate([
-        $mol_mem
-    ], $mol_view.prototype, "theme", null);
     __decorate([
         $mol_mem
     ], $mol_view.prototype, "event_async", null);
@@ -4049,6 +4056,7 @@ var $;
             Body_content: {
                 padding: $mol_gap.block,
                 minHeight: 0,
+                minWidth: 0,
                 flex: {
                     direction: 'column',
                     shrink: 1,
@@ -4914,21 +4922,59 @@ var $;
 
 ;
 "use strict";
-
-;
-"use strict";
-var $node = $node || {};
-
-;
-"use strict";
 var $;
 (function ($) {
-    const TextEncoder = globalThis.TextEncoder ?? $node.util.TextEncoder;
-    const encoder = new TextEncoder();
-    function $mol_charset_encode(value) {
-        return encoder.encode(value);
+    let buf = new Uint8Array(2 ** 12);
+    function $mol_charset_encode(str) {
+        const capacity = str.length * 3;
+        if (buf.byteLength < capacity)
+            buf = new Uint8Array(capacity);
+        return buf.slice(0, $mol_charset_encode_to(str, buf));
     }
     $.$mol_charset_encode = $mol_charset_encode;
+    function $mol_charset_encode_to(str, buf, from = 0) {
+        let pos = from;
+        for (let i = 0; i < str.length; i++) {
+            let code = str.charCodeAt(i);
+            if (code < 0x80) {
+                buf[pos++] = code;
+            }
+            else if (code < 0x800) {
+                buf[pos++] = 0xc0 | (code >> 6);
+                buf[pos++] = 0x80 | (code & 0x3f);
+            }
+            else if (code < 0xd800 || code >= 0xe000) {
+                buf[pos++] = 0xe0 | (code >> 12);
+                buf[pos++] = 0x80 | ((code >> 6) & 0x3f);
+                buf[pos++] = 0x80 | (code & 0x3f);
+            }
+            else {
+                const point = ((code - 0xd800) << 10) + str.charCodeAt(++i) + 0x2400;
+                buf[pos++] = 0xf0 | (point >> 18);
+                buf[pos++] = 0x80 | ((point >> 12) & 0x3f);
+                buf[pos++] = 0x80 | ((point >> 6) & 0x3f);
+                buf[pos++] = 0x80 | (point & 0x3f);
+            }
+        }
+        return pos - from;
+    }
+    $.$mol_charset_encode_to = $mol_charset_encode_to;
+    function $mol_charset_encode_size(str) {
+        let size = 0;
+        for (let i = 0; i < str.length; i++) {
+            let code = str.charCodeAt(i);
+            if (code < 0x80)
+                size += 1;
+            else if (code < 0x800)
+                size += 2;
+            else if (code < 0xd800 || code >= 0xe000)
+                size += 3;
+            else
+                size += 4;
+        }
+        return size;
+    }
+    $.$mol_charset_encode_size = $mol_charset_encode_size;
 })($ || ($ = {}));
 
 ;
@@ -5315,6 +5361,74 @@ var $;
 "use strict";
 var $;
 (function ($) {
+    let $mol_rest_code;
+    (function ($mol_rest_code) {
+        $mol_rest_code[$mol_rest_code["Continue"] = 100] = "Continue";
+        $mol_rest_code[$mol_rest_code["Switching protocols"] = 101] = "Switching protocols";
+        $mol_rest_code[$mol_rest_code["Processing"] = 102] = "Processing";
+        $mol_rest_code[$mol_rest_code["OK"] = 200] = "OK";
+        $mol_rest_code[$mol_rest_code["Created"] = 201] = "Created";
+        $mol_rest_code[$mol_rest_code["Accepted"] = 202] = "Accepted";
+        $mol_rest_code[$mol_rest_code["Non-Authoritative Information"] = 203] = "Non-Authoritative Information";
+        $mol_rest_code[$mol_rest_code["No Content"] = 204] = "No Content";
+        $mol_rest_code[$mol_rest_code["Reset Content"] = 205] = "Reset Content";
+        $mol_rest_code[$mol_rest_code["Partial Content"] = 206] = "Partial Content";
+        $mol_rest_code[$mol_rest_code["Multi Status"] = 207] = "Multi Status";
+        $mol_rest_code[$mol_rest_code["Already Reported"] = 208] = "Already Reported";
+        $mol_rest_code[$mol_rest_code["IM Used"] = 226] = "IM Used";
+        $mol_rest_code[$mol_rest_code["Multiple Choices"] = 300] = "Multiple Choices";
+        $mol_rest_code[$mol_rest_code["Moved Permanently"] = 301] = "Moved Permanently";
+        $mol_rest_code[$mol_rest_code["Found"] = 302] = "Found";
+        $mol_rest_code[$mol_rest_code["See Other"] = 303] = "See Other";
+        $mol_rest_code[$mol_rest_code["Not Modified"] = 304] = "Not Modified";
+        $mol_rest_code[$mol_rest_code["Use Proxy"] = 305] = "Use Proxy";
+        $mol_rest_code[$mol_rest_code["Temporary Redirect"] = 307] = "Temporary Redirect";
+        $mol_rest_code[$mol_rest_code["Bad Request"] = 400] = "Bad Request";
+        $mol_rest_code[$mol_rest_code["Unauthorized"] = 401] = "Unauthorized";
+        $mol_rest_code[$mol_rest_code["Payment Required"] = 402] = "Payment Required";
+        $mol_rest_code[$mol_rest_code["Forbidden"] = 403] = "Forbidden";
+        $mol_rest_code[$mol_rest_code["Not Found"] = 404] = "Not Found";
+        $mol_rest_code[$mol_rest_code["Method Not Allowed"] = 405] = "Method Not Allowed";
+        $mol_rest_code[$mol_rest_code["Not Acceptable"] = 406] = "Not Acceptable";
+        $mol_rest_code[$mol_rest_code["Proxy Authentication Required"] = 407] = "Proxy Authentication Required";
+        $mol_rest_code[$mol_rest_code["Request Timeout"] = 408] = "Request Timeout";
+        $mol_rest_code[$mol_rest_code["Conflict"] = 409] = "Conflict";
+        $mol_rest_code[$mol_rest_code["Gone"] = 410] = "Gone";
+        $mol_rest_code[$mol_rest_code["Length Required"] = 411] = "Length Required";
+        $mol_rest_code[$mol_rest_code["Precondition Failed"] = 412] = "Precondition Failed";
+        $mol_rest_code[$mol_rest_code["Request Entity Too Large"] = 413] = "Request Entity Too Large";
+        $mol_rest_code[$mol_rest_code["Request URI Too Long"] = 414] = "Request URI Too Long";
+        $mol_rest_code[$mol_rest_code["Unsupported Media Type"] = 415] = "Unsupported Media Type";
+        $mol_rest_code[$mol_rest_code["Requested Range Not Satisfiable"] = 416] = "Requested Range Not Satisfiable";
+        $mol_rest_code[$mol_rest_code["Expectation Failed"] = 417] = "Expectation Failed";
+        $mol_rest_code[$mol_rest_code["Teapot"] = 418] = "Teapot";
+        $mol_rest_code[$mol_rest_code["Unprocessable Entity"] = 422] = "Unprocessable Entity";
+        $mol_rest_code[$mol_rest_code["Locked"] = 423] = "Locked";
+        $mol_rest_code[$mol_rest_code["Failed Dependency"] = 424] = "Failed Dependency";
+        $mol_rest_code[$mol_rest_code["Upgrade Required"] = 426] = "Upgrade Required";
+        $mol_rest_code[$mol_rest_code["Precondition Required"] = 428] = "Precondition Required";
+        $mol_rest_code[$mol_rest_code["Too Many Requests"] = 429] = "Too Many Requests";
+        $mol_rest_code[$mol_rest_code["Request Header Fields Too Large"] = 431] = "Request Header Fields Too Large";
+        $mol_rest_code[$mol_rest_code["Unavailable For Legal Reasons"] = 451] = "Unavailable For Legal Reasons";
+        $mol_rest_code[$mol_rest_code["Internal Server Error"] = 500] = "Internal Server Error";
+        $mol_rest_code[$mol_rest_code["Not Implemented"] = 501] = "Not Implemented";
+        $mol_rest_code[$mol_rest_code["Bad Gateway"] = 502] = "Bad Gateway";
+        $mol_rest_code[$mol_rest_code["Service Unavailable"] = 503] = "Service Unavailable";
+        $mol_rest_code[$mol_rest_code["Gateway Timeout"] = 504] = "Gateway Timeout";
+        $mol_rest_code[$mol_rest_code["HTTP Version Not Supported"] = 505] = "HTTP Version Not Supported";
+        $mol_rest_code[$mol_rest_code["Insufficient Storage"] = 507] = "Insufficient Storage";
+        $mol_rest_code[$mol_rest_code["Loop Detected"] = 508] = "Loop Detected";
+        $mol_rest_code[$mol_rest_code["Not Extended"] = 510] = "Not Extended";
+        $mol_rest_code[$mol_rest_code["Network Authentication Required"] = 511] = "Network Authentication Required";
+        $mol_rest_code[$mol_rest_code["Network Read Timeout Error"] = 598] = "Network Read Timeout Error";
+        $mol_rest_code[$mol_rest_code["Network Connect Timeout Error"] = 599] = "Network Connect Timeout Error";
+    })($mol_rest_code = $.$mol_rest_code || ($.$mol_rest_code = {}));
+})($ || ($ = {}));
+
+;
+"use strict";
+var $;
+(function ($) {
     function $mol_dom_parse(text, type = 'application/xhtml+xml') {
         const parser = new $mol_dom_context.DOMParser();
         const doc = parser.parseFromString(text, type);
@@ -5330,12 +5444,9 @@ var $;
 "use strict";
 var $;
 (function ($) {
-    class $mol_fetch_response extends $mol_object2 {
+    class $mol_fetch_response extends $mol_object {
         native;
-        constructor(native) {
-            super();
-            this.native = native;
-        }
+        request;
         status() {
             const types = ['unknown', 'inform', 'success', 'redirect', 'wrong', 'failed'];
             return types[Math.floor(this.native.status / 100)];
@@ -5343,8 +5454,11 @@ var $;
         code() {
             return this.native.status;
         }
+        ok() {
+            return this.native.ok;
+        }
         message() {
-            return this.native.statusText || `HTTP Error ${this.code()}`;
+            return $mol_rest_code[this.code()] || `HTTP Error ${this.code()}`;
         }
         headers() {
             return this.native.headers;
@@ -5357,8 +5471,7 @@ var $;
         }
         text() {
             const buffer = this.buffer();
-            const native = this.native;
-            const mime = native.headers.get('content-type') || '';
+            const mime = this.mime() || '';
             const [, charset] = /charset=(.*)/.exec(mime) || [, 'utf-8'];
             const decoder = new TextDecoder(charset);
             return decoder.decode(buffer);
@@ -5398,14 +5511,13 @@ var $;
         $mol_action
     ], $mol_fetch_response.prototype, "html", null);
     $.$mol_fetch_response = $mol_fetch_response;
-    class $mol_fetch extends $mol_object2 {
-        static request(input, init = {}) {
+    class $mol_fetch_request extends $mol_object {
+        native;
+        response_async() {
             const controller = new AbortController();
             let done = false;
-            const promise = fetch(input, {
-                ...init,
-                signal: controller.signal,
-            }).finally(() => {
+            const request = new Request(this.native, { signal: controller.signal });
+            const promise = fetch(request).finally(() => {
                 done = true;
             });
             return Object.assign(promise, {
@@ -5415,14 +5527,34 @@ var $;
                 },
             });
         }
-        static response(input, init) {
-            return new $mol_fetch_response($mol_wire_sync(this).request(input, init));
+        response() {
+            return this.$.$mol_fetch_response.make({
+                native: $mol_wire_sync(this).response_async(),
+                request: this
+            });
         }
-        static success(input, init) {
-            const response = this.response(input, init);
+        success() {
+            const response = this.response();
             if (response.status() === 'success')
                 return response;
             throw new Error(response.message(), { cause: response });
+        }
+    }
+    __decorate([
+        $mol_action
+    ], $mol_fetch_request.prototype, "response", null);
+    $.$mol_fetch_request = $mol_fetch_request;
+    class $mol_fetch extends $mol_object {
+        static request(input, init) {
+            return this.$.$mol_fetch_request.make({
+                native: new Request(input, init)
+            });
+        }
+        static response(input, init) {
+            return this.request(input, init).response();
+        }
+        static success(input, init) {
+            return this.request(input, init).success();
         }
         static stream(input, init) {
             return this.success(input, init).stream();
@@ -5451,34 +5583,7 @@ var $;
     }
     __decorate([
         $mol_action
-    ], $mol_fetch, "response", null);
-    __decorate([
-        $mol_action
-    ], $mol_fetch, "success", null);
-    __decorate([
-        $mol_action
-    ], $mol_fetch, "stream", null);
-    __decorate([
-        $mol_action
-    ], $mol_fetch, "text", null);
-    __decorate([
-        $mol_action
-    ], $mol_fetch, "json", null);
-    __decorate([
-        $mol_action
-    ], $mol_fetch, "blob", null);
-    __decorate([
-        $mol_action
-    ], $mol_fetch, "buffer", null);
-    __decorate([
-        $mol_action
-    ], $mol_fetch, "xml", null);
-    __decorate([
-        $mol_action
-    ], $mol_fetch, "xhtml", null);
-    __decorate([
-        $mol_action
-    ], $mol_fetch, "html", null);
+    ], $mol_fetch, "request", null);
     $.$mol_fetch = $mol_fetch;
 })($ || ($ = {}));
 
@@ -5821,6 +5926,10 @@ var $;
 			if(next !== undefined) return next;
 			return null;
 		}
+		status(next){
+			if(next !== undefined) return next;
+			return [];
+		}
 		event(){
 			return {
 				...(super.event()), 
@@ -5852,6 +5961,7 @@ var $;
 	($mol_mem(($.$mol_button.prototype), "event_key_press"));
 	($mol_mem(($.$mol_button.prototype), "click"));
 	($mol_mem(($.$mol_button.prototype), "event_click"));
+	($mol_mem(($.$mol_button.prototype), "status"));
 	($mol_mem(($.$mol_button.prototype), "Speck"));
 
 
@@ -5865,7 +5975,6 @@ var $;
     var $$;
     (function ($$) {
         class $mol_button extends $.$mol_button {
-            status(next = [null]) { return next; }
             disabled() {
                 return !this.enabled();
             }
@@ -5893,13 +6002,13 @@ var $;
                 return this.enabled() ? super.tab_index() : -1;
             }
             error() {
-                const [error] = this.status();
+                const error = this.status()?.[0];
                 if (!error)
                     return '';
-                if (error instanceof Promise) {
+                if ($mol_promise_like(error)) {
                     return $mol_fail_hidden(error);
                 }
-                return String(error.message ?? error);
+                return this.$.$mol_error_message(error);
             }
             hint_safe() {
                 try {
@@ -5917,9 +6026,6 @@ var $;
                 ];
             }
         }
-        __decorate([
-            $mol_mem
-        ], $mol_button.prototype, "status", null);
         $$.$mol_button = $mol_button;
     })($$ = $.$$ || ($.$$ = {}));
 })($ || ($ = {}));
@@ -7230,6 +7336,13 @@ var $;
         });
     })($$ = $.$$ || ($.$$ = {}));
 })($ || ($ = {}));
+
+;
+"use strict";
+
+;
+"use strict";
+var $node = $node || {};
 
 ;
 "use strict";
@@ -12344,6 +12457,9 @@ var $;
 		hint_safe(){
 			return (this.hint());
 		}
+		error(){
+			return "";
+		}
 		interactive(){
 			return true;
 		}
@@ -12368,6 +12484,9 @@ var $;
 		sub(){
 			return [(this.Label())];
 		}
+		enabled(){
+			return true;
+		}
 		click(next){
 			if(next !== undefined) return next;
 			return null;
@@ -12375,6 +12494,10 @@ var $;
 		event_click(next){
 			if(next !== undefined) return next;
 			return null;
+		}
+		status(next){
+			if(next !== undefined) return next;
+			return [];
 		}
 		event(){
 			return {
@@ -12393,6 +12516,11 @@ var $;
 				"title": (this.hint_safe())
 			};
 		}
+		Speck(){
+			const obj = new this.$.$mol_speck();
+			(obj.value) = () => ((this.error()));
+			return obj;
+		}
 	};
 	($mol_mem(($.$eve_button.prototype), "Label"));
 	($mol_mem(($.$eve_button.prototype), "event_activate"));
@@ -12403,6 +12531,8 @@ var $;
 	($mol_mem(($.$eve_button.prototype), "size"));
 	($mol_mem(($.$eve_button.prototype), "click"));
 	($mol_mem(($.$eve_button.prototype), "event_click"));
+	($mol_mem(($.$eve_button.prototype), "status"));
+	($mol_mem(($.$eve_button.prototype), "Speck"));
 
 
 ;
@@ -12415,35 +12545,57 @@ var $;
     var $$;
     (function ($$) {
         class $eve_button extends $.$eve_button {
-            dom_name() {
-                return 'button';
+            disabled() {
+                return !this.enabled();
             }
-            attr() {
-                const attrs = super.attr();
-                return {
-                    ...attrs,
-                    type: 'button',
-                    disabled: this.disabled() ? true : false,
-                };
-            }
-            disabled(next) {
-                return next ?? false;
-            }
-            state() {
-                if (this.disabled())
-                    return 'disabled';
-                return super.state();
-            }
-            click(event) {
-                if (this.disabled()) {
-                    event?.preventDefault();
+            event_activate(next) {
+                if (!next)
                     return;
+                if (!this.enabled())
+                    return;
+                try {
+                    this.event_click(next);
+                    this.click(next);
+                    this.status([null]);
+                }
+                catch (error) {
+                    Promise.resolve().then(() => this.status([error]));
+                    $mol_fail_hidden(error);
                 }
             }
+            event_key_press(event) {
+                if (event.keyCode === $mol_keyboard_code.enter) {
+                    return this.activate(event);
+                }
+            }
+            tab_index() {
+                return this.enabled() ? super.tab_index() : -1;
+            }
+            error() {
+                const error = this.status()?.[0];
+                if (!error)
+                    return '';
+                if ($mol_promise_like(error)) {
+                    return $mol_fail_hidden(error);
+                }
+                return this.$.$mol_error_message(error);
+            }
+            hint_safe() {
+                try {
+                    return this.hint();
+                }
+                catch (error) {
+                    $mol_fail_log(error);
+                    return '';
+                }
+            }
+            sub_visible() {
+                return [
+                    ...this.error() ? [this.Speck()] : [],
+                    ...this.sub(),
+                ];
+            }
         }
-        __decorate([
-            $mol_mem
-        ], $eve_button.prototype, "disabled", null);
         $$.$eve_button = $eve_button;
     })($$ = $.$$ || ($.$$ = {}));
 })($ || ($ = {}));
@@ -12503,16 +12655,12 @@ var $;
 		tab_colors(){
 			return "primary";
 		}
-		checked(next){
+		selected(next){
 			if(next !== undefined) return next;
 			return false;
 		}
 		aria_checked(){
 			return "false";
-		}
-		event_click(next){
-			if(next !== undefined) return next;
-			return null;
 		}
 		size(){
 			return null;
@@ -12526,18 +12674,14 @@ var $;
 		attr(){
 			return {
 				...(super.attr()), 
-				"mol_check_checked": (this.checked()), 
+				"mol_check_checked": (this.selected()), 
 				"aria-checked": (this.aria_checked()), 
 				"role": "tab", 
 				"aria-selected": (this.aria_checked())
 			};
 		}
-		event(){
-			return {...(super.event()), "click": (next) => (this.event_click(next))};
-		}
 	};
-	($mol_mem(($.$eve_tab.prototype), "checked"));
-	($mol_mem(($.$eve_tab.prototype), "event_click"));
+	($mol_mem(($.$eve_tab.prototype), "selected"));
 
 
 ;
@@ -12550,37 +12694,13 @@ var $;
     var $$;
     (function ($$) {
         class $eve_tab extends $.$eve_tab {
-            checked(next) {
-                return next ?? false;
-            }
-            disabled(next) {
-                return next ?? false;
-            }
             tab_colors() {
-                return this.checked() ? 'primary' : 'low';
-            }
-            event_click(next) {
-                console.log($eve_tab.prototype);
-                if (this.disabled()) {
-                    next?.preventDefault();
-                    return;
-                }
-                if (next?.defaultPrevented)
-                    return;
-                this.checked(true);
-                if (next)
-                    next.preventDefault();
+                return this.selected() ? 'primary' : 'low';
             }
             aria_checked() {
-                return String(this.checked());
+                return String(this.selected());
             }
         }
-        __decorate([
-            $mol_mem
-        ], $eve_tab.prototype, "checked", null);
-        __decorate([
-            $mol_mem
-        ], $eve_tab.prototype, "disabled", null);
         $$.$eve_tab = $eve_tab;
     })($$ = $.$$ || ($.$$ = {}));
 })($ || ($ = {}));
@@ -12611,47 +12731,115 @@ var $;
 })($ || ($ = {}));
 
 ;
-	($.$eve_tab_group) = class $eve_tab_group extends ($.$eve_flex) {
-		tab_label(id){
-			return "";
-		}
-		tab_checked(id){
-			return false;
-		}
-		tab_click(id, next){
-			if(next !== undefined) return next;
-			return null;
-		}
-		Tab(id){
-			const obj = new this.$.$eve_tab();
-			(obj.label) = () => ((this.tab_label(id)));
-			(obj.checked) = (next) => ((this.tab_checked(id)));
-			(obj.event_click) = (next) => ((this.tab_click(id, next)));
-			return obj;
-		}
-		tabs(){
-			return [(this.Tab(id))];
-		}
-		direction(){
-			return "row";
-		}
-		wrap(){
-			return "nowrap";
+	($.$eve_selection_single) = class $eve_selection_single extends ($.$eve_surface) {
+		options(){
+			return {};
 		}
 		value(next){
 			if(next !== undefined) return next;
 			return "";
 		}
+		option_ids(){
+			return [];
+		}
+		option_value(id){
+			return "";
+		}
+		option_label(id){
+			return "";
+		}
+		option_selected(id){
+			return false;
+		}
+		option_click(id, next){
+			if(next !== undefined) return next;
+			return null;
+		}
+	};
+	($mol_mem(($.$eve_selection_single.prototype), "value"));
+	($mol_mem_key(($.$eve_selection_single.prototype), "option_click"));
+
+
+;
+"use strict";
+
+;
+"use strict";
+var $;
+(function ($) {
+    var $$;
+    (function ($$) {
+        class $eve_selection_single extends $.$eve_selection_single {
+            options() {
+                return {};
+            }
+            value(next) {
+                return next ?? '';
+            }
+            option_ids() {
+                return Object.keys(this.options());
+            }
+            option_value(id) { return id; }
+            option_label(id) { return this.options()[id] || id; }
+            option_selected(id) { return this.value() === id; }
+            option_click(id, event) {
+                console.log('option_click', id, event);
+                if (!event)
+                    return null;
+                this.value(id);
+                return event;
+            }
+        }
+        __decorate([
+            $mol_mem
+        ], $eve_selection_single.prototype, "value", null);
+        __decorate([
+            $mol_mem
+        ], $eve_selection_single.prototype, "option_ids", null);
+        __decorate([
+            $mol_mem_key
+        ], $eve_selection_single.prototype, "option_value", null);
+        __decorate([
+            $mol_mem_key
+        ], $eve_selection_single.prototype, "option_label", null);
+        __decorate([
+            $mol_mem_key
+        ], $eve_selection_single.prototype, "option_selected", null);
+        __decorate([
+            $mol_mem_key
+        ], $eve_selection_single.prototype, "option_click", null);
+        $$.$eve_selection_single = $eve_selection_single;
+    })($$ = $.$$ || ($.$$ = {}));
+})($ || ($ = {}));
+
+;
+	($.$eve_tab_group) = class $eve_tab_group extends ($.$eve_selection_single) {
+		Tab(id){
+			const obj = new this.$.$eve_tab();
+			(obj.label) = () => ((this.option_label(id)));
+			(obj.selected) = (next) => ((this.option_selected(id)));
+			(obj.click) = (next) => ((this.option_click(id, next)));
+			return obj;
+		}
+		tabs(){
+			return [(this.Tab(id))];
+		}
+		Layout(){
+			const obj = new this.$.$eve_flex();
+			(obj.direction) = () => ("row");
+			(obj.wrap) = () => ("nowrap");
+			(obj.sub) = () => ((this.tabs()));
+			return obj;
+		}
 		attr(){
 			return {...(super.attr()), "role": "tablist"};
 		}
 		sub(){
-			return (this.tabs());
+			return [(this.Layout())];
 		}
 	};
-	($mol_mem_key(($.$eve_tab_group.prototype), "tab_click"));
 	($mol_mem_key(($.$eve_tab_group.prototype), "Tab"));
-	($mol_mem(($.$eve_tab_group.prototype), "value"));
+	($mol_mem(($.$eve_tab_group.prototype), "Layout"));
 
 
 ;
@@ -12664,46 +12852,13 @@ var $;
     var $$;
     (function ($$) {
         class $eve_tab_group extends $.$eve_tab_group {
-            value(next) {
-                return $mol_state_session.value(`${this}.value()`, next) ?? '';
-            }
-            options() {
-                return {};
-            }
             tabs() {
-                return Object.keys(this.options()).map(id => this.Tab(id));
-            }
-            tab_label(id) {
-                return this.options()[id] ?? id;
-            }
-            tab_checked(id) {
-                return this.value() === id;
-            }
-            tab_click(id, event) {
-                if (!event)
-                    return null;
-                this.value(id);
-                return event;
+                return this.option_ids().map(id => this.Tab(id));
             }
         }
         __decorate([
             $mol_mem
-        ], $eve_tab_group.prototype, "value", null);
-        __decorate([
-            $mol_mem
-        ], $eve_tab_group.prototype, "options", null);
-        __decorate([
-            $mol_mem
         ], $eve_tab_group.prototype, "tabs", null);
-        __decorate([
-            $mol_mem_key
-        ], $eve_tab_group.prototype, "tab_label", null);
-        __decorate([
-            $mol_mem_key
-        ], $eve_tab_group.prototype, "tab_checked", null);
-        __decorate([
-            $mol_mem_key
-        ], $eve_tab_group.prototype, "tab_click", null);
         $$.$eve_tab_group = $eve_tab_group;
     })($$ = $.$$ || ($.$$ = {}));
 })($ || ($ = {}));
@@ -12736,9 +12891,9 @@ var $;
 			const obj = new this.$.$eve_tab_group();
 			(obj.value) = (next) => ((this.value(next)));
 			(obj.tabs) = () => ((this.tabs()));
-			(obj.tab_label) = (id) => ((this.spread_title(id)));
-			(obj.tab_checked) = (id) => ((this.tab_checked(id)));
-			(obj.tab_click) = (id, next) => ((this.tab_click(id, next)));
+			(obj.option_label) = (id) => ((this.spread_title(id)));
+			(obj.option_selected) = (id) => ((this.option_selected(id)));
+			(obj.option_click) = (id, next) => ((this.option_click(id, next)));
 			return obj;
 		}
 		Content(){
@@ -12756,10 +12911,10 @@ var $;
 		spread_title(id){
 			return "";
 		}
-		tab_checked(id){
+		option_selected(id){
 			return false;
 		}
-		tab_click(id, next){
+		option_click(id, next){
 			if(next !== undefined) return next;
 			return null;
 		}
@@ -12773,7 +12928,7 @@ var $;
 	($mol_mem(($.$eve_tab_container.prototype), "Tabs"));
 	($mol_mem(($.$eve_tab_container.prototype), "Content"));
 	($mol_mem(($.$eve_tab_container.prototype), "value"));
-	($mol_mem_key(($.$eve_tab_container.prototype), "tab_click"));
+	($mol_mem_key(($.$eve_tab_container.prototype), "option_click"));
 
 
 ;
@@ -12786,9 +12941,6 @@ var $;
     var $$;
     (function ($$) {
         class $eve_tab_container extends $.$eve_tab_container {
-            tabs() {
-                return this.spread_ids().map(id => this.Tabs().Tab(id));
-            }
             spread_ids() {
                 return Object.keys(this.spreads());
             }
@@ -12797,12 +12949,6 @@ var $;
                 return dict?.[id] ?? new this.$.$eve_surface();
             }
             spread_title(id) { return id; }
-            tab_checked(id) {
-                return this.value() === id;
-            }
-            tab_click(id, event) {
-                this.value(id);
-            }
             content() {
                 const active = this.value();
                 return active ? [this.Spread(active)] : [];
@@ -12810,16 +12956,10 @@ var $;
         }
         __decorate([
             $mol_mem
-        ], $eve_tab_container.prototype, "tabs", null);
-        __decorate([
-            $mol_mem
         ], $eve_tab_container.prototype, "spread_ids", null);
         __decorate([
             $mol_mem_key
         ], $eve_tab_container.prototype, "Spread", null);
-        __decorate([
-            $mol_mem_key
-        ], $eve_tab_container.prototype, "tab_click", null);
         __decorate([
             $mol_mem
         ], $eve_tab_container.prototype, "content", null);
@@ -15164,42 +15304,40 @@ var $;
 
 
 ;
-	($.$eve_input_logical_radio_group) = class $eve_input_logical_radio_group extends ($.$eve_flex) {
+	($.$eve_radio_group) = class $eve_radio_group extends ($.$eve_selection_single) {
 		group_name(){
 			return "";
 		}
-		option_value(id){
+		radio_option_value(id){
 			return "";
 		}
-		option_checked(id){
+		radio_option_selected(id){
 			return false;
 		}
-		option_title(id){
+		radio_option_label(id){
 			return "";
 		}
-		option_click(id, next){
+		radio_option_click(id, next){
 			if(next !== undefined) return next;
 			return null;
 		}
 		Option(id){
 			const obj = new this.$.$eve_input_logical_radio_labelled();
 			(obj.name) = () => ((this.group_name()));
-			(obj.value) = () => ((this.option_value(id)));
-			(obj.checked) = (next) => ((this.option_checked(id)));
-			(obj.label) = () => ((this.option_title(id)));
-			(obj.event_click) = (next) => ((this.option_click(id, next)));
+			(obj.value) = () => ((this.radio_option_value(id)));
+			(obj.checked) = (next) => ((this.radio_option_selected(id)));
+			(obj.label) = () => ((this.radio_option_label(id)));
+			(obj.event_click) = (next) => ((this.radio_option_click(id, next)));
 			return obj;
 		}
 		Options(){
 			return [(this.Option(id))];
 		}
-		direction(next){
-			if(next !== undefined) return next;
-			return "column";
-		}
-		value(next){
-			if(next !== undefined) return next;
-			return "";
+		Layout(){
+			const obj = new this.$.$eve_flex();
+			(obj.direction) = () => ("column");
+			(obj.sub) = () => ((this.Options()));
+			return obj;
 		}
 		name(){
 			return (this.group_name());
@@ -15207,20 +15345,13 @@ var $;
 		attr(){
 			return {"role": "radiogroup"};
 		}
-		options(){
-			return {};
-		}
-		Option_ids(){
-			return [];
-		}
 		sub(){
-			return (this.Options());
+			return [(this.Layout())];
 		}
 	};
-	($mol_mem_key(($.$eve_input_logical_radio_group.prototype), "option_click"));
-	($mol_mem_key(($.$eve_input_logical_radio_group.prototype), "Option"));
-	($mol_mem(($.$eve_input_logical_radio_group.prototype), "direction"));
-	($mol_mem(($.$eve_input_logical_radio_group.prototype), "value"));
+	($mol_mem_key(($.$eve_radio_group.prototype), "radio_option_click"));
+	($mol_mem_key(($.$eve_radio_group.prototype), "Option"));
+	($mol_mem(($.$eve_radio_group.prototype), "Layout"));
 
 
 ;
@@ -15232,89 +15363,47 @@ var $;
 (function ($) {
     var $$;
     (function ($$) {
-        class $eve_input_logical_radio_group extends $.$eve_input_logical_radio_group {
-            options() {
-                return {};
-            }
+        class $eve_radio_group extends $.$eve_radio_group {
             group_name() {
                 return `${this}.${this.value()}`;
             }
-            value(next) {
-                return $mol_state_session.value(`${this}.value()`, next) ?? '';
-            }
-            Option_ids() {
-                return Object.keys(this.options());
-            }
             Options() {
-                return this.Option_ids().map(id => this.Option(id));
+                return this.option_ids().map(id => this.Option(id));
             }
-            option_value(id) {
-                return id;
+            radio_option_value(id) {
+                return this.option_value(id);
             }
-            option_title(id) {
-                return this.options()[id] || id;
+            radio_option_selected(id) {
+                return this.option_selected(id);
             }
-            option_checked(id) {
-                return this.value() === id;
+            radio_option_label(id) {
+                return this.option_label(id);
             }
-            option_click(id, event) {
-                if (!event)
-                    return null;
-                this.value(id);
-                return event;
+            radio_option_click(id, event) {
+                return this.option_click(id, event);
             }
         }
         __decorate([
             $mol_mem
-        ], $eve_input_logical_radio_group.prototype, "group_name", null);
+        ], $eve_radio_group.prototype, "group_name", null);
         __decorate([
             $mol_mem
-        ], $eve_input_logical_radio_group.prototype, "Option_ids", null);
-        __decorate([
-            $mol_mem
-        ], $eve_input_logical_radio_group.prototype, "Options", null);
+        ], $eve_radio_group.prototype, "Options", null);
         __decorate([
             $mol_mem_key
-        ], $eve_input_logical_radio_group.prototype, "option_value", null);
+        ], $eve_radio_group.prototype, "radio_option_value", null);
         __decorate([
             $mol_mem_key
-        ], $eve_input_logical_radio_group.prototype, "option_title", null);
+        ], $eve_radio_group.prototype, "radio_option_selected", null);
         __decorate([
             $mol_mem_key
-        ], $eve_input_logical_radio_group.prototype, "option_checked", null);
+        ], $eve_radio_group.prototype, "radio_option_label", null);
         __decorate([
             $mol_mem_key
-        ], $eve_input_logical_radio_group.prototype, "option_click", null);
-        $$.$eve_input_logical_radio_group = $eve_input_logical_radio_group;
+        ], $eve_radio_group.prototype, "radio_option_click", null);
+        $$.$eve_radio_group = $eve_radio_group;
     })($$ = $.$$ || ($.$$ = {}));
 })($ || ($ = {}));
-
-;
-"use strict";
-var $;
-(function ($) {
-    var $$;
-    (function ($$) {
-        const { rem } = $mol_style_unit;
-        $mol_style_define($eve_input_logical_radio_group, {
-            flex: {
-                direction: 'column',
-                wrap: 'nowrap',
-            },
-            gap: rem(0.5),
-            align: {
-                items: 'flex-start',
-            },
-        });
-    })($$ = $.$$ || ($.$$ = {}));
-})($ || ($ = {}));
-
-;
-	($.$eve_radio_group) = class $eve_radio_group extends ($.$eve_input_logical_radio_group) {};
-
-
-;
-"use strict";
 
 ;
 "use strict";
@@ -16293,24 +16382,18 @@ var $;
 
 ;
 	($.$eve_segmented_option) = class $eve_segmented_option extends ($.$eve_button) {
-		variant(id){
+		variant(){
 			return "ghost";
 		}
 		size(next){
 			if(next !== undefined) return next;
 			return "s";
 		}
-		value(){
-			return "";
-		}
 		label(){
 			return "";
 		}
-		checked(){
+		selected(){
 			return false;
-		}
-		sub(){
-			return [(this.label())];
 		}
 	};
 	($mol_mem(($.$eve_segmented_option.prototype), "size"));
@@ -16327,7 +16410,7 @@ var $;
     (function ($$) {
         class $eve_segmented_option extends $.$eve_segmented_option {
             variant() {
-                return this.checked() ? 'text' : 'ghost';
+                return this.selected() ? 'text' : 'ghost';
             }
         }
         __decorate([
@@ -16363,36 +16446,25 @@ var $;
 })($ || ($ = {}));
 
 ;
-	($.$eve_segmented) = class $eve_segmented extends ($.$eve_surface) {
+	($.$eve_segmented) = class $eve_segmented extends ($.$eve_selection_single) {
 		Plate(){
 			const obj = new this.$.$eve_surface();
 			(obj.colors) = () => ("low");
 			return obj;
 		}
-		option_value(id){
-			return "";
-		}
-		option_checked(id){
-			return false;
-		}
-		option_click(id, next){
-			if(next !== undefined) return next;
-			return null;
-		}
-		Option(id){
+		Segment(id){
 			const obj = new this.$.$eve_segmented_option();
-			(obj.value) = () => ((this.option_value(id)));
-			(obj.checked) = (next) => ((this.option_checked(id)));
-			(obj.label) = () => ((this.option_title(id)));
+			(obj.selected) = () => ((this.option_selected(id)));
+			(obj.label) = () => ((this.option_label(id)));
 			(obj.event_click) = (next) => ((this.option_click(id, next)));
 			return obj;
 		}
-		Options(){
-			return [(this.Option(id))];
+		segments(){
+			return [(this.Segment(id))];
 		}
 		Options_container(){
 			const obj = new this.$.$eve_flex();
-			(obj.sub) = () => ((this.Options()));
+			(obj.sub) = () => ((this.segments()));
 			return obj;
 		}
 		Container(){
@@ -16407,19 +16479,12 @@ var $;
 		colors(){
 			return "low";
 		}
-		options(){
-			return {};
-		}
-		option_title(id){
-			return "";
-		}
 		sub(){
 			return [(this.Container())];
 		}
 	};
 	($mol_mem(($.$eve_segmented.prototype), "Plate"));
-	($mol_mem_key(($.$eve_segmented.prototype), "option_click"));
-	($mol_mem_key(($.$eve_segmented.prototype), "Option"));
+	($mol_mem_key(($.$eve_segmented.prototype), "Segment"));
 	($mol_mem(($.$eve_segmented.prototype), "Options_container"));
 	($mol_mem(($.$eve_segmented.prototype), "Container"));
 
@@ -16434,81 +16499,13 @@ var $;
     var $$;
     (function ($$) {
         class $eve_segmented extends $.$eve_segmented {
-            options() {
-                return {};
-            }
-            value(next) {
-                return $mol_state_session.value(`${this}.value()`, next) ?? '';
-            }
-            Option_ids() {
-                return Object.keys(this.options());
-            }
-            Options() {
-                return this.Option_ids().map(id => this.Option(id));
-            }
-            Option(id) {
-                const option = new this.$.$eve_segmented_option();
-                option.value = () => this.option_value(id);
-                option.label = () => this.option_title(id);
-                option.checked = () => this.option_checked(id);
-                option.event_click = (event) => this.option_click(id, event);
-                return option;
-            }
-            option_value(id) {
-                return id;
-            }
-            option_title(id) {
-                return this.options()[id] || id;
-            }
-            option_checked(id) {
-                return this.value() === id;
-            }
-            option_click(id, event) {
-                if (!event)
-                    return null;
-                this.value(id);
-                return event;
-            }
-            Container() {
-                const container = super.Container();
-                const ids = this.Option_ids();
-                const index = ids.indexOf(this.value());
-                const count = ids.length;
-                if (count > 0) {
-                    const node = container.dom_node();
-                    node.style.setProperty('--eve-segment-index', String(index));
-                    node.style.setProperty('--eve-segment-count', String(count));
-                }
-                return container;
+            segments() {
+                return this.option_ids().map(id => this.Segment(id));
             }
         }
         __decorate([
             $mol_mem
-        ], $eve_segmented.prototype, "value", null);
-        __decorate([
-            $mol_mem
-        ], $eve_segmented.prototype, "Option_ids", null);
-        __decorate([
-            $mol_mem
-        ], $eve_segmented.prototype, "Options", null);
-        __decorate([
-            $mol_mem_key
-        ], $eve_segmented.prototype, "Option", null);
-        __decorate([
-            $mol_mem_key
-        ], $eve_segmented.prototype, "option_value", null);
-        __decorate([
-            $mol_mem_key
-        ], $eve_segmented.prototype, "option_title", null);
-        __decorate([
-            $mol_mem_key
-        ], $eve_segmented.prototype, "option_checked", null);
-        __decorate([
-            $mol_mem_key
-        ], $eve_segmented.prototype, "option_click", null);
-        __decorate([
-            $mol_mem
-        ], $eve_segmented.prototype, "Container", null);
+        ], $eve_segmented.prototype, "segments", null);
         $$.$eve_segmented = $eve_segmented;
     })($$ = $.$$ || ($.$$ = {}));
 })($ || ($ = {}));
@@ -16565,7 +16562,7 @@ var $;
 		Basic_playground(){
 			const obj = new this.$.$eve_app_page_sb_playground();
 			(obj.component_name) = () => ("Live_segmented");
-			(obj.default_source) = () => ("Live_segmented $eve_segmented\n\tvalue? \\home\n\toptions *\n\t\thome \\home\n\t\tprofile \\profile\n\t\tsettings \\settings\n\t\tabout \\about\n");
+			(obj.default_source) = () => ("Live_segmented $eve_segmented\n\tvalue \\home\n\toptions *\n\t\thome \\home\n\t\tprofile \\profile\n\t\tsettings \\settings\n\t\tabout \\about\n");
 			return obj;
 		}
 		Basic_page(){
@@ -18252,7 +18249,7 @@ var $;
 "use strict";
 var $;
 (function ($) {
-    $mol_style_attach("mol/status/status.view.css", "[mol_status] {\n\tpadding: var(--mol_gap_text);\n\tborder-radius: var(--mol_gap_round);\n\tdisplay: block;\n}\n\n[mol_status]:not([mol_view_error=\"Promise\"]) {\n\tcolor: var(--mol_theme_focus);\n}\n\n[mol_status]:not([mol_view_error=\"Promise\"]):empty {\n\tdisplay: none;\n}\n");
+    $mol_style_attach("mol/status/status.view.css", "[mol_status] {\n\tpadding: var(--mol_gap_text);\n\tborder-radius: var(--mol_gap_round);\n\tdisplay: block;\n\tflex-shrink: 1;\n\tword-wrap: break-word;\n}\n\n[mol_status]:not([mol_view_error=\"Promise\"]) {\n\tcolor: var(--mol_theme_focus);\n}\n\n[mol_status]:not([mol_view_error=\"Promise\"]):empty {\n\tdisplay: none;\n}\n");
 })($ || ($ = {}));
 
 ;
@@ -18260,6 +18257,9 @@ var $;
 		keydown(next){
 			if(next !== undefined) return next;
 			return null;
+		}
+		form_invalid(){
+			return (this.$.$mol_locale.text("$mol_form_form_invalid"));
 		}
 		form_fields(){
 			return [];
@@ -18328,8 +18328,8 @@ var $;
 		message_done(){
 			return (this.$.$mol_locale.text("$mol_form_message_done"));
 		}
-		message_invalid(){
-			return (this.$.$mol_locale.text("$mol_form_message_invalid"));
+		errors(){
+			return {"Form invalid": (this.form_invalid())};
 		}
 		rows(){
 			return [(this.Body()), (this.Foot())];
@@ -18344,6 +18344,13 @@ var $;
 	($mol_mem(($.$mol_form.prototype), "Foot"));
 	($mol_mem(($.$mol_form.prototype), "save"));
 
+
+;
+"use strict";
+var $;
+(function ($) {
+    $mol_style_attach("mol/form/form.view.css", "[mol_form] {\r\n\tgap: var(--mol_gap_block);\r\n}\r\n\r\n[mol_form_body] {\r\n\tgap: var(--mol_gap_block);\r\n}");
+})($ || ($ = {}));
 
 ;
 "use strict";
@@ -18371,7 +18378,7 @@ var $;
             }
             result(next) {
                 if (next instanceof Error)
-                    next = next.message || this.message_invalid();
+                    next = this.errors()[next.message] || next.message || this.form_invalid();
                 return next ?? '';
             }
             buttons() {
@@ -18383,7 +18390,7 @@ var $;
             submit(next) {
                 try {
                     if (!this.submit_allowed()) {
-                        throw new Error(this.message_invalid());
+                        throw new Error('Form invalid');
                     }
                     this.save(next);
                 }
@@ -18415,13 +18422,6 @@ var $;
         ], $mol_form.prototype, "submit", null);
         $$.$mol_form = $mol_form;
     })($$ = $.$$ || ($.$$ = {}));
-})($ || ($ = {}));
-
-;
-"use strict";
-var $;
-(function ($) {
-    $mol_style_attach("mol/form/form.view.css", "[mol_form] {\r\n\tgap: var(--mol_gap_block);\r\n}\r\n\r\n[mol_form_body] {\r\n\tgap: var(--mol_gap_block);\r\n}");
 })($ || ($ = {}));
 
 ;

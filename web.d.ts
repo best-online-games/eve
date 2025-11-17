@@ -990,6 +990,10 @@ declare namespace $ {
 }
 
 declare namespace $ {
+    function $mol_error_message(this: $, error: unknown): string;
+}
+
+declare namespace $ {
     function $mol_dom_render_styles(el: Element, styles: {
         [key: string]: string | number;
     }): void;
@@ -1070,7 +1074,7 @@ declare namespace $ {
         static view_names(suffix: string): string[];
         view_names_owned(): string[];
         view_names(): Set<string>;
-        theme(next?: null | string): string | null;
+        theme(next?: string | null): string | null | undefined;
         attr_static(): {
             [key: string]: string | number | boolean | null;
         };
@@ -1553,10 +1557,10 @@ declare namespace $ {
     function $mol_charset_decode(buffer: AllowSharedBufferSource, encoding?: $mol_charset_encoding): string;
 }
 
-declare var $node: any;
-
 declare namespace $ {
-    function $mol_charset_encode(value: string): Uint8Array<ArrayBuffer>;
+    function $mol_charset_encode(str: string): Uint8Array<ArrayBuffer>;
+    function $mol_charset_encode_to(str: string, buf: Uint8Array<ArrayBuffer>, from?: number): number;
+    function $mol_charset_encode_size(str: string): number;
 }
 
 declare namespace $ {
@@ -1670,15 +1674,80 @@ declare namespace $ {
 }
 
 declare namespace $ {
+    enum $mol_rest_code {
+        'Continue' = 100,
+        'Switching protocols' = 101,
+        'Processing' = 102,
+        'OK' = 200,
+        'Created' = 201,
+        'Accepted' = 202,
+        'Non-Authoritative Information' = 203,
+        'No Content' = 204,
+        'Reset Content' = 205,
+        'Partial Content' = 206,
+        'Multi Status' = 207,
+        'Already Reported' = 208,
+        'IM Used' = 226,
+        'Multiple Choices' = 300,
+        'Moved Permanently' = 301,
+        'Found' = 302,
+        'See Other' = 303,
+        'Not Modified' = 304,
+        'Use Proxy' = 305,
+        'Temporary Redirect' = 307,
+        'Bad Request' = 400,
+        'Unauthorized' = 401,
+        'Payment Required' = 402,
+        'Forbidden' = 403,
+        'Not Found' = 404,
+        'Method Not Allowed' = 405,
+        'Not Acceptable' = 406,
+        'Proxy Authentication Required' = 407,
+        'Request Timeout' = 408,
+        'Conflict' = 409,
+        'Gone' = 410,
+        'Length Required' = 411,
+        'Precondition Failed' = 412,
+        'Request Entity Too Large' = 413,
+        'Request URI Too Long' = 414,
+        'Unsupported Media Type' = 415,
+        'Requested Range Not Satisfiable' = 416,
+        'Expectation Failed' = 417,
+        'Teapot' = 418,
+        'Unprocessable Entity' = 422,
+        'Locked' = 423,
+        'Failed Dependency' = 424,
+        'Upgrade Required' = 426,
+        'Precondition Required' = 428,
+        'Too Many Requests' = 429,
+        'Request Header Fields Too Large' = 431,
+        'Unavailable For Legal Reasons' = 451,
+        'Internal Server Error' = 500,
+        'Not Implemented' = 501,
+        'Bad Gateway' = 502,
+        'Service Unavailable' = 503,
+        'Gateway Timeout' = 504,
+        'HTTP Version Not Supported' = 505,
+        'Insufficient Storage' = 507,
+        'Loop Detected' = 508,
+        'Not Extended' = 510,
+        'Network Authentication Required' = 511,
+        'Network Read Timeout Error' = 598,
+        'Network Connect Timeout Error' = 599
+    }
+}
+
+declare namespace $ {
     function $mol_dom_parse(text: string, type?: DOMParserSupportedType): Document;
 }
 
 declare namespace $ {
-    class $mol_fetch_response extends $mol_object2 {
+    class $mol_fetch_response extends $mol_object {
         readonly native: Response;
-        constructor(native: Response);
+        readonly request: $mol_fetch_request;
         status(): "success" | "unknown" | "inform" | "redirect" | "wrong" | "failed";
         code(): number;
+        ok(): boolean;
         message(): string;
         headers(): Headers;
         mime(): string | null;
@@ -1691,10 +1760,16 @@ declare namespace $ {
         xhtml(): Document;
         html(): Document;
     }
-    class $mol_fetch extends $mol_object2 {
-        static request(input: RequestInfo, init?: RequestInit): Promise<Response> & {
+    class $mol_fetch_request extends $mol_object {
+        readonly native: Request;
+        response_async(): Promise<Response> & {
             destructor: () => void;
         };
+        response(): $mol_fetch_response;
+        success(): $mol_fetch_response;
+    }
+    class $mol_fetch extends $mol_object {
+        static request(input: RequestInfo, init?: RequestInit): $mol_fetch_request;
         static response(input: RequestInfo, init?: RequestInit): $mol_fetch_response;
         static success(input: RequestInfo, init?: RequestInit): $mol_fetch_response;
         static stream(input: RequestInfo, init?: RequestInit): ReadableStream<Uint8Array<ArrayBuffer>> | null;
@@ -1804,6 +1879,7 @@ declare namespace $ {
 		enabled( ): boolean
 		click( next?: any ): any
 		event_click( next?: any ): any
+		status( next?: readonly(any)[] ): readonly(any)[]
 		event( ): ({ 
 			click( next?: ReturnType< $mol_button['activate'] > ): ReturnType< $mol_button['activate'] >,
 			dblclick( next?: ReturnType< $mol_button['clicks'] > ): ReturnType< $mol_button['clicks'] >,
@@ -1824,7 +1900,6 @@ declare namespace $ {
 //# sourceMappingURL=button.view.tree.d.ts.map
 declare namespace $.$$ {
     class $mol_button extends $.$mol_button {
-        status(next?: any[]): any[];
         disabled(): boolean;
         event_activate(next: Event): void;
         event_key_press(event: KeyboardEvent): any;
@@ -2365,6 +2440,8 @@ declare namespace $.$$ {
 
 declare namespace $.$$ {
 }
+
+declare var $node: any;
 
 declare namespace $ {
     type $mol_blob = Blob;
@@ -5001,6 +5078,11 @@ declare namespace $ {
 		,
 		ReturnType< $mol_text['text'] >
 	>
+	type $mol_speck__value_eve_button_2 = $mol_type_enforce<
+		ReturnType< $eve_button['error'] >
+		,
+		ReturnType< $mol_speck['value'] >
+	>
 	export class $eve_button extends $eve_flex {
 		label( ): string
 		Label( ): $mol_text
@@ -5013,6 +5095,7 @@ declare namespace $ {
 		tab_index( ): number
 		hint( ): string
 		hint_safe( ): ReturnType< $eve_button['hint'] >
+		error( ): string
 		interactive( ): boolean
 		colors( next?: string ): string
 		variant( next?: string ): string
@@ -5020,8 +5103,10 @@ declare namespace $ {
 		justify_content( ): string
 		align_items( ): string
 		sub( ): readonly(any)[]
+		enabled( ): boolean
 		click( next?: any ): any
 		event_click( next?: any ): any
+		status( next?: readonly(any)[] ): readonly(any)[]
 		event( ): ({ 
 			click( next?: ReturnType< $eve_button['activate'] > ): ReturnType< $eve_button['activate'] >,
 			dblclick( next?: ReturnType< $eve_button['clicks'] > ): ReturnType< $eve_button['clicks'] >,
@@ -5033,6 +5118,7 @@ declare namespace $ {
 			'tabindex': ReturnType< $eve_button['tab_index'] >,
 			'title': ReturnType< $eve_button['hint_safe'] >,
 		})  & ReturnType< $eve_flex['attr'] >
+		Speck( ): $mol_speck
 	}
 	
 }
@@ -5040,17 +5126,13 @@ declare namespace $ {
 //# sourceMappingURL=button.view.tree.d.ts.map
 declare namespace $.$$ {
     class $eve_button extends $.$eve_button {
-        dom_name(): string;
-        attr(): {
-            type: string;
-            disabled: boolean;
-            role: string;
-            tabindex: ReturnType<$.$eve_button["tab_index"]>;
-            title: ReturnType<$.$eve_button["hint_safe"]>;
-        };
-        disabled(next?: boolean): boolean;
-        state(): any;
-        click(event?: MouseEvent): void;
+        disabled(): boolean;
+        event_activate(next: Event): void;
+        event_key_press(event: KeyboardEvent): any;
+        tab_index(): number;
+        error(): string;
+        hint_safe(): string;
+        sub_visible(): any[];
     }
 }
 
@@ -5062,21 +5144,17 @@ declare namespace $ {
 	export class $eve_tab extends $eve_button {
 		tab_variant( ): string
 		tab_colors( ): string
-		checked( next?: boolean ): boolean
+		selected( next?: boolean ): boolean
 		aria_checked( ): string
-		event_click( next?: any ): any
 		size( ): any
 		variant( ): ReturnType< $eve_tab['tab_variant'] >
 		colors( ): ReturnType< $eve_tab['tab_colors'] >
 		attr( ): ({ 
-			'mol_check_checked': ReturnType< $eve_tab['checked'] >,
+			'mol_check_checked': ReturnType< $eve_tab['selected'] >,
 			'aria-checked': ReturnType< $eve_tab['aria_checked'] >,
 			'role': string,
 			'aria-selected': ReturnType< $eve_tab['aria_checked'] >,
 		})  & ReturnType< $eve_button['attr'] >
-		event( ): ({ 
-			click( next?: ReturnType< $eve_tab['event_click'] > ): ReturnType< $eve_tab['event_click'] >,
-		})  & ReturnType< $eve_button['event'] >
 	}
 	
 }
@@ -5084,10 +5162,7 @@ declare namespace $ {
 //# sourceMappingURL=tab.view.tree.d.ts.map
 declare namespace $.$$ {
     class $eve_tab extends $.$eve_tab {
-        checked(next?: boolean): boolean;
-        disabled(next?: boolean): boolean;
         tab_colors(): $eve_surface_color;
-        event_click(next?: Event): void;
         aria_checked(): string;
     }
 }
@@ -5097,34 +5172,71 @@ declare namespace $.$$ {
 
 declare namespace $ {
 
+	export class $eve_selection_single extends $eve_surface {
+		options( ): Record<string, any>
+		value( next?: string ): string
+		option_ids( ): readonly(string)[]
+		option_value( id: any): string
+		option_label( id: any): string
+		option_selected( id: any): boolean
+		option_click( id: any, next?: any ): any
+	}
+	
+}
+
+//# sourceMappingURL=single.view.tree.d.ts.map
+declare namespace $.$$ {
+    class $eve_selection_single extends $.$eve_selection_single {
+        options(): Record<string, string>;
+        value(next?: string): string;
+        option_ids(): string[];
+        option_value(id: string): string;
+        option_label(id: string): string;
+        option_selected(id: string): boolean;
+        option_click(id: string, event?: Event): Event | null;
+    }
+}
+
+declare namespace $ {
+
 	type $eve_tab__label_eve_tab_group_1 = $mol_type_enforce<
-		ReturnType< $eve_tab_group['tab_label'] >
+		ReturnType< $eve_tab_group['option_label'] >
 		,
 		ReturnType< $eve_tab['label'] >
 	>
-	type $eve_tab__checked_eve_tab_group_2 = $mol_type_enforce<
-		ReturnType< $eve_tab_group['tab_checked'] >
+	type $eve_tab__selected_eve_tab_group_2 = $mol_type_enforce<
+		ReturnType< $eve_tab_group['option_selected'] >
 		,
-		ReturnType< $eve_tab['checked'] >
+		ReturnType< $eve_tab['selected'] >
 	>
-	type $eve_tab__event_click_eve_tab_group_3 = $mol_type_enforce<
-		ReturnType< $eve_tab_group['tab_click'] >
+	type $eve_tab__click_eve_tab_group_3 = $mol_type_enforce<
+		ReturnType< $eve_tab_group['option_click'] >
 		,
-		ReturnType< $eve_tab['event_click'] >
+		ReturnType< $eve_tab['click'] >
 	>
-	export class $eve_tab_group extends $eve_flex {
-		tab_label( id: any): string
-		tab_checked( id: any): boolean
-		tab_click( id: any, next?: any ): any
+	type $eve_flex__direction_eve_tab_group_4 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $eve_flex['direction'] >
+	>
+	type $eve_flex__wrap_eve_tab_group_5 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $eve_flex['wrap'] >
+	>
+	type $eve_flex__sub_eve_tab_group_6 = $mol_type_enforce<
+		ReturnType< $eve_tab_group['tabs'] >
+		,
+		ReturnType< $eve_flex['sub'] >
+	>
+	export class $eve_tab_group extends $eve_selection_single {
 		Tab( id: any): $eve_tab
 		tabs( ): readonly(any)[]
-		direction( ): string
-		wrap( ): string
-		value( next?: string ): string
+		Layout( ): $eve_flex
 		attr( ): ({ 
 			'role': string,
-		})  & ReturnType< $eve_flex['attr'] >
-		sub( ): ReturnType< $eve_tab_group['tabs'] >
+		})  & ReturnType< $eve_selection_single['attr'] >
+		sub( ): readonly(any)[]
 	}
 	
 }
@@ -5132,12 +5244,7 @@ declare namespace $ {
 //# sourceMappingURL=group.view.tree.d.ts.map
 declare namespace $.$$ {
     class $eve_tab_group extends $.$eve_tab_group {
-        value(next?: string): string;
-        options(): Record<string, string>;
         tabs(): $.$eve_tab[];
-        tab_label(id: string): string;
-        tab_checked(id: string): boolean;
-        tab_click(id: string, event?: Event): Event | null;
     }
 }
 
@@ -5156,20 +5263,20 @@ declare namespace $ {
 		,
 		ReturnType< $eve_tab_group['tabs'] >
 	>
-	type $eve_tab_group__tab_label_eve_tab_container_3 = $mol_type_enforce<
+	type $eve_tab_group__option_label_eve_tab_container_3 = $mol_type_enforce<
 		ReturnType< $eve_tab_container['spread_title'] >
 		,
-		ReturnType< $eve_tab_group['tab_label'] >
+		ReturnType< $eve_tab_group['option_label'] >
 	>
-	type $eve_tab_group__tab_checked_eve_tab_container_4 = $mol_type_enforce<
-		ReturnType< $eve_tab_container['tab_checked'] >
+	type $eve_tab_group__option_selected_eve_tab_container_4 = $mol_type_enforce<
+		ReturnType< $eve_tab_container['option_selected'] >
 		,
-		ReturnType< $eve_tab_group['tab_checked'] >
+		ReturnType< $eve_tab_group['option_selected'] >
 	>
-	type $eve_tab_group__tab_click_eve_tab_container_5 = $mol_type_enforce<
-		ReturnType< $eve_tab_container['tab_click'] >
+	type $eve_tab_group__option_click_eve_tab_container_5 = $mol_type_enforce<
+		ReturnType< $eve_tab_container['option_click'] >
 		,
-		ReturnType< $eve_tab_group['tab_click'] >
+		ReturnType< $eve_tab_group['option_click'] >
 	>
 	type $eve_surface__sub_eve_tab_container_6 = $mol_type_enforce<
 		ReturnType< $eve_tab_container['content'] >
@@ -5183,8 +5290,8 @@ declare namespace $ {
 		value( next?: string ): string
 		spreads( ): Record<string, any>
 		spread_title( id: any): string
-		tab_checked( id: any): boolean
-		tab_click( id: any, next?: any ): any
+		option_selected( id: any): boolean
+		option_click( id: any, next?: any ): any
 		content( ): readonly(any)[]
 		sub( ): readonly(any)[]
 	}
@@ -5194,12 +5301,9 @@ declare namespace $ {
 //# sourceMappingURL=container.view.tree.d.ts.map
 declare namespace $.$$ {
     class $eve_tab_container extends $.$eve_tab_container {
-        tabs(): $.$eve_tab[];
         spread_ids(): readonly string[];
         Spread(id: string): $mol_view;
         spread_title(id: string): string;
-        tab_checked(id: string): boolean;
-        tab_click(id: string, event?: Event): void;
         content(): $mol_view[];
     }
 }
@@ -6162,80 +6266,71 @@ declare namespace $ {
 //# sourceMappingURL=card.view.tree.d.ts.map
 declare namespace $ {
 
-	type $eve_input_logical_radio_labelled__name_eve_input_logical_radio_group_1 = $mol_type_enforce<
-		ReturnType< $eve_input_logical_radio_group['group_name'] >
+	type $eve_input_logical_radio_labelled__name_eve_radio_group_1 = $mol_type_enforce<
+		ReturnType< $eve_radio_group['group_name'] >
 		,
 		ReturnType< $eve_input_logical_radio_labelled['name'] >
 	>
-	type $eve_input_logical_radio_labelled__value_eve_input_logical_radio_group_2 = $mol_type_enforce<
-		ReturnType< $eve_input_logical_radio_group['option_value'] >
+	type $eve_input_logical_radio_labelled__value_eve_radio_group_2 = $mol_type_enforce<
+		ReturnType< $eve_radio_group['radio_option_value'] >
 		,
 		ReturnType< $eve_input_logical_radio_labelled['value'] >
 	>
-	type $eve_input_logical_radio_labelled__checked_eve_input_logical_radio_group_3 = $mol_type_enforce<
-		ReturnType< $eve_input_logical_radio_group['option_checked'] >
+	type $eve_input_logical_radio_labelled__checked_eve_radio_group_3 = $mol_type_enforce<
+		ReturnType< $eve_radio_group['radio_option_selected'] >
 		,
 		ReturnType< $eve_input_logical_radio_labelled['checked'] >
 	>
-	type $eve_input_logical_radio_labelled__label_eve_input_logical_radio_group_4 = $mol_type_enforce<
-		ReturnType< $eve_input_logical_radio_group['option_title'] >
+	type $eve_input_logical_radio_labelled__label_eve_radio_group_4 = $mol_type_enforce<
+		ReturnType< $eve_radio_group['radio_option_label'] >
 		,
 		ReturnType< $eve_input_logical_radio_labelled['label'] >
 	>
-	type $eve_input_logical_radio_labelled__event_click_eve_input_logical_radio_group_5 = $mol_type_enforce<
-		ReturnType< $eve_input_logical_radio_group['option_click'] >
+	type $eve_input_logical_radio_labelled__event_click_eve_radio_group_5 = $mol_type_enforce<
+		ReturnType< $eve_radio_group['radio_option_click'] >
 		,
 		ReturnType< $eve_input_logical_radio_labelled['event_click'] >
 	>
-	export class $eve_input_logical_radio_group extends $eve_flex {
+	type $eve_flex__direction_eve_radio_group_6 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $eve_flex['direction'] >
+	>
+	type $eve_flex__sub_eve_radio_group_7 = $mol_type_enforce<
+		ReturnType< $eve_radio_group['Options'] >
+		,
+		ReturnType< $eve_flex['sub'] >
+	>
+	export class $eve_radio_group extends $eve_selection_single {
 		group_name( ): string
-		option_value( id: any): string
-		option_checked( id: any): boolean
-		option_title( id: any): string
-		option_click( id: any, next?: any ): any
+		radio_option_value( id: any): string
+		radio_option_selected( id: any): boolean
+		radio_option_label( id: any): string
+		radio_option_click( id: any, next?: any ): any
 		Option( id: any): $eve_input_logical_radio_labelled
 		Options( ): readonly(any)[]
-		direction( next?: string ): string
-		value( next?: string ): string
-		name( ): ReturnType< $eve_input_logical_radio_group['group_name'] >
+		Layout( ): $eve_flex
+		name( ): ReturnType< $eve_radio_group['group_name'] >
 		attr( ): ({ 
 			'role': string,
 		}) 
-		options( ): Record<string, any>
-		Option_ids( ): readonly(any)[]
-		sub( ): ReturnType< $eve_input_logical_radio_group['Options'] >
+		sub( ): readonly(any)[]
 	}
 	
 }
 
 //# sourceMappingURL=group.view.tree.d.ts.map
 declare namespace $.$$ {
-    class $eve_input_logical_radio_group extends $.$eve_input_logical_radio_group {
-        options(): {
-            [key: string]: string;
-        };
+    class $eve_radio_group extends $.$eve_radio_group {
         group_name(): string;
-        value(next?: string): string;
-        Option_ids(): string[];
         Options(): $.$eve_input_logical_radio_labelled[];
-        option_value(id: string): string;
-        option_title(id: string): string;
-        option_checked(id: string): boolean;
-        option_click(id: string, event?: Event): Event | null;
+        radio_option_value(id: string): string;
+        radio_option_selected(id: string): boolean;
+        radio_option_label(id: string): string;
+        radio_option_click(id: string, event?: Event): any;
     }
 }
 
-declare namespace $.$$ {
-}
-
-declare namespace $ {
-
-	export class $eve_radio_group extends $eve_input_logical_radio_group {
-	}
-	
-}
-
-//# sourceMappingURL=group.view.tree.d.ts.map
 declare namespace $ {
 
 	type $mol_view__dom_name_eve_input_logical_radio_1 = $mol_type_enforce<
@@ -6895,12 +6990,10 @@ declare namespace $ {
 declare namespace $ {
 
 	export class $eve_segmented_option extends $eve_button {
-		variant( id: any): string
+		variant( ): string
 		size( next?: string ): string
-		value( ): string
 		label( ): string
-		checked( ): boolean
-		sub( ): readonly(any)[]
+		selected( ): boolean
 	}
 	
 }
@@ -6922,54 +7015,44 @@ declare namespace $ {
 		,
 		ReturnType< $eve_surface['colors'] >
 	>
-	type $eve_segmented_option__value_eve_segmented_2 = $mol_type_enforce<
-		ReturnType< $eve_segmented['option_value'] >
+	type $eve_segmented_option__selected_eve_segmented_2 = $mol_type_enforce<
+		ReturnType< $eve_segmented['option_selected'] >
 		,
-		ReturnType< $eve_segmented_option['value'] >
+		ReturnType< $eve_segmented_option['selected'] >
 	>
-	type $eve_segmented_option__checked_eve_segmented_3 = $mol_type_enforce<
-		ReturnType< $eve_segmented['option_checked'] >
-		,
-		ReturnType< $eve_segmented_option['checked'] >
-	>
-	type $eve_segmented_option__label_eve_segmented_4 = $mol_type_enforce<
-		ReturnType< $eve_segmented['option_title'] >
+	type $eve_segmented_option__label_eve_segmented_3 = $mol_type_enforce<
+		ReturnType< $eve_segmented['option_label'] >
 		,
 		ReturnType< $eve_segmented_option['label'] >
 	>
-	type $eve_segmented_option__event_click_eve_segmented_5 = $mol_type_enforce<
+	type $eve_segmented_option__event_click_eve_segmented_4 = $mol_type_enforce<
 		ReturnType< $eve_segmented['option_click'] >
 		,
 		ReturnType< $eve_segmented_option['event_click'] >
 	>
-	type $eve_flex__sub_eve_segmented_6 = $mol_type_enforce<
-		ReturnType< $eve_segmented['Options'] >
+	type $eve_flex__sub_eve_segmented_5 = $mol_type_enforce<
+		ReturnType< $eve_segmented['segments'] >
 		,
 		ReturnType< $eve_flex['sub'] >
 	>
-	type $eve_flex__direction_eve_segmented_7 = $mol_type_enforce<
+	type $eve_flex__direction_eve_segmented_6 = $mol_type_enforce<
 		string
 		,
 		ReturnType< $eve_flex['direction'] >
 	>
-	type $eve_flex__sub_eve_segmented_8 = $mol_type_enforce<
+	type $eve_flex__sub_eve_segmented_7 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $eve_flex['sub'] >
 	>
-	export class $eve_segmented extends $eve_surface {
+	export class $eve_segmented extends $eve_selection_single {
 		Plate( ): $eve_surface
-		option_value( id: any): string
-		option_checked( id: any): boolean
-		option_click( id: any, next?: any ): any
-		Option( id: any): $eve_segmented_option
-		Options( ): readonly(any)[]
+		Segment( id: any): $eve_segmented_option
+		segments( ): readonly(any)[]
 		Options_container( ): $eve_flex
 		Container( ): $eve_flex
 		variant( ): string
 		colors( ): string
-		options( ): Record<string, any>
-		option_title( id: any): string
 		sub( ): readonly(any)[]
 	}
 	
@@ -6978,18 +7061,7 @@ declare namespace $ {
 //# sourceMappingURL=segmented.view.tree.d.ts.map
 declare namespace $.$$ {
     class $eve_segmented extends $.$eve_segmented {
-        options(): {
-            [key: string]: string;
-        };
-        value(next?: string): string;
-        Option_ids(): string[];
-        Options(): $eve_segmented_option[];
-        Option(id: string): $eve_segmented_option;
-        option_value(id: string): string;
-        option_title(id: string): string;
-        option_checked(id: string): boolean;
-        option_click(id: string, event?: Event): Event | null;
-        Container(): $.$eve_flex;
+        segments(): $.$eve_segmented_option[];
     }
 }
 
@@ -7785,6 +7857,9 @@ declare namespace $ {
 }
 
 declare namespace $ {
+}
+
+declare namespace $ {
 
 	type $mol_list__sub_mol_form_1 = $mol_type_enforce<
 		ReturnType< $mol_form['body'] >
@@ -7823,6 +7898,7 @@ declare namespace $ {
 	>
 	export class $mol_form extends $mol_list {
 		keydown( next?: any ): any
+		form_invalid( ): string
 		form_fields( ): readonly($mol_form_field)[]
 		body( ): ReturnType< $mol_form['form_fields'] >
 		Body( ): $mol_list
@@ -7843,7 +7919,7 @@ declare namespace $ {
 		})  & ReturnType< $mol_list['event'] >
 		save( next?: any ): any
 		message_done( ): string
-		message_invalid( ): string
+		errors( ): Record<string, string>
 		rows( ): readonly(any)[]
 	}
 	
@@ -7860,9 +7936,6 @@ declare namespace $.$$ {
         buttons(): ($.$mol_status | $mol_button_major)[];
         submit(next?: Event): boolean;
     }
-}
-
-declare namespace $ {
 }
 
 declare namespace $ {
