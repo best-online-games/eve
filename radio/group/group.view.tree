@@ -1,2 +1,15 @@
-$eve_radio_group $eve_input_logical_radio_group
+$eve_radio_group $eve_selection_single
+	name <= group_name \
+	attr *
+		role \radiogroup
+	sub /
+		<= Layout $eve_flex
+			direction \column
+			sub <= Options /
+				<= Option* $eve_input_logical_radio_labelled
+					name <= group_name
+					value <= radio_option_value* \
+					checked? <= radio_option_selected* false
+					label <= radio_option_label* \
+					event_click?event <=> radio_option_click*?event null
 

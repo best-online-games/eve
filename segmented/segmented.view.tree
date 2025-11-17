@@ -1,8 +1,6 @@
-$eve_segmented $eve_surface
+$eve_segmented $eve_selection_single
 	variant \outline
 	colors \low
-	options *
-	option_title* \
 	sub /
 		<= Container $eve_flex
 			direction \row
@@ -13,6 +11,6 @@ $eve_segmented $eve_surface
 					sub <= Options /
 						<= Option* $eve_segmented_option
 							value <= option_value* \
-							checked? <= option_checked* false
-							label <= option_title*
+							checked? <= option_selected* false
+							label <= option_label*
 							event_click?event <=> option_click*?event null

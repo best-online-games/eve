@@ -19,35 +19,33 @@ namespace $.$$ {
 	export class $eve_tab_group extends $.$eve_tab_group {
 
 		@$mol_mem
-		value( next?: string ): string {
-			return $mol_state_session.value( `${ this }.value()`, next ) ?? ''
+		override value( next?: string ): string {
+			const key = `${ this }.value()`
+			if( next !== undefined ) {
+				$mol_state_session.value( key, next )
+				return next
+			}
+			return $mol_state_session.value( key ) ?? super.value()
 		}
 
 		@$mol_mem
-		options(): Record<string, string> {
-			return {}
-		}
-
-		@$mol_mem
-		tabs() {
-			return Object.keys( this.options() ).map( id => this.Tab( id ) )
+		override tabs() {
+			return this.option_ids().map( id => this.Tab( id ) )
 		}
 
 		@$mol_mem_key
 		tab_label( id: string ) {
-			return this.options()[ id ] ?? id
+			return this.option_label( id )
 		}
 
 		@$mol_mem_key
 		tab_checked( id: string ) {
-			return this.value() === id
+			return this.option_selected( id )
 		}
 
 		@$mol_mem_key
 		tab_click( id: string, event?: Event ) {
-			if( !event ) return null
-			this.value( id )
-			return event
+			return this.option_click( id, event )
 		}
 
 	}

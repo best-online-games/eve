@@ -1,8 +1,0 @@
-$eve_options_single $eve_surface
-	options *
-	value? \
-	option_ids /string
-	option_value* \
-	option_title* \
-	option_checked* false
-	option_click*?event null

@@ -21,28 +21,17 @@ namespace $.$$ {
 	export class $eve_segmented extends $.$eve_segmented {
 
 		/**
-		 * Dictionary of option values and their labels
-		 * Override this to provide options
-		 */
-		options(): { [ key: string ]: string } {
-			return {}
-		}
-
-		/**
 		 * Current selected value
 		 * Stored in session state for persistence
 		 */
 		@$mol_mem
-		value( next?: string ) {
-			return $mol_state_session.value( `${ this }.value()`, next ) ?? ''
-		}
-
-		/**
-		 * List of option keys (IDs)
-		 */
-		@$mol_mem
-		Option_ids() {
-			return Object.keys( this.options() )
+		value( next?: string ): string {
+			const key = `${ this }.value()`
+			if( next !== undefined ) {
+				$mol_state_session.value( key, next )
+				return next
+			}
+			return $mol_state_session.value( key ) ?? ''
 		}
 
 		/**
@@ -50,7 +39,7 @@ namespace $.$$ {
 		 */
 		@$mol_mem
 		Options() {
-			return this.Option_ids().map( id => this.Option( id ) )
+			return this.option_ids().map( id => this.Option( id ) )
 		}
 
 		/**
@@ -60,51 +49,17 @@ namespace $.$$ {
 		Option( id: string ) {
 			const option = new this.$.$eve_segmented_option()
 			option.value = () => this.option_value( id )
-			option.label = () => this.option_title( id )
-			option.checked = () => this.option_checked( id )
+			option.label = () => this.option_label( id )
+			option.checked = () => this.option_selected( id )
 			option.event_click = ( event?: Event ) => this.option_click( id, event )
 			return option
-		}
-
-		/**
-		 * Get option value (same as id)
-		 */
-		@$mol_mem_key
-		option_value( id: string ) {
-			return id
-		}
-
-		/**
-		 * Get option label by key
-		 */
-		@$mol_mem_key
-		option_title( id: string ) {
-			return this.options()[ id ] || id
-		}
-
-		/**
-		 * Check if option is selected
-		 */
-		@$mol_mem_key
-		option_checked( id: string ) {
-			return this.value() === id
-		}
-
-		/**
-		 * Handle option click
-		 */
-		@$mol_mem_key
-		option_click( id: string, event?: Event ) {
-			if( !event ) return null
-			this.value( id )
-			return event
 		}
 
 		// Set CSS variables for plate animation
 		@$mol_mem
 		override Container() {
 			const container = super.Container()
-			const ids = this.Option_ids()
+			const ids = this.option_ids()
 			const index = ids.indexOf( this.value() )
 			const count = ids.length
 

@@ -2,7 +2,6 @@ namespace $.$$ {
 
 	/**
 	 * Abstract base class for single-selection option groups.
-	 * Formerly $eve_options_single.
 	 */
 	export class $eve_selection_single extends $.$eve_selection_single {
 
