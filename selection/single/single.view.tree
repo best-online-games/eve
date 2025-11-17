@@ -1,0 +1,8 @@
+$eve_selection_single $eve_surface
+	options *
+	value? \
+	option_ids /string
+	option_value* \
+	option_label* \
+	option_selected* false
+	option_click*?event null
