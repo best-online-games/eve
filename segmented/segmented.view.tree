@@ -12,4 +12,4 @@ $eve_segmented $eve_selection_single
 						<= Segment* $eve_segmented_option
 							selected <= option_selected*
 							label <= option_label*
-							click?event <=> option_click*?event
+							event_click?event <=> option_click*?event

@@ -1,53 +1,72 @@
 namespace $.$$ {
 
 	/**
-	 * Button component based on Flex
-	 * 
-	 * Features:
-	 * - Inherits all surface colors and variants (primary, secondary, danger, etc.)
-	 * - Inherits all surface sizes (xs, sm, md, lg, xl)
-	 * - Interactive states (enabled, hovered, pressed, disabled)
-	 * - Flex layout for content alignment
+	 * Simple button.
+	 * @see https://mol.hyoo.ru/#!section=demos/demo=mol_button_demo
 	 */
 	export class $eve_button extends $.$eve_button {
 
-		override dom_name() {
-			return 'button'
+		disabled() {
+			return !this.enabled()
 		}
 
-		override attr() {
-			const attrs = super.attr()
+		event_activate( next: Event ) {
 
-			return {
-				...attrs,
-				type: 'button',
-				disabled: this.disabled() ? true : false,
+			if( !next ) return
+			if( !this.enabled() ) return
+
+			try {
+
+				this.event_click( next )
+				this.click( next )
+				this.status( [ null ] )
+
+			} catch( error: any ) {
+				// Calling actions from catch section, if throwing promise breaks idempotency
+				Promise.resolve().then( () => this.status( [ error ] ) )
+				$mol_fail_hidden( error )
+
+			}
+
+		}
+
+		event_key_press( event: KeyboardEvent ) {
+			if( event.keyCode === $mol_keyboard_code.enter ) {
+				return this.activate( event )
 			}
 		}
 
-		@$mol_mem
-		disabled( next?: boolean ): boolean {
-			return next ?? false
+		tab_index() {
+			return this.enabled() ? super.tab_index() : -1
 		}
 
-		override state() {
-			if( this.disabled() ) return 'disabled'
-			return super.state()
-		}
+		error() {
 
-		/**
-		 * Click handler
-		 */
-		click( event?: MouseEvent ) {
-			console.log( 'button', event )
-			if( this.disabled() ) {
-				event?.preventDefault()
-				return
+			const error = this.status()?.[ 0 ]
+			if( !error ) return ''
+
+			if( $mol_promise_like( error ) ) {
+				return $mol_fail_hidden( error )
 			}
-			// Override in subclasses or via binding
+			return this.$.$mol_error_message( error )
+
+		}
+
+		hint_safe() {
+			try {
+				return this.hint()
+			} catch( error ) {
+				$mol_fail_log( error )
+				return ''
+			}
+		}
+
+		sub_visible() {
+			return [
+				... this.error() ? [ this.Speck() ] : [],
+				... this.sub(),
+			]
 		}
 
 	}
-
 }
-
