@@ -12679,9 +12679,6 @@ var $;
 
 ;
 	($.$eve_tab) = class $eve_tab extends ($.$eve_button) {
-		tab_variant(){
-			return "text";
-		}
 		tab_colors(){
 			return "primary";
 		}
@@ -12696,7 +12693,7 @@ var $;
 			return null;
 		}
 		variant(){
-			return (this.tab_variant());
+			return "text";
 		}
 		colors(){
 			return (this.tab_colors());
@@ -12704,7 +12701,7 @@ var $;
 		attr(){
 			return {
 				...(super.attr()), 
-				"mol_check_checked": (this.selected()), 
+				"eve_selected": (this.selected()), 
 				"aria-checked": (this.aria_checked()), 
 				"role": "tab", 
 				"aria-selected": (this.aria_checked())
@@ -12713,6 +12710,16 @@ var $;
 	};
 	($mol_mem(($.$eve_tab.prototype), "selected"));
 
+
+;
+"use strict";
+var $;
+(function ($) {
+    var $$;
+    (function ($$) {
+        $$.$eve_selection_attr = "[eve_selected]";
+    })($$ = $.$$ || ($.$$ = {}));
+})($ || ($ = {}));
 
 ;
 "use strict";
@@ -12747,7 +12754,7 @@ var $;
             cursor: 'pointer',
             transition: 'all 0.2s ease-out',
             fontWeight: '500',
-            '[mol_check_checked]': {
+            [$eve_selection_attr]: {
                 true: {
                     borderBottom: {
                         width: rem(0.125),
@@ -12804,6 +12811,7 @@ var $;
                 return {};
             }
             value(next) {
+                console.log('value', next);
                 return next ?? '';
             }
             option_ids() {
@@ -12813,7 +12821,7 @@ var $;
             option_label(id) { return this.options()[id] || id; }
             option_selected(id) { return this.value() === id; }
             option_click(id, event) {
-                console.log('option_click', id, event);
+                console.log('option_click', id, event, this.value());
                 if (!event)
                     return null;
                 this.value(id);
@@ -12847,8 +12855,8 @@ var $;
 		Tab(id){
 			const obj = new this.$.$eve_tab();
 			(obj.label) = () => ((this.option_label(id)));
-			(obj.selected) = (next) => ((this.option_selected(id)));
-			(obj.click) = (next) => ((this.option_click(id, next)));
+			(obj.selected) = () => ((this.option_selected(id)));
+			(obj.event_click) = (next) => ((this.option_click(id, next)));
 			return obj;
 		}
 		tabs(){
@@ -16412,8 +16420,14 @@ var $;
 
 ;
 	($.$eve_segmented_option) = class $eve_segmented_option extends ($.$eve_button) {
+		selected(){
+			return false;
+		}
+		aria_checked(){
+			return "false";
+		}
 		variant(){
-			return "ghost";
+			return "text";
 		}
 		size(next){
 			if(next !== undefined) return next;
@@ -16422,8 +16436,14 @@ var $;
 		label(){
 			return "";
 		}
-		selected(){
-			return false;
+		attr(){
+			return {
+				...(super.attr()), 
+				"eve_selected": (this.selected()), 
+				"aria-checked": (this.aria_checked()), 
+				"role": "tab", 
+				"aria-selected": (this.aria_checked())
+			};
 		}
 	};
 	($mol_mem(($.$eve_segmented_option.prototype), "size"));
@@ -16439,13 +16459,7 @@ var $;
     var $$;
     (function ($$) {
         class $eve_segmented_option extends $.$eve_segmented_option {
-            variant() {
-                return this.selected() ? 'text' : 'ghost';
-            }
         }
-        __decorate([
-            $mol_mem
-        ], $eve_segmented_option.prototype, "variant", null);
         $$.$eve_segmented_option = $eve_segmented_option;
     })($$ = $.$$ || ($.$$ = {}));
 })($ || ($ = {}));
@@ -16480,6 +16494,7 @@ var $;
 		Plate(){
 			const obj = new this.$.$eve_surface();
 			(obj.colors) = () => ("low");
+			(obj.style) = () => ({"width": (this.plate_width()), "insetInlineStart": (this.plate_inset_start())});
 			return obj;
 		}
 		Segment(id){
@@ -16509,6 +16524,14 @@ var $;
 		colors(){
 			return "low";
 		}
+		plate_width(next){
+			if(next !== undefined) return next;
+			return "0rem";
+		}
+		plate_inset_start(next){
+			if(next !== undefined) return next;
+			return "0rem";
+		}
 		sub(){
 			return [(this.Container())];
 		}
@@ -16517,6 +16540,8 @@ var $;
 	($mol_mem_key(($.$eve_segmented.prototype), "Segment"));
 	($mol_mem(($.$eve_segmented.prototype), "Options_container"));
 	($mol_mem(($.$eve_segmented.prototype), "Container"));
+	($mol_mem(($.$eve_segmented.prototype), "plate_width"));
+	($mol_mem(($.$eve_segmented.prototype), "plate_inset_start"));
 
 
 ;
@@ -16532,10 +16557,22 @@ var $;
             segments() {
                 return this.option_ids().map(id => this.Segment(id));
             }
+            plate_width() {
+                return `calc(100% / ${this.option_ids().length})`;
+            }
+            plate_inset_start() {
+                return `calc(${this.option_ids().indexOf(this.value())} * ${this.plate_width()})`;
+            }
         }
         __decorate([
             $mol_mem
         ], $eve_segmented.prototype, "segments", null);
+        __decorate([
+            $mol_mem
+        ], $eve_segmented.prototype, "plate_width", null);
+        __decorate([
+            $mol_mem
+        ], $eve_segmented.prototype, "plate_inset_start", null);
         $$.$eve_segmented = $eve_segmented;
     })($$ = $.$$ || ($.$$ = {}));
 })($ || ($ = {}));
@@ -16550,7 +16587,6 @@ var $;
         $mol_style_define($eve_segmented, {
             padding: rem(0.25),
             position: 'relative',
-            borderRadius: rem(0.5),
             Container: {
                 display: 'grid',
                 gridAutoFlow: 'column',
@@ -16561,28 +16597,12 @@ var $;
             },
             Plate: {
                 position: 'absolute',
-                top: 0,
-                bottom: 0,
+                insetBlock: '0',
                 zIndex: 0,
                 borderRadius: rem(0.375),
                 boxShadow: '0 4px 24px rgba(16, 3, 43, 0.07)',
-                transition: 'left 0.3s ease, width 0.3s ease',
-                width: 'calc(100% / var(--eve-segment-count))',
-                left: 'calc(var(--eve-segment-index) * (100% / var(--eve-segment-count)))',
+                transition: 'left 0.3s ease, width 0.3s ease'
             },
-        });
-        $mol_style_define($eve_segmented_option, {
-            position: 'relative',
-            zIndex: 1,
-            padding: {
-                left: rem(0.75),
-                right: rem(1.5),
-            },
-            borderRadius: rem(0.375),
-            textAlign: 'center',
-            cursor: 'pointer',
-            userSelect: 'none',
-            transition: 'none',
         });
     })($$ = $.$$ || ($.$$ = {}));
 })($ || ($ = {}));
@@ -16592,7 +16612,7 @@ var $;
 		Basic_playground(){
 			const obj = new this.$.$eve_app_page_sb_playground();
 			(obj.component_name) = () => ("Live_segmented");
-			(obj.default_source) = () => ("Live_segmented $eve_segmented\n\tvalue \\home\n\toptions *\n\t\thome \\home\n\t\tprofile \\profile\n\t\tsettings \\settings\n\t\tabout \\about\n");
+			(obj.default_source) = () => ("Live_segmented $eve_segmented\n\tvalue? \\home\n\toptions *\n\t\thome \\home\n\t\tprofile \\profile\n\t\tsettings \\settings\n\t\tabout \\about\n");
 			return obj;
 		}
 		Basic_page(){

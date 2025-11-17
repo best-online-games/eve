@@ -968,12 +968,12 @@ $eve_button $eve_flex
 
 $eve_tab $eve_button
 	size null
-	variant <= tab_variant \text
+	variant \text
 	colors <= tab_colors \primary
 	selected? false
 	attr *
 		^
-		mol_check_checked <= selected? false
+		eve_selected <= selected? false
 		aria-checked <= aria_checked \false
 		role \tab
 		aria-selected <= aria_checked
@@ -998,8 +998,8 @@ $eve_tab_group $eve_selection_single
 			sub <= tabs /
 				<= Tab* $eve_tab
 					label <= option_label*
-					selected? <= option_selected*
-					click?event <=> option_click*?event
+					selected <= option_selected*
+					event_click?event <=> option_click*?event
 
 $eve_tab_container $eve_surface
 	value? \
@@ -1586,20 +1586,31 @@ $eve_app_page_components_tab $eve_app_page_sb_page
 
 
 $eve_segmented_option $eve_button
-	variant \ghost
+	variant \text
 	size? \s
 	label \
 	selected false
+	attr *
+		^
+		eve_selected <= selected? false
+		aria-checked <= aria_checked \false
+		role \tab
+		aria-selected <= aria_checked
 
 $eve_segmented $eve_selection_single
 	variant \outline
 	colors \low
+	plate_width? \0rem
+	plate_inset_start? \0rem
 	sub /
 		<= Container $eve_flex
 			direction \row
 			sub /
 				<= Plate $eve_surface
 					colors \low
+					style *
+						width <= plate_width
+						insetInlineStart <= plate_inset_start
 				<= Options_container $eve_flex
 					sub <= segments /
 						<= Segment* $eve_segmented_option
@@ -1621,7 +1632,7 @@ $eve_app_page_components_segmented $eve_app_page_sb_page
 							component_name \Live_segmented
 							default_source \
 								\Live_segmented $eve_segmented
-								\	value \home
+								\	value? \home
 								\	options *
 								\		home \home
 								\		profile \profile

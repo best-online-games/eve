@@ -5139,18 +5139,21 @@ declare namespace $.$$ {
 declare namespace $.$$ {
 }
 
+declare namespace $.$$ {
+    const $eve_selection_attr = "[eve_selected]";
+}
+
 declare namespace $ {
 
 	export class $eve_tab extends $eve_button {
-		tab_variant( ): string
 		tab_colors( ): string
 		selected( next?: boolean ): boolean
 		aria_checked( ): string
 		size( ): any
-		variant( ): ReturnType< $eve_tab['tab_variant'] >
+		variant( ): string
 		colors( ): ReturnType< $eve_tab['tab_colors'] >
 		attr( ): ({ 
-			'mol_check_checked': ReturnType< $eve_tab['selected'] >,
+			'eve_selected': ReturnType< $eve_tab['selected'] >,
 			'aria-checked': ReturnType< $eve_tab['aria_checked'] >,
 			'role': string,
 			'aria-selected': ReturnType< $eve_tab['aria_checked'] >,
@@ -5209,10 +5212,10 @@ declare namespace $ {
 		,
 		ReturnType< $eve_tab['selected'] >
 	>
-	type $eve_tab__click_eve_tab_group_3 = $mol_type_enforce<
+	type $eve_tab__event_click_eve_tab_group_3 = $mol_type_enforce<
 		ReturnType< $eve_tab_group['option_click'] >
 		,
-		ReturnType< $eve_tab['click'] >
+		ReturnType< $eve_tab['event_click'] >
 	>
 	type $eve_flex__direction_eve_tab_group_4 = $mol_type_enforce<
 		string
@@ -6990,10 +6993,17 @@ declare namespace $ {
 declare namespace $ {
 
 	export class $eve_segmented_option extends $eve_button {
+		selected( ): boolean
+		aria_checked( ): string
 		variant( ): string
 		size( next?: string ): string
 		label( ): string
-		selected( ): boolean
+		attr( ): ({ 
+			'eve_selected': ReturnType< $eve_segmented_option['selected'] >,
+			'aria-checked': ReturnType< $eve_segmented_option['aria_checked'] >,
+			'role': string,
+			'aria-selected': ReturnType< $eve_segmented_option['aria_checked'] >,
+		})  & ReturnType< $eve_button['attr'] >
 	}
 	
 }
@@ -7001,7 +7011,6 @@ declare namespace $ {
 //# sourceMappingURL=option.view.tree.d.ts.map
 declare namespace $.$$ {
     class $eve_segmented_option extends $.$eve_segmented_option {
-        variant(): "ghost" | "text";
     }
 }
 
@@ -7015,32 +7024,40 @@ declare namespace $ {
 		,
 		ReturnType< $eve_surface['colors'] >
 	>
-	type $eve_segmented_option__selected_eve_segmented_2 = $mol_type_enforce<
+	type $eve_surface__style_eve_segmented_2 = $mol_type_enforce<
+		({ 
+			'width': ReturnType< $eve_segmented['plate_width'] >,
+			'insetInlineStart': ReturnType< $eve_segmented['plate_inset_start'] >,
+		}) 
+		,
+		ReturnType< $eve_surface['style'] >
+	>
+	type $eve_segmented_option__selected_eve_segmented_3 = $mol_type_enforce<
 		ReturnType< $eve_segmented['option_selected'] >
 		,
 		ReturnType< $eve_segmented_option['selected'] >
 	>
-	type $eve_segmented_option__label_eve_segmented_3 = $mol_type_enforce<
+	type $eve_segmented_option__label_eve_segmented_4 = $mol_type_enforce<
 		ReturnType< $eve_segmented['option_label'] >
 		,
 		ReturnType< $eve_segmented_option['label'] >
 	>
-	type $eve_segmented_option__event_click_eve_segmented_4 = $mol_type_enforce<
+	type $eve_segmented_option__event_click_eve_segmented_5 = $mol_type_enforce<
 		ReturnType< $eve_segmented['option_click'] >
 		,
 		ReturnType< $eve_segmented_option['event_click'] >
 	>
-	type $eve_flex__sub_eve_segmented_5 = $mol_type_enforce<
+	type $eve_flex__sub_eve_segmented_6 = $mol_type_enforce<
 		ReturnType< $eve_segmented['segments'] >
 		,
 		ReturnType< $eve_flex['sub'] >
 	>
-	type $eve_flex__direction_eve_segmented_6 = $mol_type_enforce<
+	type $eve_flex__direction_eve_segmented_7 = $mol_type_enforce<
 		string
 		,
 		ReturnType< $eve_flex['direction'] >
 	>
-	type $eve_flex__sub_eve_segmented_7 = $mol_type_enforce<
+	type $eve_flex__sub_eve_segmented_8 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $eve_flex['sub'] >
@@ -7053,6 +7070,8 @@ declare namespace $ {
 		Container( ): $eve_flex
 		variant( ): string
 		colors( ): string
+		plate_width( next?: string ): string
+		plate_inset_start( next?: string ): string
 		sub( ): readonly(any)[]
 	}
 	
@@ -7062,6 +7081,8 @@ declare namespace $ {
 declare namespace $.$$ {
     class $eve_segmented extends $.$eve_segmented {
         segments(): $.$eve_segmented_option[];
+        plate_width(): string;
+        plate_inset_start(): string;
     }
 }
 
