@@ -1,5 +1,11 @@
 $eve_segmented_option $eve_button
-	variant \ghost
+	variant \text
 	size? \s
 	label \
 	selected false
+	attr *
+		^
+		eve_selected <= selected? false
+		aria-checked <= aria_checked \false
+		role \tab
+		aria-selected <= aria_checked

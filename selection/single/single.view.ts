@@ -11,6 +11,7 @@ namespace $.$$ {
 
 		@$mol_mem
 		value( next?: string ): string {
+			console.log( 'value', next )
 			return next ?? ''
 		}
 
@@ -30,7 +31,7 @@ namespace $.$$ {
 
 		@$mol_mem_key
 		option_click( id: string, event?: Event ) {
-			console.log( 'option_click', id, event )
+			console.log( 'option_click', id, event, this.value() )
 
 			if( !event ) return null
 			this.value( id )

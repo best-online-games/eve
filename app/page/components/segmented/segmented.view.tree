@@ -12,7 +12,7 @@ $eve_app_page_components_segmented $eve_app_page_sb_page
 							component_name \Live_segmented
 							default_source \
 								\Live_segmented $eve_segmented
-								\	value \home
+								\	value? \home
 								\	options *
 								\		home \home
 								\		profile \profile

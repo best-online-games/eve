@@ -1,11 +1,11 @@
 $eve_tab $eve_button
 	size null
-	variant <= tab_variant \text
+	variant \text
 	colors <= tab_colors \primary
 	selected? false
 	attr *
 		^
-		mol_check_checked <= selected? false
+		eve_selected <= selected? false
 		aria-checked <= aria_checked \false
 		role \tab
 		aria-selected <= aria_checked

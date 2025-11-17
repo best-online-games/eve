@@ -9,5 +9,5 @@ $eve_tab_group $eve_selection_single
 			sub <= tabs /
 				<= Tab* $eve_tab
 					label <= option_label*
-					selected? <= option_selected*
-					click?event <=> option_click*?event
+					selected <= option_selected*
+					event_click?event <=> option_click*?event

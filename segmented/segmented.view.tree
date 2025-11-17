@@ -1,12 +1,17 @@
 $eve_segmented $eve_selection_single
 	variant \outline
 	colors \low
+	plate_width? \0rem
+	plate_inset_start? \0rem
 	sub /
 		<= Container $eve_flex
 			direction \row
 			sub /
 				<= Plate $eve_surface
 					colors \low
+					style *
+						width <= plate_width
+						insetInlineStart <= plate_inset_start
 				<= Options_container $eve_flex
 					sub <= segments /
 						<= Segment* $eve_segmented_option

@@ -4,12 +4,12 @@ namespace $.$$ {
 
 	$mol_style_define( $eve_tab, {
 		minHeight: rem( 2.5 ),
-		
+
 		cursor: 'pointer',
 		transition: 'all 0.2s ease-out',
 		fontWeight: '500',
 
-		'[mol_check_checked]': {
+		[ $eve_selection_attr ]: {
 			true: {
 				borderBottom: {
 					width: rem( 0.125 ),
