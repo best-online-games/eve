@@ -1,8 +1,5 @@
 $eve_segmented_option $eve_button
-	variant* \ghost
+	variant \ghost
 	size? \s
-	value \
 	label \
-	checked false
-	sub / <= label
-
+	selected false

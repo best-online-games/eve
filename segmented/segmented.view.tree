@@ -8,9 +8,8 @@ $eve_segmented $eve_selection_single
 				<= Plate $eve_surface
 					colors \low
 				<= Options_container $eve_flex
-					sub <= Options /
-						<= Option* $eve_segmented_option
-							value <= option_value* \
-							checked? <= option_selected* false
+					sub <= segments /
+						<= Segment* $eve_segmented_option
+							selected <= option_selected*
 							label <= option_label*
-							event_click?event <=> option_click*?event null
+							click?event <=> option_click*?event

@@ -39,6 +39,7 @@ namespace $.$$ {
 		 * Click handler
 		 */
 		click( event?: MouseEvent ) {
+			console.log( 'button', event )
 			if( this.disabled() ) {
 				event?.preventDefault()
 				return

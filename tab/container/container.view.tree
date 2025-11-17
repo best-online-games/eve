@@ -2,15 +2,15 @@ $eve_tab_container $eve_surface
 	value? \
 	spreads *
 	spread_title* \
-	tab_checked* false
-	tab_click*?event null
+	option_selected* false
+	option_click*?event null
 	content /
 	sub /
 		<= Tabs $eve_tab_group
 			value? <=> value?
 			tabs <= tabs /
-			tab_label* <= spread_title*
-			tab_checked* <= tab_checked*
-			tab_click*?event <=> tab_click*?event
+			option_label* <= spread_title*
+			option_selected* <= option_selected*
+			option_click*?event <=> option_click*?event
 		<= Content $eve_surface
 			sub <= content

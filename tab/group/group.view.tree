@@ -1,5 +1,4 @@
 $eve_tab_group $eve_selection_single
-	value? \
 	attr *
 		^
 		role \tablist
@@ -9,7 +8,6 @@ $eve_tab_group $eve_selection_single
 			wrap \nowrap
 			sub <= tabs /
 				<= Tab* $eve_tab
-					label <= tab_label* \
-					checked? <= tab_checked* false
-					event_click?event <=> tab_click*?event null
-
+					label <= option_label*
+					selected? <= option_selected*
+					click?event <=> option_click*?event
