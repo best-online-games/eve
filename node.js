@@ -12811,7 +12811,6 @@ var $;
                 return {};
             }
             value(next) {
-                console.log('value', next);
                 return next ?? '';
             }
             option_ids() {
@@ -12821,7 +12820,6 @@ var $;
             option_label(id) { return this.options()[id] || id; }
             option_selected(id) { return this.value() === id; }
             option_click(id, event) {
-                console.log('option_click', id, event, this.value());
                 if (!event)
                     return null;
                 this.value(id);
