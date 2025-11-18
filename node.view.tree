@@ -944,6 +944,7 @@ $eve_button $eve_flex
 	
 	justify_content \center
 	align_items \center
+	
 	sub /
 		<= Label $mol_text
 			text <= label \
@@ -1598,25 +1599,27 @@ $eve_segmented_option $eve_button
 		aria-selected <= aria_checked
 
 $eve_segmented $eve_selection_single
-	variant \outline
+	variant \solid
 	colors \low
-	plate_width? \0rem
-	plate_inset_start? \0rem
+	size? \m
+	plate_width? \
+	plate_inset_start? \
+	plate_border_radius? \
 	sub /
-		<= Container $eve_flex
-			direction \row
+		<= Options_container $eve_flex
 			sub /
 				<= Plate $eve_surface
-					colors \low
+					interactive? false
+					colors \lowest
 					style *
 						width <= plate_width
 						insetInlineStart <= plate_inset_start
-				<= Options_container $eve_flex
-					sub <= segments /
-						<= Segment* $eve_segmented_option
-							selected <= option_selected*
-							label <= option_label*
-							event_click?event <=> option_click*?event
+						- borderRadius <= plate_border_radius
+				^ segments /
+					<= Segment* $eve_segmented_option
+						selected <= option_selected*
+						label <= option_label*
+						event_click?event <=> option_click*?event
 
 $eve_app_page_components_segmented $eve_app_page_sb_page
 	title \Segmented Control

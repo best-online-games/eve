@@ -6981,12 +6981,17 @@ declare namespace $.$$ {
 
 declare namespace $ {
 
-	type $eve_surface__colors_eve_segmented_1 = $mol_type_enforce<
+	type $eve_surface__interactive_eve_segmented_1 = $mol_type_enforce<
+		boolean
+		,
+		ReturnType< $eve_surface['interactive'] >
+	>
+	type $eve_surface__colors_eve_segmented_2 = $mol_type_enforce<
 		string
 		,
 		ReturnType< $eve_surface['colors'] >
 	>
-	type $eve_surface__style_eve_segmented_2 = $mol_type_enforce<
+	type $eve_surface__style_eve_segmented_3 = $mol_type_enforce<
 		({ 
 			'width': ReturnType< $eve_segmented['plate_width'] >,
 			'insetInlineStart': ReturnType< $eve_segmented['plate_inset_start'] >,
@@ -6994,32 +6999,22 @@ declare namespace $ {
 		,
 		ReturnType< $eve_surface['style'] >
 	>
-	type $eve_segmented_option__selected_eve_segmented_3 = $mol_type_enforce<
+	type $eve_segmented_option__selected_eve_segmented_4 = $mol_type_enforce<
 		ReturnType< $eve_segmented['option_selected'] >
 		,
 		ReturnType< $eve_segmented_option['selected'] >
 	>
-	type $eve_segmented_option__label_eve_segmented_4 = $mol_type_enforce<
+	type $eve_segmented_option__label_eve_segmented_5 = $mol_type_enforce<
 		ReturnType< $eve_segmented['option_label'] >
 		,
 		ReturnType< $eve_segmented_option['label'] >
 	>
-	type $eve_segmented_option__event_click_eve_segmented_5 = $mol_type_enforce<
+	type $eve_segmented_option__event_click_eve_segmented_6 = $mol_type_enforce<
 		ReturnType< $eve_segmented['option_click'] >
 		,
 		ReturnType< $eve_segmented_option['event_click'] >
 	>
-	type $eve_flex__sub_eve_segmented_6 = $mol_type_enforce<
-		ReturnType< $eve_segmented['segments'] >
-		,
-		ReturnType< $eve_flex['sub'] >
-	>
-	type $eve_flex__direction_eve_segmented_7 = $mol_type_enforce<
-		string
-		,
-		ReturnType< $eve_flex['direction'] >
-	>
-	type $eve_flex__sub_eve_segmented_8 = $mol_type_enforce<
+	type $eve_flex__sub_eve_segmented_7 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $eve_flex['sub'] >
@@ -7029,11 +7024,12 @@ declare namespace $ {
 		Segment( id: any): $eve_segmented_option
 		segments( ): readonly(any)[]
 		Options_container( ): $eve_flex
-		Container( ): $eve_flex
 		variant( ): string
 		colors( ): string
+		size( next?: string ): string
 		plate_width( next?: string ): string
 		plate_inset_start( next?: string ): string
+		plate_border_radius( next?: string ): string
 		sub( ): readonly(any)[]
 	}
 	
