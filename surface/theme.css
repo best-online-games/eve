@@ -1038,7 +1038,12 @@
 	--eve_surface_size_l_border: 1px;
 	--eve_surface_size_xl_border: 1px;
 
-	/* Transition */
-	--eve_surface_transition_duration: 150ms;
-	--eve_surface_transition_easing: cubic-bezier(0.4, 0, 0.2, 1);
+	/* TODO: подумать над type-safe обращениями к токенам анимаций в css.ts + синк между ts и theme.css */
+	/* Animations */
+	--eve_a_slide_duration: 0.3s;
+	--eve_a_slide_timing_func: ease-out;
+	--eve_a_fade_duration: 0.3s;
+	--eve_a_fade_timing_func: ease-out;
+	--eve_a_scale_duration: 0.3s;
+	--eve_a_scale_timing_func: ease-out;
 }

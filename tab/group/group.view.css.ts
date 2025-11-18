@@ -7,6 +7,7 @@ namespace $.$$ {
 			bottom: {
 				width: rem( 0.0625 ),
 				style: 'solid',
+				// TODO перееехать на eve
 				color: 'var(--mol_theme_line)',
 			} as any,
 		},

@@ -1,6 +1,7 @@
 $eve_segmented $eve_selection_single
 	variant \outline
 	colors \low
+	size? \m
 	plate_width? \0rem
 	plate_inset_start? \0rem
 	sub /
@@ -8,6 +9,7 @@ $eve_segmented $eve_selection_single
 			direction \row
 			sub /
 				<= Plate $eve_surface
+					interactive? false
 					colors \low
 					style *
 						width <= plate_width
