@@ -6,10 +6,9 @@ $eve_radio_group $eve_selection_single
 		<= Layout $eve_flex
 			direction \column
 			sub <= Options /
-				<= Option* $eve_input_logical_radio_labelled
+				<= Option* $eve_radio_labelled
 					name <= group_name
-					value <= radio_option_value* \
-					checked? <= radio_option_selected* false
-					label <= radio_option_label* \
-					event_click?event <=> radio_option_click*?event null
-
+					value <= option_value*
+					checked? <= option_selected*
+					label <= option_label*
+					event_click?event <=> option_click*?event

@@ -2,8 +2,8 @@ namespace $.$$ {
 
 	const { rem } = $mol_style_unit
 
-	$mol_style_define( $eve_input_logical_radio, {
-		
+	$mol_style_define( $eve_radio, {
+
 		// Override button defaults to make it circular
 		minHeight: rem( 1 ),
 		width: rem( 1 ),
@@ -51,8 +51,8 @@ namespace $.$$ {
 				},
 			},
 		},
-		
+
 	} )
-	
+
 }
 

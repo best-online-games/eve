@@ -1,16 +1,6 @@
 namespace $.$$ {
 
-	/**
-	 * Checkbox control - visual indicator only (no label)
-	 * Fixed size: 1rem × 1rem (16px × 16px)
-	 * 
-	 * Uses eve_surface token system:
-	 * - Unchecked: outline variant (border visible)
-	 * - Checked: solid variant (filled background)
-	 * 
-	 * For labeled version use $eve_checkbox_labelled
-	 */
-	export class $eve_input_logical_checkbox extends $.$eve_input_logical_checkbox {
+	export class $eve_checkbox extends $.$eve_checkbox {
 
 		@$mol_mem
 		checked( next?: boolean ): boolean {
@@ -28,8 +18,6 @@ namespace $.$$ {
 		}
 
 		override variant(): $eve_surface_variant {
-			// When checked, switch to solid variant (filled)
-			// When unchecked, use outline variant (border only)
 			return this.checked() ? 'solid' : 'outline'
 		}
 

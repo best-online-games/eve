@@ -4,7 +4,7 @@ namespace $.$$ {
 	 * Checkbox with label - based on eve_button ghost variant
 	 * Checkbox size is fixed at 1rem, button size controls padding/spacing
 	 */
-	export class $eve_input_logical_checkbox_labelled extends $.$eve_input_logical_checkbox_labelled {
+	export class $eve_checkbox_labelled extends $.$eve_checkbox_labelled {
 
 		override dom_name() {
 			return 'label'

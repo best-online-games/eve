@@ -8,7 +8,7 @@ $eve_tab_container $eve_surface
 	sub /
 		<= Tabs $eve_tab_group
 			value? <=> value?
-			tabs <= tabs /
+			options <= tabs /
 			option_label* <= spread_title*
 			option_selected* <= option_selected*
 			option_click*?event <=> option_click*?event

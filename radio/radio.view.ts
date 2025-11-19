@@ -1,17 +1,6 @@
 namespace $.$$ {
 
-	/**
-	 * Radio control - visual indicator only (no label)
-	 * Fixed size: 1rem × 1rem (16px × 16px)
-	 * 
-	 * Uses eve_surface token system:
-	 * - Unchecked: outline variant (border visible)
-	 * - Checked: solid variant (filled background with disc)
-	 * 
-	 * For labeled version use $eve_radio_labelled
-	 * For radio group use $eve_radio_group
-	 */
-	export class $eve_input_logical_radio extends $.$eve_input_logical_radio {
+	export class $eve_radio extends $.$eve_radio {
 
 		@$mol_mem
 		dom_id() {
@@ -34,8 +23,6 @@ namespace $.$$ {
 		}
 
 		override variant(): $eve_surface_variant {
-			// When checked, switch to solid variant (filled)
-			// When unchecked, use outline variant (border only)
 			return this.checked() ? 'solid' : 'outline'
 		}
 
@@ -45,7 +32,6 @@ namespace $.$$ {
 				return
 			}
 			if( next?.defaultPrevented ) return
-			// For radio, always set checked to true (not toggle like checkbox)
 			this.checked( true )
 			if( next ) next.preventDefault()
 		}

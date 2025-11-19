@@ -6,8 +6,8 @@ $eve_tab_group $eve_selection_single
 		<= Layout $eve_flex
 			direction \row
 			wrap \nowrap
-			sub <= tabs /
-				<= Tab* $eve_tab
+			sub <= Options /
+				<= Option* $eve_tab
 					label <= option_label*
 					selected <= option_selected*
 					event_click?event <=> option_click*?event

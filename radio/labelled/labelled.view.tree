@@ -1,2 +1,16 @@
-$eve_radio_labelled $eve_input_logical_radio_labelled
-
+$eve_radio_labelled $eve_button
+	variant \ghost
+	size? \m
+	justify_content \flex-start
+	attr *
+		^
+		for <= radio_id \
+	sub /
+		<= Radio $eve_radio
+			dom_id <= radio_id
+			name <= name \
+			value <= value \
+			checked? <=> checked? false
+			disabled? <=> disabled? false
+		<= Label $mol_text
+			text <= label

@@ -2,8 +2,8 @@ namespace $.$$ {
 
 	const { rem } = $mol_style_unit
 
-	$mol_style_define( $eve_input_logical_checkbox, {
-		
+	$mol_style_define( $eve_checkbox, {
+
 		// Override button defaults to make it square
 		minHeight: rem( 1 ),
 		width: rem( 1 ),
@@ -37,8 +37,8 @@ namespace $.$$ {
 				},
 			},
 		},
-		
+
 	} )
-	
+
 }
 

@@ -5,7 +5,7 @@ namespace $.$$ {
 	 * Radio size is fixed at 1rem, button size controls padding/spacing
 	 * Uses native <label for="..."> to link with <input id="...">
 	 */
-	export class $eve_input_logical_radio_labelled extends $.$eve_input_logical_radio_labelled {
+	export class $eve_radio_labelled extends $.$eve_radio_labelled {
 
 		override dom_name() {
 			return 'label'

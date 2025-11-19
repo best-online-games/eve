@@ -1,7 +1,5 @@
 namespace $.$$ {
-
 	export class $eve_segmented extends $.$eve_segmented {
-
 		@$mol_mem
 		override segments() {
 			return this.option_ids().map( id => this.Segment( id ) )
@@ -17,5 +15,4 @@ namespace $.$$ {
 			return `calc(${ this.option_ids().indexOf( this.value() ) } * ${ this.plate_width() })`
 		}
 	}
-
 }
