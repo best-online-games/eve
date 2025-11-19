@@ -996,8 +996,8 @@ $eve_tab_group $eve_selection_single
 		<= Layout $eve_flex
 			direction \row
 			wrap \nowrap
-			sub <= tabs /
-				<= Tab* $eve_tab
+			sub <= Options /
+				<= Option* $eve_tab
 					label <= option_label*
 					selected <= option_selected*
 					event_click?event <=> option_click*?event
@@ -1012,7 +1012,7 @@ $eve_tab_container $eve_surface
 	sub /
 		<= Tabs $eve_tab_group
 			value? <=> value?
-			tabs <= tabs /
+			options <= tabs /
 			option_label* <= spread_title*
 			option_selected* <= option_selected*
 			option_click*?event <=> option_click*?event
@@ -1308,7 +1308,7 @@ $eve_app_page_components_card $eve_app_page_sb_page
 				\
 
 
-$eve_input_logical_radio $eve_button
+$eve_radio $eve_button
 	disabled? null
 	colors? \primary
 	justify_content \center
@@ -1336,6 +1336,23 @@ $eve_input_logical_radio $eve_button
 			colors? \primary
 
 
+$eve_radio_labelled $eve_button
+	variant \ghost
+	size? \m
+	justify_content \flex-start
+	attr *
+		^
+		for <= radio_id \
+	sub /
+		<= Radio $eve_radio
+			dom_id <= radio_id
+			name <= name \
+			value <= value \
+			checked? <=> checked? false
+			disabled? <=> disabled? false
+		<= Label $mol_text
+			text <= label
+
 $eve_radio_group $eve_selection_single
 	name <= group_name \
 	attr *
@@ -1344,35 +1361,12 @@ $eve_radio_group $eve_selection_single
 		<= Layout $eve_flex
 			direction \column
 			sub <= Options /
-				<= Option* $eve_input_logical_radio_labelled
+				<= Option* $eve_radio_labelled
 					name <= group_name
-					value <= radio_option_value* \
-					checked? <= radio_option_selected* false
-					label <= radio_option_label* \
-					event_click?event <=> radio_option_click*?event null
-
-
-$eve_input_logical_radio_labelled $eve_button
-	variant \ghost
-	size? \m
-	justify_content \flex-start
-	attr *
-		^
-		for <= radio_id \
-	sub /
-		<= Radio $eve_input_logical_radio
-			dom_id <= radio_id
-			name <= name \
-			value <= value \
-			checked? <=> checked? false
-			disabled? <=> disabled? false
-		<= Label
-
-
-$eve_radio_labelled $eve_input_logical_radio_labelled
-
-
-$eve_radio $eve_input_logical_radio
+					value <= option_value*
+					checked? <= option_selected*
+					label <= option_label*
+					event_click?event <=> option_click*?event
 
 $eve_app_page_components_radio $eve_app_page_sb_page
 	title \Radio
@@ -1419,7 +1413,7 @@ $eve_app_page_components_radio $eve_app_page_sb_page
 								\	value? \option1
 								\
 
-$eve_input_logical_checkbox $eve_button
+$eve_checkbox $eve_button
 	indeterminate? null
 	disabled? null
 	colors? \primary
@@ -1436,22 +1430,17 @@ $eve_input_logical_checkbox $eve_button
 		<= Icon $mol_icon_check
 
 
-$eve_input_logical_checkbox_labelled $eve_button
+$eve_checkbox_labelled $eve_button
 	variant \ghost
 	size? \m
 	justify_content \flex-start
 	sub /
-		<= Checkbox $eve_input_logical_checkbox
+		<= Checkbox $eve_checkbox
 			checked? <=> checked? false
 			disabled? <=> disabled? false
 			indeterminate? <=> indeterminate? false
 		<= Label
 
-
-$eve_checkbox_labelled $eve_input_logical_checkbox_labelled
-
-
-$eve_checkbox $eve_input_logical_checkbox
 
 $eve_app_page_components_checkbox $eve_app_page_sb_page
 	title \Checkbox

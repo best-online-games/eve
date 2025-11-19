@@ -3852,6 +3852,7 @@ var $;
 var $;
 (function ($) {
     $.$mol_gap = $mol_style_prop('mol_gap', [
+        'page',
         'block',
         'text',
         'round',
@@ -3864,7 +3865,7 @@ var $;
 "use strict";
 var $;
 (function ($) {
-    $mol_style_attach("mol/gap/gap.css", ":root {\n\t--mol_gap_block: .75rem;\n\t--mol_gap_text: .5rem .75rem;\n\t--mol_gap_round: .25rem;\n\t--mol_gap_space: .25rem;\n\t--mol_gap_blur: .5rem;\n}\n");
+    $mol_style_attach("mol/gap/gap.css", ":root {\n\t--mol_gap_page: 3rem;\n\t--mol_gap_block: .75rem;\n\t--mol_gap_text: .5rem .75rem;\n\t--mol_gap_round: .25rem;\n\t--mol_gap_space: .25rem;\n\t--mol_gap_blur: .5rem;\n}\n");
 })($ || ($ = {}));
 
 ;
@@ -4288,7 +4289,7 @@ var $;
 "use strict";
 var $;
 (function ($) {
-    $mol_style_attach("mol/view/view/view.css", "[mol_view] {\n\ttransition-property: height, width, min-height, min-width, max-width, max-height, transform, scale, translate, rotate;\n\ttransition-duration: .2s;\n\ttransition-timing-function: ease-out;\n\t-webkit-appearance: none;\n\tbox-sizing: border-box;\n\tdisplay: flex;\n\tflex-shrink: 0;\n\tcontain: style;\n\tscrollbar-color: var(--mol_theme_line) transparent;\n\tscrollbar-width: thin;\n}\t\n\n[mol_view]::selection {\n\tbackground: var(--mol_theme_line);\n}\t\n\n[mol_view]::-webkit-scrollbar {\n\twidth: .25rem;\n\theight: .25rem;\n}\n\n[mol_view]::-webkit-scrollbar-corner {\n\tbackground-color: var(--mol_theme_line);\n}\n\n[mol_view]::-webkit-scrollbar-track {\n\tbackground-color: transparent;\n}\n\n[mol_view]::-webkit-scrollbar-thumb {\n\tbackground-color: var(--mol_theme_line);\n\tborder-radius: var(--mol_gap_round);\n}\n\n[mol_view] > * {\n\tword-break: inherit;\n}\n\n[mol_view_root] {\n\tmargin: 0;\n\tpadding: 0;\n\twidth: 100%;\n\theight: 100%;\n\tbox-sizing: border-box;\n\tfont-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;\n\tfont-size: 1rem;\n\tline-height: 1.5rem;\n\t/* background: var(--mol_theme_back);\n\tcolor: var(--mol_theme_text); */\n\tcontain: unset; /** Fixes bg ignoring when applied to body on Chrome */\n\ttab-size: 4;\n\toverscroll-behavior: contain; /** Disable navigation gestures **/\n}\n\n@media print {\n\t[mol_view_root] {\n\t\theight: auto;\n\t}\n}\n[mol_view][mol_view_error]:not([mol_view_error=\"Promise\"], [mol_view_error=\"$mol_promise_blocker\"]) {\n\tbackground-image: repeating-linear-gradient(\n\t\t-45deg,\n\t\t#f92323,\n\t\t#f92323 .5rem,\n\t\t#ff3d3d .5rem,\n\t\t#ff3d3d 1.5rem\n\t);\n\tcolor: black;\n\talign-items: center;\n\tjustify-content: center;\n}\n\n@keyframes mol_view_wait {\n\tfrom {\n\t\topacity: .25;\n\t}\n\t20% {\n\t\topacity: .75;\n\t}\n\tto {\n\t\topacity: .25;\n\t}\n}\n\n:where([mol_view][mol_view_error=\"$mol_promise_blocker\"]),\n:where([mol_view][mol_view_error=\"Promise\"]) {\n\tbackground: var(--mol_theme_hover);\n}\n\n[mol_view][mol_view_error=\"Promise\"] {\n\tanimation: mol_view_wait 1s steps(20,end) infinite;\n}\n");
+    $mol_style_attach("mol/view/view/view.css", "[mol_view] {\n\ttransition-property: height, width, min-height, min-width, max-width, max-height, transform, scale, translate, rotate;\n\ttransition-duration: .2s;\n\ttransition-timing-function: ease-out;\n\t-webkit-appearance: none;\n\tbox-sizing: border-box;\n\tdisplay: flex;\n\tflex-shrink: 0;\n\tcontain: style;\n\tscrollbar-color: var(--mol_theme_line) transparent;\n\tscrollbar-width: thin;\n}\t\n\n[mol_view]::selection {\n\tbackground: var(--mol_theme_line);\n}\t\n\n[mol_view]::-webkit-scrollbar {\n\twidth: .25rem;\n\theight: .25rem;\n}\n\n[mol_view]::-webkit-scrollbar-corner {\n\tbackground-color: var(--mol_theme_line);\n}\n\n[mol_view]::-webkit-scrollbar-track {\n\tbackground-color: transparent;\n}\n\n[mol_view]::-webkit-scrollbar-thumb {\n\tbackground-color: var(--mol_theme_line);\n\tborder-radius: var(--mol_gap_round);\n}\n\n[mol_view] > * {\n\tword-break: inherit;\n}\n\n[mol_view_root] {\n\tmargin: 0;\n\tpadding: 0;\n\twidth: 100%;\n\theight: 100%;\n\tbox-sizing: border-box;\n\tfont-family: system-ui, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;\n\tfont-size: 1rem;\n\tline-height: 1.5rem;\n\t/* background: var(--mol_theme_back);\n\tcolor: var(--mol_theme_text); */\n\tcontain: unset; /** Fixes bg ignoring when applied to body on Chrome */\n\ttab-size: 4;\n\toverscroll-behavior: contain; /** Disable navigation gestures **/\n}\n\n@media print {\n\t[mol_view_root] {\n\t\theight: auto;\n\t}\n}\n[mol_view][mol_view_error]:not([mol_view_error=\"Promise\"], [mol_view_error=\"$mol_promise_blocker\"]) {\n\tbackground-image: repeating-linear-gradient(\n\t\t-45deg,\n\t\t#f92323,\n\t\t#f92323 .5rem,\n\t\t#ff3d3d .5rem,\n\t\t#ff3d3d 1.5rem\n\t);\n\tcolor: black;\n\talign-items: center;\n\tjustify-content: center;\n}\n\n@keyframes mol_view_wait {\n\tfrom {\n\t\topacity: .25;\n\t}\n\t20% {\n\t\topacity: .75;\n\t}\n\tto {\n\t\topacity: .25;\n\t}\n}\n\n:where([mol_view][mol_view_error=\"$mol_promise_blocker\"]),\n:where([mol_view][mol_view_error=\"Promise\"]) {\n\tbackground: var(--mol_theme_hover);\n}\n\n[mol_view][mol_view_error=\"Promise\"] {\n\tanimation: mol_view_wait 1s steps(20,end) infinite;\n}\n");
 })($ || ($ = {}));
 
 ;
@@ -10336,7 +10337,7 @@ var $;
 "use strict";
 var $;
 (function ($) {
-    $mol_style_attach("mol/pop/pop.view.css", "[mol_pop] {\n\tposition: relative;\n\tdisplay: inline-flex;\n}\n\n[mol_pop_bubble] {\n\tbox-shadow: 0 0 1rem hsla(0,0%,0%,.5);\n\tborder-radius: var(--mol_gap_round);\n\tposition: absolute;\n\tz-index: var(--mol_layer_popup);\n\tbackground: var(--mol_theme_back);\n\tmax-width: none;\n\tmax-height: none;\n\t/* overflow: hidden;\n\toverflow-y: scroll;\n\toverflow-y: overlay; */\n\tword-break: normal;\n\twidth: max-content;\n\t/* height: max-content; */\n\tflex-direction: column;\n\tmax-width: 80vw;\n\tmax-height: 80vw;\n\tcontain: paint;\n\ttransition-property: opacity;\n}\n\n:where( [mol_pop_bubble] > * ) {\n\tbackground: var(--mol_theme_card);\n}\n\n[mol_pop_bubble][mol_scroll] {\n\tbackground: var(--mol_theme_back);\n}\n\n[mol_pop_bubble]:focus {\n\toutline: none;\n}\n\n[mol_pop_align=\"suspense_suspense\"] {\n\topacity: 0;\n}\n\n[mol_pop_align=\"left_top\"] {\n\ttransform: translate(-100%);\n\tleft: 0;\n\tbottom: 0;\n}\n\n[mol_pop_align=\"left_center\"] {\n\ttransform: translate(-100%, -50%);\n\tleft: 0;\n\ttop: 50%;\n}\n\n[mol_pop_align=\"left_bottom\"] {\n\ttransform: translate(-100%);\n\tleft: 0;\n\ttop: 0;\n}\n\n[mol_pop_align=\"right_top\"] {\n\ttransform: translate(100%);\n\tright: 0;\n\tbottom: 0;\n}\n\n[mol_pop_align=\"right_center\"] {\n\ttransform: translate(100%, -50%);\n\tright: 0;\n\ttop: 50%;\n}\n\n[mol_pop_align=\"right_bottom\"] {\n\ttransform: translate(100%);\n\tright: 0;\n\ttop: 0;\n}\n\n[mol_pop_align=\"center\"] {\n\tleft: 50%;\n\ttop: 50%;\n\ttransform: translate(-50%, -50%);\n}\n\n[mol_pop_align=\"top_left\"] {\n\tright: 0;\n\tbottom: 100%;\n}\n\n[mol_pop_align=\"top_center\"] {\n\ttransform: translate(-50%);\n\tleft: 50%;\n\tbottom: 100%;\n}\n\n[mol_pop_align=\"top_right\"] {\n\tleft: 0;\n\tbottom: 100%;\n}\n\n[mol_pop_align=\"bottom_left\"] {\n\tright: 0;\n\ttop: 100%;\n}\n\n[mol_pop_align=\"bottom_center\"] {\n\ttransform: translate(-50%);\n\tleft: 50%;\n\ttop: 100%;\n}\n\n[mol_pop_align=\"bottom_right\"] {\n\tleft: 0;\n\ttop: 100%;\n}\n");
+    $mol_style_attach("mol/pop/pop.view.css", "[mol_pop] {\n\tposition: relative;\n\tdisplay: inline-flex;\n}\n\n[mol_pop_bubble] {\n\tbox-shadow: 0 0 1rem hsla(0,0%,0%,.5);\n\tborder-radius: var(--mol_gap_round);\n\tposition: absolute;\n\tz-index: var(--mol_layer_popup);\n\tbackground: var(--mol_theme_back);\n\tmax-width: none;\n\tmax-height: none;\n\t/* overflow: hidden;\n\toverflow-y: scroll;\n\toverflow-y: overlay; */\n\tword-break: normal;\n\twidth: max-content;\n\t/* height: max-content; */\n\tflex-direction: column;\n\tmax-width: calc( 100vw - var(--mol_gap_page) );\n\tmax-height: 80vw;\n\tcontain: paint;\n\ttransition-property: opacity;\n}\n\n:where( [mol_pop_bubble] > * ) {\n\tbackground: var(--mol_theme_card);\n}\n\n[mol_pop_bubble][mol_scroll] {\n\tbackground: var(--mol_theme_back);\n}\n\n[mol_pop_bubble]:focus {\n\toutline: none;\n}\n\n[mol_pop_align=\"suspense_suspense\"] {\n\topacity: 0;\n}\n\n[mol_pop_align=\"left_top\"] {\n\ttransform: translate(-100%);\n\tleft: 0;\n\tbottom: 0;\n}\n\n[mol_pop_align=\"left_center\"] {\n\ttransform: translate(-100%, -50%);\n\tleft: 0;\n\ttop: 50%;\n}\n\n[mol_pop_align=\"left_bottom\"] {\n\ttransform: translate(-100%);\n\tleft: 0;\n\ttop: 0;\n}\n\n[mol_pop_align=\"right_top\"] {\n\ttransform: translate(100%);\n\tright: 0;\n\tbottom: 0;\n}\n\n[mol_pop_align=\"right_center\"] {\n\ttransform: translate(100%, -50%);\n\tright: 0;\n\ttop: 50%;\n}\n\n[mol_pop_align=\"right_bottom\"] {\n\ttransform: translate(100%);\n\tright: 0;\n\ttop: 0;\n}\n\n[mol_pop_align=\"center\"] {\n\tleft: 50%;\n\ttop: 50%;\n\ttransform: translate(-50%, -50%);\n}\n\n[mol_pop_align=\"top_left\"] {\n\tright: 0;\n\tbottom: 100%;\n}\n\n[mol_pop_align=\"top_center\"] {\n\ttransform: translate(-50%);\n\tleft: 50%;\n\tbottom: 100%;\n}\n\n[mol_pop_align=\"top_right\"] {\n\tleft: 0;\n\tbottom: 100%;\n}\n\n[mol_pop_align=\"bottom_left\"] {\n\tright: 0;\n\ttop: 100%;\n}\n\n[mol_pop_align=\"bottom_center\"] {\n\ttransform: translate(-50%);\n\tleft: 50%;\n\ttop: 100%;\n}\n\n[mol_pop_align=\"bottom_right\"] {\n\tleft: 0;\n\ttop: 100%;\n}\n");
 })($ || ($ = {}));
 
 ;
@@ -12820,21 +12821,21 @@ var $;
 
 ;
 	($.$eve_tab_group) = class $eve_tab_group extends ($.$eve_selection_single) {
-		Tab(id){
+		Option(id){
 			const obj = new this.$.$eve_tab();
 			(obj.label) = () => ((this.option_label(id)));
 			(obj.selected) = () => ((this.option_selected(id)));
 			(obj.event_click) = (next) => ((this.option_click(id, next)));
 			return obj;
 		}
-		tabs(){
-			return [(this.Tab(id))];
+		Options(){
+			return [(this.Option(id))];
 		}
 		Layout(){
 			const obj = new this.$.$eve_flex();
 			(obj.direction) = () => ("row");
 			(obj.wrap) = () => ("nowrap");
-			(obj.sub) = () => ((this.tabs()));
+			(obj.sub) = () => ((this.Options()));
 			return obj;
 		}
 		attr(){
@@ -12844,7 +12845,7 @@ var $;
 			return [(this.Layout())];
 		}
 	};
-	($mol_mem_key(($.$eve_tab_group.prototype), "Tab"));
+	($mol_mem_key(($.$eve_tab_group.prototype), "Option"));
 	($mol_mem(($.$eve_tab_group.prototype), "Layout"));
 
 
@@ -12858,13 +12859,13 @@ var $;
     var $$;
     (function ($$) {
         class $eve_tab_group extends $.$eve_tab_group {
-            tabs() {
-                return this.option_ids().map(id => this.Tab(id));
+            Options() {
+                return this.option_ids().map(id => this.Option(id));
             }
         }
         __decorate([
             $mol_mem
-        ], $eve_tab_group.prototype, "tabs", null);
+        ], $eve_tab_group.prototype, "Options", null);
         $$.$eve_tab_group = $eve_tab_group;
     })($$ = $.$$ || ($.$$ = {}));
 })($ || ($ = {}));
@@ -12896,7 +12897,7 @@ var $;
 		Tabs(){
 			const obj = new this.$.$eve_tab_group();
 			(obj.value) = (next) => ((this.value(next)));
-			(obj.tabs) = () => ((this.tabs()));
+			(obj.options) = () => ((this.tabs()));
 			(obj.option_label) = (id) => ((this.spread_title(id)));
 			(obj.option_selected) = (id) => ((this.option_selected(id)));
 			(obj.option_click) = (id, next) => ((this.option_click(id, next)));
@@ -15222,7 +15223,7 @@ var $;
 "use strict";
 
 ;
-	($.$eve_input_logical_radio) = class $eve_input_logical_radio extends ($.$eve_button) {
+	($.$eve_radio) = class $eve_radio extends ($.$eve_button) {
 		checked(next){
 			if(next !== undefined) return next;
 			return false;
@@ -15300,64 +15301,13 @@ var $;
 			return [(this.Input()), (this.Disc())];
 		}
 	};
-	($mol_mem(($.$eve_input_logical_radio.prototype), "checked"));
-	($mol_mem(($.$eve_input_logical_radio.prototype), "event_click"));
-	($mol_mem(($.$eve_input_logical_radio.prototype), "input_checked"));
-	($mol_mem(($.$eve_input_logical_radio.prototype), "Input"));
-	($mol_mem(($.$eve_input_logical_radio.prototype), "Disc"));
-	($mol_mem(($.$eve_input_logical_radio.prototype), "disabled"));
-	($mol_mem(($.$eve_input_logical_radio.prototype), "colors"));
-
-
-;
-	($.$eve_radio_group) = class $eve_radio_group extends ($.$eve_selection_single) {
-		group_name(){
-			return "";
-		}
-		radio_option_value(id){
-			return "";
-		}
-		radio_option_selected(id){
-			return false;
-		}
-		radio_option_label(id){
-			return "";
-		}
-		radio_option_click(id, next){
-			if(next !== undefined) return next;
-			return null;
-		}
-		Option(id){
-			const obj = new this.$.$eve_input_logical_radio_labelled();
-			(obj.name) = () => ((this.group_name()));
-			(obj.value) = () => ((this.radio_option_value(id)));
-			(obj.checked) = (next) => ((this.radio_option_selected(id)));
-			(obj.label) = () => ((this.radio_option_label(id)));
-			(obj.event_click) = (next) => ((this.radio_option_click(id, next)));
-			return obj;
-		}
-		Options(){
-			return [(this.Option(id))];
-		}
-		Layout(){
-			const obj = new this.$.$eve_flex();
-			(obj.direction) = () => ("column");
-			(obj.sub) = () => ((this.Options()));
-			return obj;
-		}
-		name(){
-			return (this.group_name());
-		}
-		attr(){
-			return {"role": "radiogroup"};
-		}
-		sub(){
-			return [(this.Layout())];
-		}
-	};
-	($mol_mem_key(($.$eve_radio_group.prototype), "radio_option_click"));
-	($mol_mem_key(($.$eve_radio_group.prototype), "Option"));
-	($mol_mem(($.$eve_radio_group.prototype), "Layout"));
+	($mol_mem(($.$eve_radio.prototype), "checked"));
+	($mol_mem(($.$eve_radio.prototype), "event_click"));
+	($mol_mem(($.$eve_radio.prototype), "input_checked"));
+	($mol_mem(($.$eve_radio.prototype), "Input"));
+	($mol_mem(($.$eve_radio.prototype), "Disc"));
+	($mol_mem(($.$eve_radio.prototype), "disabled"));
+	($mol_mem(($.$eve_radio.prototype), "colors"));
 
 
 ;
@@ -15369,58 +15319,7 @@ var $;
 (function ($) {
     var $$;
     (function ($$) {
-        class $eve_radio_group extends $.$eve_radio_group {
-            group_name() {
-                return `${this}.${this.value()}`;
-            }
-            Options() {
-                return this.option_ids().map(id => this.Option(id));
-            }
-            radio_option_value(id) {
-                return this.option_value(id);
-            }
-            radio_option_selected(id) {
-                return this.option_selected(id);
-            }
-            radio_option_label(id) {
-                return this.option_label(id);
-            }
-            radio_option_click(id, event) {
-                return this.option_click(id, event);
-            }
-        }
-        __decorate([
-            $mol_mem
-        ], $eve_radio_group.prototype, "group_name", null);
-        __decorate([
-            $mol_mem
-        ], $eve_radio_group.prototype, "Options", null);
-        __decorate([
-            $mol_mem_key
-        ], $eve_radio_group.prototype, "radio_option_value", null);
-        __decorate([
-            $mol_mem_key
-        ], $eve_radio_group.prototype, "radio_option_selected", null);
-        __decorate([
-            $mol_mem_key
-        ], $eve_radio_group.prototype, "radio_option_label", null);
-        __decorate([
-            $mol_mem_key
-        ], $eve_radio_group.prototype, "radio_option_click", null);
-        $$.$eve_radio_group = $eve_radio_group;
-    })($$ = $.$$ || ($.$$ = {}));
-})($ || ($ = {}));
-
-;
-"use strict";
-
-;
-"use strict";
-var $;
-(function ($) {
-    var $$;
-    (function ($$) {
-        class $eve_input_logical_radio extends $.$eve_input_logical_radio {
+        class $eve_radio extends $.$eve_radio {
             dom_id() {
                 return `${this}:radio`;
             }
@@ -15453,17 +15352,17 @@ var $;
         }
         __decorate([
             $mol_mem
-        ], $eve_input_logical_radio.prototype, "dom_id", null);
+        ], $eve_radio.prototype, "dom_id", null);
         __decorate([
             $mol_mem
-        ], $eve_input_logical_radio.prototype, "checked", null);
+        ], $eve_radio.prototype, "checked", null);
         __decorate([
             $mol_mem
-        ], $eve_input_logical_radio.prototype, "input_checked", null);
+        ], $eve_radio.prototype, "input_checked", null);
         __decorate([
             $mol_mem
-        ], $eve_input_logical_radio.prototype, "disabled", null);
-        $$.$eve_input_logical_radio = $eve_input_logical_radio;
+        ], $eve_radio.prototype, "disabled", null);
+        $$.$eve_radio = $eve_radio;
     })($$ = $.$$ || ($.$$ = {}));
 })($ || ($ = {}));
 
@@ -15474,7 +15373,7 @@ var $;
     var $$;
     (function ($$) {
         const { rem } = $mol_style_unit;
-        $mol_style_define($eve_input_logical_radio, {
+        $mol_style_define($eve_radio, {
             minHeight: rem(1),
             width: rem(1),
             height: rem(1),
@@ -15520,11 +15419,7 @@ var $;
 })($ || ($ = {}));
 
 ;
-	($.$eve_radio) = class $eve_radio extends ($.$eve_input_logical_radio) {};
-
-
-;
-	($.$eve_input_logical_radio_labelled) = class $eve_input_logical_radio_labelled extends ($.$eve_button) {
+	($.$eve_radio_labelled) = class $eve_radio_labelled extends ($.$eve_button) {
 		radio_id(){
 			return "";
 		}
@@ -15543,12 +15438,17 @@ var $;
 			return false;
 		}
 		Radio(){
-			const obj = new this.$.$eve_input_logical_radio();
+			const obj = new this.$.$eve_radio();
 			(obj.dom_id) = () => ((this.radio_id()));
 			(obj.name) = () => ((this.name()));
 			(obj.value) = () => ((this.value()));
 			(obj.checked) = (next) => ((this.checked(next)));
 			(obj.disabled) = (next) => ((this.disabled(next)));
+			return obj;
+		}
+		Label(){
+			const obj = new this.$.$mol_text();
+			(obj.text) = () => ((this.label()));
 			return obj;
 		}
 		variant(){
@@ -15568,10 +15468,11 @@ var $;
 			return [(this.Radio()), (this.Label())];
 		}
 	};
-	($mol_mem(($.$eve_input_logical_radio_labelled.prototype), "checked"));
-	($mol_mem(($.$eve_input_logical_radio_labelled.prototype), "disabled"));
-	($mol_mem(($.$eve_input_logical_radio_labelled.prototype), "Radio"));
-	($mol_mem(($.$eve_input_logical_radio_labelled.prototype), "size"));
+	($mol_mem(($.$eve_radio_labelled.prototype), "checked"));
+	($mol_mem(($.$eve_radio_labelled.prototype), "disabled"));
+	($mol_mem(($.$eve_radio_labelled.prototype), "Radio"));
+	($mol_mem(($.$eve_radio_labelled.prototype), "Label"));
+	($mol_mem(($.$eve_radio_labelled.prototype), "size"));
 
 
 ;
@@ -15583,7 +15484,7 @@ var $;
 (function ($) {
     var $$;
     (function ($$) {
-        class $eve_input_logical_radio_labelled extends $.$eve_input_logical_radio_labelled {
+        class $eve_radio_labelled extends $.$eve_radio_labelled {
             dom_name() {
                 return 'label';
             }
@@ -15593,8 +15494,8 @@ var $;
         }
         __decorate([
             $mol_mem
-        ], $eve_input_logical_radio_labelled.prototype, "radio_id", null);
-        $$.$eve_input_logical_radio_labelled = $eve_input_logical_radio_labelled;
+        ], $eve_radio_labelled.prototype, "radio_id", null);
+        $$.$eve_radio_labelled = $eve_radio_labelled;
     })($$ = $.$$ || ($.$$ = {}));
 })($ || ($ = {}));
 
@@ -15605,7 +15506,7 @@ var $;
     var $$;
     (function ($$) {
         const { rem } = $mol_style_unit;
-        $mol_style_define($eve_input_logical_radio_labelled, {
+        $mol_style_define($eve_radio_labelled, {
             justifyContent: 'flex-start',
             gap: rem(0.5),
         });
@@ -15613,7 +15514,40 @@ var $;
 })($ || ($ = {}));
 
 ;
-	($.$eve_radio_labelled) = class $eve_radio_labelled extends ($.$eve_input_logical_radio_labelled) {};
+	($.$eve_radio_group) = class $eve_radio_group extends ($.$eve_selection_single) {
+		group_name(){
+			return "";
+		}
+		Option(id){
+			const obj = new this.$.$eve_radio_labelled();
+			(obj.name) = () => ((this.group_name()));
+			(obj.value) = () => ((this.option_value(id)));
+			(obj.checked) = (next) => ((this.option_selected(id)));
+			(obj.label) = () => ((this.option_label(id)));
+			(obj.event_click) = (next) => ((this.option_click(id, next)));
+			return obj;
+		}
+		Options(){
+			return [(this.Option(id))];
+		}
+		Layout(){
+			const obj = new this.$.$eve_flex();
+			(obj.direction) = () => ("column");
+			(obj.sub) = () => ((this.Options()));
+			return obj;
+		}
+		name(){
+			return (this.group_name());
+		}
+		attr(){
+			return {"role": "radiogroup"};
+		}
+		sub(){
+			return [(this.Layout())];
+		}
+	};
+	($mol_mem_key(($.$eve_radio_group.prototype), "Option"));
+	($mol_mem(($.$eve_radio_group.prototype), "Layout"));
 
 
 ;
@@ -15621,6 +15555,27 @@ var $;
 
 ;
 "use strict";
+var $;
+(function ($) {
+    var $$;
+    (function ($$) {
+        class $eve_radio_group extends $.$eve_radio_group {
+            group_name() {
+                return `${this}.${this.value()}`;
+            }
+            Options() {
+                return this.option_ids().map(id => this.Option(id));
+            }
+        }
+        __decorate([
+            $mol_mem
+        ], $eve_radio_group.prototype, "group_name", null);
+        __decorate([
+            $mol_mem
+        ], $eve_radio_group.prototype, "Options", null);
+        $$.$eve_radio_group = $eve_radio_group;
+    })($$ = $.$$ || ($.$$ = {}));
+})($ || ($ = {}));
 
 ;
 	($.$eve_app_page_components_radio) = class $eve_app_page_components_radio extends ($.$eve_app_page_sb_page) {
@@ -15705,7 +15660,7 @@ var $;
 })($ || ($ = {}));
 
 ;
-	($.$eve_input_logical_checkbox) = class $eve_input_logical_checkbox extends ($.$eve_button) {
+	($.$eve_checkbox) = class $eve_checkbox extends ($.$eve_button) {
 		checked(next){
 			if(next !== undefined) return next;
 			return false;
@@ -15754,12 +15709,12 @@ var $;
 			return [(this.Icon())];
 		}
 	};
-	($mol_mem(($.$eve_input_logical_checkbox.prototype), "checked"));
-	($mol_mem(($.$eve_input_logical_checkbox.prototype), "event_click"));
-	($mol_mem(($.$eve_input_logical_checkbox.prototype), "Icon"));
-	($mol_mem(($.$eve_input_logical_checkbox.prototype), "indeterminate"));
-	($mol_mem(($.$eve_input_logical_checkbox.prototype), "disabled"));
-	($mol_mem(($.$eve_input_logical_checkbox.prototype), "colors"));
+	($mol_mem(($.$eve_checkbox.prototype), "checked"));
+	($mol_mem(($.$eve_checkbox.prototype), "event_click"));
+	($mol_mem(($.$eve_checkbox.prototype), "Icon"));
+	($mol_mem(($.$eve_checkbox.prototype), "indeterminate"));
+	($mol_mem(($.$eve_checkbox.prototype), "disabled"));
+	($mol_mem(($.$eve_checkbox.prototype), "colors"));
 
 
 ;
@@ -15771,7 +15726,7 @@ var $;
 (function ($) {
     var $$;
     (function ($$) {
-        class $eve_input_logical_checkbox extends $.$eve_input_logical_checkbox {
+        class $eve_checkbox extends $.$eve_checkbox {
             checked(next) {
                 return next ?? false;
             }
@@ -15803,14 +15758,14 @@ var $;
         }
         __decorate([
             $mol_mem
-        ], $eve_input_logical_checkbox.prototype, "checked", null);
+        ], $eve_checkbox.prototype, "checked", null);
         __decorate([
             $mol_mem
-        ], $eve_input_logical_checkbox.prototype, "disabled", null);
+        ], $eve_checkbox.prototype, "disabled", null);
         __decorate([
             $mol_mem
-        ], $eve_input_logical_checkbox.prototype, "indeterminate", null);
-        $$.$eve_input_logical_checkbox = $eve_input_logical_checkbox;
+        ], $eve_checkbox.prototype, "indeterminate", null);
+        $$.$eve_checkbox = $eve_checkbox;
     })($$ = $.$$ || ($.$$ = {}));
 })($ || ($ = {}));
 
@@ -15821,7 +15776,7 @@ var $;
     var $$;
     (function ($$) {
         const { rem } = $mol_style_unit;
-        $mol_style_define($eve_input_logical_checkbox, {
+        $mol_style_define($eve_checkbox, {
             minHeight: rem(1),
             width: rem(1),
             height: rem(1),
@@ -15854,11 +15809,7 @@ var $;
 })($ || ($ = {}));
 
 ;
-	($.$eve_checkbox) = class $eve_checkbox extends ($.$eve_input_logical_checkbox) {};
-
-
-;
-	($.$eve_input_logical_checkbox_labelled) = class $eve_input_logical_checkbox_labelled extends ($.$eve_button) {
+	($.$eve_checkbox_labelled) = class $eve_checkbox_labelled extends ($.$eve_button) {
 		checked(next){
 			if(next !== undefined) return next;
 			return false;
@@ -15872,7 +15823,7 @@ var $;
 			return false;
 		}
 		Checkbox(){
-			const obj = new this.$.$eve_input_logical_checkbox();
+			const obj = new this.$.$eve_checkbox();
 			(obj.checked) = (next) => ((this.checked(next)));
 			(obj.disabled) = (next) => ((this.disabled(next)));
 			(obj.indeterminate) = (next) => ((this.indeterminate(next)));
@@ -15892,11 +15843,11 @@ var $;
 			return [(this.Checkbox()), (this.Label())];
 		}
 	};
-	($mol_mem(($.$eve_input_logical_checkbox_labelled.prototype), "checked"));
-	($mol_mem(($.$eve_input_logical_checkbox_labelled.prototype), "disabled"));
-	($mol_mem(($.$eve_input_logical_checkbox_labelled.prototype), "indeterminate"));
-	($mol_mem(($.$eve_input_logical_checkbox_labelled.prototype), "Checkbox"));
-	($mol_mem(($.$eve_input_logical_checkbox_labelled.prototype), "size"));
+	($mol_mem(($.$eve_checkbox_labelled.prototype), "checked"));
+	($mol_mem(($.$eve_checkbox_labelled.prototype), "disabled"));
+	($mol_mem(($.$eve_checkbox_labelled.prototype), "indeterminate"));
+	($mol_mem(($.$eve_checkbox_labelled.prototype), "Checkbox"));
+	($mol_mem(($.$eve_checkbox_labelled.prototype), "size"));
 
 
 ;
@@ -15908,7 +15859,7 @@ var $;
 (function ($) {
     var $$;
     (function ($$) {
-        class $eve_input_logical_checkbox_labelled extends $.$eve_input_logical_checkbox_labelled {
+        class $eve_checkbox_labelled extends $.$eve_checkbox_labelled {
             dom_name() {
                 return 'label';
             }
@@ -15919,19 +15870,9 @@ var $;
                 }
             }
         }
-        $$.$eve_input_logical_checkbox_labelled = $eve_input_logical_checkbox_labelled;
+        $$.$eve_checkbox_labelled = $eve_checkbox_labelled;
     })($$ = $.$$ || ($.$$ = {}));
 })($ || ($ = {}));
-
-;
-	($.$eve_checkbox_labelled) = class $eve_checkbox_labelled extends ($.$eve_input_logical_checkbox_labelled) {};
-
-
-;
-"use strict";
-
-;
-"use strict";
 
 ;
 	($.$eve_app_page_components_checkbox) = class $eve_app_page_components_checkbox extends ($.$eve_app_page_sb_page) {

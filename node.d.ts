@@ -1116,7 +1116,7 @@ declare namespace $ {
 }
 
 declare namespace $ {
-    let $mol_gap: Record<"text" | "block" | "space" | "blur" | "round", $mol_style_func<"var", unknown>>;
+    let $mol_gap: Record<"text" | "block" | "space" | "blur" | "page" | "round", $mol_style_func<"var", unknown>>;
 }
 
 declare namespace $ {
@@ -5190,13 +5190,13 @@ declare namespace $ {
 		ReturnType< $eve_flex['wrap'] >
 	>
 	type $eve_flex__sub_eve_tab_group_6 = $mol_type_enforce<
-		ReturnType< $eve_tab_group['tabs'] >
+		ReturnType< $eve_tab_group['Options'] >
 		,
 		ReturnType< $eve_flex['sub'] >
 	>
 	export class $eve_tab_group extends $eve_selection_single {
-		Tab( id: any): $eve_tab
-		tabs( ): readonly(any)[]
+		Option( id: any): $eve_tab
+		Options( ): readonly(any)[]
 		Layout( ): $eve_flex
 		attr( ): ({ 
 			'role': string,
@@ -5209,7 +5209,7 @@ declare namespace $ {
 //# sourceMappingURL=group.view.tree.d.ts.map
 declare namespace $.$$ {
     class $eve_tab_group extends $.$eve_tab_group {
-        tabs(): $.$eve_tab[];
+        Options(): $.$eve_tab[];
     }
 }
 
@@ -5223,10 +5223,10 @@ declare namespace $ {
 		,
 		ReturnType< $eve_tab_group['value'] >
 	>
-	type $eve_tab_group__tabs_eve_tab_container_2 = $mol_type_enforce<
+	type $eve_tab_group__options_eve_tab_container_2 = $mol_type_enforce<
 		ReturnType< $eve_tab_container['tabs'] >
 		,
-		ReturnType< $eve_tab_group['tabs'] >
+		ReturnType< $eve_tab_group['options'] >
 	>
 	type $eve_tab_group__option_label_eve_tab_container_3 = $mol_type_enforce<
 		ReturnType< $eve_tab_container['spread_title'] >
@@ -6231,96 +6231,29 @@ declare namespace $ {
 //# sourceMappingURL=card.view.tree.d.ts.map
 declare namespace $ {
 
-	type $eve_input_logical_radio_labelled__name_eve_radio_group_1 = $mol_type_enforce<
-		ReturnType< $eve_radio_group['group_name'] >
-		,
-		ReturnType< $eve_input_logical_radio_labelled['name'] >
-	>
-	type $eve_input_logical_radio_labelled__value_eve_radio_group_2 = $mol_type_enforce<
-		ReturnType< $eve_radio_group['radio_option_value'] >
-		,
-		ReturnType< $eve_input_logical_radio_labelled['value'] >
-	>
-	type $eve_input_logical_radio_labelled__checked_eve_radio_group_3 = $mol_type_enforce<
-		ReturnType< $eve_radio_group['radio_option_selected'] >
-		,
-		ReturnType< $eve_input_logical_radio_labelled['checked'] >
-	>
-	type $eve_input_logical_radio_labelled__label_eve_radio_group_4 = $mol_type_enforce<
-		ReturnType< $eve_radio_group['radio_option_label'] >
-		,
-		ReturnType< $eve_input_logical_radio_labelled['label'] >
-	>
-	type $eve_input_logical_radio_labelled__event_click_eve_radio_group_5 = $mol_type_enforce<
-		ReturnType< $eve_radio_group['radio_option_click'] >
-		,
-		ReturnType< $eve_input_logical_radio_labelled['event_click'] >
-	>
-	type $eve_flex__direction_eve_radio_group_6 = $mol_type_enforce<
-		string
-		,
-		ReturnType< $eve_flex['direction'] >
-	>
-	type $eve_flex__sub_eve_radio_group_7 = $mol_type_enforce<
-		ReturnType< $eve_radio_group['Options'] >
-		,
-		ReturnType< $eve_flex['sub'] >
-	>
-	export class $eve_radio_group extends $eve_selection_single {
-		group_name( ): string
-		radio_option_value( id: any): string
-		radio_option_selected( id: any): boolean
-		radio_option_label( id: any): string
-		radio_option_click( id: any, next?: any ): any
-		Option( id: any): $eve_input_logical_radio_labelled
-		Options( ): readonly(any)[]
-		Layout( ): $eve_flex
-		name( ): ReturnType< $eve_radio_group['group_name'] >
-		attr( ): ({ 
-			'role': string,
-		}) 
-		sub( ): readonly(any)[]
-	}
-	
-}
-
-//# sourceMappingURL=group.view.tree.d.ts.map
-declare namespace $.$$ {
-    class $eve_radio_group extends $.$eve_radio_group {
-        group_name(): string;
-        Options(): $.$eve_input_logical_radio_labelled[];
-        radio_option_value(id: string): string;
-        radio_option_selected(id: string): boolean;
-        radio_option_label(id: string): string;
-        radio_option_click(id: string, event?: Event): any;
-    }
-}
-
-declare namespace $ {
-
-	type $mol_view__dom_name_eve_input_logical_radio_1 = $mol_type_enforce<
+	type $mol_view__dom_name_eve_radio_1 = $mol_type_enforce<
 		string
 		,
 		ReturnType< $mol_view['dom_name'] >
 	>
-	type $mol_view__attr_eve_input_logical_radio_2 = $mol_type_enforce<
+	type $mol_view__attr_eve_radio_2 = $mol_type_enforce<
 		({ 
 			'type': string,
-			'id': ReturnType< $eve_input_logical_radio['dom_id'] >,
-			'name': ReturnType< $eve_input_logical_radio['name'] >,
-			'value': ReturnType< $eve_input_logical_radio['value'] >,
-			'checked': ReturnType< $eve_input_logical_radio['input_checked'] >,
+			'id': ReturnType< $eve_radio['dom_id'] >,
+			'name': ReturnType< $eve_radio['name'] >,
+			'value': ReturnType< $eve_radio['value'] >,
+			'checked': ReturnType< $eve_radio['input_checked'] >,
 			'tabindex': string,
 		}) 
 		,
 		ReturnType< $mol_view['attr'] >
 	>
-	type $eve_surface__colors_eve_input_logical_radio_3 = $mol_type_enforce<
+	type $eve_surface__colors_eve_radio_3 = $mol_type_enforce<
 		string
 		,
 		ReturnType< $eve_surface['colors'] >
 	>
-	export class $eve_input_logical_radio extends $eve_button {
+	export class $eve_radio extends $eve_button {
 		checked( next?: boolean ): boolean
 		aria_checked( ): string
 		aria_role( ): string
@@ -6337,12 +6270,12 @@ declare namespace $ {
 		align_items( ): string
 		size( ): any
 		attr( ): ({ 
-			'mol_check_checked': ReturnType< $eve_input_logical_radio['checked'] >,
-			'aria-checked': ReturnType< $eve_input_logical_radio['aria_checked'] >,
-			'role': ReturnType< $eve_input_logical_radio['aria_role'] >,
+			'mol_check_checked': ReturnType< $eve_radio['checked'] >,
+			'aria-checked': ReturnType< $eve_radio['aria_checked'] >,
+			'role': ReturnType< $eve_radio['aria_role'] >,
 		})  & ReturnType< $eve_button['attr'] >
 		event( ): ({ 
-			click( next?: ReturnType< $eve_input_logical_radio['event_click'] > ): ReturnType< $eve_input_logical_radio['event_click'] >,
+			click( next?: ReturnType< $eve_radio['event_click'] > ): ReturnType< $eve_radio['event_click'] >,
 		})  & ReturnType< $eve_button['event'] >
 		sub( ): readonly(any)[]
 	}
@@ -6351,7 +6284,7 @@ declare namespace $ {
 
 //# sourceMappingURL=radio.view.tree.d.ts.map
 declare namespace $.$$ {
-    class $eve_input_logical_radio extends $.$eve_input_logical_radio {
+    class $eve_radio extends $.$eve_radio {
         dom_id(): string;
         checked(next?: boolean): boolean;
         input_checked(): boolean;
@@ -6367,43 +6300,49 @@ declare namespace $.$$ {
 
 declare namespace $ {
 
-	type $eve_input_logical_radio__dom_id_eve_input_logical_radio_labelled_1 = $mol_type_enforce<
-		ReturnType< $eve_input_logical_radio_labelled['radio_id'] >
+	type $eve_radio__dom_id_eve_radio_labelled_1 = $mol_type_enforce<
+		ReturnType< $eve_radio_labelled['radio_id'] >
 		,
-		ReturnType< $eve_input_logical_radio['dom_id'] >
+		ReturnType< $eve_radio['dom_id'] >
 	>
-	type $eve_input_logical_radio__name_eve_input_logical_radio_labelled_2 = $mol_type_enforce<
-		ReturnType< $eve_input_logical_radio_labelled['name'] >
+	type $eve_radio__name_eve_radio_labelled_2 = $mol_type_enforce<
+		ReturnType< $eve_radio_labelled['name'] >
 		,
-		ReturnType< $eve_input_logical_radio['name'] >
+		ReturnType< $eve_radio['name'] >
 	>
-	type $eve_input_logical_radio__value_eve_input_logical_radio_labelled_3 = $mol_type_enforce<
-		ReturnType< $eve_input_logical_radio_labelled['value'] >
+	type $eve_radio__value_eve_radio_labelled_3 = $mol_type_enforce<
+		ReturnType< $eve_radio_labelled['value'] >
 		,
-		ReturnType< $eve_input_logical_radio['value'] >
+		ReturnType< $eve_radio['value'] >
 	>
-	type $eve_input_logical_radio__checked_eve_input_logical_radio_labelled_4 = $mol_type_enforce<
-		ReturnType< $eve_input_logical_radio_labelled['checked'] >
+	type $eve_radio__checked_eve_radio_labelled_4 = $mol_type_enforce<
+		ReturnType< $eve_radio_labelled['checked'] >
 		,
-		ReturnType< $eve_input_logical_radio['checked'] >
+		ReturnType< $eve_radio['checked'] >
 	>
-	type $eve_input_logical_radio__disabled_eve_input_logical_radio_labelled_5 = $mol_type_enforce<
-		ReturnType< $eve_input_logical_radio_labelled['disabled'] >
+	type $eve_radio__disabled_eve_radio_labelled_5 = $mol_type_enforce<
+		ReturnType< $eve_radio_labelled['disabled'] >
 		,
-		ReturnType< $eve_input_logical_radio['disabled'] >
+		ReturnType< $eve_radio['disabled'] >
 	>
-	export class $eve_input_logical_radio_labelled extends $eve_button {
+	type $mol_text__text_eve_radio_labelled_6 = $mol_type_enforce<
+		ReturnType< $eve_radio_labelled['label'] >
+		,
+		ReturnType< $mol_text['text'] >
+	>
+	export class $eve_radio_labelled extends $eve_button {
 		radio_id( ): string
 		name( ): string
 		value( ): string
 		checked( next?: boolean ): boolean
 		disabled( next?: boolean ): boolean
-		Radio( ): $eve_input_logical_radio
+		Radio( ): $eve_radio
+		Label( ): $mol_text
 		variant( ): string
 		size( next?: string ): string
 		justify_content( ): string
 		attr( ): ({ 
-			'for': ReturnType< $eve_input_logical_radio_labelled['radio_id'] >,
+			'for': ReturnType< $eve_radio_labelled['radio_id'] >,
 		})  & ReturnType< $eve_button['attr'] >
 		sub( ): readonly(any)[]
 	}
@@ -6412,7 +6351,7 @@ declare namespace $ {
 
 //# sourceMappingURL=labelled.view.tree.d.ts.map
 declare namespace $.$$ {
-    class $eve_input_logical_radio_labelled extends $.$eve_input_logical_radio_labelled {
+    class $eve_radio_labelled extends $.$eve_radio_labelled {
         dom_name(): string;
         radio_id(): string;
     }
@@ -6423,20 +6362,63 @@ declare namespace $.$$ {
 
 declare namespace $ {
 
-	export class $eve_radio_labelled extends $eve_input_logical_radio_labelled {
+	type $eve_radio_labelled__name_eve_radio_group_1 = $mol_type_enforce<
+		ReturnType< $eve_radio_group['group_name'] >
+		,
+		ReturnType< $eve_radio_labelled['name'] >
+	>
+	type $eve_radio_labelled__value_eve_radio_group_2 = $mol_type_enforce<
+		ReturnType< $eve_radio_group['option_value'] >
+		,
+		ReturnType< $eve_radio_labelled['value'] >
+	>
+	type $eve_radio_labelled__checked_eve_radio_group_3 = $mol_type_enforce<
+		ReturnType< $eve_radio_group['option_selected'] >
+		,
+		ReturnType< $eve_radio_labelled['checked'] >
+	>
+	type $eve_radio_labelled__label_eve_radio_group_4 = $mol_type_enforce<
+		ReturnType< $eve_radio_group['option_label'] >
+		,
+		ReturnType< $eve_radio_labelled['label'] >
+	>
+	type $eve_radio_labelled__event_click_eve_radio_group_5 = $mol_type_enforce<
+		ReturnType< $eve_radio_group['option_click'] >
+		,
+		ReturnType< $eve_radio_labelled['event_click'] >
+	>
+	type $eve_flex__direction_eve_radio_group_6 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $eve_flex['direction'] >
+	>
+	type $eve_flex__sub_eve_radio_group_7 = $mol_type_enforce<
+		ReturnType< $eve_radio_group['Options'] >
+		,
+		ReturnType< $eve_flex['sub'] >
+	>
+	export class $eve_radio_group extends $eve_selection_single {
+		group_name( ): string
+		Option( id: any): $eve_radio_labelled
+		Options( ): readonly(any)[]
+		Layout( ): $eve_flex
+		name( ): ReturnType< $eve_radio_group['group_name'] >
+		attr( ): ({ 
+			'role': string,
+		}) 
+		sub( ): readonly(any)[]
 	}
 	
 }
 
-//# sourceMappingURL=labelled.view.tree.d.ts.map
-declare namespace $ {
-
-	export class $eve_radio extends $eve_input_logical_radio {
-	}
-	
+//# sourceMappingURL=group.view.tree.d.ts.map
+declare namespace $.$$ {
+    class $eve_radio_group extends $.$eve_radio_group {
+        group_name(): string;
+        Options(): $.$eve_radio_labelled[];
+    }
 }
 
-//# sourceMappingURL=radio.view.tree.d.ts.map
 declare namespace $ {
 
 	type $eve_app_page_sb_playground__component_name_eve_app_page_components_radio_1 = $mol_type_enforce<
@@ -6536,7 +6518,7 @@ declare namespace $.$$ {
 
 declare namespace $ {
 
-	export class $eve_input_logical_checkbox extends $eve_button {
+	export class $eve_checkbox extends $eve_button {
 		checked( next?: boolean ): boolean
 		aria_checked( ): string
 		aria_role( ): string
@@ -6547,12 +6529,12 @@ declare namespace $ {
 		colors( next?: string ): string
 		size( ): any
 		attr( ): ({ 
-			'mol_check_checked': ReturnType< $eve_input_logical_checkbox['checked'] >,
-			'aria-checked': ReturnType< $eve_input_logical_checkbox['aria_checked'] >,
-			'role': ReturnType< $eve_input_logical_checkbox['aria_role'] >,
+			'mol_check_checked': ReturnType< $eve_checkbox['checked'] >,
+			'aria-checked': ReturnType< $eve_checkbox['aria_checked'] >,
+			'role': ReturnType< $eve_checkbox['aria_role'] >,
 		})  & ReturnType< $eve_button['attr'] >
 		event( ): ({ 
-			click( next?: ReturnType< $eve_input_logical_checkbox['event_click'] > ): ReturnType< $eve_input_logical_checkbox['event_click'] >,
+			click( next?: ReturnType< $eve_checkbox['event_click'] > ): ReturnType< $eve_checkbox['event_click'] >,
 		})  & ReturnType< $eve_button['event'] >
 		sub( ): readonly(any)[]
 	}
@@ -6561,7 +6543,7 @@ declare namespace $ {
 
 //# sourceMappingURL=checkbox.view.tree.d.ts.map
 declare namespace $.$$ {
-    class $eve_input_logical_checkbox extends $.$eve_input_logical_checkbox {
+    class $eve_checkbox extends $.$eve_checkbox {
         checked(next?: boolean): boolean;
         disabled(next?: boolean): boolean;
         indeterminate(next?: boolean): boolean;
@@ -6576,26 +6558,26 @@ declare namespace $.$$ {
 
 declare namespace $ {
 
-	type $eve_input_logical_checkbox__checked_eve_input_logical_checkbox_labelled_1 = $mol_type_enforce<
-		ReturnType< $eve_input_logical_checkbox_labelled['checked'] >
+	type $eve_checkbox__checked_eve_checkbox_labelled_1 = $mol_type_enforce<
+		ReturnType< $eve_checkbox_labelled['checked'] >
 		,
-		ReturnType< $eve_input_logical_checkbox['checked'] >
+		ReturnType< $eve_checkbox['checked'] >
 	>
-	type $eve_input_logical_checkbox__disabled_eve_input_logical_checkbox_labelled_2 = $mol_type_enforce<
-		ReturnType< $eve_input_logical_checkbox_labelled['disabled'] >
+	type $eve_checkbox__disabled_eve_checkbox_labelled_2 = $mol_type_enforce<
+		ReturnType< $eve_checkbox_labelled['disabled'] >
 		,
-		ReturnType< $eve_input_logical_checkbox['disabled'] >
+		ReturnType< $eve_checkbox['disabled'] >
 	>
-	type $eve_input_logical_checkbox__indeterminate_eve_input_logical_checkbox_labelled_3 = $mol_type_enforce<
-		ReturnType< $eve_input_logical_checkbox_labelled['indeterminate'] >
+	type $eve_checkbox__indeterminate_eve_checkbox_labelled_3 = $mol_type_enforce<
+		ReturnType< $eve_checkbox_labelled['indeterminate'] >
 		,
-		ReturnType< $eve_input_logical_checkbox['indeterminate'] >
+		ReturnType< $eve_checkbox['indeterminate'] >
 	>
-	export class $eve_input_logical_checkbox_labelled extends $eve_button {
+	export class $eve_checkbox_labelled extends $eve_button {
 		checked( next?: boolean ): boolean
 		disabled( next?: boolean ): boolean
 		indeterminate( next?: boolean ): boolean
-		Checkbox( ): $eve_input_logical_checkbox
+		Checkbox( ): $eve_checkbox
 		variant( ): string
 		size( next?: string ): string
 		justify_content( ): string
@@ -6606,28 +6588,12 @@ declare namespace $ {
 
 //# sourceMappingURL=labelled.view.tree.d.ts.map
 declare namespace $.$$ {
-    class $eve_input_logical_checkbox_labelled extends $.$eve_input_logical_checkbox_labelled {
+    class $eve_checkbox_labelled extends $.$eve_checkbox_labelled {
         dom_name(): string;
         click(event?: MouseEvent): void;
     }
 }
 
-declare namespace $ {
-
-	export class $eve_checkbox_labelled extends $eve_input_logical_checkbox_labelled {
-	}
-	
-}
-
-//# sourceMappingURL=labelled.view.tree.d.ts.map
-declare namespace $ {
-
-	export class $eve_checkbox extends $eve_input_logical_checkbox {
-	}
-	
-}
-
-//# sourceMappingURL=checkbox.view.tree.d.ts.map
 declare namespace $ {
 
 	type $eve_app_page_sb_playground__component_name_eve_app_page_components_checkbox_1 = $mol_type_enforce<
